@@ -1,0 +1,66 @@
+{
+  "projects": [
+    {
+      "id": "strimzi",
+      "name": "Strimzi",
+      "github_url": "https://github.com/strimzi/strimzi-kafka-operator",
+      "owner": "strimzi",
+      "repo": "strimzi-kafka-operator",
+      "foundation": "CNCF",
+      "website": "https://strimzi.io",
+      "enabled": true
+    },
+    {
+      "id": "camel",
+      "name": "Apache Camel",
+      "github_url": "https://github.com/apache/camel",
+      "owner": "apache",
+      "repo": "camel",
+      "foundation": "Apache Software Foundation",
+      "website": "https://camel.apache.org",
+      "enabled": true
+    },
+    {
+      "id": "activemq",
+      "name": "Apache ActiveMQ",
+      "github_url": "https://github.com/apache/activemq",
+      "owner": "apache",
+      "repo": "activemq",
+      "foundation": "Apache Software Foundation",
+      "website": "https://activemq.apache.org",
+      "enabled": true
+    },
+    {
+      "id": "keycloak",
+      "name": "Keycloak",
+      "github_url": "https://github.com/keycloak/keycloak",
+      "owner": "keycloak",
+      "repo": "keycloak",
+      "foundation": "CNCF",
+      "website": "https://www.keycloak.org",
+      "enabled": true
+    },
+    {
+      "id": "apicurio",
+      "name": "Apicurio",
+      "github_url": "https://github.com/Apicurio/apicurio-studio",
+      "owner": "Apicurio",
+      "repo": "apicurio-studio",
+      "foundation": "Independent",
+      "website": "https://www.apicur.io",
+      "enabled": true
+    },
+    {
+      "id": "3scale",
+      "name": "3scale",
+      "github_url": "https://github.com/3scale/3scale-operator",
+      "owner": "3scale",
+      "repo": "3scale-operator",
+      "foundation": "Red Hat",
+      "website": "https://www.3scale.net",
+      "enabled": true
+    }
+  ],
+  "last_updated": "2026-06-22T14:13:00Z",
+  "version": "1.0.0"
+}

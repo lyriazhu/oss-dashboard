@@ -1,0 +1,91 @@
+name: Refresh GitHub Data
+
+# Run every 3 days at 2 AM UTC
+on:
+  schedule:
+    - cron: '0 2 */3 * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  extract-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          cd scripts
+          pip install -r requirements.txt
+          
+      - name: Extract GitHub data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_DATA_TOKEN }}
+        run: |
+          cd scripts
+          # Create config from environment variable
+          cat > config.yaml << EOF
+          github:
+            token: "$GITHUB_TOKEN"
+          projects:
+            - name: "Strimzi"
+              github_url: "https://github.com/strimzi/strimzi-kafka-operator"
+              owner: "strimzi"
+              repo: "strimzi-kafka-operator"
+              foundation: "CNCF"
+              website: "https://strimzi.io"
+            - name: "Apache Camel"
+              github_url: "https://github.com/apache/camel"
+              owner: "apache"
+              repo: "camel"
+              foundation: "Apache Software Foundation"
+              website: "https://camel.apache.org"
+            - name: "Apache ActiveMQ"
+              github_url: "https://github.com/apache/activemq"
+              owner: "apache"
+              repo: "activemq"
+              foundation: "Apache Software Foundation"
+              website: "https://activemq.apache.org"
+            - name: "Keycloak"
+              github_url: "https://github.com/keycloak/keycloak"
+              owner: "keycloak"
+              repo: "keycloak"
+              foundation: "CNCF"
+              website: "https://www.keycloak.org"
+            - name: "Apicurio"
+              github_url: "https://github.com/Apicurio/apicurio-studio"
+              owner: "Apicurio"
+              repo: "apicurio-studio"
+              foundation: "Independent"
+              website: "https://www.apicur.io"
+            - name: "3scale"
+              github_url: "https://github.com/3scale/3scale-operator"
+              owner: "3scale"
+              repo: "3scale-operator"
+              foundation: "Red Hat"
+              website: "https://www.3scale.net"
+          extraction:
+            quarters_back: 8
+            rate_limit: 5000
+            max_retries: 3
+            retry_delay: 5
+          EOF
+          
+          python extract_github_data.py
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Refresh GitHub data [$(date +'%Y-%m-%d')]" && git push)
+
+# Made with Bob
