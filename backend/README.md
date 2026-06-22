@@ -34,10 +34,23 @@ java -jar target/oss-dashboard-backend-1.0.0.jar
 ### Projects
 
 - **GET** `/api/projects` - Get all projects
+  - Returns: Array of project objects with basic info
+  
 - **GET** `/api/projects/{projectId}` - Get a specific project
+  - Returns: Single project object
+  - Example: `/api/projects/strimzi`
+  
 - **GET** `/api/projects/{projectId}/metrics` - Get complete metrics for a project
+  - Returns: All metrics (metadata, contributors, commits, issues, PRs, releases)
+  - Example: `/api/projects/strimzi/metrics`
+  
 - **GET** `/api/projects/{projectId}/metadata` - Get metadata (stars, forks, etc.)
+  - Returns: Repository metadata only
+  - Example: `/api/projects/keycloak/metadata`
+  
 - **GET** `/api/projects/{projectId}/contributors` - Get contributor data
+  - Returns: Contributor statistics and company affiliations
+  - Example: `/api/projects/apache-camel/contributors`
 
 ### Health Check
 
@@ -182,6 +195,16 @@ mvn test jacoco:report
     "foundation": "CNCF",
     "website": "https://strimzi.io",
     "enabled": true
+  },
+  {
+    "id": "keycloak",
+    "name": "Keycloak",
+    "githubUrl": "https://github.com/keycloak/keycloak",
+    "owner": "keycloak",
+    "repo": "keycloak",
+    "foundation": "CNCF",
+    "website": "https://www.keycloak.org",
+    "enabled": true
   }
 ]
 ```
@@ -195,7 +218,78 @@ mvn test jacoco:report
   "stars": 4500,
   "forks": 1200,
   "language": "Java",
-  "topics": ["kafka", "kubernetes", "operator"]
+  "topics": ["kafka", "kubernetes", "operator"],
+  "created_at": "2017-09-01T12:00:00Z",
+  "updated_at": "2024-01-15T10:30:00Z"
+}
+```
+
+### GET /api/projects/strimzi/contributors
+```json
+{
+  "total_contributors": 250,
+  "company_breakdown": {
+    "Red Hat": 45,
+    "Independent": 120,
+    "IBM": 15,
+    "Other": 70
+  },
+  "top_contributors": [
+    {
+      "login": "user1",
+      "contributions": 1500,
+      "company": "Red Hat"
+    }
+  ],
+  "extracted_at": "2024-01-15T10:00:00Z"
+}
+```
+
+### GET /api/projects/strimzi/metrics
+```json
+{
+  "projectId": "strimzi",
+  "projectName": "Strimzi",
+  "metadata": { /* metadata object */ },
+  "contributors": { /* contributors object */ },
+  "commits": {
+    "total_commits": 5000,
+    "quarters": [
+      {
+        "quarter": "Q1 2024",
+        "start_date": "2024-01-01",
+        "end_date": "2024-03-31",
+        "commit_count": 450
+      }
+    ]
+  },
+  "issues": {
+    "total_open": 120,
+    "total_closed": 2500,
+    "total_issues": 2620,
+    "avg_resolution_time_days": 15.5
+  },
+  "pullRequests": {
+    "total_prs": 3000,
+    "quarters": [
+      {
+        "quarter": "Q1 2024",
+        "pr_count": 250
+      }
+    ]
+  },
+  "releases": {
+    "total_releases": 45,
+    "recent_releases": [
+      {
+        "tag_name": "v0.40.0",
+        "name": "Release 0.40.0",
+        "published_at": "2024-01-10T12:00:00Z",
+        "prerelease": false,
+        "draft": false
+      }
+    ]
+  }
 }
 ```
 

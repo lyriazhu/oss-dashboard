@@ -121,10 +121,54 @@ data/
 
 ## 🎉 Success!
 
-You've successfully extracted data from GitHub! The next steps are:
-1. Build the backend API (Spring Boot)
-2. Build the frontend dashboard (React)
-3. Set up automatic data refresh (GitHub Actions)
+You've successfully extracted data from GitHub!
+
+### Step 7: Set Up the Backend API (Optional)
+
+The backend API is built with Java and Spring Boot. If you want to run it:
+
+**Prerequisites:**
+- Java 17 or higher
+- Maven 3.6+
+
+**Installation (macOS):**
+```bash
+# Install Java and Maven using Homebrew
+brew install openjdk@17 maven
+
+# Link Java
+sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+
+# Verify installations
+java -version
+mvn -version
+```
+
+**Run the Backend:**
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+The API will start on `http://localhost:8080`
+
+**Test the API:**
+```bash
+# Get all projects
+curl http://localhost:8080/api/projects
+
+# Get Strimzi metrics
+curl http://localhost:8080/api/projects/strimzi/metrics
+```
+
+See [backend/README.md](backend/README.md) for complete API documentation.
+
+### Next Steps
+
+1. ✅ Data extraction complete
+2. ✅ Backend API ready (optional)
+3. ⏳ Build the frontend dashboard (React)
+4. ⏳ Set up automatic data refresh (GitHub Actions)
 
 ## ❓ Common Questions
 

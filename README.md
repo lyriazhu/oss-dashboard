@@ -2,6 +2,8 @@
 
 Enterprise-grade dashboard system to monitor contributor activity and project health metrics across multiple open-source projects.
 
+> **Architecture**: This project uses a polyglot architecture with Python for data extraction and Java/Spring Boot for the API backend. See [ARCHITECTURE.md](ARCHITECTURE.md) for details.
+
 ## 🚀 Quick Start
 
 ### 1. Get Your GitHub Token
@@ -58,7 +60,7 @@ oss-dashboard/
 │   ├── config.yaml               # Configuration (add your token here!)
 │   └── requirements.txt          # Python dependencies
 │
-├── backend/                       # Java Spring Boot API (coming soon)
+├── backend/                       # Java Spring Boot API ✅
 ├── frontend/                      # React dashboard (coming soon)
 └── .github/workflows/            # GitHub Actions automation (coming soon)
 ```
@@ -104,10 +106,26 @@ All AI prompts and techniques are documented for replicability.
 
 1. ✅ Set up project structure
 2. ✅ Create data extraction scripts
-3. ⏳ Build Spring Boot backend API
+3. ✅ Build Spring Boot backend API
 4. ⏳ Create React dashboard frontend
 5. ⏳ Set up GitHub Actions automation
 6. ⏳ Add AI-powered project onboarding
+
+## 🔌 Backend API
+
+The Java Spring Boot backend is now complete! See [backend/README.md](backend/README.md) for:
+- API endpoint documentation
+- Setup instructions
+- Example API calls
+- Development guide
+
+**Quick Start:**
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+API runs on `http://localhost:8080`
 
 ## 🆘 Troubleshooting
 
@@ -130,4 +148,4 @@ For questions or issues, contact the project team.
 
 ---
 
-**Status**: 🟢 Data extraction ready | 🟡 Backend in progress | 🟡 Frontend in progress
+**Status**: 🟢 Data extraction ready | 🟢 Backend API ready | 🟡 Frontend in progress
