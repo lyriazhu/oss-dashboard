@@ -1,8 +1,5 @@
 package com.ossdashboard.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -11,35 +8,29 @@ import java.util.Map;
 /**
  * Contributor data for a project
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ContributorData {
     @JsonProperty("total_contributors")
-    private Integer totalContributors;
+    public Integer totalContributors;
     
-    private List<Contributor> contributors;
-    private Map<String, Integer> companies;
+    public List<Contributor> contributors;
+    public Map<String, Integer> companies;
     
     @JsonProperty("total_companies")
-    private Integer totalCompanies;
+    public Integer totalCompanies;
     
     @JsonProperty("extracted_at")
-    private String extractedAt;
+    public String extractedAt;
     
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
     public static class Contributor {
-        private String login;
-        private String name;
-        private String company;
-        private String location;
-        private String email;
-        private Integer contributions;
+        public String login;
+        public String name;
+        public String company;
+        public String location;
+        public String email;
+        public Integer contributions;
         
         @JsonProperty("profile_url")
-        private String profileUrl;
+        public String profileUrl;
     }
 }
 

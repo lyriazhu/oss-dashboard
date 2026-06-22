@@ -1,31 +1,25 @@
 package com.ossdashboard.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Issue data for a project
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class IssueData {
     @JsonProperty("total_open")
-    private Integer totalOpen;
+    public Integer totalOpen;
     
     @JsonProperty("total_closed")
-    private Integer totalClosed;
+    public Integer totalClosed;
     
     @JsonProperty("total_issues")
-    private Integer totalIssues;
+    public Integer totalIssues;
     
     @JsonProperty("avg_resolution_time_days")
-    private Double avgResolutionTimeDays;
+    public Double avgResolutionTimeDays;
     
     @JsonProperty("extracted_at")
-    private String extractedAt;
+    public String extractedAt;
 }
 
 // Made with Bob

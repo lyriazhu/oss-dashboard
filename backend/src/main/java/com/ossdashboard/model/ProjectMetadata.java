@@ -1,8 +1,5 @@
 package com.ossdashboard.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -10,43 +7,40 @@ import java.util.List;
 /**
  * Project metadata extracted from GitHub
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProjectMetadata {
-    private String name;
+    public String name;
     
     @JsonProperty("full_name")
-    private String fullName;
+    public String fullName;
     
-    private String description;
+    public String description;
     
     @JsonProperty("created_at")
-    private String createdAt;
+    public String createdAt;
     
     @JsonProperty("updated_at")
-    private String updatedAt;
+    public String updatedAt;
     
-    private Integer stars;
-    private Integer forks;
-    private Integer watchers;
+    public Integer stars;
+    public Integer forks;
+    public Integer watchers;
     
     @JsonProperty("open_issues")
-    private Integer openIssues;
+    public Integer openIssues;
     
-    private String language;
-    private List<String> topics;
-    private String license;
-    private String homepage;
+    public String language;
+    public List<String> topics;
+    public String license;
+    public String homepage;
     
     @JsonProperty("has_wiki")
-    private Boolean hasWiki;
+    public Boolean hasWiki;
     
     @JsonProperty("has_discussions")
-    private Boolean hasDiscussions;
+    public Boolean hasDiscussions;
     
     @JsonProperty("extracted_at")
-    private String extractedAt;
+    public String extractedAt;
 }
 
 // Made with Bob
