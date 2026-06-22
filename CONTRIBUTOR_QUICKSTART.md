@@ -130,7 +130,7 @@ python3 --version
 1. **Get the repository URL:**
    - Go to the repository on GitHub
    - Click the green **"Code"** button
-   - Copy the HTTPS URL (looks like: `https://github.com/username/oss-dashboard.git`)
+   - Copy the HTTPS URL (looks like: `https://github.com/lyriazhu/oss-dashboard.git`)
 
 2. **Open Terminal/Command Prompt:**
    - **Mac**: Cmd+Space, type "Terminal"
@@ -145,7 +145,7 @@ python3 --version
 
 4. **Clone the repository:**
    ```bash
-   git clone https://github.com/USERNAME/oss-dashboard.git
+   git clone https://github.com/lyriazhu/oss-dashboard.git
    cd oss-dashboard
    ```
 
