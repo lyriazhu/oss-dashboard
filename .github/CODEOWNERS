@@ -1,0 +1,21 @@
+# Code Owners for OSS Dashboard
+# These users will be automatically requested for review when PRs are opened
+
+# Global owners - require approval for ALL changes
+* @lyriazhu
+
+# Critical configuration files - extra protection
+/scripts/config.yaml @lyriazhu
+/scripts/config.yaml.example @lyriazhu
+/data/projects.json @lyriazhu
+
+# GitHub workflows and automation
+/.github/workflows/ @lyriazhu
+/.github/CODEOWNERS @lyriazhu
+
+# Documentation - can be reviewed by anyone, but still notify owner
+*.md @lyriazhu
+
+# Scripts - require careful review
+/scripts/*.py @lyriazhu
+/scripts/requirements.txt @lyriazhu

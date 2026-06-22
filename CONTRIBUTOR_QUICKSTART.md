@@ -707,6 +707,367 @@ You're now ready to contribute to the OSS Dashboard project! Remember:
 
 **Welcome to the team!** 🚀
 
+## Part 11: Safety Measures & Mistake Prevention
+
+### 🛡️ For Team Leaders: Protecting Your Repository
+
+If your team is new to coding, here are essential safety measures to prevent accidental mistakes from affecting the main codebase.
+
+#### 1. Branch Protection Rules (CRITICAL!)
+
+**Why it matters:** Prevents anyone from accidentally pushing broken code directly to the main branch.
+
+**How to set up:**
+
+1. Go to your GitHub repository
+2. Click **Settings** (top right)
+3. Click **Branches** (left sidebar)
+4. Click **Add branch protection rule**
+5. Configure these settings:
+
+```
+Branch name pattern: main
+
+✅ Require a pull request before merging
+   ✅ Require approvals: 1 (or 2 for extra safety)
+   ✅ Dismiss stale pull request approvals when new commits are pushed
+   
+✅ Require status checks to pass before merging
+   (Enable this if you have automated tests)
+   
+✅ Require conversation resolution before merging
+   (All comments must be resolved)
+   
+✅ Require linear history
+   (Keeps git history clean)
+   
+✅ Include administrators
+   (Rules apply to everyone, even you!)
+   
+✅ Do not allow bypassing the above settings
+```
+
+6. Click **Create** or **Save changes**
+
+**What this does:**
+- ❌ Nobody can push directly to `main` (including you!)
+- ✅ All changes must go through pull requests
+- ✅ Changes must be reviewed and approved
+- ✅ You can catch mistakes before they affect the main branch
+
+#### 2. The Pull Request Workflow (Required!)
+
+With branch protection enabled, here's the new workflow:
+
+```
+1. Create feature branch → 2. Make changes → 3. Push branch → 4. Create PR → 5. Review → 6. Merge
+```
+
+**For contributors:**
+```bash
+# Create your branch
+git checkout -b feature/my-changes
+
+# Make changes and commit
+git add .
+git commit -m "description"
+
+# Push your branch (NOT to main!)
+git push origin feature/my-changes
+
+# Then create a Pull Request on GitHub
+```
+
+**For reviewers (you):**
+1. Go to the repository on GitHub
+2. Click **Pull requests** tab
+3. Review the changes
+4. Leave comments or request changes
+5. Once satisfied, click **Approve** and **Merge**
+
+#### 3. Restoring to Earlier Versions
+
+**Good news:** Git saves everything! You can always go back.
+
+**Method 1: Revert a Specific Commit (Safest)**
+
+This creates a new commit that undoes the bad changes:
+
+```bash
+# View commit history
+git log --oneline
+
+# Find the bad commit hash (e.g., abc1234)
+# Revert it
+git revert abc1234
+
+# Push the revert
+git push origin main
+```
+
+**Method 2: Reset to a Previous Commit (Use with Caution)**
+
+This goes back in time and erases newer commits:
+
+```bash
+# View commit history
+git log --oneline
+
+# Find the good commit hash (e.g., xyz5678)
+# Reset to it
+git reset --hard xyz5678
+
+# Force push (only if you're sure!)
+git push --force origin main
+```
+
+⚠️ **Warning:** `git push --force` can cause problems if others have pulled the bad commits. Use `git revert` instead when possible.
+
+**Method 3: Use GitHub's Web Interface**
+
+1. Go to your repository on GitHub
+2. Click **Commits** (above the file list)
+3. Find the commit you want to revert
+4. Click the `<>` button to browse files at that commit
+5. Or click the commit, then click **Revert** button
+
+#### 4. Create a CODEOWNERS File
+
+This automatically requests your review on all pull requests.
+
+**Create `.github/CODEOWNERS`:**
+
+```bash
+# In your repository root
+mkdir -p .github
+```
+
+**Add this content:**
+
+```
+# Global owners - require approval from these people for ALL changes
+* @your-github-username
+
+# Critical files - extra protection
+/scripts/config.yaml @your-github-username @backup-reviewer
+/data/projects.json @your-github-username
+/.github/workflows/ @your-github-username
+
+# Documentation - can be more relaxed
+*.md @your-github-username @doc-team-member
+```
+
+Replace `@your-github-username` with your actual GitHub username.
+
+**Commit and push:**
+```bash
+git add .github/CODEOWNERS
+git commit -m "chore: add CODEOWNERS file for code review requirements"
+git push origin main
+```
+
+#### 5. Set Up Automated Checks (Optional but Recommended)
+
+Create `.github/workflows/pr-checks.yml`:
+
+```yaml
+name: Pull Request Checks
+on: [pull_request]
+
+jobs:
+  validate-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Check Python syntax
+        run: |
+          cd scripts
+          python3 -m py_compile *.py
+      
+      - name: Install dependencies
+        run: |
+          cd scripts
+          pip install -r requirements.txt
+      
+      - name: Run basic tests
+        run: |
+          cd scripts
+          python3 -c "import yaml; yaml.safe_load(open('config.yaml.example'))"
+
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Validate JSON files
+        run: |
+          for file in data/*.json; do
+            if [ -f "$file" ]; then
+              python3 -m json.tool "$file" > /dev/null
+            fi
+          done
+```
+
+This automatically checks for syntax errors before allowing merges.
+
+#### 6. Regular Backups
+
+**Create periodic snapshots:**
+
+```bash
+# Create a tag for important milestones
+git tag -a v1.0 -m "Stable version 1.0 - data extraction working"
+git push origin v1.0
+
+# Later, you can always return to this version
+git checkout v1.0
+```
+
+**Clone a backup copy:**
+
+```bash
+# On your local machine or another location
+git clone --mirror https://github.com/your-username/oss-dashboard.git oss-dashboard-backup.git
+```
+
+#### 7. Team Guidelines to Prevent Mistakes
+
+**Add these rules to your team documentation:**
+
+**✅ DO:**
+- Always work in feature branches
+- Create pull requests for all changes
+- Test changes locally before pushing
+- Ask questions when unsure
+- Read error messages carefully
+- Keep commits small and focused
+
+**❌ DON'T:**
+- Never push directly to `main`
+- Never use `git push --force` without asking
+- Never commit secrets (tokens, passwords)
+- Never commit large binary files
+- Never delete branches others are using
+- Never ignore failing tests
+
+#### 8. Emergency Recovery Procedures
+
+**If someone accidentally pushes bad code:**
+
+1. **Stay calm** - Git can fix almost anything
+2. **Identify the problem:**
+   ```bash
+   git log --oneline
+   # Find the bad commit
+   ```
+3. **Revert the commit:**
+   ```bash
+   git revert <bad-commit-hash>
+   git push origin main
+   ```
+4. **Communicate with the team:**
+   - Let them know what happened
+   - Explain what was fixed
+   - Use it as a learning opportunity
+
+**If someone accidentally deletes important files:**
+
+```bash
+# Files are never truly deleted in Git!
+# Find the commit before deletion
+git log --all --full-history -- path/to/deleted/file
+
+# Restore the file
+git checkout <commit-hash> -- path/to/deleted/file
+git commit -m "restore: recover accidentally deleted file"
+git push origin main
+```
+
+**If the repository is completely broken:**
+
+```bash
+# Clone a fresh copy
+git clone https://github.com/your-username/oss-dashboard.git oss-dashboard-fresh
+
+# Or reset to last known good state
+git reset --hard origin/main
+```
+
+#### 9. Monitoring and Alerts
+
+**Set up GitHub notifications:**
+
+1. Go to repository → **Watch** (top right)
+2. Select **All Activity**
+3. You'll get emails for:
+   - New pull requests
+   - Comments on PRs
+   - Pushes to branches
+   - Issues created
+
+**Review activity regularly:**
+- Check the **Insights** → **Network** graph
+- Review **Commits** page weekly
+- Monitor **Pull requests** tab daily
+
+#### 10. Training Your Team
+
+**Before giving access:**
+
+1. Have them read this entire guide
+2. Walk through creating a test branch together
+3. Practice the PR workflow with a small change
+4. Show them how to undo mistakes
+5. Give them a "cheat sheet" of safe commands
+
+**Safe commands for beginners:**
+```bash
+git status              # Check what changed (always safe)
+git log                 # View history (always safe)
+git diff                # See changes (always safe)
+git checkout -b branch  # Create new branch (safe)
+git add .               # Stage changes (safe)
+git commit -m "msg"     # Save changes (safe)
+git push origin branch  # Push to feature branch (safe)
+```
+
+**Commands to avoid until experienced:**
+```bash
+git push --force        # Can overwrite others' work
+git reset --hard        # Can lose uncommitted changes
+git rebase              # Can create conflicts
+git push origin main    # Blocked by branch protection anyway
+```
+
+### 🎓 Learning from Mistakes
+
+Remember: Mistakes are learning opportunities!
+
+**When someone makes a mistake:**
+1. ✅ Fix it together
+2. ✅ Explain what happened
+3. ✅ Show how to prevent it next time
+4. ✅ Update documentation if needed
+5. ❌ Don't blame or criticize
+
+**Common beginner mistakes and fixes:**
+
+| Mistake | How to Fix | Prevention |
+|---------|-----------|------------|
+| Pushed to wrong branch | `git revert` the commit | Always check `git status` first |
+| Committed secrets | Remove from history, rotate secrets | Use `.gitignore`, environment variables |
+| Merge conflicts | Resolve in VS Code, commit | Pull latest changes before starting work |
+| Lost uncommitted changes | Use `git reflog` to recover | Commit frequently |
+| Deleted important file | `git checkout` to restore | Use branch protection |
+
+---
+
 ---
 
 ## Additional Resources
