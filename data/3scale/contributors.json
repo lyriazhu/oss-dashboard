@@ -1,0 +1,543 @@
+{
+  "total_contributors": 41,
+  "contributors": [
+    {
+      "login": "eguzki",
+      "name": "Eguzki Astiz Lezaun",
+      "company": "Red Hat",
+      "location": null,
+      "email": "eastizle@redhat.com",
+      "contributions": 1115,
+      "profile_url": "https://github.com/eguzki"
+    },
+    {
+      "login": "miguelsorianod",
+      "name": "Miguel Soriano",
+      "company": "Red Hat",
+      "location": null,
+      "email": "msoriano@redhat.com",
+      "contributions": 753,
+      "profile_url": "https://github.com/miguelsorianod"
+    },
+    {
+      "login": "MStokluska",
+      "name": "Michal Stokluska",
+      "company": "Red Hat",
+      "location": "Waterford - Ireland",
+      "email": "mstoklus@redhat.com",
+      "contributions": 169,
+      "profile_url": "https://github.com/MStokluska"
+    },
+    {
+      "login": "tkan145",
+      "name": "An Tran",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 143,
+      "profile_url": "https://github.com/tkan145"
+    },
+    {
+      "login": "jmprusi",
+      "name": "Joaquim Moreno Prusi",
+      "company": "Unknown",
+      "location": "Barcelona",
+      "email": "jmprusi@keepalive.io",
+      "contributions": 105,
+      "profile_url": "https://github.com/jmprusi"
+    },
+    {
+      "login": "carlkyrillos",
+      "name": "Carl Kyrillos",
+      "company": "Red Hat",
+      "location": "San Diego, CA",
+      "email": null,
+      "contributions": 101,
+      "profile_url": "https://github.com/carlkyrillos"
+    },
+    {
+      "login": "austincunningham",
+      "name": "Austin Cunningham",
+      "company": "Red Hat",
+      "location": "Waterford , Ireland",
+      "email": null,
+      "contributions": 93,
+      "profile_url": "https://github.com/austincunningham"
+    },
+    {
+      "login": "valerymo",
+      "name": "Valery Mogilevsky",
+      "company": "Unknown",
+      "location": null,
+      "email": "vmogilev@redhat.com",
+      "contributions": 70,
+      "profile_url": "https://github.com/valerymo"
+    },
+    {
+      "login": "borisurbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 25,
+      "profile_url": "https://github.com/borisurbanik"
+    },
+    {
+      "login": "sergioifg94",
+      "name": "Sergio Franco Garcia",
+      "company": "Unknown",
+      "location": "County Galway, Ireland",
+      "email": "sergioifg94@gmail.com",
+      "contributions": 21,
+      "profile_url": "https://github.com/sergioifg94"
+    },
+    {
+      "login": "Patryk-Stefanski",
+      "name": "Patryk Stefanski",
+      "company": "Red Hat",
+      "location": "Waterford , Ireland",
+      "email": null,
+      "contributions": 21,
+      "profile_url": "https://github.com/Patryk-Stefanski"
+    },
+    {
+      "login": "mayorova",
+      "name": "Daria Mayorova",
+      "company": "Red Hat",
+      "location": "Barcelona",
+      "email": null,
+      "contributions": 16,
+      "profile_url": "https://github.com/mayorova"
+    },
+    {
+      "login": "slopezz",
+      "name": "Sergio L\u00f3pez",
+      "company": "Red Hat",
+      "location": "Barcelona",
+      "email": null,
+      "contributions": 13,
+      "profile_url": "https://github.com/slopezz"
+    },
+    {
+      "login": "ConorOM1",
+      "name": "Conor O'Malley",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 11,
+      "profile_url": "https://github.com/ConorOM1"
+    },
+    {
+      "login": "KevFan",
+      "name": "Kevin Fan",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 11,
+      "profile_url": "https://github.com/KevFan"
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 9,
+      "profile_url": "https://github.com/apps/dependabot"
+    },
+    {
+      "login": "raelga",
+      "name": "Rael Garcia",
+      "company": "Redhatofficial",
+      "location": "Barcelona",
+      "email": "rael@redhat.com",
+      "contributions": 8,
+      "profile_url": "https://github.com/raelga"
+    },
+    {
+      "login": "akostadinov",
+      "name": "Aleksandar N. Kostadinov",
+      "company": "Ibm",
+      "location": "Bulgaria",
+      "email": null,
+      "contributions": 7,
+      "profile_url": "https://github.com/akostadinov"
+    },
+    {
+      "login": "macejmic",
+      "name": "Michal Macejko",
+      "company": "Unknown",
+      "location": "Slovakia",
+      "email": "michal.macejko1@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/macejmic"
+    },
+    {
+      "login": "PoojaChandak",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": "poojachandak002@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/PoojaChandak"
+    },
+    {
+      "login": "guicassolato",
+      "name": "Guilherme Cassolato",
+      "company": "Red Hat",
+      "location": "Barcelona",
+      "email": "guicassolato@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/guicassolato"
+    },
+    {
+      "login": "bmozaffa",
+      "name": "Babak",
+      "company": "Red Hat",
+      "location": "Los Angeles, CA",
+      "email": null,
+      "contributions": 5,
+      "profile_url": "https://github.com/bmozaffa"
+    },
+    {
+      "login": "roivaz",
+      "name": "roi",
+      "company": "Redhatofficial",
+      "location": "Barcelona",
+      "email": "rvazquez@redhat.com",
+      "contributions": 4,
+      "profile_url": "https://github.com/roivaz"
+    },
+    {
+      "login": "davidor",
+      "name": "David Ortiz",
+      "company": "Datadog",
+      "location": "Barcelona",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/davidor"
+    },
+    {
+      "login": "hallelujah",
+      "name": "Ramihajamalala Hery",
+      "company": "Propitech",
+      "location": "Barcelona",
+      "email": "hery@rails-royce.org",
+      "contributions": 3,
+      "profile_url": "https://github.com/hallelujah"
+    },
+    {
+      "login": "mikz",
+      "name": "Michal Cichra",
+      "company": "Unknown",
+      "location": "Prague, Czech Republic",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/mikz"
+    },
+    {
+      "login": "adam-cattermole",
+      "name": "Adam Cattermole",
+      "company": "Red Hat",
+      "location": "Newcastle, United Kingdom",
+      "email": "a.d.cattermole@gmail.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/adam-cattermole"
+    },
+    {
+      "login": "mledoze",
+      "name": "Mohammed Le Doze",
+      "company": "Unknown",
+      "location": "Paris, France",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/mledoze"
+    },
+    {
+      "login": "thomasmaas",
+      "name": "Thomas Maas",
+      "company": "Webtypes",
+      "location": "Barcelona, Spain",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/thomasmaas"
+    },
+    {
+      "login": "jjkiely",
+      "name": "JJ Kiely",
+      "company": "Red Hat",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/jjkiely"
+    },
+    {
+      "login": "wengkee",
+      "name": "Weng Kee Teh ",
+      "company": "Unknown",
+      "location": "Adelaide, Australia",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/wengkee"
+    },
+    {
+      "login": "averevki",
+      "name": "Aleksandr Verevkin",
+      "company": "Red Hat",
+      "location": "Czech, Brno",
+      "email": "sandyverevkin@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/averevki"
+    },
+    {
+      "login": "ioggstream",
+      "name": "Roberto Polli",
+      "company": "Par-Tec",
+      "location": "Latina, Italia",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/ioggstream"
+    },
+    {
+      "login": "rashelrr",
+      "name": "Rashel Rojas",
+      "company": "Columbia University",
+      "location": "New York, NY",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/rashelrr"
+    },
+    {
+      "login": "pwright",
+      "name": "Paul Wright",
+      "company": "Unknown",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/pwright"
+    },
+    {
+      "login": "matskiv",
+      "name": "O. Matskiv",
+      "company": "Unknown",
+      "location": "Earth",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/matskiv"
+    },
+    {
+      "login": "mijaros",
+      "name": "Miroslav Jaro\u0161",
+      "company": "Unknown",
+      "location": "Brno",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/mijaros"
+    },
+    {
+      "login": "mrhillsman",
+      "name": "Melvin Hillsman",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/mrhillsman"
+    },
+    {
+      "login": "ilargitxiki",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/ilargitxiki"
+    },
+    {
+      "login": "u023368",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/u023368"
+    },
+    {
+      "login": "briangallagher",
+      "name": "Brian Gallagher",
+      "company": "Red Hat",
+      "location": "Waterford, Ireland",
+      "email": "briangal@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/briangallagher"
+    }
+  ],
+  "companies": {
+    "Red Hat": 17,
+    "Unknown": 16,
+    "Redhatofficial": 2,
+    "Ibm": 1,
+    "Datadog": 1,
+    "Propitech": 1,
+    "Webtypes": 1,
+    "Par-Tec": 1,
+    "Columbia University": 1
+  },
+  "total_companies": 9,
+  "retention_by_quarter": [
+    {
+      "quarter": "2025-07",
+      "start_date": "2025-07",
+      "end_date": "2025-07",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-08",
+      "start_date": "2025-08",
+      "end_date": "2025-08",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-09",
+      "start_date": "2025-09",
+      "end_date": "2025-09",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-10",
+      "start_date": "2025-10",
+      "end_date": "2025-10",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-11",
+      "start_date": "2025-11",
+      "end_date": "2025-11",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-12",
+      "start_date": "2025-12",
+      "end_date": "2025-12",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2026-01",
+      "start_date": "2026-01",
+      "end_date": "2026-01",
+      "active_contributors": 3,
+      "new_contributors": 2,
+      "returning_contributors": 1,
+      "retention_rate": 50.0
+    },
+    {
+      "quarter": "2026-02",
+      "start_date": "2026-02",
+      "end_date": "2026-02",
+      "active_contributors": 3,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 100.0
+    },
+    {
+      "quarter": "2026-03",
+      "start_date": "2026-03",
+      "end_date": "2026-03",
+      "active_contributors": 4,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2026-04",
+      "start_date": "2026-04",
+      "end_date": "2026-04",
+      "active_contributors": 5,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2026-05",
+      "start_date": "2026-05",
+      "end_date": "2026-05",
+      "active_contributors": 4,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2026-06",
+      "start_date": "2026-06",
+      "end_date": "2026-06",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 0,
+      "retention_rate": 0.0
+    }
+  ],
+  "company_diversity": {
+    "known_company_contributors": 25,
+    "unknown_company_contributors": 16,
+    "top_companies": [
+      {
+        "company": "Red Hat",
+        "contributor_count": 17
+      },
+      {
+        "company": "Unknown",
+        "contributor_count": 16
+      },
+      {
+        "company": "Redhatofficial",
+        "contributor_count": 2
+      },
+      {
+        "company": "Ibm",
+        "contributor_count": 1
+      },
+      {
+        "company": "Datadog",
+        "contributor_count": 1
+      },
+      {
+        "company": "Propitech",
+        "contributor_count": 1
+      },
+      {
+        "company": "Webtypes",
+        "contributor_count": 1
+      },
+      {
+        "company": "Par-Tec",
+        "contributor_count": 1
+      },
+      {
+        "company": "Columbia University",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "time_scope": {
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_months_from_git_history"
+  },
+  "extracted_at": "2026-06-23T14:27:13.120960"
+}
