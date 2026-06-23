@@ -650,7 +650,11 @@ class GitHubDataExtractor:
             resolution_times = []
             commenter_counts = defaultdict(int)
 
-            for issue in closed_issues[:100]:
+            issue_count = 0
+            for issue in closed_issues:
+                if issue_count >= 100:
+                    break
+                    
                 if issue.pull_request is not None:
                     continue
 
@@ -660,11 +664,17 @@ class GitHubDataExtractor:
 
                 try:
                     comments = issue.get_comments()
-                    for comment in comments[:50]:
+                    comment_count = 0
+                    for comment in comments:
+                        if comment_count >= 50:
+                            break
                         if comment.user and comment.user.login:
                             commenter_counts[comment.user.login] += 1
-                except GithubException:
+                        comment_count += 1
+                except (GithubException, IndexError):
                     continue
+                
+                issue_count += 1
             
             if resolution_times:
                 issues_data["avg_resolution_time_days"] = sum(resolution_times) / len(resolution_times)
@@ -714,13 +724,16 @@ class GitHubDataExtractor:
                     quarter_merge_times = []
 
                     for pr in pulls:
-                        if start_date <= pr.created_at <= end_date:
+                        # Make pr.created_at timezone-naive for comparison
+                        pr_created = pr.created_at.replace(tzinfo=None) if pr.created_at.tzinfo else pr.created_at
+                        
+                        if start_date <= pr_created <= end_date:
                             quarter_prs.append(pr)
                             if pr.merged_at:
                                 merge_days = (pr.merged_at - pr.created_at).total_seconds() / 86400
                                 quarter_merge_times.append(round(merge_days, 2))
                                 overall_merge_times.append(round(merge_days, 2))
-                        elif pr.created_at < start_date:
+                        elif pr_created < start_date:
                             break
                     
                     quarter_info = {
