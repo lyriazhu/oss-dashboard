@@ -2,26 +2,26 @@
   "total_commits": 387,
   "quarters": [
     {
-      "start_date": "2026-03-25T14:41:02.938408",
-      "end_date": "2026-06-23T14:41:02.938408",
+      "start_date": "2026-03-25T16:38:29.130647",
+      "end_date": "2026-06-23T16:38:29.130647",
       "commit_count": 119,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-25T14:41:02.938408",
-      "end_date": "2026-03-25T14:41:02.938408",
+      "start_date": "2025-12-25T16:38:29.130647",
+      "end_date": "2026-03-25T16:38:29.130647",
       "commit_count": 172,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-26T14:41:02.938408",
-      "end_date": "2025-12-25T14:41:02.938408",
+      "start_date": "2025-09-26T16:38:29.130647",
+      "end_date": "2025-12-25T16:38:29.130647",
       "commit_count": 66,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-28T14:41:02.938408",
-      "end_date": "2025-09-26T14:41:02.938408",
+      "start_date": "2025-06-28T16:38:29.130647",
+      "end_date": "2025-09-26T16:38:29.130647",
       "commit_count": 30,
       "quarter": "Q3 2025"
     }
@@ -124,7 +124,7 @@
       "location": null,
       "email": "cshannon@apache.org",
       "profile_url": null,
-      "commit_count": 431
+      "commit_count": 436
     },
     {
       "login": "Adrian T. Co",
@@ -151,7 +151,7 @@
       "location": null,
       "email": "matt@hyte.io",
       "profile_url": null,
-      "commit_count": 339
+      "commit_count": 342
     },
     {
       "login": "dependabot[bot]",
@@ -169,7 +169,7 @@
       "location": null,
       "email": "mattrpav@apache.org",
       "profile_url": null,
-      "commit_count": 311
+      "commit_count": 314
     },
     {
       "login": "Dejan Bosanac",
@@ -1972,6 +1972,15 @@
       "commit_count": 3
     },
     {
+      "login": "mwashburn",
+      "name": "mwashburn",
+      "company": "Unknown",
+      "location": null,
+      "email": "mwashburn@millenniumadvisors.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "Prachya Saechua",
       "name": "Prachya Saechua",
       "company": "Unknown",
@@ -2733,15 +2742,6 @@
       "company": "Unknown",
       "location": null,
       "email": "137517483+mwashburn2@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "mwashburn",
-      "name": "mwashburn",
-      "company": "Unknown",
-      "location": null,
-      "email": "mwashburn@millenniumadvisors.com",
       "profile_url": null,
       "commit_count": 1
     },
@@ -3579,5 +3579,5 @@
     "quarters": "last_4_quarters",
     "committers": "last_4_quarters_from_git_history"
   },
-  "extracted_at": "2026-06-23T14:41:05.888379"
+  "extracted_at": "2026-06-23T16:38:31.552494"
 }

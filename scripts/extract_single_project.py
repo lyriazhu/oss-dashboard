@@ -1,44 +1,55 @@
 #!/usr/bin/env python3
 """
 Extract data for a single project
-Usage: python3 extract_single_project.py "Apache Camel"
+Usage: python3 extract_single_project.py <project_id_or_name>
 """
 
 import sys
+import json
 from extract_github_data import GitHubDataExtractor
 from pathlib import Path
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 extract_single_project.py <project_name>")
+        print("Usage: python3 extract_single_project.py <project_id_or_name>")
+        print("Example: python3 extract_single_project.py kubernetes")
         print("Example: python3 extract_single_project.py 'Apache Camel'")
         sys.exit(1)
     
-    project_name = sys.argv[1]
+    project_identifier = sys.argv[1]
     
     # Initialize extractor
     config_path = Path(__file__).parent / "config.yaml"
     extractor = GitHubDataExtractor(str(config_path))
     
-    # Find the project in config
+    # Read projects from projects.json
+    projects_file = Path(__file__).parent.parent / "projectdata" / "projects.json"
+    if not projects_file.exists():
+        print(f"❌ Projects file not found: {projects_file}")
+        sys.exit(1)
+    
+    with open(projects_file, 'r') as f:
+        projects_data = json.load(f)
+    
+    # Find the project by ID or name
     project = None
-    for p in extractor.config['projects']:
-        if p['name'].lower() == project_name.lower():
+    for p in projects_data['projects']:
+        if p['id'].lower() == project_identifier.lower() or p['name'].lower() == project_identifier.lower():
             project = p
             break
     
     if not project:
-        print(f"❌ Project '{project_name}' not found in config.yaml")
+        print(f"❌ Project '{project_identifier}' not found in projects.json")
         print("\nAvailable projects:")
-        for p in extractor.config['projects']:
-            print(f"  - {p['name']}")
+        for p in projects_data['projects']:
+            print(f"  - {p['id']} ({p['name']})")
         sys.exit(1)
     
-    print(f"\n🚀 Extracting data for: {project['name']}\n")
+    print(f"\n🚀 Extracting data for: {project['name']} ({project['id']})\n")
     
     owner = project['owner']
     repo = project['repo']
-    name = project['name']
+    name = project['id']  # Use project ID as the directory name
     
     # Extract all data types with error handling
     print(f"{'='*60}")

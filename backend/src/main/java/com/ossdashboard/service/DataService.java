@@ -243,28 +243,39 @@ public class DataService {
 
         // Get the scripts directory path
         Path scriptsDir = Paths.get(dataDirectory).getParent().resolve("scripts");
-        Path extractScript = scriptsDir.resolve("extract_github_data.py");
+        Path extractScript = scriptsDir.resolve("extract_single_project.py");
 
         if (!Files.exists(extractScript)) {
             throw new IOException("Data extraction script not found: " + extractScript);
         }
 
-        // Build the command to run the Python script
+        // Build the command to run the Python script for a single project
         ProcessBuilder processBuilder = new ProcessBuilder(
             "python3",
-            extractScript.toString()
+            extractScript.toString(),
+            projectId  // Pass the project ID as argument
         );
         processBuilder.directory(scriptsDir.toFile());
         processBuilder.redirectErrorStream(true);
 
-        log.info("Starting data extraction for project: {}", projectId);
+        log.info("Starting data extraction for project: {} ({})", project.getName(), projectId);
         
-        // Start the process asynchronously
-        Process process = processBuilder.start();
+        // Start the process asynchronously in a separate thread
+        new Thread(() -> {
+            try {
+                Process process = processBuilder.start();
+                int exitCode = process.waitFor();
+                if (exitCode == 0) {
+                    log.info("Data extraction completed successfully for project: {}", projectId);
+                } else {
+                    log.error("Data extraction failed for project: {} with exit code: {}", projectId, exitCode);
+                }
+            } catch (Exception e) {
+                log.error("Error during data extraction for project: {}", projectId, e);
+            }
+        }).start();
         
-        // Note: In production, you'd want to handle this asynchronously
-        // For now, we'll just start it and return
-        log.info("Data extraction process started for project: {}", projectId);
+        log.info("Data extraction process started in background for project: {}", projectId);
     }
 }
 

@@ -1,5 +1,5 @@
 {
-  "total_contributors": 162,
+  "total_contributors": 163,
   "contributors": [
     {
       "login": "gtully",
@@ -70,7 +70,7 @@
       "company": "Unknown",
       "location": "Maryland",
       "email": null,
-      "contributions": 605,
+      "contributions": 606,
       "profile_url": "https://github.com/cshannon"
     },
     {
@@ -1458,10 +1458,19 @@
       "email": "chipitsine@gmail.com",
       "contributions": 1,
       "profile_url": "https://github.com/chipitsine"
+    },
+    {
+      "login": "mwashburn2",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/mwashburn2"
     }
   ],
   "companies": {
-    "Unknown": 94,
+    "Unknown": 95,
     "Red Hat": 9,
     "Ibm": 5,
     "Tomitribe": 4,
@@ -1616,19 +1625,19 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 17,
-      "new_contributors": 3,
+      "active_contributors": 16,
+      "new_contributors": 2,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }
   ],
   "company_diversity": {
     "known_company_contributors": 68,
-    "unknown_company_contributors": 94,
+    "unknown_company_contributors": 95,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 94
+        "contributor_count": 95
       },
       {
         "company": "Red Hat",
@@ -1672,5 +1681,5 @@
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_months_from_git_history"
   },
-  "extracted_at": "2026-06-23T14:41:02.035023"
+  "extracted_at": "2026-06-23T16:38:27.887628"
 }

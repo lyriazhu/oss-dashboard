@@ -27,8 +27,11 @@ export default function App() {
       setLoading(true);
       setError(null);
       
+      console.log('🔄 Loading projects from backend...');
+      
       // Fetch all projects
       const projects = await fetchProjects();
+      console.log('✅ Fetched projects:', projects.length, 'projects');
       
       // Fetch metrics for each project
       const projectData = {};
@@ -36,16 +39,21 @@ export default function App() {
       
       for (const project of projects) {
         try {
+          console.log(`📊 Loading metrics for ${project.name}...`);
           const metrics = await fetchProjectMetrics(project.id);
           const transformed = transformProjectData(project, metrics);
           if (transformed) {
             projectData[project.id] = transformed;
             projectOrder.push(project.id);
+            console.log(`✅ Loaded ${project.name}`);
           }
         } catch (err) {
-          console.error(`Failed to load metrics for ${project.id}:`, err);
+          console.error(`❌ Failed to load metrics for ${project.id}:`, err);
         }
       }
+      
+      console.log('✅ All projects loaded:', projectOrder.length);
+      console.log('📦 Project data:', projectData);
       
       setData(projectData);
       setOrder(projectOrder);
@@ -55,7 +63,7 @@ export default function App() {
         setSelectedKey(projectOrder[0]);
       }
     } catch (err) {
-      console.error('Failed to load projects:', err);
+      console.error('❌ Failed to load projects:', err);
       setError('Failed to load projects. Please check if the backend is running.');
     } finally {
       setLoading(false);
@@ -128,27 +136,27 @@ export default function App() {
     <>
       <UIShellHeader onToggleNav={() => setNavCollapsed((c) => !c)} navOpen={!navCollapsed} />
 
-      {view === "overview" ? (
-        <Overview
+      <div className="layout">
+        <SideNav
           data={data}
           order={order}
-          flashKey={flashKey}
-          onSelect={showDetail}
-          onAddClick={() => setModalOpen(true)}
+          selectedKey={view === "detail" ? selectedKey : null}
+          collapsed={navCollapsed}
+          onSelect={view === "overview" ? showDetail : selectCommunity}
+          onOverview={showOverview}
         />
-      ) : (
-        <div className="layout">
-          <SideNav
+        {view === "overview" ? (
+          <Overview
             data={data}
             order={order}
-            selectedKey={selectedKey}
-            collapsed={navCollapsed}
-            onSelect={selectCommunity}
-            onOverview={showOverview}
+            flashKey={flashKey}
+            onSelect={showDetail}
+            onAddClick={() => setModalOpen(true)}
           />
+        ) : (
           <Detail d={data[selectedKey]} onOverview={showOverview} />
-        </div>
-      )}
+        )}
+      </div>
 
       <AddProjectModal 
         open={modalOpen} 

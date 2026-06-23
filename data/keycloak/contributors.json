@@ -3057,8 +3057,8 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 271,
-      "new_contributors": 97,
+      "active_contributors": 273,
+      "new_contributors": 99,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }
@@ -3113,5 +3113,5 @@
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_months_from_git_history"
   },
-  "extracted_at": "2026-06-23T14:41:23.274626"
+  "extracted_at": "2026-06-23T16:38:49.656388"
 }

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { MONTHS } from "../data.js";
 import { Tag, Tile, BarChart, Meter } from "./ui.jsx";
 
 export default function Detail({ d, onOverview }) {
+  const [showQuarterly, setShowQuarterly] = useState(false);
+  
   return (
     <main>
       <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -27,13 +30,38 @@ export default function Detail({ d, onOverview }) {
 
       <div className="section two-col">
         <div>
-          <h2 className="section-h">Commits per year</h2>
-          <BarChart
-            values={d.commits.map((x) => x.v)}
-            labels={d.commits.map((x) => x.y)}
-            currentIndex={d.commits.findIndex((x) => x.c)}
-          />
-          <p className="chart-cap">Darker bar = current period</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <h2 className="section-h" style={{ margin: 0 }}>
+              {showQuarterly ? 'Commits per quarter' : 'Commits per year'}
+            </h2>
+            <button
+              className="btn-secondary"
+              onClick={() => setShowQuarterly(!showQuarterly)}
+              style={{
+                fontSize: '0.875rem',
+                padding: '0.5rem 1rem',
+                fontFamily: 'inherit'
+              }}
+            >
+              {showQuarterly ? 'Show yearly' : 'Show quarterly'}
+            </button>
+          </div>
+          {showQuarterly && d.quarters.length > 0 ? (
+            <BarChart
+              values={d.quarters.map((x) => x.v)}
+              labels={d.quarters.map((x) => x.q)}
+              currentIndex={d.quarters.findIndex((x) => x.c)}
+            />
+          ) : (
+            <BarChart
+              values={d.commits.map((x) => x.v)}
+              labels={d.commits.map((x) => x.y)}
+              currentIndex={d.commits.findIndex((x) => x.c)}
+            />
+          )}
+          <p className="chart-cap">
+            Darker bar = current period · {showQuarterly ? `Last ${d.quarters.length} quarters` : 'Total commits per year'}
+          </p>
         </div>
         <div>
           <h2 className="section-h">Contributor retention</h2>
@@ -103,7 +131,7 @@ export default function Detail({ d, onOverview }) {
       </div>
 
       <p className="foot">
-        Wireframe — illustrative data only · Data via GitHub REST + GraphQL APIs · Refreshes every 3 days
+        Data via GitHub REST + GraphQL APIs
       </p>
     </main>
   );

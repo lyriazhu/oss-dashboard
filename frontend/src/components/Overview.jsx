@@ -11,14 +11,15 @@ function Chevron() {
 }
 
 export default function Overview({ data, order, flashKey, onSelect, onAddClick }) {
-  // Calculate summary statistics from actual data
-  const summary = useMemo(() => {
+  // Calculate summary statistics and last updated date from actual data
+  const { summary, lastUpdated } = useMemo(() => {
     const totalCommunities = order.length;
     
     // Aggregate statistics across all projects
     let totalContributors = 0;
     let totalCommits = 0;
     let totalIssues = 0;
+    let mostRecentExtraction = null;
     
     order.forEach(key => {
       const project = data[key];
@@ -40,6 +41,14 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
           const num = parseInt(issuesKpi.v.replace(/[,+]/g, ''));
           if (!isNaN(num)) totalIssues += num;
         }
+        
+        // Track most recent extraction time
+        if (project.extractedAt) {
+          const extractionDate = new Date(project.extractedAt);
+          if (!mostRecentExtraction || extractionDate > mostRecentExtraction) {
+            mostRecentExtraction = extractionDate;
+          }
+        }
       }
     });
     
@@ -49,12 +58,28 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       return num >= 100 ? `${formatted}+` : formatted;
     };
     
-    return [
-      { l: "Total communities", v: totalCommunities.toString(), h: `${totalCommunities} active projects` },
-      { l: "Total contributors", v: formatNum(totalContributors), h: "Across all active repos" },
-      { l: "Commits YTD", v: formatNum(totalCommits), h: "All communities combined" },
-      { l: "Open issues (all)", v: formatNum(totalIssues), h: "Across all communities" },
-    ];
+    // Format last updated date and time
+    const formattedDate = mostRecentExtraction
+      ? mostRecentExtraction.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }) + ' at ' + mostRecentExtraction.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true
+        })
+      : 'Unknown';
+    
+    return {
+      summary: [
+        { l: "Total communities", v: totalCommunities.toString(), h: `${totalCommunities} active projects` },
+        { l: "Total contributors", v: formatNum(totalContributors), h: "Across all active repos" },
+        { l: "Commits YTD", v: formatNum(totalCommits), h: "All communities combined" },
+        { l: "Open issues (all)", v: formatNum(totalIssues), h: "Across all communities" },
+      ],
+      lastUpdated: formattedDate
+    };
   }, [data, order]);
 
   // Scroll a newly added row into view when it flashes
@@ -65,14 +90,14 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
   }, [flashKey]);
 
   return (
-    <section className="overview-wrap">
+    <main>
       <div className="ov-header">
         <h1 className="ov-title">Open Source Dashboard</h1>
         <div className="ov-meta">
           <span>
-            Last updated: <b>June 14, 2026</b>
+            Last updated: <b>{lastUpdated}</b>
           </span>
-          <span>Refreshes every 3 days</span>
+          <span>Data from GitHub API</span>
         </div>
       </div>
       <hr className="ov-rule" />
@@ -189,6 +214,6 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
         Wireframe — illustrative data only · Click any community row to view project-specific metrics · Data
         via GitHub REST + GraphQL APIs
       </p>
-    </section>
+    </main>
   );
 }

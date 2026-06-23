@@ -25,14 +25,23 @@ export function BarChart({ values, labels, currentIndex, variant }) {
   const m = maxOf(values);
   const barsCls = "bars" + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
   const axisCls = "bar-axis" + (variant === "mini" ? " mini" : "");
+  
+  // Format number with commas for tooltip
+  const formatNumber = (num) => num.toLocaleString('en-US');
+  
   return (
     <>
       <div className={barsCls}>
         {values.map((v, i) => {
           const h = v === 0 ? 1 : Math.round((v / m) * 100);
+          const tooltipText = `${labels[i]}: ${formatNumber(v)} commits`;
           return (
             <div className="bar-col" key={i}>
-              <div className={"bar" + (i === cur ? " current" : "")} style={{ height: h + "%" }} />
+              <div
+                className={"bar" + (i === cur ? " current" : "")}
+                style={{ height: h + "%" }}
+                title={tooltipText}
+              />
             </div>
           );
         })}
