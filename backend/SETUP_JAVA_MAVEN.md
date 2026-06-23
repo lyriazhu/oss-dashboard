@@ -127,22 +127,56 @@ Java version: 17.0.x, vendor: Homebrew
 
 ## After Installation
 
-Once Java and Maven are installed, you can run the backend:
+Once Java and Maven are installed, the normal local workflow is:
+
+1. Generate or refresh dashboard data with the Python extractor
+2. Start the Spring Boot backend
+3. Query the API from your browser, curl, or a frontend app
+
+### Generate Data First
+
+The backend reads JSON files from `../data`, so run the extractor before starting the API:
 
 ```bash
-cd backend
+cd /Users/lyriazhu/Desktop/oss-dashboard/scripts
+python3 -m pip install -r requirements.txt
+python3 extract_github_data.py
+```
+
+### Start the Backend
+
+```bash
+cd /Users/lyriazhu/Desktop/oss-dashboard/backend
 mvn spring-boot:run
 ```
 
 The API will start on http://localhost:8080
 
-## Quick Test
-
-Create a test file to verify everything works:
+### Verify the Backend
 
 ```bash
-cd backend
+curl http://localhost:8080/api/projects
+curl http://localhost:8080/api/projects/strimzi/metrics
+```
+
+## Quick Test
+
+Verify Maven and Java can build the backend:
+
+```bash
+cd /Users/lyriazhu/Desktop/oss-dashboard/backend
 mvn clean compile
 ```
 
 If successful, you'll see "BUILD SUCCESS" at the end.
+
+## Common Next Step
+
+If the backend starts but the dashboard data looks old, rerun:
+
+```bash
+cd /Users/lyriazhu/Desktop/oss-dashboard/scripts
+python3 extract_github_data.py
+```
+
+The extractor now supports cached git mirrors, cached user profiles, and per-project checkpoint state for faster reruns.

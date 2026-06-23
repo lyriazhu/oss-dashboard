@@ -25,20 +25,31 @@ Before running the data extraction, you need a GitHub Personal Access Token:
 
 ```bash
 cd scripts
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ### 3. Run Data Extraction
 
 ```bash
 cd scripts
-python extract_github_data.py
+python3 extract_github_data.py
 ```
 
 This will:
-- Extract data from all 6 configured projects
+- Extract data from all configured projects
 - Save JSON files in the `data/` directory
+- Reuse cached local git mirrors and cached GitHub user profiles when available
+- Update per-project checkpoint state for incremental reruns
 - Show progress bars and status updates
+
+### 4. Start the Backend API
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+The API starts on `http://localhost:8080`
 
 ## 📁 Project Structure
 
@@ -85,12 +96,21 @@ Edit `scripts/config.yaml` to:
 
 For each project, we extract:
 
-- **Metadata**: Stars, forks, description, creation date
-- **Contributors**: Total count, company affiliations, contribution counts
-- **Commits**: Quarterly commit activity
-- **Issues**: Open/closed counts, average resolution time
-- **Pull Requests**: Quarterly PR counts
-- **Releases**: Release history and cadence
+- **Metadata**: Stars, forks, description, creation date, foundation, and related repository details
+- **Contributors**: Total count, company affiliations, contribution counts, company diversity, and retention by quarter
+- **Commits**: Quarterly commit activity plus aggregated committers enriched with company/location/profile data when available
+- **Issues**: Open/closed counts, average resolution time, and issue commenters
+- **Pull Requests**: Quarterly PR counts and merge timing metrics
+- **Releases**: Release history and cadence metrics
+
+### Time Scope Notes
+
+Some metrics are all-time and others are windowed. The extractor now writes explicit `time_scope` metadata into generated JSON so the dashboard can display scope correctly.
+
+Examples:
+- `contributors.json -> total_contributors` is based on all-time GitHub contributor data
+- `contributors.json -> retention_by_quarter` is based on the recent git-history window
+- `commits.json -> total_commits`, `quarters`, and `committers` are based on the configured recent quarter window
 
 ## 🤖 AI-Assisted Development
 
@@ -127,6 +147,12 @@ mvn spring-boot:run
 
 API runs on `http://localhost:8080`
 
+Typical local workflow:
+1. Update `scripts/config.yaml` with your GitHub token
+2. Run `python3 extract_github_data.py`
+3. Start the backend with `mvn spring-boot:run`
+4. Query endpoints under `http://localhost:8080/api/projects`
+
 ## 🆘 Troubleshooting
 
 ### "Authentication failed"
@@ -139,8 +165,16 @@ API runs on `http://localhost:8080`
 - The script includes automatic rate limiting
 
 ### "Module not found"
-- Run `pip install -r requirements.txt` in the `scripts/` directory
+- Run `python3 -m pip install -r requirements.txt` in the `scripts/` directory
 - Make sure you're using Python 3.8 or higher
+
+### "`python` command not found"
+- Use `python3 extract_github_data.py`
+- Use `python3 -m pip install -r requirements.txt`
+
+### "Backend starts but data looks stale"
+- Rerun `python3 extract_github_data.py` to refresh JSON files in `data/`
+- Check per-project files such as `data/strimzi/_state.json` for incremental extraction checkpoints
 
 ## 📧 Support
 

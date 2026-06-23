@@ -381,6 +381,10 @@ class GitHubDataExtractor:
                     for company, count in sorted(company_count.items(), key=lambda item: item[1], reverse=True)[:10]
                 ]
             },
+            "time_scope": {
+                "contributors": "all_time_github_contributors",
+                "retention_by_quarter": f"last_{len(existing_data.get('retention_by_quarter', [])) or 0}_months_from_git_history"
+            },
             "extracted_at": datetime.now().isoformat()
         }
 
@@ -461,6 +465,11 @@ class GitHubDataExtractor:
             "total_commits": sum(bucket["commit_count"] for bucket in quarter_buckets.values()),
             "quarters": list(quarter_buckets.values()),
             "committers": merged_committers,
+            "time_scope": {
+                "total_commits": f"last_{quarters}_quarters",
+                "quarters": f"last_{quarters}_quarters",
+                "committers": f"last_{quarters}_quarters_from_git_history"
+            },
             "extracted_at": datetime.now().isoformat()
         }
     
@@ -535,12 +544,17 @@ class GitHubDataExtractor:
                     print(f"⚠️  Error processing contributor {contributor.login}: {e}")
                     continue
 
+            retention_months = max(quarters * 3, 6)
             contributors_data = self._merge_contributor_data(existing_data, new_or_updated_contributors)
             contributors_data["retention_by_quarter"] = self._extract_retention_from_git_history(
                 owner,
                 repo,
-                months=max(quarters * 3, 6)
+                months=retention_months
             )
+            contributors_data["time_scope"] = {
+                "contributors": "all_time_github_contributors",
+                "retention_by_quarter": f"last_{retention_months}_months_from_git_history"
+            }
 
             project_state["contributors"] = {
                 "known_logins": sorted(current_logins),
@@ -596,6 +610,11 @@ class GitHubDataExtractor:
 
             commits_data["quarters"] = refreshed_quarters
             commits_data["total_commits"] = total_commits
+            commits_data["time_scope"] = {
+                "total_commits": f"last_{quarters}_quarters",
+                "quarters": f"last_{quarters}_quarters",
+                "committers": f"last_{quarters}_quarters_from_git_history"
+            }
             commits_data["extracted_at"] = datetime.now().isoformat()
 
             project_state["commits"] = {

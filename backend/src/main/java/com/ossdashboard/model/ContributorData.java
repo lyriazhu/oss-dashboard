@@ -23,6 +23,9 @@ public class ContributorData {
 
     @JsonProperty("company_diversity")
     public CompanyDiversity companyDiversity;
+
+    @JsonProperty("time_scope")
+    public TimeScope timeScope;
     
     @JsonProperty("extracted_at")
     public String extractedAt;
@@ -77,6 +80,13 @@ public class ContributorData {
 
         @JsonProperty("contributor_count")
         public Integer contributorCount;
+    }
+
+    public static class TimeScope {
+        public String contributors;
+
+        @JsonProperty("retention_by_quarter")
+        public String retentionByQuarter;
     }
 }
 

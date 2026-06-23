@@ -39,27 +39,28 @@ Open VS Code terminal (Terminal → New Terminal) and run:
 
 ```bash
 cd scripts
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 Wait for installation to complete (you'll see "Successfully installed...").
 
 **Troubleshooting:**
-- If `pip` not found, try `pip3`
-- If permission denied, try `sudo pip install -r requirements.txt`
+- If `pip` not found, use `python3 -m pip`
+- Avoid `sudo pip`; prefer a user install or virtual environment if needed
 
 ### ✅ Step 5: Run Data Extraction (5-10 minutes)
 
 In the same terminal, run:
 
 ```bash
-python extract_github_data.py
+python3 extract_github_data.py
 ```
 
 **What you'll see:**
 - ✅ Authentication confirmation
 - 📊 Progress bars for each project
 - ✅ Success messages as data is saved
+- ♻️ Faster reruns due to cached git mirrors, cached user profiles, and per-project checkpoints
 
 **This extracts data from:**
 1. Strimzi
@@ -96,25 +97,31 @@ Click on any `.json` file to view the data!
 You now have:
 - ✅ Complete project structure
 - ✅ Working data extraction script
-- ✅ Fresh data from all 6 projects
-- ✅ Automated refresh workflow (GitHub Actions)
+- ✅ Fresh data from all configured projects
+- ✅ Data files ready for the backend API
 
 ## 🚀 Next Steps
 
-1. **Build the Backend API** (Java Spring Boot)
-   - Reads the JSON data
+1. **Start the Backend API** (Java Spring Boot)
+   - Reads the JSON data from `data/`
    - Exposes REST endpoints
-   - Runs on Tomcat
+   - Runs on `http://localhost:8080`
 
-2. **Build the Frontend Dashboard** (React)
-   - Visualizes the data
-   - Interactive charts and graphs
-   - Drill-down into each project
+   ```bash
+   cd ../backend
+   mvn spring-boot:run
+   ```
 
-3. **Deploy to Production**
-   - Containerize with Docker/Podman
-   - Deploy to IBM infrastructure
-   - Set up automatic data refresh
+2. **Verify the API**
+   - `http://localhost:8080/api/projects`
+   - `http://localhost:8080/api/projects/strimzi`
+   - `http://localhost:8080/api/projects/strimzi/metrics`
+   - `http://localhost:8080/api/projects/strimzi/contributors`
+
+3. **Build the Frontend Dashboard** (React)
+   - Visualize the backend data
+   - Add interactive charts and drill-down views
+   - Display metric time scope where relevant
 
 ## 📚 Documentation
 
@@ -128,21 +135,21 @@ You now have:
 → Check your token in `config.yaml`
 
 ### "Module not found"
-→ Run `pip install -r requirements.txt` in the `scripts/` folder
+→ Run `python3 -m pip install -r requirements.txt` in the `scripts/` folder
 
 ### "Rate limit exceeded"
 → Wait 1 hour or create a new token
 
 ### "Script is slow"
-→ Normal! Large projects take time. Watch the progress bars.
+→ Normal on first run. Later runs should be faster because the extractor reuses cached git history, cached user profiles, and checkpoint state.
 
 ## 💡 Tips
 
-- **Re-run anytime**: Just run `python extract_github_data.py` again
+- **Re-run anytime**: Just run `python3 extract_github_data.py` again
 - **Add projects**: Edit `scripts/config.yaml` to add more repositories
 - **Check rate limit**: The script shows how many API requests you have left
-- **Automatic updates**: GitHub Actions will refresh data every 3 days
+- **Time scope matters**: Some metrics are all-time while others are recent-window metrics; generated JSON now includes explicit `time_scope` metadata
 
 ---
 
-**Ready to build the dashboard?** Let's create the backend and frontend next!
+**Ready to build the dashboard?** Start the backend next, then wire a frontend to the API.

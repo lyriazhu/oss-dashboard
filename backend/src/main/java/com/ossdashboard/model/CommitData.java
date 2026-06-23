@@ -14,6 +14,9 @@ public class CommitData {
     public List<QuarterData> quarters;
 
     public List<Committer> committers;
+
+    @JsonProperty("time_scope")
+    public TimeScope timeScope;
     
     @JsonProperty("extracted_at")
     public String extractedAt;
@@ -43,6 +46,14 @@ public class CommitData {
 
         @JsonProperty("commit_count")
         public Integer commitCount;
+    }
+
+    public static class TimeScope {
+        @JsonProperty("total_commits")
+        public String totalCommits;
+
+        public String quarters;
+        public String committers;
     }
 }
 
