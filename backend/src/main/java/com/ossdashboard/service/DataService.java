@@ -132,6 +132,14 @@ public class DataService {
             if (!file.exists()) {
                 log.warn("File not found: {}", file.getAbsolutePath());
                 return null;
+            }
+            return objectMapper.readValue(file, valueType);
+        } catch (IOException e) {
+            log.error("Error reading file: {}", filename, e);
+            return null;
+        }
+    }
+
     /**
      * Parse GitHub URL to extract owner and repo
      * Supports formats:
@@ -257,13 +265,6 @@ public class DataService {
         // Note: In production, you'd want to handle this asynchronously
         // For now, we'll just start it and return
         log.info("Data extraction process started for project: {}", projectId);
-    }
-            }
-            return objectMapper.readValue(file, valueType);
-        } catch (IOException e) {
-            log.error("Error reading file: {}/{}", directory, filename, e);
-            return null;
-        }
     }
 }
 

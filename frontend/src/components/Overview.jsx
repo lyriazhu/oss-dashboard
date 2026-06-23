@@ -1,0 +1,194 @@
+import { useEffect, useMemo } from "react";
+import { QUARTERS } from "../data.js";
+import { Tag, BarChart } from "./ui.jsx";
+
+function Chevron() {
+  return (
+    <svg className="chev" viewBox="0 0 16 16" fill="currentColor">
+      <path d="M6 4l4 4-4 4-.7-.7L8.6 8 5.3 4.7z" />
+    </svg>
+  );
+}
+
+export default function Overview({ data, order, flashKey, onSelect, onAddClick }) {
+  // Calculate summary statistics from actual data
+  const summary = useMemo(() => {
+    const totalCommunities = order.length;
+    
+    // Aggregate statistics across all projects
+    let totalContributors = 0;
+    let totalCommits = 0;
+    let totalIssues = 0;
+    
+    order.forEach(key => {
+      const project = data[key];
+      if (project && project.kpis) {
+        // Extract numbers from formatted strings (remove commas and +)
+        const contributorsKpi = project.kpis.find(k => k.l === 'Contributors YTD');
+        const commitsKpi = project.kpis.find(k => k.l === 'Commits YTD');
+        const issuesKpi = project.kpis.find(k => k.l === 'Open issues');
+        
+        if (contributorsKpi) {
+          const num = parseInt(contributorsKpi.v.replace(/[,+]/g, ''));
+          if (!isNaN(num)) totalContributors += num;
+        }
+        if (commitsKpi) {
+          const num = parseInt(commitsKpi.v.replace(/[,+]/g, ''));
+          if (!isNaN(num)) totalCommits += num;
+        }
+        if (issuesKpi) {
+          const num = parseInt(issuesKpi.v.replace(/[,+]/g, ''));
+          if (!isNaN(num)) totalIssues += num;
+        }
+      }
+    });
+    
+    // Format numbers with commas and + for large numbers
+    const formatNum = (num) => {
+      const formatted = num.toLocaleString('en-US');
+      return num >= 100 ? `${formatted}+` : formatted;
+    };
+    
+    return [
+      { l: "Total communities", v: totalCommunities.toString(), h: `${totalCommunities} active projects` },
+      { l: "Total contributors", v: formatNum(totalContributors), h: "Across all active repos" },
+      { l: "Commits YTD", v: formatNum(totalCommits), h: "All communities combined" },
+      { l: "Open issues (all)", v: formatNum(totalIssues), h: "Across all communities" },
+    ];
+  }, [data, order]);
+
+  // Scroll a newly added row into view when it flashes
+  useEffect(() => {
+    if (!flashKey) return;
+    const row = document.querySelector(`#commTable tbody tr[data-key="${flashKey}"]`);
+    if (row) row.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [flashKey]);
+
+  return (
+    <section className="overview-wrap">
+      <div className="ov-header">
+        <h1 className="ov-title">Open Source Dashboard</h1>
+        <div className="ov-meta">
+          <span>
+            Last updated: <b>June 14, 2026</b>
+          </span>
+          <span>Refreshes every 3 days</span>
+        </div>
+      </div>
+      <hr className="ov-rule" />
+
+      <div className="tile-grid">
+        {summary.map((t, i) => (
+          <div className="tile" key={i}>
+            <div className="k-label">{t.l}</div>
+            <div className="k-value">{t.v}</div>
+            <div className="k-help">{t.h}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="section">
+        <div className="sec-head-row">
+          <h2 className="section-h" style={{ margin: 0 }}>
+            Communities
+          </h2>
+          <button className="btn-primary" onClick={onAddClick}>
+            Add project
+            <svg viewBox="0 0 32 32" fill="currentColor">
+              <path d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div className="table-wrap">
+          <table id="commTable">
+            <thead>
+              <tr>
+                <th>Community</th>
+                <th>Foundation</th>
+                <th className="num">Contributors</th>
+                <th className="num">Companies</th>
+                <th className="num">Commits YTD</th>
+                <th className="num">Stars</th>
+                <th>Status</th>
+                <th aria-label="Open" />
+              </tr>
+            </thead>
+            <tbody>
+              {order.map((key) => {
+                const d = data[key];
+                const o = d.ov;
+                return (
+                  <tr
+                    key={key}
+                    data-key={key}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`View ${d.name} metrics`}
+                    className={key === flashKey ? "row-flash" : undefined}
+                    onClick={() => onSelect(key)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onSelect(key);
+                      }
+                    }}
+                  >
+                    <td className="strong">{d.name}</td>
+                    <td>{o.foundation}</td>
+                    <td className="num">{o.contributors}</td>
+                    <td className="num">{o.companies}</td>
+                    <td className="num">{o.commits}</td>
+                    <td className="num">{o.stars}</td>
+                    <td>
+                      <Tag cls={d.status.cls} label={d.status.label} />
+                    </td>
+                    <td className="chev-cell">
+                      <Chevron />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="legend">
+          Status: Healthy = contributor growth positive QoQ · Watch = flat or declining new contributors ·
+          Growing = new project, expanding
+        </p>
+      </div>
+
+      <div className="section">
+        <h2 className="section-h">Commit activity — past 4 quarters (all communities)</h2>
+        <div className="mini-grid">
+          {order.map((key) => {
+            const d = data[key];
+            return (
+              <div
+                className="mini-card"
+                key={key}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${d.name} metrics`}
+                onClick={() => onSelect(key)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelect(key);
+                  }
+                }}
+              >
+                <div className="mini-title">{d.name}</div>
+                <BarChart values={d.ov.quarters} labels={QUARTERS} variant="mini" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <p className="foot">
+        Wireframe — illustrative data only · Click any community row to view project-specific metrics · Data
+        via GitHub REST + GraphQL APIs
+      </p>
+    </section>
+  );
+}

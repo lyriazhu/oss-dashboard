@@ -122,6 +122,8 @@ public class ProjectController {
         } catch (IOException e) {
             log.error("Error fetching contributors for project: {}", projectId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
     /**
      * POST /api/projects
@@ -184,8 +186,6 @@ public class ProjectController {
                 null
             );
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-    }
         }
     }
 }
