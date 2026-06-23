@@ -647,6 +647,11 @@ class GitHubDataExtractor:
                 "extracted_at": datetime.now().isoformat()
             }
             
+            # Skip detailed extraction if no issues exist (e.g., projects using JIRA)
+            if issues_data["total_issues"] == 0:
+                print(f"ℹ️  No GitHub issues found (project may use external issue tracker)")
+                return issues_data
+            
             resolution_times = []
             commenter_counts = defaultdict(int)
 
@@ -777,7 +782,11 @@ class GitHubDataExtractor:
             release_list = []
             published_dates = []
 
-            for release in releases[:20]:
+            release_count = 0
+            for release in releases:
+                if release_count >= 20:
+                    break
+                    
                 published_at = self._safe_isoformat(release.published_at)
                 if release.published_at:
                     published_dates.append(release.published_at)
@@ -790,6 +799,7 @@ class GitHubDataExtractor:
                     "draft": release.draft
                 }
                 release_list.append(release_info)
+                release_count += 1
 
             cadence_days = []
             sorted_dates = sorted([dt for dt in published_dates if dt], reverse=True)
