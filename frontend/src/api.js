@@ -96,19 +96,19 @@ export function transformProjectData(project, metrics) {
   // Format overview data
   const ov = {
     foundation: project.foundation || 'Independent',
-    contributors: formatNumber(contributors?.total_contributors, true),
-    companies: contributors?.company_diversity ? formatNumber(contributors.company_diversity, true) : '—',
+    contributors: formatNumber(contributors?.total_contributors),
+    companies: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—',
     commits: formatNumber(commits?.total_commits),
-    stars: formatNumber(metadata?.stars, true),
+    stars: formatNumber(metadata?.stars),
     quarters: quarters.length === 4 ? quarters : [0, 0, 0, 0],
   };
   
   // Format KPIs with safety checks
   const kpis = [
     { l: 'Contributors YTD', v: formatNumber(contributors?.total_contributors), h: 'All-time contributors' },
-    { l: 'Companies', v: contributors?.company_diversity ? formatNumber(contributors.company_diversity, true) : '—', h: 'Via commit email domains' },
+    { l: 'Companies', v: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—', h: 'Via commit email domains' },
     { l: 'Commits YTD', v: formatNumber(commits?.total_commits), h: 'Total commits' },
-    { l: 'GitHub stars', v: formatNumber(metadata?.stars, true), h: `${formatNumber(metadata?.forks)} forks` },
+    { l: 'GitHub stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
     { l: 'Open issues', v: formatNumber(issues?.open_issues), h: `Avg. resolution: ${Math.round(issues?.avg_resolution_time_days || 0)} days` },
     { l: 'Pull Requests', v: formatNumber(pull_requests?.total_pull_requests), h: `${formatNumber(pull_requests?.merged_pull_requests)} merged` },
     { l: 'Releases', v: formatNumber(releases?.total_releases), h: 'Total releases' },
@@ -198,10 +198,9 @@ export function transformProjectData(project, metrics) {
   };
 }
 
-function formatNumber(num, addPlus = false) {
+function formatNumber(num) {
   if (num === null || num === undefined || isNaN(num)) return '—';
-  const formatted = num.toLocaleString('en-US');
-  return addPlus && num >= 100 ? `${formatted}+` : formatted;
+  return num.toLocaleString('en-US');
 }
 
 // Made with Bob

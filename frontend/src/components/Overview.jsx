@@ -52,11 +52,8 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       }
     });
     
-    // Format numbers with commas and + for large numbers
-    const formatNum = (num) => {
-      const formatted = num.toLocaleString('en-US');
-      return num >= 100 ? `${formatted}+` : formatted;
-    };
+    // Format numbers with commas only
+    const formatNum = (num) => num.toLocaleString('en-US');
     
     // Format last updated date and time
     const formattedDate = mostRecentExtraction
