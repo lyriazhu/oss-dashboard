@@ -27,14 +27,64 @@ class GitHubDataExtractor:
         self.github = Github(self.config['github']['token'])
         self.data_dir = Path(__file__).parent.parent / "data"
         self.data_dir.mkdir(exist_ok=True)
-        self.repo_cache_dir = Path(__file__).parent.parent / ".cache" / "repos"
+        self.cache_dir = Path(__file__).parent.parent / ".cache"
+        self.cache_dir.mkdir(exist_ok=True)
+        self.repo_cache_dir = self.cache_dir / "repos"
         self.repo_cache_dir.mkdir(parents=True, exist_ok=True)
-        self.user_profile_cache: Dict[str, Dict[str, Optional[str]]] = {}
+        self.user_profile_cache_file = self.cache_dir / "user_profiles.json"
+        self.user_profile_cache: Dict[str, Dict[str, Optional[str]]] = self._load_json_file(
+            self.user_profile_cache_file,
+            {}
+        )
         
     def _load_config(self, config_path: str) -> Dict:
         """Load YAML configuration"""
         with open(config_path, 'r') as f:
             return yaml.safe_load(f)
+
+    def _load_json_file(self, path: Path, default: Any) -> Any:
+        """Load JSON file with default fallback"""
+        if not path.exists():
+            return default
+
+        try:
+            with open(path, 'r') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, OSError):
+            return default
+
+    def _save_json_file(self, path: Path, data: Any):
+        """Persist JSON file"""
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, 'w') as f:
+            json.dump(data, f, indent=2)
+
+    def _project_dir(self, project_name: str) -> Path:
+        """Return normalized project data directory"""
+        return self.data_dir / project_name.lower().replace(" ", "-")
+
+    def _project_state_path(self, project_name: str) -> Path:
+        """Return project state file path"""
+        return self._project_dir(project_name) / "_state.json"
+
+    def _load_project_state(self, project_name: str) -> Dict[str, Any]:
+        """Load per-project extraction state"""
+        return self._load_json_file(
+            self._project_state_path(project_name),
+            {
+                "contributors": {
+                    "known_logins": [],
+                    "last_extracted_at": None
+                },
+                "commits": {
+                    "last_git_sync_at": None
+                }
+            }
+        )
+
+    def _save_project_state(self, project_name: str, state: Dict[str, Any]):
+        """Save per-project extraction state"""
+        self._save_json_file(self._project_state_path(project_name), state)
     
     def _get_quarter_dates(self, quarters_back: int = 8) -> List[tuple]:
         """Generate list of quarter start/end dates"""
@@ -87,6 +137,7 @@ class GitHubDataExtractor:
             }
 
         self.user_profile_cache[login] = profile
+        self._save_json_file(self.user_profile_cache_file, self.user_profile_cache)
         return profile
 
     def _get_repo_cache_path(self, owner: str, repo: str) -> Path:
@@ -133,7 +184,7 @@ class GitHubDataExtractor:
                 [
                     "git", "-C", str(repo_path), "log",
                     "--all",
-                    "--pretty=format:%ae|%an|%aI"
+                    "--pretty=format:%H|%ae|%an|%aI"
                 ],
                 check=True,
                 capture_output=True,
@@ -145,11 +196,11 @@ class GitHubDataExtractor:
 
         rows = []
         for line in result.stdout.splitlines():
-            parts = line.split("|", 2)
-            if len(parts) != 3:
+            parts = line.split("|", 3)
+            if len(parts) != 4:
                 continue
 
-            email, author_name, authored_at = parts
+            commit_sha, email, author_name, authored_at = parts
             identity = email.strip().lower() if email.strip() else author_name.strip().lower()
             if not identity or not authored_at:
                 continue
@@ -160,7 +211,10 @@ class GitHubDataExtractor:
                 continue
 
             rows.append({
+                "sha": commit_sha,
                 "identity": identity,
+                "email": email.strip().lower() if email.strip() else "",
+                "author_name": author_name.strip(),
                 "authored_at": authored_at,
                 "month": self._month_label(authored_dt)
             })
@@ -216,7 +270,7 @@ class GitHubDataExtractor:
         return retention_rows
 
     def _extract_committers_from_git_history(self, owner: str, repo: str, quarters: int = 4) -> List[Dict[str, Any]]:
-        """Compute committers from local git history to avoid API-order bias"""
+        """Compute exact aggregated committers from local git history"""
         history_rows = self._read_git_history_rows(owner, repo)
         if not history_rows:
             return []
@@ -227,39 +281,61 @@ class GitHubDataExtractor:
             for start_date, end_date in quarter_dates
         ]
 
-        committer_counts: Dict[str, int] = defaultdict(int)
+        committer_counts: Dict[str, Dict[str, Any]] = {}
 
         for row in history_rows:
             try:
-                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00"))
+                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00")).replace(tzinfo=None)
             except ValueError:
                 continue
 
+            in_window = False
             for start_date, end_date, _quarter_label in quarter_ranges:
-                if start_date <= authored_dt.replace(tzinfo=None) <= end_date:
-                    committer_counts[row["identity"]] += 1
+                if start_date <= authored_dt <= end_date:
+                    in_window = True
                     break
 
+            if not in_window:
+                continue
+
+            identity = row["identity"]
+            if identity not in committer_counts:
+                committer_counts[identity] = {
+                    "identity": identity,
+                    "email": row["email"] or (identity if "@" in identity else None),
+                    "author_name": row["author_name"],
+                    "commit_count": 0
+                }
+
+            committer_counts[identity]["commit_count"] += 1
+
         committers = []
-        for identity, commit_count in sorted(committer_counts.items(), key=lambda item: item[1], reverse=True):
+        for identity, committer in sorted(
+            committer_counts.items(),
+            key=lambda item: item[1]["commit_count"],
+            reverse=True
+        ):
             profile = self.user_profile_cache.get(identity)
+            if not profile and "@" not in identity:
+                profile = self.user_profile_cache.get(identity.lower())
+
             if not profile:
                 profile = {
-                    "name": None,
+                    "name": committer["author_name"] or None,
                     "company": "Unknown",
                     "location": None,
-                    "email": identity if "@" in identity else None,
+                    "email": committer["email"],
                     "profile_url": None
                 }
 
             committers.append({
-                "login": identity if "@" not in identity else identity.split("@")[0],
-                "name": profile["name"],
+                "login": identity if "@" not in identity else (committer["author_name"] or identity.split("@")[0]),
+                "name": profile["name"] or committer["author_name"] or None,
                 "company": profile["company"],
                 "location": profile["location"],
-                "email": profile["email"],
+                "email": profile["email"] or committer["email"],
                 "profile_url": profile["profile_url"],
-                "commit_count": commit_count
+                "commit_count": committer["commit_count"]
             })
 
         return committers
@@ -296,12 +372,15 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting metadata: {e}")
             return {}
     
-    def extract_contributors(self, owner: str, repo: str, quarters: int = 4) -> Dict[str, Any]:
-        """Extract contributor information with company affiliations and retention"""
+    def extract_contributors(self, owner: str, repo: str, project_name: str, quarters: int = 4) -> Dict[str, Any]:
+        """Extract complete contributor information with incremental profile enrichment"""
         print(f"👥 Extracting contributors for {owner}/{repo}...")
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
+            project_state = self._load_project_state(project_name)
+            known_logins = set(project_state.get("contributors", {}).get("known_logins", []))
+
             contributors_data = {
                 "total_contributors": 0,
                 "contributors": [],
@@ -315,10 +394,17 @@ class GitHubDataExtractor:
             contributors = repository.get_contributors()
             contributor_list = []
             company_count = defaultdict(int)
+            current_logins = set()
             
             for contributor in tqdm(contributors, desc="Processing contributors"):
                 try:
-                    profile = self._get_user_profile(contributor.login)
+                    current_logins.add(contributor.login)
+
+                    if contributor.login in known_logins and contributor.login in self.user_profile_cache:
+                        profile = self.user_profile_cache[contributor.login]
+                    else:
+                        profile = self._get_user_profile(contributor.login)
+
                     contributor_info = {
                         "login": contributor.login,
                         "name": profile["name"],
@@ -350,11 +436,17 @@ class GitHubDataExtractor:
             }
             
             contributors_data["total_contributors"] = total_contributors
-            contributors_data["contributors"] = contributor_list
-            contributors_data["companies"] = dict(company_count)
+            contributors_data["contributors"] = sorted(contributor_list, key=lambda item: item["contributions"], reverse=True)
+            contributors_data["companies"] = dict(sorted(company_count.items(), key=lambda item: item[1], reverse=True))
             contributors_data["total_companies"] = len(company_count)
             contributors_data["retention_by_quarter"] = retention_by_quarter
             contributors_data["company_diversity"] = company_diversity
+
+            project_state["contributors"] = {
+                "known_logins": sorted(current_logins),
+                "last_extracted_at": datetime.now().isoformat()
+            }
+            self._save_project_state(project_name, project_state)
             
             return contributors_data
             
@@ -362,12 +454,13 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting contributors: {e}")
             return {}
     
-    def extract_commits(self, owner: str, repo: str, quarters: int = 4) -> Dict[str, Any]:
-        """Extract commit activity by quarter and committer details"""
+    def extract_commits(self, owner: str, repo: str, project_name: str, quarters: int = 4) -> Dict[str, Any]:
+        """Extract exact aggregated commit activity and committer details"""
         print(f"📝 Extracting commits for {owner}/{repo}...")
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
+            project_state = self._load_project_state(project_name)
             quarter_dates = self._get_quarter_dates(quarters)
             
             commits_data = {
@@ -397,6 +490,11 @@ class GitHubDataExtractor:
                     continue
 
             commits_data["committers"] = self._extract_committers_from_git_history(owner, repo, quarters)
+
+            project_state["commits"] = {
+                "last_git_sync_at": datetime.now().isoformat()
+            }
+            self._save_project_state(project_name, project_state)
             
             return commits_data
             
@@ -610,11 +708,11 @@ class GitHubDataExtractor:
             if metadata:
                 self.save_project_data(project_name, metadata, "metadata")
             
-            contributors = self.extract_contributors(owner, repo)
+            contributors = self.extract_contributors(owner, repo, project_name)
             if contributors:
                 self.save_project_data(project_name, contributors, "contributors")
             
-            commits = self.extract_commits(owner, repo)
+            commits = self.extract_commits(owner, repo, project_name)
             if commits:
                 self.save_project_data(project_name, commits, "commits")
             

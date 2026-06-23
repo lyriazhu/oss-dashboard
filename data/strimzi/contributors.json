@@ -7,7 +7,7 @@
       "company": "Unknown",
       "location": "Prague, Czech Republic",
       "email": "github@scholzj.com",
-      "contributions": 2344,
+      "contributions": 2345,
       "profile_url": "https://github.com/scholzj"
     },
     {
@@ -2803,23 +2803,25 @@
   ],
   "companies": {
     "Unknown": 155,
-    "Ibm": 23,
-    "Engineer At Red Hat": 1,
     "Red Hat": 29,
+    "Ibm": 23,
+    "Hetznercloud": 2,
+    "Apple": 2,
+    "Axual": 2,
+    "Redhatofficial": 2,
+    "Engineer At Red Hat": 1,
     "Ibm, Ex-Red Hat": 1,
     "Redhat": 1,
     "Softserve": 1,
     "Proofpoint": 1,
     "Ericsson Software Technology": 1,
     "Hopper": 1,
-    "Hetznercloud": 2,
     "Fermilab": 1,
     "Elation Health": 1,
     "Trend Micro": 1,
     "Sgm": 1,
     "Cloudera": 1,
     "Marshmallow": 1,
-    "Apple": 2,
     "Placer.Ai": 1,
     "Red-Hat-Data-Services": 1,
     "Grafana": 1,
@@ -2861,13 +2863,11 @@
     "Ericsson": 1,
     "Uzum.Com (Ml+Ds, Tech Lead)": 1,
     "Improving": 1,
-    "Axual": 2,
     "Contentsquare": 1,
     "Replicant": 1,
     "Dremio": 1,
     "Patterninc": 1,
     "Tencent @Tencentcloud": 1,
-    "Redhatofficial": 2,
     "Offchainlabs": 1,
     "Iunera Gmbh & Co. Kg": 1,
     "Red Hat Acm/Globalhub": 1,
@@ -3063,5 +3063,5 @@
       }
     ]
   },
-  "extracted_at": "2026-06-23T10:22:51.028654"
+  "extracted_at": "2026-06-23T11:26:06.563838"
 }
