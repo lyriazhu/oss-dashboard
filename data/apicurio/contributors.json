@@ -1,0 +1,225 @@
+{
+  "total_contributors": 9,
+  "contributors": [
+    {
+      "login": "EricWittmann",
+      "name": "Eric Wittmann",
+      "company": "Ibm",
+      "location": "Newtown, CT",
+      "email": "eric.wittmann@redhat.com",
+      "contributions": 381,
+      "profile_url": "https://github.com/EricWittmann"
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 117,
+      "profile_url": "https://github.com/apps/dependabot"
+    },
+    {
+      "login": "renovate[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 86,
+      "profile_url": "https://github.com/apps/renovate"
+    },
+    {
+      "login": "apicurio-ci",
+      "name": "Apicurio CI",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 10,
+      "profile_url": "https://github.com/apicurio-ci"
+    },
+    {
+      "login": "carlesarnal",
+      "name": "Carles Arnal",
+      "company": "Ibm",
+      "location": "Barcelona",
+      "email": "carnalca@redhat.com",
+      "contributions": 5,
+      "profile_url": "https://github.com/carlesarnal"
+    },
+    {
+      "login": "jsenko",
+      "name": "Jakub Senko",
+      "company": "Red Hat",
+      "location": "Brno",
+      "email": "m@jsenko.net",
+      "contributions": 4,
+      "profile_url": "https://github.com/jsenko"
+    },
+    {
+      "login": "andreaTP",
+      "name": "Andrea Peruffo",
+      "company": "Ibm",
+      "location": "Lisbon",
+      "email": "andrea.peruffo1982@gmail.com",
+      "contributions": 3,
+      "profile_url": "https://github.com/andreaTP"
+    },
+    {
+      "login": "pwright",
+      "name": "Paul Wright",
+      "company": "Unknown",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/pwright"
+    },
+    {
+      "login": "rkubis",
+      "name": "Radim Kubis",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/rkubis"
+    }
+  ],
+  "companies": {
+    "Unknown": 4,
+    "Ibm": 3,
+    "Red Hat": 2
+  },
+  "total_companies": 3,
+  "retention_by_quarter": [
+    {
+      "quarter": "2024-11",
+      "start_date": "2024-11",
+      "end_date": "2024-11",
+      "active_contributors": 5,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2024-12",
+      "start_date": "2024-12",
+      "end_date": "2024-12",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-01",
+      "start_date": "2025-01",
+      "end_date": "2025-01",
+      "active_contributors": 4,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 100.0
+    },
+    {
+      "quarter": "2025-02",
+      "start_date": "2025-02",
+      "end_date": "2025-02",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-03",
+      "start_date": "2025-03",
+      "end_date": "2025-03",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-04",
+      "start_date": "2025-04",
+      "end_date": "2025-04",
+      "active_contributors": 4,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-05",
+      "start_date": "2025-05",
+      "end_date": "2025-05",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-06",
+      "start_date": "2025-06",
+      "end_date": "2025-06",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-07",
+      "start_date": "2025-07",
+      "end_date": "2025-07",
+      "active_contributors": 4,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-08",
+      "start_date": "2025-08",
+      "end_date": "2025-08",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-09",
+      "start_date": "2025-09",
+      "end_date": "2025-09",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "quarter": "2025-10",
+      "start_date": "2025-10",
+      "end_date": "2025-10",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    }
+  ],
+  "company_diversity": {
+    "known_company_contributors": 5,
+    "unknown_company_contributors": 4,
+    "top_companies": [
+      {
+        "company": "Unknown",
+        "contributor_count": 4
+      },
+      {
+        "company": "Ibm",
+        "contributor_count": 3
+      },
+      {
+        "company": "Red Hat",
+        "contributor_count": 2
+      }
+    ]
+  },
+  "time_scope": {
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_months_from_git_history"
+  },
+  "extracted_at": "2026-06-23T14:41:44.239043"
+}

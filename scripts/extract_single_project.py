@@ -40,36 +40,99 @@ def main():
     repo = project['repo']
     name = project['name']
     
-    # Extract all data types
+    # Extract all data types with error handling
     print(f"{'='*60}")
     print(f"Processing: {name}")
     print(f"{'='*60}\n")
     
-    metadata = extractor.extract_project_metadata(owner, repo)
-    if metadata:
-        extractor.save_project_data(name, metadata, "metadata")
+    # Track extraction status
+    extraction_status = {
+        "metadata": False,
+        "contributors": False,
+        "commits": False,
+        "issues": False,
+        "pull_requests": False,
+        "releases": False
+    }
     
-    contributors = extractor.extract_contributors(owner, repo, name)
-    if contributors:
-        extractor.save_project_data(name, contributors, "contributors")
+    # Metadata
+    try:
+        metadata = extractor.extract_project_metadata(owner, repo)
+        if metadata:
+            extractor.save_project_data(name, metadata, "metadata")
+            extraction_status["metadata"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Metadata extraction failed: {e}")
+        print(f"   Continuing with other data types...")
     
-    commits = extractor.extract_commits(owner, repo, name)
-    if commits:
-        extractor.save_project_data(name, commits, "commits")
+    # Contributors
+    try:
+        contributors = extractor.extract_contributors(owner, repo, name)
+        if contributors:
+            extractor.save_project_data(name, contributors, "contributors")
+            extraction_status["contributors"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Contributors extraction failed: {e}")
+        print(f"   Continuing with other data types...")
     
-    issues = extractor.extract_issues(owner, repo)
-    if issues:
-        extractor.save_project_data(name, issues, "issues")
+    # Commits
+    try:
+        commits = extractor.extract_commits(owner, repo, name)
+        if commits:
+            extractor.save_project_data(name, commits, "commits")
+            extraction_status["commits"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Commits extraction failed: {e}")
+        print(f"   Continuing with other data types...")
     
-    pull_requests = extractor.extract_pull_requests(owner, repo)
-    if pull_requests:
-        extractor.save_project_data(name, pull_requests, "pull_requests")
+    # Issues
+    try:
+        issues = extractor.extract_issues(owner, repo)
+        if issues:
+            extractor.save_project_data(name, issues, "issues")
+            extraction_status["issues"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Issues extraction failed: {e}")
+        print(f"   Continuing with other data types...")
     
-    releases = extractor.extract_releases(owner, repo)
-    if releases:
-        extractor.save_project_data(name, releases, "releases")
+    # Pull Requests
+    try:
+        pull_requests = extractor.extract_pull_requests(owner, repo)
+        if pull_requests:
+            extractor.save_project_data(name, pull_requests, "pull_requests")
+            extraction_status["pull_requests"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Pull requests extraction failed: {e}")
+        print(f"   Continuing with other data types...")
     
-    print(f"\n✅ Completed extraction for {name}\n")
+    # Releases
+    try:
+        releases = extractor.extract_releases(owner, repo)
+        if releases:
+            extractor.save_project_data(name, releases, "releases")
+            extraction_status["releases"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Releases extraction failed: {e}")
+        print(f"   Continuing with other data types...")
+    
+    # Summary
+    print(f"\n{'='*60}")
+    print(f"Extraction Summary for {name}:")
+    print(f"{'='*60}")
+    for data_type, success in extraction_status.items():
+        status = "✅" if success else "❌"
+        print(f"{status} {data_type}")
+    print(f"{'='*60}\n")
+    
+    successful_count = sum(extraction_status.values())
+    total_count = len(extraction_status)
+    
+    if successful_count == total_count:
+        print(f"✅ Completed extraction for {name} - All data types extracted successfully!\n")
+    elif successful_count > 0:
+        print(f"⚠️  Partial extraction for {name} - {successful_count}/{total_count} data types extracted\n")
+    else:
+        print(f"❌ Extraction failed for {name} - No data could be extracted\n")
 
 if __name__ == "__main__":
     main()

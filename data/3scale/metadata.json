@@ -1,0 +1,18 @@
+{
+  "name": "3scale-operator",
+  "full_name": "3scale/3scale-operator",
+  "description": "Openshift operator to install a 3scale API Management solution",
+  "created_at": "2018-11-21T16:11:35+00:00",
+  "updated_at": "2026-06-19T08:49:57+00:00",
+  "stars": 49,
+  "forks": 101,
+  "watchers": 49,
+  "open_issues": 20,
+  "language": "Go",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": false,
+  "has_discussions": null,
+  "extracted_at": "2026-06-23T14:41:58.340981"
+}

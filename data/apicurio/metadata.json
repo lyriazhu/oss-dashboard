@@ -1,0 +1,25 @@
+{
+  "name": "apicurio-studio",
+  "full_name": "ApicurioArchive/apicurio-studio",
+  "description": "Open Source API Design",
+  "created_at": "2016-09-29T18:22:33+00:00",
+  "updated_at": "2026-06-21T12:42:25+00:00",
+  "stars": 1060,
+  "forks": 509,
+  "watchers": 1060,
+  "open_issues": 368,
+  "language": "TypeScript",
+  "topics": [
+    "api-design",
+    "developer-tools",
+    "swagger",
+    "openapi",
+    "angular2",
+    "typescript"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://www.apicur.io/studio/",
+  "has_wiki": false,
+  "has_discussions": null,
+  "extracted_at": "2026-06-23T14:41:43.214420"
+}

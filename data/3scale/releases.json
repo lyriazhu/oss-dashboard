@@ -1,0 +1,148 @@
+{
+  "total_releases": 31,
+  "recent_releases": [
+    {
+      "tag_name": "3scale-2.16.3-GA",
+      "name": "3scale-2.16.3-GA",
+      "published_at": "2026-04-07T09:33:09+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.16.2-GA",
+      "name": "3scale-2.16.2-GA",
+      "published_at": "2026-02-12T14:01:08+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.16.1-GA",
+      "name": "3scale-2.16.1-GA",
+      "published_at": "2025-12-15T12:20:30+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.16.0-GA",
+      "name": "3scale-2.16.0-GA",
+      "published_at": "2025-11-18T10:06:42+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.15.1-GA",
+      "name": "3scale-2.15.1-GA",
+      "published_at": "2024-12-17T13:33:58+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.14.1-GA",
+      "name": "3scale-2.14.1-GA",
+      "published_at": "2024-03-05T12:13:11+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.13.2-GA",
+      "name": "3scale-2.13.2-GA",
+      "published_at": "2023-04-18T09:42:52+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.13.1-GA",
+      "name": "3scale-2.13.1-GA",
+      "published_at": "2023-02-10T10:38:08+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.12.1-GA",
+      "name": "3scale-2.12.1-GA",
+      "published_at": "2022-11-04T09:16:06+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.13.0-GA",
+      "name": "3scale-2.13.0-GA",
+      "published_at": "2022-11-21T16:16:34+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.12.2-GA",
+      "name": "3scale-2.12.2-GA",
+      "published_at": "2023-03-16T11:08:30+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.11.1-GA",
+      "name": "3scale-2.11.1.GA",
+      "published_at": "2022-01-25T13:46:57+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.11.0-GA",
+      "name": "3scale-2.11.0-GA",
+      "published_at": "2021-10-15T11:11:47+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.10.0-GA",
+      "name": "3scale-2.10.0-GA",
+      "published_at": "2021-04-13T17:37:57+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.9.1-GA",
+      "name": "3scale-2.9.1-GA",
+      "published_at": "2020-10-27T14:34:40+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.9.0-GA",
+      "name": "3scale-2.9.0-GA",
+      "published_at": "2020-08-28T14:11:38+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.8.1-CR1",
+      "name": "3scale-2.8.1-CR1",
+      "published_at": "2020-03-31T09:43:24+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.8.0-CR1",
+      "name": "3scale-2.8.0-CR1",
+      "published_at": "2020-03-27T12:31:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.1",
+      "name": "3scale-2.7.1",
+      "published_at": "2019-12-19T13:42:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.0-CR2",
+      "name": "3scale-2.7.0-CR2",
+      "published_at": "2019-11-06T13:59:59+00:00",
+      "prerelease": true,
+      "draft": false
+    }
+  ],
+  "avg_days_between_releases": 122.89,
+  "release_frequency": "low",
+  "extracted_at": "2026-06-23T14:42:10.050433"
+}

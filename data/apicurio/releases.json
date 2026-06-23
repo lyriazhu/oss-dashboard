@@ -1,0 +1,148 @@
+{
+  "total_releases": 85,
+  "recent_releases": [
+    {
+      "tag_name": "1.1.0-Beta4",
+      "name": "1.1.0-Beta4",
+      "published_at": "2025-07-18T11:55:53+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.1.0-Beta3",
+      "name": "1.1.0-Beta3",
+      "published_at": "2024-11-21T13:20:07+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.1.0-Beta2",
+      "name": "1.1.0-Beta2",
+      "published_at": "2024-11-12T19:10:22+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.1.0-Beta1",
+      "name": "1.1.0-Beta1",
+      "published_at": "2024-11-11T21:24:14+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.0.0.Beta1",
+      "name": "1.0.0.Beta1",
+      "published_at": "2024-05-03T18:07:55+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.62.Final",
+      "name": "v0.2.62.Final",
+      "published_at": "2023-10-02T15:32:58+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.61.Final",
+      "name": "v0.2.61.Final",
+      "published_at": "2023-03-13T18:07:34+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.60.Final",
+      "name": "v0.2.60.Final",
+      "published_at": "2023-03-09T19:33:50+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.59.Final",
+      "name": "v0.2.59.Final",
+      "published_at": "2022-12-20T15:27:28+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.58.Final",
+      "name": "v0.2.58.Final",
+      "published_at": "2022-08-24T20:15:20+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.57.Final",
+      "name": "v0.2.57.Final",
+      "published_at": "2022-08-24T11:01:15+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.56.Final",
+      "name": "v0.2.56.Final",
+      "published_at": "2022-08-23T19:34:52+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.55.Final",
+      "name": "v0.2.55.Final",
+      "published_at": "2022-08-22T15:22:03+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.54.Final",
+      "name": "v0.2.54.Final",
+      "published_at": "2022-05-03T17:35:38+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.53.Final",
+      "name": "v0.2.53.Final",
+      "published_at": "2022-03-24T14:15:36+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.52.Final",
+      "name": "v0.2.52.Final",
+      "published_at": "2022-03-22T11:14:41+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.51.Final",
+      "name": "v0.2.51.Final",
+      "published_at": "2021-10-29T16:07:52+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.50.Final",
+      "name": "v0.2.50.Final",
+      "published_at": "2021-09-22T19:39:09+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.49.Final",
+      "name": "v0.2.49.Final",
+      "published_at": "2021-07-15T19:02:40+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.2.48.Final",
+      "name": "v0.2.48.Final",
+      "published_at": "2021-02-26T12:47:32+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "avg_days_between_releases": 83.84,
+  "release_frequency": "medium",
+  "extracted_at": "2026-06-23T14:41:55.627325"
+}

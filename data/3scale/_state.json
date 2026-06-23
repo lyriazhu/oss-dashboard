@@ -1,0 +1,51 @@
+{
+  "contributors": {
+    "known_logins": [
+      "ConorOM1",
+      "KevFan",
+      "MStokluska",
+      "Patryk-Stefanski",
+      "PoojaChandak",
+      "adam-cattermole",
+      "akostadinov",
+      "austincunningham",
+      "averevki",
+      "bmozaffa",
+      "borisurbanik",
+      "briangallagher",
+      "carlkyrillos",
+      "davidor",
+      "dependabot[bot]",
+      "eguzki",
+      "guicassolato",
+      "hallelujah",
+      "ilargitxiki",
+      "ioggstream",
+      "jjkiely",
+      "jmprusi",
+      "macejmic",
+      "matskiv",
+      "mayorova",
+      "miguelsorianod",
+      "mijaros",
+      "mikz",
+      "mledoze",
+      "mrhillsman",
+      "pwright",
+      "raelga",
+      "rashelrr",
+      "roivaz",
+      "sergioifg94",
+      "slopezz",
+      "thomasmaas",
+      "tkan145",
+      "u023368",
+      "valerymo",
+      "wengkee"
+    ],
+    "last_extracted_at": "2026-06-23T14:42:00.105751"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-06-23T14:42:02.807172"
+  }
+}
