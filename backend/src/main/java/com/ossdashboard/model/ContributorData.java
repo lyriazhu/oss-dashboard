@@ -17,6 +17,12 @@ public class ContributorData {
     
     @JsonProperty("total_companies")
     public Integer totalCompanies;
+
+    @JsonProperty("retention_by_quarter")
+    public List<RetentionQuarter> retentionByQuarter;
+
+    @JsonProperty("company_diversity")
+    public CompanyDiversity companyDiversity;
     
     @JsonProperty("extracted_at")
     public String extractedAt;
@@ -31,6 +37,46 @@ public class ContributorData {
         
         @JsonProperty("profile_url")
         public String profileUrl;
+    }
+
+    public static class RetentionQuarter {
+        public String quarter;
+
+        @JsonProperty("start_date")
+        public String startDate;
+
+        @JsonProperty("end_date")
+        public String endDate;
+
+        @JsonProperty("active_contributors")
+        public Integer activeContributors;
+
+        @JsonProperty("new_contributors")
+        public Integer newContributors;
+
+        @JsonProperty("returning_contributors")
+        public Integer returningContributors;
+
+        @JsonProperty("retention_rate")
+        public Double retentionRate;
+    }
+
+    public static class CompanyDiversity {
+        @JsonProperty("known_company_contributors")
+        public Integer knownCompanyContributors;
+
+        @JsonProperty("unknown_company_contributors")
+        public Integer unknownCompanyContributors;
+
+        @JsonProperty("top_companies")
+        public List<CompanyCount> topCompanies;
+    }
+
+    public static class CompanyCount {
+        public String company;
+
+        @JsonProperty("contributor_count")
+        public Integer contributorCount;
     }
 }
 

@@ -12,6 +12,8 @@ public class CommitData {
     public Integer totalCommits;
     
     public List<QuarterData> quarters;
+
+    public List<Committer> committers;
     
     @JsonProperty("extracted_at")
     public String extractedAt;
@@ -27,6 +29,20 @@ public class CommitData {
         public Integer commitCount;
         
         public String quarter;
+    }
+
+    public static class Committer {
+        public String login;
+        public String name;
+        public String company;
+        public String location;
+        public String email;
+
+        @JsonProperty("profile_url")
+        public String profileUrl;
+
+        @JsonProperty("commit_count")
+        public Integer commitCount;
     }
 }
 

@@ -10,6 +10,9 @@ import java.util.List;
 public class PullRequestData {
     @JsonProperty("total_prs")
     public Integer totalPrs;
+
+    @JsonProperty("avg_time_to_merge_days")
+    public Double avgTimeToMergeDays;
     
     public List<QuarterData> quarters;
     
@@ -25,6 +28,12 @@ public class PullRequestData {
         
         @JsonProperty("pr_count")
         public Integer prCount;
+
+        @JsonProperty("merged_pr_count")
+        public Integer mergedPrCount;
+
+        @JsonProperty("avg_time_to_merge_days")
+        public Double avgTimeToMergeDays;
         
         public String quarter;
     }

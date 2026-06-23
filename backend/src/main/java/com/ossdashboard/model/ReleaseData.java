@@ -13,6 +13,12 @@ public class ReleaseData {
     
     @JsonProperty("recent_releases")
     public List<Release> recentReleases;
+
+    @JsonProperty("avg_days_between_releases")
+    public Double avgDaysBetweenReleases;
+
+    @JsonProperty("release_frequency")
+    public String releaseFrequency;
     
     @JsonProperty("extracted_at")
     public String extractedAt;

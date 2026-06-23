@@ -1,0 +1,635 @@
+{
+  "total_commits": 648,
+  "quarters": [
+    {
+      "start_date": "2026-03-25T10:13:24.566960",
+      "end_date": "2026-06-23T10:13:24.566960",
+      "commit_count": 160,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2025-12-25T10:13:24.566960",
+      "end_date": "2026-03-25T10:13:24.566960",
+      "commit_count": 150,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-09-26T10:13:24.566960",
+      "end_date": "2025-12-25T10:13:24.566960",
+      "commit_count": 189,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-06-28T10:13:24.566960",
+      "end_date": "2025-09-26T10:13:24.566960",
+      "commit_count": 149,
+      "quarter": "Q3 2025"
+    }
+  ],
+  "committers": [
+    {
+      "login": "scholzj",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": "Prague, Czech Republic",
+      "email": "github@scholzj.com",
+      "profile_url": "https://github.com/scholzj",
+      "commit_count": 209
+    },
+    {
+      "login": "ppatierno",
+      "name": "Paolo Patierno",
+      "company": "Ibm",
+      "location": "Italy",
+      "email": null,
+      "profile_url": "https://github.com/ppatierno",
+      "commit_count": 84
+    },
+    {
+      "login": "im-konge",
+      "name": "Luk\u00e1\u0161 Kr\u00e1l",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/im-konge",
+      "commit_count": 61
+    },
+    {
+      "login": "Frawless",
+      "name": "Jakub Stejskal",
+      "company": "Ibm",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "profile_url": "https://github.com/Frawless",
+      "commit_count": 59
+    },
+    {
+      "login": "PaulRMellor",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/PaulRMellor",
+      "commit_count": 46
+    },
+    {
+      "login": "see-quick",
+      "name": "Maros Orsak",
+      "company": "Unknown",
+      "location": null,
+      "email": "maros.orsak159@gmail.com",
+      "profile_url": "https://github.com/see-quick",
+      "commit_count": 40
+    },
+    {
+      "login": "tinaselenge",
+      "name": "Gantigmaa Selenge",
+      "company": "Red Hat",
+      "location": "London",
+      "email": null,
+      "profile_url": "https://github.com/tinaselenge",
+      "commit_count": 16
+    },
+    {
+      "login": "katheris",
+      "name": "Kate Stanley",
+      "company": "Unknown",
+      "location": "UK",
+      "email": null,
+      "profile_url": "https://github.com/katheris",
+      "commit_count": 13
+    },
+    {
+      "login": "OwenCorrigan76",
+      "name": "OwenCorrigan76",
+      "company": "Red Hat",
+      "location": "Waterford / Ireland",
+      "email": null,
+      "profile_url": "https://github.com/OwenCorrigan76",
+      "commit_count": 8
+    },
+    {
+      "login": "Paramesh324",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/Paramesh324",
+      "commit_count": 7
+    },
+    {
+      "login": "kornys",
+      "name": "David Kornel",
+      "company": "Ibm",
+      "location": "Brno",
+      "email": "kornys@outlook.com",
+      "profile_url": "https://github.com/kornys",
+      "commit_count": 7
+    },
+    {
+      "login": "guancioul",
+      "name": "Kuan-Hao (Michael) Lai",
+      "company": "Trend Micro",
+      "location": "Taipei, Taiwan",
+      "email": null,
+      "profile_url": "https://github.com/guancioul",
+      "commit_count": 6
+    },
+    {
+      "login": "Kcruz28",
+      "name": "Kevin Cruz",
+      "company": "Unknown",
+      "location": "Chicago",
+      "email": "kcruzlopez10@gmail.com",
+      "profile_url": "https://github.com/Kcruz28",
+      "commit_count": 6
+    },
+    {
+      "login": "rjuare8",
+      "name": "Rodolfo Juarez",
+      "company": "Unknown",
+      "location": "Champaign, Illinois",
+      "email": null,
+      "profile_url": "https://github.com/rjuare8",
+      "commit_count": 6
+    },
+    {
+      "login": "rlanhellas",
+      "name": "Ronaldo Lanhellas",
+      "company": "Unknown",
+      "location": "S\u00e3o Paulo",
+      "email": "ronaldo.lanhellas@gmail.com",
+      "profile_url": "https://github.com/rlanhellas",
+      "commit_count": 6
+    },
+    {
+      "login": "kyguy",
+      "name": "Kyle Liberti",
+      "company": "Ibm, Ex-Red Hat",
+      "location": "Boston",
+      "email": "kliberti.us@gmail.com",
+      "profile_url": "https://github.com/kyguy",
+      "commit_count": 5
+    },
+    {
+      "login": "mimaison",
+      "name": "Mickael Maison",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/mimaison",
+      "commit_count": 4
+    },
+    {
+      "login": "sebastiangaiser",
+      "name": "Sebastian Gaiser",
+      "company": "Hetznercloud",
+      "location": "Munich, Germany",
+      "email": null,
+      "profile_url": "https://github.com/sebastiangaiser",
+      "commit_count": 4
+    },
+    {
+      "login": "jcpunk",
+      "name": "Pat Riehecky",
+      "company": "Fermilab",
+      "location": "Timezone: America/Chicago",
+      "email": null,
+      "profile_url": "https://github.com/jcpunk",
+      "commit_count": 3
+    },
+    {
+      "login": "fvaleri",
+      "name": "Federico Valeri",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/fvaleri",
+      "commit_count": 3
+    },
+    {
+      "login": "won-seoop",
+      "name": "won_seop",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/won-seoop",
+      "commit_count": 2
+    },
+    {
+      "login": "ShubhamRwt",
+      "name": "Shubham Rawat",
+      "company": "Engineer At Red Hat",
+      "location": "New Delhi,India",
+      "email": null,
+      "profile_url": "https://github.com/ShubhamRwt",
+      "commit_count": 2
+    },
+    {
+      "login": "Copilot",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/Copilot",
+      "commit_count": 2
+    },
+    {
+      "login": "syedazeez337",
+      "name": "Syed Azeez",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/syedazeez337",
+      "commit_count": 2
+    },
+    {
+      "login": "mstruk",
+      "name": "Marko Strukelj",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/mstruk",
+      "commit_count": 2
+    },
+    {
+      "login": "bissquit",
+      "name": "Egor Vasilyev",
+      "company": "Unknown",
+      "location": "Russia",
+      "email": null,
+      "profile_url": "https://github.com/bissquit",
+      "commit_count": 2
+    },
+    {
+      "login": "MichaelMorrisEst",
+      "name": "Michael Morris",
+      "company": "Ericsson Software Technology",
+      "location": "Ireland",
+      "email": null,
+      "profile_url": "https://github.com/MichaelMorrisEst",
+      "commit_count": 2
+    },
+    {
+      "login": "KyriosGN0",
+      "name": "AvivGuiser",
+      "company": "Placer.Ai",
+      "location": "Israel",
+      "email": "avivguiser@gmail.com",
+      "profile_url": "https://github.com/KyriosGN0",
+      "commit_count": 2
+    },
+    {
+      "login": "chon3806",
+      "name": "HCL",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/chon3806",
+      "commit_count": 1
+    },
+    {
+      "login": "mahitha-ada",
+      "name": "Mahitha Adapa",
+      "company": "Unknown",
+      "location": "United States",
+      "email": null,
+      "profile_url": "https://github.com/mahitha-ada",
+      "commit_count": 1
+    },
+    {
+      "login": "aveek22",
+      "name": "Aveek",
+      "company": "Unknown",
+      "location": "Antwerp, Belgium",
+      "email": "aveek.d22@gmail.com",
+      "profile_url": "https://github.com/aveek22",
+      "commit_count": 1
+    },
+    {
+      "login": "afausti",
+      "name": "Angelo Fausti",
+      "company": "Aura - Vera C. Rubin Observatory",
+      "location": "Tucson, AZ",
+      "email": "afausti@lsst.org",
+      "profile_url": "https://github.com/afausti",
+      "commit_count": 1
+    },
+    {
+      "login": "officialasishkumar",
+      "name": "Asish Kumar",
+      "company": "Unknown",
+      "location": "India",
+      "email": null,
+      "profile_url": "https://github.com/officialasishkumar",
+      "commit_count": 1
+    },
+    {
+      "login": "gaganhr94",
+      "name": "Gagan H R",
+      "company": "Guidewire Software",
+      "location": "Bangalore",
+      "email": null,
+      "profile_url": "https://github.com/gaganhr94",
+      "commit_count": 1
+    },
+    {
+      "login": "gilvansfilho",
+      "name": "Gilvan Filho",
+      "company": "Red Hat",
+      "location": "Bel\u00e9m, Par\u00e1, Brasil",
+      "email": null,
+      "profile_url": "https://github.com/gilvansfilho",
+      "commit_count": 1
+    },
+    {
+      "login": "pkotak",
+      "name": "Paarth K.",
+      "company": "Oracle",
+      "location": "Seattle, WA",
+      "email": null,
+      "profile_url": "https://github.com/pkotak",
+      "commit_count": 1
+    },
+    {
+      "login": "TheoBrigitte",
+      "name": "Th\u00e9o Brigitte",
+      "company": "Giantswarm",
+      "location": "Paris, France",
+      "email": "theo.brigitte@gmail.com",
+      "profile_url": "https://github.com/TheoBrigitte",
+      "commit_count": 1
+    },
+    {
+      "login": "neeraj-laad",
+      "name": "Neeraj Laad",
+      "company": "Ibm",
+      "location": "UK",
+      "email": "neeraj.laad@gmail.com",
+      "profile_url": "https://github.com/neeraj-laad",
+      "commit_count": 1
+    },
+    {
+      "login": "mamccorm",
+      "name": "Mark McCormick",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/mamccorm",
+      "commit_count": 1
+    },
+    {
+      "login": "QuentinBisson",
+      "name": "Quentin Bisson",
+      "company": "Giant Swarm",
+      "location": "France",
+      "email": "quentin@giantswarm.io",
+      "profile_url": "https://github.com/QuentinBisson",
+      "commit_count": 1
+    },
+    {
+      "login": "marcelojscosta",
+      "name": "Marcelo Costa",
+      "company": "Unknown",
+      "location": "S\u00e3o Paulo",
+      "email": "marcelojscosta@gmail.com",
+      "profile_url": "https://github.com/marcelojscosta",
+      "commit_count": 1
+    },
+    {
+      "login": "marvin-roesch",
+      "name": "Marvin R\u00f6sch",
+      "company": "Hetznercloud",
+      "location": "Germany",
+      "email": null,
+      "profile_url": "https://github.com/marvin-roesch",
+      "commit_count": 1
+    },
+    {
+      "login": "nbarrientos",
+      "name": "Nacho Barrientos",
+      "company": "Cernops",
+      "location": "Geneva (Switzerland)",
+      "email": null,
+      "profile_url": "https://github.com/nbarrientos",
+      "commit_count": 1
+    },
+    {
+      "login": "mastermaxx03",
+      "name": "Animesh",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/mastermaxx03",
+      "commit_count": 1
+    },
+    {
+      "login": "Pinimo",
+      "name": "PN Morin",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/Pinimo",
+      "commit_count": 1
+    },
+    {
+      "login": "alephys26",
+      "name": "Yash Shrivastava",
+      "company": "Patterninc",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/alephys26",
+      "commit_count": 1
+    },
+    {
+      "login": "MikeEdgar",
+      "name": "Michael Edgar",
+      "company": "Ibm",
+      "location": "Cleveland, Ohio",
+      "email": "michael@xlate.io",
+      "profile_url": "https://github.com/MikeEdgar",
+      "commit_count": 1
+    },
+    {
+      "login": "XuhuiSun95",
+      "name": "Xuhui Sun",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/XuhuiSun95",
+      "commit_count": 1
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/apps/dependabot",
+      "commit_count": 1
+    },
+    {
+      "login": "RouxAntoine",
+      "name": "Antoine",
+      "company": "Https://Antoine-Roux.Tk/Projects",
+      "location": "French, Lyon 69000",
+      "email": null,
+      "profile_url": "https://github.com/RouxAntoine",
+      "commit_count": 1
+    },
+    {
+      "login": "devzizu",
+      "name": "Jo\u00e3o Azevedo",
+      "company": "Feedzai",
+      "location": "Portugal",
+      "email": null,
+      "profile_url": "https://github.com/devzizu",
+      "commit_count": 1
+    },
+    {
+      "login": "jhampson-dbre",
+      "name": "Jared Hampson",
+      "company": "Udemy",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/jhampson-dbre",
+      "commit_count": 1
+    },
+    {
+      "login": "akatona84",
+      "name": "Andras Katona",
+      "company": "Cloudera",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/akatona84",
+      "commit_count": 1
+    },
+    {
+      "login": "showuon",
+      "name": "Luke Chen",
+      "company": "Redhat",
+      "location": "Taiwan",
+      "email": "showuon@gmail.com",
+      "profile_url": "https://github.com/showuon",
+      "commit_count": 1
+    },
+    {
+      "login": "TanmaySrivastav",
+      "name": "Tanmay Srivastava",
+      "company": "Ibm Labs",
+      "location": "Dublin",
+      "email": null,
+      "profile_url": "https://github.com/TanmaySrivastav",
+      "commit_count": 1
+    },
+    {
+      "login": "Firoj-Patel",
+      "name": "Firoj-IBM",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/Firoj-Patel",
+      "commit_count": 1
+    },
+    {
+      "login": "Smoothengineer",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/Smoothengineer",
+      "commit_count": 1
+    },
+    {
+      "login": "venkatesh2090",
+      "name": "Venkatesh Prasad Kannan",
+      "company": "Unknown",
+      "location": "Maidenhead, United Kingdom",
+      "email": null,
+      "profile_url": "https://github.com/venkatesh2090",
+      "commit_count": 1
+    },
+    {
+      "login": "dandotimujahid",
+      "name": "Mujahid Dandoti",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/dandotimujahid",
+      "commit_count": 1
+    },
+    {
+      "login": "championshuttler",
+      "name": "Shivam Singhal",
+      "company": "Unknown",
+      "location": null,
+      "email": "ssinghal@topcon.com",
+      "profile_url": "https://github.com/championshuttler",
+      "commit_count": 1
+    },
+    {
+      "login": "blaghed",
+      "name": "Lu\u00eds Cabral",
+      "company": "Avaloq",
+      "location": "Z\u00fcrich, Switzerland",
+      "email": null,
+      "profile_url": "https://github.com/blaghed",
+      "commit_count": 1
+    },
+    {
+      "login": "totochichi",
+      "name": "Chloe Mai",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/totochichi",
+      "commit_count": 1
+    },
+    {
+      "login": "egyedt",
+      "name": "Tamas Barnabas Egyed",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "profile_url": "https://github.com/egyedt",
+      "commit_count": 1
+    },
+    {
+      "login": "rodrigo-molina",
+      "name": "Rodrigo Molina",
+      "company": "Adevinta",
+      "location": "Barcelona",
+      "email": null,
+      "profile_url": "https://github.com/rodrigo-molina",
+      "commit_count": 1
+    },
+    {
+      "login": "kiku99",
+      "name": "Jaehyeon Kim",
+      "company": "Partridge Systems",
+      "location": "Seoul",
+      "email": "elsd0326@gmail.com",
+      "profile_url": "https://github.com/kiku99",
+      "commit_count": 1
+    },
+    {
+      "login": "shunki-fujita",
+      "name": "Shunki",
+      "company": "Cybozu, Inc.",
+      "location": "Tokyo",
+      "email": null,
+      "profile_url": "https://github.com/shunki-fujita",
+      "commit_count": 1
+    },
+    {
+      "login": "mdraevich",
+      "name": "Draevich Matthew",
+      "company": "Unknown",
+      "location": "Bialystok, Poland",
+      "email": null,
+      "profile_url": "https://github.com/mdraevich",
+      "commit_count": 1
+    }
+  ],
+  "extracted_at": "2026-06-23T10:13:24.566985"
+}
