@@ -173,19 +173,23 @@ class GitHubDataExtractor:
         """Return month label for a datetime"""
         return dt.strftime("%Y-%m")
 
-    def _read_git_history_rows(self, owner: str, repo: str) -> List[Dict[str, str]]:
+    def _read_git_history_rows(self, owner: str, repo: str, since: Optional[str] = None) -> List[Dict[str, str]]:
         """Read local git history rows for analytics"""
         repo_path = self._ensure_local_repo(owner, repo)
         if not repo_path:
             return []
 
+        command = [
+            "git", "-C", str(repo_path), "log",
+            "--all",
+            "--pretty=format:%H|%ae|%an|%aI"
+        ]
+        if since:
+            command.insert(4, f"--since={since}")
+
         try:
             result = subprocess.run(
-                [
-                    "git", "-C", str(repo_path), "log",
-                    "--all",
-                    "--pretty=format:%H|%ae|%an|%aI"
-                ],
+                command,
                 check=True,
                 capture_output=True,
                 text=True
@@ -339,6 +343,126 @@ class GitHubDataExtractor:
             })
 
         return committers
+
+    def _merge_contributor_data(self, existing_data: Dict[str, Any], new_contributors: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Merge contributor records by login while preserving current schema"""
+        existing_by_login = {
+            contributor["login"]: contributor
+            for contributor in existing_data.get("contributors", [])
+            if contributor.get("login")
+        }
+
+        for contributor in new_contributors:
+            existing_by_login[contributor["login"]] = contributor
+
+        merged_contributors = sorted(
+            existing_by_login.values(),
+            key=lambda item: item.get("contributions", 0),
+            reverse=True
+        )
+
+        company_count = defaultdict(int)
+        for contributor in merged_contributors:
+            company_count[contributor.get("company") or "Unknown"] += 1
+
+        known_company_total = sum(count for company, count in company_count.items() if company != "Unknown")
+
+        return {
+            "total_contributors": len(merged_contributors),
+            "contributors": merged_contributors,
+            "companies": dict(sorted(company_count.items(), key=lambda item: item[1], reverse=True)),
+            "total_companies": len(company_count),
+            "retention_by_quarter": existing_data.get("retention_by_quarter", []),
+            "company_diversity": {
+                "known_company_contributors": known_company_total,
+                "unknown_company_contributors": company_count.get("Unknown", 0),
+                "top_companies": [
+                    {"company": company, "contributor_count": count}
+                    for company, count in sorted(company_count.items(), key=lambda item: item[1], reverse=True)[:10]
+                ]
+            },
+            "extracted_at": datetime.now().isoformat()
+        }
+
+    def _merge_commit_data(
+        self,
+        existing_data: Dict[str, Any],
+        new_history_rows: List[Dict[str, str]],
+        owner: str,
+        repo: str,
+        quarters: int = 4
+    ) -> Dict[str, Any]:
+        """Merge new git-history commits into aggregated commit data"""
+        existing_committers = {
+            (committer.get("email") or committer.get("login")): dict(committer)
+            for committer in existing_data.get("committers", [])
+        }
+
+        quarter_dates = self._get_quarter_dates(quarters)
+        quarter_buckets = {
+            self._quarter_label(end_date): {
+                "start_date": start_date.isoformat(),
+                "end_date": end_date.isoformat(),
+                "commit_count": 0,
+                "quarter": self._quarter_label(end_date)
+            }
+            for start_date, end_date in quarter_dates
+        }
+
+        for existing_quarter in existing_data.get("quarters", []):
+            quarter_label = existing_quarter.get("quarter")
+            if quarter_label in quarter_buckets:
+                quarter_buckets[quarter_label]["commit_count"] = existing_quarter.get("commit_count", 0)
+
+        for row in new_history_rows:
+            try:
+                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00")).replace(tzinfo=None)
+            except ValueError:
+                continue
+
+            for start_date, end_date in quarter_dates:
+                quarter_label = self._quarter_label(end_date)
+                if start_date <= authored_dt <= end_date:
+                    quarter_buckets[quarter_label]["commit_count"] += 1
+                    break
+
+            identity = row["identity"]
+            profile = self.user_profile_cache.get(identity)
+            if not profile:
+                profile = {
+                    "name": row["author_name"] or None,
+                    "company": "Unknown",
+                    "location": None,
+                    "email": row["email"] or (identity if "@" in identity else None),
+                    "profile_url": None
+                }
+
+            committer_key = profile["email"] or row["email"] or identity
+            if committer_key not in existing_committers:
+                existing_committers[committer_key] = {
+                    "login": identity if "@" not in identity else (row["author_name"] or identity.split("@")[0]),
+                    "name": profile["name"] or row["author_name"] or None,
+                    "company": profile["company"],
+                    "location": profile["location"],
+                    "email": profile["email"] or row["email"] or None,
+                    "profile_url": profile["profile_url"],
+                    "commit_count": 0
+                }
+
+            existing_committers[committer_key]["commit_count"] += 1
+
+        merged_committers = sorted(
+            existing_committers.values(),
+            key=lambda item: item.get("commit_count", 0),
+            reverse=True
+        )
+
+        return {
+            "total_commits": sum(bucket["commit_count"] for bucket in quarter_buckets.values()),
+            "quarters": list(quarter_buckets.values()),
+            "committers": merged_committers,
+            "extracted_at": datetime.now().isoformat()
+        }
     
     def extract_project_metadata(self, owner: str, repo: str) -> Dict[str, Any]:
         """Extract basic project metadata"""
@@ -379,21 +503,11 @@ class GitHubDataExtractor:
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
             project_state = self._load_project_state(project_name)
+            existing_data = self._load_json_file(self._project_dir(project_name) / "contributors.json", {})
             known_logins = set(project_state.get("contributors", {}).get("known_logins", []))
 
-            contributors_data = {
-                "total_contributors": 0,
-                "contributors": [],
-                "companies": {},
-                "total_companies": 0,
-                "retention_by_quarter": [],
-                "company_diversity": {},
-                "extracted_at": datetime.now().isoformat()
-            }
-            
             contributors = repository.get_contributors()
-            contributor_list = []
-            company_count = defaultdict(int)
+            new_or_updated_contributors = []
             current_logins = set()
             
             for contributor in tqdm(contributors, desc="Processing contributors"):
@@ -415,32 +529,18 @@ class GitHubDataExtractor:
                         "profile_url": profile["profile_url"]
                     }
                     
-                    contributor_list.append(contributor_info)
-                    company_count[profile["company"]] += 1
+                    new_or_updated_contributors.append(contributor_info)
                     
                 except GithubException as e:
                     print(f"⚠️  Error processing contributor {contributor.login}: {e}")
                     continue
 
-            retention_by_quarter = self._extract_retention_from_git_history(owner, repo, months=max(quarters * 3, 6))
-
-            total_contributors = len(contributor_list)
-            known_company_total = sum(count for company, count in company_count.items() if company != "Unknown")
-            company_diversity = {
-                "known_company_contributors": known_company_total,
-                "unknown_company_contributors": company_count.get("Unknown", 0),
-                "top_companies": [
-                    {"company": company, "contributor_count": count}
-                    for company, count in sorted(company_count.items(), key=lambda item: item[1], reverse=True)[:10]
-                ]
-            }
-            
-            contributors_data["total_contributors"] = total_contributors
-            contributors_data["contributors"] = sorted(contributor_list, key=lambda item: item["contributions"], reverse=True)
-            contributors_data["companies"] = dict(sorted(company_count.items(), key=lambda item: item[1], reverse=True))
-            contributors_data["total_companies"] = len(company_count)
-            contributors_data["retention_by_quarter"] = retention_by_quarter
-            contributors_data["company_diversity"] = company_diversity
+            contributors_data = self._merge_contributor_data(existing_data, new_or_updated_contributors)
+            contributors_data["retention_by_quarter"] = self._extract_retention_from_git_history(
+                owner,
+                repo,
+                months=max(quarters * 3, 6)
+            )
 
             project_state["contributors"] = {
                 "known_logins": sorted(current_logins),
@@ -461,35 +561,42 @@ class GitHubDataExtractor:
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
             project_state = self._load_project_state(project_name)
+            existing_data = self._load_json_file(self._project_dir(project_name) / "commits.json", {})
+            last_git_sync_at = project_state.get("commits", {}).get("last_git_sync_at")
             quarter_dates = self._get_quarter_dates(quarters)
-            
-            commits_data = {
-                "total_commits": 0,
-                "quarters": [],
-                "committers": [],
-                "extracted_at": datetime.now().isoformat()
-            }
-            
+
+            new_history_rows = self._read_git_history_rows(owner, repo, since=last_git_sync_at)
+            if not existing_data or not last_git_sync_at:
+                new_history_rows = self._read_git_history_rows(owner, repo)
+
+            commits_data = self._merge_commit_data(
+                existing_data,
+                new_history_rows,
+                owner,
+                repo,
+                quarters
+            )
+
+            refreshed_quarters = []
+            total_commits = 0
             for start_date, end_date in tqdm(quarter_dates, desc="Processing quarters"):
                 try:
                     commits = repository.get_commits(since=start_date, until=end_date)
                     commit_count = commits.totalCount
-                    
-                    quarter_info = {
+                    refreshed_quarters.append({
                         "start_date": start_date.isoformat(),
                         "end_date": end_date.isoformat(),
                         "commit_count": commit_count,
                         "quarter": self._quarter_label(end_date)
-                    }
-                    
-                    commits_data["quarters"].append(quarter_info)
-                    commits_data["total_commits"] += commit_count
-                    
+                    })
+                    total_commits += commit_count
                 except (GithubException, IndexError) as e:
                     print(f"⚠️  Error processing quarter: {e}")
                     continue
 
-            commits_data["committers"] = self._extract_committers_from_git_history(owner, repo, quarters)
+            commits_data["quarters"] = refreshed_quarters
+            commits_data["total_commits"] = total_commits
+            commits_data["extracted_at"] = datetime.now().isoformat()
 
             project_state["commits"] = {
                 "last_git_sync_at": datetime.now().isoformat()
