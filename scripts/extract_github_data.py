@@ -122,8 +122,8 @@ class GitHubDataExtractor:
         """Return month label for a datetime"""
         return dt.strftime("%Y-%m")
 
-    def _extract_retention_from_git_history(self, owner: str, repo: str, months: int = 6) -> List[Dict[str, Any]]:
-        """Compute contributor retention cohorts from local git history"""
+    def _read_git_history_rows(self, owner: str, repo: str) -> List[Dict[str, str]]:
+        """Read local git history rows for analytics"""
         repo_path = self._ensure_local_repo(owner, repo)
         if not repo_path:
             return []
@@ -140,12 +140,10 @@ class GitHubDataExtractor:
                 text=True
             )
         except (subprocess.CalledProcessError, FileNotFoundError) as e:
-            print(f"⚠️  Unable to read git history for retention on {owner}/{repo}: {e}")
+            print(f"⚠️  Unable to read git history for {owner}/{repo}: {e}")
             return []
 
-        contributor_months: Dict[str, Set[str]] = defaultdict(set)
-        contributor_first_seen: Dict[str, str] = {}
-
+        rows = []
         for line in result.stdout.splitlines():
             parts = line.split("|", 2)
             if len(parts) != 3:
@@ -161,7 +159,26 @@ class GitHubDataExtractor:
             except ValueError:
                 continue
 
-            month = self._month_label(authored_dt)
+            rows.append({
+                "identity": identity,
+                "authored_at": authored_at,
+                "month": self._month_label(authored_dt)
+            })
+
+        return rows
+
+    def _extract_retention_from_git_history(self, owner: str, repo: str, months: int = 6) -> List[Dict[str, Any]]:
+        """Compute contributor retention cohorts from local git history"""
+        history_rows = self._read_git_history_rows(owner, repo)
+        if not history_rows:
+            return []
+
+        contributor_months: Dict[str, Set[str]] = defaultdict(set)
+        contributor_first_seen: Dict[str, str] = {}
+
+        for row in history_rows:
+            identity = row["identity"]
+            month = row["month"]
             contributor_months[identity].add(month)
 
             if identity not in contributor_first_seen or month < contributor_first_seen[identity]:
@@ -197,6 +214,55 @@ class GitHubDataExtractor:
             })
 
         return retention_rows
+
+    def _extract_committers_from_git_history(self, owner: str, repo: str, quarters: int = 4) -> List[Dict[str, Any]]:
+        """Compute committers from local git history to avoid API-order bias"""
+        history_rows = self._read_git_history_rows(owner, repo)
+        if not history_rows:
+            return []
+
+        quarter_dates = self._get_quarter_dates(quarters)
+        quarter_ranges = [
+            (start_date, end_date, self._quarter_label(end_date))
+            for start_date, end_date in quarter_dates
+        ]
+
+        committer_counts: Dict[str, int] = defaultdict(int)
+
+        for row in history_rows:
+            try:
+                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00"))
+            except ValueError:
+                continue
+
+            for start_date, end_date, _quarter_label in quarter_ranges:
+                if start_date <= authored_dt.replace(tzinfo=None) <= end_date:
+                    committer_counts[row["identity"]] += 1
+                    break
+
+        committers = []
+        for identity, commit_count in sorted(committer_counts.items(), key=lambda item: item[1], reverse=True):
+            profile = self.user_profile_cache.get(identity)
+            if not profile:
+                profile = {
+                    "name": None,
+                    "company": "Unknown",
+                    "location": None,
+                    "email": identity if "@" in identity else None,
+                    "profile_url": None
+                }
+
+            committers.append({
+                "login": identity if "@" not in identity else identity.split("@")[0],
+                "name": profile["name"],
+                "company": profile["company"],
+                "location": profile["location"],
+                "email": profile["email"],
+                "profile_url": profile["profile_url"],
+                "commit_count": commit_count
+            })
+
+        return committers
     
     def extract_project_metadata(self, owner: str, repo: str) -> Dict[str, Any]:
         """Extract basic project metadata"""
@@ -310,8 +376,6 @@ class GitHubDataExtractor:
                 "committers": [],
                 "extracted_at": datetime.now().isoformat()
             }
-
-            committer_stats: Dict[str, Dict[str, Any]] = {}
             
             for start_date, end_date in tqdm(quarter_dates, desc="Processing quarters"):
                 try:
@@ -327,41 +391,12 @@ class GitHubDataExtractor:
                     
                     commits_data["quarters"].append(quarter_info)
                     commits_data["total_commits"] += commit_count
-
-                    processed = 0
-                    for commit in commits:
-                        if processed >= 200:
-                            break
-
-                        author = commit.author
-                        if not author:
-                            continue
-
-                        login = author.login
-                        if login not in committer_stats:
-                            profile = self._get_user_profile(login)
-                            committer_stats[login] = {
-                                "login": login,
-                                "name": profile["name"],
-                                "company": profile["company"],
-                                "location": profile["location"],
-                                "email": profile["email"],
-                                "profile_url": profile["profile_url"],
-                                "commit_count": 0
-                            }
-
-                        committer_stats[login]["commit_count"] += 1
-                        processed += 1
                     
                 except (GithubException, IndexError) as e:
                     print(f"⚠️  Error processing quarter: {e}")
                     continue
 
-            commits_data["committers"] = sorted(
-                committer_stats.values(),
-                key=lambda item: item["commit_count"],
-                reverse=True
-            )
+            commits_data["committers"] = self._extract_committers_from_git_history(owner, repo, quarters)
             
             return commits_data
             
