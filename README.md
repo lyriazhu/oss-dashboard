@@ -127,9 +127,9 @@ All AI prompts and techniques are documented for replicability.
 1. ✅ Set up project structure
 2. ✅ Create data extraction scripts
 3. ✅ Build Spring Boot backend API
-4. ⏳ Create React dashboard frontend
-5. ⏳ Set up GitHub Actions automation
-6. ⏳ Add AI-powered project onboarding
+4. ✅ Add dynamic project addition via API
+5. ⏳ Create React dashboard frontend
+6. ⏳ Set up GitHub Actions automation
 
 ## 🔌 Backend API
 
@@ -152,6 +152,29 @@ Typical local workflow:
 2. Run `python3 extract_github_data.py`
 3. Start the backend with `mvn spring-boot:run`
 4. Query endpoints under `http://localhost:8080/api/projects`
+
+### 🆕 Adding New Projects Dynamically
+
+You can now add new projects via the REST API without manually editing configuration files!
+
+**Add a project:**
+```bash
+curl -X POST http://localhost:8080/api/projects \
+  -H "Content-Type: application/json" \
+  -d '{
+    "github_url": "https://github.com/owner/repository",
+    "foundation": "CNCF",
+    "website": "https://example.com"
+  }'
+```
+
+The system will:
+- Parse the GitHub URL
+- Add the project to `data/projects.json`
+- Automatically trigger data extraction
+- Create a new dashboard page
+
+See [ADD_PROJECT_API.md](ADD_PROJECT_API.md) for complete API documentation.
 
 ## 🆘 Troubleshooting
 

@@ -122,6 +122,70 @@ public class ProjectController {
         } catch (IOException e) {
             log.error("Error fetching contributors for project: {}", projectId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+    /**
+     * POST /api/projects
+     * Add a new project and trigger data extraction
+     */
+    @PostMapping
+    public ResponseEntity<AddProjectResponse> addProject(@RequestBody AddProjectRequest request) {
+        try {
+            log.info("Adding new project from GitHub URL: {}", request.getGithubUrl());
+            
+            // Validate GitHub URL
+            String[] parts = dataService.parseGithubUrl(request.getGithubUrl());
+            if (parts == null) {
+                AddProjectResponse response = new AddProjectResponse(
+                    false,
+                    "Invalid GitHub URL format. Expected: https://github.com/owner/repo",
+                    null,
+                    null
+                );
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            // Add project to projects.json
+            Project newProject = dataService.addProject(request);
+            
+            // Trigger data extraction asynchronously
+            String extractionStatus;
+            try {
+                dataService.triggerDataExtraction(newProject.getId());
+                extractionStatus = "Data extraction started. This may take several minutes.";
+            } catch (Exception e) {
+                log.warn("Failed to trigger data extraction: {}", e.getMessage());
+                extractionStatus = "Project added but data extraction failed to start. Run manually: cd scripts && python3 extract_github_data.py";
+            }
+
+            AddProjectResponse response = new AddProjectResponse(
+                true,
+                "Project added successfully",
+                newProject,
+                extractionStatus
+            );
+            
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+            
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid request: {}", e.getMessage());
+            AddProjectResponse response = new AddProjectResponse(
+                false,
+                e.getMessage(),
+                null,
+                null
+            );
+            return ResponseEntity.badRequest().body(response);
+        } catch (IOException e) {
+            log.error("Error adding project", e);
+            AddProjectResponse response = new AddProjectResponse(
+                false,
+                "Internal server error: " + e.getMessage(),
+                null,
+                null
+            );
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
         }
     }
 }

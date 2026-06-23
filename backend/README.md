@@ -45,6 +45,12 @@ java -jar target/oss-dashboard-backend-1.0.0.jar
 - **GET** `/api/projects` - Get all projects
   - Returns: Array of project objects with basic info
   
+- **POST** `/api/projects` - Add a new project 🆕
+  - Request body: `{ "github_url": "https://github.com/owner/repo", "foundation": "Optional", "website": "Optional" }`
+  - Returns: Project object with extraction status
+  - Automatically triggers data extraction
+  - See [ADD_PROJECT_API.md](../ADD_PROJECT_API.md) for details
+  
 - **GET** `/api/projects/{projectId}` - Get a specific project
   - Returns: Single project object
   - Example: `/api/projects/strimzi`
@@ -71,6 +77,17 @@ java -jar target/oss-dashboard-backend-1.0.0.jar
 ### Get All Projects
 ```bash
 curl http://localhost:8080/api/projects
+```
+
+### Add a New Project 🆕
+```bash
+curl -X POST http://localhost:8080/api/projects \
+  -H "Content-Type: application/json" \
+  -d '{
+    "github_url": "https://github.com/kubernetes/kubernetes",
+    "foundation": "CNCF",
+    "website": "https://kubernetes.io"
+  }'
 ```
 
 ### Get Strimzi Metrics
