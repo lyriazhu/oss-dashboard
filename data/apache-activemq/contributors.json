@@ -1,5 +1,5 @@
 {
-  "total_contributors": 163,
+  "total_contributors": 393,
   "contributors": [
     {
       "login": "gtully",
@@ -70,7 +70,7 @@
       "company": "Unknown",
       "location": "Maryland",
       "email": null,
-      "contributions": 606,
+      "contributions": 607,
       "profile_url": "https://github.com/cshannon"
     },
     {
@@ -88,7 +88,7 @@
       "company": "Hyte Technologies, Inc",
       "location": "Austin",
       "email": null,
-      "contributions": 255,
+      "contributions": 256,
       "profile_url": "https://github.com/mattrpav"
     },
     {
@@ -97,7 +97,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 112,
+      "contributions": 113,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -1679,7 +1679,123 @@
   },
   "time_scope": {
     "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
+    "total_contributors": "all_time_from_git_history",
+    "retention_by_quarter": "last_12_months_from_git_history",
+    "years": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T16:38:27.887628"
+  "extracted_at": "2026-06-23T23:37:31.614681",
+  "years": [
+    {
+      "year": 2005,
+      "contributor_count": 7,
+      "is_current": false
+    },
+    {
+      "year": 2006,
+      "contributor_count": 17,
+      "is_current": false
+    },
+    {
+      "year": 2007,
+      "contributor_count": 12,
+      "is_current": false
+    },
+    {
+      "year": 2008,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2009,
+      "contributor_count": 13,
+      "is_current": false
+    },
+    {
+      "year": 2010,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2011,
+      "contributor_count": 13,
+      "is_current": false
+    },
+    {
+      "year": 2012,
+      "contributor_count": 12,
+      "is_current": false
+    },
+    {
+      "year": 2013,
+      "contributor_count": 26,
+      "is_current": false
+    },
+    {
+      "year": 2014,
+      "contributor_count": 49,
+      "is_current": false
+    },
+    {
+      "year": 2015,
+      "contributor_count": 71,
+      "is_current": false
+    },
+    {
+      "year": 2016,
+      "contributor_count": 49,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 73,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 40,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 42,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 30,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 29,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 28,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 30,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 39,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 41,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 35,
+      "is_current": true
+    }
+  ],
+  "total_contributors_git": 393,
+  "total_contributors_github_api": 163
 }

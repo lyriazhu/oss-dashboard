@@ -225,6 +225,67 @@ class GitHubDataExtractor:
 
         return rows
 
+    def _extract_yearly_commits_from_git_history(self, owner: str, repo: str) -> List[Dict[str, Any]]:
+        """Compute yearly commit counts from local git history"""
+        history_rows = self._read_git_history_rows(owner, repo)
+        if not history_rows:
+            return []
+
+        yearly_commits: Dict[int, int] = defaultdict(int)
+        
+        for row in history_rows:
+            try:
+                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00"))
+                year = authored_dt.year
+                yearly_commits[year] += 1
+            except ValueError:
+                continue
+
+        # Sort by year and create list
+        years = sorted(yearly_commits.keys())
+        current_year = datetime.now().year
+        
+        yearly_data = []
+        for year in years:
+            yearly_data.append({
+                "year": year,
+                "commit_count": yearly_commits[year],
+                "is_current": year == current_year
+            })
+        
+        return yearly_data
+
+    def _extract_yearly_contributors_from_git_history(self, owner: str, repo: str) -> List[Dict[str, Any]]:
+        """Compute yearly unique contributor counts from local git history"""
+        history_rows = self._read_git_history_rows(owner, repo)
+        if not history_rows:
+            return []
+
+        yearly_contributors: Dict[int, Set[str]] = defaultdict(set)
+        
+        for row in history_rows:
+            try:
+                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00"))
+                year = authored_dt.year
+                identity = row["identity"]
+                yearly_contributors[year].add(identity)
+            except ValueError:
+                continue
+
+        # Sort by year and create list
+        years = sorted(yearly_contributors.keys())
+        current_year = datetime.now().year
+        
+        yearly_data = []
+        for year in years:
+            yearly_data.append({
+                "year": year,
+                "contributor_count": len(yearly_contributors[year]),
+                "is_current": year == current_year
+            })
+        
+        return yearly_data
+
     def _extract_retention_from_git_history(self, owner: str, repo: str, months: int = 6) -> List[Dict[str, Any]]:
         """Compute contributor retention cohorts from local git history"""
         history_rows = self._read_git_history_rows(owner, repo)
@@ -274,34 +335,15 @@ class GitHubDataExtractor:
         return retention_rows
 
     def _extract_committers_from_git_history(self, owner: str, repo: str, quarters: int = 4) -> List[Dict[str, Any]]:
-        """Compute exact aggregated committers from local git history"""
+        """Compute exact aggregated committers from local git history (all-time)"""
         history_rows = self._read_git_history_rows(owner, repo)
         if not history_rows:
             return []
 
-        quarter_dates = self._get_quarter_dates(quarters)
-        quarter_ranges = [
-            (start_date, end_date, self._quarter_label(end_date))
-            for start_date, end_date in quarter_dates
-        ]
-
         committer_counts: Dict[str, Dict[str, Any]] = {}
 
+        # Process all commits (all-time)
         for row in history_rows:
-            try:
-                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00")).replace(tzinfo=None)
-            except ValueError:
-                continue
-
-            in_window = False
-            for start_date, end_date, _quarter_label in quarter_ranges:
-                if start_date <= authored_dt <= end_date:
-                    in_window = True
-                    break
-
-            if not in_window:
-                continue
-
             identity = row["identity"]
             if identity not in committer_counts:
                 committer_counts[identity] = {
@@ -396,7 +438,7 @@ class GitHubDataExtractor:
         repo: str,
         quarters: int = 4
     ) -> Dict[str, Any]:
-        """Merge new git-history commits into aggregated commit data"""
+        """Merge new git-history commits into aggregated commit data (all-time for committers)"""
         existing_committers = {
             (committer.get("email") or committer.get("login")): dict(committer)
             for committer in existing_data.get("committers", [])
@@ -418,18 +460,21 @@ class GitHubDataExtractor:
             if quarter_label in quarter_buckets:
                 quarter_buckets[quarter_label]["commit_count"] = existing_quarter.get("commit_count", 0)
 
+        # Process all commits for committers (all-time)
         for row in new_history_rows:
             try:
                 authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00")).replace(tzinfo=None)
             except ValueError:
                 continue
 
+            # Update quarter buckets (still quarterly for visualization)
             for start_date, end_date in quarter_dates:
                 quarter_label = self._quarter_label(end_date)
                 if start_date <= authored_dt <= end_date:
                     quarter_buckets[quarter_label]["commit_count"] += 1
                     break
 
+            # Update committers (all-time)
             identity = row["identity"]
             profile = self.user_profile_cache.get(identity)
             if not profile:
@@ -468,7 +513,7 @@ class GitHubDataExtractor:
             "time_scope": {
                 "total_commits": f"last_{quarters}_quarters",
                 "quarters": f"last_{quarters}_quarters",
-                "committers": f"last_{quarters}_quarters_from_git_history"
+                "committers": "all_time_from_git_history"
             },
             "extracted_at": datetime.now().isoformat()
         }
@@ -506,7 +551,7 @@ class GitHubDataExtractor:
             return {}
     
     def extract_contributors(self, owner: str, repo: str, project_name: str, quarters: int = 4) -> Dict[str, Any]:
-        """Extract complete contributor information with incremental profile enrichment"""
+        """Extract complete contributor information with incremental profile enrichment and git-based counting"""
         print(f"👥 Extracting contributors for {owner}/{repo}...")
         
         try:
@@ -515,11 +560,12 @@ class GitHubDataExtractor:
             existing_data = self._load_json_file(self._project_dir(project_name) / "contributors.json", {})
             known_logins = set(project_state.get("contributors", {}).get("known_logins", []))
 
+            # Get contributors from GitHub API (limited by pagination)
             contributors = repository.get_contributors()
             new_or_updated_contributors = []
             current_logins = set()
             
-            for contributor in tqdm(contributors, desc="Processing contributors"):
+            for contributor in tqdm(contributors, desc="Processing GitHub contributors"):
                 try:
                     current_logins.add(contributor.login)
 
@@ -551,9 +597,35 @@ class GitHubDataExtractor:
                 repo,
                 months=retention_months
             )
+            
+            # Add yearly contributor aggregations
+            yearly_contributors = self._extract_yearly_contributors_from_git_history(owner, repo)
+            contributors_data["years"] = yearly_contributors
+            
+            # Get accurate all-time contributor count from git history
+            print(f"  ℹ️  Counting all-time contributors from git history...")
+            history_rows = self._read_git_history_rows(owner, repo)
+            all_time_contributors = set()
+            for row in history_rows:
+                all_time_contributors.add(row["identity"])
+            
+            # Update total with accurate git-based count
+            git_contributor_count = len(all_time_contributors)
+            github_api_count = len(contributors_data.get("contributors", []))
+            
+            print(f"  ✓ GitHub API contributors: {github_api_count}")
+            print(f"  ✓ Git history contributors: {git_contributor_count}")
+            
+            # Use the higher count (git history is more accurate for all-time)
+            contributors_data["total_contributors"] = max(git_contributor_count, github_api_count)
+            contributors_data["total_contributors_git"] = git_contributor_count
+            contributors_data["total_contributors_github_api"] = github_api_count
+            
             contributors_data["time_scope"] = {
                 "contributors": "all_time_github_contributors",
-                "retention_by_quarter": f"last_{retention_months}_months_from_git_history"
+                "total_contributors": "all_time_from_git_history",
+                "retention_by_quarter": f"last_{retention_months}_months_from_git_history",
+                "years": "all_time_from_git_history"
             }
 
             project_state["contributors"] = {
@@ -569,7 +641,7 @@ class GitHubDataExtractor:
             return {}
     
     def extract_commits(self, owner: str, repo: str, project_name: str, quarters: int = 4) -> Dict[str, Any]:
-        """Extract exact aggregated commit activity and committer details"""
+        """Extract exact aggregated commit activity and committer details (all-time for committers)"""
         print(f"📝 Extracting commits for {owner}/{repo}...")
         
         try:
@@ -579,8 +651,13 @@ class GitHubDataExtractor:
             last_git_sync_at = project_state.get("commits", {}).get("last_git_sync_at")
             quarter_dates = self._get_quarter_dates(quarters)
 
-            new_history_rows = self._read_git_history_rows(owner, repo, since=last_git_sync_at)
-            if not existing_data or not last_git_sync_at:
+            # For incremental updates, only fetch new commits since last sync
+            # For initial run or if no previous data, fetch all history
+            if existing_data and last_git_sync_at:
+                print(f"  ℹ️  Incremental update: fetching commits since {last_git_sync_at}")
+                new_history_rows = self._read_git_history_rows(owner, repo, since=last_git_sync_at)
+            else:
+                print(f"  ℹ️  Initial extraction: fetching all-time commit history")
                 new_history_rows = self._read_git_history_rows(owner, repo)
 
             commits_data = self._merge_commit_data(
@@ -608,12 +685,17 @@ class GitHubDataExtractor:
                     print(f"⚠️  Error processing quarter: {e}")
                     continue
 
+            # Add yearly commit aggregations
+            yearly_commits = self._extract_yearly_commits_from_git_history(owner, repo)
+            
             commits_data["quarters"] = refreshed_quarters
+            commits_data["years"] = yearly_commits
             commits_data["total_commits"] = total_commits
             commits_data["time_scope"] = {
                 "total_commits": f"last_{quarters}_quarters",
                 "quarters": f"last_{quarters}_quarters",
-                "committers": f"last_{quarters}_quarters_from_git_history"
+                "years": "all_time_from_git_history",
+                "committers": "all_time_from_git_history"
             }
             commits_data["extracted_at"] = datetime.now().isoformat()
 

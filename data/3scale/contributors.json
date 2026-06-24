@@ -1,5 +1,5 @@
 {
-  "total_contributors": 41,
+  "total_contributors": 64,
   "contributors": [
     {
       "login": "eguzki",
@@ -537,7 +537,58 @@
   },
   "time_scope": {
     "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
+    "total_contributors": "all_time_from_git_history",
+    "retention_by_quarter": "last_12_months_from_git_history",
+    "years": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T16:39:26.871248"
+  "extracted_at": "2026-06-23T23:38:40.765296",
+  "years": [
+    {
+      "year": 2018,
+      "contributor_count": 5,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 14,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 21,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 10,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 15,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 18,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 10,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 10,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 7,
+      "is_current": true
+    }
+  ],
+  "total_contributors_git": 64,
+  "total_contributors_github_api": 41
 }

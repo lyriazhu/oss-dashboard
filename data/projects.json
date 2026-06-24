@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "id": "strimzi",
+      "id": "strimzi-kafka-operator",
       "name": "Strimzi",
       "github_url": "https://github.com/strimzi/strimzi-kafka-operator",
       "owner": "strimzi",
@@ -41,7 +41,7 @@
       "enabled": true
     },
     {
-      "id": "apicurio",
+      "id": "apicurio-studio",
       "name": "Apicurio",
       "github_url": "https://github.com/Apicurio/apicurio-studio",
       "owner": "Apicurio",
@@ -51,7 +51,7 @@
       "enabled": true
     },
     {
-      "id": "3scale",
+      "id": "3scale-operator",
       "name": "3scale",
       "github_url": "https://github.com/3scale/3scale-operator",
       "owner": "3scale",
@@ -61,6 +61,5 @@
       "enabled": true
     }
   ],
-  "last_updated": "2026-06-23T20:37:35.468765Z",
-  "version": "1.0.0"
+  "last_updated": "2026-06-24T03:35:00.000Z"
 }

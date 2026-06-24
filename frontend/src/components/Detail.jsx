@@ -60,7 +60,7 @@ export default function Detail({ d, onOverview }) {
             />
           )}
           <p className="chart-cap">
-            Darker bar = current period · {showQuarterly ? `Last ${d.quarters.length} quarters` : 'Total commits per year'}
+            Darker bar = current period · {showQuarterly ? `Last ${d.quarters.length} quarters (committers all-time)` : 'Total commits per year (committers all-time)'}
           </p>
         </div>
         <div>

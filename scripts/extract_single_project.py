@@ -23,7 +23,7 @@ def main():
     extractor = GitHubDataExtractor(str(config_path))
     
     # Read projects from projects.json
-    projects_file = Path(__file__).parent.parent / "projectdata" / "projects.json"
+    projects_file = Path(__file__).parent.parent / "data" / "projects.json"
     if not projects_file.exists():
         print(f"❌ Projects file not found: {projects_file}")
         sys.exit(1)

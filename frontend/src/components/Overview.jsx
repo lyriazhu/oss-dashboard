@@ -180,7 +180,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       </div>
 
       <div className="section">
-        <h2 className="section-h">Commit activity — past 4 quarters (all communities)</h2>
+        <h2 className="section-h">Commit activity — past 4 quarters (all communities, committers all-time)</h2>
         <div className="mini-grid">
           {order.map((key) => {
             const d = data[key];

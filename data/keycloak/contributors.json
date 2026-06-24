@@ -1,5 +1,5 @@
 {
-  "total_contributors": 316,
+  "total_contributors": 3272,
   "contributors": [
     {
       "login": "stianst",
@@ -38,6 +38,15 @@
       "profile_url": "https://github.com/mposolda"
     },
     {
+      "login": "pedroigor",
+      "name": "Pedro Igor",
+      "company": "Ibm",
+      "location": "Brasilia, Brazil",
+      "email": null,
+      "contributions": 1510,
+      "profile_url": "https://github.com/pedroigor"
+    },
+    {
       "login": "edewit",
       "name": "Erik Jan de Wit",
       "company": "Ibm",
@@ -45,15 +54,6 @@
       "email": null,
       "contributions": 1509,
       "profile_url": "https://github.com/edewit"
-    },
-    {
-      "login": "pedroigor",
-      "name": "Pedro Igor",
-      "company": "Ibm",
-      "location": "Brasilia, Brazil",
-      "email": null,
-      "contributions": 1507,
-      "profile_url": "https://github.com/pedroigor"
     },
     {
       "login": "jonkoops",
@@ -70,7 +70,7 @@
       "company": "Ibm",
       "location": "Frankfurt/Main (Germany)",
       "email": "alexander.schwartz@gmx.net",
-      "contributions": 757,
+      "contributions": 758,
       "profile_url": "https://github.com/ahus1"
     },
     {
@@ -3048,17 +3048,17 @@
       "quarter": "2026-05",
       "start_date": "2026-05",
       "end_date": "2026-05",
-      "active_contributors": 164,
-      "new_contributors": 66,
-      "returning_contributors": 26,
-      "retention_rate": 39.39
+      "active_contributors": 163,
+      "new_contributors": 65,
+      "returning_contributors": 25,
+      "retention_rate": 38.46
     },
     {
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 273,
-      "new_contributors": 99,
+      "active_contributors": 276,
+      "new_contributors": 103,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }
@@ -3111,7 +3111,83 @@
   },
   "time_scope": {
     "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
+    "total_contributors": "all_time_from_git_history",
+    "retention_by_quarter": "last_12_months_from_git_history",
+    "years": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T16:38:49.656388"
+  "extracted_at": "2026-06-23T23:37:54.942131",
+  "years": [
+    {
+      "year": 2013,
+      "contributor_count": 14,
+      "is_current": false
+    },
+    {
+      "year": 2014,
+      "contributor_count": 41,
+      "is_current": false
+    },
+    {
+      "year": 2015,
+      "contributor_count": 110,
+      "is_current": false
+    },
+    {
+      "year": 2016,
+      "contributor_count": 160,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 267,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 306,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 269,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 325,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 373,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 426,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 535,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 559,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 520,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 558,
+      "is_current": true
+    }
+  ],
+  "total_contributors_git": 3272,
+  "total_contributors_github_api": 316
 }

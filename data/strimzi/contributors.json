@@ -1,5 +1,5 @@
 {
-  "total_contributors": 311,
+  "total_contributors": 631,
   "contributors": [
     {
       "login": "scholzj",
@@ -3065,7 +3065,68 @@
   },
   "time_scope": {
     "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
+    "total_contributors": "all_time_from_git_history",
+    "retention_by_quarter": "last_12_months_from_git_history",
+    "years": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T16:37:43.844042"
+  "extracted_at": "2026-06-23T23:36:31.902372",
+  "years": [
+    {
+      "year": 2016,
+      "contributor_count": 1,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 36,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 76,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 110,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 121,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 111,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 113,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 118,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 112,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 83,
+      "is_current": true
+    }
+  ],
+  "total_contributors_git": 631,
+  "total_contributors_github_api": 311
 }

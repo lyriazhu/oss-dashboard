@@ -1,5 +1,5 @@
 {
-  "total_contributors": 9,
+  "total_contributors": 100,
   "contributors": [
     {
       "login": "EricWittmann",
@@ -219,7 +219,63 @@
   },
   "time_scope": {
     "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
+    "total_contributors": "all_time_from_git_history",
+    "retention_by_quarter": "last_12_months_from_git_history",
+    "years": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T16:39:10.086482"
+  "extracted_at": "2026-06-23T23:38:23.188050",
+  "years": [
+    {
+      "year": 2016,
+      "contributor_count": 3,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 6,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 15,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 20,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 27,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 27,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 19,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 19,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 5,
+      "is_current": false
+    }
+  ],
+  "total_contributors_git": 100,
+  "total_contributors_github_api": 9
 }
