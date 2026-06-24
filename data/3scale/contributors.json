@@ -1,5 +1,53 @@
 {
+  "yearly_contributors": [
+    {
+      "year": 2018,
+      "contributor_count": 5,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 14,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 21,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 10,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 15,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 18,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 10,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 10,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 7,
+      "is_current": true
+    }
+  ],
   "total_contributors": 64,
+  "total_contributors_git": 64,
   "contributors": [
     {
       "login": "eguzki",
@@ -371,18 +419,7 @@
       "profile_url": "https://github.com/briangallagher"
     }
   ],
-  "companies": {
-    "Red Hat": 17,
-    "Unknown": 16,
-    "Redhatofficial": 2,
-    "Ibm": 1,
-    "Datadog": 1,
-    "Propitech": 1,
-    "Webtypes": 1,
-    "Par-Tec": 1,
-    "Columbia University": 1
-  },
-  "total_companies": 9,
+  "total_contributors_github_api": 41,
   "retention_by_quarter": [
     {
       "quarter": "2025-07",
@@ -493,102 +530,10 @@
       "retention_rate": 0.0
     }
   ],
-  "company_diversity": {
-    "known_company_contributors": 25,
-    "unknown_company_contributors": 16,
-    "top_companies": [
-      {
-        "company": "Red Hat",
-        "contributor_count": 17
-      },
-      {
-        "company": "Unknown",
-        "contributor_count": 16
-      },
-      {
-        "company": "Redhatofficial",
-        "contributor_count": 2
-      },
-      {
-        "company": "Ibm",
-        "contributor_count": 1
-      },
-      {
-        "company": "Datadog",
-        "contributor_count": 1
-      },
-      {
-        "company": "Propitech",
-        "contributor_count": 1
-      },
-      {
-        "company": "Webtypes",
-        "contributor_count": 1
-      },
-      {
-        "company": "Par-Tec",
-        "contributor_count": 1
-      },
-      {
-        "company": "Columbia University",
-        "contributor_count": 1
-      }
-    ]
-  },
   "time_scope": {
-    "contributors": "all_time_github_contributors",
+    "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
-    "retention_by_quarter": "last_12_months_from_git_history",
-    "years": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-06-23T23:38:40.765296",
-  "years": [
-    {
-      "year": 2018,
-      "contributor_count": 5,
-      "is_current": false
-    },
-    {
-      "year": 2019,
-      "contributor_count": 14,
-      "is_current": false
-    },
-    {
-      "year": 2020,
-      "contributor_count": 21,
-      "is_current": false
-    },
-    {
-      "year": 2021,
-      "contributor_count": 10,
-      "is_current": false
-    },
-    {
-      "year": 2022,
-      "contributor_count": 15,
-      "is_current": false
-    },
-    {
-      "year": 2023,
-      "contributor_count": 18,
-      "is_current": false
-    },
-    {
-      "year": 2024,
-      "contributor_count": 10,
-      "is_current": false
-    },
-    {
-      "year": 2025,
-      "contributor_count": 10,
-      "is_current": false
-    },
-    {
-      "year": 2026,
-      "contributor_count": 7,
-      "is_current": true
-    }
-  ],
-  "total_contributors_git": 64,
-  "total_contributors_github_api": 41
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_months_from_git_history"
+  }
 }

@@ -590,42 +590,46 @@ class GitHubDataExtractor:
                     print(f"⚠️  Error processing contributor {contributor.login}: {e}")
                     continue
 
-            retention_months = max(quarters * 3, 6)
-            contributors_data = self._merge_contributor_data(existing_data, new_or_updated_contributors)
-            contributors_data["retention_by_quarter"] = self._extract_retention_from_git_history(
-                owner,
-                repo,
-                months=retention_months
-            )
-            
-            # Add yearly contributor aggregations
-            yearly_contributors = self._extract_yearly_contributors_from_git_history(owner, repo)
-            contributors_data["years"] = yearly_contributors
-            
-            # Get accurate all-time contributor count from git history
+            # Get accurate all-time contributor count from git history FIRST
             print(f"  ℹ️  Counting all-time contributors from git history...")
             history_rows = self._read_git_history_rows(owner, repo)
             all_time_contributors = set()
             for row in history_rows:
                 all_time_contributors.add(row["identity"])
             
-            # Update total with accurate git-based count
             git_contributor_count = len(all_time_contributors)
-            github_api_count = len(contributors_data.get("contributors", []))
             
-            print(f"  ✓ GitHub API contributors: {github_api_count}")
+            # Add yearly contributor aggregations at the top
+            yearly_contributors = self._extract_yearly_contributors_from_git_history(owner, repo)
+            
+            # Build contributors_data with yearly_contributors at the top
+            contributors_data = {}
+            contributors_data["yearly_contributors"] = yearly_contributors
+            contributors_data["total_contributors"] = git_contributor_count
+            contributors_data["total_contributors_git"] = git_contributor_count
+            
+            # Merge existing contributor profiles
+            retention_months = max(quarters * 3, 6)
+            merged_data = self._merge_contributor_data(existing_data, new_or_updated_contributors)
+            
+            # Add the rest of the data
+            contributors_data["contributors"] = merged_data.get("contributors", [])
+            contributors_data["total_contributors_github_api"] = len(contributors_data["contributors"])
+            
+            print(f"  ✓ GitHub API contributors: {contributors_data['total_contributors_github_api']}")
             print(f"  ✓ Git history contributors: {git_contributor_count}")
             
-            # Use the higher count (git history is more accurate for all-time)
-            contributors_data["total_contributors"] = max(git_contributor_count, github_api_count)
-            contributors_data["total_contributors_git"] = git_contributor_count
-            contributors_data["total_contributors_github_api"] = github_api_count
+            contributors_data["retention_by_quarter"] = self._extract_retention_from_git_history(
+                owner,
+                repo,
+                months=retention_months
+            )
             
             contributors_data["time_scope"] = {
-                "contributors": "all_time_github_contributors",
+                "yearly_contributors": "all_time_from_git_history",
                 "total_contributors": "all_time_from_git_history",
-                "retention_by_quarter": f"last_{retention_months}_months_from_git_history",
-                "years": "all_time_from_git_history"
+                "contributors": "all_time_github_contributors",
+                "retention_by_quarter": f"last_{retention_months}_months_from_git_history"
             }
 
             project_state["contributors"] = {

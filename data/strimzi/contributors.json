@@ -1,5 +1,63 @@
 {
+  "yearly_contributors": [
+    {
+      "year": 2016,
+      "contributor_count": 1,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 36,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 76,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 110,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 121,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 111,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 113,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 118,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 112,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 83,
+      "is_current": true
+    }
+  ],
   "total_contributors": 631,
+  "total_contributors_git": 631,
   "contributors": [
     {
       "login": "scholzj",
@@ -2801,112 +2859,7 @@
       "profile_url": "https://github.com/kunallimaye"
     }
   ],
-  "companies": {
-    "Unknown": 155,
-    "Red Hat": 29,
-    "Ibm": 23,
-    "Hetznercloud": 2,
-    "Apple": 2,
-    "Axual": 2,
-    "Redhatofficial": 2,
-    "Engineer At Red Hat": 1,
-    "Ibm, Ex-Red Hat": 1,
-    "Redhat": 1,
-    "Softserve": 1,
-    "Proofpoint": 1,
-    "Ericsson Software Technology": 1,
-    "Hopper": 1,
-    "Fermilab": 1,
-    "Elation Health": 1,
-    "Trend Micro": 1,
-    "Sgm": 1,
-    "Cloudera": 1,
-    "Marshmallow": 1,
-    "Placer.Ai": 1,
-    "Red-Hat-Data-Services": 1,
-    "Grafana": 1,
-    "Nuberabe": 1,
-    "Iptch": 1,
-    "Agile Actors": 1,
-    "Https://Antoine-Roux.Tk/Projects": 1,
-    "Littlehorse Enterprises": 1,
-    "Playtomic": 1,
-    "Avaloq": 1,
-    "Picpay": 1,
-    "Independent Contractor": 1,
-    "Firetiger": 1,
-    "Cybozu, Inc.": 1,
-    "Yandex": 1,
-    "One Focus Gmbh": 1,
-    "Openet": 1,
-    "Vadafoss": 1,
-    "Dynatrace-Research": 1,
-    "Ibm Labs": 1,
-    "Shangyuantech": 1,
-    "Giantswarm": 1,
-    "\u00c6nix": 1,
-    "Appsflyer": 1,
-    "Ebanalyse": 1,
-    "Oracle": 1,
-    "Dynatrace": 1,
-    "Greenerpowersolutions": 1,
-    "Surf": 1,
-    "Atruvia": 1,
-    "Starburstdata": 1,
-    "Nvidia": 1,
-    "Giant Swarm": 1,
-    "Getmoss": 1,
-    "Adevinta": 1,
-    "Winterchip Bv": 1,
-    "Akbank": 1,
-    "The Institute Of Computing Technology, Chinese Academy Of Sciences (Ict)": 1,
-    "Ericsson": 1,
-    "Uzum.Com (Ml+Ds, Tech Lead)": 1,
-    "Improving": 1,
-    "Contentsquare": 1,
-    "Replicant": 1,
-    "Dremio": 1,
-    "Patterninc": 1,
-    "Tencent @Tencentcloud": 1,
-    "Offchainlabs": 1,
-    "Iunera Gmbh & Co. Kg": 1,
-    "Red Hat Acm/Globalhub": 1,
-    "Google": 1,
-    "Inngest": 1,
-    "Metaverse": 1,
-    "Allegro": 1,
-    "Zenior As": 1,
-    "Guidewire Software": 1,
-    "Forsta.Com": 1,
-    "Confluent": 1,
-    "Tower-Research": 1,
-    "Y Meadows": 1,
-    "Bcg X": 1,
-    "Confluent Inc.": 1,
-    "Aura - Vera C. Rubin Observatory": 1,
-    "Red Hat, @Metal3-Io, @Systemcraftsman": 1,
-    "Agriterra": 1,
-    "Skillsoft": 1,
-    "Trifork Public": 1,
-    "Triple-Whale": 1,
-    "Linux Foundation": 1,
-    "Naver": 1,
-    "Ibm Research": 1,
-    "Daimler Truck Ag": 1,
-    "Undermountain Coding Company": 1,
-    "Craftsmen": 1,
-    "Intetics Sp. Z O.O.": 1,
-    "New Work And Xing @New-Work @Xing": 1,
-    "Cernops": 1,
-    "Ttmzero": 1,
-    "Partridge Systems": 1,
-    "Udemy": 1,
-    "Invers Gmbh": 1,
-    "Braze-Inc": 1,
-    "Feedzai": 1,
-    "Ollygarden": 1
-  },
-  "total_companies": 103,
+  "total_contributors_github_api": 311,
   "retention_by_quarter": [
     {
       "quarter": "2025-07",
@@ -3017,116 +2970,10 @@
       "retention_rate": 0.0
     }
   ],
-  "company_diversity": {
-    "known_company_contributors": 156,
-    "unknown_company_contributors": 155,
-    "top_companies": [
-      {
-        "company": "Unknown",
-        "contributor_count": 155
-      },
-      {
-        "company": "Red Hat",
-        "contributor_count": 29
-      },
-      {
-        "company": "Ibm",
-        "contributor_count": 23
-      },
-      {
-        "company": "Hetznercloud",
-        "contributor_count": 2
-      },
-      {
-        "company": "Apple",
-        "contributor_count": 2
-      },
-      {
-        "company": "Axual",
-        "contributor_count": 2
-      },
-      {
-        "company": "Redhatofficial",
-        "contributor_count": 2
-      },
-      {
-        "company": "Engineer At Red Hat",
-        "contributor_count": 1
-      },
-      {
-        "company": "Ibm, Ex-Red Hat",
-        "contributor_count": 1
-      },
-      {
-        "company": "Redhat",
-        "contributor_count": 1
-      }
-    ]
-  },
   "time_scope": {
-    "contributors": "all_time_github_contributors",
+    "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
-    "retention_by_quarter": "last_12_months_from_git_history",
-    "years": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-06-23T23:36:31.902372",
-  "years": [
-    {
-      "year": 2016,
-      "contributor_count": 1,
-      "is_current": false
-    },
-    {
-      "year": 2017,
-      "contributor_count": 11,
-      "is_current": false
-    },
-    {
-      "year": 2018,
-      "contributor_count": 36,
-      "is_current": false
-    },
-    {
-      "year": 2019,
-      "contributor_count": 76,
-      "is_current": false
-    },
-    {
-      "year": 2020,
-      "contributor_count": 110,
-      "is_current": false
-    },
-    {
-      "year": 2021,
-      "contributor_count": 121,
-      "is_current": false
-    },
-    {
-      "year": 2022,
-      "contributor_count": 111,
-      "is_current": false
-    },
-    {
-      "year": 2023,
-      "contributor_count": 113,
-      "is_current": false
-    },
-    {
-      "year": 2024,
-      "contributor_count": 118,
-      "is_current": false
-    },
-    {
-      "year": 2025,
-      "contributor_count": 112,
-      "is_current": false
-    },
-    {
-      "year": 2026,
-      "contributor_count": 83,
-      "is_current": true
-    }
-  ],
-  "total_contributors_git": 631,
-  "total_contributors_github_api": 311
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_months_from_git_history"
+  }
 }

@@ -1,27 +1,27 @@
 {
-  "total_commits": 393,
+  "total_commits": 394,
   "quarters": [
     {
-      "start_date": "2026-03-25T23:37:34.400546",
-      "end_date": "2026-06-23T23:37:34.400546",
-      "commit_count": 125,
+      "start_date": "2026-03-26T09:10:33.182010",
+      "end_date": "2026-06-24T09:10:33.182010",
+      "commit_count": 126,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-25T23:37:34.400546",
-      "end_date": "2026-03-25T23:37:34.400546",
+      "start_date": "2025-12-26T09:10:33.182010",
+      "end_date": "2026-03-26T09:10:33.182010",
       "commit_count": 172,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-26T23:37:34.400546",
-      "end_date": "2025-12-25T23:37:34.400546",
+      "start_date": "2025-09-27T09:10:33.182010",
+      "end_date": "2025-12-26T09:10:33.182010",
       "commit_count": 64,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-28T23:37:34.400546",
-      "end_date": "2025-09-26T23:37:34.400546",
+      "start_date": "2025-06-29T09:10:33.182010",
+      "end_date": "2025-09-27T09:10:33.182010",
       "commit_count": 32,
       "quarter": "Q3 2025"
     }
@@ -160,7 +160,7 @@
       "location": null,
       "email": "matt@hyte.io",
       "profile_url": null,
-      "commit_count": 681
+      "commit_count": 682
     },
     {
       "login": "Matt Pavlovich",
@@ -2734,7 +2734,7 @@
       "location": null,
       "email": "49990229+tylermurali@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "Stanley Zhao",
@@ -3580,7 +3580,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T23:37:37.698864",
+  "extracted_at": "2026-06-24T09:10:36.428394",
   "years": [
     {
       "year": 2005,

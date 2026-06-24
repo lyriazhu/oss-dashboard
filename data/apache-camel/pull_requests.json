@@ -3,37 +3,37 @@
   "avg_time_to_merge_days": null,
   "quarters": [
     {
-      "start_date": "2026-03-25T23:37:20.327067",
-      "end_date": "2026-06-23T23:37:20.327067",
+      "start_date": "2026-03-26T09:10:18.406540",
+      "end_date": "2026-06-24T09:10:18.406540",
       "pr_count": 0,
       "merged_pr_count": 0,
       "avg_time_to_merge_days": null,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-25T23:37:20.327067",
-      "end_date": "2026-03-25T23:37:20.327067",
+      "start_date": "2025-12-26T09:10:18.406540",
+      "end_date": "2026-03-26T09:10:18.406540",
       "pr_count": 0,
       "merged_pr_count": 0,
       "avg_time_to_merge_days": null,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-26T23:37:20.327067",
-      "end_date": "2025-12-25T23:37:20.327067",
+      "start_date": "2025-09-27T09:10:18.406540",
+      "end_date": "2025-12-26T09:10:18.406540",
       "pr_count": 0,
       "merged_pr_count": 0,
       "avg_time_to_merge_days": null,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-28T23:37:20.327067",
-      "end_date": "2025-09-26T23:37:20.327067",
+      "start_date": "2025-06-29T09:10:18.406540",
+      "end_date": "2025-09-27T09:10:18.406540",
       "pr_count": 0,
       "merged_pr_count": 0,
       "avg_time_to_merge_days": null,
       "quarter": "Q3 2025"
     }
   ],
-  "extracted_at": "2026-06-23T23:37:20.327090"
+  "extracted_at": "2026-06-24T09:10:18.406567"
 }

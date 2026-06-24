@@ -2,26 +2,26 @@
   "total_commits": 651,
   "quarters": [
     {
-      "start_date": "2026-03-25T23:36:35.340321",
-      "end_date": "2026-06-23T23:36:35.340321",
-      "commit_count": 162,
+      "start_date": "2026-03-26T09:09:32.514465",
+      "end_date": "2026-06-24T09:09:32.514465",
+      "commit_count": 161,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-25T23:36:35.340321",
-      "end_date": "2026-03-25T23:36:35.340321",
-      "commit_count": 151,
+      "start_date": "2025-12-26T09:09:32.514465",
+      "end_date": "2026-03-26T09:09:32.514465",
+      "commit_count": 152,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-26T23:36:35.340321",
-      "end_date": "2025-12-25T23:36:35.340321",
+      "start_date": "2025-09-27T09:09:32.514465",
+      "end_date": "2025-12-26T09:09:32.514465",
       "commit_count": 187,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-28T23:36:35.340321",
-      "end_date": "2025-09-26T23:36:35.340321",
+      "start_date": "2025-06-29T09:09:32.514465",
+      "end_date": "2025-09-27T09:09:32.514465",
       "commit_count": 151,
       "quarter": "Q3 2025"
     }
@@ -34,7 +34,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 14225
+      "commit_count": 14230
     },
     {
       "login": "Paolo Patierno",
@@ -88,7 +88,7 @@
       "location": null,
       "email": "lukywill16@gmail.com",
       "profile_url": null,
-      "commit_count": 2764
+      "commit_count": 2765
     },
     {
       "login": "morsak",
@@ -124,7 +124,7 @@
       "location": null,
       "email": "53821852+im-konge@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1382
+      "commit_count": 1383
     },
     {
       "login": "Daniel Laing",
@@ -5713,7 +5713,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T23:36:38.675475",
+  "extracted_at": "2026-06-24T09:09:36.007624",
   "years": [
     {
       "year": 2016,
@@ -5767,7 +5767,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1148,
+      "commit_count": 1154,
       "is_current": true
     }
   ]

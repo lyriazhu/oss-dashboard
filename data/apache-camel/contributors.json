@@ -1,5 +1,108 @@
 {
+  "yearly_contributors": [
+    {
+      "year": 2007,
+      "contributor_count": 7,
+      "is_current": false
+    },
+    {
+      "year": 2008,
+      "contributor_count": 12,
+      "is_current": false
+    },
+    {
+      "year": 2009,
+      "contributor_count": 14,
+      "is_current": false
+    },
+    {
+      "year": 2010,
+      "contributor_count": 18,
+      "is_current": false
+    },
+    {
+      "year": 2011,
+      "contributor_count": 29,
+      "is_current": false
+    },
+    {
+      "year": 2012,
+      "contributor_count": 35,
+      "is_current": false
+    },
+    {
+      "year": 2013,
+      "contributor_count": 109,
+      "is_current": false
+    },
+    {
+      "year": 2014,
+      "contributor_count": 150,
+      "is_current": false
+    },
+    {
+      "year": 2015,
+      "contributor_count": 218,
+      "is_current": false
+    },
+    {
+      "year": 2016,
+      "contributor_count": 286,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 351,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 240,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 262,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 338,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 297,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 286,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 295,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 229,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 213,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 134,
+      "is_current": true
+    }
+  ],
   "total_contributors": 2288,
+  "total_contributors_git": 2288,
   "contributors": [
     {
       "login": "davsclaus",
@@ -16,7 +119,7 @@
       "company": "Ibm",
       "location": "Rome, Italy",
       "email": "ancosen@gmail.com",
-      "contributions": 18604,
+      "contributions": 18606,
       "profile_url": "https://github.com/oscerd"
     },
     {
@@ -25,7 +128,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 5014,
+      "contributions": 5027,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -34,7 +137,7 @@
       "company": "Ibm",
       "location": "Brno, Czech Republic",
       "email": null,
-      "contributions": 4671,
+      "contributions": 4672,
       "profile_url": "https://github.com/orpiske"
     },
     {
@@ -115,7 +218,7 @@
       "company": "Ibm",
       "location": "Grenoble Area, France",
       "email": "apupier@ibm.com",
-      "contributions": 507,
+      "contributions": 508,
       "profile_url": "https://github.com/apupier"
     },
     {
@@ -439,7 +542,7 @@
       "company": "Red Hat",
       "location": null,
       "email": null,
-      "contributions": 81,
+      "contributions": 82,
       "profile_url": "https://github.com/ammachado"
     },
     {
@@ -839,6 +942,15 @@
       "profile_url": "https://github.com/jvsingh"
     },
     {
+      "login": "smongiar",
+      "name": "Salvatore Mongiardo",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 21,
+      "profile_url": "https://github.com/smongiar"
+    },
+    {
       "login": "nkukhar",
       "name": "Nazarii Kukhar",
       "company": "Unknown",
@@ -873,15 +985,6 @@
       "email": null,
       "contributions": 20,
       "profile_url": "https://github.com/skin27"
-    },
-    {
-      "login": "smongiar",
-      "name": "Salvatore Mongiardo",
-      "company": "Red Hat",
-      "location": null,
-      "email": null,
-      "contributions": 20,
-      "profile_url": "https://github.com/smongiar"
     },
     {
       "login": "graben",
@@ -2954,106 +3057,7 @@
       "profile_url": "https://github.com/sashashura"
     }
   ],
-  "companies": {
-    "Unknown": 168,
-    "Red Hat": 31,
-    "Ibm": 29,
-    "Adobe": 3,
-    "Redhatofficial": 3,
-    "Qlik": 2,
-    "Solo.Io": 2,
-    "Apple": 1,
-    "Cyberlogic Consulting Gmbh": 1,
-    "Asf": 1,
-    "Redpanda Data": 1,
-    "Https://Www.Redhat.Com/": 1,
-    "Dremio": 1,
-    "Red Hat -> Ibm": 1,
-    "Elevation Solutions": 1,
-    "Anova R&D Bvba": 1,
-    "Ibm Research & Development": 1,
-    "Het Cak": 1,
-    "Diagrid": 1,
-    "Westpac": 1,
-    "Ntt Data Group Corporation": 1,
-    "Microsoft": 1,
-    "Talisman Platform": 1,
-    "Pronoia Solutions": 1,
-    "Revenera": 1,
-    "Cyber Ranges": 1,
-    "Huawei Technologies": 1,
-    "Sap Se": 1,
-    "Punkhorn Software": 1,
-    "Onepoint Consulting Ltd": 1,
-    "Spacit Ltd.": 1,
-    "Singhporaconsulting": 1,
-    "It-Masters": 1,
-    "Amazon, Dublin": 1,
-    "Davidkarlsen.Com": 1,
-    "Software Freedom Institute": 1,
-    "Booz Allen Hamilton": 1,
-    "Confluent": 1,
-    "Teamlogic It": 1,
-    "Freelance": 1,
-    "Critical Techworks": 1,
-    "Apache / Orangelogic": 1,
-    "Rts Radio Television Suisse": 1,
-    "Alm. Brand": 1,
-    "Ekwateur": 1,
-    "Guidewire": 1,
-    "Osaka University": 1,
-    "Hulu": 1,
-    "Sopra Steria": 1,
-    "Yaas Arghavani System Engineering": 1,
-    "Callibrity": 1,
-    "Viabill": 1,
-    "Timefold": 1,
-    "Nanjing University Of Aeronautics And Astronautics": 1,
-    "Dotdata, Inc": 1,
-    "Realcity Its Kft": 1,
-    "Ntt Data Inc.": 1,
-    "Turkcell": 1,
-    "Haywood Associates Ltd.": 1,
-    "Openanswers": 1,
-    "Escalon System-Entwicklung": 1,
-    "Electric Software Company": 1,
-    "Redpill Linpro Ab": 1,
-    "Dow Jones": 1,
-    "Guidewire Software, Inc.": 1,
-    "Retarus": 1,
-    "Epam": 1,
-    "Booking.Com": 1,
-    "Softdev": 1,
-    "Splunk / @Tmio": 1,
-    "Knowis": 1,
-    "John-Bampton @Nextcommunity": 1,
-    "Contrast Security": 1,
-    "Brennus Analytics": 1,
-    "Onewelcome": 1,
-    "O19S": 1,
-    "B Braun Medicals": 1,
-    "Tymiq": 1,
-    "Naimuri": 1,
-    "Replyto": 1,
-    "Liberition": 1,
-    "Google": 1,
-    "Sciam-Fr": 1,
-    "Imola Informatica S.P.A.": 1,
-    "Amazon Web Services": 1,
-    "Home": 1,
-    "Asjka Limited": 1,
-    "Infosys": 1,
-    "University Visvesvaraya College Of Engineering": 1,
-    "Dcon Software & Service Ag": 1,
-    "Scoop Software Gmbh": 1,
-    "Resi Media": 1,
-    "Callista Enterprise Ab": 1,
-    "Pixelogicmedia": 1,
-    "Ocado": 1,
-    "Scelto": 1,
-    "Apipass": 1
-  },
-  "total_companies": 97,
+  "total_contributors_github_api": 328,
   "retention_by_quarter": [
     {
       "quarter": "2025-07",
@@ -3158,167 +3162,16 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 52,
+      "active_contributors": 55,
       "new_contributors": 19,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }
   ],
-  "company_diversity": {
-    "known_company_contributors": 160,
-    "unknown_company_contributors": 168,
-    "top_companies": [
-      {
-        "company": "Unknown",
-        "contributor_count": 168
-      },
-      {
-        "company": "Red Hat",
-        "contributor_count": 31
-      },
-      {
-        "company": "Ibm",
-        "contributor_count": 29
-      },
-      {
-        "company": "Adobe",
-        "contributor_count": 3
-      },
-      {
-        "company": "Redhatofficial",
-        "contributor_count": 3
-      },
-      {
-        "company": "Qlik",
-        "contributor_count": 2
-      },
-      {
-        "company": "Solo.Io",
-        "contributor_count": 2
-      },
-      {
-        "company": "Apple",
-        "contributor_count": 1
-      },
-      {
-        "company": "Cyberlogic Consulting Gmbh",
-        "contributor_count": 1
-      },
-      {
-        "company": "Asf",
-        "contributor_count": 1
-      }
-    ]
-  },
   "time_scope": {
-    "contributors": "all_time_github_contributors",
+    "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
-    "retention_by_quarter": "last_12_months_from_git_history",
-    "years": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-06-23T23:36:55.667746",
-  "years": [
-    {
-      "year": 2007,
-      "contributor_count": 7,
-      "is_current": false
-    },
-    {
-      "year": 2008,
-      "contributor_count": 12,
-      "is_current": false
-    },
-    {
-      "year": 2009,
-      "contributor_count": 14,
-      "is_current": false
-    },
-    {
-      "year": 2010,
-      "contributor_count": 18,
-      "is_current": false
-    },
-    {
-      "year": 2011,
-      "contributor_count": 29,
-      "is_current": false
-    },
-    {
-      "year": 2012,
-      "contributor_count": 35,
-      "is_current": false
-    },
-    {
-      "year": 2013,
-      "contributor_count": 109,
-      "is_current": false
-    },
-    {
-      "year": 2014,
-      "contributor_count": 150,
-      "is_current": false
-    },
-    {
-      "year": 2015,
-      "contributor_count": 218,
-      "is_current": false
-    },
-    {
-      "year": 2016,
-      "contributor_count": 286,
-      "is_current": false
-    },
-    {
-      "year": 2017,
-      "contributor_count": 351,
-      "is_current": false
-    },
-    {
-      "year": 2018,
-      "contributor_count": 240,
-      "is_current": false
-    },
-    {
-      "year": 2019,
-      "contributor_count": 262,
-      "is_current": false
-    },
-    {
-      "year": 2020,
-      "contributor_count": 338,
-      "is_current": false
-    },
-    {
-      "year": 2021,
-      "contributor_count": 297,
-      "is_current": false
-    },
-    {
-      "year": 2022,
-      "contributor_count": 286,
-      "is_current": false
-    },
-    {
-      "year": 2023,
-      "contributor_count": 295,
-      "is_current": false
-    },
-    {
-      "year": 2024,
-      "contributor_count": 229,
-      "is_current": false
-    },
-    {
-      "year": 2025,
-      "contributor_count": 213,
-      "is_current": false
-    },
-    {
-      "year": 2026,
-      "contributor_count": 133,
-      "is_current": true
-    }
-  ],
-  "total_contributors_git": 2288,
-  "total_contributors_github_api": 328
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_months_from_git_history"
+  }
 }

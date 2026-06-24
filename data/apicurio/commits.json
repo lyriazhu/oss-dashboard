@@ -2,26 +2,26 @@
   "total_commits": 73,
   "quarters": [
     {
-      "start_date": "2026-03-25T23:38:25.437238",
-      "end_date": "2026-06-23T23:38:25.437238",
+      "start_date": "2026-03-26T09:11:22.343737",
+      "end_date": "2026-06-24T09:11:22.343737",
       "commit_count": 0,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-25T23:38:25.437238",
-      "end_date": "2026-03-25T23:38:25.437238",
+      "start_date": "2025-12-26T09:11:22.343737",
+      "end_date": "2026-03-26T09:11:22.343737",
       "commit_count": 0,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-26T23:38:25.437238",
-      "end_date": "2025-12-25T23:38:25.437238",
+      "start_date": "2025-09-27T09:11:22.343737",
+      "end_date": "2025-12-26T09:11:22.343737",
       "commit_count": 0,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-28T23:38:25.437238",
-      "end_date": "2025-09-26T23:38:25.437238",
+      "start_date": "2025-06-29T09:11:22.343737",
+      "end_date": "2025-09-27T09:11:22.343737",
       "commit_count": 73,
       "quarter": "Q3 2025"
     }
@@ -934,7 +934,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-23T23:38:28.277035",
+  "extracted_at": "2026-06-24T09:11:25.106858",
   "years": [
     {
       "year": 2016,

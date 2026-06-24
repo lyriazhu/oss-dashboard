@@ -1,5 +1,118 @@
 {
+  "yearly_contributors": [
+    {
+      "year": 2005,
+      "contributor_count": 7,
+      "is_current": false
+    },
+    {
+      "year": 2006,
+      "contributor_count": 17,
+      "is_current": false
+    },
+    {
+      "year": 2007,
+      "contributor_count": 12,
+      "is_current": false
+    },
+    {
+      "year": 2008,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2009,
+      "contributor_count": 13,
+      "is_current": false
+    },
+    {
+      "year": 2010,
+      "contributor_count": 11,
+      "is_current": false
+    },
+    {
+      "year": 2011,
+      "contributor_count": 13,
+      "is_current": false
+    },
+    {
+      "year": 2012,
+      "contributor_count": 12,
+      "is_current": false
+    },
+    {
+      "year": 2013,
+      "contributor_count": 26,
+      "is_current": false
+    },
+    {
+      "year": 2014,
+      "contributor_count": 49,
+      "is_current": false
+    },
+    {
+      "year": 2015,
+      "contributor_count": 71,
+      "is_current": false
+    },
+    {
+      "year": 2016,
+      "contributor_count": 49,
+      "is_current": false
+    },
+    {
+      "year": 2017,
+      "contributor_count": 73,
+      "is_current": false
+    },
+    {
+      "year": 2018,
+      "contributor_count": 40,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "contributor_count": 42,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "contributor_count": 30,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "contributor_count": 29,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "contributor_count": 28,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "contributor_count": 30,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "contributor_count": 39,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 41,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 35,
+      "is_current": true
+    }
+  ],
   "total_contributors": 393,
+  "total_contributors_git": 393,
   "contributors": [
     {
       "login": "gtully",
@@ -1469,58 +1582,7 @@
       "profile_url": "https://github.com/mwashburn2"
     }
   ],
-  "companies": {
-    "Unknown": 95,
-    "Red Hat": 9,
-    "Ibm": 5,
-    "Tomitribe": 4,
-    "Aws": 3,
-    "Amazon Web Services": 3,
-    "Qlik": 2,
-    "Revenera": 1,
-    "Apple": 1,
-    "Hyte Technologies, Inc": 1,
-    "Asf": 1,
-    "Redhatofficial": 1,
-    "Adobe": 1,
-    "Savoir Technologies": 1,
-    "Solo.Io": 1,
-    "Amazon": 1,
-    "Konghq": 1,
-    "Yupiik": 1,
-    "Bartr Technologies": 1,
-    "Capgemini": 1,
-    "Nvidia": 1,
-    "Sgp": 1,
-    "Salesforce": 1,
-    "Zobier Labs Llc": 1,
-    "Wramner Consulting": 1,
-    "Pronoia Solutions": 1,
-    "Qbeast.Io": 1,
-    "Centiservice": 1,
-    "Centralsquaretechnologies": 1,
-    "Abb": 1,
-    "Zte Corporation": 1,
-    "Apache / Orangelogic": 1,
-    "Fourmation Ab": 1,
-    "Code-House @Connectorio": 1,
-    "Techconative": 1,
-    "Sagemcom": 1,
-    "Tylertech": 1,
-    "Https://Kimmking.Github.Io": 1,
-    "Stratio": 1,
-    "Tyler-Technologies": 1,
-    "Apache Software Foundation": 1,
-    "Atos Ag (Schweiz)": 1,
-    "Totogi": 1,
-    "Osnabr\u00fcck University": 1,
-    "Avodah": 1,
-    "Contrast Security": 1,
-    "Ing. Jiri Cap": 1,
-    "Callibrity": 1,
-    "Confluent": 1
-  },
-  "total_companies": 49,
+  "total_contributors_github_api": 163,
   "retention_by_quarter": [
     {
       "quarter": "2025-07",
@@ -1631,171 +1693,10 @@
       "retention_rate": 0.0
     }
   ],
-  "company_diversity": {
-    "known_company_contributors": 68,
-    "unknown_company_contributors": 95,
-    "top_companies": [
-      {
-        "company": "Unknown",
-        "contributor_count": 95
-      },
-      {
-        "company": "Red Hat",
-        "contributor_count": 9
-      },
-      {
-        "company": "Ibm",
-        "contributor_count": 5
-      },
-      {
-        "company": "Tomitribe",
-        "contributor_count": 4
-      },
-      {
-        "company": "Aws",
-        "contributor_count": 3
-      },
-      {
-        "company": "Amazon Web Services",
-        "contributor_count": 3
-      },
-      {
-        "company": "Qlik",
-        "contributor_count": 2
-      },
-      {
-        "company": "Revenera",
-        "contributor_count": 1
-      },
-      {
-        "company": "Apple",
-        "contributor_count": 1
-      },
-      {
-        "company": "Hyte Technologies, Inc",
-        "contributor_count": 1
-      }
-    ]
-  },
   "time_scope": {
-    "contributors": "all_time_github_contributors",
+    "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
-    "retention_by_quarter": "last_12_months_from_git_history",
-    "years": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-06-23T23:37:31.614681",
-  "years": [
-    {
-      "year": 2005,
-      "contributor_count": 7,
-      "is_current": false
-    },
-    {
-      "year": 2006,
-      "contributor_count": 17,
-      "is_current": false
-    },
-    {
-      "year": 2007,
-      "contributor_count": 12,
-      "is_current": false
-    },
-    {
-      "year": 2008,
-      "contributor_count": 11,
-      "is_current": false
-    },
-    {
-      "year": 2009,
-      "contributor_count": 13,
-      "is_current": false
-    },
-    {
-      "year": 2010,
-      "contributor_count": 11,
-      "is_current": false
-    },
-    {
-      "year": 2011,
-      "contributor_count": 13,
-      "is_current": false
-    },
-    {
-      "year": 2012,
-      "contributor_count": 12,
-      "is_current": false
-    },
-    {
-      "year": 2013,
-      "contributor_count": 26,
-      "is_current": false
-    },
-    {
-      "year": 2014,
-      "contributor_count": 49,
-      "is_current": false
-    },
-    {
-      "year": 2015,
-      "contributor_count": 71,
-      "is_current": false
-    },
-    {
-      "year": 2016,
-      "contributor_count": 49,
-      "is_current": false
-    },
-    {
-      "year": 2017,
-      "contributor_count": 73,
-      "is_current": false
-    },
-    {
-      "year": 2018,
-      "contributor_count": 40,
-      "is_current": false
-    },
-    {
-      "year": 2019,
-      "contributor_count": 42,
-      "is_current": false
-    },
-    {
-      "year": 2020,
-      "contributor_count": 30,
-      "is_current": false
-    },
-    {
-      "year": 2021,
-      "contributor_count": 29,
-      "is_current": false
-    },
-    {
-      "year": 2022,
-      "contributor_count": 28,
-      "is_current": false
-    },
-    {
-      "year": 2023,
-      "contributor_count": 30,
-      "is_current": false
-    },
-    {
-      "year": 2024,
-      "contributor_count": 39,
-      "is_current": false
-    },
-    {
-      "year": 2025,
-      "contributor_count": 41,
-      "is_current": false
-    },
-    {
-      "year": 2026,
-      "contributor_count": 35,
-      "is_current": true
-    }
-  ],
-  "total_contributors_git": 393,
-  "total_contributors_github_api": 163
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_months_from_git_history"
+  }
 }

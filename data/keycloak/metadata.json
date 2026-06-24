@@ -3,11 +3,11 @@
   "full_name": "keycloak/keycloak",
   "description": "Open Source Identity and Access Management For Modern Applications and Services",
   "created_at": "2013-07-02T13:38:51+00:00",
-  "updated_at": "2026-06-23T21:36:47+00:00",
-  "stars": 35038,
-  "forks": 8526,
-  "watchers": 35038,
-  "open_issues": 2875,
+  "updated_at": "2026-06-24T13:07:45+00:00",
+  "stars": 35043,
+  "forks": 8529,
+  "watchers": 35043,
+  "open_issues": 2883,
   "language": "Java",
   "topics": [
     "keycloak",
@@ -18,5 +18,5 @@
   "homepage": "https://www.keycloak.org",
   "has_wiki": false,
   "has_discussions": null,
-  "extracted_at": "2026-06-23T23:37:48.496412"
+  "extracted_at": "2026-06-24T09:10:47.510536"
 }
