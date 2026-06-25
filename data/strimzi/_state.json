@@ -313,9 +313,18 @@
       "zivi-dodis",
       "zzhu2"
     ],
-    "last_extracted_at": "2026-06-25T11:25:45.841902"
+    "last_extracted_at": "2026-06-25T15:34:55.992466"
   },
   "commits": {
-    "last_git_sync_at": "2026-06-25T11:25:49.216106"
+    "last_git_sync_at": "2026-06-25T15:35:00.330016"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-06-25T15:38:22.720537"
+  },
+  "issues": {
+    "last_extracted_at": "2026-06-25T15:35:03.074625"
+  },
+  "releases": {
+    "last_extracted_at": "2026-06-25T15:38:28.522748"
   }
 }

@@ -835,15 +835,6 @@
       "profile_url": "https://github.com/alekseie"
     },
     {
-      "login": "shikhar97gupta",
-      "name": "Shikhar",
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/shikhar97gupta"
-    },
-    {
       "login": "esivakumar26",
       "name": "Siva Kumar Edupuganti",
       "company": "Unknown",
@@ -914,6 +905,24 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/avi5kdonrh"
+    },
+    {
+      "login": "dhmgit",
+      "name": "Davin Moilanen",
+      "company": "Tyler-Technologies",
+      "location": null,
+      "email": "davin.moilanen@tylertech.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/dhmgit"
+    },
+    {
+      "login": "shikhar97gupta",
+      "name": "Shikhar",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/shikhar97gupta"
     },
     {
       "login": "ambersun1234",
@@ -1006,15 +1015,6 @@
       "profile_url": "https://github.com/pdudits"
     },
     {
-      "login": "gaohoward",
-      "name": "Howard Gao",
-      "company": "Red Hat",
-      "location": "Beijing China",
-      "email": "hgao@redhat.com",
-      "contributions": 1,
-      "profile_url": "https://github.com/gaohoward"
-    },
-    {
       "login": "splatch",
       "name": "\u0141ukasz Dywicki",
       "company": "Code-House @Connectorio",
@@ -1094,6 +1094,15 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/pa-deasy"
+    },
+    {
+      "login": "mwashburn2",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/mwashburn2"
     },
     {
       "login": "TylerMurali",
@@ -1195,13 +1204,13 @@
       "profile_url": "https://github.com/dvhvsekhar"
     },
     {
-      "login": "dhmgit",
-      "name": "Davin Moilanen",
-      "company": "Tyler-Technologies",
-      "location": null,
-      "email": "davin.moilanen@tylertech.com",
+      "login": "gaohoward",
+      "name": "Howard Gao",
+      "company": "Red Hat",
+      "location": "Beijing China",
+      "email": "hgao@redhat.com",
       "contributions": 1,
-      "profile_url": "https://github.com/dhmgit"
+      "profile_url": "https://github.com/gaohoward"
     },
     {
       "login": "nguyenhoan",
@@ -1571,15 +1580,6 @@
       "email": "chipitsine@gmail.com",
       "contributions": 1,
       "profile_url": "https://github.com/chipitsine"
-    },
-    {
-      "login": "mwashburn2",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/mwashburn2"
     }
   ],
   "total_contributors_github_api": 163,

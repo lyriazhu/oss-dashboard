@@ -67,6 +67,7 @@ def main():
     }
     
     # Metadata
+    metadata = None
     try:
         metadata = extractor.extract_project_metadata(owner, repo)
         if metadata:
@@ -98,7 +99,7 @@ def main():
     
     # Issues
     try:
-        issues = extractor.extract_issues(owner, repo)
+        issues = extractor.extract_issues(owner, repo, name)
         if issues:
             extractor.save_project_data(name, issues, "issues")
             extraction_status["issues"] = True
@@ -108,17 +109,25 @@ def main():
     
     # Pull Requests
     try:
-        pull_requests = extractor.extract_pull_requests(owner, repo)
-        if pull_requests:
-            extractor.save_project_data(name, pull_requests, "pull_requests")
-            extraction_status["pull_requests"] = True
+        if metadata and 'created_at' in metadata:
+            from datetime import datetime
+            # Parse the created_at from metadata
+            created_at = datetime.fromisoformat(metadata['created_at'].replace('Z', '+00:00'))
+            # Create repos list
+            repos = [{'owner': owner, 'repo': repo}]
+            pull_requests = extractor.extract_pull_requests(repos, created_at, name)
+            if pull_requests:
+                extractor.save_project_data(name, pull_requests, "pull_requests")
+                extraction_status["pull_requests"] = True
+        else:
+            print(f"⚠️  Warning: Cannot extract pull requests - metadata not available")
     except Exception as e:
         print(f"⚠️  Warning: Pull requests extraction failed: {e}")
         print(f"   Continuing with other data types...")
     
     # Releases
     try:
-        releases = extractor.extract_releases(owner, repo)
+        releases = extractor.extract_releases(owner, repo, name)
         if releases:
             extractor.save_project_data(name, releases, "releases")
             extraction_status["releases"] = True

@@ -17,11 +17,15 @@ public class IssueData {
     @JsonProperty("total_issues")
     public Integer totalIssues;
     
-    @JsonProperty("avg_resolution_time_days")
-    public Double avgResolutionTimeDays;
+    @JsonProperty("median_resolution_time_days")
+    public Double medianResolutionTimeDays;
 
     @JsonProperty("issue_commenters")
     public List<IssueCommenter> issueCommenters;
+    
+    public List<MonthData> months;
+    
+    public List<YearData> years;
     
     @JsonProperty("extracted_at")
     public String extractedAt;
@@ -37,6 +41,35 @@ public class IssueData {
 
         @JsonProperty("comment_count")
         public Integer commentCount;
+    }
+    
+    public static class MonthData {
+        @JsonProperty("start_date")
+        public String startDate;
+        
+        @JsonProperty("end_date")
+        public String endDate;
+        
+        @JsonProperty("issue_count")
+        public Integer issueCount;
+
+        @JsonProperty("closed_issue_count")
+        public Integer closedIssueCount;
+
+        @JsonProperty("median_resolution_time_days")
+        public Double medianResolutionTimeDays;
+        
+        public String month;
+    }
+    
+    public static class YearData {
+        public Integer year;
+        
+        @JsonProperty("issue_count")
+        public Integer issueCount;
+        
+        @JsonProperty("closed_issue_count")
+        public Integer closedIssueCount;
     }
 }
 

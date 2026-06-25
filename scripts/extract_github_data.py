@@ -8,6 +8,7 @@ import os
 import json
 import yaml
 import subprocess
+import statistics
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Set
@@ -60,8 +61,19 @@ class GitHubDataExtractor:
             json.dump(data, f, indent=2)
 
     def _project_dir(self, project_name: str) -> Path:
-        """Return normalized project data directory"""
-        return self.data_dir / project_name.lower().replace(" ", "-")
+        """Return normalized project data directory with ID mapping"""
+        # Map project IDs to their data directory names (must match backend DataService.java)
+        dir_name_map = {
+            "strimzi-kafka-operator": "strimzi",
+            "camel": "apache-camel",
+            "activemq": "apache-activemq",
+            "apicurio-studio": "apicurio",
+            "3scale-operator": "3scale",
+        }
+        
+        # Use mapped name if exists, otherwise normalize the project name
+        dir_name = dir_name_map.get(project_name, project_name.lower().replace(" ", "-"))
+        return self.data_dir / dir_name
 
     def _project_state_path(self, project_name: str) -> Path:
         """Return project state file path"""
@@ -723,7 +735,7 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting commits: {e}")
             return {}
     
-    def extract_issues(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
+    def extract_issues(self, owner: str, repo: str, project_name: str, project_created_at: Optional[datetime] = None) -> Dict[str, Any]:
         """Extract issue metrics and commenter activity with incremental updates"""
         print(f"🐛 Extracting issues for {owner}/{repo}...")
         
@@ -732,6 +744,16 @@ class GitHubDataExtractor:
             project_state = self._load_project_state(project_name)
             existing_data = self._load_json_file(self._project_dir(project_name) / "issues.json", {})
             last_extracted_at = project_state.get("issues", {}).get("last_extracted_at")
+            
+            # Get month dates for tracking - use last 12 months
+            month_dates = self._get_last_n_months(12)
+            
+            # Get all years since project creation for yearly tracking
+            if project_created_at:
+                years = self._get_years_since_creation(project_created_at)
+            else:
+                # Fallback: use repository creation date
+                years = self._get_years_since_creation(repository.created_at)
             
             # For incremental updates, only process issues updated since last extraction
             since_date = None
@@ -748,10 +770,58 @@ class GitHubDataExtractor:
                 "total_open": repository.get_issues(state='open').totalCount,
                 "total_closed": repository.get_issues(state='closed').totalCount,
                 "total_issues": repository.get_issues(state='open').totalCount + repository.get_issues(state='closed').totalCount,
-                "avg_resolution_time_days": existing_data.get("avg_resolution_time_days"),
+                "median_resolution_time_days": existing_data.get("median_resolution_time_days"),
                 "issue_commenters": existing_data.get("issue_commenters", []),
+                "months": existing_data.get("months", []),
+                "years": existing_data.get("years", []),
                 "extracted_at": datetime.now().isoformat()
             }
+            
+            # Initialize month data structure from existing data
+            month_data_map = {}
+            for month_info in issues_data["months"]:
+                month_label = month_info["month"]
+                month_data_map[month_label] = {
+                    "start_date": month_info["start_date"],
+                    "end_date": month_info["end_date"],
+                    "issue_count": month_info["issue_count"],
+                    "closed_issue_count": month_info["closed_issue_count"],
+                    "resolution_times": [],
+                    "month": month_label,
+                    "median_resolution_time_days": month_info.get("median_resolution_time_days")
+                }
+            
+            # Add any new months not in existing data
+            for start_date, end_date in month_dates:
+                month_label = self._month_label(end_date)
+                if month_label not in month_data_map:
+                    month_data_map[month_label] = {
+                        "start_date": start_date.isoformat(),
+                        "end_date": end_date.isoformat(),
+                        "issue_count": 0,
+                        "closed_issue_count": 0,
+                        "resolution_times": [],
+                        "month": month_label
+                    }
+            
+            # Initialize year data structure from existing data
+            year_data_map = {}
+            for year_info in issues_data["years"]:
+                year = year_info["year"]
+                year_data_map[year] = {
+                    "year": year,
+                    "issue_count": year_info["issue_count"],
+                    "closed_issue_count": year_info["closed_issue_count"]
+                }
+            
+            # Add any new years not in existing data
+            for year in years:
+                if year not in year_data_map:
+                    year_data_map[year] = {
+                        "year": year,
+                        "issue_count": 0,
+                        "closed_issue_count": 0
+                    }
             
             # Skip detailed extraction if no issues exist (e.g., projects using JIRA)
             if issues_data["total_issues"] == 0:
@@ -771,33 +841,58 @@ class GitHubDataExtractor:
                         commenter_counts[commenter["login"]] = commenter["comment_count"]
 
                 issue_count = 0
-                for issue in closed_issues:
-                    if issue_count >= 100:
-                        break
-                        
+                # Process all issues (open and closed) for monthly tracking
+                all_issues = list(open_issues) + list(closed_issues)
+                for issue in all_issues:
                     if issue.pull_request is not None:
                         continue
-
-                    if issue.closed_at and issue.created_at:
-                        delta = issue.closed_at - issue.created_at
-                        resolution_times.append(delta.days)
-
-                    try:
-                        comments = issue.get_comments()
-                        comment_count = 0
-                        for comment in comments:
-                            if comment_count >= 50:
-                                break
-                            if comment.user and comment.user.login:
-                                commenter_counts[comment.user.login] += 1
-                            comment_count += 1
-                    except (GithubException, IndexError):
-                        continue
                     
-                    issue_count += 1
+                    # Track issue by month
+                    issue_created = issue.created_at.replace(tzinfo=None) if issue.created_at.tzinfo else issue.created_at
+                    for start_date, end_date in month_dates:
+                        if start_date <= issue_created <= end_date:
+                            month_label = self._month_label(end_date)
+                            if not since_date or issue_created >= since_date:
+                                month_data_map[month_label]["issue_count"] += 1
+                            
+                            if issue.closed_at:
+                                if not since_date or issue_created >= since_date:
+                                    month_data_map[month_label]["closed_issue_count"] += 1
+                                resolution_days = (issue.closed_at - issue.created_at).days
+                                month_data_map[month_label]["resolution_times"].append(resolution_days)
+                            break
+                    
+                    # Track issue by year (for all issues, not just last 12 months)
+                    issue_year = issue_created.year
+                    if issue_year in year_data_map:
+                        if not since_date or issue_created >= since_date:
+                            year_data_map[issue_year]["issue_count"] += 1
+                        if issue.closed_at:
+                            if not since_date or issue_created >= since_date:
+                                year_data_map[issue_year]["closed_issue_count"] += 1
+                    
+                    # Only process first 100 closed issues for detailed metrics
+                    if issue.state == 'closed' and issue_count < 100:
+                        if issue.closed_at and issue.created_at:
+                            delta = issue.closed_at - issue.created_at
+                            resolution_times.append(delta.days)
+
+                        try:
+                            comments = issue.get_comments()
+                            comment_count = 0
+                            for comment in comments:
+                                if comment_count >= 50:
+                                    break
+                                if comment.user and comment.user.login:
+                                    commenter_counts[comment.user.login] += 1
+                                comment_count += 1
+                        except (GithubException, IndexError):
+                            continue
+                        
+                        issue_count += 1
                 
                 if resolution_times:
-                    issues_data["avg_resolution_time_days"] = sum(resolution_times) / len(resolution_times)
+                    issues_data["median_resolution_time_days"] = statistics.median(resolution_times)
 
                 issue_commenters = []
                 for login, comment_count in sorted(commenter_counts.items(), key=lambda item: item[1], reverse=True)[:50]:
@@ -812,6 +907,24 @@ class GitHubDataExtractor:
                     })
 
                 issues_data["issue_commenters"] = issue_commenters
+            
+            # Convert month data map to list and calculate averages
+            issues_data["months"] = []
+            for month_label in sorted(month_data_map.keys()):
+                month_info = month_data_map[month_label]
+                resolution_times = month_info.pop("resolution_times")
+                
+                # Calculate median if we have resolution times
+                if resolution_times:
+                    month_info["median_resolution_time_days"] = round(statistics.median(resolution_times), 2)
+                
+                issues_data["months"].append(month_info)
+            
+            # Convert year data map to list
+            issues_data["years"] = []
+            for year in sorted(year_data_map.keys()):
+                year_info = year_data_map[year]
+                issues_data["years"].append(year_info)
             
             project_state["issues"] = {"last_extracted_at": datetime.now().isoformat()}
             self._save_project_state(project_name, project_state)
@@ -868,6 +981,85 @@ class GitHubDataExtractor:
             current_start = datetime(next_year, next_month, 1)
         
         return quarters
+    
+    def _get_months_since_creation(self, created_at: datetime) -> List[tuple]:
+        """Generate list of month start/end dates from project creation to now"""
+        months = []
+        now = datetime.now()
+        
+        # Make created_at timezone-naive for comparison
+        if created_at.tzinfo:
+            created_at = created_at.replace(tzinfo=None)
+        
+        # Start from the beginning of the month when project was created
+        current_start = datetime(created_at.year, created_at.month, 1)
+        
+        # Generate months from creation to now
+        while current_start <= now:
+            # Calculate end of month (last day of month)
+            if current_start.month == 12:
+                month_end = datetime(current_start.year, 12, 31, 23, 59, 59)
+            else:
+                next_month = datetime(current_start.year, current_start.month + 1, 1)
+                month_end = next_month - timedelta(seconds=1)
+            
+            # Don't go beyond current time
+            if month_end > now:
+                month_end = now
+            
+            months.append((current_start, month_end))
+            
+            # Move to next month
+            if current_start.month == 12:
+                current_start = datetime(current_start.year + 1, 1, 1)
+            else:
+                current_start = datetime(current_start.year, current_start.month + 1, 1)
+        
+        return months
+    
+    def _get_last_n_months(self, n: int = 12) -> List[tuple]:
+        """Generate list of the last N months (default 12) from now going backwards"""
+        months = []
+        now = datetime.now()
+        
+        # Start from the beginning of the current month
+        current_start = datetime(now.year, now.month, 1)
+        
+        # Generate N months going backwards
+        for _ in range(n):
+            # Calculate end of month (last day of month)
+            if current_start.month == 12:
+                month_end = datetime(current_start.year, 12, 31, 23, 59, 59)
+            else:
+                next_month = datetime(current_start.year, current_start.month + 1, 1)
+                month_end = next_month - timedelta(seconds=1)
+            
+            # For current month, don't go beyond now
+            if month_end > now:
+                month_end = now
+            
+            months.insert(0, (current_start, month_end))  # Insert at beginning to maintain chronological order
+            
+            # Move to previous month
+            if current_start.month == 1:
+                current_start = datetime(current_start.year - 1, 12, 1)
+            else:
+                current_start = datetime(current_start.year, current_start.month - 1, 1)
+        
+        return months
+    
+    def _get_years_since_creation(self, created_at: datetime) -> List[int]:
+        """Generate list of years from project creation to now"""
+        now = datetime.now()
+        
+        # Make created_at timezone-naive for comparison
+        if created_at.tzinfo:
+            created_at = created_at.replace(tzinfo=None)
+        
+        start_year = created_at.year
+        current_year = now.year
+        
+        return list(range(start_year, current_year + 1))
 
     def extract_pull_requests(self, repos: List[Dict[str, str]], project_created_at: datetime, project_name: str) -> Dict[str, Any]:
         """Extract pull request metrics including merge timeline with incremental updates
@@ -884,40 +1076,61 @@ class GitHubDataExtractor:
             existing_data = self._load_json_file(self._project_dir(project_name) / "pull_requests.json", {})
             last_extracted_at = project_state.get("pull_requests", {}).get("last_extracted_at")
             
-            quarter_dates = self._get_quarters_since_creation(project_created_at)
+            month_dates = self._get_last_n_months(12)  # Get last 12 months
+            years = self._get_years_since_creation(project_created_at)  # Get all years
             
             pr_data = {
                 "total_prs": existing_data.get("total_prs", 0),
-                "avg_time_to_merge_days": existing_data.get("avg_time_to_merge_days"),
-                "quarters": existing_data.get("quarters", []),
+                "median_time_to_merge_days": existing_data.get("median_time_to_merge_days"),
+                "months": existing_data.get("months", []),
+                "years": existing_data.get("years", []),
                 "extracted_at": datetime.now().isoformat()
             }
 
-            # Initialize quarter data structure from existing data
-            quarter_data_map = {}
-            for quarter_info in pr_data["quarters"]:
-                quarter_label = quarter_info["quarter"]
-                quarter_data_map[quarter_label] = {
-                    "start_date": quarter_info["start_date"],
-                    "end_date": quarter_info["end_date"],
-                    "pr_count": quarter_info["pr_count"],
-                    "merged_pr_count": quarter_info["merged_pr_count"],
+            # Initialize month data structure from existing data
+            month_data_map = {}
+            for month_info in pr_data["months"]:
+                month_label = month_info["month"]
+                month_data_map[month_label] = {
+                    "start_date": month_info["start_date"],
+                    "end_date": month_info["end_date"],
+                    "pr_count": month_info["pr_count"],
+                    "merged_pr_count": month_info["merged_pr_count"],
                     "merge_times": [],
-                    "quarter": quarter_label,
-                    "avg_time_to_merge_days": quarter_info.get("avg_time_to_merge_days")
+                    "month": month_label,
+                    "median_time_to_merge_days": month_info.get("median_time_to_merge_days")
                 }
             
-            # Add any new quarters not in existing data
-            for start_date, end_date in quarter_dates:
-                quarter_label = self._quarter_label(end_date)
-                if quarter_label not in quarter_data_map:
-                    quarter_data_map[quarter_label] = {
+            # Add any new months not in existing data
+            for start_date, end_date in month_dates:
+                month_label = self._month_label(end_date)
+                if month_label not in month_data_map:
+                    month_data_map[month_label] = {
                         "start_date": start_date.isoformat(),
                         "end_date": end_date.isoformat(),
                         "pr_count": 0,
                         "merged_pr_count": 0,
                         "merge_times": [],
-                        "quarter": quarter_label
+                        "month": month_label
+                    }
+            
+            # Initialize year data structure from existing data
+            year_data_map = {}
+            for year_info in pr_data["years"]:
+                year = year_info["year"]
+                year_data_map[year] = {
+                    "year": year,
+                    "pr_count": year_info["pr_count"],
+                    "merged_pr_count": year_info["merged_pr_count"]
+                }
+            
+            # Add any new years not in existing data
+            for year in years:
+                if year not in year_data_map:
+                    year_data_map[year] = {
+                        "year": year,
+                        "pr_count": 0,
+                        "merged_pr_count": 0
                     }
 
             overall_merge_times = []
@@ -925,7 +1138,10 @@ class GitHubDataExtractor:
             # Determine since date for incremental updates
             since_date = None
             if last_extracted_at:
+                # Parse the ISO format string and make it timezone-naive
                 since_date = datetime.fromisoformat(last_extracted_at)
+                if since_date.tzinfo:
+                    since_date = since_date.replace(tzinfo=None)
                 print(f"  ℹ️  Incremental update: fetching PRs updated since {last_extracted_at}")
             else:
                 print(f"  ℹ️  Initial extraction: fetching all PRs")
@@ -958,22 +1174,31 @@ class GitHubDataExtractor:
                         # Make pr.created_at timezone-naive for comparison
                         pr_created = pr.created_at.replace(tzinfo=None) if pr.created_at.tzinfo else pr.created_at
                         
-                        # Find which quarter this PR belongs to
-                        for start_date, end_date in quarter_dates:
+                        # Find which month this PR belongs to
+                        for start_date, end_date in month_dates:
                             if start_date <= pr_created <= end_date:
-                                quarter_label = self._quarter_label(end_date)
+                                month_label = self._month_label(end_date)
                                 
                                 # Only increment if this is a new PR (initial extraction or not yet counted)
                                 if not since_date or pr_created >= since_date:
-                                    quarter_data_map[quarter_label]["pr_count"] += 1
+                                    month_data_map[month_label]["pr_count"] += 1
                                 
                                 if pr.merged_at:
                                     merge_days = (pr.merged_at - pr.created_at).total_seconds() / 86400
                                     if not since_date or pr_created >= since_date:
-                                        quarter_data_map[quarter_label]["merged_pr_count"] += 1
-                                    quarter_data_map[quarter_label]["merge_times"].append(round(merge_days, 2))
+                                        month_data_map[month_label]["merged_pr_count"] += 1
+                                    month_data_map[month_label]["merge_times"].append(round(merge_days, 2))
                                     overall_merge_times.append(round(merge_days, 2))
                                 break
+                        
+                        # Track PR by year (for all PRs, not just last 12 months)
+                        pr_year = pr_created.year
+                        if pr_year in year_data_map:
+                            if not since_date or pr_created >= since_date:
+                                year_data_map[pr_year]["pr_count"] += 1
+                            if pr.merged_at:
+                                if not since_date or pr_created >= since_date:
+                                    year_data_map[pr_year]["merged_pr_count"] += 1
                         
                         pr_count += 1
                         # Limit processing for very large repos during incremental updates
@@ -984,23 +1209,29 @@ class GitHubDataExtractor:
                     print(f"  ⚠️  Error processing {owner}/{repo}: {e}")
                     continue
 
-            # Convert quarter data map to list and calculate averages
-            pr_data["quarters"] = []
+            # Convert month data map to list and calculate medians
+            pr_data["months"] = []
             pr_data["total_prs"] = 0
-            for quarter_label in sorted(quarter_data_map.keys()):
-                quarter_info = quarter_data_map[quarter_label]
-                merge_times = quarter_info.pop("merge_times")
+            for month_label in sorted(month_data_map.keys()):
+                month_info = month_data_map[month_label]
+                merge_times = month_info.pop("merge_times")
                 
-                # Recalculate average if we have merge times
+                # Calculate median if we have merge times
                 if merge_times:
-                    quarter_info["avg_time_to_merge_days"] = round(sum(merge_times) / len(merge_times), 2)
+                    month_info["median_time_to_merge_days"] = round(statistics.median(merge_times), 2)
                 
-                pr_data["quarters"].append(quarter_info)
-                pr_data["total_prs"] += quarter_info["pr_count"]
+                pr_data["months"].append(month_info)
+                pr_data["total_prs"] += month_info["pr_count"]
+            
+            # Convert year data map to list
+            pr_data["years"] = []
+            for year in sorted(year_data_map.keys()):
+                year_info = year_data_map[year]
+                pr_data["years"].append(year_info)
 
             if overall_merge_times:
-                pr_data["avg_time_to_merge_days"] = round(
-                    sum(overall_merge_times) / len(overall_merge_times), 2
+                pr_data["median_time_to_merge_days"] = round(
+                    statistics.median(overall_merge_times), 2
                 )
             
             project_state["pull_requests"] = {"last_extracted_at": datetime.now().isoformat()}
@@ -1113,7 +1344,7 @@ class GitHubDataExtractor:
     
     def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str):
         """Save extracted data to JSON file"""
-        project_dir = self.data_dir / project_name.lower().replace(" ", "-")
+        project_dir = self._project_dir(project_name)
         project_dir.mkdir(exist_ok=True)
         
         output_file = project_dir / f"{data_type}.json"
@@ -1175,7 +1406,7 @@ class GitHubDataExtractor:
             if commits:
                 self.save_project_data(project_name, commits, "commits")
             
-            issues = self.extract_issues(owner, repo, project_name)
+            issues = self.extract_issues(owner, repo, project_name, project_created_at)
             if issues:
                 self.save_project_data(project_name, issues, "issues")
             

@@ -1,81 +1,10 @@
 {
-  "total_open": 1,
-  "total_closed": 1,
-  "total_issues": 2,
-  "avg_resolution_time_days": 8.564102564102564,
-  "issue_commenters": [
-    {
-      "login": "jbonofre",
-      "name": "JB Onofr\u00e9",
-      "company": "Unknown",
-      "location": "France",
-      "profile_url": "https://github.com/jbonofre",
-      "comment_count": 17
-    },
-    {
-      "login": "cshannon",
-      "name": "Christopher L. Shannon",
-      "company": "Unknown",
-      "location": "Maryland",
-      "profile_url": "https://github.com/cshannon",
-      "comment_count": 5
-    },
-    {
-      "login": "mattrpav",
-      "name": "Matt Pavlovich",
-      "company": "Hyte Technologies, Inc",
-      "location": "Austin",
-      "profile_url": "https://github.com/mattrpav",
-      "comment_count": 5
-    },
-    {
-      "login": "dmillar-vx",
-      "name": "David Millar",
-      "company": "Accurate Group",
-      "location": "Fort Worth, Texas, USA",
-      "profile_url": "https://github.com/dmillar-vx",
-      "comment_count": 3
-    },
-    {
-      "login": "jeanouii",
-      "name": "Jean-Louis Monteiro",
-      "company": "Tomitribe",
-      "location": "France",
-      "profile_url": "https://github.com/jeanouii",
-      "comment_count": 2
-    },
-    {
-      "login": "xtermi2",
-      "name": "Andreas Keefer",
-      "company": "Proxora Gmbh",
-      "location": "Munich",
-      "profile_url": "https://github.com/xtermi2",
-      "comment_count": 1
-    },
-    {
-      "login": "gmuecke",
-      "name": "Gerald M\u00fccke",
-      "company": "Devcon5Io",
-      "location": "Switzerland",
-      "profile_url": "https://github.com/gmuecke",
-      "comment_count": 1
-    },
-    {
-      "login": "w00dst0ck",
-      "name": "Kai",
-      "company": "Unknown",
-      "location": "Germany",
-      "profile_url": "https://github.com/w00dst0ck",
-      "comment_count": 1
-    },
-    {
-      "login": "github-actions[bot]",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "profile_url": "https://github.com/apps/github-actions",
-      "comment_count": 1
-    }
-  ],
-  "extracted_at": "2026-06-25T11:54:40.648031"
+  "total_open": 0,
+  "total_closed": 0,
+  "total_issues": 0,
+  "median_resolution_time_days": null,
+  "issue_commenters": [],
+  "months": [],
+  "years": [],
+  "extracted_at": "2026-06-25T15:50:25.841514"
 }

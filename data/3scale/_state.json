@@ -43,9 +43,18 @@
       "valerymo",
       "wengkee"
     ],
-    "last_extracted_at": "2026-06-25T12:18:42.149419"
+    "last_extracted_at": "2026-06-25T16:04:35.851903"
   },
   "commits": {
-    "last_git_sync_at": "2026-06-25T12:18:44.983349"
+    "last_git_sync_at": "2026-06-25T16:04:39.202838"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-06-25T16:05:07.542277"
+  },
+  "issues": {
+    "last_extracted_at": "2026-06-25T16:04:41.801208"
+  },
+  "releases": {
+    "last_extracted_at": "2026-06-25T16:05:09.980469"
   }
 }

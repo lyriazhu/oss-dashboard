@@ -4,8 +4,8 @@ import { Tag, Tile, BarChart, Meter } from "./ui.jsx";
 
 export default function Detail({ d, onOverview }) {
   const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
-  const [showPRQuarterly, setShowPRQuarterly] = useState(false);
-  const [showIssueQuarterly, setShowIssueQuarterly] = useState(false);
+  const [showPRMonthly, setShowPRMonthly] = useState(true);
+  const [showIssueMonthly, setShowIssueMonthly] = useState(true);
   
   return (
     <main>
@@ -124,79 +124,78 @@ export default function Detail({ d, onOverview }) {
         </div>
       </div>
 
-      <div className="section two-col">
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h2 className="section-h" style={{ margin: 0 }}>
-              {showPRQuarterly ? 'PR activity per quarter' : 'PR activity per year'}
-            </h2>
-              <button
-                className="btn-secondary"
-                onClick={() => setShowPRQuarterly(!showPRQuarterly)}
-                style={{
-                  fontSize: '0.875rem',
-                  padding: '0.5rem 1rem',
-                  fontFamily: 'inherit'
-                }}
-              >
-                {showPRQuarterly ? 'Show yearly' : 'Show quarterly'}
-              </button>
-            </div>
-            {showPRQuarterly && d.prQuarterly && d.prQuarterly.length > 0 ? (
-              <BarChart
-                values={d.prQuarterly.map((x) => x.v)}
-                labels={d.prQuarterly.map((x) => x.q)}
-                currentIndex={d.prQuarterly.findIndex((x) => x.c)}
-                tooltipLabel="PRs"
-              />
-            ) : (
-              <BarChart
-                values={d.prYearly?.map((x) => x.v) || [0]}
-                labels={d.prYearly?.map((x) => x.y) || ['2025']}
-                currentIndex={d.prYearly?.findIndex((x) => x.c) || 0}
-                tooltipLabel="PRs"
-              />
-            )}
-          <p className="chart-cap">
-            Darker bar = current period · {showPRQuarterly ? `Last ${d.prQuarterly?.length || 0} quarters` : 'Total PRs per year'}
-          </p>
-        </div>
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h2 className="section-h" style={{ margin: 0 }}>
-              {showIssueQuarterly ? 'Issue activity per quarter' : 'Issue activity per year'}
-            </h2>
-              <button
-                className="btn-secondary"
-                onClick={() => setShowIssueQuarterly(!showIssueQuarterly)}
-                style={{
-                  fontSize: '0.875rem',
-                  padding: '0.5rem 1rem',
-                  fontFamily: 'inherit'
-                }}
-              >
-                {showIssueQuarterly ? 'Show yearly' : 'Show quarterly'}
-              </button>
-            </div>
-            {showIssueQuarterly && d.issueQuarterly && d.issueQuarterly.length > 0 ? (
-              <BarChart
-                values={d.issueQuarterly.map((x) => x.v)}
-                labels={d.issueQuarterly.map((x) => x.q)}
-                currentIndex={d.issueQuarterly.findIndex((x) => x.c)}
-                tooltipLabel="issues"
-              />
-            ) : (
-              <BarChart
-                values={d.issueYearly?.map((x) => x.v) || [0]}
-                labels={d.issueYearly?.map((x) => x.y) || ['2025']}
-                currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
-                tooltipLabel="issues"
-              />
-            )}
-          <p className="chart-cap">
-            Darker bar = current period · {showIssueQuarterly ? `Last ${d.issueQuarterly?.length || 0} quarters` : 'Total issues per year'}
-          </p>
-        </div>
+      <div className="section">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h2 className="section-h" style={{ margin: 0 }}>
+            {showPRMonthly ? 'PR activity per month' : 'PR activity per year'}
+          </h2>
+            <button
+              className="btn-secondary"
+              onClick={() => setShowPRMonthly(!showPRMonthly)}
+              style={{
+                fontSize: '0.875rem',
+                padding: '0.5rem 1rem',
+                fontFamily: 'inherit'
+              }}
+            >
+              {showPRMonthly ? 'Show yearly' : 'Show monthly'}
+            </button>
+          </div>
+          {showPRMonthly && d.prMonthly && d.prMonthly.length > 0 ? (
+            <BarChart
+              values={d.prMonthly.map((x) => x.v)}
+              labels={d.prMonthly.map((x) => x.m)}
+              currentIndex={d.prMonthly.findIndex((x) => x.c)}
+              tooltipLabel="PRs"
+            />
+          ) : (
+            <BarChart
+              values={d.prYearly?.map((x) => x.v) || [0]}
+              labels={d.prYearly?.map((x) => x.y) || ['2025']}
+              currentIndex={d.prYearly?.findIndex((x) => x.c) || 0}
+              tooltipLabel="PRs"
+            />
+          )}
+        <p className="chart-cap">
+          Darker bar = current period · {showPRMonthly ? `Last ${d.prMonthly?.length || 0} months` : 'Total PRs per year'}
+        </p>
+      </div>
+
+      <div className="section">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h2 className="section-h" style={{ margin: 0 }}>
+            {showIssueMonthly ? 'Issue activity per month' : 'Issue activity per year'}
+          </h2>
+            <button
+              className="btn-secondary"
+              onClick={() => setShowIssueMonthly(!showIssueMonthly)}
+              style={{
+                fontSize: '0.875rem',
+                padding: '0.5rem 1rem',
+                fontFamily: 'inherit'
+              }}
+            >
+              {showIssueMonthly ? 'Show yearly' : 'Show monthly'}
+            </button>
+          </div>
+          {showIssueMonthly && d.issueMonthly && d.issueMonthly.length > 0 ? (
+            <BarChart
+              values={d.issueMonthly.map((x) => x.v)}
+              labels={d.issueMonthly.map((x) => x.m)}
+              currentIndex={d.issueMonthly.findIndex((x) => x.c)}
+              tooltipLabel="issues"
+            />
+          ) : (
+            <BarChart
+              values={d.issueYearly?.map((x) => x.v) || [0]}
+              labels={d.issueYearly?.map((x) => x.y) || ['2025']}
+              currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
+              tooltipLabel="issues"
+            />
+          )}
+        <p className="chart-cap">
+          Darker bar = current period · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
+        </p>
       </div>
 
       <p className="foot">

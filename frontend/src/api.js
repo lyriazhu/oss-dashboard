@@ -213,49 +213,60 @@ export function transformProjectData(project, metrics) {
     { f: 'License', v: metadata?.license || '—' },
   ];
   
-  // Format PR activity data (quarterly and yearly)
-  const prQuarters = pull_requests?.quarters || [];
+  // Format PR activity data (monthly and yearly)
+  const prMonths = pull_requests?.months || [];
+  const prYears = pull_requests?.years || [];
   
-  // Group PR data by year for yearly view
-  const prYears = prQuarters.reduce((acc, q) => {
-    const year = q.quarter.split(' ')[1]; // Extract year from "Q2 2026"
-    if (!acc[year]) acc[year] = 0;
-    acc[year] += q.pr_count || 0;
-    return acc;
-  }, {});
-  
-  // Sort years chronologically and create yearly data array
-  const prYearlyData = Object.entries(prYears)
-    .sort(([yearA], [yearB]) => parseInt(yearA) - parseInt(yearB)) // Sort by year ascending
-    .map(([year, count], idx, arr) => ({
-      y: year,
-      v: count,
-      c: idx === arr.length - 1, // Mark current year (last in sorted array)
-    }));
-  
-  // Format quarterly PR data - sort by date, take last 4 quarters (most recent)
-  // Display them in chronological order (oldest to newest, left to right)
-  const sortedPrQuarters = [...prQuarters].sort((a, b) => {
-    // Parse quarter strings like "Q2 2026" to compare dates
-    const [qA, yearA] = a.quarter.split(' ');
-    const [qB, yearB] = b.quarter.split(' ');
-    const yearDiff = parseInt(yearA) - parseInt(yearB);
-    if (yearDiff !== 0) return yearDiff;
-    return parseInt(qA.substring(1)) - parseInt(qB.substring(1)); // Compare Q1, Q2, Q3, Q4
-  });
-  
-  const prQuarterlyData = sortedPrQuarters.length > 0
-    ? sortedPrQuarters.slice(-4).map((q, idx, arr) => ({
-        q: q.quarter,
-        v: q.pr_count || 0,
-        c: idx === arr.length - 1, // Mark current quarter (rightmost)
+  // Format yearly PR data from backend (all years since project creation)
+  const prYearlyData = prYears.length > 0
+    ? prYears.map((y, idx, arr) => ({
+        y: y.year.toString(),
+        v: y.pr_count || 0,
+        c: idx === arr.length - 1, // Mark current year (last in array)
       }))
     : [];
   
-  // Issue data doesn't have quarterly/yearly breakdown in the backend yet
-  // Return empty arrays until the data collection is updated
-  const issueYearlyData = [];
-  const issueQuarterlyData = [];
+  // Format monthly PR data - backend already provides last 12 months
+  // Sort by date and display in chronological order (oldest to newest, left to right)
+  const sortedPrMonths = [...prMonths].sort((a, b) => {
+    // Compare month strings like "2026-05"
+    return a.month.localeCompare(b.month);
+  });
+  
+  const prMonthlyData = sortedPrMonths.length > 0
+    ? sortedPrMonths.map((m, idx, arr) => ({
+        m: m.month, // Keep full format "2026-05" for now
+        v: m.pr_count || 0,
+        c: idx === arr.length - 1, // Mark current month (rightmost)
+      }))
+    : [];
+  
+  // Format Issue activity data (monthly and yearly)
+  const issueMonths = issues?.months || [];
+  const issueYears = issues?.years || [];
+  
+  // Format yearly Issue data from backend (all years since project creation)
+  const issueYearlyData = issueYears.length > 0
+    ? issueYears.map((y, idx, arr) => ({
+        y: y.year.toString(),
+        v: y.issue_count || 0,
+        c: idx === arr.length - 1, // Mark current year (last in array)
+      }))
+    : [];
+  
+  // Format monthly Issue data - backend already provides last 12 months
+  // Sort by date and display in chronological order
+  const sortedIssueMonths = [...issueMonths].sort((a, b) => {
+    return a.month.localeCompare(b.month);
+  });
+  
+  const issueMonthlyData = sortedIssueMonths.length > 0
+    ? sortedIssueMonths.map((m, idx, arr) => ({
+        m: m.month, // Keep full format "2026-05"
+        v: m.issue_count || 0,
+        c: idx === arr.length - 1, // Mark current month (rightmost)
+      }))
+    : [];
   
   return {
     name: project.name,
@@ -271,9 +282,9 @@ export function transformProjectData(project, metrics) {
     companies,
     meta,
     prYearly: prYearlyData.length > 0 ? prYearlyData : [{ y: '2025', v: 0, c: true }],
-    prQuarterly: prQuarterlyData.length > 0 ? prQuarterlyData : [],
+    prMonthly: prMonthlyData.length > 0 ? prMonthlyData : [],
     issueYearly: issueYearlyData.length > 0 ? issueYearlyData : [{ y: '2025', v: 0, c: true }],
-    issueQuarterly: issueQuarterlyData.length > 0 ? issueQuarterlyData : [],
+    issueMonthly: issueMonthlyData.length > 0 ? issueMonthlyData : [],
     extractedAt: metadata?.extracted_at || null, // Store the extraction timestamp
   };
 }

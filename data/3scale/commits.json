@@ -2,26 +2,26 @@
   "total_commits": 118,
   "quarters": [
     {
-      "start_date": "2026-03-27T12:18:42.373176",
-      "end_date": "2026-06-25T12:18:42.373176",
+      "start_date": "2026-03-27T16:04:36.110974",
+      "end_date": "2026-06-25T16:04:36.110974",
       "commit_count": 33,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-27T12:18:42.373176",
-      "end_date": "2026-03-27T12:18:42.373176",
+      "start_date": "2025-12-27T16:04:36.110974",
+      "end_date": "2026-03-27T16:04:36.110974",
       "commit_count": 37,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-28T12:18:42.373176",
-      "end_date": "2025-12-27T12:18:42.373176",
+      "start_date": "2025-09-28T16:04:36.110974",
+      "end_date": "2025-12-27T16:04:36.110974",
       "commit_count": 31,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-30T12:18:42.373176",
-      "end_date": "2025-09-28T12:18:42.373176",
+      "start_date": "2025-06-30T16:04:36.110974",
+      "end_date": "2025-09-28T16:04:36.110974",
       "commit_count": 17,
       "quarter": "Q3 2025"
     }
@@ -34,7 +34,7 @@
       "location": null,
       "email": "eastizle@redhat.com",
       "profile_url": null,
-      "commit_count": 3562
+      "commit_count": 1781
     },
     {
       "login": "Miguel Soriano",
@@ -43,7 +43,7 @@
       "location": null,
       "email": "msoriano@redhat.com",
       "profile_url": null,
-      "commit_count": 1998
+      "commit_count": 999
     },
     {
       "login": "MStokluska",
@@ -52,7 +52,7 @@
       "location": null,
       "email": "mstoklus@redhat.com",
       "profile_url": null,
-      "commit_count": 548
+      "commit_count": 274
     },
     {
       "login": "An Tran",
@@ -61,7 +61,7 @@
       "location": null,
       "email": "tkan145@gmail.com",
       "profile_url": null,
-      "commit_count": 492
+      "commit_count": 246
     },
     {
       "login": "Joaquim Moreno Prusi",
@@ -70,7 +70,7 @@
       "location": null,
       "email": "jmprusi@keepalive.io",
       "profile_url": null,
-      "commit_count": 330
+      "commit_count": 165
     },
     {
       "login": "Austin Cunningham",
@@ -79,7 +79,7 @@
       "location": null,
       "email": "aucunnin@redhat.com",
       "profile_url": null,
-      "commit_count": 320
+      "commit_count": 160
     },
     {
       "login": "Carl Kyrillos",
@@ -88,7 +88,7 @@
       "location": null,
       "email": "ckyrillo@redhat.com",
       "profile_url": null,
-      "commit_count": 274
+      "commit_count": 137
     },
     {
       "login": "Valery Mogilevsky",
@@ -97,7 +97,7 @@
       "location": null,
       "email": "vmogilev@redhat.com",
       "profile_url": null,
-      "commit_count": 244
+      "commit_count": 122
     },
     {
       "login": "Miguel Soriano",
@@ -106,7 +106,7 @@
       "location": null,
       "email": "37954906+miguelsorianod@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 242
+      "commit_count": 121
     },
     {
       "login": "Boris Urbanik",
@@ -115,7 +115,7 @@
       "location": null,
       "email": "boris.urbanik@ibm.com",
       "profile_url": null,
-      "commit_count": 80
+      "commit_count": 40
     },
     {
       "login": "Carl Kyrillos",
@@ -124,7 +124,7 @@
       "location": null,
       "email": "80267718+carlkyrillos@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 80
+      "commit_count": 40
     },
     {
       "login": "Sergio Franco Garcia",
@@ -133,7 +133,7 @@
       "location": null,
       "email": "sfrancog@redhat.com",
       "profile_url": null,
-      "commit_count": 60
+      "commit_count": 30
     },
     {
       "login": "Sergio L\u00f3pez",
@@ -142,7 +142,7 @@
       "location": null,
       "email": "slopezma@redhat.com",
       "profile_url": null,
-      "commit_count": 60
+      "commit_count": 30
     },
     {
       "login": "dependabot[bot]",
@@ -151,7 +151,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 48
+      "commit_count": 24
     },
     {
       "login": "Kevin Fan",
@@ -160,7 +160,7 @@
       "location": null,
       "email": "chfan@redhat.com",
       "profile_url": null,
-      "commit_count": 46
+      "commit_count": 23
     },
     {
       "login": "pstefans",
@@ -169,7 +169,7 @@
       "location": null,
       "email": "pstefans@redhat.com",
       "profile_url": null,
-      "commit_count": 36
+      "commit_count": 18
     },
     {
       "login": "Daria Mayorova",
@@ -178,7 +178,7 @@
       "location": null,
       "email": "mayorova@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 30
+      "commit_count": 15
     },
     {
       "login": "Guilherme Cassolato",
@@ -187,7 +187,7 @@
       "location": null,
       "email": "guicassolato@gmail.com",
       "profile_url": null,
-      "commit_count": 26
+      "commit_count": 13
     },
     {
       "login": "pstefans",
@@ -196,7 +196,7 @@
       "location": null,
       "email": "patrykstefanski00@gmail.com",
       "profile_url": null,
-      "commit_count": 24
+      "commit_count": 12
     },
     {
       "login": "Roi Vazquez",
@@ -205,7 +205,7 @@
       "location": null,
       "email": "roivazquez@gmail.com",
       "profile_url": null,
-      "commit_count": 24
+      "commit_count": 12
     },
     {
       "login": "Conor O'Malley",
@@ -214,7 +214,7 @@
       "location": null,
       "email": "comalley@redhat.com",
       "profile_url": null,
-      "commit_count": 22
+      "commit_count": 11
     },
     {
       "login": "Bryan Keane",
@@ -223,7 +223,7 @@
       "location": null,
       "email": "20089166@mail.wit.ie",
       "profile_url": null,
-      "commit_count": 20
+      "commit_count": 10
     },
     {
       "login": "Rael Garcia",
@@ -232,7 +232,7 @@
       "location": null,
       "email": "rael@redhat.com",
       "profile_url": null,
-      "commit_count": 20
+      "commit_count": 10
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -241,7 +241,7 @@
       "location": null,
       "email": "eguzki.astiz@gmail.com",
       "profile_url": null,
-      "commit_count": 20
+      "commit_count": 10
     },
     {
       "login": "Boris Urbanik",
@@ -250,7 +250,7 @@
       "location": null,
       "email": "115566047+urbanikb@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 18
+      "commit_count": 9
     },
     {
       "login": "Babak Mozaffari",
@@ -259,7 +259,7 @@
       "location": null,
       "email": "bmozaffa@redhat.com",
       "profile_url": null,
-      "commit_count": 18
+      "commit_count": 9
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -268,7 +268,7 @@
       "location": null,
       "email": "zakarrontzi@gmail.com",
       "profile_url": null,
-      "commit_count": 16
+      "commit_count": 8
     },
     {
       "login": "Krishna Harsha Voora",
@@ -277,7 +277,7 @@
       "location": null,
       "email": "krishvoor@in.ibm.com",
       "profile_url": null,
-      "commit_count": 16
+      "commit_count": 8
     },
     {
       "login": "Boris Urbanik",
@@ -286,7 +286,7 @@
       "location": null,
       "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 14
+      "commit_count": 7
     },
     {
       "login": "Aleksandar N. Kostadinov",
@@ -295,7 +295,7 @@
       "location": null,
       "email": "akostadi@redhat.com",
       "profile_url": null,
-      "commit_count": 14
+      "commit_count": 7
     },
     {
       "login": "Srijita Mukherjee",
@@ -304,7 +304,7 @@
       "location": null,
       "email": "srmukher@redhat.com",
       "profile_url": null,
-      "commit_count": 14
+      "commit_count": 7
     },
     {
       "login": "Aleksandar N. Kostadinov",
@@ -313,7 +313,7 @@
       "location": null,
       "email": "akostadinov@gmail.com",
       "profile_url": null,
-      "commit_count": 12
+      "commit_count": 6
     },
     {
       "login": "Michal Macejko",
@@ -322,7 +322,7 @@
       "location": null,
       "email": "michal.macejko1@gmail.com",
       "profile_url": null,
-      "commit_count": 12
+      "commit_count": 6
     },
     {
       "login": "Alan Moran",
@@ -331,7 +331,7 @@
       "location": null,
       "email": "amoran@redhat.com",
       "profile_url": null,
-      "commit_count": 12
+      "commit_count": 6
     },
     {
       "login": "PoojaChandak",
@@ -340,7 +340,7 @@
       "location": null,
       "email": "poojachandak002@gmail.com",
       "profile_url": null,
-      "commit_count": 10
+      "commit_count": 5
     },
     {
       "login": "Adam Cattermole",
@@ -349,7 +349,7 @@
       "location": null,
       "email": "acatterm@redhat.com",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 3
     },
     {
       "login": "David Ortiz",
@@ -358,7 +358,7 @@
       "location": null,
       "email": "z.david.ortiz@gmail.com",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 3
     },
     {
       "login": "Rashel Rojas",
@@ -367,7 +367,7 @@
       "location": null,
       "email": "rarojas@redhat.com",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 3
     },
     {
       "login": "Hallelujah",
@@ -376,7 +376,7 @@
       "location": null,
       "email": "hery@rails-royce.org",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 3
     },
     {
       "login": "Swati Kale",
@@ -385,7 +385,7 @@
       "location": null,
       "email": "swkale@redhat.com",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 3
     },
     {
       "login": "den-rgb",
@@ -394,7 +394,7 @@
       "location": null,
       "email": "den02_m@yahoo.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "Thomas Maas",
@@ -403,7 +403,7 @@
       "location": null,
       "email": "thomas@webtypes.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "JJ Kiely",
@@ -412,7 +412,7 @@
       "location": null,
       "email": "jkiely@redhat.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "Mohammed Le Doze",
@@ -421,7 +421,7 @@
       "location": null,
       "email": "mledoze@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "Wei Li",
@@ -430,7 +430,7 @@
       "location": null,
       "email": "wei.li@redhat.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "Oleg Matskiv",
@@ -439,7 +439,7 @@
       "location": null,
       "email": "omatskiv@redhat.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "Michal Cichra",
@@ -448,7 +448,7 @@
       "location": null,
       "email": "mikz@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 2
     },
     {
       "login": "An Tran",
@@ -457,7 +457,7 @@
       "location": null,
       "email": "atra@redhat.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Roberto Polli",
@@ -466,7 +466,7 @@
       "location": null,
       "email": "robipolli@gmail.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Brian Gallagher",
@@ -475,7 +475,7 @@
       "location": null,
       "email": "briangal@gmail.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Valery Mogilevsky",
@@ -484,7 +484,7 @@
       "location": null,
       "email": "vmogilev@vmogilev-thinkpadp1gen2.raanaii.csb",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Daniel Zabel",
@@ -493,7 +493,7 @@
       "location": null,
       "email": "daniel.zabel@bitmarck.de",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Miroslav Jaro\u0161",
@@ -502,7 +502,7 @@
       "location": null,
       "email": "mirek@mijaros.cz",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Verevkin-A",
@@ -511,7 +511,7 @@
       "location": null,
       "email": "sandyverevkin@gmail.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Weng Kee Teh",
@@ -520,7 +520,7 @@
       "location": null,
       "email": "47697491+wengkee@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Daria Mayorova",
@@ -529,7 +529,7 @@
       "location": null,
       "email": "dmayorov@redhat.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Sergio L\u00f3pez",
@@ -538,7 +538,7 @@
       "location": null,
       "email": "41513123+slopezz@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "pooja.chandak01",
@@ -547,7 +547,7 @@
       "location": null,
       "email": "pooja.chandak01@infosys.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Paul Wright",
@@ -556,7 +556,7 @@
       "location": null,
       "email": "5154224+pwright@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Takayuki Konishi",
@@ -565,7 +565,7 @@
       "location": null,
       "email": "tkonishi@redhat.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Andrew Pitt",
@@ -574,7 +574,7 @@
       "location": null,
       "email": "apitt@redhat.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Melvin Hillsman",
@@ -583,7 +583,7 @@
       "location": null,
       "email": "mhillsma@redhat.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "jbride",
@@ -592,7 +592,7 @@
       "location": null,
       "email": "jbride2001@yahoo.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     },
     {
       "login": "Michal Cichra",
@@ -601,7 +601,7 @@
       "location": null,
       "email": "michal@cichra.cz",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 1
     }
   ],
   "time_scope": {
@@ -610,7 +610,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-25T12:18:44.983346",
+  "extracted_at": "2026-06-25T16:04:39.202833",
   "years": [
     {
       "year": 2018,

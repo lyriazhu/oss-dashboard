@@ -11,9 +11,18 @@
       "renovate[bot]",
       "rkubis"
     ],
-    "last_extracted_at": "2026-06-25T12:14:50.112077"
+    "last_extracted_at": "2026-06-25T16:04:19.835062"
   },
   "commits": {
-    "last_git_sync_at": "2026-06-25T12:14:53.042896"
+    "last_git_sync_at": "2026-06-25T16:04:23.560994"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-06-25T16:04:28.084387"
+  },
+  "issues": {
+    "last_extracted_at": "2026-06-25T16:04:26.366323"
+  },
+  "releases": {
+    "last_extracted_at": "2026-06-25T16:04:29.934538"
   }
 }

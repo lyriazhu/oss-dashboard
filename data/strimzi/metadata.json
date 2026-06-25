@@ -3,10 +3,10 @@
   "full_name": "strimzi/strimzi-kafka-operator",
   "description": "Apache Kafka\u00ae running on Kubernetes",
   "created_at": "2016-05-06T08:52:33+00:00",
-  "updated_at": "2026-06-25T13:27:56+00:00",
-  "stars": 5846,
+  "updated_at": "2026-06-25T19:06:50+00:00",
+  "stars": 5847,
   "forks": 1507,
-  "watchers": 5846,
+  "watchers": 5847,
   "open_issues": 142,
   "language": "Java",
   "topics": [
@@ -26,6 +26,6 @@
   "license": "Apache License 2.0",
   "homepage": "https://strimzi.io/",
   "has_wiki": false,
-  "has_discussions": true,
-  "extracted_at": "2026-06-25T11:23:22.973169"
+  "has_discussions": null,
+  "extracted_at": "2026-06-25T15:34:45.774675"
 }
