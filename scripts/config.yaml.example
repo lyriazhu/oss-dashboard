@@ -7,6 +7,11 @@ github:
   token: "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"
   
 # Projects to track
+# Two configuration formats are supported:
+# 1. Single repo (backward compatible):
+#    - name, owner, repo, github_url, foundation, website
+# 2. Multiple repos (for projects with multiple repositories):
+#    - name, repos (list of {owner, repo}), foundation, website
 projects:
   - name: "Strimzi"
     github_url: "https://github.com/strimzi/strimzi-kafka-operator"
@@ -49,6 +54,19 @@ projects:
     repo: "3scale-operator"
     foundation: "Red Hat"
     website: "https://www.3scale.net"
+  
+  # Example: Project with multiple repositories
+  # Pull requests will be aggregated across all repos
+  # - name: "Multi-Repo Project"
+  #   foundation: "Example Foundation"
+  #   website: "https://example.org"
+  #   repos:
+  #     - owner: "example-org"
+  #       repo: "main-repo"
+  #     - owner: "example-org"
+  #       repo: "secondary-repo"
+  #     - owner: "example-org"
+  #       repo: "third-repo"
 
 # Data extraction settings
 extraction:

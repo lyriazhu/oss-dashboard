@@ -67,12 +67,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 558,
+      "contributor_count": 561,
       "is_current": true
     }
   ],
-  "total_contributors": 3272,
-  "total_contributors_git": 3272,
+  "total_contributors": 3274,
+  "total_contributors_git": 3274,
   "contributors": [
     {
       "login": "stianst",
@@ -89,7 +89,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 2926,
+      "contributions": 2927,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -116,7 +116,7 @@
       "company": "Ibm",
       "location": "Brasilia, Brazil",
       "email": null,
-      "contributions": 1510,
+      "contributions": 1512,
       "profile_url": "https://github.com/pedroigor"
     },
     {
@@ -125,7 +125,7 @@
       "company": "Ibm",
       "location": "Z\u00fcrich",
       "email": null,
-      "contributions": 1509,
+      "contributions": 1510,
       "profile_url": "https://github.com/edewit"
     },
     {
@@ -179,7 +179,7 @@
       "company": "Ibm",
       "location": "Czech Republic",
       "email": "mabartos@redhat.com",
-      "contributions": 514,
+      "contributions": 515,
       "profile_url": "https://github.com/mabartos"
     },
     {
@@ -197,7 +197,7 @@
       "company": "Red Hat",
       "location": "Reading PA",
       "email": null,
-      "contributions": 495,
+      "contributions": 497,
       "profile_url": "https://github.com/shawkins"
     },
     {
@@ -224,7 +224,7 @@
       "company": "Ibm",
       "location": "Sao Paulo",
       "email": "sguilhen@redhat.com",
-      "contributions": 330,
+      "contributions": 331,
       "profile_url": "https://github.com/sguilhen"
     },
     {
@@ -296,7 +296,7 @@
       "company": "Hitachi, Ltd.",
       "location": "Yokohama, Japan",
       "email": null,
-      "contributions": 216,
+      "contributions": 217,
       "profile_url": "https://github.com/tnorimat"
     },
     {
@@ -341,7 +341,7 @@
       "company": "Ibm",
       "location": null,
       "email": "g.graziano94@gmail.com",
-      "contributions": 160,
+      "contributions": 161,
       "profile_url": "https://github.com/graziang"
     },
     {
@@ -539,7 +539,7 @@
       "company": "Adorsys",
       "location": "West, Cameroon",
       "email": null,
-      "contributions": 43,
+      "contributions": 44,
       "profile_url": "https://github.com/Awambeng"
     },
     {
@@ -611,7 +611,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 38,
+      "contributions": 39,
       "profile_url": "https://github.com/michalvavrik"
     },
     {
@@ -921,6 +921,15 @@
       "profile_url": "https://github.com/hokuda"
     },
     {
+      "login": "jimmychakkalakal",
+      "name": null,
+      "company": "Ibm",
+      "location": "Dublin",
+      "email": null,
+      "contributions": 15,
+      "profile_url": "https://github.com/jimmychakkalakal"
+    },
+    {
       "login": "antikalk",
       "name": "Oliver",
       "company": "Netceteragroup",
@@ -955,15 +964,6 @@
       "email": null,
       "contributions": 14,
       "profile_url": "https://github.com/foo4u"
-    },
-    {
-      "login": "jimmychakkalakal",
-      "name": null,
-      "company": "Ibm",
-      "location": "Dublin",
-      "email": null,
-      "contributions": 14,
-      "profile_url": "https://github.com/jimmychakkalakal"
     },
     {
       "login": "vanrar68",
@@ -1938,6 +1938,15 @@
       "profile_url": "https://github.com/cocotton"
     },
     {
+      "login": "vilmosnagy",
+      "name": "Nagy Vilmos",
+      "company": "Realcity Its Kft",
+      "location": "Europe/Budapest",
+      "email": "me@vnagy.eu",
+      "contributions": 5,
+      "profile_url": "https://github.com/vilmosnagy"
+    },
+    {
       "login": "Copilot",
       "name": null,
       "company": "Unknown",
@@ -2152,15 +2161,6 @@
       "email": "tyandor@gmail.com",
       "contributions": 4,
       "profile_url": "https://github.com/tyandor"
-    },
-    {
-      "login": "vilmosnagy",
-      "name": "Nagy Vilmos",
-      "company": "Realcity Its Kft",
-      "location": "Europe/Budapest",
-      "email": "me@vnagy.eu",
-      "contributions": 4,
-      "profile_url": "https://github.com/vilmosnagy"
     },
     {
       "login": "wtrocki",
@@ -3033,8 +3033,8 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 276,
-      "new_contributors": 103,
+      "active_contributors": 280,
+      "new_contributors": 105,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }

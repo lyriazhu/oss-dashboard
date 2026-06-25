@@ -1,39 +1,327 @@
 {
-  "total_prs": 0,
-  "avg_time_to_merge_days": null,
+  "total_prs": 2036,
+  "avg_time_to_merge_days": 4.14,
   "quarters": [
     {
-      "start_date": "2026-03-26T09:11:28.379076",
-      "end_date": "2026-06-24T09:11:28.379076",
-      "pr_count": 0,
-      "merged_pr_count": 0,
-      "avg_time_to_merge_days": null,
-      "quarter": "Q2 2026"
+      "start_date": "2017-01-01T00:00:00",
+      "end_date": "2017-03-31T23:59:59",
+      "pr_count": 5,
+      "merged_pr_count": 5,
+      "quarter": "Q1 2017",
+      "avg_time_to_merge_days": 0.18
     },
     {
-      "start_date": "2025-12-26T09:11:28.379076",
-      "end_date": "2026-03-26T09:11:28.379076",
-      "pr_count": 0,
-      "merged_pr_count": 0,
-      "avg_time_to_merge_days": null,
-      "quarter": "Q1 2026"
+      "start_date": "2018-01-01T00:00:00",
+      "end_date": "2018-03-31T23:59:59",
+      "pr_count": 3,
+      "merged_pr_count": 3,
+      "quarter": "Q1 2018",
+      "avg_time_to_merge_days": 0.32
     },
     {
-      "start_date": "2025-09-27T09:11:28.379076",
-      "end_date": "2025-12-26T09:11:28.379076",
-      "pr_count": 0,
-      "merged_pr_count": 0,
-      "avg_time_to_merge_days": null,
-      "quarter": "Q4 2025"
+      "start_date": "2019-01-01T00:00:00",
+      "end_date": "2019-03-31T23:59:59",
+      "pr_count": 85,
+      "merged_pr_count": 69,
+      "quarter": "Q1 2019",
+      "avg_time_to_merge_days": 2.51
     },
     {
-      "start_date": "2025-06-29T09:11:28.379076",
-      "end_date": "2025-09-27T09:11:28.379076",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2020-03-31T23:59:59",
+      "pr_count": 46,
+      "merged_pr_count": 41,
+      "quarter": "Q1 2020",
+      "avg_time_to_merge_days": 1.07
+    },
+    {
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2021-03-31T23:59:59",
+      "pr_count": 62,
+      "merged_pr_count": 51,
+      "quarter": "Q1 2021",
+      "avg_time_to_merge_days": 4.53
+    },
+    {
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2022-03-31T23:59:59",
+      "pr_count": 71,
+      "merged_pr_count": 55,
+      "quarter": "Q1 2022",
+      "avg_time_to_merge_days": 3.39
+    },
+    {
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2023-03-31T23:59:59",
+      "pr_count": 56,
+      "merged_pr_count": 47,
+      "quarter": "Q1 2023",
+      "avg_time_to_merge_days": 8.04
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-03-31T23:59:59",
+      "pr_count": 66,
+      "merged_pr_count": 32,
+      "quarter": "Q1 2024",
+      "avg_time_to_merge_days": 0.5
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-03-31T23:59:59",
+      "pr_count": 80,
+      "merged_pr_count": 32,
+      "quarter": "Q1 2025",
+      "avg_time_to_merge_days": 3.89
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-03-31T23:59:59",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "avg_time_to_merge_days": null,
-      "quarter": "Q3 2025"
+      "quarter": "Q1 2026",
+      "avg_time_to_merge_days": null
+    },
+    {
+      "start_date": "2017-04-01T00:00:00",
+      "end_date": "2017-06-30T23:59:59",
+      "pr_count": 1,
+      "merged_pr_count": 1,
+      "quarter": "Q2 2017",
+      "avg_time_to_merge_days": 0.0
+    },
+    {
+      "start_date": "2018-04-01T00:00:00",
+      "end_date": "2018-06-30T23:59:59",
+      "pr_count": 1,
+      "merged_pr_count": 1,
+      "quarter": "Q2 2018",
+      "avg_time_to_merge_days": 0.33
+    },
+    {
+      "start_date": "2019-04-01T00:00:00",
+      "end_date": "2019-06-30T23:59:59",
+      "pr_count": 45,
+      "merged_pr_count": 41,
+      "quarter": "Q2 2019",
+      "avg_time_to_merge_days": 3.58
+    },
+    {
+      "start_date": "2020-04-01T00:00:00",
+      "end_date": "2020-06-30T23:59:59",
+      "pr_count": 73,
+      "merged_pr_count": 57,
+      "quarter": "Q2 2020",
+      "avg_time_to_merge_days": 1.45
+    },
+    {
+      "start_date": "2021-04-01T00:00:00",
+      "end_date": "2021-06-30T23:59:59",
+      "pr_count": 80,
+      "merged_pr_count": 64,
+      "quarter": "Q2 2021",
+      "avg_time_to_merge_days": 4.98
+    },
+    {
+      "start_date": "2022-04-01T00:00:00",
+      "end_date": "2022-06-30T23:59:59",
+      "pr_count": 61,
+      "merged_pr_count": 45,
+      "quarter": "Q2 2022",
+      "avg_time_to_merge_days": 6.97
+    },
+    {
+      "start_date": "2023-04-01T00:00:00",
+      "end_date": "2023-06-30T23:59:59",
+      "pr_count": 63,
+      "merged_pr_count": 52,
+      "quarter": "Q2 2023",
+      "avg_time_to_merge_days": 6.83
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-06-30T23:59:59",
+      "pr_count": 209,
+      "merged_pr_count": 61,
+      "quarter": "Q2 2024",
+      "avg_time_to_merge_days": 1.38
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-06-30T23:59:59",
+      "pr_count": 41,
+      "merged_pr_count": 36,
+      "quarter": "Q2 2025",
+      "avg_time_to_merge_days": 5.0
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-06-25T12:17:21.524021",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "quarter": "Q2 2026",
+      "avg_time_to_merge_days": null
+    },
+    {
+      "start_date": "2016-07-01T00:00:00",
+      "end_date": "2016-09-30T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "quarter": "Q3 2016",
+      "avg_time_to_merge_days": null
+    },
+    {
+      "start_date": "2017-07-01T00:00:00",
+      "end_date": "2017-09-30T23:59:59",
+      "pr_count": 2,
+      "merged_pr_count": 2,
+      "quarter": "Q3 2017",
+      "avg_time_to_merge_days": 0.01
+    },
+    {
+      "start_date": "2018-07-01T00:00:00",
+      "end_date": "2018-09-30T23:59:59",
+      "pr_count": 3,
+      "merged_pr_count": 3,
+      "quarter": "Q3 2018",
+      "avg_time_to_merge_days": 0.75
+    },
+    {
+      "start_date": "2019-07-01T00:00:00",
+      "end_date": "2019-09-30T23:59:59",
+      "pr_count": 57,
+      "merged_pr_count": 47,
+      "quarter": "Q3 2019",
+      "avg_time_to_merge_days": 0.86
+    },
+    {
+      "start_date": "2020-07-01T00:00:00",
+      "end_date": "2020-09-30T23:59:59",
+      "pr_count": 65,
+      "merged_pr_count": 62,
+      "quarter": "Q3 2020",
+      "avg_time_to_merge_days": 4.85
+    },
+    {
+      "start_date": "2021-07-01T00:00:00",
+      "end_date": "2021-09-30T23:59:59",
+      "pr_count": 79,
+      "merged_pr_count": 54,
+      "quarter": "Q3 2021",
+      "avg_time_to_merge_days": 6.07
+    },
+    {
+      "start_date": "2022-07-01T00:00:00",
+      "end_date": "2022-09-30T23:59:59",
+      "pr_count": 54,
+      "merged_pr_count": 34,
+      "quarter": "Q3 2022",
+      "avg_time_to_merge_days": 9.32
+    },
+    {
+      "start_date": "2023-07-01T00:00:00",
+      "end_date": "2023-09-30T23:59:59",
+      "pr_count": 44,
+      "merged_pr_count": 33,
+      "quarter": "Q3 2023",
+      "avg_time_to_merge_days": 11.26
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-09-30T23:59:59",
+      "pr_count": 207,
+      "merged_pr_count": 29,
+      "quarter": "Q3 2024",
+      "avg_time_to_merge_days": 2.47
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-09-30T23:59:59",
+      "pr_count": 38,
+      "merged_pr_count": 32,
+      "quarter": "Q3 2025",
+      "avg_time_to_merge_days": 0.84
+    },
+    {
+      "start_date": "2016-10-01T00:00:00",
+      "end_date": "2016-12-31T23:59:59",
+      "pr_count": 1,
+      "merged_pr_count": 1,
+      "quarter": "Q4 2016",
+      "avg_time_to_merge_days": 0.01
+    },
+    {
+      "start_date": "2017-10-01T00:00:00",
+      "end_date": "2017-12-31T23:59:59",
+      "pr_count": 5,
+      "merged_pr_count": 5,
+      "quarter": "Q4 2017",
+      "avg_time_to_merge_days": 0.19
+    },
+    {
+      "start_date": "2018-10-01T00:00:00",
+      "end_date": "2018-12-31T23:59:59",
+      "pr_count": 7,
+      "merged_pr_count": 7,
+      "quarter": "Q4 2018",
+      "avg_time_to_merge_days": 0.54
+    },
+    {
+      "start_date": "2019-10-01T00:00:00",
+      "end_date": "2019-12-31T23:59:59",
+      "pr_count": 50,
+      "merged_pr_count": 39,
+      "quarter": "Q4 2019",
+      "avg_time_to_merge_days": 1.7
+    },
+    {
+      "start_date": "2020-10-01T00:00:00",
+      "end_date": "2020-12-31T23:59:59",
+      "pr_count": 60,
+      "merged_pr_count": 54,
+      "quarter": "Q4 2020",
+      "avg_time_to_merge_days": 1.82
+    },
+    {
+      "start_date": "2021-10-01T00:00:00",
+      "end_date": "2021-12-31T23:59:59",
+      "pr_count": 70,
+      "merged_pr_count": 42,
+      "quarter": "Q4 2021",
+      "avg_time_to_merge_days": 8.1
+    },
+    {
+      "start_date": "2022-10-01T00:00:00",
+      "end_date": "2022-12-31T23:59:59",
+      "pr_count": 43,
+      "merged_pr_count": 38,
+      "quarter": "Q4 2022",
+      "avg_time_to_merge_days": 6.11
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2023-12-31T23:59:59",
+      "pr_count": 68,
+      "merged_pr_count": 53,
+      "quarter": "Q4 2023",
+      "avg_time_to_merge_days": 5.03
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2024-12-31T23:59:59",
+      "pr_count": 132,
+      "merged_pr_count": 20,
+      "quarter": "Q4 2024",
+      "avg_time_to_merge_days": 3.24
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2025-12-31T23:59:59",
+      "pr_count": 3,
+      "merged_pr_count": 0,
+      "quarter": "Q4 2025",
+      "avg_time_to_merge_days": null
     }
   ],
-  "extracted_at": "2026-06-24T09:11:28.379095"
+  "extracted_at": "2026-06-25T12:17:21.524068"
 }

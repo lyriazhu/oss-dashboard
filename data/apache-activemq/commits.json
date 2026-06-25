@@ -1,27 +1,27 @@
 {
-  "total_commits": 394,
+  "total_commits": 396,
   "quarters": [
     {
-      "start_date": "2026-03-26T09:10:33.182010",
-      "end_date": "2026-06-24T09:10:33.182010",
-      "commit_count": 126,
+      "start_date": "2026-03-27T11:54:36.495207",
+      "end_date": "2026-06-25T11:54:36.495207",
+      "commit_count": 123,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-26T09:10:33.182010",
-      "end_date": "2026-03-26T09:10:33.182010",
-      "commit_count": 172,
+      "start_date": "2025-12-27T11:54:36.495207",
+      "end_date": "2026-03-27T11:54:36.495207",
+      "commit_count": 177,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-27T09:10:33.182010",
-      "end_date": "2025-12-26T09:10:33.182010",
+      "start_date": "2025-09-28T11:54:36.495207",
+      "end_date": "2025-12-27T11:54:36.495207",
       "commit_count": 64,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-29T09:10:33.182010",
-      "end_date": "2025-09-27T09:10:33.182010",
+      "start_date": "2025-06-30T11:54:36.495207",
+      "end_date": "2025-09-28T11:54:36.495207",
       "commit_count": 32,
       "quarter": "Q3 2025"
     }
@@ -52,7 +52,7 @@
       "location": null,
       "email": "jbonofre@apache.org",
       "profile_url": null,
-      "commit_count": 4195
+      "commit_count": 4203
     },
     {
       "login": "James Strachan",
@@ -151,7 +151,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 684
+      "commit_count": 697
     },
     {
       "login": "Matt Pavlovich",
@@ -160,7 +160,7 @@
       "location": null,
       "email": "matt@hyte.io",
       "profile_url": null,
-      "commit_count": 682
+      "commit_count": 685
     },
     {
       "login": "Matt Pavlovich",
@@ -376,7 +376,7 @@
       "location": null,
       "email": "jeanouii@gmail.com",
       "profile_url": null,
-      "commit_count": 109
+      "commit_count": 110
     },
     {
       "login": "gianandrea.rigoni\u201a",
@@ -550,6 +550,15 @@
       "commit_count": 42
     },
     {
+      "login": "Anmol Saxena",
+      "name": "Anmol Saxena",
+      "company": "Unknown",
+      "location": null,
+      "email": "asaxena@meshiq.com",
+      "profile_url": null,
+      "commit_count": 41
+    },
+    {
       "login": "Sergio Lemos",
       "name": "Sergio Lemos",
       "company": "Unknown",
@@ -557,15 +566,6 @@
       "email": "lemoss@amazon.com",
       "profile_url": null,
       "commit_count": 40
-    },
-    {
-      "login": "Anmol Saxena",
-      "name": "Anmol Saxena",
-      "company": "Unknown",
-      "location": null,
-      "email": "asaxena@meshiq.com",
-      "profile_url": null,
-      "commit_count": 39
     },
     {
       "login": "Benjamin Graf",
@@ -1987,7 +1987,7 @@
       "location": null,
       "email": "blackb1rd.mov@gmail.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 5
     },
     {
       "login": "Robert Regina",
@@ -2734,7 +2734,7 @@
       "location": null,
       "email": "49990229+tylermurali@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Stanley Zhao",
@@ -3580,7 +3580,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-24T09:10:36.428394",
+  "extracted_at": "2026-06-25T11:54:39.241762",
   "years": [
     {
       "year": 2005,
@@ -3689,7 +3689,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1299,
+      "commit_count": 1305,
       "is_current": true
     }
   ]

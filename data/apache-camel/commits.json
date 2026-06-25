@@ -1,28 +1,28 @@
 {
-  "total_commits": 5802,
+  "total_commits": 5840,
   "quarters": [
     {
-      "start_date": "2026-03-26T09:10:07.602763",
-      "end_date": "2026-06-24T09:10:07.602763",
-      "commit_count": 1803,
+      "start_date": "2026-03-27T11:32:53.262792",
+      "end_date": "2026-06-25T11:32:53.262792",
+      "commit_count": 1824,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-26T09:10:07.602763",
-      "end_date": "2026-03-26T09:10:07.602763",
-      "commit_count": 1832,
+      "start_date": "2025-12-27T11:32:53.262792",
+      "end_date": "2026-03-27T11:32:53.262792",
+      "commit_count": 1848,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-27T09:10:07.602763",
-      "end_date": "2025-12-26T09:10:07.602763",
-      "commit_count": 1181,
+      "start_date": "2025-09-28T11:32:53.262792",
+      "end_date": "2025-12-27T11:32:53.262792",
+      "commit_count": 1183,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-29T09:10:07.602763",
-      "end_date": "2025-09-27T09:10:07.602763",
-      "commit_count": 986,
+      "start_date": "2025-06-30T11:32:53.262792",
+      "end_date": "2025-09-28T11:32:53.262792",
+      "commit_count": 985,
       "quarter": "Q3 2025"
     }
   ],
@@ -34,7 +34,7 @@
       "location": null,
       "email": "ancosen@gmail.com",
       "profile_url": null,
-      "commit_count": 67000
+      "commit_count": 67010
     },
     {
       "login": "Claus Ibsen",
@@ -43,7 +43,7 @@
       "location": null,
       "email": "claus.ibsen@gmail.com",
       "profile_url": null,
-      "commit_count": 52703
+      "commit_count": 52720
     },
     {
       "login": "Claus Ibsen",
@@ -61,7 +61,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 21859
+      "commit_count": 21876
     },
     {
       "login": "Otavio Rodolfo Piske",
@@ -70,7 +70,7 @@
       "location": null,
       "email": "angusyoung@gmail.com",
       "profile_url": null,
-      "commit_count": 17703
+      "commit_count": 17710
     },
     {
       "login": "Willem Jiang",
@@ -88,7 +88,7 @@
       "location": null,
       "email": "gnodet@gmail.com",
       "profile_url": null,
-      "commit_count": 6850
+      "commit_count": 6861
     },
     {
       "login": "James Strachan",
@@ -169,7 +169,7 @@
       "location": null,
       "email": "orpiske@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 2552
+      "commit_count": 2554
     },
     {
       "login": "James Netherton",
@@ -178,7 +178,7 @@
       "location": null,
       "email": "jamesnetherton@gmail.com",
       "profile_url": null,
-      "commit_count": 2334
+      "commit_count": 2337
     },
     {
       "login": "oscerd",
@@ -205,7 +205,7 @@
       "location": null,
       "email": "federico.mariani.1990@gmail.com",
       "profile_url": null,
-      "commit_count": 1962
+      "commit_count": 1966
     },
     {
       "login": "Zoran Regvart",
@@ -286,7 +286,7 @@
       "location": null,
       "email": "41898282+github-actions[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1484
+      "commit_count": 1486
     },
     {
       "login": "Colm O hEigeartaigh",
@@ -358,7 +358,7 @@
       "location": null,
       "email": "apupier@ibm.com",
       "profile_url": null,
-      "commit_count": 1053
+      "commit_count": 1055
     },
     {
       "login": "Tadayoshi Sato",
@@ -457,7 +457,7 @@
       "location": null,
       "email": "ondrusek.jiri@gmail.com",
       "profile_url": null,
-      "commit_count": 684
+      "commit_count": 686
     },
     {
       "login": "Dhiraj Bokde",
@@ -502,7 +502,7 @@
       "location": null,
       "email": "60320+ammachado@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 615
+      "commit_count": 618
     },
     {
       "login": "Henryk Konsek",
@@ -619,7 +619,7 @@
       "location": null,
       "email": "jamesnetherton@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 384
+      "commit_count": 387
     },
     {
       "login": "Thomas Diesler",
@@ -2005,7 +2005,7 @@
       "location": null,
       "email": "tmielke@ibm.com",
       "profile_url": null,
-      "commit_count": 64
+      "commit_count": 65
     },
     {
       "login": "LoRez",
@@ -2113,7 +2113,7 @@
       "location": null,
       "email": "christoph.deppisch@web.de",
       "profile_url": null,
-      "commit_count": 58
+      "commit_count": 60
     },
     {
       "login": "Jesse Sightler",
@@ -4075,7 +4075,7 @@
       "location": null,
       "email": "karkra321@gmail.com",
       "profile_url": null,
-      "commit_count": 26
+      "commit_count": 28
     },
     {
       "login": "Kirill Byvshev",
@@ -5506,7 +5506,7 @@
       "location": null,
       "email": "tmielke@redhat.com",
       "profile_url": null,
-      "commit_count": 18
+      "commit_count": 19
     },
     {
       "login": "sandeep",
@@ -9244,6 +9244,24 @@
       "commit_count": 10
     },
     {
+      "login": "Karol Krawczyk",
+      "name": "Karol Krawczyk",
+      "company": "Unknown",
+      "location": null,
+      "email": "106181109+k-krawczyk@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 9
+    },
+    {
+      "login": "Micha\u0142 Wolski",
+      "name": "Micha\u0142 Wolski",
+      "company": "Unknown",
+      "location": null,
+      "email": "45424605+michwo@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 9
+    },
+    {
       "login": "Anvith SG",
       "name": "Anvith SG",
       "company": "Unknown",
@@ -9258,15 +9276,6 @@
       "company": "Unknown",
       "location": null,
       "email": "vuhoangminh97@gmail.com",
-      "profile_url": null,
-      "commit_count": 8
-    },
-    {
-      "login": "Karol Krawczyk",
-      "name": "Karol Krawczyk",
-      "company": "Unknown",
-      "location": null,
-      "email": "106181109+k-krawczyk@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 8
     },
@@ -11202,15 +11211,6 @@
       "company": "Unknown",
       "location": null,
       "email": "gtully@apache.org",
-      "profile_url": null,
-      "commit_count": 8
-    },
-    {
-      "login": "Micha\u0142 Wolski",
-      "name": "Micha\u0142 Wolski",
-      "company": "Unknown",
-      "location": null,
-      "email": "45424605+michwo@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 8
     },
@@ -20626,7 +20626,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-24T09:10:14.878402",
+  "extracted_at": "2026-06-25T11:32:58.482282",
   "years": [
     {
       "year": 2007,
@@ -20725,7 +20725,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 9811,
+      "commit_count": 9887,
       "is_current": true
     }
   ]

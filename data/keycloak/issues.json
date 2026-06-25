@@ -1,8 +1,321 @@
 {
-  "total_open": 0,
-  "total_closed": 0,
-  "total_issues": 0,
-  "avg_resolution_time_days": null,
-  "issue_commenters": [],
-  "extracted_at": "2026-06-24T09:11:10.980818"
+  "total_open": 1,
+  "total_closed": 1,
+  "total_issues": 2,
+  "avg_resolution_time_days": 2.35,
+  "issue_commenters": [
+    {
+      "login": "ahus1",
+      "name": "Alexander Schwartz",
+      "company": "Ibm",
+      "location": "Frankfurt/Main (Germany)",
+      "profile_url": "https://github.com/ahus1",
+      "comment_count": 14
+    },
+    {
+      "login": "keycloak-github-bot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/apps/keycloak-github-bot",
+      "comment_count": 10
+    },
+    {
+      "login": "rmartinc",
+      "name": "Ricardo Martin",
+      "company": "Ibm",
+      "location": "Spain",
+      "profile_url": "https://github.com/rmartinc",
+      "comment_count": 8
+    },
+    {
+      "login": "sguilhen",
+      "name": "Stefan Guilhen",
+      "company": "Ibm",
+      "location": "Sao Paulo",
+      "profile_url": "https://github.com/sguilhen",
+      "comment_count": 6
+    },
+    {
+      "login": "pruivo",
+      "name": "Pedro Ruivo",
+      "company": "Ibm",
+      "location": "Lisbon",
+      "profile_url": "https://github.com/pruivo",
+      "comment_count": 5
+    },
+    {
+      "login": "jksiezuk-cdpr",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/jksiezuk-cdpr",
+      "comment_count": 5
+    },
+    {
+      "login": "sschu",
+      "name": "Sebastian Schuster",
+      "company": "Bosch",
+      "location": null,
+      "profile_url": "https://github.com/sschu",
+      "comment_count": 4
+    },
+    {
+      "login": "stianst",
+      "name": "Stian Thorgersen",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/stianst",
+      "comment_count": 3
+    },
+    {
+      "login": "dbubenheim",
+      "name": "Daniel Bubenheim",
+      "company": "Rtl Technology Gmbh",
+      "location": "Germany",
+      "profile_url": "https://github.com/dbubenheim",
+      "comment_count": 3
+    },
+    {
+      "login": "iliuta",
+      "name": "Adrian",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/iliuta",
+      "comment_count": 3
+    },
+    {
+      "login": "mabartos",
+      "name": "Martin Barto\u0161",
+      "company": "Ibm",
+      "location": "Czech Republic",
+      "profile_url": "https://github.com/mabartos",
+      "comment_count": 3
+    },
+    {
+      "login": "u3r",
+      "name": "Ulf Dreyer",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/u3r",
+      "comment_count": 3
+    },
+    {
+      "login": "vramik",
+      "name": "Vlasta Ramik",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/vramik",
+      "comment_count": 2
+    },
+    {
+      "login": "abdulazeem-tk4vr",
+      "name": "Abdul Azeem Shaik",
+      "company": "Georgiatech @Bits-Pilani",
+      "location": null,
+      "profile_url": "https://github.com/abdulazeem-tk4vr",
+      "comment_count": 2
+    },
+    {
+      "login": "abstractj",
+      "name": "Bruno Oliveira da Silva",
+      "company": "Ibm",
+      "location": "Down the rabbit hole ",
+      "profile_url": "https://github.com/abstractj",
+      "comment_count": 2
+    },
+    {
+      "login": "ssilvert",
+      "name": "Stan Silvert",
+      "company": "Red Hat, Inc.",
+      "location": "Atlanta, GA",
+      "profile_url": "https://github.com/ssilvert",
+      "comment_count": 2
+    },
+    {
+      "login": "martin-kanis",
+      "name": "Martin Kanis",
+      "company": "Ibm",
+      "location": "Brno",
+      "profile_url": "https://github.com/martin-kanis",
+      "comment_count": 2
+    },
+    {
+      "login": "niels-van-nerum",
+      "name": " Niels Van Nerum",
+      "company": "Float-Iot",
+      "location": "Breda, The Netherlands",
+      "profile_url": "https://github.com/niels-van-nerum",
+      "comment_count": 2
+    },
+    {
+      "login": "graziang",
+      "name": "Giuseppe Graziano",
+      "company": "Ibm",
+      "location": null,
+      "profile_url": "https://github.com/graziang",
+      "comment_count": 2
+    },
+    {
+      "login": "yihanwu1024",
+      "name": null,
+      "company": "Chalmers Tekniska H\u00f6gskola",
+      "location": "G\u00f6teborg, SE",
+      "profile_url": "https://github.com/yihanwu1024",
+      "comment_count": 2
+    },
+    {
+      "login": "chatzipavlidis",
+      "name": "Savvas",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/chatzipavlidis",
+      "comment_count": 2
+    },
+    {
+      "login": "csbrogi",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/csbrogi",
+      "comment_count": 1
+    },
+    {
+      "login": "tnorimat",
+      "name": "Takashi Norimatsu",
+      "company": "Hitachi, Ltd.",
+      "location": "Yokohama, Japan",
+      "profile_url": "https://github.com/tnorimat",
+      "comment_count": 1
+    },
+    {
+      "login": "R-Owino",
+      "name": "Remmy",
+      "company": "Unknown",
+      "location": "Nairobi, Kenya",
+      "profile_url": "https://github.com/R-Owino",
+      "comment_count": 1
+    },
+    {
+      "login": "large-coderun-collider",
+      "name": "Magomed Bankurov",
+      "company": "Unknown",
+      "location": "Marseille, France",
+      "profile_url": "https://github.com/large-coderun-collider",
+      "comment_count": 1
+    },
+    {
+      "login": "Pons3006",
+      "name": "Ponshankar B",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/Pons3006",
+      "comment_count": 1
+    },
+    {
+      "login": "Pepo48",
+      "name": "Peter Zaoral",
+      "company": "Red Hat",
+      "location": "Slovakia",
+      "profile_url": "https://github.com/Pepo48",
+      "comment_count": 1
+    },
+    {
+      "login": "jimmychakkalakal",
+      "name": null,
+      "company": "Ibm",
+      "location": "Dublin",
+      "profile_url": "https://github.com/jimmychakkalakal",
+      "comment_count": 1
+    },
+    {
+      "login": "ch4mpy",
+      "name": "J\u00e9r\u00f4me Wacongne",
+      "company": "Unknown",
+      "location": "Papeete, French Polynesia",
+      "profile_url": "https://github.com/ch4mpy",
+      "comment_count": 1
+    },
+    {
+      "login": "atharvamhaske",
+      "name": "Atharva Mhaske",
+      "company": "Sugar-Org",
+      "location": "Pune, India",
+      "profile_url": "https://github.com/atharvamhaske",
+      "comment_count": 1
+    },
+    {
+      "login": "mposolda",
+      "name": "Marek Posolda",
+      "company": "Red Hat",
+      "location": "Brno, Czech republic",
+      "profile_url": "https://github.com/mposolda",
+      "comment_count": 1
+    },
+    {
+      "login": "tdiesler",
+      "name": "Thomas Diesler",
+      "company": "Ibm",
+      "location": null,
+      "profile_url": "https://github.com/tdiesler",
+      "comment_count": 1
+    },
+    {
+      "login": "pschichtel",
+      "name": "Phillip Schichtel",
+      "company": "Cubyte-Oss",
+      "location": "Germany",
+      "profile_url": "https://github.com/pschichtel",
+      "comment_count": 1
+    },
+    {
+      "login": "tjirka-dcit",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/tjirka-dcit",
+      "comment_count": 1
+    },
+    {
+      "login": "Abhilash24",
+      "name": "Abhilash Ramteke",
+      "company": "Iit Delhi",
+      "location": "New Delhi",
+      "profile_url": "https://github.com/Abhilash24",
+      "comment_count": 1
+    },
+    {
+      "login": "0xM58",
+      "name": "M58",
+      "company": "Mz Data Security",
+      "location": "France",
+      "profile_url": "https://github.com/0xM58",
+      "comment_count": 1
+    },
+    {
+      "login": "shawkins",
+      "name": "Steven Hawkins",
+      "company": "Red Hat",
+      "location": "Reading PA",
+      "profile_url": "https://github.com/shawkins",
+      "comment_count": 1
+    },
+    {
+      "login": "michalvavrik",
+      "name": "Michal Vav\u0159\u00edk",
+      "company": "Unknown",
+      "location": null,
+      "profile_url": "https://github.com/michalvavrik",
+      "comment_count": 1
+    },
+    {
+      "login": "Lexachoc",
+      "name": "Ya-Fan Chen",
+      "company": "Otto-Schott-Institute For Materials Research",
+      "location": "L\u00f6bdergraben 32, 07743 Jena, Germany",
+      "profile_url": "https://github.com/Lexachoc",
+      "comment_count": 1
+    }
+  ],
+  "extracted_at": "2026-06-25T12:00:47.257522"
 }

@@ -1,28 +1,28 @@
 {
-  "total_commits": 651,
+  "total_commits": 652,
   "quarters": [
     {
-      "start_date": "2026-03-26T09:09:32.514465",
-      "end_date": "2026-06-24T09:09:32.514465",
-      "commit_count": 161,
+      "start_date": "2026-03-27T11:25:46.234393",
+      "end_date": "2026-06-25T11:25:46.234393",
+      "commit_count": 160,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-26T09:09:32.514465",
-      "end_date": "2026-03-26T09:09:32.514465",
-      "commit_count": 152,
+      "start_date": "2025-12-27T11:25:46.234393",
+      "end_date": "2026-03-27T11:25:46.234393",
+      "commit_count": 154,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-27T09:09:32.514465",
-      "end_date": "2025-12-26T09:09:32.514465",
-      "commit_count": 187,
+      "start_date": "2025-09-28T11:25:46.234393",
+      "end_date": "2025-12-27T11:25:46.234393",
+      "commit_count": 185,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-29T09:09:32.514465",
-      "end_date": "2025-09-27T09:09:32.514465",
-      "commit_count": 151,
+      "start_date": "2025-06-30T11:25:46.234393",
+      "end_date": "2025-09-28T11:25:46.234393",
+      "commit_count": 153,
       "quarter": "Q3 2025"
     }
   ],
@@ -34,7 +34,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 14230
+      "commit_count": 14236
     },
     {
       "login": "Paolo Patierno",
@@ -88,7 +88,7 @@
       "location": null,
       "email": "lukywill16@gmail.com",
       "profile_url": null,
-      "commit_count": 2765
+      "commit_count": 2766
     },
     {
       "login": "morsak",
@@ -124,7 +124,7 @@
       "location": null,
       "email": "53821852+im-konge@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1383
+      "commit_count": 1384
     },
     {
       "login": "Daniel Laing",
@@ -385,7 +385,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 146
+      "commit_count": 147
     },
     {
       "login": "Ronaldo Lanhellas",
@@ -457,7 +457,7 @@
       "location": null,
       "email": "venkatesprasad512@gmail.com",
       "profile_url": null,
-      "commit_count": 96
+      "commit_count": 97
     },
     {
       "login": "Gantigmaa Selenge",
@@ -2383,7 +2383,7 @@
       "location": null,
       "email": "personal@venkateshkannan.me",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 7
     },
     {
       "login": "halo",
@@ -5713,7 +5713,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-24T09:09:36.007624",
+  "extracted_at": "2026-06-25T11:25:49.216102",
   "years": [
     {
       "year": 2016,
@@ -5767,7 +5767,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1154,
+      "commit_count": 1161,
       "is_current": true
     }
   ]

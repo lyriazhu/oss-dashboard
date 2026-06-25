@@ -790,13 +790,64 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting issues: {e}")
             return {}
     
-    def extract_pull_requests(self, owner: str, repo: str, quarters: int = 4) -> Dict[str, Any]:
-        """Extract pull request metrics including merge timeline"""
-        print(f"🔀 Extracting pull requests for {owner}/{repo}...")
+    def _get_quarters_since_creation(self, created_at: datetime) -> List[tuple]:
+        """Generate list of quarter start/end dates from project creation to now"""
+        quarters = []
+        now = datetime.now()
+        
+        # Make created_at timezone-naive for comparison
+        if created_at.tzinfo:
+            created_at = created_at.replace(tzinfo=None)
+        
+        # Start from the beginning of the quarter when project was created
+        start_year = created_at.year
+        start_quarter = ((created_at.month - 1) // 3) + 1
+        start_month = (start_quarter - 1) * 3 + 1
+        current_start = datetime(start_year, start_month, 1)
+        
+        # Generate quarters from creation to now
+        while current_start <= now:
+            # Calculate end of quarter (last day of third month)
+            end_month = current_start.month + 2
+            end_year = current_start.year
+            if end_month > 12:
+                end_month -= 12
+                end_year += 1
+            
+            # Get last day of the end month
+            if end_month == 12:
+                quarter_end = datetime(end_year, 12, 31, 23, 59, 59)
+            else:
+                next_month = datetime(end_year, end_month + 1, 1)
+                quarter_end = next_month - timedelta(seconds=1)
+            
+            # Don't go beyond current time
+            if quarter_end > now:
+                quarter_end = now
+            
+            quarters.append((current_start, quarter_end))
+            
+            # Move to next quarter (add 3 months)
+            next_month = current_start.month + 3
+            next_year = current_start.year
+            if next_month > 12:
+                next_month -= 12
+                next_year += 1
+            current_start = datetime(next_year, next_month, 1)
+        
+        return quarters
+
+    def extract_pull_requests(self, repos: List[Dict[str, str]], project_created_at: datetime) -> Dict[str, Any]:
+        """Extract pull request metrics including merge timeline
+        
+        Args:
+            repos: List of repo dicts with 'owner' and 'repo' keys
+            project_created_at: When the project was created (from earliest repo)
+        """
+        print(f"🔀 Extracting pull requests for {len(repos)} repo(s)...")
         
         try:
-            repository = self.github.get_repo(f"{owner}/{repo}")
-            quarter_dates = self._get_quarter_dates(quarters)
+            quarter_dates = self._get_quarters_since_creation(project_created_at)
             
             pr_data = {
                 "total_prs": 0,
@@ -805,46 +856,66 @@ class GitHubDataExtractor:
                 "extracted_at": datetime.now().isoformat()
             }
 
+            # Initialize quarter data structure
+            quarter_data_map = {}
+            for start_date, end_date in quarter_dates:
+                quarter_label = self._quarter_label(end_date)
+                quarter_data_map[quarter_label] = {
+                    "start_date": start_date.isoformat(),
+                    "end_date": end_date.isoformat(),
+                    "pr_count": 0,
+                    "merged_pr_count": 0,
+                    "merge_times": [],
+                    "quarter": quarter_label
+                }
+
             overall_merge_times = []
             
-            for start_date, end_date in tqdm(quarter_dates, desc="Processing quarters"):
+            # Process each repository
+            for repo_info in repos:
+                owner = repo_info['owner']
+                repo = repo_info['repo']
+                print(f"  📦 Processing {owner}/{repo}...")
+                
                 try:
-                    pulls = repository.get_pulls(state='all', sort='created')
+                    repository = self.github.get_repo(f"{owner}/{repo}")
                     
-                    quarter_prs = []
-                    quarter_merge_times = []
-
-                    for pr in pulls:
+                    # Get all PRs for this repo
+                    pulls = repository.get_pulls(state='all', sort='created', direction='asc')
+                    
+                    for pr in tqdm(pulls, desc=f"  Processing PRs from {owner}/{repo}", leave=False):
                         # Make pr.created_at timezone-naive for comparison
                         pr_created = pr.created_at.replace(tzinfo=None) if pr.created_at.tzinfo else pr.created_at
                         
-                        if start_date <= pr_created <= end_date:
-                            quarter_prs.append(pr)
-                            if pr.merged_at:
-                                merge_days = (pr.merged_at - pr.created_at).total_seconds() / 86400
-                                quarter_merge_times.append(round(merge_days, 2))
-                                overall_merge_times.append(round(merge_days, 2))
-                        elif pr_created < start_date:
-                            break
-                    
-                    quarter_info = {
-                        "start_date": start_date.isoformat(),
-                        "end_date": end_date.isoformat(),
-                        "pr_count": len(quarter_prs),
-                        "merged_pr_count": len(quarter_merge_times),
-                        "avg_time_to_merge_days": (
-                            round(sum(quarter_merge_times) / len(quarter_merge_times), 2)
-                            if quarter_merge_times else None
-                        ),
-                        "quarter": self._quarter_label(end_date)
-                    }
-                    
-                    pr_data["quarters"].append(quarter_info)
-                    pr_data["total_prs"] += len(quarter_prs)
+                        # Find which quarter this PR belongs to
+                        for start_date, end_date in quarter_dates:
+                            if start_date <= pr_created <= end_date:
+                                quarter_label = self._quarter_label(end_date)
+                                quarter_data_map[quarter_label]["pr_count"] += 1
+                                
+                                if pr.merged_at:
+                                    merge_days = (pr.merged_at - pr.created_at).total_seconds() / 86400
+                                    quarter_data_map[quarter_label]["merged_pr_count"] += 1
+                                    quarter_data_map[quarter_label]["merge_times"].append(round(merge_days, 2))
+                                    overall_merge_times.append(round(merge_days, 2))
+                                break
                     
                 except GithubException as e:
-                    print(f"⚠️  Error processing quarter: {e}")
+                    print(f"  ⚠️  Error processing {owner}/{repo}: {e}")
                     continue
+
+            # Convert quarter data map to list and calculate averages
+            for quarter_label in sorted(quarter_data_map.keys()):
+                quarter_info = quarter_data_map[quarter_label]
+                merge_times = quarter_info.pop("merge_times")
+                
+                quarter_info["avg_time_to_merge_days"] = (
+                    round(sum(merge_times) / len(merge_times), 2)
+                    if merge_times else None
+                )
+                
+                pr_data["quarters"].append(quarter_info)
+                pr_data["total_prs"] += quarter_info["pr_count"]
 
             if overall_merge_times:
                 pr_data["avg_time_to_merge_days"] = round(
@@ -853,7 +924,7 @@ class GitHubDataExtractor:
             
             return pr_data
             
-        except GithubException as e:
+        except Exception as e:
             print(f"❌ Error extracting pull requests: {e}")
             return {}
     
@@ -934,14 +1005,39 @@ class GitHubDataExtractor:
             print(f"Processing: {project['name']}")
             print(f"{'='*60}\n")
             
-            owner = project['owner']
-            repo = project['repo']
             project_name = project['name']
+            
+            # Support both single repo and multiple repos
+            if 'repos' in project:
+                # Multiple repos configuration
+                repos = project['repos']
+            else:
+                # Single repo configuration (backward compatible)
+                repos = [{'owner': project['owner'], 'repo': project['repo']}]
+            
+            # Use the first/primary repo for metadata
+            primary_repo = repos[0]
+            owner = primary_repo['owner']
+            repo = primary_repo['repo']
             
             # Extract all data types
             metadata = self.extract_project_metadata(owner, repo)
+            project_created_at = None
             if metadata:
                 self.save_project_data(project_name, metadata, "metadata")
+                # Parse created_at for PR extraction
+                project_created_at = datetime.fromisoformat(metadata['created_at'].replace('+00:00', ''))
+            
+            # For multi-repo projects, find the earliest creation date
+            if len(repos) > 1 and project_created_at:
+                for repo_info in repos[1:]:
+                    try:
+                        repository = self.github.get_repo(f"{repo_info['owner']}/{repo_info['repo']}")
+                        repo_created = repository.created_at.replace(tzinfo=None) if repository.created_at.tzinfo else repository.created_at
+                        if repo_created < project_created_at:
+                            project_created_at = repo_created
+                    except GithubException as e:
+                        print(f"⚠️  Could not get creation date for {repo_info['owner']}/{repo_info['repo']}: {e}")
             
             contributors = self.extract_contributors(owner, repo, project_name)
             if contributors:
@@ -955,9 +1051,13 @@ class GitHubDataExtractor:
             if issues:
                 self.save_project_data(project_name, issues, "issues")
             
-            pull_requests = self.extract_pull_requests(owner, repo)
-            if pull_requests:
-                self.save_project_data(project_name, pull_requests, "pull_requests")
+            # Extract pull requests with new method supporting multiple repos
+            if project_created_at:
+                pull_requests = self.extract_pull_requests(repos, project_created_at)
+                if pull_requests:
+                    self.save_project_data(project_name, pull_requests, "pull_requests")
+            else:
+                print("⚠️  Skipping pull request extraction - no creation date available")
             
             releases = self.extract_releases(owner, repo)
             if releases:
@@ -996,7 +1096,14 @@ def main():
     try:
         user = extractor.github.get_user()
         print(f"✅ Authenticated as: {user.login}")
-        print(f"📊 Rate limit: {extractor.github.get_rate_limit().core.remaining} requests remaining\n")
+        try:
+            rate_limit = extractor.github.get_rate_limit()
+            if hasattr(rate_limit, 'core'):
+                print(f"📊 Rate limit: {rate_limit.core.remaining} requests remaining\n")
+            else:
+                print(f"📊 Rate limit info available\n")
+        except:
+            print(f"📊 Connected to GitHub API\n")
     except GithubException as e:
         print(f"❌ Authentication failed: {e}")
         print("Please check your GitHub token in config.yaml")
