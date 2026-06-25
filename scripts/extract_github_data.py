@@ -78,6 +78,15 @@ class GitHubDataExtractor:
                 },
                 "commits": {
                     "last_git_sync_at": None
+                },
+                "pull_requests": {
+                    "last_extracted_at": None
+                },
+                "issues": {
+                    "last_extracted_at": None
+                },
+                "releases": {
+                    "last_extracted_at": None
                 }
             }
         )
@@ -714,75 +723,98 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting commits: {e}")
             return {}
     
-    def extract_issues(self, owner: str, repo: str) -> Dict[str, Any]:
-        """Extract issue metrics and commenter activity"""
+    def extract_issues(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
+        """Extract issue metrics and commenter activity with incremental updates"""
         print(f"🐛 Extracting issues for {owner}/{repo}...")
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
+            project_state = self._load_project_state(project_name)
+            existing_data = self._load_json_file(self._project_dir(project_name) / "issues.json", {})
+            last_extracted_at = project_state.get("issues", {}).get("last_extracted_at")
             
-            open_issues = repository.get_issues(state='open')
-            closed_issues = repository.get_issues(state='closed')
+            # For incremental updates, only process issues updated since last extraction
+            since_date = None
+            if existing_data and last_extracted_at:
+                since_date = datetime.fromisoformat(last_extracted_at)
+                print(f"  ℹ️  Incremental update: fetching issues updated since {last_extracted_at}")
+            else:
+                print(f"  ℹ️  Initial extraction: fetching all issues")
+            
+            open_issues = repository.get_issues(state='open', since=since_date) if since_date else repository.get_issues(state='open')
+            closed_issues = repository.get_issues(state='closed', since=since_date) if since_date else repository.get_issues(state='closed')
             
             issues_data = {
-                "total_open": open_issues.totalCount,
-                "total_closed": closed_issues.totalCount,
-                "total_issues": open_issues.totalCount + closed_issues.totalCount,
-                "avg_resolution_time_days": None,
-                "issue_commenters": [],
+                "total_open": repository.get_issues(state='open').totalCount,
+                "total_closed": repository.get_issues(state='closed').totalCount,
+                "total_issues": repository.get_issues(state='open').totalCount + repository.get_issues(state='closed').totalCount,
+                "avg_resolution_time_days": existing_data.get("avg_resolution_time_days"),
+                "issue_commenters": existing_data.get("issue_commenters", []),
                 "extracted_at": datetime.now().isoformat()
             }
             
             # Skip detailed extraction if no issues exist (e.g., projects using JIRA)
             if issues_data["total_issues"] == 0:
                 print(f"ℹ️  No GitHub issues found (project may use external issue tracker)")
+                project_state["issues"] = {"last_extracted_at": datetime.now().isoformat()}
+                self._save_project_state(project_name, project_state)
                 return issues_data
             
-            resolution_times = []
-            commenter_counts = defaultdict(int)
-
-            issue_count = 0
-            for issue in closed_issues:
-                if issue_count >= 100:
-                    break
-                    
-                if issue.pull_request is not None:
-                    continue
-
-                if issue.closed_at and issue.created_at:
-                    delta = issue.closed_at - issue.created_at
-                    resolution_times.append(delta.days)
-
-                try:
-                    comments = issue.get_comments()
-                    comment_count = 0
-                    for comment in comments:
-                        if comment_count >= 50:
-                            break
-                        if comment.user and comment.user.login:
-                            commenter_counts[comment.user.login] += 1
-                        comment_count += 1
-                except (GithubException, IndexError):
-                    continue
+            # Only recalculate if this is initial extraction or we have new closed issues
+            if not existing_data or closed_issues.totalCount > 0:
+                resolution_times = []
+                commenter_counts = defaultdict(int)
                 
-                issue_count += 1
+                # Merge existing commenter counts
+                if existing_data.get("issue_commenters"):
+                    for commenter in existing_data["issue_commenters"]:
+                        commenter_counts[commenter["login"]] = commenter["comment_count"]
+
+                issue_count = 0
+                for issue in closed_issues:
+                    if issue_count >= 100:
+                        break
+                        
+                    if issue.pull_request is not None:
+                        continue
+
+                    if issue.closed_at and issue.created_at:
+                        delta = issue.closed_at - issue.created_at
+                        resolution_times.append(delta.days)
+
+                    try:
+                        comments = issue.get_comments()
+                        comment_count = 0
+                        for comment in comments:
+                            if comment_count >= 50:
+                                break
+                            if comment.user and comment.user.login:
+                                commenter_counts[comment.user.login] += 1
+                            comment_count += 1
+                    except (GithubException, IndexError):
+                        continue
+                    
+                    issue_count += 1
+                
+                if resolution_times:
+                    issues_data["avg_resolution_time_days"] = sum(resolution_times) / len(resolution_times)
+
+                issue_commenters = []
+                for login, comment_count in sorted(commenter_counts.items(), key=lambda item: item[1], reverse=True)[:50]:
+                    profile = self._get_user_profile(login)
+                    issue_commenters.append({
+                        "login": login,
+                        "name": profile["name"],
+                        "company": profile["company"],
+                        "location": profile["location"],
+                        "profile_url": profile["profile_url"],
+                        "comment_count": comment_count
+                    })
+
+                issues_data["issue_commenters"] = issue_commenters
             
-            if resolution_times:
-                issues_data["avg_resolution_time_days"] = sum(resolution_times) / len(resolution_times)
-
-            issue_commenters = []
-            for login, comment_count in sorted(commenter_counts.items(), key=lambda item: item[1], reverse=True)[:50]:
-                profile = self._get_user_profile(login)
-                issue_commenters.append({
-                    "login": login,
-                    "name": profile["name"],
-                    "company": profile["company"],
-                    "location": profile["location"],
-                    "profile_url": profile["profile_url"],
-                    "comment_count": comment_count
-                })
-
-            issues_data["issue_commenters"] = issue_commenters
+            project_state["issues"] = {"last_extracted_at": datetime.now().isoformat()}
+            self._save_project_state(project_name, project_state)
             
             return issues_data
             
@@ -837,39 +869,66 @@ class GitHubDataExtractor:
         
         return quarters
 
-    def extract_pull_requests(self, repos: List[Dict[str, str]], project_created_at: datetime) -> Dict[str, Any]:
-        """Extract pull request metrics including merge timeline
+    def extract_pull_requests(self, repos: List[Dict[str, str]], project_created_at: datetime, project_name: str) -> Dict[str, Any]:
+        """Extract pull request metrics including merge timeline with incremental updates
         
         Args:
             repos: List of repo dicts with 'owner' and 'repo' keys
             project_created_at: When the project was created (from earliest repo)
+            project_name: Name of the project for state management
         """
         print(f"🔀 Extracting pull requests for {len(repos)} repo(s)...")
         
         try:
+            project_state = self._load_project_state(project_name)
+            existing_data = self._load_json_file(self._project_dir(project_name) / "pull_requests.json", {})
+            last_extracted_at = project_state.get("pull_requests", {}).get("last_extracted_at")
+            
             quarter_dates = self._get_quarters_since_creation(project_created_at)
             
             pr_data = {
-                "total_prs": 0,
-                "avg_time_to_merge_days": None,
-                "quarters": [],
+                "total_prs": existing_data.get("total_prs", 0),
+                "avg_time_to_merge_days": existing_data.get("avg_time_to_merge_days"),
+                "quarters": existing_data.get("quarters", []),
                 "extracted_at": datetime.now().isoformat()
             }
 
-            # Initialize quarter data structure
+            # Initialize quarter data structure from existing data
             quarter_data_map = {}
+            for quarter_info in pr_data["quarters"]:
+                quarter_label = quarter_info["quarter"]
+                quarter_data_map[quarter_label] = {
+                    "start_date": quarter_info["start_date"],
+                    "end_date": quarter_info["end_date"],
+                    "pr_count": quarter_info["pr_count"],
+                    "merged_pr_count": quarter_info["merged_pr_count"],
+                    "merge_times": [],
+                    "quarter": quarter_label,
+                    "avg_time_to_merge_days": quarter_info.get("avg_time_to_merge_days")
+                }
+            
+            # Add any new quarters not in existing data
             for start_date, end_date in quarter_dates:
                 quarter_label = self._quarter_label(end_date)
-                quarter_data_map[quarter_label] = {
-                    "start_date": start_date.isoformat(),
-                    "end_date": end_date.isoformat(),
-                    "pr_count": 0,
-                    "merged_pr_count": 0,
-                    "merge_times": [],
-                    "quarter": quarter_label
-                }
+                if quarter_label not in quarter_data_map:
+                    quarter_data_map[quarter_label] = {
+                        "start_date": start_date.isoformat(),
+                        "end_date": end_date.isoformat(),
+                        "pr_count": 0,
+                        "merged_pr_count": 0,
+                        "merge_times": [],
+                        "quarter": quarter_label
+                    }
 
             overall_merge_times = []
+            
+            # Determine since date for incremental updates
+            since_date = None
+            if last_extracted_at:
+                since_date = datetime.fromisoformat(last_extracted_at)
+                print(f"  ℹ️  Incremental update: fetching PRs updated since {last_extracted_at}")
+            else:
+                print(f"  ℹ️  Initial extraction: fetching all PRs")
             
             # Process each repository
             for repo_info in repos:
@@ -880,10 +939,22 @@ class GitHubDataExtractor:
                 try:
                     repository = self.github.get_repo(f"{owner}/{repo}")
                     
-                    # Get all PRs for this repo
-                    pulls = repository.get_pulls(state='all', sort='created', direction='asc')
+                    # Get PRs - either all or only updated since last extraction
+                    if since_date:
+                        # For incremental updates, get recently updated PRs
+                        pulls = repository.get_pulls(state='all', sort='updated', direction='desc')
+                    else:
+                        # For initial extraction, get all PRs
+                        pulls = repository.get_pulls(state='all', sort='created', direction='asc')
                     
+                    pr_count = 0
                     for pr in tqdm(pulls, desc=f"  Processing PRs from {owner}/{repo}", leave=False):
+                        # For incremental updates, stop when we reach PRs we've already processed
+                        if since_date and pr.updated_at:
+                            pr_updated = pr.updated_at.replace(tzinfo=None) if pr.updated_at.tzinfo else pr.updated_at
+                            if pr_updated < since_date:
+                                break
+                        
                         # Make pr.created_at timezone-naive for comparison
                         pr_created = pr.created_at.replace(tzinfo=None) if pr.created_at.tzinfo else pr.created_at
                         
@@ -891,28 +962,38 @@ class GitHubDataExtractor:
                         for start_date, end_date in quarter_dates:
                             if start_date <= pr_created <= end_date:
                                 quarter_label = self._quarter_label(end_date)
-                                quarter_data_map[quarter_label]["pr_count"] += 1
+                                
+                                # Only increment if this is a new PR (initial extraction or not yet counted)
+                                if not since_date or pr_created >= since_date:
+                                    quarter_data_map[quarter_label]["pr_count"] += 1
                                 
                                 if pr.merged_at:
                                     merge_days = (pr.merged_at - pr.created_at).total_seconds() / 86400
-                                    quarter_data_map[quarter_label]["merged_pr_count"] += 1
+                                    if not since_date or pr_created >= since_date:
+                                        quarter_data_map[quarter_label]["merged_pr_count"] += 1
                                     quarter_data_map[quarter_label]["merge_times"].append(round(merge_days, 2))
                                     overall_merge_times.append(round(merge_days, 2))
                                 break
+                        
+                        pr_count += 1
+                        # Limit processing for very large repos during incremental updates
+                        if since_date and pr_count >= 500:
+                            break
                     
                 except GithubException as e:
                     print(f"  ⚠️  Error processing {owner}/{repo}: {e}")
                     continue
 
             # Convert quarter data map to list and calculate averages
+            pr_data["quarters"] = []
+            pr_data["total_prs"] = 0
             for quarter_label in sorted(quarter_data_map.keys()):
                 quarter_info = quarter_data_map[quarter_label]
                 merge_times = quarter_info.pop("merge_times")
                 
-                quarter_info["avg_time_to_merge_days"] = (
-                    round(sum(merge_times) / len(merge_times), 2)
-                    if merge_times else None
-                )
+                # Recalculate average if we have merge times
+                if merge_times:
+                    quarter_info["avg_time_to_merge_days"] = round(sum(merge_times) / len(merge_times), 2)
                 
                 pr_data["quarters"].append(quarter_info)
                 pr_data["total_prs"] += quarter_info["pr_count"]
@@ -922,27 +1003,58 @@ class GitHubDataExtractor:
                     sum(overall_merge_times) / len(overall_merge_times), 2
                 )
             
+            project_state["pull_requests"] = {"last_extracted_at": datetime.now().isoformat()}
+            self._save_project_state(project_name, project_state)
+            
             return pr_data
             
         except Exception as e:
             print(f"❌ Error extracting pull requests: {e}")
             return {}
     
-    def extract_releases(self, owner: str, repo: str) -> Dict[str, Any]:
-        """Extract release information and cadence summary"""
+    def extract_releases(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
+        """Extract release information and cadence summary with incremental updates"""
         print(f"🚀 Extracting releases for {owner}/{repo}...")
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
+            project_state = self._load_project_state(project_name)
+            existing_data = self._load_json_file(self._project_dir(project_name) / "releases.json", {})
+            last_extracted_at = project_state.get("releases", {}).get("last_extracted_at")
+            
             releases = repository.get_releases()
             
-            release_list = []
+            # Start with existing data
+            release_list = existing_data.get("recent_releases", [])
+            existing_tags = {r["tag_name"] for r in release_list}
+            
             published_dates = []
+            new_releases_count = 0
+
+            # For incremental updates, only process new releases
+            if last_extracted_at:
+                print(f"  ℹ️  Incremental update: checking for new releases since {last_extracted_at}")
+                last_extracted_date = datetime.fromisoformat(last_extracted_at)
+            else:
+                print(f"  ℹ️  Initial extraction: fetching all releases")
+                last_extracted_date = None
 
             release_count = 0
             for release in releases:
-                if release_count >= 20:
+                # Stop after checking enough releases
+                if release_count >= 20 and last_extracted_date:
                     break
+                
+                # Skip if we already have this release
+                if release.tag_name in existing_tags:
+                    release_count += 1
+                    continue
+                
+                # For incremental updates, stop when we reach old releases
+                if last_extracted_date and release.published_at:
+                    release_published = release.published_at.replace(tzinfo=None) if release.published_at.tzinfo else release.published_at
+                    if release_published < last_extracted_date:
+                        break
                     
                 published_at = self._safe_isoformat(release.published_at)
                 if release.published_at:
@@ -955,9 +1067,19 @@ class GitHubDataExtractor:
                     "prerelease": release.prerelease,
                     "draft": release.draft
                 }
-                release_list.append(release_info)
+                release_list.insert(0, release_info)  # Add to beginning to maintain order
+                new_releases_count += 1
                 release_count += 1
 
+            # Keep only the most recent 20 releases
+            release_list = release_list[:20]
+            
+            # Recalculate cadence from the release list
+            published_dates = []
+            for release_info in release_list:
+                if release_info["published_at"]:
+                    published_dates.append(datetime.fromisoformat(release_info["published_at"].replace('+00:00', '')))
+            
             cadence_days = []
             sorted_dates = sorted([dt for dt in published_dates if dt], reverse=True)
             for i in range(len(sorted_dates) - 1):
@@ -976,6 +1098,12 @@ class GitHubDataExtractor:
                 ),
                 "extracted_at": datetime.now().isoformat()
             }
+            
+            if new_releases_count > 0:
+                print(f"  ✓ Found {new_releases_count} new release(s)")
+            
+            project_state["releases"] = {"last_extracted_at": datetime.now().isoformat()}
+            self._save_project_state(project_name, project_state)
             
             return releases_data
             
@@ -1047,19 +1175,19 @@ class GitHubDataExtractor:
             if commits:
                 self.save_project_data(project_name, commits, "commits")
             
-            issues = self.extract_issues(owner, repo)
+            issues = self.extract_issues(owner, repo, project_name)
             if issues:
                 self.save_project_data(project_name, issues, "issues")
             
             # Extract pull requests with new method supporting multiple repos
             if project_created_at:
-                pull_requests = self.extract_pull_requests(repos, project_created_at)
+                pull_requests = self.extract_pull_requests(repos, project_created_at, project_name)
                 if pull_requests:
                     self.save_project_data(project_name, pull_requests, "pull_requests")
             else:
                 print("⚠️  Skipping pull request extraction - no creation date available")
             
-            releases = self.extract_releases(owner, repo)
+            releases = self.extract_releases(owner, repo, project_name)
             if releases:
                 self.save_project_data(project_name, releases, "releases")
             
