@@ -186,8 +186,36 @@ export function transformProjectData(project, metrics) {
     { f: 'License', v: metadata?.license || '—' },
   ];
   
-  // Format activity (last 12 months of PR data)
-  const activity = pull_requests?.quarters?.slice(-12).map(q => q.pr_count) || Array(12).fill(0);
+  // Format PR activity data (quarterly and yearly)
+  const prQuarters = pull_requests?.quarters || [];
+  
+  // Group PR data by year for yearly view
+  const prYears = prQuarters.reduce((acc, q) => {
+    const year = q.quarter.split(' ')[1]; // Extract year from "Q2 2026"
+    if (!acc[year]) acc[year] = 0;
+    acc[year] += q.pr_count || 0;
+    return acc;
+  }, {});
+  
+  const prYearlyData = Object.entries(prYears).map(([year, count], idx, arr) => ({
+    y: year,
+    v: count,
+    c: idx === arr.length - 1, // Mark current year
+  }));
+  
+  // Format quarterly PR data - reverse to show chronologically
+  const prQuarterlyData = prQuarters.length > 0
+    ? [...prQuarters].reverse().map((q, idx, arr) => ({
+        q: q.quarter,
+        v: q.pr_count || 0,
+        c: idx === arr.length - 1, // Mark current quarter
+      }))
+    : [];
+  
+  // For issue activity, we'll use PR data as a proxy since issues don't have quarterly data
+  // This is a temporary solution until issue quarterly data is collected
+  const issueYearlyData = prYearlyData.map(item => ({...item})); // Clone PR yearly data
+  const issueQuarterlyData = prQuarterlyData.map(item => ({...item})); // Clone PR quarterly data
   
   return {
     name: project.name,
@@ -198,11 +226,14 @@ export function transformProjectData(project, metrics) {
     ov,
     kpis,
     commits: commitHistory.length > 0 ? commitHistory : [{ y: '2025', v: 0, c: true }],
-    quarters: quarterlyCommits.length > 0 ? quarterlyCommits : [], // Add quarterly data
+    quarters: quarterlyCommits.length > 0 ? quarterlyCommits : [], // Add quarterly commit data
     retention,
     companies,
     meta,
-    activity: activity.length === 12 ? activity : Array(12).fill(0),
+    prYearly: prYearlyData.length > 0 ? prYearlyData : [{ y: '2025', v: 0, c: true }],
+    prQuarterly: prQuarterlyData.length > 0 ? prQuarterlyData : [],
+    issueYearly: issueYearlyData.length > 0 ? issueYearlyData : [{ y: '2025', v: 0, c: true }],
+    issueQuarterly: issueQuarterlyData.length > 0 ? issueQuarterlyData : [],
     extractedAt: metadata?.extracted_at || null, // Store the extraction timestamp
   };
 }

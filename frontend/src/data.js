@@ -18,6 +18,11 @@ export const INITIAL_DATA = {
       {l:"CVEs (12 mo.)", v:"2", h:"Both patched"}
     ],
     commits:[{y:"2022",v:62},{y:"2023",v:78},{y:"2024",v:66},{y:"2025",v:53,c:true}],
+    quarters:[{q:"Q3 2024",v:60},{q:"Q4 2024",v:64},{q:"Q1 2025",v:56},{q:"Q2 2025",v:72,c:true}],
+    prYearly:[{y:"2022",v:520},{y:"2023",v:580},{y:"2024",v:612},{y:"2025",v:450,c:true}],
+    prQuarterly:[{q:"Q3 2024",v:140},{q:"Q4 2024",v:152},{q:"Q1 2025",v:138},{q:"Q2 2025",v:162,c:true}],
+    issueYearly:[{y:"2022",v:520},{y:"2023",v:580},{y:"2024",v:612},{y:"2025",v:450,c:true}],
+    issueQuarterly:[{q:"Q3 2024",v:140},{q:"Q4 2024",v:152},{q:"Q1 2025",v:138},{q:"Q2 2025",v:162,c:true}],
     retention:{returning:53, neu:47, cap:"72 new · 81 returning this year"},
     companies:[
       {n:"Red Hat / IBM", c:"2,100", p:"40%", strong:true},
@@ -49,6 +54,11 @@ export const INITIAL_DATA = {
       {l:"CVEs (12 mo.)", v:"1", h:"Patched"}
     ],
     commits:[{y:"2022",v:48},{y:"2023",v:58},{y:"2024",v:60},{y:"2025",v:42,c:true}],
+    quarters:[{q:"Q3 2024",v:58},{q:"Q4 2024",v:62},{q:"Q1 2025",v:56},{q:"Q2 2025",v:70,c:true}],
+    prYearly:[{y:"2022",v:320},{y:"2023",v:360},{y:"2024",v:388},{y:"2025",v:290,c:true}],
+    prQuarterly:[{q:"Q3 2024",v:88},{q:"Q4 2024",v:96},{q:"Q1 2025",v:84},{q:"Q2 2025",v:102,c:true}],
+    issueYearly:[{y:"2022",v:320},{y:"2023",v:360},{y:"2024",v:388},{y:"2025",v:290,c:true}],
+    issueQuarterly:[{q:"Q3 2024",v:88},{q:"Q4 2024",v:96},{q:"Q1 2025",v:84},{q:"Q2 2025",v:102,c:true}],
     retention:{returning:53, neu:47, cap:"41 new · 47 returning this year"},
     companies:[
       {n:"Red Hat / IBM", c:"860", p:"47%", strong:true},
@@ -80,6 +90,11 @@ export const INITIAL_DATA = {
       {l:"CVEs (12 mo.)", v:"0", h:"None reported"}
     ],
     commits:[{y:"2022",v:54},{y:"2023",v:64},{y:"2024",v:62},{y:"2025",v:58,c:true}],
+    quarters:[{q:"Q3 2024",v:60},{q:"Q4 2024",v:66},{q:"Q1 2025",v:58},{q:"Q2 2025",v:74,c:true}],
+    prYearly:[{y:"2022",v:450},{y:"2023",v:520},{y:"2024",v:540},{y:"2025",v:410,c:true}],
+    prQuarterly:[{q:"Q3 2024",v:125},{q:"Q4 2024",v:135},{q:"Q1 2025",v:120},{q:"Q2 2025",v:145,c:true}],
+    issueYearly:[{y:"2022",v:450},{y:"2023",v:520},{y:"2024",v:540},{y:"2025",v:410,c:true}],
+    issueQuarterly:[{q:"Q3 2024",v:125},{q:"Q4 2024",v:135},{q:"Q1 2025",v:120},{q:"Q2 2025",v:145,c:true}],
     retention:{returning:57, neu:43, cap:"58 new · 76 returning this year"},
     companies:[
       {n:"Red Hat / IBM", c:"880", p:"42%", strong:true},
@@ -111,6 +126,11 @@ export const INITIAL_DATA = {
       {l:"CVEs (12 mo.)", v:"1", h:"Patched"}
     ],
     commits:[{y:"2022",v:46},{y:"2023",v:52},{y:"2024",v:48},{y:"2025",v:30,c:true}],
+    quarters:[{q:"Q3 2024",v:56},{q:"Q4 2024",v:60},{q:"Q1 2025",v:52},{q:"Q2 2025",v:66,c:true}],
+    prYearly:[{y:"2022",v:95},{y:"2023",v:108},{y:"2024",v:112},{y:"2025",v:85,c:true}],
+    prQuarterly:[{q:"Q3 2024",v:26},{q:"Q4 2024",v:28},{q:"Q1 2025",v:24},{q:"Q2 2025",v:30,c:true}],
+    issueYearly:[{y:"2022",v:95},{y:"2023",v:108},{y:"2024",v:112},{y:"2025",v:85,c:true}],
+    issueQuarterly:[{q:"Q3 2024",v:26},{q:"Q4 2024",v:28},{q:"Q1 2025",v:24},{q:"Q2 2025",v:30,c:true}],
     retention:{returning:60, neu:40, cap:"19 new · 28 returning this year"},
     companies:[
       {n:"Red Hat / IBM", c:"637", p:"65%", strong:true},
@@ -142,6 +162,11 @@ export const INITIAL_DATA = {
       {l:"CVEs (12 mo.)", v:"0", h:"None reported"}
     ],
     commits:[{y:"2022",v:0},{y:"2023",v:0},{y:"2024",v:34},{y:"2025",v:48,c:true}],
+    quarters:[{q:"Q3 2024",v:40},{q:"Q4 2024",v:44},{q:"Q1 2025",v:42},{q:"Q2 2025",v:68,c:true}],
+    prYearly:[{y:"2022",v:0},{y:"2023",v:0},{y:"2024",v:72},{y:"2025",v:86,c:true}],
+    prQuarterly:[{q:"Q3 2024",v:18},{q:"Q4 2024",v:20},{q:"Q1 2025",v:22},{q:"Q2 2025",v:26,c:true}],
+    issueYearly:[{y:"2022",v:0},{y:"2023",v:0},{y:"2024",v:72},{y:"2025",v:86,c:true}],
+    issueQuarterly:[{q:"Q3 2024",v:18},{q:"Q4 2024",v:20},{q:"Q1 2025",v:22},{q:"Q2 2025",v:26,c:true}],
     retention:{returning:32, neu:68, cap:"15 new · 7 returning this year"},
     companies:[
       {n:"Red Hat / IBM", c:"269", p:"64%", strong:true},

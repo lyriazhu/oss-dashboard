@@ -3,7 +3,9 @@ import { MONTHS } from "../data.js";
 import { Tag, Tile, BarChart, Meter } from "./ui.jsx";
 
 export default function Detail({ d, onOverview }) {
-  const [showQuarterly, setShowQuarterly] = useState(false);
+  const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
+  const [showPRQuarterly, setShowPRQuarterly] = useState(false);
+  const [showIssueQuarterly, setShowIssueQuarterly] = useState(false);
   
   return (
     <main>
@@ -32,21 +34,21 @@ export default function Detail({ d, onOverview }) {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <h2 className="section-h" style={{ margin: 0 }}>
-              {showQuarterly ? 'Commits per quarter' : 'Commits per year'}
+              {showCommitsQuarterly ? 'Commits per quarter' : 'Commits per year'}
             </h2>
             <button
               className="btn-secondary"
-              onClick={() => setShowQuarterly(!showQuarterly)}
+              onClick={() => setShowCommitsQuarterly(!showCommitsQuarterly)}
               style={{
                 fontSize: '0.875rem',
                 padding: '0.5rem 1rem',
                 fontFamily: 'inherit'
               }}
             >
-              {showQuarterly ? 'Show yearly' : 'Show quarterly'}
+              {showCommitsQuarterly ? 'Show yearly' : 'Show quarterly'}
             </button>
           </div>
-          {showQuarterly && d.quarters.length > 0 ? (
+          {showCommitsQuarterly && d.quarters && d.quarters.length > 0 ? (
             <BarChart
               values={d.quarters.map((x) => x.v)}
               labels={d.quarters.map((x) => x.q)}
@@ -60,7 +62,7 @@ export default function Detail({ d, onOverview }) {
             />
           )}
           <p className="chart-cap">
-            Darker bar = current period · {showQuarterly ? `Last ${d.quarters.length} quarters (committers all-time)` : 'Total commits per year (committers all-time)'}
+            Darker bar = current period · {showCommitsQuarterly ? `Last ${d.quarters?.length || 0} quarters` : 'Total commits per year'}
           </p>
         </div>
         <div>
@@ -74,7 +76,7 @@ export default function Detail({ d, onOverview }) {
       <hr className="divider" />
 
       <div className="section">
-        <h2 className="section-h">Top contributing companies &amp; project metadata</h2>
+        <h2 className="section-h">Top contributing companies & project metadata</h2>
         <div className="two-col">
           <div className="table-wrap">
             <table>
@@ -122,12 +124,75 @@ export default function Detail({ d, onOverview }) {
         </div>
       </div>
 
-      <div className="section">
-        <h2 className="section-h">PR &amp; issue activity — past 12 months</h2>
-        <BarChart values={d.activity} labels={MONTHS} variant="twelve" />
-        <p className="chart-cap">
-          Darker bar = current month (Jun 2026) · Hover for monthly breakdown in live version
-        </p>
+      <div className="section two-col">
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <h2 className="section-h" style={{ margin: 0 }}>
+              {showPRQuarterly ? 'PR activity - past 4 quarters' : 'PR activity per year'}
+            </h2>
+              <button
+                className="btn-secondary"
+                onClick={() => setShowPRQuarterly(!showPRQuarterly)}
+                style={{
+                  fontSize: '0.875rem',
+                  padding: '0.5rem 1rem',
+                  fontFamily: 'inherit'
+                }}
+              >
+                {showPRQuarterly ? 'Show yearly' : 'Show quarterly'}
+              </button>
+            </div>
+            {showPRQuarterly && d.prQuarterly && d.prQuarterly.length > 0 ? (
+              <BarChart
+                values={d.prQuarterly.map((x) => x.v)}
+                labels={d.prQuarterly.map((x) => x.q)}
+                currentIndex={d.prQuarterly.findIndex((x) => x.c)}
+              />
+            ) : (
+              <BarChart
+                values={d.prYearly?.map((x) => x.v) || [0]}
+                labels={d.prYearly?.map((x) => x.y) || ['2025']}
+                currentIndex={d.prYearly?.findIndex((x) => x.c) || 0}
+              />
+            )}
+          <p className="chart-cap">
+            Darker bar = current period · {showPRQuarterly ? `Last ${d.prQuarterly?.length || 0} quarters` : 'Total PRs per year'}
+          </p>
+        </div>
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <h2 className="section-h" style={{ margin: 0 }}>
+              {showIssueQuarterly ? 'Issue activity - past 4 quarters' : 'Issue activity per year'}
+            </h2>
+              <button
+                className="btn-secondary"
+                onClick={() => setShowIssueQuarterly(!showIssueQuarterly)}
+                style={{
+                  fontSize: '0.875rem',
+                  padding: '0.5rem 1rem',
+                  fontFamily: 'inherit'
+                }}
+              >
+                {showIssueQuarterly ? 'Show yearly' : 'Show quarterly'}
+              </button>
+            </div>
+            {showIssueQuarterly && d.issueQuarterly && d.issueQuarterly.length > 0 ? (
+              <BarChart
+                values={d.issueQuarterly.map((x) => x.v)}
+                labels={d.issueQuarterly.map((x) => x.q)}
+                currentIndex={d.issueQuarterly.findIndex((x) => x.c)}
+              />
+            ) : (
+              <BarChart
+                values={d.issueYearly?.map((x) => x.v) || [0]}
+                labels={d.issueYearly?.map((x) => x.y) || ['2025']}
+                currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
+              />
+            )}
+          <p className="chart-cap">
+            Darker bar = current period · {showIssueQuarterly ? `Last ${d.issueQuarterly?.length || 0} quarters` : 'Total issues per year'}
+          </p>
+        </div>
       </div>
 
       <p className="foot">
@@ -136,3 +201,5 @@ export default function Detail({ d, onOverview }) {
     </main>
   );
 }
+
+// Made with Bob
