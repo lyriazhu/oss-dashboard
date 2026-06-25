@@ -124,20 +124,47 @@ export function transformProjectData(project, metrics) {
     { l: 'Language', v: metadata?.language || '—', h: metadata?.license || 'No license' },
   ];
   
-  // Format commit history (yearly) with safety checks
-  const commitYears = commits?.quarters?.reduce((acc, q) => {
-    // Extract year from "Q2 2026" format
-    const year = q.quarter.split(' ')[1];
-    if (!acc[year]) acc[year] = 0;
-    acc[year] += q.commit_count;
-    return acc;
-  }, {}) || {};
+  // Format commit history (yearly) - use the years array from backend
+  let commitHistory = commits?.years?.map((yearData) => ({
+    y: yearData.year.toString(), // Convert year number to string
+    v: yearData.commit_count, // Total count for the year
+    c: false, // Will be set later based on current year
+  })) || [];
   
-  const commitHistory = Object.entries(commitYears).map(([year, count], idx, arr) => ({
-    y: year, // Use year as-is (already in format "2026")
-    v: count, // Total count for the year
-    c: idx === arr.length - 1, // Mark current year
-  }));
+  // Fill in missing years up to current year
+  if (commitHistory.length > 0) {
+    const currentYear = new Date().getFullYear();
+    const lastYearInData = parseInt(commitHistory[commitHistory.length - 1].y);
+    
+    // Add missing years with 0 commits
+    for (let year = lastYearInData + 1; year <= currentYear; year++) {
+      commitHistory.push({
+        y: year.toString(),
+        v: 0,
+        c: false, // Will be set later
+      });
+    }
+  }
+  
+  // Mark the current year (or use backend's is_current flag if available)
+  if (commitHistory.length > 0) {
+    const currentYear = new Date().getFullYear();
+    const backendMarkedCurrent = commits?.years?.some(y => y.is_current);
+    
+    if (backendMarkedCurrent) {
+      // Use backend's marking
+      commitHistory = commitHistory.map((item, idx) => ({
+        ...item,
+        c: commits.years[idx]?.is_current || false
+      }));
+    } else {
+      // Mark the current year based on actual current year
+      commitHistory = commitHistory.map(item => ({
+        ...item,
+        c: parseInt(item.y) === currentYear
+      }));
+    }
+  }
   
   // Format quarterly commit data - reverse to show chronologically (oldest to newest)
   const rawQuarters = commits?.quarters || [];
@@ -197,25 +224,38 @@ export function transformProjectData(project, metrics) {
     return acc;
   }, {});
   
-  const prYearlyData = Object.entries(prYears).map(([year, count], idx, arr) => ({
-    y: year,
-    v: count,
-    c: idx === arr.length - 1, // Mark current year
-  }));
+  // Sort years chronologically and create yearly data array
+  const prYearlyData = Object.entries(prYears)
+    .sort(([yearA], [yearB]) => parseInt(yearA) - parseInt(yearB)) // Sort by year ascending
+    .map(([year, count], idx, arr) => ({
+      y: year,
+      v: count,
+      c: idx === arr.length - 1, // Mark current year (last in sorted array)
+    }));
   
-  // Format quarterly PR data - reverse to show chronologically
-  const prQuarterlyData = prQuarters.length > 0
-    ? [...prQuarters].reverse().map((q, idx, arr) => ({
+  // Format quarterly PR data - sort by date, take last 4 quarters (most recent)
+  // Display them in chronological order (oldest to newest, left to right)
+  const sortedPrQuarters = [...prQuarters].sort((a, b) => {
+    // Parse quarter strings like "Q2 2026" to compare dates
+    const [qA, yearA] = a.quarter.split(' ');
+    const [qB, yearB] = b.quarter.split(' ');
+    const yearDiff = parseInt(yearA) - parseInt(yearB);
+    if (yearDiff !== 0) return yearDiff;
+    return parseInt(qA.substring(1)) - parseInt(qB.substring(1)); // Compare Q1, Q2, Q3, Q4
+  });
+  
+  const prQuarterlyData = sortedPrQuarters.length > 0
+    ? sortedPrQuarters.slice(-4).map((q, idx, arr) => ({
         q: q.quarter,
         v: q.pr_count || 0,
-        c: idx === arr.length - 1, // Mark current quarter
+        c: idx === arr.length - 1, // Mark current quarter (rightmost)
       }))
     : [];
   
-  // For issue activity, we'll use PR data as a proxy since issues don't have quarterly data
-  // This is a temporary solution until issue quarterly data is collected
-  const issueYearlyData = prYearlyData.map(item => ({...item})); // Clone PR yearly data
-  const issueQuarterlyData = prQuarterlyData.map(item => ({...item})); // Clone PR quarterly data
+  // Issue data doesn't have quarterly/yearly breakdown in the backend yet
+  // Return empty arrays until the data collection is updated
+  const issueYearlyData = [];
+  const issueQuarterlyData = [];
   
   return {
     name: project.name,

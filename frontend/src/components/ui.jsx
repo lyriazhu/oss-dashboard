@@ -20,7 +20,8 @@ export function Tile({ label, value, help }) {
 }
 
 // values: number[]; currentIndex: which bar is emphasized (defaults to last)
-export function BarChart({ values, labels, currentIndex, variant }) {
+// tooltipLabel: custom label for tooltip (defaults to "commits")
+export function BarChart({ values, labels, currentIndex, variant, tooltipLabel = "commits" }) {
   const cur = currentIndex == null ? values.length - 1 : currentIndex;
   const m = maxOf(values);
   const barsCls = "bars" + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
@@ -34,7 +35,7 @@ export function BarChart({ values, labels, currentIndex, variant }) {
       <div className={barsCls}>
         {values.map((v, i) => {
           const h = v === 0 ? 1 : Math.round((v / m) * 100);
-          const tooltipText = `${labels[i]}: ${formatNumber(v)} commits`;
+          const tooltipText = `${labels[i]}: ${formatNumber(v)} ${tooltipLabel}`;
           return (
             <div className="bar-col" key={i}>
               <div

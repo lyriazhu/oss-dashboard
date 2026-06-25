@@ -16,6 +16,8 @@ public class CommitData {
     public List<QuarterData> quarters;
 
     public List<Committer> committers;
+    
+    public List<YearData> years;
 
     @JsonProperty("time_scope")
     public TimeScope timeScope;
@@ -35,6 +37,17 @@ public class CommitData {
         public Integer commitCount;
         
         public String quarter;
+    }
+    
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class YearData {
+        public Integer year;
+        
+        @JsonProperty("commit_count")
+        public Integer commitCount;
+        
+        @JsonProperty("is_current")
+        public Boolean isCurrent;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -59,7 +72,7 @@ public class CommitData {
 
         public String quarters;
         public String committers;
-        public String years;  // Add this field to handle the "years" property
+        public String years;
     }
 }
 
