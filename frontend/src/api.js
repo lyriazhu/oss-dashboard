@@ -84,7 +84,8 @@ export function transformProjectData(project, metrics) {
   
   // Determine status based on metrics with safety checks
   let status = { label: 'Watch', cls: 'yellow' };
-  if (metadata?.stars >= 1000 && contributors?.total_contributors > 100) {
+  const totalContribs = contributors?.totalContributors || contributors?.total_contributors || 0;
+  if (metadata?.stars >= 1000 && totalContribs > 100) {
     status = { label: 'Healthy', cls: 'green' };
   } else if (metadata?.stars >= 200) {
     status = { label: 'Growing', cls: 'blue' };
@@ -94,18 +95,26 @@ export function transformProjectData(project, metrics) {
   const quarters = commits?.quarters?.slice(-4).map(q => q.commit_count) || [0, 0, 0, 0];
   
   // Format overview data
+  const currentYear = new Date().getFullYear();
+  const contributorsYtd = contributors?.yearlyContributors?.find(y => y.year === currentYear)?.contributorCount
+    || contributors?.yearly_contributors?.find(y => y.year === currentYear)?.contributor_count
+    || 0;
+  const commitsAllTime = commits?.committers?.reduce((sum, committer) => sum + (committer.commitCount || committer.commit_count || 0), 0) || 0;
+
   const ov = {
     foundation: project.foundation || 'Independent',
-    contributors: formatNumber(contributors?.total_contributors),
+    contributorsYtd: formatNumber(contributorsYtd),
+    contributorsAllTime: formatNumber(contributors?.totalContributors || contributors?.total_contributors),
     companies: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—',
     commits: formatNumber(commits?.total_commits),
+    commitsAllTime: formatNumber(commitsAllTime),
     stars: formatNumber(metadata?.stars),
     quarters: quarters.length === 4 ? quarters : [0, 0, 0, 0],
   };
   
   // Format KPIs with safety checks
   const kpis = [
-    { l: 'Contributors YTD', v: formatNumber(contributors?.total_contributors), h: 'All-time contributors' },
+    { l: 'Contributors (All-Time)', v: formatNumber(contributors?.totalContributors || contributors?.total_contributors), h: 'Total unique contributors' },
     { l: 'Companies', v: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—', h: 'Via commit email domains' },
     { l: 'Commits YTD', v: formatNumber(commits?.total_commits), h: 'Total commits' },
     { l: 'GitHub stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },

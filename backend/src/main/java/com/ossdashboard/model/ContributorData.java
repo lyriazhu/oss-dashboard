@@ -1,5 +1,6 @@
 package com.ossdashboard.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -8,9 +9,19 @@ import java.util.Map;
 /**
  * Contributor data for a project
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ContributorData {
     @JsonProperty("total_contributors")
     public Integer totalContributors;
+    
+    @JsonProperty("total_contributors_git")
+    public Integer totalContributorsGit;
+    
+    @JsonProperty("total_contributors_github_api")
+    public Integer totalContributorsGithubApi;
+    
+    @JsonProperty("yearly_contributors")
+    public List<YearlyContributor> yearlyContributors;
     
     public List<Contributor> contributors;
     public Map<String, Integer> companies;
@@ -30,6 +41,18 @@ public class ContributorData {
     @JsonProperty("extracted_at")
     public String extractedAt;
     
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class YearlyContributor {
+        public Integer year;
+        
+        @JsonProperty("contributor_count")
+        public Integer contributorCount;
+        
+        @JsonProperty("is_current")
+        public Boolean isCurrent;
+    }
+    
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Contributor {
         public String login;
         public String name;
@@ -42,6 +65,7 @@ public class ContributorData {
         public String profileUrl;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class RetentionQuarter {
         public String quarter;
 
@@ -64,6 +88,7 @@ public class ContributorData {
         public Double retentionRate;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CompanyDiversity {
         @JsonProperty("known_company_contributors")
         public Integer knownCompanyContributors;
@@ -75,6 +100,7 @@ public class ContributorData {
         public List<CompanyCount> topCompanies;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CompanyCount {
         public String company;
 
@@ -82,7 +108,14 @@ public class ContributorData {
         public Integer contributorCount;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TimeScope {
+        @JsonProperty("yearly_contributors")
+        public String yearlyContributors;
+        
+        @JsonProperty("total_contributors")
+        public String totalContributors;
+        
         public String contributors;
 
         @JsonProperty("retention_by_quarter")

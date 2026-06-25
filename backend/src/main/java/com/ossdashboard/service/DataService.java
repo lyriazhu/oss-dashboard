@@ -75,8 +75,30 @@ public class DataService {
             return null;
         }
 
-        String projectName = project.getName().toLowerCase().replace(" ", "-");
-        Path projectDir = Paths.get(dataDirectory, projectName);
+        // Map project IDs to their data directory names
+        String dirName;
+        switch (projectId) {
+            case "strimzi-kafka-operator":
+                dirName = "strimzi";
+                break;
+            case "camel":
+                dirName = "apache-camel";
+                break;
+            case "activemq":
+                dirName = "apache-activemq";
+                break;
+            case "apicurio-studio":
+                dirName = "apicurio";
+                break;
+            case "3scale-operator":
+                dirName = "3scale";
+                break;
+            default:
+                dirName = projectId.toLowerCase().replace("_", "-");
+        }
+        
+        Path projectDir = Paths.get(dataDirectory, dirName);
+        log.info("Looking for project data in directory: {}", projectDir.toAbsolutePath());
         
         ProjectMetrics metrics = new ProjectMetrics();
         metrics.setProjectId(projectId);

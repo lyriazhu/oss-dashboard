@@ -25,7 +25,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       const project = data[key];
       if (project && project.kpis) {
         // Extract numbers from formatted strings (remove commas and +)
-        const contributorsKpi = project.kpis.find(k => k.l === 'Contributors YTD');
+        const contributorsKpi = project.kpis.find(k => k.l === 'Contributors (All-Time)' || k.l === 'Contributors YTD');
         const commitsKpi = project.kpis.find(k => k.l === 'Commits YTD');
         const issuesKpi = project.kpis.find(k => k.l === 'Open issues');
         
@@ -71,7 +71,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
     return {
       summary: [
         { l: "Total communities", v: totalCommunities.toString(), h: `${totalCommunities} active projects` },
-        { l: "Total contributors", v: formatNum(totalContributors), h: "Across all active repos" },
+        { l: "Total contributors (All-Time)", v: formatNum(totalContributors), h: "Across all active repos" },
         { l: "Commits YTD", v: formatNum(totalCommits), h: "All communities combined" },
         { l: "Open issues (all)", v: formatNum(totalIssues), h: "Across all communities" },
       ],
@@ -127,9 +127,11 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
               <tr>
                 <th>Community</th>
                 <th>Foundation</th>
-                <th className="num">Contributors</th>
                 <th className="num">Companies</th>
-                <th className="num">Commits YTD</th>
+                <th className="num">Contributors (YTD)</th>
+                <th className="num">Contributors (All-Time)</th>
+                <th className="num">Commits (YTD)</th>
+                <th className="num">Commits (All-Time)</th>
                 <th className="num">Stars</th>
                 <th>Status</th>
                 <th aria-label="Open" />
@@ -157,9 +159,11 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
                   >
                     <td className="strong">{d.name}</td>
                     <td>{o.foundation}</td>
-                    <td className="num">{o.contributors}</td>
                     <td className="num">{o.companies}</td>
+                    <td className="num">{o.contributorsYtd}</td>
+                    <td className="num">{o.contributorsAllTime}</td>
                     <td className="num">{o.commits}</td>
+                    <td className="num">{o.commitsAllTime}</td>
                     <td className="num">{o.stars}</td>
                     <td>
                       <Tag cls={d.status.cls} label={d.status.label} />

@@ -4,7 +4,7 @@
 github:
   # Get your token from: https://github.com/settings/tokens
   # Required scopes: public_repo, read:org, read:user
-  token: "YOUR_GITHUB_TOKEN_HERE"
+  token: "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"
   
 # Projects to track
 projects:

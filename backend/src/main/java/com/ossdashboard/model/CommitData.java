@@ -1,5 +1,6 @@
 package com.ossdashboard.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 /**
  * Commit data for a project
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CommitData {
     @JsonProperty("total_commits")
     public Integer totalCommits;
@@ -21,6 +23,7 @@ public class CommitData {
     @JsonProperty("extracted_at")
     public String extractedAt;
     
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class QuarterData {
         @JsonProperty("start_date")
         public String startDate;
@@ -34,6 +37,7 @@ public class CommitData {
         public String quarter;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Committer {
         public String login;
         public String name;
@@ -48,12 +52,14 @@ public class CommitData {
         public Integer commitCount;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TimeScope {
         @JsonProperty("total_commits")
         public String totalCommits;
 
         public String quarters;
         public String committers;
+        public String years;  // Add this field to handle the "years" property
     }
 }
 
