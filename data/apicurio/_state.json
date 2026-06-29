@@ -11,18 +11,18 @@
       "renovate[bot]",
       "rkubis"
     ],
-    "last_extracted_at": "2026-06-25T16:04:19.835062"
+    "last_extracted_at": "2026-06-29T09:39:11.605641"
   },
   "commits": {
-    "last_git_sync_at": "2026-06-25T16:04:23.560994"
+    "last_git_sync_at": "2026-06-29T09:39:14.964896"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-06-25T16:04:28.084387"
+    "last_extracted_at": "2026-06-29T09:39:20.075207"
   },
   "issues": {
-    "last_extracted_at": "2026-06-25T16:04:26.366323"
+    "last_extracted_at": "2026-06-29T09:39:17.810840"
   },
   "releases": {
-    "last_extracted_at": "2026-06-25T16:04:29.934538"
+    "last_extracted_at": "2026-06-29T09:39:21.870574"
   }
 }

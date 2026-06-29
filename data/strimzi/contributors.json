@@ -52,12 +52,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 83,
+      "contributor_count": 85,
       "is_current": true
     }
   ],
-  "total_contributors": 631,
-  "total_contributors_git": 631,
+  "total_contributors": 633,
+  "total_contributors_git": 633,
   "contributors": [
     {
       "login": "scholzj",
@@ -65,7 +65,7 @@
       "company": "Unknown",
       "location": "Prague, Czech Republic",
       "email": "github@scholzj.com",
-      "contributions": 2346,
+      "contributions": 2352,
       "profile_url": "https://github.com/scholzj"
     },
     {
@@ -92,7 +92,7 @@
       "company": "Ibm",
       "location": null,
       "email": null,
-      "contributions": 513,
+      "contributions": 514,
       "profile_url": "https://github.com/im-konge"
     },
     {
@@ -2964,8 +2964,8 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 29,
-      "new_contributors": 10,
+      "active_contributors": 31,
+      "new_contributors": 12,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }

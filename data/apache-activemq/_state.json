@@ -165,18 +165,18 @@
       "yangwei71",
       "zregvart"
     ],
-    "last_extracted_at": "2026-06-25T15:50:19.026127"
+    "last_extracted_at": "2026-06-29T11:31:39.623402"
   },
   "commits": {
-    "last_git_sync_at": "2026-06-25T15:50:23.012214"
+    "last_git_sync_at": "2026-06-29T11:31:43.153505"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-06-25T15:51:21.261396"
+    "last_extracted_at": "2026-06-29T11:31:44.415655"
   },
   "issues": {
-    "last_extracted_at": "2026-06-25T15:50:25.841741"
+    "last_extracted_at": "2026-06-29T09:38:37.229490"
   },
   "releases": {
-    "last_extracted_at": "2026-06-25T15:51:23.026854"
+    "last_extracted_at": "2026-06-29T11:31:46.079743"
   }
 }

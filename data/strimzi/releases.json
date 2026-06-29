@@ -1,6 +1,13 @@
 {
-  "total_releases": 175,
+  "total_releases": 176,
   "recent_releases": [
+    {
+      "tag_name": "1.1.0",
+      "name": "1.1.0",
+      "published_at": "2026-06-27T14:23:11+00:00",
+      "prerelease": false,
+      "draft": false
+    },
     {
       "tag_name": "0.1.0-rc1",
       "name": "0.1.0-rc1",
@@ -133,16 +140,9 @@
       "published_at": "2018-08-17T16:16:54+00:00",
       "prerelease": true,
       "draft": false
-    },
-    {
-      "tag_name": "0.6.0-rc3",
-      "name": "0.6.0-rc3",
-      "published_at": "2018-08-19T19:29:25+00:00",
-      "prerelease": true,
-      "draft": false
     }
   ],
-  "avg_days_between_releases": 14.42,
-  "release_frequency": "high",
-  "extracted_at": "2026-06-25T15:38:28.522714"
+  "avg_days_between_releases": 165.37,
+  "release_frequency": "low",
+  "extracted_at": "2026-06-29T11:37:46.621179"
 }

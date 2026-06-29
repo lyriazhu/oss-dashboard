@@ -1,6 +1,13 @@
 {
-  "total_releases": 108,
+  "total_releases": 109,
   "recent_releases": [
+    {
+      "tag_name": "26.6.4",
+      "name": "26.6.4",
+      "published_at": "2026-06-26T19:19:51+00:00",
+      "prerelease": false,
+      "draft": false
+    },
     {
       "tag_name": "12.0.0",
       "name": "",
@@ -133,16 +140,9 @@
       "published_at": "2022-04-20T19:28:18+00:00",
       "prerelease": false,
       "draft": false
-    },
-    {
-      "tag_name": "18.0.1",
-      "name": "18.0.1",
-      "published_at": "2022-06-16T12:38:35+00:00",
-      "prerelease": false,
-      "draft": false
     }
   ],
-  "avg_days_between_releases": 28.26,
-  "release_frequency": "high",
-  "extracted_at": "2026-06-25T16:04:13.782023"
+  "avg_days_between_releases": 105.68,
+  "release_frequency": "low",
+  "extracted_at": "2026-06-29T09:39:05.676633"
 }

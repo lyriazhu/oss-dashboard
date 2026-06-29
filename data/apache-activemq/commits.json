@@ -1,29 +1,29 @@
 {
-  "total_commits": 396,
+  "total_commits": 394,
   "quarters": [
     {
-      "start_date": "2026-03-27T15:50:19.328158",
-      "end_date": "2026-06-25T15:50:19.328158",
-      "commit_count": 123,
+      "start_date": "2026-03-31T11:31:39.918009",
+      "end_date": "2026-06-29T11:31:39.918009",
+      "commit_count": 118,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-27T15:50:19.328158",
-      "end_date": "2026-03-27T15:50:19.328158",
-      "commit_count": 177,
+      "start_date": "2025-12-31T11:31:39.918009",
+      "end_date": "2026-03-31T11:31:39.918009",
+      "commit_count": 183,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-28T15:50:19.328158",
-      "end_date": "2025-12-27T15:50:19.328158",
-      "commit_count": 64,
+      "start_date": "2025-10-02T11:31:39.918009",
+      "end_date": "2025-12-31T11:31:39.918009",
+      "commit_count": 61,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-30T15:50:19.328158",
-      "end_date": "2025-09-28T15:50:19.328158",
+      "start_date": "2025-07-04T11:31:39.918009",
+      "end_date": "2025-10-02T11:31:39.918009",
       "commit_count": 32,
-      "quarter": "Q3 2025"
+      "quarter": "Q4 2025"
     }
   ],
   "committers": [
@@ -52,7 +52,7 @@
       "location": null,
       "email": "jbonofre@apache.org",
       "profile_url": null,
-      "commit_count": 2101
+      "commit_count": 2104
     },
     {
       "login": "James Strachan",
@@ -124,7 +124,7 @@
       "location": null,
       "email": "cshannon@apache.org",
       "profile_url": null,
-      "commit_count": 443
+      "commit_count": 445
     },
     {
       "login": "Adrian T. Co",
@@ -151,7 +151,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 339
+      "commit_count": 344
     },
     {
       "login": "Matt Pavlovich",
@@ -160,7 +160,7 @@
       "location": null,
       "email": "matt@hyte.io",
       "profile_url": null,
-      "commit_count": 338
+      "commit_count": 340
     },
     {
       "login": "Matt Pavlovich",
@@ -187,7 +187,7 @@
       "location": null,
       "email": "jb.onofre@dremio.com",
       "profile_url": null,
-      "commit_count": 274
+      "commit_count": 276
     },
     {
       "login": "Claus Ibsen",
@@ -376,7 +376,7 @@
       "location": null,
       "email": "jeanouii@gmail.com",
       "profile_url": null,
-      "commit_count": 54
+      "commit_count": 55
     },
     {
       "login": "gianandrea.rigoni\u201a",
@@ -550,6 +550,15 @@
       "commit_count": 21
     },
     {
+      "login": "Anmol Saxena",
+      "name": "Anmol Saxena",
+      "company": "Unknown",
+      "location": null,
+      "email": "asaxena@meshiq.com",
+      "profile_url": null,
+      "commit_count": 21
+    },
+    {
       "login": "Sergio Lemos",
       "name": "Sergio Lemos",
       "company": "Unknown",
@@ -557,15 +566,6 @@
       "email": "lemoss@amazon.com",
       "profile_url": null,
       "commit_count": 20
-    },
-    {
-      "login": "Anmol Saxena",
-      "name": "Anmol Saxena",
-      "company": "Unknown",
-      "location": null,
-      "email": "asaxena@meshiq.com",
-      "profile_url": null,
-      "commit_count": 19
     },
     {
       "login": "Benjamin Graf",
@@ -1987,7 +1987,7 @@
       "location": null,
       "email": "blackb1rd.mov@gmail.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "Robert Regina",
@@ -2734,7 +2734,7 @@
       "location": null,
       "email": "49990229+tylermurali@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Stanley Zhao",
@@ -3571,7 +3571,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-25T15:50:23.012206",
+  "extracted_at": "2026-06-29T11:31:43.153499",
   "years": [
     {
       "year": 2005,
@@ -3680,7 +3680,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1305,
+      "commit_count": 1313,
       "is_current": true
     }
   ]

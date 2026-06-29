@@ -1,29 +1,29 @@
 {
-  "total_commits": 653,
+  "total_commits": 654,
   "quarters": [
     {
-      "start_date": "2026-03-27T15:34:56.312235",
-      "end_date": "2026-06-25T15:34:56.312235",
-      "commit_count": 160,
+      "start_date": "2026-03-31T11:42:49.106675",
+      "end_date": "2026-06-29T11:42:49.106675",
+      "commit_count": 162,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-27T15:34:56.312235",
-      "end_date": "2026-03-27T15:34:56.312235",
-      "commit_count": 155,
+      "start_date": "2025-12-31T11:42:49.106675",
+      "end_date": "2026-03-31T11:42:49.106675",
+      "commit_count": 158,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-28T15:34:56.312235",
-      "end_date": "2025-12-27T15:34:56.312235",
-      "commit_count": 184,
+      "start_date": "2025-10-02T11:42:49.106675",
+      "end_date": "2025-12-31T11:42:49.106675",
+      "commit_count": 172,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-30T15:34:56.312235",
-      "end_date": "2025-09-28T15:34:56.312235",
-      "commit_count": 154,
-      "quarter": "Q3 2025"
+      "start_date": "2025-07-04T11:42:49.106675",
+      "end_date": "2025-10-02T11:42:49.106675",
+      "commit_count": 162,
+      "quarter": "Q4 2025"
     }
   ],
   "committers": [
@@ -34,7 +34,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 7120
+      "commit_count": 7135
     },
     {
       "login": "Paolo Patierno",
@@ -88,7 +88,7 @@
       "location": null,
       "email": "lukywill16@gmail.com",
       "profile_url": null,
-      "commit_count": 1384
+      "commit_count": 1388
     },
     {
       "login": "morsak",
@@ -106,7 +106,7 @@
       "location": null,
       "email": "maros.orsak159@gmail.com",
       "profile_url": null,
-      "commit_count": 973
+      "commit_count": 974
     },
     {
       "login": "PaulRMellor",
@@ -124,7 +124,7 @@
       "location": null,
       "email": "53821852+im-konge@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 692
+      "commit_count": 694
     },
     {
       "login": "Daniel Laing",
@@ -268,7 +268,7 @@
       "location": null,
       "email": "tina.selenge@gmail.com",
       "profile_url": null,
-      "commit_count": 167
+      "commit_count": 168
     },
     {
       "login": "Thomas Cooper",
@@ -457,7 +457,7 @@
       "location": null,
       "email": "venkatesprasad512@gmail.com",
       "profile_url": null,
-      "commit_count": 49
+      "commit_count": 51
     },
     {
       "login": "Gantigmaa Selenge",
@@ -466,7 +466,7 @@
       "location": null,
       "email": "39860586+tinaselenge@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 47
+      "commit_count": 48
     },
     {
       "login": "Vaibhav-Nazare",
@@ -1810,6 +1810,15 @@
       "commit_count": 6
     },
     {
+      "login": "BK202503",
+      "name": "BK202503",
+      "company": "Unknown",
+      "location": null,
+      "email": "199436087+bk202503@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
       "login": "Jakub Scholz",
       "name": "Jakub Scholz",
       "company": "Unknown",
@@ -2374,7 +2383,7 @@
       "location": null,
       "email": "bboyleonp@gmail.com",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Venkatesh Prasad Kannan",
@@ -2383,7 +2392,7 @@
       "location": null,
       "email": "personal@venkateshkannan.me",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "halo",
@@ -2932,7 +2941,7 @@
       "location": null,
       "email": "yevhenii@pillar.security",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "HCL",
@@ -4048,7 +4057,16 @@
       "location": null,
       "email": "80095851+mehrdadbn9@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
+    },
+    {
+      "login": "Bill Kim (\uae40\ube4c)",
+      "name": "Bill Kim (\uae40\ube4c)",
+      "company": "Unknown",
+      "location": null,
+      "email": "billkimjh@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
     },
     {
       "login": "Geonhyeon Kim",
@@ -5713,7 +5731,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-25T15:35:00.330010",
+  "extracted_at": "2026-06-29T11:42:52.446221",
   "years": [
     {
       "year": 2016,
@@ -5767,7 +5785,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1161,
+      "commit_count": 1189,
       "is_current": true
     }
   ]

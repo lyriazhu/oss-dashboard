@@ -1,29 +1,29 @@
 {
-  "total_commits": 118,
+  "total_commits": 116,
   "quarters": [
     {
-      "start_date": "2026-03-27T16:04:36.110974",
-      "end_date": "2026-06-25T16:04:36.110974",
-      "commit_count": 33,
+      "start_date": "2026-03-31T09:39:28.435359",
+      "end_date": "2026-06-29T09:39:28.435359",
+      "commit_count": 30,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-27T16:04:36.110974",
-      "end_date": "2026-03-27T16:04:36.110974",
-      "commit_count": 37,
+      "start_date": "2025-12-31T09:39:28.435359",
+      "end_date": "2026-03-31T09:39:28.435359",
+      "commit_count": 40,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-09-28T16:04:36.110974",
-      "end_date": "2025-12-27T16:04:36.110974",
-      "commit_count": 31,
+      "start_date": "2025-10-02T09:39:28.435359",
+      "end_date": "2025-12-31T09:39:28.435359",
+      "commit_count": 29,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-06-30T16:04:36.110974",
-      "end_date": "2025-09-28T16:04:36.110974",
+      "start_date": "2025-07-04T09:39:28.435359",
+      "end_date": "2025-10-02T09:39:28.435359",
       "commit_count": 17,
-      "quarter": "Q3 2025"
+      "quarter": "Q4 2025"
     }
   ],
   "committers": [
@@ -286,7 +286,7 @@
       "location": null,
       "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 8
     },
     {
       "login": "Aleksandar N. Kostadinov",
@@ -384,6 +384,15 @@
       "company": "Unknown",
       "location": null,
       "email": "swkale@redhat.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "boris.urbanik.dev@gmail.com",
       "profile_url": null,
       "commit_count": 3
     },
@@ -610,7 +619,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-25T16:04:39.202833",
+  "extracted_at": "2026-06-29T09:39:31.345662",
   "years": [
     {
       "year": 2018,
@@ -654,7 +663,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 131,
+      "commit_count": 141,
       "is_current": true
     }
   ]

@@ -42,12 +42,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 7,
+      "contributor_count": 8,
       "is_current": true
     }
   ],
-  "total_contributors": 64,
-  "total_contributors_git": 64,
+  "total_contributors": 65,
+  "total_contributors_git": 65,
   "contributors": [
     {
       "login": "eguzki",
@@ -524,8 +524,8 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 2,
-      "new_contributors": 1,
+      "active_contributors": 3,
+      "new_contributors": 2,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }

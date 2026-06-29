@@ -67,12 +67,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 561,
+      "contributor_count": 569,
       "is_current": true
     }
   ],
-  "total_contributors": 3274,
-  "total_contributors_git": 3274,
+  "total_contributors": 3281,
+  "total_contributors_git": 3281,
   "contributors": [
     {
       "login": "stianst",
@@ -89,7 +89,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 2927,
+      "contributions": 2935,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -107,7 +107,7 @@
       "company": "Red Hat",
       "location": "Brno, Czech republic",
       "email": "mposolda@gmail.com",
-      "contributions": 2353,
+      "contributions": 2354,
       "profile_url": "https://github.com/mposolda"
     },
     {
@@ -125,7 +125,7 @@
       "company": "Ibm",
       "location": "Z\u00fcrich",
       "email": null,
-      "contributions": 1510,
+      "contributions": 1511,
       "profile_url": "https://github.com/edewit"
     },
     {
@@ -179,7 +179,7 @@
       "company": "Ibm",
       "location": "Czech Republic",
       "email": "mabartos@redhat.com",
-      "contributions": 515,
+      "contributions": 517,
       "profile_url": "https://github.com/mabartos"
     },
     {
@@ -188,7 +188,7 @@
       "company": "Ibm",
       "location": "Spain",
       "email": "rmartinc@ibm.com",
-      "contributions": 511,
+      "contributions": 512,
       "profile_url": "https://github.com/rmartinc"
     },
     {
@@ -224,7 +224,7 @@
       "company": "Ibm",
       "location": "Sao Paulo",
       "email": "sguilhen@redhat.com",
-      "contributions": 331,
+      "contributions": 332,
       "profile_url": "https://github.com/sguilhen"
     },
     {
@@ -305,7 +305,7 @@
       "company": "Ibm",
       "location": "Lisbon",
       "email": null,
-      "contributions": 213,
+      "contributions": 214,
       "profile_url": "https://github.com/pruivo"
     },
     {
@@ -327,6 +327,15 @@
       "profile_url": "https://github.com/tkyjovsk"
     },
     {
+      "login": "graziang",
+      "name": "Giuseppe Graziano",
+      "company": "Ibm",
+      "location": null,
+      "email": "g.graziano94@gmail.com",
+      "contributions": 164,
+      "profile_url": "https://github.com/graziang"
+    },
+    {
       "login": "weblate",
       "name": "Weblate (bot)",
       "company": "Weblateorg",
@@ -334,15 +343,6 @@
       "email": "info@weblate.org",
       "contributions": 162,
       "profile_url": "https://github.com/weblate"
-    },
-    {
-      "login": "graziang",
-      "name": "Giuseppe Graziano",
-      "company": "Ibm",
-      "location": null,
-      "email": "g.graziano94@gmail.com",
-      "contributions": 161,
-      "profile_url": "https://github.com/graziang"
     },
     {
       "login": "mstruk",
@@ -404,7 +404,7 @@
       "company": "Red Hat",
       "location": "Slovakia",
       "email": "pzaoral@redhat.com",
-      "contributions": 104,
+      "contributions": 105,
       "profile_url": "https://github.com/Pepo48"
     },
     {
@@ -453,6 +453,15 @@
       "profile_url": "https://github.com/pskopek"
     },
     {
+      "login": "tdiesler",
+      "name": "Thomas Diesler",
+      "company": "Ibm",
+      "location": null,
+      "email": "tdiesler@ibm.com",
+      "contributions": 61,
+      "profile_url": "https://github.com/tdiesler"
+    },
+    {
       "login": "ASzc",
       "name": "Alex Szczuczko",
       "company": "Red Hat",
@@ -460,15 +469,6 @@
       "email": "alex@szc.ca",
       "contributions": 59,
       "profile_url": "https://github.com/ASzc"
-    },
-    {
-      "login": "tdiesler",
-      "name": "Thomas Diesler",
-      "company": "Ibm",
-      "location": null,
-      "email": "tdiesler@ibm.com",
-      "contributions": 59,
-      "profile_url": "https://github.com/tdiesler"
     },
     {
       "login": "y-tabata",
@@ -588,6 +588,15 @@
       "profile_url": "https://github.com/Aboullos"
     },
     {
+      "login": "michalvavrik",
+      "name": "Michal Vav\u0159\u00edk",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 41,
+      "profile_url": "https://github.com/michalvavrik"
+    },
+    {
       "login": "slaskawi",
       "name": "Sebastian \u0141askawiec",
       "company": "Defense Unicorns",
@@ -604,15 +613,6 @@
       "email": null,
       "contributions": 39,
       "profile_url": "https://github.com/robson90"
-    },
-    {
-      "login": "michalvavrik",
-      "name": "Michal Vav\u0159\u00edk",
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 39,
-      "profile_url": "https://github.com/michalvavrik"
     },
     {
       "login": "keycloak-bot",
@@ -669,6 +669,15 @@
       "profile_url": "https://github.com/dominikkawka"
     },
     {
+      "login": "reda-alaoui",
+      "name": "R\u00e9da Housni Alaoui",
+      "company": "Cosium",
+      "location": "Paris, France",
+      "email": "reda-alaoui@hey.com",
+      "contributions": 29,
+      "profile_url": "https://github.com/reda-alaoui"
+    },
+    {
       "login": "ccopelloRH",
       "name": null,
       "company": "Red Hat, Inc.",
@@ -676,15 +685,6 @@
       "email": "ccopello@redhat.com",
       "contributions": 28,
       "profile_url": "https://github.com/ccopelloRH"
-    },
-    {
-      "login": "reda-alaoui",
-      "name": "R\u00e9da Housni Alaoui",
-      "company": "Cosium",
-      "location": "Paris, France",
-      "email": "reda-alaoui@hey.com",
-      "contributions": 28,
-      "profile_url": "https://github.com/reda-alaoui"
     },
     {
       "login": "Captain-P-Goldfish",
@@ -822,6 +822,15 @@
       "profile_url": "https://github.com/ammendonca"
     },
     {
+      "login": "jimmychakkalakal",
+      "name": null,
+      "company": "Ibm",
+      "location": "Dublin",
+      "email": null,
+      "contributions": 18,
+      "profile_url": "https://github.com/jimmychakkalakal"
+    },
+    {
       "login": "drichtarik",
       "name": "Denis Richt\u00e1rik",
       "company": "Red Hat",
@@ -829,6 +838,15 @@
       "email": null,
       "contributions": 17,
       "profile_url": "https://github.com/drichtarik"
+    },
+    {
+      "login": "gaoyikeshuer",
+      "name": "Yike Gao",
+      "company": "Ibm",
+      "location": "Dublin",
+      "email": null,
+      "contributions": 17,
+      "profile_url": "https://github.com/gaoyikeshuer"
     },
     {
       "login": "dmartinol",
@@ -849,15 +867,6 @@
       "profile_url": "https://github.com/raehalme"
     },
     {
-      "login": "gaoyikeshuer",
-      "name": "Yike Gao",
-      "company": "Ibm",
-      "location": "Dublin",
-      "email": null,
-      "contributions": 16,
-      "profile_url": "https://github.com/gaoyikeshuer"
-    },
-    {
       "login": "benjamin37",
       "name": "Benjamin Weimer",
       "company": "Unknown",
@@ -865,6 +874,15 @@
       "email": null,
       "contributions": 16,
       "profile_url": "https://github.com/benjamin37"
+    },
+    {
+      "login": "msdaly200",
+      "name": "Marie Daly",
+      "company": "Red Hat",
+      "location": "Dublin, Ireland",
+      "email": null,
+      "contributions": 16,
+      "profile_url": "https://github.com/msdaly200"
     },
     {
       "login": "knutz3n",
@@ -883,24 +901,6 @@
       "email": null,
       "contributions": 15,
       "profile_url": "https://github.com/srose"
-    },
-    {
-      "login": "msdaly200",
-      "name": "Marie Daly",
-      "company": "Red Hat",
-      "location": "Dublin, Ireland",
-      "email": null,
-      "contributions": 15,
-      "profile_url": "https://github.com/msdaly200"
-    },
-    {
-      "login": "jimmychakkalakal",
-      "name": null,
-      "company": "Ibm",
-      "location": "Dublin",
-      "email": null,
-      "contributions": 15,
-      "profile_url": "https://github.com/jimmychakkalakal"
     },
     {
       "login": "matzew",
@@ -1470,6 +1470,15 @@
       "profile_url": "https://github.com/jeroenr"
     },
     {
+      "login": "muhammedogz",
+      "name": "Muhammed O\u011fuz",
+      "company": "Keymate.Io",
+      "location": "Istanbul, Turkey",
+      "email": null,
+      "contributions": 8,
+      "profile_url": "https://github.com/muhammedogz"
+    },
+    {
       "login": "chameleon82",
       "name": "Aleksandr Nekrasov",
       "company": "Agoda Company Pte Ltd.",
@@ -1477,15 +1486,6 @@
       "email": null,
       "contributions": 7,
       "profile_url": "https://github.com/chameleon82"
-    },
-    {
-      "login": "muhammedogz",
-      "name": "Muhammed O\u011fuz",
-      "company": "Keymate.Io",
-      "location": "Istanbul, Turkey",
-      "email": null,
-      "contributions": 7,
-      "profile_url": "https://github.com/muhammedogz"
     },
     {
       "login": "aruehl",
@@ -1722,6 +1722,15 @@
       "profile_url": "https://github.com/askosyrskiy"
     },
     {
+      "login": "kota65535",
+      "name": "Tomohiko Ozawa",
+      "company": "Toggle Inc.",
+      "location": "Tokyo, Japan",
+      "email": "kota65535@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/kota65535"
+    },
+    {
       "login": "panga",
       "name": "Leonardo Zanivan",
       "company": "Okta",
@@ -1927,15 +1936,6 @@
       "email": null,
       "contributions": 5,
       "profile_url": "https://github.com/sebastianloesch"
-    },
-    {
-      "login": "kota65535",
-      "name": "Tomohiko Ozawa",
-      "company": "Toggle Inc.",
-      "location": "Tokyo, Japan",
-      "email": "kota65535@gmail.com",
-      "contributions": 5,
-      "profile_url": "https://github.com/kota65535"
     },
     {
       "login": "tmorin",
@@ -3006,7 +3006,7 @@
       "quarter": "2026-04",
       "start_date": "2026-04",
       "end_date": "2026-04",
-      "active_contributors": 172,
+      "active_contributors": 171,
       "new_contributors": 71,
       "returning_contributors": 8,
       "retention_rate": 11.27
@@ -3024,8 +3024,8 @@
       "quarter": "2026-06",
       "start_date": "2026-06",
       "end_date": "2026-06",
-      "active_contributors": 281,
-      "new_contributors": 105,
+      "active_contributors": 288,
+      "new_contributors": 112,
       "returning_contributors": 0,
       "retention_rate": 0.0
     }
