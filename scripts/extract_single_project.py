@@ -99,10 +99,18 @@ def main():
     
     # Issues
     try:
-        issues = extractor.extract_issues(owner, repo, name)
-        if issues:
-            extractor.save_project_data(name, issues, "issues")
-            extraction_status["issues"] = True
+        if metadata and 'created_at' in metadata:
+            from datetime import datetime
+            # Parse the created_at from metadata
+            created_at = datetime.fromisoformat(metadata['created_at'].replace('Z', '+00:00'))
+            # Create repos list
+            repos = [{'owner': owner, 'repo': repo}]
+            issues = extractor.extract_issues(repos, created_at, name)
+            if issues:
+                extractor.save_project_data(name, issues, "issues")
+                extraction_status["issues"] = True
+        else:
+            print(f"⚠️  Warning: Cannot extract issues - metadata not available")
     except Exception as e:
         print(f"⚠️  Warning: Issues extraction failed: {e}")
         print(f"   Continuing with other data types...")

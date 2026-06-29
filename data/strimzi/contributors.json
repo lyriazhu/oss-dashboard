@@ -2857,9 +2857,18 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/kunallimaye"
+    },
+    {
+      "login": "BK202503",
+      "name": "Bill Kim (\uae40\ube4c)",
+      "company": "Musinsa",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/BK202503"
     }
   ],
-  "total_contributors_github_api": 311,
+  "total_contributors_github_api": 312,
   "retention_by_quarter": [
     {
       "quarter": "2025-07",

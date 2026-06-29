@@ -56,6 +56,55 @@ export function BarChart({ values, labels, currentIndex, variant, tooltipLabel =
   );
 }
 
+// Stacked bar chart for showing open and closed issues
+// values: array of {open, closed} objects
+export function StackedBarChart({ values, labels, currentIndex, variant }) {
+  const cur = currentIndex == null ? values.length - 1 : currentIndex;
+  
+  // Calculate max total for scaling
+  const totals = values.map(v => (v.open || 0) + (v.closed || 0));
+  const m = maxOf(totals);
+  
+  const barsCls = "bars" + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
+  const axisCls = "bar-axis" + (variant === "mini" ? " mini" : "");
+  
+  // Format number with commas for tooltip
+  const formatNumber = (num) => num.toLocaleString('en-US');
+  
+  return (
+    <>
+      <div className={barsCls}>
+        {values.map((v, i) => {
+          const total = (v.open || 0) + (v.closed || 0);
+          const h = total === 0 ? 1 : Math.round((total / m) * 100);
+          const closedPercent = total > 0 ? ((v.closed || 0) / total) * 100 : 0;
+          const openPercent = total > 0 ? ((v.open || 0) / total) * 100 : 0;
+          
+          const tooltipText = `${labels[i]}: ${formatNumber(total)} issues (${formatNumber(v.open || 0)} open, ${formatNumber(v.closed || 0)} closed)`;
+          
+          return (
+            <div className="bar-col" key={i}>
+              <div
+                className={"bar stacked" + (i === cur ? " current" : "")}
+                style={{ height: h + "%" }}
+                title={tooltipText}
+              >
+                <div className="bar-segment closed" style={{ height: closedPercent + "%" }} />
+                <div className="bar-segment open" style={{ height: openPercent + "%" }} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className={axisCls}>
+        {labels.map((l, i) => (
+          <span key={i}>{l}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export function Meter({ label, value, color }) {
   return (
     <div className="meter">

@@ -735,15 +735,119 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting commits: {e}")
             return {}
     
-    def extract_issues(self, repos: List[Dict[str, str]], project_name: str, project_created_at: Optional[datetime] = None) -> Dict[str, Any]:
-        """Extract issue metrics - aggregates counts from all repos in the project"""
-        print(f"🐛 Extracting issues for {project_name}...")
+    def extract_issues(self, repos: List[Dict[str, str]], project_created_at: datetime, project_name: str) -> Dict[str, Any]:
+        """Extract issue metrics including monthly and yearly aggregations with incremental updates
+        
+        Args:
+            repos: List of repo dicts with 'owner' and 'repo' keys
+            project_created_at: When the project was created (from earliest repo)
+            project_name: Name of the project for state management
+        """
+        print(f"🐛 Extracting issues for {len(repos)} repo(s)...")
         
         try:
+            project_state = self._load_project_state(project_name)
+            last_extracted_at = project_state.get("issues", {}).get("last_extracted_at")
+            
+            month_dates = self._get_last_n_months(12)  # Get last 12 months
+            
+            # Handle project_created_at - ensure it's a datetime object
+            if project_created_at is None:
+                # Default to 5 years ago if no creation date
+                project_created_at = datetime.now() - timedelta(days=365*5)
+            elif isinstance(project_created_at, str):
+                # Parse if it's a string
+                project_created_at = datetime.fromisoformat(project_created_at.replace('+00:00', '').replace('Z', ''))
+            
+            years = self._get_years_since_creation(project_created_at)  # Get all years
+            
+            # For initial extraction, start fresh. For incremental, load existing data
+            if last_extracted_at:
+                existing_data = self._load_json_file(self._project_dir(project_name) / "issues.json", {})
+                issue_data = {
+                    "total_open": 0,
+                    "total_closed": existing_data.get("total_closed", 0),
+                    "total_issues": existing_data.get("total_issues", 0),
+                    "median_resolution_time_days": existing_data.get("median_resolution_time_days"),
+                    "months": existing_data.get("months", []),
+                    "years": existing_data.get("years", []),
+                    "extracted_at": datetime.now().isoformat()
+                }
+            else:
+                # Initial extraction - start with empty data
+                issue_data = {
+                    "total_open": 0,
+                    "total_closed": 0,
+                    "total_issues": 0,
+                    "median_resolution_time_days": None,
+                    "months": [],
+                    "years": [],
+                    "extracted_at": datetime.now().isoformat()
+                }
+
+            # Initialize month data structure
+            month_data_map = {}
+            if last_extracted_at:
+                # For incremental updates, preserve existing month data
+                for month_info in issue_data["months"]:
+                    month_label = month_info["month"]
+                    month_data_map[month_label] = {
+                        "start_date": month_info["start_date"],
+                        "end_date": month_info["end_date"],
+                        "issue_count": month_info["issue_count"],
+                        "closed_issue_count": month_info["closed_issue_count"],
+                        "resolution_times": [],
+                        "month": month_label,
+                        "median_resolution_time_days": month_info.get("median_resolution_time_days")
+                    }
+            
+            # Add any new months not in existing data
+            for start_date, end_date in month_dates:
+                month_label = self._month_label(end_date)
+                if month_label not in month_data_map:
+                    month_data_map[month_label] = {
+                        "start_date": start_date.isoformat(),
+                        "end_date": end_date.isoformat(),
+                        "issue_count": 0,
+                        "closed_issue_count": 0,
+                        "resolution_times": [],
+                        "month": month_label
+                    }
+            
+            # Initialize year data structure
+            year_data_map = {}
+            if last_extracted_at:
+                # For incremental updates, preserve existing year data
+                for year_info in issue_data["years"]:
+                    year = year_info["year"]
+                    year_data_map[year] = {
+                        "year": year,
+                        "issue_count": year_info["issue_count"],
+                        "closed_issue_count": year_info["closed_issue_count"]
+                    }
+            
+            # Add any new years not in existing data
+            for year in years:
+                if year not in year_data_map:
+                    year_data_map[year] = {
+                        "year": year,
+                        "issue_count": 0,
+                        "closed_issue_count": 0
+                    }
+
+            overall_resolution_times = []
             total_open_count = 0
-            total_closed_count = 0
-            all_resolution_times = []
-            sample_limit = 100
+            
+            # Determine since date for incremental updates
+            since_date = None
+            if last_extracted_at:
+                # Parse the ISO format string and make it timezone-naive
+                since_date = datetime.fromisoformat(last_extracted_at)
+                if since_date.tzinfo:
+                    since_date = since_date.replace(tzinfo=None)
+                print(f"  ℹ️  Incremental update: fetching issues updated since {last_extracted_at}")
+            else:
+                print(f"  ℹ️  Initial extraction: fetching all issues")
             
             # Process each repository
             for repo_info in repos:
@@ -754,7 +858,7 @@ class GitHubDataExtractor:
                 try:
                     repository = self.github.get_repo(f"{owner}/{repo}")
                     
-                    # Count open issues (excluding PRs) - PyGithub handles pagination automatically
+                    # Count current open issues (always get fresh count)
                     print(f"    📊 Counting open issues...")
                     repo_open_count = 0
                     for issue in repository.get_issues(state='open'):
@@ -763,46 +867,114 @@ class GitHubDataExtractor:
                     total_open_count += repo_open_count
                     print(f"    ✓ Open issues: {repo_open_count}")
                     
-                    # Count closed issues and collect resolution times
-                    print(f"    📊 Counting closed issues...")
-                    repo_closed_count = 0
-                    for issue in repository.get_issues(state='closed'):
-                        if issue.pull_request is None:
-                            repo_closed_count += 1
-                            # Sample resolution times across all repos (up to 100 total)
-                            if len(all_resolution_times) < sample_limit and issue.closed_at and issue.created_at:
-                                delta = issue.closed_at - issue.created_at
-                                all_resolution_times.append(delta.days)
+                    # Get issues - either all or only updated since last extraction
+                    if since_date:
+                        # For incremental updates, get recently updated issues
+                        issues = repository.get_issues(state='all', sort='updated', direction='desc')
+                    else:
+                        # For initial extraction, get all issues
+                        issues = repository.get_issues(state='all', sort='created', direction='asc')
                     
-                    total_closed_count += repo_closed_count
-                    print(f"    ✓ Closed issues: {repo_closed_count}")
+                    issue_count = 0
+                    processed_issue_ids = set()  # Track which issues we've processed
+                    
+                    for issue in tqdm(issues, desc=f"  Processing issues from {owner}/{repo}", leave=False):
+                        # Skip pull requests
+                        if issue.pull_request is not None:
+                            continue
+                        
+                        # For incremental updates, stop when we reach issues we've already processed
+                        # Only break if we're doing incremental AND the issue was updated before our cutoff
+                        if since_date and issue.updated_at:
+                            issue_updated = issue.updated_at.replace(tzinfo=None) if issue.updated_at.tzinfo else issue.updated_at
+                            # Only break if we've processed enough issues in incremental mode
+                            if issue_updated < since_date and issue_count >= 100:
+                                break
+                        
+                        # Make issue.created_at timezone-naive for comparison
+                        issue_created = issue.created_at.replace(tzinfo=None) if issue.created_at.tzinfo else issue.created_at
+                        
+                        # Track this issue to avoid double-counting
+                        processed_issue_ids.add(issue.number)
+                        
+                        # Find which month this issue belongs to (only for last 12 months)
+                        # Only increment if this is a new issue (not in existing data)
+                        for start_date, end_date in month_dates:
+                            if start_date <= issue_created <= end_date:
+                                month_label = self._month_label(end_date)
+                                # For incremental updates, only count if issue was created after last extraction
+                                if not since_date or issue_created >= since_date:
+                                    month_data_map[month_label]["issue_count"] += 1
+                                    
+                                    if issue.closed_at:
+                                        resolution_days = (issue.closed_at - issue.created_at).total_seconds() / 86400
+                                        month_data_map[month_label]["closed_issue_count"] += 1
+                                        month_data_map[month_label]["resolution_times"].append(round(resolution_days, 2))
+                                        overall_resolution_times.append(round(resolution_days, 2))
+                                break
+                        
+                        # Track issue by year (for all issues, not just last 12 months)
+                        # Only increment if this is a new issue (not in existing data)
+                        issue_year = issue_created.year
+                        if issue_year in year_data_map:
+                            # For incremental updates, only count if issue was created after last extraction
+                            if not since_date or issue_created >= since_date:
+                                year_data_map[issue_year]["issue_count"] += 1
+                                if issue.closed_at:
+                                    year_data_map[issue_year]["closed_issue_count"] += 1
+                        
+                        issue_count += 1
+                        # Limit processing for very large repos
+                        # For initial extraction: process up to 2000 issues
+                        # For incremental updates: process up to 1000 issues
+                        if since_date and issue_count >= 1000:
+                            break
+                        elif not since_date and issue_count >= 2000:
+                            print(f"    ℹ️  Reached limit of 2000 issues for initial extraction")
+                            break
                     
                 except GithubException as e:
-                    print(f"    ⚠️  Error processing {owner}/{repo}: {e}")
+                    print(f"  ⚠️  Error processing {owner}/{repo}: {e}")
                     continue
+
+            # Convert month data map to list and calculate medians
+            issue_data["months"] = []
+            total_issues_from_months = 0
+            total_closed_from_months = 0
+            for month_label in sorted(month_data_map.keys()):
+                month_info = month_data_map[month_label]
+                resolution_times = month_info.pop("resolution_times")
+                
+                # Calculate median if we have resolution times
+                if resolution_times:
+                    month_info["median_resolution_time_days"] = round(statistics.median(resolution_times), 2)
+                
+                issue_data["months"].append(month_info)
+                total_issues_from_months += month_info["issue_count"]
+                total_closed_from_months += month_info["closed_issue_count"]
             
-            # Calculate aggregated metrics
-            total_issues = total_open_count + total_closed_count
-            print(f"  📈 Total issues across all repos: {total_issues} (Open: {total_open_count}, Closed: {total_closed_count})")
+            # Convert year data map to list
+            issue_data["years"] = []
+            for year in sorted(year_data_map.keys()):
+                year_info = year_data_map[year]
+                issue_data["years"].append(year_info)
+
+            # Update totals
+            issue_data["total_open"] = total_open_count
+            issue_data["total_closed"] = total_closed_from_months
+            issue_data["total_issues"] = total_issues_from_months
             
-            # Calculate median resolution time from sampled issues
-            median_resolution_time = None
-            if all_resolution_times:
-                median_resolution_time = round(statistics.median(all_resolution_times), 2)
-                print(f"  ✓ Median resolution time: {median_resolution_time} days (from {len(all_resolution_times)} issues)")
+            if overall_resolution_times:
+                issue_data["median_resolution_time_days"] = round(
+                    statistics.median(overall_resolution_times), 2
+                )
             
-            issues_data = {
-                "total_open": total_open_count,
-                "total_closed": total_closed_count,
-                "total_issues": total_issues,
-                "median_resolution_time_days": median_resolution_time,
-                "issue_commenters": [],
-                "months": [],
-                "years": [],
-                "extracted_at": datetime.now().isoformat()
-            }
+            print(f"  📈 Total issues: {issue_data['total_issues']} (Open: {issue_data['total_open']}, Closed: {issue_data['total_closed']})")
             
-            return issues_data
+            project_state["issues"] = {"last_extracted_at": datetime.now().isoformat()}
+            self._save_project_state(project_name, project_state)
+            
+            return issue_data
             
         except Exception as e:
             print(f"❌ Error extracting issues: {e}")
@@ -1281,7 +1453,7 @@ class GitHubDataExtractor:
             
             # Skip issue extraction if configured (e.g., for projects using external issue trackers)
             if not project.get('skip_issues', False):
-                issues = self.extract_issues(repos, project_name, project_created_at)
+                issues = self.extract_issues(repos, project_created_at, project_name)
                 if issues:
                     self.save_project_data(project_name, issues, "issues")
             else:

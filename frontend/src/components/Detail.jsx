@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MONTHS } from "../data.js";
-import { Tag, Tile, BarChart, Meter } from "./ui.jsx";
+import { Tag, Tile, BarChart, Meter, StackedBarChart } from "./ui.jsx";
 
 export default function Detail({ d, onOverview }) {
   const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
@@ -179,22 +179,20 @@ export default function Detail({ d, onOverview }) {
             </button>
           </div>
           {showIssueMonthly && d.issueMonthly && d.issueMonthly.length > 0 ? (
-            <BarChart
-              values={d.issueMonthly.map((x) => x.v)}
+            <StackedBarChart
+              values={d.issueMonthly.map((x) => ({ open: x.open || 0, closed: x.closed || 0 }))}
               labels={d.issueMonthly.map((x) => x.m)}
               currentIndex={d.issueMonthly.findIndex((x) => x.c)}
-              tooltipLabel="issues"
             />
           ) : (
-            <BarChart
-              values={d.issueYearly?.map((x) => x.v) || [0]}
+            <StackedBarChart
+              values={d.issueYearly?.map((x) => ({ open: x.open || 0, closed: x.closed || 0 })) || [{ open: 0, closed: 0 }]}
               labels={d.issueYearly?.map((x) => x.y) || ['2025']}
               currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
-              tooltipLabel="issues"
             />
           )}
         <p className="chart-cap">
-          Darker bar = current period · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
+          Darker bar = current period · Green = closed issues, Blue = open issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
         </p>
       </div>
 

@@ -241,7 +241,7 @@ export function transformProjectData(project, metrics) {
       }))
     : [];
   
-  // Format Issue activity data (monthly and yearly)
+  // Format Issue activity data (monthly and yearly) with open/closed breakdown
   const issueMonths = issues?.months || [];
   const issueYears = issues?.years || [];
   
@@ -250,6 +250,8 @@ export function transformProjectData(project, metrics) {
     ? issueYears.map((y, idx, arr) => ({
         y: y.year.toString(),
         v: y.issue_count || 0,
+        open: (y.issue_count || 0) - (y.closed_issue_count || 0), // Calculate open issues
+        closed: y.closed_issue_count || 0,
         c: idx === arr.length - 1, // Mark current year (last in array)
       }))
     : [];
@@ -264,6 +266,8 @@ export function transformProjectData(project, metrics) {
     ? sortedIssueMonths.map((m, idx, arr) => ({
         m: m.month, // Keep full format "2026-05"
         v: m.issue_count || 0,
+        open: (m.issue_count || 0) - (m.closed_issue_count || 0), // Calculate open issues
+        closed: m.closed_issue_count || 0,
         c: idx === arr.length - 1, // Mark current month (rightmost)
       }))
     : [];
