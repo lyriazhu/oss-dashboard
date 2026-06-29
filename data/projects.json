@@ -18,6 +18,9 @@
       "repo": "camel",
       "foundation": "Apache Software Foundation",
       "website": "https://camel.apache.org",
+      "issue_source": "jira",
+      "jira_project_key": "CAMEL",
+      "jira_base_url": "https://issues.apache.org/jira",
       "enabled": true
     },
     {
@@ -28,6 +31,9 @@
       "repo": "activemq",
       "foundation": "Apache Software Foundation",
       "website": "https://activemq.apache.org",
+      "issue_source": "jira",
+      "jira_project_key": "AMQ",
+      "jira_base_url": "https://issues.apache.org/jira",
       "enabled": true
     },
     {

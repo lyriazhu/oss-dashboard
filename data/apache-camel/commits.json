@@ -2,27 +2,27 @@
   "total_commits": 5852,
   "quarters": [
     {
-      "start_date": "2026-03-31T14:45:56.687193",
-      "end_date": "2026-06-29T14:45:56.687193",
-      "commit_count": 1846,
+      "start_date": "2026-03-31T16:43:28.254488",
+      "end_date": "2026-06-29T16:43:28.254488",
+      "commit_count": 1844,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-31T14:45:56.687193",
-      "end_date": "2026-03-31T14:45:56.687193",
-      "commit_count": 1882,
+      "start_date": "2025-12-31T16:43:28.254488",
+      "end_date": "2026-03-31T16:43:28.254488",
+      "commit_count": 1884,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-10-02T14:45:56.687193",
-      "end_date": "2025-12-31T14:45:56.687193",
-      "commit_count": 1133,
+      "start_date": "2025-10-02T16:43:28.254488",
+      "end_date": "2025-12-31T16:43:28.254488",
+      "commit_count": 1129,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-07-04T14:45:56.687193",
-      "end_date": "2025-10-02T14:45:56.687193",
-      "commit_count": 991,
+      "start_date": "2025-07-04T16:43:28.254488",
+      "end_date": "2025-10-02T16:43:28.254488",
+      "commit_count": 995,
       "quarter": "Q4 2025"
     }
   ],
@@ -88,7 +88,7 @@
       "location": null,
       "email": "gnodet@gmail.com",
       "profile_url": null,
-      "commit_count": 6906
+      "commit_count": 6910
     },
     {
       "login": "James Strachan",
@@ -20626,7 +20626,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-29T14:46:03.172302",
+  "extracted_at": "2026-06-29T16:43:35.097523",
   "years": [
     {
       "year": 2007,
@@ -20725,7 +20725,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 10078,
+      "commit_count": 10080,
       "is_current": true
     }
   ]

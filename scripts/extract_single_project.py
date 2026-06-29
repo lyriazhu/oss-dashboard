@@ -6,6 +6,7 @@ Usage: python3 extract_single_project.py <project_id_or_name>
 
 import sys
 import json
+import subprocess
 from extract_github_data import GitHubDataExtractor
 from pathlib import Path
 
@@ -99,7 +100,20 @@ def main():
     
     # Issues
     try:
-        if metadata and 'created_at' in metadata:
+        issue_source = project.get("issue_source", "github")
+        if issue_source == "jira":
+            jira_script = Path(__file__).parent / "extract_jira_issues.py"
+            jira_result = subprocess.run(
+                [sys.executable, str(jira_script), project['id']],
+                cwd=str(Path(__file__).parent),
+                check=False,
+            )
+            if jira_result.returncode == 0:
+                extraction_status["issues"] = True
+            else:
+                print(f"⚠️  Warning: Jira issues extraction failed with exit code {jira_result.returncode}")
+                print(f"   Continuing with other data types...")
+        elif metadata and 'created_at' in metadata:
             from datetime import datetime
             # Parse the created_at from metadata
             created_at = datetime.fromisoformat(metadata['created_at'].replace('Z', '+00:00'))
