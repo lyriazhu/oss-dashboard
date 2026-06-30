@@ -41,6 +41,18 @@ public class ProjectMetadata {
     
     @JsonProperty("extracted_at")
     public String extractedAt;
+    
+    @JsonProperty("top_contributing_companies")
+    public List<CompanyContribution> topContributingCompanies;
+    
+    /**
+     * Represents a company's contribution statistics
+     */
+    public static class CompanyContribution {
+        public String company;
+        public Integer commits;
+        public Double percentage;
+    }
 }
 
 // Made with Bob

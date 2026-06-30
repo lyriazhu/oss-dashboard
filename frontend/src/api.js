@@ -197,10 +197,10 @@ export function transformProjectData(project, metrics) {
     cap: `${latestRetention.new_contributors} new · ${latestRetention.returning_contributors} returning (${formatQuarter(latestRetention.quarter)})`,
   } : { returning: 0, neu: 0, cap: 'No data available' };
   
-  // Format top companies
-  const companies = contributors?.top_companies?.slice(0, 4).map((c, idx) => ({
+  // Format top companies from metadata
+  const companies = metadata?.topContributingCompanies?.slice(0, 4).map((c, idx) => ({
     n: c.company || 'Unknown',
-    c: formatNumber(c.commit_count),
+    c: formatNumber(c.commits),
     p: `${c.percentage}%`,
     strong: idx === 0,
   })) || [];

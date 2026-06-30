@@ -14,5 +14,27 @@
   "homepage": "",
   "has_wiki": false,
   "has_discussions": null,
-  "extracted_at": "2026-06-29T09:39:24.794561"
+  "extracted_at": "2026-06-29T09:39:24.794561",
+  "top_contributing_companies": [
+    {
+      "company": "Red Hat",
+      "commits": 3644,
+      "percentage": 82.24
+    },
+    {
+      "company": "Independent",
+      "commits": 492,
+      "percentage": 11.1
+    },
+    {
+      "company": "GitHub (Bot)",
+      "commits": 224,
+      "percentage": 5.06
+    },
+    {
+      "company": "Unknown",
+      "commits": 71,
+      "percentage": 1.6
+    }
+  ]
 }

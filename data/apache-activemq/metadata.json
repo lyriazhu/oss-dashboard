@@ -26,5 +26,32 @@
   "homepage": "https://activemq.apache.org",
   "has_wiki": false,
   "has_discussions": true,
-  "extracted_at": "2026-06-29T15:05:07.733932"
+  "extracted_at": "2026-06-29T15:05:07.733932",
+  "top_contributing_companies": [
+    {
+      "company": "Apache Software Foundation",
+      "commits": 30263,
+      "percentage": 66.87
+    },
+    {
+      "company": "Independent",
+      "commits": 7968,
+      "percentage": 17.61
+    },
+    {
+      "company": "Unknown",
+      "commits": 6006,
+      "percentage": 13.27
+    },
+    {
+      "company": "GitHub (Bot)",
+      "commits": 922,
+      "percentage": 2.04
+    },
+    {
+      "company": "Red Hat",
+      "commits": 96,
+      "percentage": 0.21
+    }
+  ]
 }

@@ -21,5 +21,32 @@
   "homepage": "https://www.apicur.io/studio/",
   "has_wiki": false,
   "has_discussions": null,
-  "extracted_at": "2026-06-29T09:39:08.611123"
+  "extracted_at": "2026-06-29T09:39:08.611123",
+  "top_contributing_companies": [
+    {
+      "company": "Independent",
+      "commits": 2814,
+      "percentage": 53.48
+    },
+    {
+      "company": "GitHub (Bot)",
+      "commits": 2092,
+      "percentage": 39.76
+    },
+    {
+      "company": "Red Hat",
+      "commits": 191,
+      "percentage": 3.63
+    },
+    {
+      "company": "Unknown",
+      "commits": 136,
+      "percentage": 2.58
+    },
+    {
+      "company": "Apache Software Foundation",
+      "commits": 29,
+      "percentage": 0.55
+    }
+  ]
 }

@@ -31,5 +31,32 @@
   "homepage": "https://camel.apache.org",
   "has_wiki": false,
   "has_discussions": null,
-  "extracted_at": "2026-06-29T16:43:10.224499"
+  "extracted_at": "2026-06-29T16:43:10.224499",
+  "top_contributing_companies": [
+    {
+      "company": "Independent",
+      "commits": 189024,
+      "percentage": 54.71
+    },
+    {
+      "company": "Apache Software Foundation",
+      "commits": 76994,
+      "percentage": 22.28
+    },
+    {
+      "company": "GitHub (Bot)",
+      "commits": 41121,
+      "percentage": 11.9
+    },
+    {
+      "company": "Unknown",
+      "commits": 28316,
+      "percentage": 8.19
+    },
+    {
+      "company": "Red Hat",
+      "commits": 10073,
+      "percentage": 2.92
+    }
+  ]
 }

@@ -18,5 +18,32 @@
   "homepage": "https://www.keycloak.org",
   "has_wiki": false,
   "has_discussions": true,
-  "extracted_at": "2026-06-29T15:33:27.425608"
+  "extracted_at": "2026-06-29T15:33:27.425608",
+  "top_contributing_companies": [
+    {
+      "company": "Red Hat",
+      "commits": 53853,
+      "percentage": 37.06
+    },
+    {
+      "company": "Independent",
+      "commits": 45905,
+      "percentage": 31.59
+    },
+    {
+      "company": "Unknown",
+      "commits": 22029,
+      "percentage": 15.16
+    },
+    {
+      "company": "GitHub (Bot)",
+      "commits": 21666,
+      "percentage": 14.91
+    },
+    {
+      "company": "Weblate (Bot)",
+      "commits": 1718,
+      "percentage": 1.18
+    }
+  ]
 }
