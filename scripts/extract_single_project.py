@@ -70,7 +70,7 @@ def main():
     # Metadata
     metadata = None
     try:
-        metadata = extractor.extract_project_metadata(owner, repo)
+        metadata = extractor.extract_project_metadata(owner, repo, project_name=name)
         if metadata:
             extractor.save_project_data(name, metadata, "metadata")
             extraction_status["metadata"] = True

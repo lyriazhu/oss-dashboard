@@ -209,7 +209,7 @@ def main():
         project_dir_name = 'apache-camel'
     elif project_id == 'activemq':
         project_dir_name = 'apache-activemq'
-    elif project_id == 'apicurio-studio':
+    elif project_id == 'apicurio-registry':
         project_dir_name = 'apicurio'
     elif project_id == '3scale-operator':
         project_dir_name = '3scale'

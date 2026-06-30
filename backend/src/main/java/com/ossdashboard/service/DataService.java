@@ -75,29 +75,7 @@ public class DataService {
             return null;
         }
 
-        // Map project IDs to their data directory names
-        String dirName;
-        switch (projectId) {
-            case "strimzi-kafka-operator":
-                dirName = "strimzi";
-                break;
-            case "camel":
-                dirName = "apache-camel";
-                break;
-            case "activemq":
-                dirName = "apache-activemq";
-                break;
-            case "apicurio-studio":
-                dirName = "apicurio";
-                break;
-            case "3scale-operator":
-                dirName = "3scale";
-                break;
-            default:
-                dirName = projectId.toLowerCase().replace("_", "-");
-        }
-        
-        Path projectDir = Paths.get(dataDirectory, dirName);
+        Path projectDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
         log.info("Looking for project data in directory: {}", projectDir.toAbsolutePath());
         
         ProjectMetrics metrics = new ProjectMetrics();
@@ -124,9 +102,7 @@ public class DataService {
             return null;
         }
 
-        String projectName = project.getName().toLowerCase().replace(" ", "-");
-        Path projectDir = Paths.get(dataDirectory, projectName);
-        
+        Path projectDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
         return loadJsonFile(projectDir, "metadata.json", ProjectMetadata.class);
     }
 
@@ -139,10 +115,26 @@ public class DataService {
             return null;
         }
 
-        String projectName = project.getName().toLowerCase().replace(" ", "-");
-        Path projectDir = Paths.get(dataDirectory, projectName);
-        
+        Path projectDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
         return loadJsonFile(projectDir, "contributors.json", ContributorData.class);
+    }
+
+    private String getProjectDirectoryName(String projectId) {
+        switch (projectId) {
+            case "strimzi-kafka-operator":
+                return "strimzi";
+            case "camel":
+                return "apache-camel";
+            case "activemq":
+                return "apache-activemq";
+            case "apicurio-studio":
+            case "apicurio-registry":
+                return "apicurio";
+            case "3scale-operator":
+                return "3scale";
+            default:
+                return projectId.toLowerCase().replace("_", "-");
+        }
     }
 
     /**

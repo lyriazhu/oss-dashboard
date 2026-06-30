@@ -47,13 +47,13 @@
       "enabled": true
     },
     {
-      "id": "apicurio-studio",
-      "name": "Apicurio",
-      "github_url": "https://github.com/Apicurio/apicurio-studio",
+      "id": "apicurio-registry",
+      "name": "Apicurio Registry",
+      "github_url": "https://github.com/Apicurio/apicurio-registry",
       "owner": "Apicurio",
-      "repo": "apicurio-studio",
+      "repo": "apicurio-registry",
       "foundation": "Independent",
-      "website": "https://www.apicur.io",
+      "website": "https://www.apicur.io/registry/",
       "enabled": true
     },
     {

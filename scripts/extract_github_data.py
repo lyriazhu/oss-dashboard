@@ -25,7 +25,10 @@ class GitHubDataExtractor:
     def __init__(self, config_path: str = "config.yaml"):
         """Initialize with configuration"""
         self.config = self._load_config(config_path)
-        self.github = Github(self.config['github']['token'])
+        token = os.environ.get("GITHUB_TOKEN")
+        if not token:
+            raise ValueError("GITHUB_TOKEN environment variable is required")
+        self.github = Github(token)
         self.data_dir = Path(__file__).parent.parent / "data"
         self.data_dir.mkdir(exist_ok=True)
         self.cache_dir = Path(__file__).parent.parent / ".cache"
@@ -67,7 +70,7 @@ class GitHubDataExtractor:
             "strimzi-kafka-operator": "strimzi",
             "camel": "apache-camel",
             "activemq": "apache-activemq",
-            "apicurio-studio": "apicurio",
+            "apicurio-registry": "apicurio",
             "3scale-operator": "3scale",
         }
         
@@ -539,12 +542,37 @@ class GitHubDataExtractor:
             "extracted_at": datetime.now().isoformat()
         }
     
-    def extract_project_metadata(self, owner: str, repo: str) -> Dict[str, Any]:
+    def extract_project_metadata(self, owner: str, repo: str, project_name: Optional[str] = None) -> Dict[str, Any]:
         """Extract basic project metadata"""
         print(f"📊 Extracting metadata for {owner}/{repo}...")
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
+            top_contributing_companies = []
+            if project_name:
+                commits_data = self._load_json_file(self._project_dir(project_name) / "commits.json", {})
+                company_commit_counts = defaultdict(int)
+                for committer in commits_data.get("committers", []):
+                    company = committer.get("company") or "Unknown"
+                    commit_count = committer.get("commit_count") or committer.get("commitCount") or 0
+                    if company == "Unknown" or not commit_count:
+                        continue
+                    company_commit_counts[company] += commit_count
+
+                total_known_company_commits = sum(company_commit_counts.values())
+                if total_known_company_commits:
+                    top_contributing_companies = [
+                        {
+                            "company": company,
+                            "commits": commits,
+                            "percentage": round((commits / total_known_company_commits) * 100, 2)
+                        }
+                        for company, commits in sorted(
+                            company_commit_counts.items(),
+                            key=lambda item: item[1],
+                            reverse=True
+                        )[:10]
+                    ]
             
             metadata = {
                 "name": repository.name,
@@ -562,6 +590,7 @@ class GitHubDataExtractor:
                 "homepage": repository.homepage,
                 "has_wiki": repository.has_wiki,
                 "has_discussions": getattr(repository, "has_discussions", None),
+                "top_contributing_companies": top_contributing_companies,
                 "extracted_at": datetime.now().isoformat()
             }
             
@@ -1425,7 +1454,7 @@ class GitHubDataExtractor:
             repo = primary_repo['repo']
             
             # Extract all data types
-            metadata = self.extract_project_metadata(owner, repo)
+            metadata = self.extract_project_metadata(owner, repo, project_name=name)
             project_created_at = None
             if metadata:
                 self.save_project_data(project_name, metadata, "metadata")

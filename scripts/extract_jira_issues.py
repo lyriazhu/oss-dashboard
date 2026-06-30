@@ -33,7 +33,7 @@ DIR_NAME_MAP = {
     "strimzi-kafka-operator": "strimzi",
     "camel": "apache-camel",
     "activemq": "apache-activemq",
-    "apicurio-studio": "apicurio",
+    "apicurio-registry": "apicurio",
     "3scale-operator": "3scale",
 }
 
