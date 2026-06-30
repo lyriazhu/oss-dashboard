@@ -1,8 +1,11 @@
 package com.ossdashboard.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Project model representing an open-source project
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Project {
     private String id;
     private String name;
