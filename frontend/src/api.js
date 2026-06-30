@@ -198,7 +198,7 @@ export function transformProjectData(project, metrics) {
   } : { returning: 0, neu: 0, cap: 'No data available' };
   
   // Format top companies from metadata
-  const companies = metadata?.topContributingCompanies?.slice(0, 4).map((c, idx) => ({
+  const companies = metadata?.top_contributing_companies?.slice(0, 4).map((c, idx) => ({
     n: c.company || 'Unknown',
     c: formatNumber(c.commits),
     p: `${c.percentage}%`,
