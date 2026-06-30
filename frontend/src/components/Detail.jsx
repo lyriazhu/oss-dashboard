@@ -127,7 +127,7 @@ export default function Detail({ d, onOverview }) {
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-h" style={{ margin: 0 }}>
-            {showPRMonthly ? 'PR activity per month' : 'PR activity per year'}
+            {showPRMonthly ? 'New PRs per month' : 'New PRs per year'}
           </h2>
             <button
               className="btn-secondary"

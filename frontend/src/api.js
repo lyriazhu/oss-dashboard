@@ -82,6 +82,18 @@ export function transformProjectData(project, metrics) {
   const { metadata, contributors, commits, issues, pullRequests, releases } = metrics;
   const pull_requests = pullRequests; // Alias for compatibility
   
+  // Calculate YTD data from current year
+  const currentYear = new Date().getFullYear();
+  
+  // Get YTD commits from years array
+  const currentYearCommitData = commits?.years?.find(y => y.year === currentYear);
+  const commitsYtd = currentYearCommitData?.commitCount || currentYearCommitData?.commit_count || 0;
+  
+  // Get YTD PRs and merged PRs from current year data
+  const currentYearPrData = pull_requests?.years?.find(y => y.year === currentYear);
+  const prYtd = currentYearPrData?.prCount || currentYearPrData?.pr_count || 0;
+  const mergedPrYtd = currentYearPrData?.mergedPrCount || currentYearPrData?.merged_pr_count || 0;
+  
   // Determine status based on metrics with safety checks
   let status = { label: 'Watch', cls: 'yellow' };
   const totalContribs = contributors?.totalContributors || contributors?.total_contributors || 0;
@@ -95,7 +107,6 @@ export function transformProjectData(project, metrics) {
   const quarters = commits?.quarters?.slice(-4).map(q => q.commit_count) || [0, 0, 0, 0];
   
   // Format overview data
-  const currentYear = new Date().getFullYear();
   const contributorsYtd = contributors?.yearlyContributors?.find(y => y.year === currentYear)?.contributorCount
     || contributors?.yearly_contributors?.find(y => y.year === currentYear)?.contributor_count
     || 0;
@@ -106,20 +117,21 @@ export function transformProjectData(project, metrics) {
     contributorsYtd: formatNumber(contributorsYtd),
     contributorsAllTime: formatNumber(contributors?.totalContributors || contributors?.total_contributors),
     companies: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—',
-    commits: formatNumber(commits?.total_commits),
+    commits: formatNumber(commitsYtd),
     commitsAllTime: formatNumber(commitsAllTime),
+    pullRequests: formatNumber(pull_requests?.total_prs || pull_requests?.totalPrs),
     stars: formatNumber(metadata?.stars),
     quarters: quarters.length === 4 ? quarters : [0, 0, 0, 0],
   };
   
   // Format KPIs with safety checks
   const kpis = [
-    { l: 'Contributors (All-Time)', v: formatNumber(contributors?.totalContributors || contributors?.total_contributors), h: 'Total unique contributors' },
+    { l: 'Contributors (YTD)', v: formatNumber(contributorsYtd), h: 'Unique contributors this year' },
     { l: 'Companies', v: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—', h: 'Via commit email domains' },
-    { l: 'Commits YTD', v: formatNumber(commits?.total_commits), h: 'Total commits' },
+    { l: 'Commits (YTD)', v: formatNumber(commitsYtd), h: 'Total commits this year' },
     { l: 'GitHub stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
     { l: 'Open issues', v: formatNumber(issues?.open_issues), h: `Avg. resolution: ${Math.round(issues?.avg_resolution_time_days || 0)} days` },
-    { l: 'Pull Requests', v: formatNumber(pull_requests?.total_pull_requests), h: `${formatNumber(pull_requests?.merged_pull_requests)} merged` },
+    { l: 'Pull Requests (YTD)', v: formatNumber(prYtd), h: `${formatNumber(mergedPrYtd)} merged` },
     { l: 'Releases', v: formatNumber(releases?.total_releases), h: 'Total releases' },
     { l: 'Language', v: metadata?.language || '—', h: metadata?.license || 'No license' },
   ];

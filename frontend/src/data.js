@@ -6,7 +6,7 @@ export const INITIAL_DATA = {
     name:"Apache Camel", sub:"ASF",
     foundation:"Apache Software Foundation", founded:"Founded 2007",
     status:{label:"Healthy", cls:"green"},
-    ov:{foundation:"Apache SF", contributors:"1,500+", companies:"450+", commits:"5,282", stars:"6,200+", quarters:[60,64,56,72]},
+    ov:{foundation:"Apache SF", contributors:"1,500+", companies:"450+", commits:"5,282", pullRequests:"2,450", stars:"6,200+", quarters:[60,64,56,72]},
     kpis:[
       {l:"Contributors YTD", v:"153", h:"72 new · 81 returning"},
       {l:"Companies", v:"450+", h:"Via commit email domains"},
@@ -42,7 +42,7 @@ export const INITIAL_DATA = {
     name:"Strimzi", sub:"CNCF Sandbox",
     foundation:"CNCF Sandbox", founded:"Founded 2018",
     status:{label:"Healthy", cls:"green"},
-    ov:{foundation:"CNCF Sandbox", contributors:"280+", companies:"45+", commits:"1,840", stars:"4,500+", quarters:[58,62,56,70]},
+    ov:{foundation:"CNCF Sandbox", contributors:"280+", companies:"45+", commits:"1,840", pullRequests:"1,552", stars:"4,500+", quarters:[58,62,56,70]},
     kpis:[
       {l:"Contributors YTD", v:"88", h:"41 new · 47 returning"},
       {l:"Companies", v:"45+", h:"Via commit email domains"},
@@ -78,7 +78,7 @@ export const INITIAL_DATA = {
     name:"Debezium", sub:"Commonhaus",
     foundation:"Commonhaus Foundation", founded:"Founded 2016",
     status:{label:"Healthy", cls:"green"},
-    ov:{foundation:"Commonhaus", contributors:"620+", companies:"80+", commits:"2,100", stars:"10,100+", quarters:[60,66,58,74]},
+    ov:{foundation:"Commonhaus", contributors:"620+", companies:"80+", commits:"2,100", pullRequests:"2,160", stars:"10,100+", quarters:[60,66,58,74]},
     kpis:[
       {l:"Contributors YTD", v:"134", h:"58 new · 76 returning"},
       {l:"Companies", v:"80+", h:"Via commit email domains"},
@@ -114,7 +114,7 @@ export const INITIAL_DATA = {
     name:"Apicurio Registry", sub:"Red Hat/IBM",
     foundation:"Red Hat / IBM sponsored", founded:"Founded 2017",
     status:{label:"Watch", cls:"yellow"},
-    ov:{foundation:"Red Hat/IBM", contributors:"120+", companies:"18+", commits:"980", stars:"1,100+", quarters:[56,60,52,66]},
+    ov:{foundation:"Red Hat/IBM", contributors:"120+", companies:"18+", commits:"980", pullRequests:"448", stars:"1,100+", quarters:[56,60,52,66]},
     kpis:[
       {l:"Contributors YTD", v:"47", h:"19 new · 28 returning"},
       {l:"Companies", v:"18+", h:"Via commit email domains"},
@@ -150,7 +150,7 @@ export const INITIAL_DATA = {
     name:"StreamsHub", sub:"Self-governed",
     foundation:"Self-governed community", founded:"Founded 2024",
     status:{label:"Growing", cls:"blue"},
-    ov:{foundation:"Self-governed", contributors:"35+", companies:"8+", commits:"420", stars:"280+", quarters:[40,44,42,68]},
+    ov:{foundation:"Self-governed", contributors:"35+", companies:"8+", commits:"420", pullRequests:"344", stars:"280+", quarters:[40,44,42,68]},
     kpis:[
       {l:"Contributors YTD", v:"22", h:"15 new · 7 returning"},
       {l:"Companies", v:"8+", h:"Via commit email domains"},
