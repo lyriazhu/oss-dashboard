@@ -26,27 +26,22 @@
     {
       "company": "Independent",
       "commits": 2814,
-      "percentage": 53.48
-    },
-    {
-      "company": "GitHub (Bot)",
-      "commits": 2092,
-      "percentage": 39.76
+      "percentage": 88.77
     },
     {
       "company": "Red Hat",
       "commits": 191,
-      "percentage": 3.63
+      "percentage": 6.03
     },
     {
       "company": "Unknown",
       "commits": 136,
-      "percentage": 2.58
+      "percentage": 4.29
     },
     {
       "company": "Apache Software Foundation",
       "commits": 29,
-      "percentage": 0.55
+      "percentage": 0.91
     }
   ]
 }
