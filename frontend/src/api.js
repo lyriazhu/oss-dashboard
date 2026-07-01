@@ -140,7 +140,7 @@ export function transformProjectData(project, metrics) {
     foundation: project.foundation || 'Independent',
     contributorsYtd: formatNumber(contributorsYtd),
     contributorsAllTime: formatNumber(contributors?.totalContributors || contributors?.total_contributors),
-    companies: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—',
+    companies: formatNumber(countDistinctCompanies(contributors?.contributors)),
     commits: formatNumber(commitsYtd),
     commitsAllTime: formatNumber(commitsAllTime),
     pullRequests: formatNumber(pull_requests?.total_prs || pull_requests?.totalPrs),
