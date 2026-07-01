@@ -52,12 +52,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 85,
+      "contributor_count": 86,
       "is_current": true
     }
   ],
-  "total_contributors": 633,
-  "total_contributors_git": 633,
+  "total_contributors": 634,
+  "total_contributors_git": 634,
   "contributors": [
     {
       "login": "scholzj",
@@ -65,7 +65,7 @@
       "company": "Unknown",
       "location": "Prague, Czech Republic",
       "email": "github@scholzj.com",
-      "contributions": 2352,
+      "contributions": 2355,
       "profile_url": "https://github.com/scholzj"
     },
     {
@@ -74,7 +74,7 @@
       "company": "Ibm",
       "location": "Italy",
       "email": null,
-      "contributions": 865,
+      "contributions": 866,
       "profile_url": "https://github.com/ppatierno"
     },
     {
@@ -92,7 +92,7 @@
       "company": "Ibm",
       "location": null,
       "email": null,
-      "contributions": 514,
+      "contributions": 515,
       "profile_url": "https://github.com/im-konge"
     },
     {
@@ -236,7 +236,7 @@
       "company": "Red Hat",
       "location": "London",
       "email": null,
-      "contributions": 42,
+      "contributions": 43,
       "profile_url": "https://github.com/tinaselenge"
     },
     {
@@ -375,13 +375,13 @@
       "profile_url": "https://github.com/kun-lu20"
     },
     {
-      "login": "seglo",
-      "name": "Sean Glover",
-      "company": "Hopper",
-      "location": "Toronto, Ontario, Canada",
-      "email": "sean@seanglover.com",
+      "login": "devguyio",
+      "name": "Ahmed Abdalla Abdelrehim",
+      "company": "Red Hat",
+      "location": "Germany",
+      "email": "aabdelre@redhat.com",
       "contributions": 8,
-      "profile_url": "https://github.com/seglo"
+      "profile_url": "https://github.com/devguyio"
     },
     {
       "login": "sebastiangaiser",
@@ -393,22 +393,22 @@
       "profile_url": "https://github.com/sebastiangaiser"
     },
     {
-      "login": "devguyio",
-      "name": "Ahmed Abdalla Abdelrehim",
-      "company": "Red Hat",
-      "location": "Germany",
-      "email": "aabdelre@redhat.com",
+      "login": "seglo",
+      "name": "Sean Glover",
+      "company": "Hopper",
+      "location": "Toronto, Ontario, Canada",
+      "email": "sean@seanglover.com",
       "contributions": 8,
-      "profile_url": "https://github.com/devguyio"
+      "profile_url": "https://github.com/seglo"
     },
     {
-      "login": "Paramesh324",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
+      "login": "matzew",
+      "name": "Matthias Wessendorf",
+      "company": "Red Hat",
+      "location": "Emsdetten, Germany",
+      "email": "mwessend@redhat.com",
       "contributions": 7,
-      "profile_url": "https://github.com/Paramesh324"
+      "profile_url": "https://github.com/matzew"
     },
     {
       "login": "jcpunk",
@@ -420,13 +420,58 @@
       "profile_url": "https://github.com/jcpunk"
     },
     {
-      "login": "matzew",
-      "name": "Matthias Wessendorf",
-      "company": "Red Hat",
-      "location": "Emsdetten, Germany",
-      "email": "mwessend@redhat.com",
+      "login": "Paramesh324",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
       "contributions": 7,
-      "profile_url": "https://github.com/matzew"
+      "profile_url": "https://github.com/Paramesh324"
+    },
+    {
+      "login": "Kcruz28",
+      "name": "Kevin Cruz",
+      "company": "Unknown",
+      "location": "Chicago",
+      "email": "kcruzlopez10@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/Kcruz28"
+    },
+    {
+      "login": "guancioul",
+      "name": "Kuan-Hao (Michael) Lai",
+      "company": "Trend Micro",
+      "location": "Taipei, Taiwan",
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/guancioul"
+    },
+    {
+      "login": "rjuare8",
+      "name": "Rodolfo Juarez",
+      "company": "Unknown",
+      "location": "Champaign, Illinois",
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/rjuare8"
+    },
+    {
+      "login": "rlanhellas",
+      "name": "Ronaldo Lanhellas",
+      "company": "Unknown",
+      "location": "S\u00e3o Paulo",
+      "email": "ronaldo.lanhellas@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/rlanhellas"
+    },
+    {
+      "login": "sjwoodman",
+      "name": "Simon Woodman",
+      "company": "Red Hat",
+      "location": "Newcastle, UK",
+      "email": "simon.woodman@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/sjwoodman"
     },
     {
       "login": "echernous",
@@ -445,51 +490,6 @@
       "email": null,
       "contributions": 6,
       "profile_url": "https://github.com/LiamClarkeNZ"
-    },
-    {
-      "login": "sjwoodman",
-      "name": "Simon Woodman",
-      "company": "Red Hat",
-      "location": "Newcastle, UK",
-      "email": "simon.woodman@gmail.com",
-      "contributions": 6,
-      "profile_url": "https://github.com/sjwoodman"
-    },
-    {
-      "login": "rlanhellas",
-      "name": "Ronaldo Lanhellas",
-      "company": "Unknown",
-      "location": "S\u00e3o Paulo",
-      "email": "ronaldo.lanhellas@gmail.com",
-      "contributions": 6,
-      "profile_url": "https://github.com/rlanhellas"
-    },
-    {
-      "login": "Kcruz28",
-      "name": "Kevin Cruz",
-      "company": "Unknown",
-      "location": "Chicago",
-      "email": "kcruzlopez10@gmail.com",
-      "contributions": 6,
-      "profile_url": "https://github.com/Kcruz28"
-    },
-    {
-      "login": "rjuare8",
-      "name": "Rodolfo Juarez",
-      "company": "Unknown",
-      "location": "Champaign, Illinois",
-      "email": null,
-      "contributions": 6,
-      "profile_url": "https://github.com/rjuare8"
-    },
-    {
-      "login": "guancioul",
-      "name": "Kuan-Hao (Michael) Lai",
-      "company": "Trend Micro",
-      "location": "Taipei, Taiwan",
-      "email": null,
-      "contributions": 6,
-      "profile_url": "https://github.com/guancioul"
     },
     {
       "login": "Boojapho",
@@ -591,15 +591,6 @@
       "profile_url": "https://github.com/akatona84"
     },
     {
-      "login": "ppietruch",
-      "name": "Piotr Pietrucha",
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 4,
-      "profile_url": "https://github.com/ppietruch"
-    },
-    {
       "login": "urbandan",
       "name": "D\u00e1niel Urb\u00e1n",
       "company": "Marshmallow",
@@ -607,6 +598,15 @@
       "email": "urb.daniel7@gmail.com",
       "contributions": 4,
       "profile_url": "https://github.com/urbandan"
+    },
+    {
+      "login": "ppietruch",
+      "name": "Piotr Pietrucha",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/ppietruch"
     },
     {
       "login": "dalelane",
@@ -654,15 +654,6 @@
       "profile_url": "https://github.com/KyriosGN0"
     },
     {
-      "login": "ShazaAldawamneh",
-      "name": "Shaza Aldawamneh",
-      "company": "Red Hat",
-      "location": null,
-      "email": null,
-      "contributions": 3,
-      "profile_url": "https://github.com/ShazaAldawamneh"
-    },
-    {
       "login": "SamBarker",
       "name": "Sam Barker",
       "company": "Ibm",
@@ -670,6 +661,15 @@
       "email": "sbarker@redhat.com",
       "contributions": 3,
       "profile_url": "https://github.com/SamBarker"
+    },
+    {
+      "login": "ShazaAldawamneh",
+      "name": "Shaza Aldawamneh",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/ShazaAldawamneh"
     },
     {
       "login": "dandotimujahid",
@@ -708,22 +708,13 @@
       "profile_url": "https://github.com/salavessa"
     },
     {
-      "login": "xsreality",
-      "name": "Abhinav Sonkar",
-      "company": "Unknown",
-      "location": "Netherlands",
-      "email": null,
+      "login": "goern",
+      "name": "Christoph G\u00f6rn",
+      "company": "Red-Hat-Data-Services",
+      "location": "Bonn, Germany",
+      "email": "christoph@goern.name",
       "contributions": 3,
-      "profile_url": "https://github.com/xsreality"
-    },
-    {
-      "login": "allanmoso",
-      "name": "Allan Moso",
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 3,
-      "profile_url": "https://github.com/allanmoso"
+      "profile_url": "https://github.com/goern"
     },
     {
       "login": "aswinayyolath",
@@ -735,13 +726,31 @@
       "profile_url": "https://github.com/aswinayyolath"
     },
     {
-      "login": "goern",
-      "name": "Christoph G\u00f6rn",
-      "company": "Red-Hat-Data-Services",
-      "location": "Bonn, Germany",
-      "email": "christoph@goern.name",
+      "login": "allanmoso",
+      "name": "Allan Moso",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
       "contributions": 3,
-      "profile_url": "https://github.com/goern"
+      "profile_url": "https://github.com/allanmoso"
+    },
+    {
+      "login": "xsreality",
+      "name": "Abhinav Sonkar",
+      "company": "Unknown",
+      "location": "Netherlands",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/xsreality"
+    },
+    {
+      "login": "RouxAntoine",
+      "name": "Antoine",
+      "company": "Https://Antoine-Roux.Tk/Projects",
+      "location": "French, Lyon 69000",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/RouxAntoine"
     },
     {
       "login": "michael-barker",
@@ -897,15 +906,6 @@
       "profile_url": "https://github.com/venkatesh2090"
     },
     {
-      "login": "RouxAntoine",
-      "name": "Antoine",
-      "company": "Https://Antoine-Roux.Tk/Projects",
-      "location": "French, Lyon 69000",
-      "email": null,
-      "contributions": 2,
-      "profile_url": "https://github.com/RouxAntoine"
-    },
-    {
       "login": "Thealisyed",
       "name": "Ali Syed ",
       "company": "Red Hat",
@@ -922,6 +922,15 @@
       "email": "andreworty@gmail.com",
       "contributions": 2,
       "profile_url": "https://github.com/ortex"
+    },
+    {
+      "login": "BK202503",
+      "name": "Bill Kim (\uae40\ube4c)",
+      "company": "Musinsa",
+      "location": null,
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/BK202503"
     },
     {
       "login": "coltmcnealy-lh",
@@ -1050,6 +1059,15 @@
       "profile_url": "https://github.com/lhunyady"
     },
     {
+      "login": "luksa",
+      "name": "Marko Luk\u0161a",
+      "company": "Independent Contractor",
+      "location": "Slovenia",
+      "email": "marko.luksa@gmail.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/luksa"
+    },
+    {
       "login": "blaghed",
       "name": "Lu\u00eds Cabral",
       "company": "Avaloq",
@@ -1068,49 +1086,13 @@
       "profile_url": "https://github.com/marceloavan"
     },
     {
-      "login": "luksa",
-      "name": "Marko Luk\u0161a",
-      "company": "Independent Contractor",
-      "location": "Slovenia",
-      "email": "marko.luksa@gmail.com",
-      "contributions": 2,
-      "profile_url": "https://github.com/luksa"
-    },
-    {
-      "login": "brokenjacobs",
-      "name": "Steve Jacobs",
-      "company": "Unknown",
-      "location": null,
+      "login": "shunki-fujita",
+      "name": "Shunki",
+      "company": "Cybozu, Inc.",
+      "location": "Tokyo",
       "email": null,
       "contributions": 1,
-      "profile_url": "https://github.com/brokenjacobs"
-    },
-    {
-      "login": "allwritesri",
-      "name": "allwritesri",
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/allwritesri"
-    },
-    {
-      "login": "spenczar",
-      "name": "Spencer Nelson",
-      "company": "Firetiger",
-      "location": "Seattle, WA",
-      "email": "s@spencerwnelson.com",
-      "contributions": 1,
-      "profile_url": "https://github.com/spenczar"
-    },
-    {
-      "login": "Smoothengineer",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/Smoothengineer"
+      "profile_url": "https://github.com/shunki-fujita"
     },
     {
       "login": "kockas",
@@ -1122,13 +1104,40 @@
       "profile_url": "https://github.com/kockas"
     },
     {
-      "login": "shunki-fujita",
-      "name": "Shunki",
-      "company": "Cybozu, Inc.",
-      "location": "Tokyo",
+      "login": "Smoothengineer",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
       "email": null,
       "contributions": 1,
-      "profile_url": "https://github.com/shunki-fujita"
+      "profile_url": "https://github.com/Smoothengineer"
+    },
+    {
+      "login": "spenczar",
+      "name": "Spencer Nelson",
+      "company": "Firetiger",
+      "location": "Seattle, WA",
+      "email": "s@spencerwnelson.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/spenczar"
+    },
+    {
+      "login": "allwritesri",
+      "name": "allwritesri",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/allwritesri"
+    },
+    {
+      "login": "brokenjacobs",
+      "name": "Steve Jacobs",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/brokenjacobs"
     },
     {
       "login": "wangshu3000",
@@ -2857,134 +2866,9 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/kunallimaye"
-    },
-    {
-      "login": "BK202503",
-      "name": "Bill Kim (\uae40\ube4c)",
-      "company": "Musinsa",
-      "location": null,
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/BK202503"
     }
   ],
   "total_contributors_github_api": 312,
-  "retention_by_quarter": [
-    {
-      "quarter": "2025-07",
-      "start_date": "2025-07",
-      "end_date": "2025-07",
-      "active_contributors": 25,
-      "new_contributors": 4,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2025-08",
-      "start_date": "2025-08",
-      "end_date": "2025-08",
-      "active_contributors": 21,
-      "new_contributors": 4,
-      "returning_contributors": 2,
-      "retention_rate": 50.0
-    },
-    {
-      "quarter": "2025-09",
-      "start_date": "2025-09",
-      "end_date": "2025-09",
-      "active_contributors": 29,
-      "new_contributors": 9,
-      "returning_contributors": 1,
-      "retention_rate": 11.11
-    },
-    {
-      "quarter": "2025-10",
-      "start_date": "2025-10",
-      "end_date": "2025-10",
-      "active_contributors": 27,
-      "new_contributors": 6,
-      "returning_contributors": 1,
-      "retention_rate": 16.67
-    },
-    {
-      "quarter": "2025-11",
-      "start_date": "2025-11",
-      "end_date": "2025-11",
-      "active_contributors": 28,
-      "new_contributors": 7,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2025-12",
-      "start_date": "2025-12",
-      "end_date": "2025-12",
-      "active_contributors": 22,
-      "new_contributors": 8,
-      "returning_contributors": 3,
-      "retention_rate": 37.5
-    },
-    {
-      "quarter": "2026-01",
-      "start_date": "2026-01",
-      "end_date": "2026-01",
-      "active_contributors": 28,
-      "new_contributors": 6,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2026-02",
-      "start_date": "2026-02",
-      "end_date": "2026-02",
-      "active_contributors": 19,
-      "new_contributors": 4,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2026-03",
-      "start_date": "2026-03",
-      "end_date": "2026-03",
-      "active_contributors": 29,
-      "new_contributors": 9,
-      "returning_contributors": 3,
-      "retention_rate": 33.33
-    },
-    {
-      "quarter": "2026-04",
-      "start_date": "2026-04",
-      "end_date": "2026-04",
-      "active_contributors": 31,
-      "new_contributors": 11,
-      "returning_contributors": 5,
-      "retention_rate": 45.45
-    },
-    {
-      "quarter": "2026-05",
-      "start_date": "2026-05",
-      "end_date": "2026-05",
-      "active_contributors": 30,
-      "new_contributors": 9,
-      "returning_contributors": 1,
-      "retention_rate": 11.11
-    },
-    {
-      "quarter": "2026-06",
-      "start_date": "2026-06",
-      "end_date": "2026-06",
-      "active_contributors": 31,
-      "new_contributors": 12,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    }
-  ],
-  "time_scope": {
-    "yearly_contributors": "all_time_from_git_history",
-    "total_contributors": "all_time_from_git_history",
-    "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
-  },
   "companies": {
     "Unknown": 155,
     "Red Hat": 29,
@@ -3001,25 +2885,26 @@
     "Ericsson Software Technology": 1,
     "Hopper": 1,
     "Fermilab": 1,
-    "Elation Health": 1,
     "Trend Micro": 1,
+    "Elation Health": 1,
     "Sgm": 1,
     "Cloudera": 1,
     "Marshmallow": 1,
     "Placer.Ai": 1,
     "Red-Hat-Data-Services": 1,
+    "Https://Antoine-Roux.Tk/Projects": 1,
     "Grafana": 1,
     "Nuberabe": 1,
     "Iptch": 1,
     "Agile Actors": 1,
-    "Https://Antoine-Roux.Tk/Projects": 1,
+    "Musinsa": 1,
     "Littlehorse Enterprises": 1,
     "Playtomic": 1,
+    "Independent Contractor": 1,
     "Avaloq": 1,
     "Picpay": 1,
-    "Independent Contractor": 1,
-    "Firetiger": 1,
     "Cybozu, Inc.": 1,
+    "Firetiger": 1,
     "Yandex": 1,
     "One Focus Gmbh": 1,
     "Openet": 1,
@@ -3088,8 +2973,7 @@
     "Invers Gmbh": 1,
     "Braze-Inc": 1,
     "Feedzai": 1,
-    "Ollygarden": 1,
-    "Musinsa": 1
+    "Ollygarden": 1
   },
   "total_companies": 104,
   "company_diversity": {
@@ -3137,5 +3021,257 @@
         "contributor_count": 1
       }
     ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 37,
+      "new_contributors": 16,
+      "returning_contributors": 21,
+      "retention_rate": 56.76
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 44,
+      "new_contributors": 15,
+      "returning_contributors": 29,
+      "retention_rate": 65.91
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 58,
+      "new_contributors": 35,
+      "returning_contributors": 23,
+      "retention_rate": 39.66
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 51,
+      "new_contributors": 20,
+      "returning_contributors": 31,
+      "retention_rate": 60.78
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 39,
+      "new_contributors": 11,
+      "returning_contributors": 28,
+      "retention_rate": 71.79
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 33,
+      "new_contributors": 13,
+      "returning_contributors": 20,
+      "retention_rate": 60.61
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 44,
+      "new_contributors": 19,
+      "returning_contributors": 25,
+      "retention_rate": 56.82
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 46,
+      "new_contributors": 17,
+      "returning_contributors": 29,
+      "retention_rate": 63.04
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 51,
+      "new_contributors": 21,
+      "returning_contributors": 30,
+      "retention_rate": 58.82
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 48,
+      "new_contributors": 19,
+      "returning_contributors": 29,
+      "retention_rate": 60.42
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 56,
+      "new_contributors": 32,
+      "returning_contributors": 24,
+      "retention_rate": 42.86
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 8,
+      "new_contributors": 1,
+      "returning_contributors": 7,
+      "retention_rate": 87.5
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2016",
+      "period_type": "year",
+      "start_date": "2016-01-01T00:00:00",
+      "end_date": "2017-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 1,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false
+    },
+    {
+      "period": "2017",
+      "period_type": "year",
+      "start_date": "2017-01-01T00:00:00",
+      "end_date": "2018-01-01T00:00:00",
+      "active_contributors": 11,
+      "new_contributors": 10,
+      "returning_contributors": 1,
+      "retention_rate": 9.09,
+      "is_current": false
+    },
+    {
+      "period": "2018",
+      "period_type": "year",
+      "start_date": "2018-01-01T00:00:00",
+      "end_date": "2019-01-01T00:00:00",
+      "active_contributors": 36,
+      "new_contributors": 32,
+      "returning_contributors": 4,
+      "retention_rate": 11.11,
+      "is_current": false
+    },
+    {
+      "period": "2019",
+      "period_type": "year",
+      "start_date": "2019-01-01T00:00:00",
+      "end_date": "2020-01-01T00:00:00",
+      "active_contributors": 76,
+      "new_contributors": 62,
+      "returning_contributors": 14,
+      "retention_rate": 18.42,
+      "is_current": false
+    },
+    {
+      "period": "2020",
+      "period_type": "year",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 110,
+      "new_contributors": 82,
+      "returning_contributors": 28,
+      "retention_rate": 25.45,
+      "is_current": false
+    },
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 121,
+      "new_contributors": 93,
+      "returning_contributors": 28,
+      "retention_rate": 23.14,
+      "is_current": false
+    },
+    {
+      "period": "2022",
+      "period_type": "year",
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2023-01-01T00:00:00",
+      "active_contributors": 111,
+      "new_contributors": 73,
+      "returning_contributors": 38,
+      "retention_rate": 34.23,
+      "is_current": false
+    },
+    {
+      "period": "2023",
+      "period_type": "year",
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 113,
+      "new_contributors": 78,
+      "returning_contributors": 35,
+      "retention_rate": 30.97,
+      "is_current": false
+    },
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 118,
+      "new_contributors": 81,
+      "returning_contributors": 37,
+      "retention_rate": 31.36,
+      "is_current": false
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 112,
+      "new_contributors": 70,
+      "returning_contributors": 42,
+      "retention_rate": 37.5,
+      "is_current": false
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 86,
+      "new_contributors": 52,
+      "returning_contributors": 34,
+      "retention_rate": 39.53,
+      "is_current": true
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
   }
 }

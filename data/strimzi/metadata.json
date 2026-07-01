@@ -3,11 +3,11 @@
   "full_name": "strimzi/strimzi-kafka-operator",
   "description": "Apache Kafka\u00ae running on Kubernetes",
   "created_at": "2016-05-06T08:52:33+00:00",
-  "updated_at": "2026-06-29T18:53:51+00:00",
-  "stars": 5848,
-  "forks": 1508,
-  "watchers": 5848,
-  "open_issues": 146,
+  "updated_at": "2026-07-01T18:39:57+00:00",
+  "stars": 5854,
+  "forks": 1507,
+  "watchers": 5854,
+  "open_issues": 144,
   "language": "Java",
   "topics": [
     "kafka",
@@ -26,23 +26,22 @@
   "license": "Apache License 2.0",
   "homepage": "https://strimzi.io/",
   "has_wiki": false,
-  "has_discussions": true,
-  "extracted_at": "2026-06-29T15:17:38.849899",
+  "has_discussions": null,
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 2470,
-      "percentage": 78.76
+      "commits": 2472,
+      "percentage": 78.73
     },
     {
       "company": "Red Hat",
-      "commits": 316,
-      "percentage": 10.08
+      "commits": 317,
+      "percentage": 10.1
     },
     {
       "company": "Engineer At Red Hat",
       "commits": 77,
-      "percentage": 2.46
+      "percentage": 2.45
     },
     {
       "company": "Ibm, Ex-Red Hat",
@@ -73,6 +72,12 @@
       "company": "Hetznercloud",
       "commits": 9,
       "percentage": 0.29
+    },
+    {
+      "company": "Hopper",
+      "commits": 8,
+      "percentage": 0.25
     }
-  ]
+  ],
+  "extracted_at": "2026-07-01T16:32:36.100922"
 }

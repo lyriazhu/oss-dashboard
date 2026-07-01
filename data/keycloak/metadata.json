@@ -3,11 +3,11 @@
   "full_name": "keycloak/keycloak",
   "description": "Open Source Identity and Access Management For Modern Applications and Services",
   "created_at": "2013-07-02T13:38:51+00:00",
-  "updated_at": "2026-06-29T19:08:35+00:00",
-  "stars": 35433,
-  "forks": 8562,
-  "watchers": 35433,
-  "open_issues": 2838,
+  "updated_at": "2026-07-01T20:37:08+00:00",
+  "stars": 35456,
+  "forks": 8578,
+  "watchers": 35456,
+  "open_issues": 2893,
   "language": "Java",
   "topics": [
     "keycloak",
@@ -17,18 +17,17 @@
   "license": "Apache License 2.0",
   "homepage": "https://www.keycloak.org",
   "has_wiki": false,
-  "has_discussions": true,
-  "extracted_at": "2026-06-29T15:33:27.425608",
+  "has_discussions": null,
   "top_contributing_companies": [
     {
       "company": "Red Hat",
-      "commits": 7556,
-      "percentage": 43.0
+      "commits": 7559,
+      "percentage": 42.98
     },
     {
       "company": "Ibm",
-      "commits": 6737,
-      "percentage": 38.34
+      "commits": 6747,
+      "percentage": 38.36
     },
     {
       "company": "Red Hat, Inc.",
@@ -38,7 +37,7 @@
     {
       "company": "Redhatofficial",
       "commits": 444,
-      "percentage": 2.53
+      "percentage": 2.52
     },
     {
       "company": "Hitachi, Ltd.",
@@ -47,7 +46,7 @@
     },
     {
       "company": "Identity Tailor Gmbh",
-      "commits": 242,
+      "commits": 243,
       "percentage": 1.38
     },
     {
@@ -64,6 +63,12 @@
       "company": "Red Hat Ltd",
       "commits": 122,
       "percentage": 0.69
+    },
+    {
+      "company": "Innoq",
+      "commits": 121,
+      "percentage": 0.69
     }
-  ]
+  ],
+  "extracted_at": "2026-07-01T17:52:08.660019"
 }
