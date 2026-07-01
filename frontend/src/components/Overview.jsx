@@ -30,15 +30,15 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
           if (!isNaN(num)) totalContributors += num;
         }
         
-        // Get other metrics from KPIs
+        // Get all-time commits from overview data (ov.commitsAllTime)
+        if (project.ov && project.ov.commitsAllTime) {
+          const num = parseInt(project.ov.commitsAllTime.replace(/[,+]/g, ''));
+          if (!isNaN(num)) totalCommits += num;
+        }
+
+        // Get open issues from KPIs
         if (project.kpis) {
-          const commitsKpi = project.kpis.find(k => k.l === 'Commits (YTD)');
           const issuesKpi = project.kpis.find(k => k.l === 'Open issues');
-          
-          if (commitsKpi) {
-            const num = parseInt(commitsKpi.v.replace(/[,+]/g, ''));
-            if (!isNaN(num)) totalCommits += num;
-          }
           if (issuesKpi) {
             const num = parseInt(issuesKpi.v.replace(/[,+]/g, ''));
             if (!isNaN(num)) totalIssues += num;
@@ -75,8 +75,8 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       summary: [
         { l: "Total communities", v: totalCommunities.toString(), h: `${totalCommunities} active projects` },
         { l: "Total contributors (All-Time)", v: formatNum(totalContributors), h: "Across all active repos" },
-        { l: "Commits YTD", v: formatNum(totalCommits), h: "All communities combined" },
-        { l: "Open issues (all)", v: formatNum(totalIssues), h: "Across all communities" },
+        { l: "Commits (All-Time)", v: formatNum(totalCommits), h: "All communities combined" },
+        { l: "Open issues", v: formatNum(totalIssues), h: "Across all communities" },
       ],
       lastUpdated: formattedDate
     };
