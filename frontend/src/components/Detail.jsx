@@ -221,6 +221,7 @@ export default function Detail({ d, onOverview }) {
               labels={d.prYearly?.map((x) => x.y) || ['2025']}
               currentIndex={d.prYearly?.findIndex((x) => x.c) || 0}
               tooltipLabel="PRs"
+              fitWhenDense={true}
             />
           )}
         <p className="chart-cap">
@@ -257,6 +258,7 @@ export default function Detail({ d, onOverview }) {
               values={d.issueYearly?.map((x) => ({ open: x.open || 0, closed: x.closed || 0 })) || [{ open: 0, closed: 0 }]}
               labels={d.issueYearly?.map((x) => x.y) || ['2025']}
               currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
+              fitWhenDense={true}
             />
           )}
         <p className="chart-cap">
