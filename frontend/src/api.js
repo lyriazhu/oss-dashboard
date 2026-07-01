@@ -127,8 +127,8 @@ export function transformProjectData(project, metrics) {
     status = { label: 'Growing', cls: 'blue' };
   }
   
-  // Get quarterly commit data (last 4 quarters)
-  const quarters = commits?.quarters?.slice(-4).map(q => q.commit_count) || [0, 0, 0, 0];
+  // Get quarterly commit data (last 16 quarters)
+  const quarters = commits?.quarters?.slice(-16).map(q => q.commit_count) || Array(16).fill(0);
   
   // Format overview data
   const contributorsYtd = contributors?.yearlyContributors?.find(y => y.year === currentYear)?.contributorCount
@@ -145,7 +145,7 @@ export function transformProjectData(project, metrics) {
     commitsAllTime: formatNumber(commitsAllTime),
     pullRequests: formatNumber(pull_requests?.total_prs || pull_requests?.totalPrs),
     stars: formatNumber(metadata?.stars),
-    quarters: quarters.length === 4 ? quarters : [0, 0, 0, 0],
+    quarters: quarters.length > 0 ? quarters : Array(16).fill(0),
   };
   
   // Format KPIs with safety checks

@@ -31,100 +31,112 @@ export default function Detail({ d, onOverview }) {
         ))}
       </div>
 
-      <div className="section two-col">
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h2 className="section-h" style={{ margin: 0 }}>
-              {showCommitsQuarterly ? 'Commits per quarter' : 'Commits per year'}
-            </h2>
-            <button
-              className="btn-secondary"
-              onClick={() => setShowCommitsQuarterly(!showCommitsQuarterly)}
-              style={{
-                fontSize: '0.875rem',
-                padding: '0.5rem 1rem',
-                fontFamily: 'inherit'
-              }}
-            >
-              {showCommitsQuarterly ? 'Show yearly' : 'Show quarterly'}
-            </button>
-          </div>
-          {showCommitsQuarterly && d.quarters && d.quarters.length > 0 ? (
-            <BarChart
-              values={d.quarters.map((x) => x.v)}
-              labels={d.quarters.map((x) => x.q)}
-              currentIndex={d.quarters.findIndex((x) => x.c)}
-            />
-          ) : (
-            <BarChart
-              values={d.commits.map((x) => x.v)}
-              labels={d.commits.map((x) => x.y)}
-              currentIndex={d.commits.findIndex((x) => x.c)}
-            />
-          )}
-          <p className="chart-cap">
-            Darker bar = current period · {showCommitsQuarterly ? `Last ${d.quarters?.length || 0} quarters` : 'Total commits per year'}
-          </p>
+      <div className="section">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h2 className="section-h" style={{ margin: 0 }}>
+            {showCommitsQuarterly ? 'Commits per quarter' : 'Commits per year'}
+          </h2>
+          <button
+            className="btn-secondary"
+            onClick={() => setShowCommitsQuarterly(!showCommitsQuarterly)}
+            style={{
+              fontSize: '0.875rem',
+              padding: '0.5rem 1rem',
+              fontFamily: 'inherit'
+            }}
+          >
+            {showCommitsQuarterly ? 'Show yearly' : 'Show quarterly'}
+          </button>
         </div>
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h2 className="section-h" style={{ margin: 0 }}>
-              {showRetentionQuarterly ? 'Contributor contention per quarter' : 'Contributor contention per year'}
-            </h2>
-            <button
-              className="btn-secondary"
-              onClick={() => setShowRetentionQuarterly(!showRetentionQuarterly)}
-              style={{
-                fontSize: '0.875rem',
-                padding: '0.5rem 1rem',
-                fontFamily: 'inherit'
-              }}
-            >
-              {showRetentionQuarterly ? 'Show yearly' : 'Show quarterly'}
-            </button>
-          </div>
-          {showRetentionQuarterly && d.retentionQuarterly && d.retentionQuarterly.length > 0 ? (
-            <StackedBarChart
-              values={d.retentionQuarterly.map((x) => ({
-                returning: x.returning || 0,
-                newContributors: x.newContributors || 0,
-              }))}
-              labels={d.retentionQuarterly.map((x) => x.q)}
-              currentIndex={d.retentionQuarterly.findIndex((x) => x.c)}
-              segmentOrder={["returning", "newContributors"]}
-              tooltipFormatter={({ index, label }) => {
-                const point = d.retentionQuarterly[index];
-                const returning = point?.returning || 0;
-                const newContributors = point?.newContributors || 0;
-                const active = point?.active || 0;
-                const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
-                return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
-              }}
-            />
-          ) : (
-            <StackedBarChart
-              values={d.retentionYearly?.map((x) => ({
-                returning: x.returning || 0,
-                newContributors: x.newContributors || 0,
-              })) || [{ returning: 0, newContributors: 0 }]}
-              labels={d.retentionYearly?.map((x) => x.y) || [String(new Date().getFullYear())]}
-              currentIndex={d.retentionYearly?.findIndex((x) => x.c) || 0}
-              segmentOrder={["returning", "newContributors"]}
-              tooltipFormatter={({ index, label }) => {
-                const point = d.retentionYearly?.[index];
-                const returning = point?.returning || 0;
-                const newContributors = point?.newContributors || 0;
-                const active = point?.active || 0;
-                const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
-                return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
-              }}
-            />
-          )}
-          <p className="chart-cap">
-            Darker bar = current period · Bottom = contributors who returned next period, top = new contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : 'Contributor contention by year'}
-          </p>
-          <p className="chart-cap">{d.retention.cap}</p>
+        {showCommitsQuarterly && d.quarters && d.quarters.length > 0 ? (
+          <BarChart
+            values={d.quarters.slice(-16).map((x) => x.v)}
+            labels={d.quarters.slice(-16).map((x) => x.q)}
+            currentIndex={d.quarters.slice(-16).findIndex((x) => x.c)}
+            fitWhenDense={true}
+          />
+        ) : (
+          <BarChart
+            values={d.commits.map((x) => x.v)}
+            labels={d.commits.map((x) => x.y)}
+            currentIndex={d.commits.findIndex((x) => x.c)}
+            fitWhenDense={true}
+          />
+        )}
+        <p className="chart-cap">
+          Darker bar = current period · {showCommitsQuarterly ? `Last ${Math.min(d.quarters?.length || 0, 16)} quarters` : 'Total commits per year'}
+        </p>
+      </div>
+
+      <div className="section">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h2 className="section-h" style={{ margin: 0 }}>
+            {showRetentionQuarterly ? 'Contributor retention per quarter' : 'Contributor retention per year'}
+          </h2>
+          <button
+            className="btn-secondary"
+            onClick={() => setShowRetentionQuarterly(!showRetentionQuarterly)}
+            style={{
+              fontSize: '0.875rem',
+              padding: '0.5rem 1rem',
+              fontFamily: 'inherit'
+            }}
+          >
+            {showRetentionQuarterly ? 'Show yearly' : 'Show quarterly'}
+          </button>
         </div>
+        {showRetentionQuarterly && d.retentionQuarterly && d.retentionQuarterly.length > 0 ? (
+          <StackedBarChart
+            values={d.retentionQuarterly.map((x) => ({
+              returning: x.returning || 0,
+              newContributors: x.newContributors || 0,
+            }))}
+            labels={d.retentionQuarterly.map((x) => x.q)}
+            currentIndex={d.retentionQuarterly.findIndex((x) => x.c)}
+            segmentOrder={["returning", "newContributors"]}
+            fitWhenDense={true}
+            tooltipFormatter={({ index, label }) => {
+              const point = d.retentionQuarterly[index];
+              const returning = point?.returning || 0;
+              const newContributors = point?.newContributors || 0;
+              const active = point?.active || 0;
+              const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
+              return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+            }}
+          />
+        ) : (
+          <StackedBarChart
+            values={d.retentionYearly?.map((x) => ({
+              returning: x.returning || 0,
+              newContributors: x.newContributors || 0,
+            })) || [{ returning: 0, newContributors: 0 }]}
+            labels={d.retentionYearly?.map((x) => x.y) || [String(new Date().getFullYear())]}
+            currentIndex={d.retentionYearly?.findIndex((x) => x.c) || 0}
+            segmentOrder={["returning", "newContributors"]}
+            fitWhenDense={true}
+            tooltipFormatter={({ index, label }) => {
+              const point = d.retentionYearly?.[index];
+              const returning = point?.returning || 0;
+              const newContributors = point?.newContributors || 0;
+              const active = point?.active || 0;
+              const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
+              return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+            }}
+          />
+        )}
+        <p className="chart-cap">
+          Darker bar = current period · Bottom = contributors who returned next period, top = new contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : `Since ${d.founded.replace('Founded ', '')}`}
+        </p>
+        <p className="chart-cap">
+          {showRetentionQuarterly
+            ? d.retention.cap
+            : (() => {
+                const latestYear = d.retentionYearly?.find((x) => x.c) || d.retentionYearly?.[d.retentionYearly.length - 1];
+                return latestYear
+                  ? `${latestYear.returning || 0} customers were retained in ${latestYear.y} (${latestYear.v || 0}%).`
+                  : 'No yearly retention data available.';
+              })()}
+        </p>
       </div>
 
       <hr className="divider" />
@@ -132,7 +144,7 @@ export default function Detail({ d, onOverview }) {
       <div className="section">
         <h2 className="section-h">Top contributing companies & project metadata</h2>
         <div className="two-col">
-          <div className="table-wrap">
+          <div className="table-wrap companies-table-wrap">
             <table>
               <thead>
                 <tr>
@@ -201,6 +213,7 @@ export default function Detail({ d, onOverview }) {
               labels={d.prMonthly.map((x) => x.m)}
               currentIndex={d.prMonthly.findIndex((x) => x.c)}
               tooltipLabel="PRs"
+              fitWhenDense={true}
             />
           ) : (
             <BarChart
@@ -237,6 +250,7 @@ export default function Detail({ d, onOverview }) {
               values={d.issueMonthly.map((x) => ({ open: x.open || 0, closed: x.closed || 0 }))}
               labels={d.issueMonthly.map((x) => x.m)}
               currentIndex={d.issueMonthly.findIndex((x) => x.c)}
+              fitWhenDense={true}
             />
           ) : (
             <StackedBarChart

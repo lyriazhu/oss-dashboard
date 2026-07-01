@@ -22,10 +22,10 @@ export function Tile({ label, value, help }) {
 // values: number[]; currentIndex: which bar is emphasized (defaults to last)
 // tooltipLabel: custom label for tooltip (defaults to "commits")
 // tooltipFormatter: optional function receiving ({ value, label, index }) and returning tooltip text
-export function BarChart({ values, labels, currentIndex, variant, tooltipLabel = "commits", tooltipFormatter }) {
+export function BarChart({ values, labels, currentIndex, variant, tooltipLabel = "commits", tooltipFormatter, fitWhenDense = false }) {
   const cur = currentIndex == null ? values.length - 1 : currentIndex;
   const m = maxOf(values);
-  const densityCls = values.length >= 18 ? " dense" : values.length >= 12 ? " compact" : "";
+  const densityCls = fitWhenDense ? (values.length >= 24 ? " dense" : values.length >= 18 ? " compact" : " spread") : "";
   const barsCls = "bars" + densityCls + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
   const axisCls = "bar-axis" + densityCls + (variant === "mini" ? " mini" : "");
   
@@ -62,14 +62,14 @@ export function BarChart({ values, labels, currentIndex, variant, tooltipLabel =
 
 // Stacked bar chart for showing segmented totals
 // values: array of objects such as {open, closed} or {returning, newContributors}
-export function StackedBarChart({ values, labels, currentIndex, variant, tooltipFormatter, segmentOrder = ["closed", "open"] }) {
+export function StackedBarChart({ values, labels, currentIndex, variant, tooltipFormatter, segmentOrder = ["closed", "open"], fitWhenDense = false }) {
   const cur = currentIndex == null ? values.length - 1 : currentIndex;
   
   // Calculate max total for scaling
   const totals = values.map(v => segmentOrder.reduce((sum, key) => sum + (v[key] || 0), 0));
   const m = maxOf(totals);
   
-  const densityCls = values.length >= 18 ? " dense" : values.length >= 12 ? " compact" : "";
+  const densityCls = fitWhenDense ? (values.length >= 24 ? " dense" : values.length >= 18 ? " compact" : " spread") : "";
   const barsCls = "bars" + densityCls + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
   const axisCls = "bar-axis" + densityCls + (variant === "mini" ? " mini" : "");
   
