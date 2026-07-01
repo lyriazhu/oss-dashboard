@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { MONTHS } from "../data.js";
-import { Tag, Tile, BarChart, Meter, StackedBarChart } from "./ui.jsx";
+import { Tag, Tile, BarChart, StackedBarChart } from "./ui.jsx";
 
 export default function Detail({ d, onOverview }) {
   const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
   const [showPRMonthly, setShowPRMonthly] = useState(true);
   const [showIssueMonthly, setShowIssueMonthly] = useState(true);
+  const [showRetentionQuarterly, setShowRetentionQuarterly] = useState(false);
   
   return (
     <main>
@@ -66,9 +67,62 @@ export default function Detail({ d, onOverview }) {
           </p>
         </div>
         <div>
-          <h2 className="section-h">Contributor retention</h2>
-          <Meter label="Returning" value={d.retention.returning} color="blue" />
-          <Meter label="New contributors" value={d.retention.neu} color="teal" />
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <h2 className="section-h" style={{ margin: 0 }}>
+              {showRetentionQuarterly ? 'Customer retention per quarter' : 'Customer retention per year'}
+            </h2>
+            <button
+              className="btn-secondary"
+              onClick={() => setShowRetentionQuarterly(!showRetentionQuarterly)}
+              style={{
+                fontSize: '0.875rem',
+                padding: '0.5rem 1rem',
+                fontFamily: 'inherit'
+              }}
+            >
+              {showRetentionQuarterly ? 'Show yearly' : 'Show quarterly'}
+            </button>
+          </div>
+          {showRetentionQuarterly && d.retentionQuarterly && d.retentionQuarterly.length > 0 ? (
+            <StackedBarChart
+              values={d.retentionQuarterly.map((x) => ({
+                returning: x.returning || 0,
+                newContributors: x.newContributors || 0,
+              }))}
+              labels={d.retentionQuarterly.map((x) => x.q)}
+              currentIndex={d.retentionQuarterly.findIndex((x) => x.c)}
+              segmentOrder={["returning", "newContributors"]}
+              tooltipFormatter={({ index, label }) => {
+                const point = d.retentionQuarterly[index];
+                const returning = point?.returning || 0;
+                const newContributors = point?.newContributors || 0;
+                const active = point?.active || 0;
+                const retentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
+                return `${label}: ${retentionPct}% returning (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+              }}
+            />
+          ) : (
+            <StackedBarChart
+              values={d.retentionYearly?.map((x) => ({
+                returning: x.returning || 0,
+                newContributors: x.newContributors || 0,
+              })) || [{ returning: 0, newContributors: 0 }]}
+              labels={d.retentionYearly?.map((x) => x.y) || ['2025']}
+              currentIndex={d.retentionYearly?.findIndex((x) => x.c) || 0}
+              segmentOrder={["returning", "newContributors"]}
+              tooltipFormatter={({ index, label }) => {
+                const point = d.retentionYearly?.[index];
+                const returning = point?.returning || 0;
+                const newContributors = point?.newContributors || 0;
+                const active = point?.active || 0;
+                const retentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
+                return `${label}: ${retentionPct}% returning (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+              }}
+            />
+          )}
+          <p className="chart-cap">
+            Darker bar = current period · Bottom = returning, top = new contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : 'Contributor mix per year'}
+          </p>
           <p className="chart-cap">{d.retention.cap}</p>
         </div>
       </div>

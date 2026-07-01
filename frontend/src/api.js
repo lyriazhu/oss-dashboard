@@ -212,25 +212,81 @@ export function transformProjectData(project, metrics) {
       }))
     : [];
   
-  // Format retention data - use second-to-last quarter to avoid incomplete current month data
+  // Format retention data for yearly and quarterly chart views
   const retentionQuarters = contributors?.retention_by_quarter || [];
-  const latestRetention = retentionQuarters.length >= 2
-    ? retentionQuarters[retentionQuarters.length - 2]  // Use previous complete quarter
-    : retentionQuarters[retentionQuarters.length - 1]; // Fallback to latest if only one
-  
-  // Convert month format (2026-05) to quarter format (2026 Q2)
+  const retentionYearsMap = new Map();
+
   const formatQuarter = (monthStr) => {
     if (!monthStr) return '';
     const [year, month] = monthStr.split('-');
-    const monthNum = parseInt(month);
+    const monthNum = parseInt(month, 10);
     const quarter = Math.ceil(monthNum / 3);
-    return `${year} Q${quarter}`;
+    return `Q${quarter} ${year}`;
   };
-  
+
+  const getRetentionPercent = (entry) => {
+    const active = entry?.active_contributors || 0;
+    if (!active) return 0;
+    return Math.round(((entry.returning_contributors || 0) / active) * 100);
+  };
+
+  const retentionQuarterly = retentionQuarters.map((entry, idx, arr) => ({
+    q: formatQuarter(entry.quarter),
+    v: getRetentionPercent(entry),
+    returning: entry.returning_contributors || 0,
+    newContributors: entry.new_contributors || 0,
+    active: entry.active_contributors || 0,
+    c: idx === arr.length - 1,
+  }));
+
+  retentionQuarters.forEach((entry) => {
+    if (!entry?.quarter) return;
+    const [year] = entry.quarter.split('-');
+    if (!year) return;
+
+    const existing = retentionYearsMap.get(year) || {
+      year,
+      returning: 0,
+      newContributors: 0,
+      active: 0,
+    };
+
+    existing.returning += entry.returning_contributors || 0;
+    existing.newContributors += entry.new_contributors || 0;
+    existing.active += entry.active_contributors || 0;
+    retentionYearsMap.set(year, existing);
+  });
+
+  const projectStartYear = metadata?.created_at
+    ? new Date(metadata.created_at).getFullYear()
+    : (retentionYearsMap.size > 0 ? Math.min(...Array.from(retentionYearsMap.keys()).map(Number)) : currentYear);
+
+  const retentionYearEntries = [];
+  for (let year = projectStartYear; year <= currentYear; year++) {
+    const existing = retentionYearsMap.get(String(year)) || {
+      year: String(year),
+      returning: 0,
+      newContributors: 0,
+      active: 0,
+    };
+    retentionYearEntries.push(existing);
+  }
+
+  const retentionYearly = retentionYearEntries.map((entry, idx, arr) => ({
+    y: String(entry.year),
+    v: entry.active > 0 ? Math.round((entry.returning / entry.active) * 100) : 0,
+    returning: entry.returning,
+    newContributors: entry.newContributors,
+    active: entry.active,
+    c: Number(entry.year) === currentYear || idx === arr.length - 1,
+  }));
+
+  const latestRetention = retentionQuarters[retentionQuarters.length - 1];
+
   const retention = latestRetention ? {
-    returning: Math.round((latestRetention.returning_contributors / latestRetention.active_contributors) * 100) || 0,
-    neu: Math.round((latestRetention.new_contributors / latestRetention.active_contributors) * 100) || 0,
-    cap: `${latestRetention.new_contributors} new · ${latestRetention.returning_contributors} returning (${formatQuarter(latestRetention.quarter)})`,
+    returning: getRetentionPercent(latestRetention),
+    neu: Math.round((((latestRetention.new_contributors || 0) / (latestRetention.active_contributors || 1)) * 100)) || 0,
+    cap: `${latestRetention.new_contributors || 0} new · ${latestRetention.returning_contributors || 0} returning (${formatQuarter(latestRetention.quarter)})`,
   } : { returning: 0, neu: 0, cap: 'No data available' };
   
   // Format top companies from metadata
@@ -321,6 +377,8 @@ export function transformProjectData(project, metrics) {
     commits: commitHistory.length > 0 ? commitHistory : [{ y: '2025', v: 0, c: true }],
     quarters: quarterlyCommits.length > 0 ? quarterlyCommits : [], // Add quarterly commit data
     retention,
+    retentionYearly: retentionYearly.length > 0 ? retentionYearly : [{ y: String(currentYear), v: 0, c: true }],
+    retentionQuarterly: retentionQuarterly.length > 0 ? retentionQuarterly : [],
     companies,
     meta,
     prYearly: prYearlyData.length > 0 ? prYearlyData : [{ y: '2025', v: 0, c: true }],

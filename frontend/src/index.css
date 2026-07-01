@@ -122,6 +122,7 @@
   }
   .bar.stacked .bar-segment{
     width:100%;
+    min-height:1px;
     transition:height .3s ease;
   }
   .bar.stacked .bar-segment.closed{
@@ -130,11 +131,23 @@
   .bar.stacked .bar-segment.open{
     background:var(--blue-40);
   }
+  .bar.stacked .bar-segment.returning{
+    background:var(--blue-60);
+  }
+  .bar.stacked .bar-segment.newContributors{
+    background:var(--teal-50);
+  }
   .bar.stacked.current .bar-segment.closed{
     background:var(--green-70);
   }
   .bar.stacked.current .bar-segment.open{
     background:var(--blue-60);
+  }
+  .bar.stacked.current .bar-segment.returning{
+    background:var(--blue-70);
+  }
+  .bar.stacked.current .bar-segment.newContributors{
+    background:#007d79;
   }
   
   .bar-axis{display:flex; gap:.5rem; margin-top:.375rem;}
