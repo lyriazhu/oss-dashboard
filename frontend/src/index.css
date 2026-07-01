@@ -109,8 +109,8 @@
     display:grid;
     grid-auto-flow:column;
     grid-auto-columns:minmax(0, 1fr);
-    align-items:flex-end;
-    gap:.25rem;
+    align-items:end;
+    gap:clamp(.0625rem, .4vw, .25rem);
     height:9rem;
     padding-top:.5rem;
     border-bottom:1px solid var(--border-subtle);
@@ -118,8 +118,8 @@
     min-width:0;
     overflow:hidden;
   }
-  .bars.spread{ gap:.25rem; }
-  .bars.compact{ gap:.125rem; }
+  .bars.spread{ gap:clamp(.0625rem, .4vw, .25rem); }
+  .bars.compact{ gap:clamp(.0625rem, .2vw, .125rem); }
   .bars.dense{ gap:0; }
   .bar-col{
     min-width:0;
@@ -130,7 +130,7 @@
     justify-content:flex-end;
     height:100%;
   }
-  .bar{width:100%; max-width:none; min-width:0; background:var(--blue-30); transition:height .3s ease;}
+  .bar{width:100%; max-width:3rem; min-width:0; background:var(--blue-30); transition:height .3s ease;}
   .bar.current{background:var(--blue-60);}
   
   /* Stacked bar chart styles */
@@ -175,14 +175,14 @@
     display:grid;
     grid-auto-flow:column;
     grid-auto-columns:minmax(0, 1fr);
-    gap:.25rem;
+    gap:clamp(.0625rem, .4vw, .25rem);
     margin-top:.375rem;
     width:100%;
     min-width:0;
     overflow:hidden;
   }
-  .bar-axis.spread{ gap:.25rem; }
-  .bar-axis.compact{ gap:.125rem; }
+  .bar-axis.spread{ gap:clamp(.0625rem, .4vw, .25rem); }
+  .bar-axis.compact{ gap:clamp(.0625rem, .2vw, .125rem); }
   .bar-axis.dense{ gap:0; }
   .bar-axis span{
     min-width:0;
@@ -203,7 +203,7 @@
     letter-spacing:-0.02em;
   }
   .bars.twelve{height:7rem;}
-  .bars.twelve .bar{max-width:none;}
+  .bars.twelve .bar{max-width:1.5rem;}
   .chart-cap{font-size:.75rem; color:var(--text-helper); font-style:italic; margin-top:.625rem;}
 
   /* Carbon DataTable */
