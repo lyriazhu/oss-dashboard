@@ -111,21 +111,35 @@ class GitHubDataExtractor:
         self._save_json_file(self._project_state_path(project_name), state)
     
     def _get_quarter_dates(self, quarters_back: int = 8) -> List[tuple]:
-        """Generate list of quarter start/end dates"""
+        """Generate list of calendar quarter start/end dates ending at the current quarter."""
         quarters = []
         now = datetime.now()
-        
-        for i in range(quarters_back):
-            # Calculate quarter
-            quarter_end = now - timedelta(days=i * 90)
-            quarter_start = quarter_end - timedelta(days=90)
-            quarters.append((quarter_start, quarter_end))
-        
+
+        # Find the start of the current calendar quarter
+        current_q = (now.month - 1) // 3  # 0-indexed: 0=Q1, 1=Q2, 2=Q3, 3=Q4
+        current_q_start_month = current_q * 3 + 1
+        quarter_end = datetime(now.year, current_q_start_month, 1)
+
+        for _ in range(quarters_back):
+            q_end = quarter_end
+            # Step back one quarter
+            q_start_month = q_end.month - 3
+            if q_start_month <= 0:
+                q_start = datetime(q_end.year - 1, q_start_month + 12, 1)
+            else:
+                q_start = datetime(q_end.year, q_start_month, 1)
+            quarters.append((q_start, q_end))
+            quarter_end = q_start
+
         return quarters
 
     def _quarter_label(self, dt: datetime) -> str:
-        """Return quarter label for a datetime"""
-        return f"Q{((dt.month - 1) // 3) + 1} {dt.year}"
+        """Return quarter label for a datetime (uses the quarter containing the date)."""
+        # For a quarter start/end boundary, label by the quarter that ends at dt
+        # dt is a quarter-start date; label the quarter that precedes it
+        label_month = dt.month - 1 if dt.month > 1 else 12
+        label_year = dt.year if dt.month > 1 else dt.year - 1
+        return f"Q{((label_month - 1) // 3) + 1} {label_year}"
 
     def _safe_isoformat(self, value: Optional[datetime]) -> Optional[str]:
         """Safely convert datetime to ISO string"""
