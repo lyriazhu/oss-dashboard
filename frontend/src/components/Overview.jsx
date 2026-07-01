@@ -23,23 +23,26 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
     
     order.forEach(key => {
       const project = data[key];
-      if (project && project.kpis) {
-        // Extract numbers from formatted strings (remove commas and +)
-        const contributorsKpi = project.kpis.find(k => k.l === 'Contributors (All-Time)' || k.l === 'Contributors YTD');
-        const commitsKpi = project.kpis.find(k => k.l === 'Commits YTD');
-        const issuesKpi = project.kpis.find(k => k.l === 'Open issues');
-        
-        if (contributorsKpi) {
-          const num = parseInt(contributorsKpi.v.replace(/[,+]/g, ''));
+      if (project) {
+        // Get all-time contributors from overview data (ov.contributorsAllTime)
+        if (project.ov && project.ov.contributorsAllTime) {
+          const num = parseInt(project.ov.contributorsAllTime.replace(/[,+]/g, ''));
           if (!isNaN(num)) totalContributors += num;
         }
-        if (commitsKpi) {
-          const num = parseInt(commitsKpi.v.replace(/[,+]/g, ''));
-          if (!isNaN(num)) totalCommits += num;
-        }
-        if (issuesKpi) {
-          const num = parseInt(issuesKpi.v.replace(/[,+]/g, ''));
-          if (!isNaN(num)) totalIssues += num;
+        
+        // Get other metrics from KPIs
+        if (project.kpis) {
+          const commitsKpi = project.kpis.find(k => k.l === 'Commits (YTD)');
+          const issuesKpi = project.kpis.find(k => k.l === 'Open issues');
+          
+          if (commitsKpi) {
+            const num = parseInt(commitsKpi.v.replace(/[,+]/g, ''));
+            if (!isNaN(num)) totalCommits += num;
+          }
+          if (issuesKpi) {
+            const num = parseInt(issuesKpi.v.replace(/[,+]/g, ''));
+            if (!isNaN(num)) totalIssues += num;
+          }
         }
         
         // Track most recent extraction time
