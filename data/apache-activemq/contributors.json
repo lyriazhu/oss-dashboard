@@ -183,7 +183,7 @@
       "company": "Unknown",
       "location": "Maryland",
       "email": null,
-      "contributions": 608,
+      "contributions": 609,
       "profile_url": "https://github.com/cshannon"
     },
     {
@@ -201,7 +201,7 @@
       "company": "Hyte Technologies, Inc",
       "location": "Austin",
       "email": null,
-      "contributions": 256,
+      "contributions": 257,
       "profile_url": "https://github.com/mattrpav"
     },
     {
@@ -210,7 +210,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 114,
+      "contributions": 116,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -1583,120 +1583,475 @@
     }
   ],
   "total_contributors_github_api": 163,
+  "companies": {
+    "Unknown": 95,
+    "Red Hat": 9,
+    "Ibm": 5,
+    "Tomitribe": 4,
+    "Aws": 3,
+    "Amazon Web Services": 3,
+    "Qlik": 2,
+    "Revenera": 1,
+    "Apple": 1,
+    "Hyte Technologies, Inc": 1,
+    "Asf": 1,
+    "Redhatofficial": 1,
+    "Adobe": 1,
+    "Savoir Technologies": 1,
+    "Solo.Io": 1,
+    "Amazon": 1,
+    "Konghq": 1,
+    "Yupiik": 1,
+    "Bartr Technologies": 1,
+    "Capgemini": 1,
+    "Nvidia": 1,
+    "Sgp": 1,
+    "Salesforce": 1,
+    "Zobier Labs Llc": 1,
+    "Wramner Consulting": 1,
+    "Pronoia Solutions": 1,
+    "Qbeast.Io": 1,
+    "Centiservice": 1,
+    "Centralsquaretechnologies": 1,
+    "Abb": 1,
+    "Zte Corporation": 1,
+    "Tyler-Technologies": 1,
+    "Apache / Orangelogic": 1,
+    "Fourmation Ab": 1,
+    "Code-House @Connectorio": 1,
+    "Techconative": 1,
+    "Sagemcom": 1,
+    "Tylertech": 1,
+    "Https://Kimmking.Github.Io": 1,
+    "Stratio": 1,
+    "Apache Software Foundation": 1,
+    "Atos Ag (Schweiz)": 1,
+    "Totogi": 1,
+    "Osnabr\u00fcck University": 1,
+    "Avodah": 1,
+    "Contrast Security": 1,
+    "Ing. Jiri Cap": 1,
+    "Callibrity": 1,
+    "Confluent": 1
+  },
+  "total_companies": 49,
+  "company_diversity": {
+    "known_company_contributors": 68,
+    "unknown_company_contributors": 95,
+    "top_companies": [
+      {
+        "company": "Unknown",
+        "contributor_count": 95
+      },
+      {
+        "company": "Red Hat",
+        "contributor_count": 9
+      },
+      {
+        "company": "Ibm",
+        "contributor_count": 5
+      },
+      {
+        "company": "Tomitribe",
+        "contributor_count": 4
+      },
+      {
+        "company": "Aws",
+        "contributor_count": 3
+      },
+      {
+        "company": "Amazon Web Services",
+        "contributor_count": 3
+      },
+      {
+        "company": "Qlik",
+        "contributor_count": 2
+      },
+      {
+        "company": "Revenera",
+        "contributor_count": 1
+      },
+      {
+        "company": "Apple",
+        "contributor_count": 1
+      },
+      {
+        "company": "Hyte Technologies, Inc",
+        "contributor_count": 1
+      }
+    ]
+  },
   "retention_by_quarter": [
     {
-      "quarter": "2025-07",
-      "start_date": "2025-07",
-      "end_date": "2025-07",
-      "active_contributors": 9,
-      "new_contributors": 3,
-      "returning_contributors": 1,
-      "retention_rate": 33.33
-    },
-    {
-      "quarter": "2025-08",
-      "start_date": "2025-08",
-      "end_date": "2025-08",
-      "active_contributors": 9,
-      "new_contributors": 2,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2025-09",
-      "start_date": "2025-09",
-      "end_date": "2025-09",
-      "active_contributors": 10,
-      "new_contributors": 0,
-      "returning_contributors": 0,
-      "retention_rate": null
-    },
-    {
-      "quarter": "2025-10",
-      "start_date": "2025-10",
-      "end_date": "2025-10",
-      "active_contributors": 9,
-      "new_contributors": 2,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2025-11",
-      "start_date": "2025-11",
-      "end_date": "2025-11",
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
       "active_contributors": 12,
-      "new_contributors": 2,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2025-12",
-      "start_date": "2025-12",
-      "end_date": "2025-12",
-      "active_contributors": 8,
-      "new_contributors": 1,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
-    },
-    {
-      "quarter": "2026-01",
-      "start_date": "2026-01",
-      "end_date": "2026-01",
-      "active_contributors": 9,
-      "new_contributors": 2,
-      "returning_contributors": 1,
+      "new_contributors": 6,
+      "returning_contributors": 6,
       "retention_rate": 50.0
     },
     {
-      "quarter": "2026-02",
-      "start_date": "2026-02",
-      "end_date": "2026-02",
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 17,
+      "new_contributors": 10,
+      "returning_contributors": 7,
+      "retention_rate": 41.18
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 11,
+      "new_contributors": 2,
+      "returning_contributors": 9,
+      "retention_rate": 81.82
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 20,
+      "new_contributors": 9,
+      "returning_contributors": 11,
+      "retention_rate": 55.0
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 16,
+      "new_contributors": 5,
+      "returning_contributors": 11,
+      "retention_rate": 68.75
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 12,
+      "new_contributors": 4,
+      "returning_contributors": 8,
+      "retention_rate": 66.67
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 19,
+      "new_contributors": 11,
+      "returning_contributors": 8,
+      "retention_rate": 42.11
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 19,
+      "new_contributors": 5,
+      "returning_contributors": 14,
+      "retention_rate": 73.68
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 20,
+      "new_contributors": 5,
+      "returning_contributors": 15,
+      "retention_rate": 75.0
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 20,
+      "new_contributors": 10,
+      "returning_contributors": 10,
+      "retention_rate": 50.0
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 28,
+      "new_contributors": 9,
+      "returning_contributors": 19,
+      "retention_rate": 67.86
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 3,
+      "retention_rate": 100.0
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2005",
+      "period_type": "year",
+      "start_date": "2005-01-01T00:00:00",
+      "end_date": "2006-01-01T00:00:00",
+      "active_contributors": 7,
+      "new_contributors": 7,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false
+    },
+    {
+      "period": "2006",
+      "period_type": "year",
+      "start_date": "2006-01-01T00:00:00",
+      "end_date": "2007-01-01T00:00:00",
+      "active_contributors": 17,
+      "new_contributors": 10,
+      "returning_contributors": 7,
+      "retention_rate": 41.18,
+      "is_current": false
+    },
+    {
+      "period": "2007",
+      "period_type": "year",
+      "start_date": "2007-01-01T00:00:00",
+      "end_date": "2008-01-01T00:00:00",
       "active_contributors": 12,
       "new_contributors": 3,
-      "returning_contributors": 1,
-      "retention_rate": 33.33
+      "returning_contributors": 9,
+      "retention_rate": 75.0,
+      "is_current": false
     },
     {
-      "quarter": "2026-03",
-      "start_date": "2026-03",
-      "end_date": "2026-03",
-      "active_contributors": 15,
+      "period": "2008",
+      "period_type": "year",
+      "start_date": "2008-01-01T00:00:00",
+      "end_date": "2009-01-01T00:00:00",
+      "active_contributors": 11,
       "new_contributors": 5,
-      "returning_contributors": 3,
-      "retention_rate": 60.0
+      "returning_contributors": 6,
+      "retention_rate": 54.55,
+      "is_current": false
     },
     {
-      "quarter": "2026-04",
-      "start_date": "2026-04",
-      "end_date": "2026-04",
-      "active_contributors": 14,
+      "period": "2009",
+      "period_type": "year",
+      "start_date": "2009-01-01T00:00:00",
+      "end_date": "2010-01-01T00:00:00",
+      "active_contributors": 13,
       "new_contributors": 2,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
+      "returning_contributors": 11,
+      "retention_rate": 84.62,
+      "is_current": false
     },
     {
-      "quarter": "2026-05",
-      "start_date": "2026-05",
-      "end_date": "2026-05",
+      "period": "2010",
+      "period_type": "year",
+      "start_date": "2010-01-01T00:00:00",
+      "end_date": "2011-01-01T00:00:00",
+      "active_contributors": 11,
+      "new_contributors": 0,
+      "returning_contributors": 11,
+      "retention_rate": 100.0,
+      "is_current": false
+    },
+    {
+      "period": "2011",
+      "period_type": "year",
+      "start_date": "2011-01-01T00:00:00",
+      "end_date": "2012-01-01T00:00:00",
+      "active_contributors": 13,
+      "new_contributors": 4,
+      "returning_contributors": 9,
+      "retention_rate": 69.23,
+      "is_current": false
+    },
+    {
+      "period": "2012",
+      "period_type": "year",
+      "start_date": "2012-01-01T00:00:00",
+      "end_date": "2013-01-01T00:00:00",
       "active_contributors": 12,
-      "new_contributors": 5,
-      "returning_contributors": 1,
-      "retention_rate": 20.0
+      "new_contributors": 2,
+      "returning_contributors": 10,
+      "retention_rate": 83.33,
+      "is_current": false
     },
     {
-      "quarter": "2026-06",
-      "start_date": "2026-06",
-      "end_date": "2026-06",
-      "active_contributors": 17,
-      "new_contributors": 2,
-      "returning_contributors": 0,
-      "retention_rate": 0.0
+      "period": "2013",
+      "period_type": "year",
+      "start_date": "2013-01-01T00:00:00",
+      "end_date": "2014-01-01T00:00:00",
+      "active_contributors": 26,
+      "new_contributors": 16,
+      "returning_contributors": 10,
+      "retention_rate": 38.46,
+      "is_current": false
+    },
+    {
+      "period": "2014",
+      "period_type": "year",
+      "start_date": "2014-01-01T00:00:00",
+      "end_date": "2015-01-01T00:00:00",
+      "active_contributors": 49,
+      "new_contributors": 36,
+      "returning_contributors": 13,
+      "retention_rate": 26.53,
+      "is_current": false
+    },
+    {
+      "period": "2015",
+      "period_type": "year",
+      "start_date": "2015-01-01T00:00:00",
+      "end_date": "2016-01-01T00:00:00",
+      "active_contributors": 71,
+      "new_contributors": 50,
+      "returning_contributors": 21,
+      "retention_rate": 29.58,
+      "is_current": false
+    },
+    {
+      "period": "2016",
+      "period_type": "year",
+      "start_date": "2016-01-01T00:00:00",
+      "end_date": "2017-01-01T00:00:00",
+      "active_contributors": 49,
+      "new_contributors": 28,
+      "returning_contributors": 21,
+      "retention_rate": 42.86,
+      "is_current": false
+    },
+    {
+      "period": "2017",
+      "period_type": "year",
+      "start_date": "2017-01-01T00:00:00",
+      "end_date": "2018-01-01T00:00:00",
+      "active_contributors": 73,
+      "new_contributors": 37,
+      "returning_contributors": 36,
+      "retention_rate": 49.32,
+      "is_current": false
+    },
+    {
+      "period": "2018",
+      "period_type": "year",
+      "start_date": "2018-01-01T00:00:00",
+      "end_date": "2019-01-01T00:00:00",
+      "active_contributors": 40,
+      "new_contributors": 27,
+      "returning_contributors": 13,
+      "retention_rate": 32.5,
+      "is_current": false
+    },
+    {
+      "period": "2019",
+      "period_type": "year",
+      "start_date": "2019-01-01T00:00:00",
+      "end_date": "2020-01-01T00:00:00",
+      "active_contributors": 42,
+      "new_contributors": 25,
+      "returning_contributors": 17,
+      "retention_rate": 40.48,
+      "is_current": false
+    },
+    {
+      "period": "2020",
+      "period_type": "year",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 30,
+      "new_contributors": 19,
+      "returning_contributors": 11,
+      "retention_rate": 36.67,
+      "is_current": false
+    },
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 29,
+      "new_contributors": 20,
+      "returning_contributors": 9,
+      "retention_rate": 31.03,
+      "is_current": false
+    },
+    {
+      "period": "2022",
+      "period_type": "year",
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2023-01-01T00:00:00",
+      "active_contributors": 28,
+      "new_contributors": 18,
+      "returning_contributors": 10,
+      "retention_rate": 35.71,
+      "is_current": false
+    },
+    {
+      "period": "2023",
+      "period_type": "year",
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 30,
+      "new_contributors": 14,
+      "returning_contributors": 16,
+      "retention_rate": 53.33,
+      "is_current": false
+    },
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 39,
+      "new_contributors": 26,
+      "returning_contributors": 13,
+      "retention_rate": 33.33,
+      "is_current": false
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 41,
+      "new_contributors": 25,
+      "returning_contributors": 16,
+      "retention_rate": 39.02,
+      "is_current": false
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 35,
+      "new_contributors": 19,
+      "returning_contributors": 16,
+      "retention_rate": 45.71,
+      "is_current": true
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
-    "retention_by_quarter": "last_12_months_from_git_history"
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
   }
 }

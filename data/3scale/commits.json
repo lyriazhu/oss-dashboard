@@ -1,29 +1,77 @@
 {
-  "total_commits": 116,
+  "total_commits": 498,
   "quarters": [
     {
-      "start_date": "2026-03-31T09:39:28.435359",
-      "end_date": "2026-06-29T09:39:28.435359",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
       "commit_count": 30,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2025-12-31T09:39:28.435359",
-      "end_date": "2026-03-31T09:39:28.435359",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
       "commit_count": 40,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-10-02T09:39:28.435359",
-      "end_date": "2025-12-31T09:39:28.435359",
-      "commit_count": 29,
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 31,
       "quarter": "Q4 2025"
     },
     {
-      "start_date": "2025-07-04T09:39:28.435359",
-      "end_date": "2025-10-02T09:39:28.435359",
-      "commit_count": 17,
-      "quarter": "Q4 2025"
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 16,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 52,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 86,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 16,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 32,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 52,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 106,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 37,
+      "quarter": "Q4 2023"
     }
   ],
   "committers": [
@@ -208,6 +256,15 @@
       "commit_count": 12
     },
     {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "boris.urbanik.dev@gmail.com",
+      "profile_url": null,
+      "commit_count": 11
+    },
+    {
       "login": "Conor O'Malley",
       "name": "Conor O'Malley",
       "company": "Unknown",
@@ -262,6 +319,15 @@
       "commit_count": 9
     },
     {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "115566047+borisurbanik@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 8
+    },
+    {
       "login": "Eguzki Astiz Lezaun",
       "name": "Eguzki Astiz Lezaun",
       "company": "Unknown",
@@ -276,15 +342,6 @@
       "company": "Unknown",
       "location": null,
       "email": "krishvoor@in.ibm.com",
-      "profile_url": null,
-      "commit_count": 8
-    },
-    {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 8
     },
@@ -384,15 +441,6 @@
       "company": "Unknown",
       "location": null,
       "email": "swkale@redhat.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "boris.urbanik.dev@gmail.com",
       "profile_url": null,
       "commit_count": 3
     },
@@ -614,12 +662,12 @@
     }
   ],
   "time_scope": {
-    "total_commits": "last_4_quarters",
-    "quarters": "last_4_quarters",
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-29T09:39:31.345662",
+  "extracted_at": "2026-07-01T14:42:31.152131",
   "years": [
     {
       "year": 2018,
@@ -663,7 +711,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 141,
+      "commit_count": 143,
       "is_current": true
     }
   ]

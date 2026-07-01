@@ -75,18 +75,18 @@
       "tag_name": "activemq-5.19.8",
       "name": "Apache ActiveMQ 5.19.8",
       "published_at": "2026-06-25T05:59:26+00:00",
-      "prerelease": true,
+      "prerelease": false,
       "draft": false
     },
     {
       "tag_name": "activemq-6.2.7",
       "name": "Apache ActiveMQ 6.2.7",
       "published_at": "2026-06-25T05:29:05+00:00",
-      "prerelease": true,
+      "prerelease": false,
       "draft": false
     }
   ],
   "avg_days_between_releases": 8.45,
   "release_frequency": "high",
-  "extracted_at": "2026-06-29T13:15:38.520771"
+  "extracted_at": "2026-07-01T14:21:39.489985"
 }

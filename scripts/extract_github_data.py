@@ -65,8 +65,17 @@ class GitHubDataExtractor:
 
     def _project_dir(self, project_name: str) -> Path:
         """Return normalized project data directory with ID mapping"""
-        # Map project IDs to their data directory names (must match backend DataService.java)
+        # Keys are config 'name' values; values are the data directory names
+        # (must match backend DataService.java getProjectDirectoryName())
         dir_name_map = {
+            # config name -> data dir
+            "Strimzi": "strimzi",
+            "Apache Camel": "apache-camel",
+            "Apache ActiveMQ": "apache-activemq",
+            "Apicurio Registry": "apicurio",
+            "3scale": "3scale",
+            "Keycloak": "keycloak",
+            # legacy repo-name keys kept for backward compatibility
             "strimzi-kafka-operator": "strimzi",
             "camel": "apache-camel",
             "activemq": "apache-activemq",
@@ -110,15 +119,18 @@ class GitHubDataExtractor:
         """Save per-project extraction state"""
         self._save_json_file(self._project_state_path(project_name), state)
     
-    def _get_quarter_dates(self, quarters_back: int = 8) -> List[tuple]:
+    def _get_quarter_dates(self, quarters_back: int = 12) -> List[tuple]:
         """Generate list of calendar quarter start/end dates ending at the current quarter."""
         quarters = []
         now = datetime.now()
 
-        # Find the start of the current calendar quarter
+        # Find the start of the NEXT quarter so the first iteration produces the current quarter.
         current_q = (now.month - 1) // 3  # 0-indexed: 0=Q1, 1=Q2, 2=Q3, 3=Q4
-        current_q_start_month = current_q * 3 + 1
-        quarter_end = datetime(now.year, current_q_start_month, 1)
+        next_q_start_month = (current_q + 1) * 3 + 1  # first month of the next quarter
+        if next_q_start_month > 12:
+            quarter_end = datetime(now.year + 1, next_q_start_month - 12, 1)
+        else:
+            quarter_end = datetime(now.year, next_q_start_month, 1)
 
         for _ in range(quarters_back):
             q_end = quarter_end
@@ -324,55 +336,168 @@ class GitHubDataExtractor:
         
         return yearly_data
 
-    def _extract_retention_from_git_history(self, owner: str, repo: str, months: int = 6) -> List[Dict[str, Any]]:
-        """Compute contributor retention cohorts from local git history"""
+    def _build_contributor_history(self, history_rows: List[Dict[str, str]]) -> tuple:
+        """
+        Build all-time contributor history structures from git rows.
+
+        Returns:
+            contributor_first_commit: Dict[identity -> ISO date string of first ever commit]
+            contributor_quarters: Dict[identity -> Set[quarter_label]]
+            contributor_years: Dict[identity -> Set[year int]]
+        """
+        contributor_first_commit: Dict[str, str] = {}
+        contributor_quarters: Dict[str, Set[str]] = defaultdict(set)
+        contributor_years: Dict[str, Set[int]] = defaultdict(set)
+
+        for row in history_rows:
+            identity = row["identity"]
+            authored_at = row["authored_at"]
+
+            # Track first ever commit (ISO string comparison is safe for sorting)
+            if identity not in contributor_first_commit or authored_at < contributor_first_commit[identity]:
+                contributor_first_commit[identity] = authored_at
+
+            try:
+                dt = datetime.fromisoformat(authored_at.replace("Z", "+00:00")).replace(tzinfo=None)
+            except ValueError:
+                continue
+
+            year = dt.year
+            contributor_years[identity].add(year)
+
+            # Quarter label: which calendar quarter does this commit fall in?
+            q_num = ((dt.month - 1) // 3) + 1
+            q_start_month = (q_num - 1) * 3 + 1
+            # The "end" boundary is the first day of the *next* quarter (used by _quarter_label)
+            end_month = q_start_month + 3
+            if end_month > 12:
+                q_end = datetime(dt.year + 1, end_month - 12, 1)
+            else:
+                q_end = datetime(dt.year, end_month, 1)
+            label = self._quarter_label(q_end)
+            contributor_quarters[identity].add(label)
+
+        return contributor_first_commit, contributor_quarters, contributor_years
+
+    def _extract_quarterly_retention(self, owner: str, repo: str, quarters: int = 12) -> List[Dict[str, Any]]:
+        """
+        Compute per-quarter contributor retention for the last N quarters.
+
+        New contributor: their very first commit ever falls within this quarter.
+        Returning contributor: they committed this quarter but had committed in any prior quarter.
+        Identity is normalized email (or author name if email absent) — the most stable
+        cross-commit unique identifier available from git history.
+        """
         history_rows = self._read_git_history_rows(owner, repo)
         if not history_rows:
             return []
 
-        contributor_months: Dict[str, Set[str]] = defaultdict(set)
-        contributor_first_seen: Dict[str, str] = {}
+        contributor_first_commit, contributor_quarters, _ = self._build_contributor_history(history_rows)
 
-        for row in history_rows:
-            identity = row["identity"]
-            month = row["month"]
-            contributor_months[identity].add(month)
+        # Build the target quarter windows (last N quarters, chronological order)
+        quarter_dates = self._get_quarter_dates(quarters)  # newest-first list of (start, end)
+        quarter_windows = []
+        for start_dt, end_dt in reversed(quarter_dates):  # chronological
+            label = self._quarter_label(end_dt)
+            quarter_windows.append((label, start_dt, end_dt))
 
-            if identity not in contributor_first_seen or month < contributor_first_seen[identity]:
-                contributor_first_seen[identity] = month
-
-        all_months = sorted({month for months_set in contributor_months.values() for month in months_set})
-        if not all_months:
-            return []
-
-        selected_months = all_months[-months:]
         retention_rows = []
+        for label, q_start, q_end in quarter_windows:
+            # Identities who committed during this quarter
+            active = {
+                identity
+                for identity, qs in contributor_quarters.items()
+                if label in qs
+            }
 
-        for month in selected_months:
-            cohort = {identity for identity, first_month in contributor_first_seen.items() if first_month == month}
-            retained_next_month = 0
+            # New: first-ever commit falls within this quarter window
+            new_contributors = set()
+            for identity in active:
+                first_commit_dt = datetime.fromisoformat(
+                    contributor_first_commit[identity].replace("Z", "+00:00")
+                ).replace(tzinfo=None)
+                if q_start <= first_commit_dt < q_end:
+                    new_contributors.add(identity)
 
-            if cohort:
-                month_index = all_months.index(month)
-                next_month = all_months[month_index + 1] if month_index + 1 < len(all_months) else None
-                if next_month:
-                    retained_next_month = sum(
-                        1 for identity in cohort if next_month in contributor_months.get(identity, set())
-                    )
+            returning = active - new_contributors
+            active_count = len(active)
+            new_count = len(new_contributors)
+            returning_count = len(returning)
 
             retention_rows.append({
-                "quarter": month,
-                "start_date": month,
-                "end_date": month,
-                "active_contributors": sum(1 for months_set in contributor_months.values() if month in months_set),
-                "new_contributors": len(cohort),
-                "returning_contributors": retained_next_month,
-                "retention_rate": round((retained_next_month / len(cohort)) * 100, 2) if cohort else None
+                "period": label,
+                "period_type": "quarter",
+                "start_date": q_start.isoformat(),
+                "end_date": q_end.isoformat(),
+                "active_contributors": active_count,
+                "new_contributors": new_count,
+                "returning_contributors": returning_count,
+                "retention_rate": round((returning_count / active_count) * 100, 2) if active_count else None
             })
 
         return retention_rows
 
-    def _extract_committers_from_git_history(self, owner: str, repo: str, quarters: int = 4) -> List[Dict[str, Any]]:
+    def _extract_yearly_retention(self, owner: str, repo: str) -> List[Dict[str, Any]]:
+        """
+        Compute per-year contributor retention for all years with commit history.
+
+        New contributor: their very first commit ever falls within this calendar year.
+        Returning contributor: they committed this year but had committed in any prior year.
+        Identity is normalized email (or author name if email absent).
+        """
+        history_rows = self._read_git_history_rows(owner, repo)
+        if not history_rows:
+            return []
+
+        contributor_first_commit, _, contributor_years = self._build_contributor_history(history_rows)
+
+        all_years = sorted({year for years_set in contributor_years.values() for year in years_set})
+        if not all_years:
+            return []
+
+        current_year = datetime.now().year
+        retention_rows = []
+
+        for year in all_years:
+            year_start = datetime(year, 1, 1)
+            year_end = datetime(year + 1, 1, 1)
+
+            # Identities who committed during this year
+            active = {
+                identity
+                for identity, years_set in contributor_years.items()
+                if year in years_set
+            }
+
+            # New: first-ever commit falls within this calendar year
+            new_contributors = set()
+            for identity in active:
+                first_commit_dt = datetime.fromisoformat(
+                    contributor_first_commit[identity].replace("Z", "+00:00")
+                ).replace(tzinfo=None)
+                if year_start <= first_commit_dt < year_end:
+                    new_contributors.add(identity)
+
+            returning = active - new_contributors
+            active_count = len(active)
+            new_count = len(new_contributors)
+            returning_count = len(returning)
+
+            retention_rows.append({
+                "period": str(year),
+                "period_type": "year",
+                "start_date": year_start.isoformat(),
+                "end_date": year_end.isoformat(),
+                "active_contributors": active_count,
+                "new_contributors": new_count,
+                "returning_contributors": returning_count,
+                "retention_rate": round((returning_count / active_count) * 100, 2) if active_count else None,
+                "is_current": year == current_year
+            })
+
+        return retention_rows
+
+    def _extract_committers_from_git_history(self, owner: str, repo: str, quarters: int = 12) -> List[Dict[str, Any]]:
         """Compute exact aggregated committers from local git history (all-time)"""
         history_rows = self._read_git_history_rows(owner, repo)
         if not history_rows:
@@ -453,6 +578,7 @@ class GitHubDataExtractor:
             "companies": dict(sorted(company_count.items(), key=lambda item: item[1], reverse=True)),
             "total_companies": len(company_count),
             "retention_by_quarter": existing_data.get("retention_by_quarter", []),
+            "retention_by_year": existing_data.get("retention_by_year", []),
             "company_diversity": {
                 "known_company_contributors": known_company_total,
                 "unknown_company_contributors": company_count.get("Unknown", 0),
@@ -474,7 +600,7 @@ class GitHubDataExtractor:
         new_history_rows: List[Dict[str, str]],
         owner: str,
         repo: str,
-        quarters: int = 4
+        quarters: int = 12
     ) -> Dict[str, Any]:
         """Merge new git-history commits into aggregated commit data (all-time for committers)"""
         existing_committers = {
@@ -556,38 +682,63 @@ class GitHubDataExtractor:
             "extracted_at": datetime.now().isoformat()
         }
     
+    def _compute_top_companies(self, project_name: str) -> List[Dict[str, Any]]:
+        """Compute top contributing companies from the saved contributors.json file."""
+        contributors_data = self._load_json_file(
+            self._project_dir(project_name) / "contributors.json", {}
+        )
+        company_contribution_counts: Dict[str, int] = defaultdict(int)
+        for contributor in contributors_data.get("contributors", []):
+            company = contributor.get("company") or "Unknown"
+            contribution_count = contributor.get("contributions") or 0
+            if company == "Unknown" or not contribution_count:
+                continue
+            company_contribution_counts[company] += contribution_count
+
+        total = sum(company_contribution_counts.values())
+        if not total:
+            return []
+        return [
+            {
+                "company": company,
+                "commits": contributions,
+                "percentage": round((contributions / total) * 100, 2)
+            }
+            for company, contributions in sorted(
+                company_contribution_counts.items(),
+                key=lambda item: item[1],
+                reverse=True
+            )[:10]
+        ]
+
+    def refresh_metadata_companies(self, project_name: str) -> bool:
+        """Patch the saved metadata.json with fresh top_contributing_companies from contributors.json.
+
+        Called after extract_contributors so the company data is always up to date.
+        Returns True if metadata was updated, False otherwise.
+        """
+        meta_path = self._project_dir(project_name) / "metadata.json"
+        if not meta_path.exists():
+            return False
+        metadata = self._load_json_file(meta_path, {})
+        if not metadata:
+            return False
+        top_companies = self._compute_top_companies(project_name)
+        metadata["top_contributing_companies"] = top_companies
+        self._save_json_file(meta_path, metadata)
+        print(f"  ✓ Updated top_contributing_companies ({len(top_companies)} companies)")
+        return True
+
     def extract_project_metadata(self, owner: str, repo: str, project_name: Optional[str] = None) -> Dict[str, Any]:
-        """Extract basic project metadata"""
+        """Extract basic project metadata.
+
+        top_contributing_companies is always written as [] here — it is populated
+        by refresh_metadata_companies() which must be called after extract_contributors().
+        """
         print(f"📊 Extracting metadata for {owner}/{repo}...")
-        
+
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
-            top_contributing_companies = []
-            if project_name:
-                commits_data = self._load_json_file(self._project_dir(project_name) / "commits.json", {})
-                company_commit_counts = defaultdict(int)
-                for committer in commits_data.get("committers", []):
-                    company = committer.get("company") or "Unknown"
-                    commit_count = committer.get("commit_count") or committer.get("commitCount") or 0
-                    if company == "Unknown" or not commit_count:
-                        continue
-                    company_commit_counts[company] += commit_count
-
-                total_known_company_commits = sum(company_commit_counts.values())
-                if total_known_company_commits:
-                    top_contributing_companies = [
-                        {
-                            "company": company,
-                            "commits": commits,
-                            "percentage": round((commits / total_known_company_commits) * 100, 2)
-                        }
-                        for company, commits in sorted(
-                            company_commit_counts.items(),
-                            key=lambda item: item[1],
-                            reverse=True
-                        )[:10]
-                    ]
-            
             metadata = {
                 "name": repository.name,
                 "full_name": repository.full_name,
@@ -604,17 +755,17 @@ class GitHubDataExtractor:
                 "homepage": repository.homepage,
                 "has_wiki": repository.has_wiki,
                 "has_discussions": getattr(repository, "has_discussions", None),
-                "top_contributing_companies": top_contributing_companies,
+                "top_contributing_companies": [],
                 "extracted_at": datetime.now().isoformat()
             }
-            
+
             return metadata
-            
+
         except GithubException as e:
             print(f"❌ Error extracting metadata: {e}")
             return {}
     
-    def extract_contributors(self, owner: str, repo: str, project_name: str, quarters: int = 4) -> Dict[str, Any]:
+    def extract_contributors(self, owner: str, repo: str, project_name: str, quarters: int = 12) -> Dict[str, Any]:
         """Extract complete contributor information with incremental profile enrichment and git-based counting"""
         print(f"👥 Extracting contributors for {owner}/{repo}...")
         
@@ -673,27 +824,32 @@ class GitHubDataExtractor:
             contributors_data["total_contributors_git"] = git_contributor_count
             
             # Merge existing contributor profiles
-            retention_months = max(quarters * 3, 6)
             merged_data = self._merge_contributor_data(existing_data, new_or_updated_contributors)
-            
+
             # Add the rest of the data
             contributors_data["contributors"] = merged_data.get("contributors", [])
             contributors_data["total_contributors_github_api"] = len(contributors_data["contributors"])
-            
+            contributors_data["companies"] = merged_data.get("companies", {})
+            contributors_data["total_companies"] = merged_data.get("total_companies", 0)
+            contributors_data["company_diversity"] = merged_data.get("company_diversity", {})
+
             print(f"  ✓ GitHub API contributors: {contributors_data['total_contributors_github_api']}")
             print(f"  ✓ Git history contributors: {git_contributor_count}")
-            
-            contributors_data["retention_by_quarter"] = self._extract_retention_from_git_history(
-                owner,
-                repo,
-                months=retention_months
+
+            print(f"  ℹ️  Computing quarterly retention (last {quarters} quarters)...")
+            contributors_data["retention_by_quarter"] = self._extract_quarterly_retention(
+                owner, repo, quarters=quarters
             )
-            
+
+            print(f"  ℹ️  Computing yearly retention (all-time)...")
+            contributors_data["retention_by_year"] = self._extract_yearly_retention(owner, repo)
+
             contributors_data["time_scope"] = {
                 "yearly_contributors": "all_time_from_git_history",
                 "total_contributors": "all_time_from_git_history",
                 "contributors": "all_time_github_contributors",
-                "retention_by_quarter": f"last_{retention_months}_months_from_git_history"
+                "retention_by_quarter": f"last_{quarters}_quarters_from_git_history",
+                "retention_by_year": "all_time_from_git_history"
             }
 
             project_state["contributors"] = {
@@ -708,7 +864,7 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting contributors: {e}")
             return {}
     
-    def extract_commits(self, owner: str, repo: str, project_name: str, quarters: int = 4) -> Dict[str, Any]:
+    def extract_commits(self, owner: str, repo: str, project_name: str, quarters: int = 12) -> Dict[str, Any]:
         """Extract exact aggregated commit activity and committer details (all-time for committers)"""
         print(f"📝 Extracting commits for {owner}/{repo}...")
         
@@ -1468,7 +1624,7 @@ class GitHubDataExtractor:
             repo = primary_repo['repo']
             
             # Extract all data types
-            metadata = self.extract_project_metadata(owner, repo, project_name=name)
+            metadata = self.extract_project_metadata(owner, repo, project_name=project_name)
             project_created_at = None
             if metadata:
                 self.save_project_data(project_name, metadata, "metadata")
@@ -1489,13 +1645,25 @@ class GitHubDataExtractor:
             contributors = self.extract_contributors(owner, repo, project_name)
             if contributors:
                 self.save_project_data(project_name, contributors, "contributors")
-            
+                self.refresh_metadata_companies(project_name)
+
             commits = self.extract_commits(owner, repo, project_name)
             if commits:
                 self.save_project_data(project_name, commits, "commits")
-            
-            # Skip issue extraction if configured (e.g., for projects using external issue trackers)
-            if not project.get('skip_issues', False):
+
+            # Route issue extraction: jira, github, or skip
+            issue_source = project.get('issue_source', 'github')
+            if issue_source == 'jira':
+                print(f"  ℹ️  Running Jira issue extraction for {project_name}...")
+                jira_script = Path(__file__).parent / "extract_jira_issues.py"
+                jira_result = subprocess.run(
+                    [sys.executable, str(jira_script), project_name],
+                    cwd=str(Path(__file__).parent),
+                    check=False,
+                )
+                if jira_result.returncode != 0:
+                    print(f"⚠️  Jira issue extraction failed for {project_name}")
+            elif not project.get('skip_issues', False):
                 issues = self.extract_issues(repos, project_created_at, project_name)
                 if issues:
                     self.save_project_data(project_name, issues, "issues")

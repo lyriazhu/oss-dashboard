@@ -1,29 +1,77 @@
 {
-  "total_commits": 1554,
+  "total_commits": 3094,
   "quarters": [
     {
-      "start_date": "2026-04-01T11:01:17.511032",
-      "end_date": "2026-06-30T11:01:17.511032",
-      "commit_count": 500,
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 7,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 503,
       "quarter": "Q2 2026"
     },
     {
-      "start_date": "2026-01-01T11:01:17.511032",
-      "end_date": "2026-04-01T11:01:17.511032",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
       "commit_count": 376,
-      "quarter": "Q2 2026"
-    },
-    {
-      "start_date": "2025-10-03T11:01:17.511032",
-      "end_date": "2026-01-01T11:01:17.511032",
-      "commit_count": 363,
       "quarter": "Q1 2026"
     },
     {
-      "start_date": "2025-07-05T11:01:17.511032",
-      "end_date": "2025-10-03T11:01:17.511032",
-      "commit_count": 315,
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 377,
       "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 305,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 252,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 188,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 331,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 252,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 185,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 147,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 171,
+      "quarter": "Q4 2023"
     }
   ],
   "committers": [
@@ -34,7 +82,7 @@
       "location": null,
       "email": "eric.wittmann@gmail.com",
       "profile_url": null,
-      "commit_count": 4082
+      "commit_count": 4088
     },
     {
       "login": "dependabot[bot]",
@@ -52,7 +100,7 @@
       "location": null,
       "email": "carlesarnal92@gmail.com",
       "profile_url": null,
-      "commit_count": 2954
+      "commit_count": 2964
     },
     {
       "login": "renovate[bot]",
@@ -61,7 +109,7 @@
       "location": null,
       "email": "29139614+renovate[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1762
+      "commit_count": 1776
     },
     {
       "login": "Jakub Senko",
@@ -133,7 +181,7 @@
       "location": null,
       "email": "carnalca@redhat.com",
       "profile_url": null,
-      "commit_count": 308
+      "commit_count": 303
     },
     {
       "login": "Stephen McCarthy",
@@ -169,7 +217,7 @@
       "location": null,
       "email": "pantinor@redhat.com",
       "profile_url": null,
-      "commit_count": 186
+      "commit_count": 195
     },
     {
       "login": "Stephen McCarthy",
@@ -478,6 +526,15 @@
       "commit_count": 14
     },
     {
+      "login": "Thomas Thornton",
+      "name": "Thomas Thornton",
+      "company": "Unknown",
+      "location": null,
+      "email": "thomaswilliamthornton@gmail.com",
+      "profile_url": null,
+      "commit_count": 13
+    },
+    {
       "login": "red-hat-trusted-app-pipeline",
       "name": "red-hat-trusted-app-pipeline",
       "company": "Unknown",
@@ -564,15 +621,6 @@
       "company": "Unknown",
       "location": null,
       "email": "40783899+fzal@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 9
-    },
-    {
-      "login": "Thomas Thornton",
-      "name": "Thomas Thornton",
-      "company": "Unknown",
-      "location": null,
-      "email": "thomaswilliamthornton@gmail.com",
       "profile_url": null,
       "commit_count": 9
     },
@@ -1324,6 +1372,15 @@
       "commit_count": 3
     },
     {
+      "login": "Yashwanth Reddy Mali",
+      "name": "Yashwanth Reddy Mali",
+      "company": "Unknown",
+      "location": null,
+      "email": "85288090+yxshwanth@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
       "login": "fzal",
       "name": "fzal",
       "company": "Unknown",
@@ -1698,6 +1755,15 @@
       "company": "Unknown",
       "location": null,
       "email": "95952579+mayerzhe@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Yashwanth Reddy Mali",
+      "name": "Yashwanth Reddy Mali",
+      "company": "Unknown",
+      "location": null,
+      "email": "yash@mac.lan",
       "profile_url": null,
       "commit_count": 1
     },
@@ -2288,12 +2354,12 @@
     }
   ],
   "time_scope": {
-    "total_commits": "last_4_quarters",
-    "quarters": "last_4_quarters",
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-06-30T11:01:21.140498",
+  "extracted_at": "2026-07-01T13:43:48.200889",
   "years": [
     {
       "year": 2019,
@@ -2332,7 +2398,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 2955,
+      "commit_count": 2996,
       "is_current": true
     }
   ]

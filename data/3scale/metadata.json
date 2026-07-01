@@ -14,22 +14,47 @@
   "homepage": "",
   "has_wiki": false,
   "has_discussions": null,
-  "extracted_at": "2026-06-29T09:39:24.794561",
   "top_contributing_companies": [
     {
       "company": "Red Hat",
-      "commits": 3644,
-      "percentage": 86.62
+      "commits": 2453,
+      "percentage": 98.83
     },
     {
-      "company": "Independent",
-      "commits": 492,
-      "percentage": 11.69
+      "company": "Redhatofficial",
+      "commits": 12,
+      "percentage": 0.48
     },
     {
-      "company": "Unknown",
-      "commits": 71,
-      "percentage": 1.69
+      "company": "Ibm",
+      "commits": 7,
+      "percentage": 0.28
+    },
+    {
+      "company": "Datadog",
+      "commits": 3,
+      "percentage": 0.12
+    },
+    {
+      "company": "Propitech",
+      "commits": 3,
+      "percentage": 0.12
+    },
+    {
+      "company": "Webtypes",
+      "commits": 2,
+      "percentage": 0.08
+    },
+    {
+      "company": "Par-Tec",
+      "commits": 1,
+      "percentage": 0.04
+    },
+    {
+      "company": "Columbia University",
+      "commits": 1,
+      "percentage": 0.04
     }
-  ]
+  ],
+  "extracted_at": "2026-07-01T14:42:20.473498"
 }

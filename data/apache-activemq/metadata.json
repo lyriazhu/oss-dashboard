@@ -3,11 +3,11 @@
   "full_name": "apache/activemq",
   "description": "Apache ActiveMQ",
   "created_at": "2009-05-21T01:33:45+00:00",
-  "updated_at": "2026-06-25T23:38:42+00:00",
-  "stars": 2439,
-  "forks": 1488,
-  "watchers": 2439,
-  "open_issues": 79,
+  "updated_at": "2026-07-01T16:35:24+00:00",
+  "stars": 2441,
+  "forks": 1489,
+  "watchers": 2441,
+  "open_issues": 78,
   "language": "Java",
   "topics": [
     "activemq",
@@ -25,28 +25,58 @@
   "license": "Apache License 2.0",
   "homepage": "https://activemq.apache.org",
   "has_wiki": false,
-  "has_discussions": true,
-  "extracted_at": "2026-06-29T15:05:07.733932",
+  "has_discussions": null,
   "top_contributing_companies": [
     {
-      "company": "Apache Software Foundation",
-      "commits": 30263,
-      "percentage": 68.26
-    },
-    {
-      "company": "Independent",
-      "commits": 7968,
-      "percentage": 17.97
-    },
-    {
-      "company": "Unknown",
-      "commits": 6006,
-      "percentage": 13.55
-    },
-    {
       "company": "Red Hat",
-      "commits": 96,
-      "percentage": 0.22
+      "commits": 3509,
+      "percentage": 51.77
+    },
+    {
+      "company": "Revenera",
+      "commits": 1211,
+      "percentage": 17.87
+    },
+    {
+      "company": "Apple",
+      "commits": 916,
+      "percentage": 13.51
+    },
+    {
+      "company": "Ibm",
+      "commits": 400,
+      "percentage": 5.9
+    },
+    {
+      "company": "Hyte Technologies, Inc",
+      "commits": 257,
+      "percentage": 3.79
+    },
+    {
+      "company": "Tomitribe",
+      "commits": 90,
+      "percentage": 1.33
+    },
+    {
+      "company": "Asf",
+      "commits": 85,
+      "percentage": 1.25
+    },
+    {
+      "company": "Qlik",
+      "commits": 80,
+      "percentage": 1.18
+    },
+    {
+      "company": "Redhatofficial",
+      "commits": 73,
+      "percentage": 1.08
+    },
+    {
+      "company": "Adobe",
+      "commits": 23,
+      "percentage": 0.34
     }
-  ]
+  ],
+  "extracted_at": "2026-07-01T14:21:07.519511"
 }

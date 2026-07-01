@@ -32,6 +32,9 @@ public class ContributorData {
     @JsonProperty("retention_by_quarter")
     public List<RetentionQuarter> retentionByQuarter;
 
+    @JsonProperty("retention_by_year")
+    public List<RetentionYear> retentionByYear;
+
     @JsonProperty("company_diversity")
     public CompanyDiversity companyDiversity;
 
@@ -67,7 +70,10 @@ public class ContributorData {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class RetentionQuarter {
-        public String quarter;
+        public String period;
+
+        @JsonProperty("period_type")
+        public String periodType;
 
         @JsonProperty("start_date")
         public String startDate;
@@ -86,6 +92,35 @@ public class ContributorData {
 
         @JsonProperty("retention_rate")
         public Double retentionRate;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class RetentionYear {
+        public String period;
+
+        @JsonProperty("period_type")
+        public String periodType;
+
+        @JsonProperty("start_date")
+        public String startDate;
+
+        @JsonProperty("end_date")
+        public String endDate;
+
+        @JsonProperty("active_contributors")
+        public Integer activeContributors;
+
+        @JsonProperty("new_contributors")
+        public Integer newContributors;
+
+        @JsonProperty("returning_contributors")
+        public Integer returningContributors;
+
+        @JsonProperty("retention_rate")
+        public Double retentionRate;
+
+        @JsonProperty("is_current")
+        public Boolean isCurrent;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -120,6 +155,9 @@ public class ContributorData {
 
         @JsonProperty("retention_by_quarter")
         public String retentionByQuarter;
+
+        @JsonProperty("retention_by_year")
+        public String retentionByYear;
     }
 }
 

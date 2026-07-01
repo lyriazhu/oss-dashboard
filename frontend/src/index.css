@@ -106,10 +106,11 @@
 
   /* Bar chart */
   .bars{
-    display:flex;
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(0, 1fr);
     align-items:flex-end;
-    justify-content:flex-start;
-    gap:.5rem;
+    gap:.25rem;
     height:9rem;
     padding-top:.5rem;
     border-bottom:1px solid var(--border-subtle);
@@ -117,39 +118,19 @@
     min-width:0;
     overflow:hidden;
   }
-  .bars.spread{
-    justify-content:space-between;
-    gap:clamp(0rem, calc((100% - (18 * 3rem)) / 17), .5rem);
-  }
-  .bars.compact{
-    justify-content:space-between;
-    gap:clamp(0rem, calc((100% - (18 * 3rem)) / 17), .125rem);
-  }
-  .bars.dense{
-    display:grid;
-    grid-auto-flow:column;
-    grid-auto-columns:minmax(0, 1fr);
-    justify-content:stretch;
-    gap:0;
-  }
-  .bars.dense .bar-col{
-    flex:1 1 0;
-    width:100%;
-  }
-  .bars.dense .bar{
-    max-width:none;
-  }
+  .bars.spread{ gap:.25rem; }
+  .bars.compact{ gap:.125rem; }
+  .bars.dense{ gap:0; }
   .bar-col{
-    flex:0 0 3rem;
     min-width:0;
-    width:3rem;
+    width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:flex-end;
     height:100%;
   }
-  .bar{width:100%; max-width:3rem; min-width:0; background:var(--blue-30); transition:height .3s ease;}
+  .bar{width:100%; max-width:none; min-width:0; background:var(--blue-30); transition:height .3s ease;}
   .bar.current{background:var(--blue-60);}
   
   /* Stacked bar chart styles */
@@ -191,53 +172,27 @@
   }
   
   .bar-axis{
-    display:flex;
-    justify-content:flex-start;
-    gap:.5rem;
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(0, 1fr);
+    gap:.25rem;
     margin-top:.375rem;
     width:100%;
     min-width:0;
     overflow:hidden;
   }
-  .bar-axis.spread{
-    justify-content:space-between;
-    gap:clamp(0rem, calc((100% - (18 * 3rem)) / 17), .5rem);
-  }
-  .bar-axis.compact{
-    justify-content:space-between;
-    gap:clamp(0rem, calc((100% - (18 * 3rem)) / 17), .125rem);
-  }
-  .bar-axis.dense{
-    display:grid;
-    grid-auto-flow:column;
-    grid-auto-columns:minmax(0, 1fr);
-    justify-content:stretch;
-    gap:0;
-  }
-  .bar-axis.dense span{
-    flex:1 1 0;
-    width:100%;
-  }
+  .bar-axis.spread{ gap:.25rem; }
+  .bar-axis.compact{ gap:.125rem; }
+  .bar-axis.dense{ gap:0; }
   .bar-axis span{
-    flex:0 0 3rem;
     min-width:0;
-    width:3rem;
+    width:100%;
     text-align:center;
     font-size:.75rem;
     color:var(--text-helper);
     overflow:hidden;
     text-overflow:clip;
     white-space:nowrap;
-  }
-  .bar-axis.spread span{
-    flex:0 0 3rem;
-    width:3rem;
-    font-size:.75rem;
-  }
-  .bar-axis.compact span,
-  .bar-axis.dense span{
-    flex:1 1 0;
-    width:100%;
   }
   .bar-axis.compact span{
     font-size:.625rem;
@@ -248,7 +203,7 @@
     letter-spacing:-0.02em;
   }
   .bars.twelve{height:7rem;}
-  .bars.twelve .bar{max-width:1.5rem;}
+  .bars.twelve .bar{max-width:none;}
   .chart-cap{font-size:.75rem; color:var(--text-helper); font-style:italic; margin-top:.625rem;}
 
   /* Carbon DataTable */

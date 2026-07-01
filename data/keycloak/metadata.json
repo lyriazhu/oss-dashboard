@@ -22,23 +22,48 @@
   "top_contributing_companies": [
     {
       "company": "Red Hat",
-      "commits": 53853,
-      "percentage": 44.17
+      "commits": 7556,
+      "percentage": 43.0
     },
     {
-      "company": "Independent",
-      "commits": 45905,
-      "percentage": 37.65
+      "company": "Ibm",
+      "commits": 6737,
+      "percentage": 38.34
     },
     {
-      "company": "Unknown",
-      "commits": 22029,
-      "percentage": 18.07
+      "company": "Red Hat, Inc.",
+      "commits": 652,
+      "percentage": 3.71
     },
     {
-      "company": "Apache Software Foundation",
-      "commits": 124,
-      "percentage": 0.1
+      "company": "Redhatofficial",
+      "commits": 444,
+      "percentage": 2.53
+    },
+    {
+      "company": "Hitachi, Ltd.",
+      "commits": 283,
+      "percentage": 1.61
+    },
+    {
+      "company": "Identity Tailor Gmbh",
+      "commits": 242,
+      "percentage": 1.38
+    },
+    {
+      "company": "Weblateorg",
+      "commits": 162,
+      "percentage": 0.92
+    },
+    {
+      "company": "Chainguard",
+      "commits": 128,
+      "percentage": 0.73
+    },
+    {
+      "company": "Red Hat Ltd",
+      "commits": 122,
+      "percentage": 0.69
     }
   ]
 }

@@ -3,17 +3,68 @@
   "full_name": "Apicurio/apicurio-registry",
   "description": "An API/Schema registry - stores APIs and Schemas.",
   "created_at": "2019-07-16T12:44:20+00:00",
-  "updated_at": "2026-06-30T12:29:00+00:00",
-  "stars": 819,
-  "forks": 322,
-  "watchers": 819,
-  "open_issues": 337,
+  "updated_at": "2026-07-01T15:16:28+00:00",
+  "stars": 820,
+  "forks": 323,
+  "watchers": 820,
+  "open_issues": 335,
   "language": "Java",
   "topics": [],
   "license": "Apache License 2.0",
   "homepage": "https://www.apicur.io/registry/",
   "has_wiki": false,
   "has_discussions": null,
-  "top_contributing_companies": [],
-  "extracted_at": "2026-06-30T11:01:11.094576"
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 2125,
+      "percentage": 68.81
+    },
+    {
+      "company": "Red Hat",
+      "commits": 727,
+      "percentage": 23.54
+    },
+    {
+      "company": "Diagrid",
+      "commits": 141,
+      "percentage": 4.57
+    },
+    {
+      "company": "Senior Software Engineer @ Netsearch",
+      "commits": 18,
+      "percentage": 0.58
+    },
+    {
+      "company": "Aws",
+      "commits": 10,
+      "percentage": 0.32
+    },
+    {
+      "company": "Epam",
+      "commits": 7,
+      "percentage": 0.23
+    },
+    {
+      "company": "Zenwave360",
+      "commits": 7,
+      "percentage": 0.23
+    },
+    {
+      "company": "Libon",
+      "commits": 5,
+      "percentage": 0.16
+    },
+    {
+      "company": "Ibm Pvt Ltd",
+      "commits": 4,
+      "percentage": 0.13
+    },
+    {
+      "company": "Jboss By Red Hat By Ibm",
+      "commits": 3,
+      "percentage": 0.1
+    }
+  ],
+  "extracted_at": "2026-07-01T13:43:31.775404"
 }

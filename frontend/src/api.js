@@ -213,85 +213,51 @@ export function transformProjectData(project, metrics) {
     : [];
   
   // Format retention data for yearly and quarterly chart views
-  const retentionQuarters = contributors?.retention_by_quarter || [];
-  const retentionYearsMap = new Map();
-
-  const formatQuarter = (monthStr) => {
-    if (!monthStr) return '';
-    const [year, month] = monthStr.split('-');
-    const monthNum = parseInt(month, 10);
-    const quarter = Math.ceil(monthNum / 3);
-    return `Q${quarter} ${year}`;
-  };
+  // retention_by_quarter entries use "period" field e.g. "Q3 2023" (already formatted)
+  // retention_by_year entries use "period" field e.g. "2024"
+  // Backend (Java) serializes as camelCase; JSON files use snake_case — handle both.
+  const retentionQuarters = contributors?.retentionByQuarter || contributors?.retention_by_quarter || [];
+  const retentionYears = contributors?.retentionByYear || contributors?.retention_by_year || [];
 
   const getRetentionPercent = (entry) => {
-    const active = entry?.active_contributors || 0;
+    const active = entry?.activeContributors || entry?.active_contributors || 0;
     if (!active) return 0;
-    return Math.round(((entry.returning_contributors || 0) / active) * 100);
+    return Math.round(((entry.returningContributors || entry.returning_contributors || 0) / active) * 100);
   };
 
+  // Quarterly: period is already a formatted label like "Q3 2023"
   const retentionQuarterly = retentionQuarters.map((entry, idx, arr) => ({
-    q: formatQuarter(entry.quarter),
+    q: entry.period || '',
     v: getRetentionPercent(entry),
-    returning: entry.returning_contributors || 0,
-    newContributors: entry.new_contributors || 0,
-    active: entry.active_contributors || 0,
+    returning: entry.returningContributors || entry.returning_contributors || 0,
+    newContributors: entry.newContributors || entry.new_contributors || 0,
+    active: entry.activeContributors || entry.active_contributors || 0,
     c: idx === arr.length - 1,
   }));
 
-  retentionQuarters.forEach((entry) => {
-    if (!entry?.quarter) return;
-    const [year] = entry.quarter.split('-');
-    if (!year) return;
-
-    const existing = retentionYearsMap.get(year) || {
-      year,
-      returning: 0,
-      newContributors: 0,
-      active: 0,
-    };
-
-    existing.returning += entry.returning_contributors || 0;
-    existing.newContributors += entry.new_contributors || 0;
-    existing.active += entry.active_contributors || 0;
-    retentionYearsMap.set(year, existing);
-  });
-
-  const projectStartYear = metadata?.created_at
-    ? new Date(metadata.created_at).getFullYear()
-    : (retentionYearsMap.size > 0 ? Math.min(...Array.from(retentionYearsMap.keys()).map(Number)) : currentYear);
-
-  const retentionYearEntries = [];
-  for (let year = projectStartYear; year <= currentYear; year++) {
-    const existing = retentionYearsMap.get(String(year)) || {
-      year: String(year),
-      returning: 0,
-      newContributors: 0,
-      active: 0,
-    };
-    retentionYearEntries.push(existing);
-  }
-
-  const retentionYearly = retentionYearEntries.map((entry, idx, arr) => ({
-    y: String(entry.year),
-    v: entry.active > 0 ? Math.round((entry.returning / entry.active) * 100) : 0,
-    returning: entry.returning,
-    newContributors: entry.newContributors,
-    active: entry.active,
-    c: Number(entry.year) === currentYear || idx === arr.length - 1,
+  // Yearly: read directly from retention_by_year (all-time, proper new/returning counts)
+  const retentionYearly = retentionYears.map((entry, idx, arr) => ({
+    y: entry.period || '',
+    v: getRetentionPercent(entry),
+    returning: entry.returningContributors || entry.returning_contributors || 0,
+    newContributors: entry.newContributors || entry.new_contributors || 0,
+    active: entry.activeContributors || entry.active_contributors || 0,
+    c: entry.isCurrent || entry.is_current || idx === arr.length - 1,
   }));
 
   const latestRetention = retentionQuarters[retentionQuarters.length - 1];
 
   const retention = latestRetention ? {
     returning: getRetentionPercent(latestRetention),
-    neu: Math.round((((latestRetention.new_contributors || 0) / (latestRetention.active_contributors || 1)) * 100)) || 0,
-    cap: `${latestRetention.new_contributors || 0} new · ${latestRetention.returning_contributors || 0} returning (${formatQuarter(latestRetention.quarter)})`,
+    neu: Math.round((((latestRetention.newContributors || latestRetention.new_contributors || 0) / (latestRetention.activeContributors || latestRetention.active_contributors || 1)) * 100)) || 0,
+    cap: `${latestRetention.newContributors || latestRetention.new_contributors || 0} new · ${latestRetention.returningContributors || latestRetention.returning_contributors || 0} returning (${latestRetention.period || ''})`,
   } : { returning: 0, neu: 0, cap: 'No data available' };
-  
+
   // Format top companies from metadata
-  const companies = metadata?.top_contributing_companies?.length
-    ? metadata.top_contributing_companies.slice(0, 4).map((c, idx) => ({
+  // Backend (Java) serializes as topContributingCompanies; JSON files use top_contributing_companies
+  const topCompanies = metadata?.topContributingCompanies || metadata?.top_contributing_companies || [];
+  const companies = topCompanies.length
+    ? topCompanies.slice(0, 4).map((c, idx) => ({
         n: c.company || 'Unknown',
         c: formatNumber(c.commits),
         p: `${c.percentage}%`,

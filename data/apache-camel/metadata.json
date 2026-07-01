@@ -3,11 +3,11 @@
   "full_name": "apache/camel",
   "description": "Apache Camel is an open source integration framework with 350+ connectors. Write routes in Java, YAML, or XML. Run on Spring Boot, Quarkus, or standalone. Apache License 2.0.",
   "created_at": "2009-05-21T00:25:36+00:00",
-  "updated_at": "2026-06-29T19:48:52+00:00",
-  "stars": 6249,
-  "forks": 5133,
-  "watchers": 6249,
-  "open_issues": 23,
+  "updated_at": "2026-07-01T16:19:41+00:00",
+  "stars": 6251,
+  "forks": 5131,
+  "watchers": 6251,
+  "open_issues": 27,
   "language": "Java",
   "topics": [
     "camel",
@@ -31,27 +31,57 @@
   "homepage": "https://camel.apache.org",
   "has_wiki": false,
   "has_discussions": null,
-  "extracted_at": "2026-06-29T16:43:10.224499",
   "top_contributing_companies": [
     {
-      "company": "Independent",
-      "commits": 189024,
-      "percentage": 62.1
-    },
-    {
-      "company": "Apache Software Foundation",
-      "commits": 76994,
-      "percentage": 25.29
-    },
-    {
-      "company": "Unknown",
-      "commits": 28316,
-      "percentage": 9.3
+      "company": "Ibm",
+      "commits": 53687,
+      "percentage": 84.45
     },
     {
       "company": "Red Hat",
-      "commits": 10073,
-      "percentage": 3.31
+      "commits": 3629,
+      "percentage": 5.71
+    },
+    {
+      "company": "Apple",
+      "commits": 1385,
+      "percentage": 2.18
+    },
+    {
+      "company": "Cyberlogic Consulting Gmbh",
+      "commits": 909,
+      "percentage": 1.43
+    },
+    {
+      "company": "Asf",
+      "commits": 757,
+      "percentage": 1.19
+    },
+    {
+      "company": "Qlik",
+      "commits": 568,
+      "percentage": 0.89
+    },
+    {
+      "company": "Redpanda Data",
+      "commits": 301,
+      "percentage": 0.47
+    },
+    {
+      "company": "Https://Www.Redhat.Com/",
+      "commits": 249,
+      "percentage": 0.39
+    },
+    {
+      "company": "Dremio",
+      "commits": 221,
+      "percentage": 0.35
+    },
+    {
+      "company": "Adobe",
+      "commits": 179,
+      "percentage": 0.28
     }
-  ]
+  ],
+  "extracted_at": "2026-07-01T14:23:54.053164"
 }

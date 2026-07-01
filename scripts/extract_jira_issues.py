@@ -5,11 +5,15 @@ Extract Jira issue metrics for projects that do not use GitHub issues.
 This script fetches Jira issues via the public Jira REST API, normalizes them,
 aggregates them into the dashboard issues.json schema, and writes the result
 into the project's data directory.
+
+Usage: python3 extract_jira_issues.py <project_name>
+Example: python3 extract_jira_issues.py "Apache ActiveMQ"
 """
 
 import json
 import statistics
 import sys
+import yaml
 from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -29,7 +33,15 @@ class YearBucket(TypedDict):
     closed_issue_count: int
 
 
+# Keys are config 'name' values — must match extract_github_data.py _project_dir()
 DIR_NAME_MAP = {
+    "Strimzi": "strimzi",
+    "Apache Camel": "apache-camel",
+    "Apache ActiveMQ": "apache-activemq",
+    "Apicurio Registry": "apicurio",
+    "3scale": "3scale",
+    "Keycloak": "keycloak",
+    # legacy repo-name keys for backward compatibility
     "strimzi-kafka-operator": "strimzi",
     "camel": "apache-camel",
     "activemq": "apache-activemq",
@@ -38,8 +50,22 @@ DIR_NAME_MAP = {
 }
 
 
-def project_dir_name(project_id: str) -> str:
-    return DIR_NAME_MAP.get(project_id, project_id.lower().replace(" ", "-"))
+def project_dir_name(project_name: str) -> str:
+    return DIR_NAME_MAP.get(project_name, project_name.lower().replace(" ", "-"))
+
+
+def load_config() -> Dict[str, Any]:
+    config_file = Path(__file__).parent / "config.yaml"
+    with open(config_file, "r") as f:
+        return yaml.safe_load(f)
+
+
+def find_project(project_identifier: str, config: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Find a project by name (case-insensitive) from config.yaml."""
+    for project in config.get("projects", []):
+        if project["name"].lower() == project_identifier.lower():
+            return project
+    return None
 
 
 def parse_jira_datetime(value: Optional[str]) -> Optional[datetime]:
@@ -226,22 +252,9 @@ def normalize_jira_issues(raw_issues: List[Dict[str, Any]]) -> List[Dict[str, An
     return normalized
 
 
-def load_projects() -> Dict[str, Any]:
-    projects_file = Path(__file__).parent.parent / "data" / "projects.json"
-    with open(projects_file, "r") as f:
-        return json.load(f)
-
-
-def find_project(project_identifier: str, projects_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-    for project in projects_data["projects"]:
-        if project["id"].lower() == project_identifier.lower() or project["name"].lower() == project_identifier.lower():
-            return project
-    return None
-
-
-def save_issue_data(project_id: str, issue_data: Dict[str, Any]) -> Path:
+def save_issue_data(project_name: str, issue_data: Dict[str, Any]) -> Path:
     data_dir = Path(__file__).parent.parent / "data"
-    project_dir = data_dir / project_dir_name(project_id)
+    project_dir = data_dir / project_dir_name(project_name)
     project_dir.mkdir(parents=True, exist_ok=True)
     output_file = project_dir / "issues.json"
 
@@ -253,33 +266,37 @@ def save_issue_data(project_id: str, issue_data: Dict[str, Any]) -> Path:
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 extract_jira_issues.py <project_id_or_name>")
-        print("Example: python3 extract_jira_issues.py camel")
+        print("Usage: python3 extract_jira_issues.py <project_name>")
+        print('Example: python3 extract_jira_issues.py "Apache ActiveMQ"')
         sys.exit(1)
 
     project_identifier = sys.argv[1]
-    projects_data = load_projects()
-    project = find_project(project_identifier, projects_data)
+    config = load_config()
+    project = find_project(project_identifier, config)
 
     if not project:
-        print(f"❌ Project '{project_identifier}' not found in data/projects.json")
+        print(f"❌ Project '{project_identifier}' not found in config.yaml")
+        print("\nAvailable projects:")
+        for p in config.get("projects", []):
+            print(f"  - {p['name']}")
         sys.exit(1)
 
     if project.get("issue_source") != "jira":
-        print(f"❌ Project '{project['id']}' is not configured for Jira issue extraction")
+        print(f"❌ Project '{project['name']}' is not configured for Jira issue extraction")
+        print(f"   Set 'issue_source: jira' and 'jira_project_key' in config.yaml")
         sys.exit(1)
 
     jira_project_key = project.get("jira_project_key")
     jira_base_url = project.get("jira_base_url", "https://issues.apache.org/jira")
 
     if not jira_project_key:
-        print(f"❌ Project '{project['id']}' is missing jira_project_key")
+        print(f"❌ Project '{project['name']}' is missing jira_project_key in config.yaml")
         sys.exit(1)
 
     raw_issues = fetch_jira_issues(jira_base_url, jira_project_key)
     normalized_issues = normalize_jira_issues(raw_issues)
     issue_data = aggregate_issue_metrics(normalized_issues)
-    output_file = save_issue_data(project["id"], issue_data)
+    output_file = save_issue_data(project["name"], issue_data)
 
     print(f"\n✅ Saved Jira issue data to {output_file}")
     print(
