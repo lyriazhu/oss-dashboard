@@ -25,8 +25,9 @@ export function Tile({ label, value, help }) {
 export function BarChart({ values, labels, currentIndex, variant, tooltipLabel = "commits", tooltipFormatter }) {
   const cur = currentIndex == null ? values.length - 1 : currentIndex;
   const m = maxOf(values);
-  const barsCls = "bars" + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
-  const axisCls = "bar-axis" + (variant === "mini" ? " mini" : "");
+  const densityCls = values.length >= 18 ? " dense" : values.length >= 12 ? " compact" : "";
+  const barsCls = "bars" + densityCls + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
+  const axisCls = "bar-axis" + densityCls + (variant === "mini" ? " mini" : "");
   
   // Format number with commas for tooltip
   const formatNumber = (num) => num.toLocaleString('en-US');
@@ -68,8 +69,9 @@ export function StackedBarChart({ values, labels, currentIndex, variant, tooltip
   const totals = values.map(v => segmentOrder.reduce((sum, key) => sum + (v[key] || 0), 0));
   const m = maxOf(totals);
   
-  const barsCls = "bars" + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
-  const axisCls = "bar-axis" + (variant === "mini" ? " mini" : "");
+  const densityCls = values.length >= 18 ? " dense" : values.length >= 12 ? " compact" : "";
+  const barsCls = "bars" + densityCls + (variant === "twelve" ? " twelve" : "") + (variant === "mini" ? " mini" : "");
+  const axisCls = "bar-axis" + densityCls + (variant === "mini" ? " mini" : "");
   
   // Format number with commas for tooltip
   const formatNumber = (num) => num.toLocaleString('en-US');

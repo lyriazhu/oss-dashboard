@@ -106,11 +106,28 @@
 
   /* Bar chart */
   .bars{
-    display:flex; align-items:flex-end; gap:.5rem; height:9rem;
-    padding-top:.5rem; border-bottom:1px solid var(--border-subtle);
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(0, 1fr);
+    align-items:end;
+    gap:clamp(.0625rem, .4vw, .25rem);
+    height:9rem;
+    padding-top:.5rem;
+    border-bottom:1px solid var(--border-subtle);
+    width:100%;
+    min-width:0;
+    overflow:hidden;
   }
-  .bar-col{flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
-  .bar{width:100%; max-width:3rem; background:var(--blue-30); transition:height .3s ease;}
+  .bar-col{
+    min-width:0;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    height:100%;
+  }
+  .bar{width:100%; max-width:none; min-width:0; background:var(--blue-30); transition:height .3s ease;}
   .bar.current{background:var(--blue-60);}
   
   /* Stacked bar chart styles */
@@ -123,6 +140,7 @@
   .bar.stacked .bar-segment{
     width:100%;
     min-height:1px;
+    min-width:0;
     transition:height .3s ease;
   }
   .bar.stacked .bar-segment.closed{
@@ -150,8 +168,34 @@
     background:#007d79;
   }
   
-  .bar-axis{display:flex; gap:.5rem; margin-top:.375rem;}
-  .bar-axis span{flex:1 1 0; text-align:center; font-size:.75rem; color:var(--text-helper);}
+  .bar-axis{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(0, 1fr);
+    gap:clamp(.0625rem, .4vw, .25rem);
+    margin-top:.375rem;
+    width:100%;
+    min-width:0;
+    overflow:hidden;
+  }
+  .bar-axis span{
+    min-width:0;
+    width:100%;
+    text-align:center;
+    font-size:.75rem;
+    color:var(--text-helper);
+    overflow:hidden;
+    text-overflow:clip;
+    white-space:nowrap;
+  }
+  .bar-axis.compact span{
+    font-size:.625rem;
+    letter-spacing:-0.01em;
+  }
+  .bar-axis.dense span{
+    font-size:.5rem;
+    letter-spacing:-0.02em;
+  }
   .bars.twelve{height:7rem;}
   .bars.twelve .bar{max-width:1.5rem;}
   .chart-cap{font-size:.75rem; color:var(--text-helper); font-style:italic; margin-top:.625rem;}

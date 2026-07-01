@@ -69,7 +69,7 @@ export default function Detail({ d, onOverview }) {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <h2 className="section-h" style={{ margin: 0 }}>
-              {showRetentionQuarterly ? 'Customer retention per quarter' : 'Customer retention per year'}
+              {showRetentionQuarterly ? 'Contributor contention per quarter' : 'Contributor contention per year'}
             </h2>
             <button
               className="btn-secondary"
@@ -97,8 +97,8 @@ export default function Detail({ d, onOverview }) {
                 const returning = point?.returning || 0;
                 const newContributors = point?.newContributors || 0;
                 const active = point?.active || 0;
-                const retentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
-                return `${label}: ${retentionPct}% returning (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+                const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
+                return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
               }}
             />
           ) : (
@@ -107,7 +107,7 @@ export default function Detail({ d, onOverview }) {
                 returning: x.returning || 0,
                 newContributors: x.newContributors || 0,
               })) || [{ returning: 0, newContributors: 0 }]}
-              labels={d.retentionYearly?.map((x) => x.y) || ['2025']}
+              labels={d.retentionYearly?.map((x) => x.y) || [String(new Date().getFullYear())]}
               currentIndex={d.retentionYearly?.findIndex((x) => x.c) || 0}
               segmentOrder={["returning", "newContributors"]}
               tooltipFormatter={({ index, label }) => {
@@ -115,13 +115,13 @@ export default function Detail({ d, onOverview }) {
                 const returning = point?.returning || 0;
                 const newContributors = point?.newContributors || 0;
                 const active = point?.active || 0;
-                const retentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
-                return `${label}: ${retentionPct}% returning (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+                const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
+                return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
               }}
             />
           )}
           <p className="chart-cap">
-            Darker bar = current period · Bottom = returning, top = new contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : 'Contributor mix per year'}
+            Darker bar = current period · Bottom = contributors who returned next period, top = new contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : 'Contributor contention by year'}
           </p>
           <p className="chart-cap">{d.retention.cap}</p>
         </div>
