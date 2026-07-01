@@ -340,10 +340,10 @@
   .breadcrumb button:hover{text-decoration:underline;}
   .breadcrumb .sep{color:var(--gray-50);}
 
-  .title-row{display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap;}
+  .title-row{display:flex; align-items:center !important; gap:1rem; flex-wrap:wrap;}
   .page-title{font-size:2rem; line-height:2.5rem; font-weight:400; letter-spacing:0; margin:0; color:var(--text-primary);}
   .meta-line{margin:.25rem 0 0; font-size:.875rem; color:var(--text-secondary); display:flex; gap:1rem; flex-wrap:wrap;}
-  .title-row .tag{margin-top:.25rem;}
+  .title-row .tag{margin:0 !important; align-self:center !important;}
 
   .det-tiles{margin-top:var(--sp-06);}
   .two-col{display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:var(--sp-07);}
