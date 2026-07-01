@@ -130,7 +130,7 @@ export function transformProjectData(project, metrics) {
     { l: 'Companies', v: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—', h: 'Via commit email domains' },
     { l: 'Commits (YTD)', v: formatNumber(commitsYtd), h: 'Total commits this year' },
     { l: 'GitHub stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
-    { l: 'Open issues', v: formatNumber(issues?.open_issues), h: `Avg. resolution: ${Math.round(issues?.avg_resolution_time_days || 0)} days` },
+    { l: 'Open issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? issues.median_resolution_time_days.toFixed(1) : '—'} days` },
     { l: 'Pull Requests (YTD)', v: formatNumber(prYtd), h: `${formatNumber(mergedPrYtd)} merged` },
     { l: 'Releases', v: formatNumber(releases?.total_releases), h: 'Total releases' },
     { l: 'Language', v: metadata?.language || '—', h: metadata?.license || 'No license' },

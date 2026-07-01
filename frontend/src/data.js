@@ -12,7 +12,7 @@ export const INITIAL_DATA = {
       {l:"Companies", v:"450+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"5,282", h:"vs 6,563 in 2024"},
       {l:"GitHub stars", v:"6,200+", h:"5,100+ forks"},
-      {l:"Open issues", v:"214", h:"Avg. resolution: 8 days"},
+      {l:"Open issues", v:"214", h:"Median resolution: 8.0 days"},
       {l:"New PRs (Q2)", v:"612", h:"Avg. merge time: 3.2 days"},
       {l:"Releases YTD", v:"25", h:"Core + Spring Boot"},
       {l:"CVEs (12 mo.)", v:"2", h:"Both patched"}
@@ -48,7 +48,7 @@ export const INITIAL_DATA = {
       {l:"Companies", v:"45+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"1,840", h:"vs 1,720 in 2024"},
       {l:"GitHub stars", v:"4,500+", h:"1,400+ forks"},
-      {l:"Open issues", v:"96", h:"Avg. resolution: 6 days"},
+      {l:"Open issues", v:"136", h:"Median resolution: 10.2 days"},
       {l:"New PRs (Q2)", v:"388", h:"Avg. merge time: 2.1 days"},
       {l:"Releases YTD", v:"9", h:"Operator + bridge"},
       {l:"CVEs (12 mo.)", v:"1", h:"Patched"}
@@ -84,7 +84,7 @@ export const INITIAL_DATA = {
       {l:"Companies", v:"80+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"2,100", h:"vs 2,040 in 2024"},
       {l:"GitHub stars", v:"10,100+", h:"2,500+ forks"},
-      {l:"Open issues", v:"302", h:"Avg. resolution: 11 days"},
+      {l:"Open issues", v:"302", h:"Median resolution: 11.0 days"},
       {l:"New PRs (Q2)", v:"540", h:"Avg. merge time: 4.0 days"},
       {l:"Releases YTD", v:"14", h:"Core + connectors"},
       {l:"CVEs (12 mo.)", v:"0", h:"None reported"}
@@ -120,7 +120,7 @@ export const INITIAL_DATA = {
       {l:"Companies", v:"18+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"980", h:"vs 1,320 in 2024"},
       {l:"GitHub stars", v:"1,100+", h:"260+ forks"},
-      {l:"Open issues", v:"148", h:"Avg. resolution: 19 days"},
+      {l:"Open issues", v:"148", h:"Median resolution: 19.0 days"},
       {l:"New PRs (Q2)", v:"112", h:"Avg. merge time: 6.4 days"},
       {l:"Releases YTD", v:"6", h:"Registry v3"},
       {l:"CVEs (12 mo.)", v:"1", h:"Patched"}
@@ -156,7 +156,7 @@ export const INITIAL_DATA = {
       {l:"Companies", v:"8+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"420", h:"First full year"},
       {l:"GitHub stars", v:"280+", h:"40+ forks"},
-      {l:"Open issues", v:"73", h:"Avg. resolution: 14 days"},
+      {l:"Open issues", v:"73", h:"Median resolution: 14.0 days"},
       {l:"New PRs (Q2)", v:"86", h:"Avg. merge time: 3.8 days"},
       {l:"Releases YTD", v:"4", h:"Console + operators"},
       {l:"CVEs (12 mo.)", v:"0", h:"None reported"}
