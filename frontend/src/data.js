@@ -8,8 +8,8 @@ export const INITIAL_DATA = {
     status:{label:"Healthy", cls:"green"},
     ov:{foundation:"Apache SF", contributors:"1,500+", companies:"450+", commits:"5,282", pullRequests:"2,450", stars:"6,200+", quarters:[60,64,56,72]},
     kpis:[
+      {l:"Companies", v:"94", h:"Distinct companies (excl. independents)"},
       {l:"Contributors YTD", v:"153", h:"72 new · 81 returning"},
-      {l:"Companies", v:"450+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"5,282", h:"vs 6,563 in 2024"},
       {l:"GitHub stars", v:"6,200+", h:"5,100+ forks"},
       {l:"Open issues", v:"214", h:"Median resolution: 8.0 days"},
@@ -44,8 +44,8 @@ export const INITIAL_DATA = {
     status:{label:"Healthy", cls:"green"},
     ov:{foundation:"CNCF Sandbox", contributors:"280+", companies:"45+", commits:"1,840", pullRequests:"1,552", stars:"4,500+", quarters:[58,62,56,70]},
     kpis:[
+      {l:"Companies", v:"102", h:"Distinct companies (excl. independents)"},
       {l:"Contributors YTD", v:"88", h:"41 new · 47 returning"},
-      {l:"Companies", v:"45+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"1,840", h:"vs 1,720 in 2024"},
       {l:"GitHub stars", v:"4,500+", h:"1,400+ forks"},
       {l:"Open issues", v:"136", h:"Median resolution: 10.2 days"},
@@ -80,8 +80,8 @@ export const INITIAL_DATA = {
     status:{label:"Healthy", cls:"green"},
     ov:{foundation:"Commonhaus", contributors:"620+", companies:"80+", commits:"2,100", pullRequests:"2,160", stars:"10,100+", quarters:[60,66,58,74]},
     kpis:[
+      {l:"Companies", v:"80+", h:"Distinct companies (excl. independents)"},
       {l:"Contributors YTD", v:"134", h:"58 new · 76 returning"},
-      {l:"Companies", v:"80+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"2,100", h:"vs 2,040 in 2024"},
       {l:"GitHub stars", v:"10,100+", h:"2,500+ forks"},
       {l:"Open issues", v:"302", h:"Median resolution: 11.0 days"},
@@ -116,8 +116,8 @@ export const INITIAL_DATA = {
     status:{label:"Watch", cls:"yellow"},
     ov:{foundation:"Red Hat/IBM", contributors:"120+", companies:"18+", commits:"980", pullRequests:"448", stars:"1,100+", quarters:[56,60,52,66]},
     kpis:[
+      {l:"Companies", v:"42", h:"Distinct companies (excl. independents)"},
       {l:"Contributors YTD", v:"47", h:"19 new · 28 returning"},
-      {l:"Companies", v:"18+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"980", h:"vs 1,320 in 2024"},
       {l:"GitHub stars", v:"1,100+", h:"260+ forks"},
       {l:"Open issues", v:"148", h:"Median resolution: 19.0 days"},
@@ -152,8 +152,8 @@ export const INITIAL_DATA = {
     status:{label:"Growing", cls:"blue"},
     ov:{foundation:"Self-governed", contributors:"35+", companies:"8+", commits:"420", pullRequests:"344", stars:"280+", quarters:[40,44,42,68]},
     kpis:[
+      {l:"Companies", v:"8+", h:"Distinct companies (excl. independents)"},
       {l:"Contributors YTD", v:"22", h:"15 new · 7 returning"},
-      {l:"Companies", v:"8+", h:"Via commit email domains"},
       {l:"Commits YTD", v:"420", h:"First full year"},
       {l:"GitHub stars", v:"280+", h:"40+ forks"},
       {l:"Open issues", v:"73", h:"Median resolution: 14.0 days"},

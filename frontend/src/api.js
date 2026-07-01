@@ -75,6 +75,30 @@ export async function addProject(githubUrl, foundation, website) {
 /**
  * Transform backend data to match the frontend format
  */
+// Patterns that indicate a non-company entry (independent, unknown, bots, etc.)
+const EXCLUDED_COMPANY_PATTERNS = [
+  /^unknown$/i,
+  /^independent/i,
+  /^freelance/i,
+  /^\s*$/,
+  /\[bot\]/i,
+  /^home$/i,
+  /^decentralized$/i,
+  /contractor/i,
+];
+
+function countDistinctCompanies(contributorsList) {
+  if (!contributorsList?.length) return null;
+  const companies = new Set();
+  for (const c of contributorsList) {
+    const co = (c.company || '').trim();
+    if (!co) continue;
+    if (EXCLUDED_COMPANY_PATTERNS.some(p => p.test(co))) continue;
+    companies.add(co.toLowerCase());
+  }
+  return companies.size || null;
+}
+
 export function transformProjectData(project, metrics) {
   if (!metrics) return null;
   
@@ -126,8 +150,8 @@ export function transformProjectData(project, metrics) {
   
   // Format KPIs with safety checks
   const kpis = [
+    { l: 'Companies', v: formatNumber(countDistinctCompanies(contributors?.contributors)), h: 'Distinct companies (excl. independents)' },
     { l: 'Contributors (YTD)', v: formatNumber(contributorsYtd), h: 'Unique contributors this year' },
-    { l: 'Companies', v: contributors?.company_diversity ? formatNumber(contributors.company_diversity) : '—', h: 'Via commit email domains' },
     { l: 'Commits (YTD)', v: formatNumber(commitsYtd), h: 'Total commits this year' },
     { l: 'GitHub stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
     { l: 'Open issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? issues.median_resolution_time_days.toFixed(1) : '—'} days` },

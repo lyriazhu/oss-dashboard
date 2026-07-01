@@ -141,7 +141,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
               </tr>
             </thead>
             <tbody>
-              {order.map((key) => {
+              {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
                 const d = data[key];
                 const o = d.ov;
                 return (
