@@ -590,10 +590,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 0,
+      "active_contributors": 2,
       "new_contributors": 0,
-      "returning_contributors": 0,
-      "retention_rate": null
+      "returning_contributors": 2,
+      "retention_rate": 100.0
     }
   ],
   "retention_by_year": [
