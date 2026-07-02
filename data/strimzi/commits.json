@@ -5845,5 +5845,8 @@
       "commit_count": 1203,
       "is_current": true
     }
-  ]
+  ],
+  "founding_date": "2016-05-06T08:52:33+00:00",
+  "founding_quarter": "Q2 2016",
+  "data_collection_note": "Quarterly commit data available from Q4 2023 onwards. Total commits represents all commits since founding."
 }

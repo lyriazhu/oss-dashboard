@@ -42,6 +42,10 @@ public class ProjectMetadata {
     @JsonProperty("extracted_at")
     public String extractedAt;
     
+    @JsonProperty("founding_date")
+    public String foundingDate;
+
+    
     @JsonProperty("top_contributing_companies")
     public List<CompanyContribution> topContributingCompanies;
     
