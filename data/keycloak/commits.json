@@ -163,7 +163,7 @@
       "location": null,
       "email": "shawkins@redhat.com",
       "profile_url": null,
-      "commit_count": 1723
+      "commit_count": 1725
     },
     {
       "login": "Ricardo Martin",
@@ -244,7 +244,7 @@
       "location": null,
       "email": "hosted@weblate.org",
       "profile_url": null,
-      "commit_count": 826
+      "commit_count": 834
     },
     {
       "login": "Thomas Darimont",
@@ -325,7 +325,7 @@
       "location": null,
       "email": "pzaoral@redhat.com",
       "profile_url": null,
-      "commit_count": 356
+      "commit_count": 360
     },
     {
       "login": "Bruno Oliveira da Silva",
@@ -940,15 +940,6 @@
       "commit_count": 74
     },
     {
-      "login": "AvivGuiser",
-      "name": "AvivGuiser",
-      "company": "Unknown",
-      "location": null,
-      "email": "avivguiser@gmail.com",
-      "profile_url": null,
-      "commit_count": 72
-    },
-    {
       "login": "Martin Kanis",
       "name": "Martin Kanis",
       "company": "Unknown",
@@ -983,6 +974,15 @@
       "email": "pdrozd@redhat.com",
       "profile_url": null,
       "commit_count": 67
+    },
+    {
+      "login": "AvivGuiser",
+      "name": "AvivGuiser",
+      "company": "Unknown",
+      "location": null,
+      "email": "avivguiser@gmail.com",
+      "profile_url": null,
+      "commit_count": 63
     },
     {
       "login": "\u0160imon Vacek",
@@ -2452,6 +2452,15 @@
       "commit_count": 18
     },
     {
+      "login": "TAOFEEK LAWAL",
+      "name": "TAOFEEK LAWAL",
+      "company": "Unknown",
+      "location": null,
+      "email": "taofeeklwl@gmail.com",
+      "profile_url": null,
+      "commit_count": 18
+    },
+    {
       "login": "Hammad Khan",
       "name": "Hammad Khan",
       "company": "Unknown",
@@ -2540,15 +2549,6 @@
       "email": "elijahrum@gmail.com",
       "profile_url": null,
       "commit_count": 17
-    },
-    {
-      "login": "TAOFEEK LAWAL",
-      "name": "TAOFEEK LAWAL",
-      "company": "Unknown",
-      "location": null,
-      "email": "taofeeklwl@gmail.com",
-      "profile_url": null,
-      "commit_count": 16
     },
     {
       "login": "Bj\u00f6rn Eickvonder",
@@ -3160,7 +3160,7 @@
       "location": null,
       "email": "github-actions[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 12
+      "commit_count": 13
     },
     {
       "login": "Alexey Skosyrskiy",
@@ -8833,6 +8833,15 @@
       "commit_count": 4
     },
     {
+      "login": "Vasiliy Mikhailov",
+      "name": "Vasiliy Mikhailov",
+      "company": "Unknown",
+      "location": null,
+      "email": "vasiliy.mikhailov@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "Stefan Wiedemann",
       "name": "Stefan Wiedemann",
       "company": "Unknown",
@@ -12528,15 +12537,6 @@
       "company": "Unknown",
       "location": null,
       "email": "andreas.hoffmann@rtl-extern.de",
-      "profile_url": null,
-      "commit_count": 2
-    },
-    {
-      "login": "Vasiliy Mikhailov",
-      "name": "Vasiliy Mikhailov",
-      "company": "Unknown",
-      "location": null,
-      "email": "vasiliy.mikhailov@gmail.com",
       "profile_url": null,
       "commit_count": 2
     },
@@ -29665,7 +29665,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-01T17:52:37.766103",
+  "extracted_at": "2026-07-01T21:28:02.425831",
   "years": [
     {
       "year": 2013,
@@ -29729,12 +29729,12 @@
     },
     {
       "year": 2025,
-      "commit_count": 9985,
+      "commit_count": 9984,
       "is_current": false
     },
     {
       "year": 2026,
-      "commit_count": 7148,
+      "commit_count": 7147,
       "is_current": true
     }
   ]

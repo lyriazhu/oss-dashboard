@@ -4,6 +4,7 @@ GitHub Data Extraction Script
 Extracts contributor, commit, issue, and PR data from GitHub repositories
 """
 
+import calendar
 import os
 import json
 import yaml
@@ -934,11 +935,58 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting commits: {e}")
             return {}
     
+    # GitHub Search API allows 30 requests/minute (authenticated).
+    # Sleep this many seconds between calls to stay safely under the limit.
+    _SEARCH_RATE_DELAY = 2.2  # 60s / 30 req = 2.0s; 2.2s adds a small safety margin
+
+    def _search_count(self, query: str) -> int:
+        """Return total_count for a GitHub search query with rate-limit pacing."""
+        time.sleep(self._SEARCH_RATE_DELAY)
+        _, data = self.github._Github__requester.requestJsonAndCheck(
+            "GET",
+            "/search/issues",
+            parameters={"q": query, "per_page": 1},
+        )
+        return data.get("total_count", 0)
+
+    def _count_by_year(self, base_query: str, year: int) -> int:
+        """Count items matching base_query created in `year`, summing monthly to avoid the 1000-cap."""
+        year_start = f"{year}-01-01"
+        year_end   = f"{year}-12-31"
+        total = self._search_count(f"{base_query} created:{year_start}..{year_end}")
+        if total < 1000:
+            return total
+        # Hit the cap — sum individual months instead.
+        total = 0
+        for month in range(1, 13):
+            last_day = calendar.monthrange(year, month)[1]
+            m_start = f"{month:02d}-01"
+            m_end   = f"{month:02d}-{last_day:02d}"
+            total += self._search_count(f"{base_query} created:{year}-{m_start}..{year}-{m_end}")
+        return total
+
+    def _count_issues_in_year(self, owner: str, repo: str, year: int) -> tuple:
+        """Return (total, closed) issue counts for a calendar year without the 1000-cap."""
+        base = f"repo:{owner}/{repo} is:issue"
+        return (
+            self._count_by_year(base, year),
+            self._count_by_year(f"{base} is:closed", year),
+        )
+
+    def _count_prs_in_year(self, owner: str, repo: str, year: int) -> tuple:
+        """Return (total, merged) PR counts for a calendar year without the 1000-cap."""
+        base = f"repo:{owner}/{repo} is:pr"
+        return (
+            self._count_by_year(base, year),
+            self._count_by_year(f"{base} is:merged", year),
+        )
+
     def extract_issues(self, repos: List[Dict[str, str]], project_created_at: datetime, project_name: str) -> Dict[str, Any]:
         """Extract issue metrics including monthly and yearly aggregations with incremental updates.
 
         Month-level data: iterates only issues created in the last 12 months (bounded by `since`).
-        Year-level data: uses the GitHub search API totalCount per year — no per-issue iteration.
+        Year-level data: uses _count_issues_in_year() which falls back to quarterly sub-queries
+        to work around the GitHub Search API's 1000-result cap.
 
         Args:
             repos: List of repo dicts with 'owner' and 'repo' keys
@@ -1068,25 +1116,18 @@ class GitHubDataExtractor:
                     total_open_count += repo_open_count
                     print(f"    ✓ Open issues: {repo_open_count}")
 
-                    # ── Year counts via search API (1 call per year, no iteration) ──
-                    print(f"    📊 Counting issues per year via search API...")
+                    # ── Year counts (quarterly fallback avoids the 1000-cap) ──
+                    print(f"    📊 Counting issues per year...")
                     for year in years:
                         # Skip years already populated in an incremental run
                         if since_date and year_data_map[year]["issue_count"] > 0:
                             continue
-                        year_start = f"{year}-01-01"
-                        year_end = f"{year}-12-31"
                         try:
-                            total_q = self.github.search_issues(
-                                f"repo:{owner}/{repo} is:issue created:{year_start}..{year_end}"
-                            ).totalCount
-                            closed_q = self.github.search_issues(
-                                f"repo:{owner}/{repo} is:issue is:closed created:{year_start}..{year_end}"
-                            ).totalCount
+                            total_q, closed_q = self._count_issues_in_year(owner, repo, year)
                             year_data_map[year]["issue_count"] = total_q
                             year_data_map[year]["closed_issue_count"] = closed_q
                         except GithubException as e:
-                            print(f"    ⚠️  Search API error for {year}: {e}")
+                            print(f"    ⚠️  Count error for {year}: {e}")
 
                     # ── Month-level iteration (bounded: last 12 months only) ──
                     # `since` limits GitHub to return only issues updated on or
@@ -1408,25 +1449,18 @@ class GitHubDataExtractor:
                 try:
                     repository = self.github.get_repo(f"{owner}/{repo}")
 
-                    # ── Year counts via search API (1 call per year, no iteration) ──
-                    print(f"    📊 Counting PRs per year via search API...")
+                    # ── Year counts (quarterly fallback avoids the 1000-cap) ──
+                    print(f"    📊 Counting PRs per year...")
                     for year in years:
                         # Skip years already populated in an incremental run
                         if since_date and year_data_map[year]["pr_count"] > 0:
                             continue
-                        year_start = f"{year}-01-01"
-                        year_end = f"{year}-12-31"
                         try:
-                            total_q = self.github.search_issues(
-                                f"repo:{owner}/{repo} is:pr created:{year_start}..{year_end}"
-                            ).totalCount
-                            merged_q = self.github.search_issues(
-                                f"repo:{owner}/{repo} is:pr is:merged created:{year_start}..{year_end}"
-                            ).totalCount
+                            total_q, merged_q = self._count_prs_in_year(owner, repo, year)
                             year_data_map[year]["pr_count"] = total_q
                             year_data_map[year]["merged_pr_count"] = merged_q
                         except GithubException as e:
-                            print(f"    ⚠️  Search API error for {year}: {e}")
+                            print(f"    ⚠️  Count error for {year}: {e}")
 
                     # ── Month-level iteration (bounded: last 12 months only) ──
                     # Sort newest-first so we can break as soon as we fall outside

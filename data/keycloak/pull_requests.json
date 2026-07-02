@@ -1,5 +1,5 @@
 {
-  "total_prs": 4129,
+  "total_prs": 4130,
   "median_time_to_merge_days": 1.32,
   "months": [
     {
@@ -92,11 +92,11 @@
     },
     {
       "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-07-01T19:08:29.782161",
-      "pr_count": 16,
-      "merged_pr_count": 2,
+      "end_date": "2026-07-01T21:28:33.881143",
+      "pr_count": 17,
+      "merged_pr_count": 3,
       "month": "2026-07",
-      "median_time_to_merge_days": 0.2
+      "median_time_to_merge_days": 0.37
     }
   ],
   "years": [
@@ -112,18 +112,18 @@
     },
     {
       "year": 2015,
-      "pr_count": 1000,
+      "pr_count": 1063,
       "merged_pr_count": 957
     },
     {
       "year": 2016,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 1731,
+      "merged_pr_count": 1550
     },
     {
       "year": 2017,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 1195,
+      "merged_pr_count": 1002
     },
     {
       "year": 2018,
@@ -137,39 +137,39 @@
     },
     {
       "year": 2020,
-      "pr_count": 1000,
+      "pr_count": 1067,
       "merged_pr_count": 840
     },
     {
       "year": 2021,
-      "pr_count": 1000,
+      "pr_count": 1082,
       "merged_pr_count": 815
     },
     {
       "year": 2022,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 1695,
+      "merged_pr_count": 1309
     },
     {
       "year": 2023,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 3325,
+      "merged_pr_count": 2731
     },
     {
       "year": 2024,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 4513,
+      "merged_pr_count": 3926
     },
     {
       "year": 2025,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 3875,
+      "merged_pr_count": 3272
     },
     {
       "year": 2026,
-      "pr_count": 1000,
-      "merged_pr_count": 1000
+      "pr_count": 2602,
+      "merged_pr_count": 1892
     }
   ],
-  "extracted_at": "2026-07-01T19:08:29.782188"
+  "extracted_at": "2026-07-01T21:28:33.881198"
 }
