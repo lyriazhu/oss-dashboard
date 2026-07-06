@@ -2,7 +2,6 @@
   "name": "3scale-operator",
   "full_name": "3scale/3scale-operator",
   "description": "Openshift operator to install a 3scale API Management solution",
-  "status": "N/A",
   "created_at": "2018-11-21T16:11:35+00:00",
   "updated_at": "2026-06-19T08:49:57+00:00",
   "stars": 49,
@@ -57,5 +56,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-06T10:28:00.865784"
+  "extracted_at": "2026-07-06T13:51:39.340510"
 }

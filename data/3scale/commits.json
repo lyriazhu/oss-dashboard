@@ -229,20 +229,20 @@
       "commit_count": 15
     },
     {
-      "login": "Guilherme Cassolato",
-      "name": "Guilherme Cassolato",
-      "company": "Unknown",
-      "location": null,
-      "email": "guicassolato@gmail.com",
-      "profile_url": null,
-      "commit_count": 13
-    },
-    {
       "login": "Boris Urbanik",
       "name": "Boris Urbanik",
       "company": "Unknown",
       "location": null,
       "email": "boris.urbanik.dev@gmail.com",
+      "profile_url": null,
+      "commit_count": 13
+    },
+    {
+      "login": "Guilherme Cassolato",
+      "name": "Guilherme Cassolato",
+      "company": "Unknown",
+      "location": null,
+      "email": "guicassolato@gmail.com",
       "profile_url": null,
       "commit_count": 13
     },
@@ -325,7 +325,7 @@
       "location": null,
       "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 9
+      "commit_count": 8
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-06T10:28:12.690149",
+  "extracted_at": "2026-07-06T13:51:49.850055",
   "years": [
     {
       "year": 2018,
