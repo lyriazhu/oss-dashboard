@@ -6,6 +6,7 @@ Extracts contributor, commit, issue, and PR data from GitHub repositories
 
 import calendar
 import os
+import sys
 import json
 import yaml
 import subprocess

@@ -107,12 +107,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 35,
+      "contributor_count": 38,
       "is_current": true
     }
   ],
-  "total_contributors": 393,
-  "total_contributors_git": 393,
+  "total_contributors": 394,
+  "total_contributors_git": 394,
   "contributors": [
     {
       "login": "gtully",
@@ -183,7 +183,7 @@
       "company": "Unknown",
       "location": "Maryland",
       "email": null,
-      "contributions": 609,
+      "contributions": 614,
       "profile_url": "https://github.com/cshannon"
     },
     {
@@ -210,7 +210,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 116,
+      "contributions": 117,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -228,7 +228,7 @@
       "company": "Qlik",
       "location": "Dublin, Ireland",
       "email": null,
-      "contributions": 75,
+      "contributions": 76,
       "profile_url": "https://github.com/coheigea"
     },
     {
@@ -1787,20 +1787,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 28,
-      "new_contributors": 9,
-      "returning_contributors": 19,
-      "retention_rate": 67.86
+      "active_contributors": 26,
+      "new_contributors": 8,
+      "returning_contributors": 18,
+      "retention_rate": 69.23
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 3,
-      "new_contributors": 0,
-      "returning_contributors": 3,
-      "retention_rate": 100.0
+      "active_contributors": 14,
+      "new_contributors": 2,
+      "returning_contributors": 12,
+      "retention_rate": 85.71
     }
   ],
   "retention_by_year": [
@@ -2040,10 +2040,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 35,
-      "new_contributors": 19,
-      "returning_contributors": 16,
-      "retention_rate": 45.71,
+      "active_contributors": 38,
+      "new_contributors": 20,
+      "returning_contributors": 18,
+      "retention_rate": 47.37,
       "is_current": true
     }
   ],

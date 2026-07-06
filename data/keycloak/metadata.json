@@ -3,11 +3,11 @@
   "full_name": "keycloak/keycloak",
   "description": "Open Source Identity and Access Management For Modern Applications and Services",
   "created_at": "2013-07-02T13:38:51+00:00",
-  "updated_at": "2026-07-01T22:44:27+00:00",
-  "stars": 35457,
-  "forks": 8577,
-  "watchers": 35457,
-  "open_issues": 2894,
+  "updated_at": "2026-07-06T14:17:33+00:00",
+  "stars": 35514,
+  "forks": 8600,
+  "watchers": 35514,
+  "open_issues": 2896,
   "language": "Java",
   "topics": [
     "keycloak",
@@ -21,18 +21,18 @@
   "top_contributing_companies": [
     {
       "company": "Red Hat",
-      "commits": 7559,
-      "percentage": 42.98
+      "commits": 7564,
+      "percentage": 42.94
     },
     {
       "company": "Ibm",
-      "commits": 6747,
-      "percentage": 38.36
+      "commits": 6765,
+      "percentage": 38.41
     },
     {
       "company": "Red Hat, Inc.",
       "commits": 652,
-      "percentage": 3.71
+      "percentage": 3.7
     },
     {
       "company": "Redhatofficial",
@@ -46,13 +46,13 @@
     },
     {
       "company": "Identity Tailor Gmbh",
-      "commits": 243,
-      "percentage": 1.38
+      "commits": 246,
+      "percentage": 1.4
     },
     {
       "company": "Weblateorg",
-      "commits": 162,
-      "percentage": 0.92
+      "commits": 163,
+      "percentage": 0.93
     },
     {
       "company": "Chainguard",
@@ -70,6 +70,5 @@
       "percentage": 0.69
     }
   ],
-  "extracted_at": "2026-07-01T21:27:34.089611",
-  "founding_date": "2013-07-02T13:38:51+00:00"
+  "extracted_at": "2026-07-06T10:24:19.346125"
 }

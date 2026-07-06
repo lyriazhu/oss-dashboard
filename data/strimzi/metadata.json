@@ -3,11 +3,11 @@
   "full_name": "strimzi/strimzi-kafka-operator",
   "description": "Apache Kafka\u00ae running on Kubernetes",
   "created_at": "2016-05-06T08:52:33+00:00",
-  "updated_at": "2026-07-01T18:39:57+00:00",
-  "stars": 5854,
-  "forks": 1507,
-  "watchers": 5854,
-  "open_issues": 144,
+  "updated_at": "2026-07-06T13:36:26+00:00",
+  "stars": 5860,
+  "forks": 1508,
+  "watchers": 5860,
+  "open_issues": 143,
   "language": "Java",
   "topics": [
     "kafka",
@@ -30,13 +30,13 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 2472,
-      "percentage": 78.73
+      "commits": 2473,
+      "percentage": 78.68
     },
     {
       "company": "Red Hat",
       "commits": 317,
-      "percentage": 10.1
+      "percentage": 10.09
     },
     {
       "company": "Engineer At Red Hat",
@@ -46,7 +46,7 @@
     {
       "company": "Ibm, Ex-Red Hat",
       "commits": 57,
-      "percentage": 1.82
+      "percentage": 1.81
     },
     {
       "company": "Redhat",
@@ -79,6 +79,5 @@
       "percentage": 0.25
     }
   ],
-  "extracted_at": "2026-07-01T16:32:36.100922",
-  "founding_date": "2016-05-06T08:52:33+00:00"
+  "extracted_at": "2026-07-06T10:21:18.771192"
 }

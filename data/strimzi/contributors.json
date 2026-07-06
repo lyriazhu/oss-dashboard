@@ -65,7 +65,7 @@
       "company": "Unknown",
       "location": "Prague, Czech Republic",
       "email": "github@scholzj.com",
-      "contributions": 2355,
+      "contributions": 2357,
       "profile_url": "https://github.com/scholzj"
     },
     {
@@ -74,7 +74,7 @@
       "company": "Ibm",
       "location": "Italy",
       "email": null,
-      "contributions": 866,
+      "contributions": 867,
       "profile_url": "https://github.com/ppatierno"
     },
     {
@@ -744,6 +744,15 @@
       "profile_url": "https://github.com/xsreality"
     },
     {
+      "login": "BK202503",
+      "name": "Bill Kim (\uae40\ube4c)",
+      "company": "Musinsa",
+      "location": null,
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/BK202503"
+    },
+    {
       "login": "RouxAntoine",
       "name": "Antoine",
       "company": "Https://Antoine-Roux.Tk/Projects",
@@ -922,15 +931,6 @@
       "email": "andreworty@gmail.com",
       "contributions": 2,
       "profile_url": "https://github.com/ortex"
-    },
-    {
-      "login": "BK202503",
-      "name": "Bill Kim (\uae40\ube4c)",
-      "company": "Musinsa",
-      "location": null,
-      "email": null,
-      "contributions": 2,
-      "profile_url": "https://github.com/BK202503"
     },
     {
       "login": "coltmcnealy-lh",
@@ -2866,11 +2866,29 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/kunallimaye"
+    },
+    {
+      "login": "anxkhn",
+      "name": "Anas Khan",
+      "company": "Interviewstreet",
+      "location": "blr / (hopefully) sf",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/anxkhn"
+    },
+    {
+      "login": "acgtun",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": "Palo Alto, CA",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/acgtun"
     }
   ],
-  "total_contributors_github_api": 312,
+  "total_contributors_github_api": 314,
   "companies": {
-    "Unknown": 155,
+    "Unknown": 156,
     "Red Hat": 29,
     "Ibm": 23,
     "Hetznercloud": 2,
@@ -2892,12 +2910,12 @@
     "Marshmallow": 1,
     "Placer.Ai": 1,
     "Red-Hat-Data-Services": 1,
+    "Musinsa": 1,
     "Https://Antoine-Roux.Tk/Projects": 1,
     "Grafana": 1,
     "Nuberabe": 1,
     "Iptch": 1,
     "Agile Actors": 1,
-    "Musinsa": 1,
     "Littlehorse Enterprises": 1,
     "Playtomic": 1,
     "Independent Contractor": 1,
@@ -2973,16 +2991,17 @@
     "Invers Gmbh": 1,
     "Braze-Inc": 1,
     "Feedzai": 1,
-    "Ollygarden": 1
+    "Ollygarden": 1,
+    "Interviewstreet": 1
   },
-  "total_companies": 104,
+  "total_companies": 105,
   "company_diversity": {
-    "known_company_contributors": 157,
-    "unknown_company_contributors": 155,
+    "known_company_contributors": 158,
+    "unknown_company_contributors": 156,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 155
+        "contributor_count": 156
       },
       {
         "company": "Red Hat",
@@ -3128,20 +3147,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 56,
-      "new_contributors": 32,
+      "active_contributors": 53,
+      "new_contributors": 29,
       "returning_contributors": 24,
-      "retention_rate": 42.86
+      "retention_rate": 45.28
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 8,
-      "new_contributors": 1,
-      "returning_contributors": 7,
-      "retention_rate": 87.5
+      "active_contributors": 18,
+      "new_contributors": 4,
+      "returning_contributors": 14,
+      "retention_rate": 77.78
     }
   ],
   "retention_by_year": [

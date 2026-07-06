@@ -2,12 +2,12 @@
   "name": "activemq",
   "full_name": "apache/activemq",
   "description": "Apache ActiveMQ",
-  "created_at": "2005-12-01T00:00:00+00:00",
-  "updated_at": "2026-07-01T16:35:24+00:00",
-  "stars": 2441,
+  "created_at": "2009-05-21T01:33:45+00:00",
+  "updated_at": "2026-07-06T12:47:32+00:00",
+  "stars": 2442,
   "forks": 1489,
-  "watchers": 2441,
-  "open_issues": 78,
+  "watchers": 2442,
+  "open_issues": 82,
   "language": "Java",
   "topics": [
     "activemq",
@@ -30,12 +30,12 @@
     {
       "company": "Red Hat",
       "commits": 3509,
-      "percentage": 51.77
+      "percentage": 51.76
     },
     {
       "company": "Revenera",
       "commits": 1211,
-      "percentage": 17.87
+      "percentage": 17.86
     },
     {
       "company": "Apple",
@@ -64,8 +64,8 @@
     },
     {
       "company": "Qlik",
-      "commits": 80,
-      "percentage": 1.18
+      "commits": 81,
+      "percentage": 1.19
     },
     {
       "company": "Redhatofficial",
@@ -78,6 +78,5 @@
       "percentage": 0.34
     }
   ],
-  "extracted_at": "2026-07-01T14:21:07.519511",
-  "founding_date": "2005-12-01T00:00:00+00:00"
+  "extracted_at": "2026-07-06T10:23:27.676286"
 }

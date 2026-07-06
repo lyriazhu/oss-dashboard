@@ -1,10 +1,10 @@
 {
-  "total_commits": 1793,
+  "total_commits": 1799,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 4,
+      "commit_count": 10,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 7132
+      "commit_count": 7137
     },
     {
       "login": "Paolo Patierno",
@@ -91,7 +91,7 @@
       "location": null,
       "email": "ppatierno@live.com",
       "profile_url": null,
-      "commit_count": 2555
+      "commit_count": 2557
     },
     {
       "login": "Tom Bentley",
@@ -154,7 +154,7 @@
       "location": null,
       "email": "maros.orsak159@gmail.com",
       "profile_url": null,
-      "commit_count": 973
+      "commit_count": 974
     },
     {
       "login": "PaulRMellor",
@@ -307,7 +307,7 @@
       "location": null,
       "email": "tina.selenge@gmail.com",
       "profile_url": null,
-      "commit_count": 170
+      "commit_count": 173
     },
     {
       "login": "ShubhamRwt",
@@ -418,6 +418,15 @@
       "commit_count": 85
     },
     {
+      "login": "Venkatesh Kannan",
+      "name": "Venkatesh Kannan",
+      "company": "Unknown",
+      "location": null,
+      "email": "venkatesprasad512@gmail.com",
+      "profile_url": null,
+      "commit_count": 80
+    },
+    {
       "login": "dependabot[bot]",
       "name": "dependabot[bot]",
       "company": "Unknown",
@@ -499,22 +508,13 @@
       "commit_count": 56
     },
     {
-      "login": "Venkatesh Kannan",
-      "name": "Venkatesh Kannan",
-      "company": "Unknown",
-      "location": null,
-      "email": "venkatesprasad512@gmail.com",
-      "profile_url": null,
-      "commit_count": 51
-    },
-    {
       "login": "Gantigmaa Selenge",
       "name": "Gantigmaa Selenge",
       "company": "Unknown",
       "location": null,
       "email": "39860586+tinaselenge@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 49
+      "commit_count": 51
     },
     {
       "login": "Vaibhav-Nazare",
@@ -721,7 +721,7 @@
       "location": null,
       "email": "guancioul@gmail.com",
       "profile_url": null,
-      "commit_count": 23
+      "commit_count": 24
     },
     {
       "login": "Simon Woodman",
@@ -1117,7 +1117,7 @@
       "location": null,
       "email": "haifengc@twitter.com",
       "profile_url": null,
-      "commit_count": 11
+      "commit_count": 12
     },
     {
       "login": "Shubham Kalloli",
@@ -1504,7 +1504,7 @@
       "location": null,
       "email": "199436087+bk202503@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 8
     },
     {
       "login": "Paarth K.",
@@ -2020,6 +2020,24 @@
       "commit_count": 5
     },
     {
+      "login": "bboyleonp666",
+      "name": "bboyleonp666",
+      "company": "Unknown",
+      "location": null,
+      "email": "bboyleonp@gmail.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Anas Khan",
+      "name": "Anas Khan",
+      "company": "Unknown",
+      "location": null,
+      "email": "83116240+anxkhn@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
       "login": "mastermaxx03",
       "name": "mastermaxx03",
       "company": "Unknown",
@@ -2425,22 +2443,13 @@
       "commit_count": 4
     },
     {
-      "login": "bboyleonp666",
-      "name": "bboyleonp666",
-      "company": "Unknown",
-      "location": null,
-      "email": "bboyleonp@gmail.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
       "login": "Bill Kim (\uae40\ube4c)",
       "name": "Bill Kim (\uae40\ube4c)",
       "company": "Unknown",
       "location": null,
       "email": "billkimjh@gmail.com",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Venkatesh Prasad Kannan",
@@ -2449,7 +2458,7 @@
       "location": null,
       "email": "personal@venkateshkannan.me",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "halo",
@@ -2998,7 +3007,7 @@
       "location": null,
       "email": "yevhenii@pillar.security",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "HCL",
@@ -4108,22 +4117,13 @@
       "commit_count": 2
     },
     {
-      "login": "Paolo Patierno",
-      "name": "Paolo Patierno",
-      "company": "Unknown",
-      "location": null,
-      "email": "paolo.patierno@gmail.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
       "login": "Mehrdad Biukian",
       "name": "Mehrdad Biukian",
       "company": "Unknown",
       "location": null,
       "email": "80095851+mehrdadbn9@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Geonhyeon Kim",
@@ -4132,7 +4132,7 @@
       "location": null,
       "email": "rjsgus20@naver.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Geonhyeon Kim",
@@ -4140,6 +4140,24 @@
       "company": "Unknown",
       "location": null,
       "email": "geon1120@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "hchen@x.ai",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "paolo.patierno@gmail.com",
       "profile_url": null,
       "commit_count": 1
     },
@@ -4176,15 +4194,6 @@
       "company": "Unknown",
       "location": null,
       "email": "87874775+officialasishkumar@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "Haifeng Chen",
-      "name": "Haifeng Chen",
-      "company": "Unknown",
-      "location": null,
-      "email": "hchen@x.ai",
       "profile_url": null,
       "commit_count": 1
     },
@@ -5788,7 +5797,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-01T16:32:57.315729",
+  "extracted_at": "2026-07-06T10:21:37.580775",
   "years": [
     {
       "year": 2016,
@@ -5842,11 +5851,8 @@
     },
     {
       "year": 2026,
-      "commit_count": 1203,
+      "commit_count": 1226,
       "is_current": true
     }
-  ],
-  "founding_date": "2016-05-06T08:52:33+00:00",
-  "founding_quarter": "Q2 2016",
-  "data_collection_note": "Quarterly commit data available from Q4 2023 onwards. Total commits represents all commits since founding."
+  ]
 }

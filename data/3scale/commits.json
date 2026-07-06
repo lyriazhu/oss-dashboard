@@ -244,7 +244,7 @@
       "location": null,
       "email": "boris.urbanik.dev@gmail.com",
       "profile_url": null,
-      "commit_count": 12
+      "commit_count": 13
     },
     {
       "login": "pstefans",
@@ -325,7 +325,7 @@
       "location": null,
       "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 8
+      "commit_count": 9
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-02T10:14:05.378780",
+  "extracted_at": "2026-07-06T10:28:12.690149",
   "years": [
     {
       "year": 2018,
@@ -711,11 +711,8 @@
     },
     {
       "year": 2026,
-      "commit_count": 144,
+      "commit_count": 145,
       "is_current": true
     }
-  ],
-  "founding_date": "2018-11-21T16:11:35+00:00",
-  "founding_quarter": "Q4 2018",
-  "data_collection_note": "Quarterly commit data available from Q4 2023 onwards. Total commits represents all commits since founding."
+  ]
 }

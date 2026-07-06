@@ -67,6 +67,7 @@
       "abaus-vc",
       "abhishek-jaisingh",
       "abyth",
+      "acgtun",
       "adamzr",
       "adinhodovic",
       "afausti",
@@ -77,6 +78,7 @@
       "alexandernilsson",
       "allanmoso",
       "allwritesri",
+      "anxkhn",
       "arnitolog",
       "asorokhtey",
       "aswinayyolath",
@@ -314,18 +316,18 @@
       "zivi-dodis",
       "zzhu2"
     ],
-    "last_extracted_at": "2026-07-01T16:32:48.674114"
+    "last_extracted_at": "2026-07-06T10:21:29.789252"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-01T16:32:57.315736"
+    "last_git_sync_at": "2026-07-06T10:21:37.580781"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-01T17:01:28.275478"
+    "last_extracted_at": "2026-07-06T10:21:45.413518"
   },
   "issues": {
-    "last_extracted_at": "2026-07-01T17:01:26.824382"
+    "last_extracted_at": "2026-07-06T10:21:39.073089"
   },
   "releases": {
-    "last_extracted_at": "2026-07-01T17:01:30.337800"
+    "last_extracted_at": "2026-07-06T10:21:47.670056"
   }
 }

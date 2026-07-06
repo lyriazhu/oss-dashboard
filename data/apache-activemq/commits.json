@@ -1,10 +1,10 @@
 {
-  "total_commits": 972,
+  "total_commits": 979,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 0,
+      "commit_count": 7,
       "quarter": "Q3 2026"
     },
     {
@@ -100,7 +100,7 @@
       "location": null,
       "email": "jbonofre@apache.org",
       "profile_url": null,
-      "commit_count": 2103
+      "commit_count": 2104
     },
     {
       "login": "James Strachan",
@@ -172,7 +172,7 @@
       "location": null,
       "email": "cshannon@apache.org",
       "profile_url": null,
-      "commit_count": 454
+      "commit_count": 488
     },
     {
       "login": "Adrian T. Co",
@@ -184,6 +184,15 @@
       "commit_count": 389
     },
     {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 363
+    },
+    {
       "login": "Jean-Louis Monteiro",
       "name": "Jean-Louis Monteiro",
       "company": "Unknown",
@@ -193,22 +202,13 @@
       "commit_count": 352
     },
     {
-      "login": "dependabot[bot]",
-      "name": "dependabot[bot]",
-      "company": "Unknown",
-      "location": null,
-      "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 341
-    },
-    {
       "login": "Matt Pavlovich",
       "name": "Matt Pavlovich",
       "company": "Unknown",
       "location": null,
       "email": "matt@hyte.io",
       "profile_url": null,
-      "commit_count": 338
+      "commit_count": 339
     },
     {
       "login": "Matt Pavlovich",
@@ -217,7 +217,7 @@
       "location": null,
       "email": "mattrpav@apache.org",
       "profile_url": null,
-      "commit_count": 322
+      "commit_count": 323
     },
     {
       "login": "Dejan Bosanac",
@@ -271,7 +271,7 @@
       "location": null,
       "email": "coheigea@apache.org",
       "profile_url": null,
-      "commit_count": 158
+      "commit_count": 161
     },
     {
       "login": "David Jencks",
@@ -580,6 +580,15 @@
       "commit_count": 22
     },
     {
+      "login": "Anmol Saxena",
+      "name": "Anmol Saxena",
+      "company": "Unknown",
+      "location": null,
+      "email": "asaxena@meshiq.com",
+      "profile_url": null,
+      "commit_count": 22
+    },
+    {
       "login": "mu jianjiang",
       "name": "mu jianjiang",
       "company": "Unknown",
@@ -605,15 +614,6 @@
       "email": "lemoss@amazon.com",
       "profile_url": null,
       "commit_count": 20
-    },
-    {
-      "login": "Anmol Saxena",
-      "name": "Anmol Saxena",
-      "company": "Unknown",
-      "location": null,
-      "email": "asaxena@meshiq.com",
-      "profile_url": null,
-      "commit_count": 19
     },
     {
       "login": "Benjamin Graf",
@@ -1147,6 +1147,15 @@
       "commit_count": 7
     },
     {
+      "login": "Colm O hEigeartaigh",
+      "name": "Colm O hEigeartaigh",
+      "company": "Unknown",
+      "location": null,
+      "email": "coheigea@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
       "login": "Dmitry Kryukov",
       "name": "Dmitry Kryukov",
       "company": "Unknown",
@@ -1426,15 +1435,6 @@
       "commit_count": 4
     },
     {
-      "login": "Colm O hEigeartaigh",
-      "name": "Colm O hEigeartaigh",
-      "company": "Unknown",
-      "location": null,
-      "email": "coheigea@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 4
-    },
-    {
       "login": "Akki1902",
       "name": "Akki1902",
       "company": "Unknown",
@@ -1639,7 +1639,7 @@
       "location": null,
       "email": "97498198+pradeep85841@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Arnoud",
@@ -1648,16 +1648,7 @@
       "location": null,
       "email": "arnoudja@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Trevor Dyck",
-      "name": "Trevor Dyck",
-      "company": "Unknown",
-      "location": null,
-      "email": "trevdyck@amazon.com",
-      "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Radek Kraus",
@@ -1665,6 +1656,15 @@
       "company": "Unknown",
       "location": null,
       "email": "6397085+lenoch7@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Trevor Dyck",
+      "name": "Trevor Dyck",
+      "company": "Unknown",
+      "location": null,
+      "email": "trevdyck@amazon.com",
       "profile_url": null,
       "commit_count": 3
     },
@@ -2035,7 +2035,7 @@
       "location": null,
       "email": "blackb1rd.mov@gmail.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "Robert Regina",
@@ -2782,7 +2782,16 @@
       "location": null,
       "email": "49990229+tylermurali@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
+    },
+    {
+      "login": "Jarek Potiuk",
+      "name": "Jarek Potiuk",
+      "company": "Unknown",
+      "location": null,
+      "email": "jarek@potiuk.com",
+      "profile_url": null,
+      "commit_count": 2
     },
     {
       "login": "Stanley Zhao",
@@ -3619,7 +3628,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-01T14:21:21.271109",
+  "extracted_at": "2026-07-06T10:23:44.430115",
   "years": [
     {
       "year": 2005,
@@ -3723,16 +3732,13 @@
     },
     {
       "year": 2025,
-      "commit_count": 782,
+      "commit_count": 784,
       "is_current": false
     },
     {
       "year": 2026,
-      "commit_count": 1324,
+      "commit_count": 1375,
       "is_current": true
     }
-  ],
-  "founding_date": "2005-12-01T00:00:00+00:00",
-  "founding_quarter": "Q4 2005",
-  "data_collection_note": "Quarterly commit data available from Q4 2023 onwards. Total commits represents all commits since founding."
+  ]
 }

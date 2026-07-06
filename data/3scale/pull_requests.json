@@ -95,7 +95,8 @@
       "end_date": "2026-07-02T10:14:56.738568",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2026-07"
+      "month": "2026-07",
+      "median_time_to_merge_days": null
     }
   ],
   "years": [
@@ -145,5 +146,5 @@
       "merged_pr_count": 34
     }
   ],
-  "extracted_at": "2026-07-02T10:14:56.738596"
+  "extracted_at": "2026-07-06T10:28:14.144738"
 }

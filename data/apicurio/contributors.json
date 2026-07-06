@@ -37,12 +37,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 52,
+      "contributor_count": 54,
       "is_current": true
     }
   ],
-  "total_contributors": 253,
-  "total_contributors_git": 253,
+  "total_contributors": 255,
+  "total_contributors_git": 255,
   "contributors": [
     {
       "login": "EricWittmann",
@@ -68,7 +68,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 791,
+      "contributions": 798,
       "profile_url": "https://github.com/apps/renovate"
     },
     {
@@ -77,7 +77,7 @@
       "company": "Ibm",
       "location": "Barcelona",
       "email": "carnalca@redhat.com",
-      "contributions": 575,
+      "contributions": 579,
       "profile_url": "https://github.com/carlesarnal"
     },
     {
@@ -104,7 +104,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 204,
+      "contributions": 205,
       "profile_url": "https://github.com/apicurio-ci"
     },
     {
@@ -158,7 +158,7 @@
       "company": "Red Hat",
       "location": "Italy",
       "email": "paolo.antinori@gmail.com",
-      "contributions": 32,
+      "contributions": 34,
       "profile_url": "https://github.com/paoloantinori"
     },
     {
@@ -167,7 +167,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 27,
+      "contributions": 29,
       "profile_url": "https://github.com/vandanayadav7"
     },
     {
@@ -567,6 +567,15 @@
       "profile_url": "https://github.com/jeeger"
     },
     {
+      "login": "twthorn",
+      "name": "Thomas Thornton",
+      "company": "Slack",
+      "location": "Los Angeles Metropolitan Area (Remote)",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/twthorn"
+    },
+    {
       "login": "slknijnenburg",
       "name": "Sebastiaan Knijnenburg",
       "company": "Castoredc",
@@ -700,15 +709,6 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/LinyuYao1021"
-    },
-    {
-      "login": "twthorn",
-      "name": "Thomas Thornton",
-      "company": "Slack",
-      "location": "Los Angeles Metropolitan Area (Remote)",
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/twthorn"
     },
     {
       "login": "souravagrawal",
@@ -1150,11 +1150,20 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/emmanuel-ferdman"
+    },
+    {
+      "login": "yxshwanth",
+      "name": "Yashwanth Reddy Mali",
+      "company": "Unknown",
+      "location": "Boulder, Colorado",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/yxshwanth"
     }
   ],
-  "total_contributors_github_api": 123,
+  "total_contributors_github_api": 124,
   "companies": {
-    "Unknown": 52,
+    "Unknown": 53,
     "Ibm": 15,
     "Red Hat": 12,
     "Aws": 2,
@@ -1171,13 +1180,13 @@
     "Gazebo Today Magazine": 1,
     "Doctolib": 1,
     "Innoq": 1,
+    "Slack": 1,
     "Cloud(X);": 1,
     "Dnanexus": 1,
     "Bol.Com": 1,
     "Activehours": 1,
     "Redhatofficial": 1,
     "Fortnox": 1,
-    "Slack": 1,
     "Nutanix": 1,
     "Tiki Gmbh": 1,
     "Pointclickcare": 1,
@@ -1201,11 +1210,11 @@
   "total_companies": 43,
   "company_diversity": {
     "known_company_contributors": 71,
-    "unknown_company_contributors": 52,
+    "unknown_company_contributors": 53,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 52
+        "contributor_count": 53
       },
       {
         "company": "Ibm",
@@ -1361,10 +1370,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 10,
-      "new_contributors": 2,
-      "returning_contributors": 8,
-      "retention_rate": 80.0
+      "active_contributors": 15,
+      "new_contributors": 4,
+      "returning_contributors": 11,
+      "retention_rate": 73.33
     }
   ],
   "retention_by_year": [
@@ -1450,10 +1459,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 52,
-      "new_contributors": 29,
+      "active_contributors": 54,
+      "new_contributors": 31,
       "returning_contributors": 23,
-      "retention_rate": 44.23,
+      "retention_rate": 42.59,
       "is_current": true
     }
   ],
