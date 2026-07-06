@@ -22,6 +22,7 @@ export default function Detail({ d, onOverview }) {
       </div>
       <p className="meta-line">
         <span>{d.foundation}</span>
+        <span>|</span>
         <span>{d.founded}</span>
       </p>
 

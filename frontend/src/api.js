@@ -118,13 +118,31 @@ export function transformProjectData(project, metrics) {
   const prYtd = currentYearPrData?.prCount || currentYearPrData?.pr_count || 0;
   const mergedPrYtd = currentYearPrData?.mergedPrCount || currentYearPrData?.merged_pr_count || 0;
   
-  // Determine status based on metrics with safety checks
-  let status = { label: 'Watch', cls: 'yellow' };
-  const totalContribs = contributors?.totalContributors || contributors?.total_contributors || 0;
-  if (metadata?.stars >= 1000 && totalContribs > 100) {
-    status = { label: 'Healthy', cls: 'green' };
-  } else if (metadata?.stars >= 200) {
-    status = { label: 'Growing', cls: 'blue' };
+  // Determine status - use metadata.status if available, otherwise calculate
+  let status;
+  if (metadata?.status) {
+    // Use status from metadata if provided
+    if (metadata.status === 'N/A') {
+      status = { label: 'N/A', cls: 'gray' };
+    } else if (metadata.status.toLowerCase() === 'healthy') {
+      status = { label: 'Healthy', cls: 'green' };
+    } else if (metadata.status.toLowerCase() === 'growing') {
+      status = { label: 'Growing', cls: 'blue' };
+    } else if (metadata.status.toLowerCase() === 'watch') {
+      status = { label: 'Watch', cls: 'yellow' };
+    } else {
+      status = { label: metadata.status, cls: 'gray' };
+    }
+  } else {
+    // Calculate status based on metrics
+    const totalContribs = contributors?.totalContributors || contributors?.total_contributors || 0;
+    if (metadata?.stars >= 1000 && totalContribs > 100) {
+      status = { label: 'Healthy', cls: 'green' };
+    } else if (metadata?.stars >= 200) {
+      status = { label: 'Growing', cls: 'blue' };
+    } else {
+      status = { label: 'Watch', cls: 'yellow' };
+    }
   }
   
   // Get quarterly commit data (last 16 quarters)

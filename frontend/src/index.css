@@ -87,6 +87,8 @@
   .tag.yellow .dot{background:var(--yellow-30);}
   .tag.blue{background:var(--blue-20); color:var(--blue-70);}
   .tag.blue .dot{background:var(--blue-60);}
+  .tag.gray{background:var(--gray-20); color:var(--gray-70);}
+  .tag.gray .dot{background:var(--gray-50);}
 
   .section-h{font-size:1rem; line-height:1.375rem; font-weight:600; margin:0 0 1rem; color:var(--text-primary);}
   .section{margin-top:var(--sp-08);}
