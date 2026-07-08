@@ -227,6 +227,11 @@ export default function Detail({ d, onOverview }) {
           )}
         <p className="chart-cap">
           Darker bar = current period · {showPRMonthly ? `Last ${d.prMonthly?.length || 0} months` : 'Total PRs per year'}
+          {d.prMedianMergeDays != null && (
+            <> · Median merge time: <strong>{d.prMedianMergeDays < 1
+              ? `${Math.round(d.prMedianMergeDays * 24)} hrs`
+              : `${d.prMedianMergeDays.toFixed(1)} days`}</strong></>
+          )}
         </p>
       </div>
 
@@ -264,6 +269,11 @@ export default function Detail({ d, onOverview }) {
           )}
         <p className="chart-cap">
           Darker bar = current period · Red = open issues, Blue = closed issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
+          {d.issueMedianResolutionDays != null && (
+            <> · Median resolution time: <strong>{d.issueMedianResolutionDays < 1
+              ? `${Math.round(d.issueMedianResolutionDays * 24)} hrs`
+              : `${d.issueMedianResolutionDays.toFixed(1)} days`}</strong></>
+          )}
         </p>
       </div>
 

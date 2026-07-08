@@ -396,8 +396,10 @@ export function transformProjectData(project, metrics) {
     meta,
     prYearly: prYearlyData.length > 0 ? prYearlyData : [{ y: '2025', v: 0, c: true }],
     prMonthly: prMonthlyData.length > 0 ? prMonthlyData : [],
+    prMedianMergeDays: pull_requests?.median_time_to_merge_days ?? pull_requests?.medianTimeToMergeDays ?? null,
     issueYearly: issueYearlyData.length > 0 ? issueYearlyData : [{ y: '2025', v: 0, c: true }],
     issueMonthly: issueMonthlyData.length > 0 ? issueMonthlyData : [],
+    issueMedianResolutionDays: issues?.median_resolution_time_days ?? issues?.medianResolutionTimeDays ?? null,
     aiPolicySummary: aiPolicySummaries[project.id] || [],
     extractedAt: metadata?.extracted_at || null, // Store the extraction timestamp
   };
