@@ -270,7 +270,7 @@
 
   /* ============ DETAIL view ============ */
   .layout{display:flex; min-height:calc(100vh - 3rem);}
-  .sidenav{width:var(--sidenav-w); flex:0 0 auto; background:var(--layer-02); border-right:1px solid var(--border-subtle); overflow:hidden; transition:width .24s ease;}
+  .sidenav{width:var(--sidenav-w); flex:0 0 auto; background:var(--layer-02); border-right:1px solid var(--border-subtle); overflow:hidden; transition:width .24s ease; position:sticky; top:3rem; height:calc(100vh - 3rem); overflow-y:auto;}
   .sidenav.collapsed{width:0; border-right-width:0;}
   .sidenav-inner{width:var(--sidenav-w);}
   .sidenav-header{padding:1rem 1rem .5rem; font-size:.75rem; letter-spacing:.02em; color:var(--text-secondary);}

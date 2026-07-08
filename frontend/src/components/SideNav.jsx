@@ -1,4 +1,8 @@
 export default function SideNav({ data, order, selectedKey, collapsed, onSelect, onOverview }) {
+  const sorted = [...order].sort((a, b) =>
+    data[a].name.localeCompare(data[b].name, undefined, { numeric: true, sensitivity: "base" })
+  );
+
   return (
     <nav className={"sidenav" + (collapsed ? " collapsed" : "")} aria-label="Communities">
       <div className="sidenav-inner">
@@ -8,7 +12,7 @@ export default function SideNav({ data, order, selectedKey, collapsed, onSelect,
         </button>
         <div className="sidenav-header">Communities</div>
         <div>
-          {order.map((key) => {
+          {sorted.map((key) => {
             const d = data[key];
             return (
               <button
