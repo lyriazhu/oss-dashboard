@@ -1687,6 +1687,11 @@ class GitHubDataExtractor:
             bullet_re = re.compile(r"^[*\-]\s+(.+)")
             # Section headings like ### Users or ### Vendors
             heading_re = re.compile(r"^#{1,4}\s+(.*)")
+            # Blog/article hosting domains — links to these are article references, not org sites
+            article_hosts_re = re.compile(
+                r"https?://(medium\.com|itnext\.io|dev\.to|towardsdatascience\.com|"
+                r"blog\.|hackernoon\.com|dzone\.com|thenewstack\.io)"
+            )
 
             # Detect markdown table headers to map column indices
             table_headers: List[str] = []
@@ -1725,6 +1730,19 @@ class GitHubDataExtractor:
                     name_raw = row.get("organization") or row.get("name") or (cells[0] if cells else "")
                     link_match = re.match(r"\[([^\]]+)\]\([^)]*\)", name_raw)
                     name = link_match.group(1) if link_match else re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", name_raw)
+                    name = name.strip()
+
+                    # Skip template/instruction rows
+                    _nl = name.lower()
+                    if (
+                        not name
+                        or re.match(r"^\*\*", name)
+                        or _nl.startswith("your ")
+                        or _nl.startswith("a brief")
+                        or _nl.startswith("organization")
+                        or len(name) > 80
+                    ):
+                        continue
 
                     url_match = re.search(r"\(([^)]+)\)", row.get("website", ""))
                     url = url_match.group(1) if url_match else None
@@ -1751,9 +1769,32 @@ class GitHubDataExtractor:
                         name = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", raw).split("\n")[0]
                         url = None
 
-                    # Skip lines that look like meta/description (contain common prefixes)
+                    # Skip lines that look like meta/description or noise
                     name = name.strip()
-                    if not name or name.lower().startswith("use ") or name.lower().startswith("running "):
+                    _nl = name.lower()
+                    if (
+                        not name
+                        # Bold markdown labels like **Organization**: ...
+                        or re.match(r"^\*\*", name)
+                        # Template instruction phrases
+                        or _nl.startswith("use ")
+                        or _nl.startswith("running ")
+                        or _nl.startswith("and more")
+                        or _nl.startswith("...more")
+                        or _nl.startswith("+ more")
+                        or _nl.startswith("more ")
+                        or _nl.startswith("see ")
+                        or _nl.startswith("note:")
+                        or _nl.startswith("please ")
+                        # Looks like a sentence (contains a verb indicator), not an org name
+                        or len(name) > 60
+                        or re.search(r"\b(uses?|using|running|provides?|includes?|integrates?|embeds?|utilizes?|deploy|optimize|optimizing|seamless)\b", _nl)
+                        # Article-title patterns: preposition phrases typical of blog post titles
+                        # Note: ' for apache X Y' (3+ words after) flags mid-sentence use but not "Streams for Apache Kafka"
+                        or re.search(r"\b(on kubernetes| at [a-z]| in kubernetes|with kafka| for apache [a-z]+ [a-z])\b", _nl)
+                        # URL points to a blog/article host rather than an org website
+                        or (url and article_hosts_re.search(url))
+                    ):
                         continue
 
                     adopters.append({
@@ -1764,6 +1805,7 @@ class GitHubDataExtractor:
                         "url": url,
                     })
 
+            adopters.sort(key=lambda a: a["name"].lower())
             print(f"  ✓ Parsed {len(adopters)} adopter(s)")
 
         result = {
