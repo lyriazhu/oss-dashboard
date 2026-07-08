@@ -52,7 +52,7 @@
       "github_url": "https://github.com/Apicurio/apicurio-registry",
       "owner": "Apicurio",
       "repo": "apicurio-registry",
-      "foundation": "Independent",
+      "foundation": "CNCF",
       "website": "https://www.apicur.io/registry/",
       "enabled": true
     },
