@@ -2,6 +2,113 @@ import { useState } from "react";
 import { MONTHS } from "../data.js";
 import { Tag, Tile, BarChart, StackedBarChart } from "./ui.jsx";
 
+function ControlRow({ control }) {
+  const [open, setOpen] = useState(false);
+  const passCount = control.details.filter(d => d.status === 'pass').length;
+  const failCount = control.details.filter(d => d.status === 'fail').length;
+  const totalCount = control.details.length;
+
+  return (
+    <div style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          padding: '1rem 1.25rem',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          fontFamily: 'inherit',
+          textAlign: 'left',
+        }}
+      >
+        {/* Chevron */}
+        <svg
+          width="12" height="12"
+          viewBox="0 0 12 12"
+          style={{ flex: '0 0 auto', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform .2s', color: 'var(--text-helper)' }}
+          fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+        >
+          <polyline points="4 2 8 6 4 10" />
+        </svg>
+
+        {/* Label */}
+        <span style={{ fontSize: '.875rem', fontWeight: 600, color: 'var(--text-primary)', minWidth: '5rem' }}>
+          {control.label}
+        </span>
+
+        {/* Progress bar */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '.75rem' }}>
+          <div style={{ flex: 1, height: '.5rem', background: 'var(--gray-20)', maxWidth: '14rem' }}>
+            <div style={{
+              height: '100%',
+              width: `${control.pct}%`,
+              background: control.pct >= 80 ? 'var(--green-50)' : control.pct >= 60 ? 'var(--yellow-30)' : 'var(--red-50)',
+              transition: 'width .35s ease',
+            }} />
+          </div>
+          <span style={{ fontSize: '.875rem', fontWeight: 600, color: 'var(--text-primary)', minWidth: '2.5rem' }}>
+            {control.pct}%
+          </span>
+        </div>
+
+        {/* Status summary badge */}
+        <span style={{ fontSize: '.75rem', color: failCount > 0 ? 'var(--red-60)' : 'var(--text-helper)', whiteSpace: 'nowrap', fontWeight: failCount > 0 ? 600 : 400 }}>
+          {failCount > 0 ? `${failCount} failed` : `${passCount}/${totalCount} passed`}
+        </span>
+      </button>
+
+      {/* Summary line always visible just below header when collapsed */}
+      {!open && (
+        <p style={{ margin: '0 1.25rem .75rem calc(1.25rem + 12px + 1rem + 5rem + 1rem)', fontSize: '.8125rem', color: 'var(--text-helper)', lineHeight: 1.5 }}>
+          {control.summary}
+        </p>
+      )}
+
+      {/* Expanded content */}
+      {open && (
+        <div style={{ padding: '0 1.25rem 1rem calc(1.25rem + 12px + 1rem)' }}>
+          <p style={{ margin: '0 0 .875rem', fontSize: '.8125rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+            {control.summary}
+          </p>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '.8125rem' }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '.5rem .75rem', background: 'var(--gray-10)', color: 'var(--text-primary)', fontWeight: 600, borderBottom: '1px solid var(--border-subtle)' }}>Check</th>
+                <th style={{ textAlign: 'center', padding: '.5rem .75rem', background: 'var(--gray-10)', color: 'var(--text-primary)', fontWeight: 600, borderBottom: '1px solid var(--border-subtle)', width: '4.5rem' }}>Status</th>
+                <th style={{ textAlign: 'left', padding: '.5rem .75rem', background: 'var(--gray-10)', color: 'var(--text-primary)', fontWeight: 600, borderBottom: '1px solid var(--border-subtle)' }}>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {control.details.map((item, i) => (
+                <tr key={i} style={{ borderBottom: i < control.details.length - 1 ? '1px solid var(--border-subtle)' : 'none' }}>
+                  <td style={{ padding: '.5rem .75rem', color: 'var(--text-primary)', fontWeight: 500 }}>{item.label}</td>
+                  <td style={{ padding: '.5rem .75rem', textAlign: 'center' }}>
+                    {item.status === 'pass' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '1.25rem', height: '1.25rem', borderRadius: '50%', background: 'var(--green-20)', color: 'var(--green-70)', fontWeight: 700, fontSize: '.75rem' }}>✓</span>
+                    )}
+                    {item.status === 'fail' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '1.25rem', height: '1.25rem', borderRadius: '50%', background: 'var(--red-30)', color: 'var(--red-60)', fontWeight: 700, fontSize: '.75rem' }}>✕</span>
+                    )}
+                    {item.status === 'review' && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '1.25rem', height: '1.25rem', borderRadius: '50%', background: '#fcf4d6', color: '#684e00', fontWeight: 700, fontSize: '.75rem' }}>!</span>
+                    )}
+                  </td>
+                  <td style={{ padding: '.5rem .75rem', color: 'var(--text-secondary)', lineHeight: 1.45 }}>{item.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Detail({ d, onOverview }) {
   const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
   const [showPRMonthly, setShowPRMonthly] = useState(true);
@@ -316,6 +423,20 @@ export default function Detail({ d, onOverview }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      )}
+
+      {d.controls && d.controls.length > 0 && (
+        <div className="section">
+          <h2 className="section-h">Controls Assessment</h2>
+          <p style={{ margin: '0 0 1rem', fontSize: '.875rem', color: 'var(--text-secondary)' }}>
+            Automated checks measuring how well the project meets key governance controls. Click a control to expand detailed findings.
+          </p>
+          <div className="table-wrap" style={{ padding: 0 }}>
+            {d.controls.map((ctrl) => (
+              <ControlRow key={ctrl.id} control={ctrl} />
+            ))}
           </div>
         </div>
       )}

@@ -378,6 +378,67 @@ export function transformProjectData(project, metrics) {
     ]
   };
 
+  const controlsAssessments = {
+    'strimzi-kafka-operator': [
+      {
+        id: 'legal',
+        label: 'Legal',
+        pct: 100,
+        summary: 'Ensures code is under a valid open source license, reducing IP risks and ensuring proper licensing and distribution.',
+        details: [
+          {
+            label: 'OSPS-LE-02.01',
+            status: 'review',
+            note: 'While active, the license for the source code MUST meet the OSI Open Source Definition or the FSF Free Software Definition. All licenses found are OSI or FSF approved.',
+          },
+          {
+            label: 'OSPS-LE-03.01',
+            status: 'pass',
+            note: 'While active, the license for the source code MUST be maintained in the corresponding repository\'s LICENSE file, COPYING file, or LICENSE/ directory.',
+          },
+          {
+            label: 'OSPS-LE-03.02',
+            status: 'pass',
+            note: 'While active, the license for the released software assets MUST be included in the released source code, or in a LICENSE file, COPYING file, or LICENSE/ directory alongside the corresponding release assets.',
+          },
+        ],
+      },
+      {
+        id: 'quality',
+        label: 'Quality',
+        pct: 60,
+        summary: 'Ensures code is secure, reliable, and well-maintained through strong processes, reducing bugs and vulnerabilities.',
+        details: [
+          {
+            label: 'OSPS-QA-01.01',
+            status: 'pass',
+            note: 'While active, the project\'s source code repository MUST be publicly readable at a static URL.',
+          },
+          {
+            label: 'OSPS-QA-01.02',
+            status: 'pass',
+            note: 'The version control system MUST contain a publicly readable record of all changes made, who made the changes, and when the changes were made.',
+          },
+          {
+            label: 'OSPS-QA-02.01',
+            status: 'fail',
+            note: 'When the package management system supports it, the source code repository MUST contain a dependency list that accounts for the direct language dependencies. No dependency manifests found in the repository by the GitHub API.',
+          },
+          {
+            label: 'OSPS-QA-04.01',
+            status: 'fail',
+            note: 'While active, the project documentation MUST contain a list of any codebases that are considered subprojects or additional repositories. Insights does not contain a list of repositories.',
+          },
+          {
+            label: 'OSPS-QA-05.01',
+            status: 'pass',
+            note: 'While active, the version control system MUST NOT contain generated executable artifacts.',
+          },
+        ],
+      },
+    ],
+  };
+
   return {
     name: project.name,
     sub: project.foundation || 'Independent',
@@ -401,6 +462,7 @@ export function transformProjectData(project, metrics) {
     issueMonthly: issueMonthlyData.length > 0 ? issueMonthlyData : [],
     issueMedianResolutionDays: issues?.median_resolution_time_days ?? issues?.medianResolutionTimeDays ?? null,
     aiPolicySummary: aiPolicySummaries[project.id] || [],
+    controls: controlsAssessments[project.id] || [],
     extractedAt: metadata?.extracted_at || null, // Store the extraction timestamp
   };
 }
