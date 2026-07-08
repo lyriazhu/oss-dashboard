@@ -126,7 +126,7 @@ export default function Detail({ d, onOverview }) {
           />
         )}
         <p className="chart-cap">
-          Darker bar = current period · Bottom = contributors who returned next period, top = new contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : `Since ${d.founded.replace('Founded ', '')}`}
+          Darker bar = current period · Red = New Contributors · Blue = Returning Contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : `Since ${d.founded.replace('Founded ', '')}`}
         </p>
         <p className="chart-cap">
           {showRetentionQuarterly
