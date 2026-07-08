@@ -366,8 +366,8 @@ export function transformProjectData(project, metrics) {
       'When a pull request includes AI-generated code, contributors must provide proper attribution, including clear PR-level disclosure of the AI tool used.',
       'Camel also expects AI coding agents to be configured to add commit co-authorship trailers for AI-generated code when applicable.'
     ],
-    activemq: [
-      'Apache ActiveMQ defines detailed AI agent rules covering attribution, branch and fork usage, JIRA ownership, PR description upkeep, reviewer selection, merge requirements, code quality, and investigation steps before implementation.',
+    artemis: [
+      'Apache Artemis defines detailed AI agent rules covering attribution, branch and fork usage, JIRA ownership, PR description upkeep, reviewer selection, merge requirements, code quality, and investigation steps before implementation.',
       'AI-generated content must identify itself and the human operator, agents should limit PR volume, work only on their own branches and forks, and avoid force-pushing shared branches or merging without human approval.',
       'The guidance also requires tests, documentation updates when needed, Apache license headers on new files, security-conscious coding, and disciplined issue investigation using git history, JIRA, and project documentation.'
     ],

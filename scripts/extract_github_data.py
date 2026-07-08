@@ -73,14 +73,14 @@ class GitHubDataExtractor:
             # config name -> data dir
             "Strimzi": "strimzi",
             "Apache Camel": "apache-camel",
-            "Apache ActiveMQ": "apache-activemq",
+            "Apache Artemis": "apache-artemis",
             "Apicurio Registry": "apicurio",
             "3scale": "3scale",
             "Keycloak": "keycloak",
             # legacy repo-name keys kept for backward compatibility
             "strimzi-kafka-operator": "strimzi",
             "camel": "apache-camel",
-            "activemq": "apache-activemq",
+            "artemis": "apache-artemis",
             "apicurio-registry": "apicurio",
             "3scale-operator": "3scale",
         }

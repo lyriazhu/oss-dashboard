@@ -1,0 +1,165 @@
+{
+  "total_prs": 724,
+  "median_time_to_merge_days": 0.06,
+  "months": [
+    {
+      "start_date": "2025-08-01T00:00:00",
+      "end_date": "2025-08-31T23:59:59",
+      "pr_count": 47,
+      "merged_pr_count": 26,
+      "month": "2025-08",
+      "median_time_to_merge_days": 0.08
+    },
+    {
+      "start_date": "2025-09-01T00:00:00",
+      "end_date": "2025-09-30T23:59:59",
+      "pr_count": 46,
+      "merged_pr_count": 24,
+      "month": "2025-09",
+      "median_time_to_merge_days": 0.38
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2025-10-31T23:59:59",
+      "pr_count": 77,
+      "merged_pr_count": 42,
+      "month": "2025-10",
+      "median_time_to_merge_days": 0.04
+    },
+    {
+      "start_date": "2025-11-01T00:00:00",
+      "end_date": "2025-11-30T23:59:59",
+      "pr_count": 69,
+      "merged_pr_count": 45,
+      "month": "2025-11",
+      "median_time_to_merge_days": 0.97
+    },
+    {
+      "start_date": "2025-12-01T00:00:00",
+      "end_date": "2025-12-31T23:59:59",
+      "pr_count": 68,
+      "merged_pr_count": 45,
+      "month": "2025-12",
+      "median_time_to_merge_days": 0.05
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-01-31T23:59:59",
+      "pr_count": 47,
+      "merged_pr_count": 26,
+      "month": "2026-01",
+      "median_time_to_merge_days": 0.11
+    },
+    {
+      "start_date": "2026-02-01T00:00:00",
+      "end_date": "2026-02-28T23:59:59",
+      "pr_count": 58,
+      "merged_pr_count": 42,
+      "month": "2026-02",
+      "median_time_to_merge_days": 0.09
+    },
+    {
+      "start_date": "2026-03-01T00:00:00",
+      "end_date": "2026-03-31T23:59:59",
+      "pr_count": 69,
+      "merged_pr_count": 42,
+      "month": "2026-03",
+      "median_time_to_merge_days": 0.1
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-04-30T23:59:59",
+      "pr_count": 70,
+      "merged_pr_count": 40,
+      "month": "2026-04",
+      "median_time_to_merge_days": 0.0
+    },
+    {
+      "start_date": "2026-05-01T00:00:00",
+      "end_date": "2026-05-31T23:59:59",
+      "pr_count": 77,
+      "merged_pr_count": 43,
+      "month": "2026-05",
+      "median_time_to_merge_days": 0.0
+    },
+    {
+      "start_date": "2026-06-01T00:00:00",
+      "end_date": "2026-06-30T23:59:59",
+      "pr_count": 73,
+      "merged_pr_count": 41,
+      "month": "2026-06",
+      "median_time_to_merge_days": 0.0
+    },
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-07-08T15:25:46.824805",
+      "pr_count": 23,
+      "merged_pr_count": 10,
+      "month": "2026-07",
+      "median_time_to_merge_days": 0.01
+    }
+  ],
+  "years": [
+    {
+      "year": 2015,
+      "pr_count": 288,
+      "merged_pr_count": 183
+    },
+    {
+      "year": 2016,
+      "pr_count": 651,
+      "merged_pr_count": 256
+    },
+    {
+      "year": 2017,
+      "pr_count": 791,
+      "merged_pr_count": 233
+    },
+    {
+      "year": 2018,
+      "pr_count": 736,
+      "merged_pr_count": 158
+    },
+    {
+      "year": 2019,
+      "pr_count": 435,
+      "merged_pr_count": 111
+    },
+    {
+      "year": 2020,
+      "pr_count": 468,
+      "merged_pr_count": 136
+    },
+    {
+      "year": 2021,
+      "pr_count": 500,
+      "merged_pr_count": 277
+    },
+    {
+      "year": 2022,
+      "pr_count": 429,
+      "merged_pr_count": 284
+    },
+    {
+      "year": 2023,
+      "pr_count": 405,
+      "merged_pr_count": 332
+    },
+    {
+      "year": 2024,
+      "pr_count": 687,
+      "merged_pr_count": 439
+    },
+    {
+      "year": 2025,
+      "pr_count": 744,
+      "merged_pr_count": 445
+    },
+    {
+      "year": 2026,
+      "pr_count": 417,
+      "merged_pr_count": 244
+    }
+  ],
+  "extracted_at": "2026-07-08T15:25:46.824838"
+}

@@ -24,15 +24,15 @@
       "enabled": true
     },
     {
-      "id": "activemq",
-      "name": "Apache ActiveMQ",
-      "github_url": "https://github.com/apache/activemq",
+      "id": "artemis",
+      "name": "Apache Artemis",
+      "github_url": "https://github.com/apache/artemis",
       "owner": "apache",
-      "repo": "activemq",
+      "repo": "artemis",
       "foundation": "Apache Software Foundation",
-      "website": "https://activemq.apache.org",
+      "website": "https://activemq.apache.org/components/artemis/",
       "issue_source": "jira",
-      "jira_project_key": "AMQ",
+      "jira_project_key": "ARTEMIS",
       "jira_base_url": "https://issues.apache.org/jira",
       "enabled": true
     },

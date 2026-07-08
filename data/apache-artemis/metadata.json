@@ -1,0 +1,84 @@
+{
+  "name": "artemis",
+  "full_name": "apache/artemis",
+  "description": "Apache Artemis",
+  "created_at": "2015-05-22T07:00:05+00:00",
+  "updated_at": "2026-07-08T03:52:05+00:00",
+  "stars": 1031,
+  "forks": 954,
+  "watchers": 1031,
+  "open_issues": 23,
+  "language": "Java",
+  "topics": [
+    "java",
+    "apache",
+    "messaging",
+    "broker",
+    "amqp",
+    "amqps",
+    "amqp10",
+    "openwire",
+    "mqtt",
+    "stomp",
+    "hornetq",
+    "jms",
+    "artemis"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://artemis.apache.org",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 1077,
+      "percentage": 36.8
+    },
+    {
+      "company": "Red Hat",
+      "commits": 803,
+      "percentage": 27.43
+    },
+    {
+      "company": "Bartr Technologies",
+      "commits": 572,
+      "percentage": 19.54
+    },
+    {
+      "company": "Upcloudltd",
+      "commits": 184,
+      "percentage": 6.29
+    },
+    {
+      "company": "Red Hat @Openshift Ai",
+      "commits": 70,
+      "percentage": 2.39
+    },
+    {
+      "company": "Vegard It Gmbh @Vegardit",
+      "commits": 30,
+      "percentage": 1.02
+    },
+    {
+      "company": "Contrast Security",
+      "commits": 22,
+      "percentage": 0.75
+    },
+    {
+      "company": "Redhat",
+      "commits": 22,
+      "percentage": 0.75
+    },
+    {
+      "company": "Aimtec A.S.",
+      "commits": 12,
+      "percentage": 0.41
+    },
+    {
+      "company": "Tymiq",
+      "commits": 11,
+      "percentage": 0.38
+    }
+  ],
+  "extracted_at": "2026-07-08T15:23:40.858337"
+}

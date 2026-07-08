@@ -7,7 +7,7 @@ aggregates them into the dashboard issues.json schema, and writes the result
 into the project's data directory.
 
 Usage: python3 extract_jira_issues.py <project_name>
-Example: python3 extract_jira_issues.py "Apache ActiveMQ"
+Example: python3 extract_jira_issues.py "Apache Artemis"
 """
 
 import json
@@ -37,14 +37,14 @@ class YearBucket(TypedDict):
 DIR_NAME_MAP = {
     "Strimzi": "strimzi",
     "Apache Camel": "apache-camel",
-    "Apache ActiveMQ": "apache-activemq",
+    "Apache Artemis": "apache-artemis",
     "Apicurio Registry": "apicurio",
     "3scale": "3scale",
     "Keycloak": "keycloak",
     # legacy repo-name keys for backward compatibility
     "strimzi-kafka-operator": "strimzi",
     "camel": "apache-camel",
-    "activemq": "apache-activemq",
+    "artemis": "apache-artemis",
     "apicurio-registry": "apicurio",
     "3scale-operator": "3scale",
 }
@@ -267,7 +267,7 @@ def save_issue_data(project_name: str, issue_data: Dict[str, Any]) -> Path:
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 extract_jira_issues.py <project_name>")
-        print('Example: python3 extract_jira_issues.py "Apache ActiveMQ"')
+        print('Example: python3 extract_jira_issues.py "Apache Artemis"')
         sys.exit(1)
 
     project_identifier = sys.argv[1]

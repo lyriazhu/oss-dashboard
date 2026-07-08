@@ -126,8 +126,8 @@ public class DataService {
                 return "strimzi";
             case "camel":
                 return "apache-camel";
-            case "activemq":
-                return "apache-activemq";
+            case "artemis":
+                return "apache-artemis";
             case "apicurio-studio":
             case "apicurio-registry":
                 return "apicurio";

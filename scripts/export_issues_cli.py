@@ -165,7 +165,7 @@ def process_issues_data(issues, project_created_at):
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 export_issues_cli.py <project_id>")
-        print("Example: python3 export_issues_cli.py activemq")
+        print("Example: python3 export_issues_cli.py artemis")
         sys.exit(1)
     
     project_id = sys.argv[1]
@@ -207,8 +207,8 @@ def main():
         project_dir_name = 'strimzi'
     elif project_id == 'camel':
         project_dir_name = 'apache-camel'
-    elif project_id == 'activemq':
-        project_dir_name = 'apache-activemq'
+    elif project_id == 'artemis':
+        project_dir_name = 'apache-artemis'
     elif project_id == 'apicurio-registry':
         project_dir_name = 'apicurio'
     elif project_id == '3scale-operator':
