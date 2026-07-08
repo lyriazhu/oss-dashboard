@@ -100,7 +100,7 @@
       "location": null,
       "email": "jbonofre@apache.org",
       "profile_url": null,
-      "commit_count": 2104
+      "commit_count": 2105
     },
     {
       "login": "James Strachan",
@@ -172,7 +172,7 @@
       "location": null,
       "email": "cshannon@apache.org",
       "profile_url": null,
-      "commit_count": 488
+      "commit_count": 490
     },
     {
       "login": "Adrian T. Co",
@@ -190,7 +190,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 363
+      "commit_count": 368
     },
     {
       "login": "Jean-Louis Monteiro",
@@ -208,7 +208,7 @@
       "location": null,
       "email": "matt@hyte.io",
       "profile_url": null,
-      "commit_count": 339
+      "commit_count": 343
     },
     {
       "login": "Matt Pavlovich",
@@ -217,7 +217,7 @@
       "location": null,
       "email": "mattrpav@apache.org",
       "profile_url": null,
-      "commit_count": 323
+      "commit_count": 327
     },
     {
       "login": "Dejan Bosanac",
@@ -424,7 +424,7 @@
       "location": null,
       "email": "jeanouii@gmail.com",
       "profile_url": null,
-      "commit_count": 54
+      "commit_count": 55
     },
     {
       "login": "gianandrea.rigoni\u201a",
@@ -1288,7 +1288,7 @@
       "location": null,
       "email": "sergio.d.lemos@gmail.com",
       "profile_url": null,
-      "commit_count": 5
+      "commit_count": 6
     },
     {
       "login": "colinwerner",
@@ -1297,7 +1297,7 @@
       "location": null,
       "email": "colinwerner@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 5
+      "commit_count": 6
     },
     {
       "login": "Andrey Litvitski",
@@ -2038,6 +2038,15 @@
       "commit_count": 3
     },
     {
+      "login": "Murali Mogalayapalli",
+      "name": "Murali Mogalayapalli",
+      "company": "Unknown",
+      "location": null,
+      "email": "49990229+tylermurali@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "Robert Regina",
       "name": "Robert Regina",
       "company": "Unknown",
@@ -2772,15 +2781,6 @@
       "company": "Unknown",
       "location": null,
       "email": "alexd@apache.org",
-      "profile_url": null,
-      "commit_count": 2
-    },
-    {
-      "login": "Murali Mogalayapalli",
-      "name": "Murali Mogalayapalli",
-      "company": "Unknown",
-      "location": null,
-      "email": "49990229+tylermurali@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 2
     },
@@ -3628,7 +3628,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-06T10:23:44.430115",
+  "extracted_at": "2026-07-08T09:56:41.283116",
   "years": [
     {
       "year": 2005,
@@ -3737,7 +3737,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1375,
+      "commit_count": 1386,
       "is_current": true
     }
   ]

@@ -52,12 +52,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 86,
+      "contributor_count": 87,
       "is_current": true
     }
   ],
-  "total_contributors": 634,
-  "total_contributors_git": 634,
+  "total_contributors": 635,
+  "total_contributors_git": 635,
   "contributors": [
     {
       "login": "scholzj",
@@ -65,7 +65,7 @@
       "company": "Unknown",
       "location": "Prague, Czech Republic",
       "email": "github@scholzj.com",
-      "contributions": 2357,
+      "contributions": 2359,
       "profile_url": "https://github.com/scholzj"
     },
     {
@@ -222,6 +222,15 @@
       "profile_url": "https://github.com/samuel-hawker"
     },
     {
+      "login": "tinaselenge",
+      "name": "Gantigmaa Selenge",
+      "company": "Red Hat",
+      "location": "London",
+      "email": null,
+      "contributions": 45,
+      "profile_url": "https://github.com/tinaselenge"
+    },
+    {
       "login": "kornys",
       "name": "David Kornel",
       "company": "Ibm",
@@ -229,15 +238,6 @@
       "email": "kornys@outlook.com",
       "contributions": 43,
       "profile_url": "https://github.com/kornys"
-    },
-    {
-      "login": "tinaselenge",
-      "name": "Gantigmaa Selenge",
-      "company": "Red Hat",
-      "location": "London",
-      "email": null,
-      "contributions": 43,
-      "profile_url": "https://github.com/tinaselenge"
     },
     {
       "login": "mstruk",
@@ -1084,6 +1084,15 @@
       "email": "marcelo.avan@gmail.com",
       "contributions": 2,
       "profile_url": "https://github.com/marceloavan"
+    },
+    {
+      "login": "anxkhn",
+      "name": "Anas Khan",
+      "company": "Interviewstreet",
+      "location": "blr / (hopefully) sf",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/anxkhn"
     },
     {
       "login": "shunki-fujita",
@@ -2868,15 +2877,6 @@
       "profile_url": "https://github.com/kunallimaye"
     },
     {
-      "login": "anxkhn",
-      "name": "Anas Khan",
-      "company": "Interviewstreet",
-      "location": "blr / (hopefully) sf",
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/anxkhn"
-    },
-    {
       "login": "acgtun",
       "name": "Haifeng Chen",
       "company": "Unknown",
@@ -2884,11 +2884,20 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/acgtun"
+    },
+    {
+      "login": "bboyleonp666",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/bboyleonp666"
     }
   ],
-  "total_contributors_github_api": 314,
+  "total_contributors_github_api": 315,
   "companies": {
-    "Unknown": 156,
+    "Unknown": 157,
     "Red Hat": 29,
     "Ibm": 23,
     "Hetznercloud": 2,
@@ -2921,6 +2930,7 @@
     "Independent Contractor": 1,
     "Avaloq": 1,
     "Picpay": 1,
+    "Interviewstreet": 1,
     "Cybozu, Inc.": 1,
     "Firetiger": 1,
     "Yandex": 1,
@@ -2991,17 +3001,16 @@
     "Invers Gmbh": 1,
     "Braze-Inc": 1,
     "Feedzai": 1,
-    "Ollygarden": 1,
-    "Interviewstreet": 1
+    "Ollygarden": 1
   },
   "total_companies": 105,
   "company_diversity": {
     "known_company_contributors": 158,
-    "unknown_company_contributors": 156,
+    "unknown_company_contributors": 157,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 156
+        "contributor_count": 157
       },
       {
         "company": "Red Hat",
@@ -3157,10 +3166,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 18,
-      "new_contributors": 4,
+      "active_contributors": 19,
+      "new_contributors": 5,
       "returning_contributors": 14,
-      "retention_rate": 77.78
+      "retention_rate": 73.68
     }
   ],
   "retention_by_year": [
@@ -3279,10 +3288,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 86,
-      "new_contributors": 52,
+      "active_contributors": 87,
+      "new_contributors": 53,
       "returning_contributors": 34,
-      "retention_rate": 39.53,
+      "retention_rate": 39.08,
       "is_current": true
     }
   ],

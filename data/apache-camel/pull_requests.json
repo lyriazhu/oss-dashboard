@@ -1,5 +1,5 @@
 {
-  "total_prs": 5664,
+  "total_prs": 5735,
   "median_time_to_merge_days": 0.11,
   "months": [
     {
@@ -93,8 +93,8 @@
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-07-01T14:25:14.966318",
-      "pr_count": 113,
-      "merged_pr_count": 89,
+      "pr_count": 184,
+      "merged_pr_count": 151,
       "month": "2026-07",
       "median_time_to_merge_days": 0.11
     }
@@ -191,5 +191,5 @@
       "merged_pr_count": 3198
     }
   ],
-  "extracted_at": "2026-07-06T10:23:08.810059"
+  "extracted_at": "2026-07-08T09:56:04.704692"
 }

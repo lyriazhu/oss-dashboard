@@ -7,7 +7,7 @@
   "stars": 2442,
   "forks": 1489,
   "watchers": 2442,
-  "open_issues": 82,
+  "open_issues": 89,
   "language": "Java",
   "topics": [
     "activemq",
@@ -78,5 +78,5 @@
       "percentage": 0.34
     }
   ],
-  "extracted_at": "2026-07-06T10:23:27.676286"
+  "extracted_at": "2026-07-08T09:56:26.214887"
 }

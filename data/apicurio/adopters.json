@@ -1,6 +1,62 @@
 {
-  "total_adopters": 6,
+  "total_adopters": 14,
   "adopters": [
+    {
+      "name": "**Organization**: Your company or project name",
+      "type": "how to add your organization",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**Type**: How you use Apicurio Registry (see types below)",
+      "type": "how to add your organization",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**Description**: A brief description of your use case",
+      "type": "how to add your organization",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**Since**: The year you started using Apicurio Registry",
+      "type": "how to add your organization",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**Website**: A link to your organization's website (optional)",
+      "type": "how to add your organization",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**End-user**",
+      "type": "**End-user**",
+      "description": "Organizations running Apicurio Registry in production environments",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**Integration**",
+      "type": "**Integration**",
+      "description": "Organizations whose products integrate with Apicurio Registry",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "**Vendor**",
+      "type": "**Vendor**",
+      "description": "Organizations that embed or distribute Apicurio Registry as part of a commercial product",
+      "since": "",
+      "url": null
+    },
     {
       "name": "Axual",
       "type": "Vendor",
@@ -11,7 +67,7 @@
     {
       "name": "Castor",
       "type": "End-user",
-      "description": "Castor uses Apicurio as its central schema registry",
+      "description": "Castor uses Apicurio as its central schema registry, facilitating schema management and distribution for event streaming and inter-service communication purposes",
       "since": "2024",
       "url": "https://www.castoredc.com/"
     },
@@ -25,7 +81,7 @@
     {
       "name": "Libon",
       "type": "End-user",
-      "description": "At Libon we use apicurio as our source of truth across all the organization for Kafka AVRO schemas",
+      "description": "At Libon we use apicurio as our source of truth across all the organization for Kafka's AVRO schemas",
       "since": "2025",
       "url": "https://www.libon.com"
     },
@@ -39,10 +95,10 @@
     {
       "name": "ZenWave 360",
       "type": "End-user",
-      "description": "ZenWave360 uses Apicurio Registry as schemas registry",
-      "since": "",
+      "description": "ZenWave360 uses Apicurio Registry as schemas registry for storing and versioning canonical references for AsyncAPI + Avro",
+      "since": "[zenwave360.io](https://www.zenwave360.io/)",
       "url": null
     }
   ],
-  "extracted_at": "2026-07-08T09:36:18.178303"
+  "extracted_at": "2026-07-08T10:00:12.941965"
 }

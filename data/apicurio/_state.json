@@ -14,6 +14,7 @@
       "Hoishin",
       "Ladicek",
       "LinyuYao1021",
+      "MayerZhe",
       "MikeEdgar",
       "MrDiba",
       "NikishaPatil",
@@ -126,18 +127,18 @@
       "yxshwanth",
       "zoni"
     ],
-    "last_extracted_at": "2026-07-06T10:27:32.390727"
+    "last_extracted_at": "2026-07-08T09:59:50.548959"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-06T10:27:41.372956"
+    "last_git_sync_at": "2026-07-08T09:59:58.927926"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-06T10:27:56.208655"
+    "last_extracted_at": "2026-07-08T10:00:10.000076"
   },
   "issues": {
-    "last_extracted_at": "2026-07-06T10:27:54.862658"
+    "last_extracted_at": "2026-07-08T10:00:08.563262"
   },
   "releases": {
-    "last_extracted_at": "2026-07-06T10:27:58.059998"
+    "last_extracted_at": "2026-07-08T10:00:11.889648"
   }
 }

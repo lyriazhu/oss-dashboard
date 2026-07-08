@@ -67,12 +67,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 583,
+      "contributor_count": 586,
       "is_current": true
     }
   ],
-  "total_contributors": 3294,
-  "total_contributors_git": 3294,
+  "total_contributors": 3297,
+  "total_contributors_git": 3297,
   "contributors": [
     {
       "login": "stianst",
@@ -116,7 +116,7 @@
       "company": "Ibm",
       "location": "Z\u00fcrich",
       "email": null,
-      "contributions": 1515,
+      "contributions": 1517,
       "profile_url": "https://github.com/edewit"
     },
     {
@@ -143,7 +143,7 @@
       "company": "Ibm",
       "location": "Frankfurt/Main (Germany)",
       "email": "alexander.schwartz@gmx.net",
-      "contributions": 762,
+      "contributions": 763,
       "profile_url": "https://github.com/ahus1"
     },
     {
@@ -179,7 +179,7 @@
       "company": "Ibm",
       "location": "Czech Republic",
       "email": "mabartos@redhat.com",
-      "contributions": 522,
+      "contributions": 524,
       "profile_url": "https://github.com/mabartos"
     },
     {
@@ -188,7 +188,7 @@
       "company": "Ibm",
       "location": "Spain",
       "email": "rmartinc@ibm.com",
-      "contributions": 516,
+      "contributions": 517,
       "profile_url": "https://github.com/rmartinc"
     },
     {
@@ -197,7 +197,7 @@
       "company": "Red Hat",
       "location": "Reading PA",
       "email": null,
-      "contributions": 500,
+      "contributions": 503,
       "profile_url": "https://github.com/shawkins"
     },
     {
@@ -296,7 +296,7 @@
       "company": "Ibm",
       "location": "Lisbon",
       "email": null,
-      "contributions": 218,
+      "contributions": 221,
       "profile_url": "https://github.com/pruivo"
     },
     {
@@ -332,7 +332,7 @@
       "company": "Ibm",
       "location": null,
       "email": "g.graziano94@gmail.com",
-      "contributions": 164,
+      "contributions": 166,
       "profile_url": "https://github.com/graziang"
     },
     {
@@ -368,7 +368,7 @@
       "company": "Ibm",
       "location": null,
       "email": null,
-      "contributions": 126,
+      "contributions": 127,
       "profile_url": "https://github.com/ryanemerson"
     },
     {
@@ -449,7 +449,7 @@
       "company": "Ibm",
       "location": "Brno",
       "email": null,
-      "contributions": 67,
+      "contributions": 68,
       "profile_url": "https://github.com/pskopek"
     },
     {
@@ -687,6 +687,15 @@
       "profile_url": "https://github.com/ccopelloRH"
     },
     {
+      "login": "ruchikajha95",
+      "name": "Ruchika Jha",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 27,
+      "profile_url": "https://github.com/ruchikajha95"
+    },
+    {
       "login": "tsaarni",
       "name": "Tero Saarni",
       "company": "Ericsson",
@@ -721,15 +730,6 @@
       "email": null,
       "contributions": 25,
       "profile_url": "https://github.com/sschu"
-    },
-    {
-      "login": "ruchikajha95",
-      "name": "Ruchika Jha",
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 25,
-      "profile_url": "https://github.com/ruchikajha95"
     },
     {
       "login": "wadahiro",
@@ -800,7 +800,7 @@
       "company": "Ibm",
       "location": "Dublin",
       "email": null,
-      "contributions": 19,
+      "contributions": 20,
       "profile_url": "https://github.com/jimmychakkalakal"
     },
     {
@@ -3179,20 +3179,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 393,
-      "new_contributors": 227,
-      "returning_contributors": 166,
-      "retention_rate": 42.24
+      "active_contributors": 388,
+      "new_contributors": 224,
+      "returning_contributors": 164,
+      "retention_rate": 42.27
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 130,
-      "new_contributors": 34,
-      "returning_contributors": 96,
-      "retention_rate": 73.85
+      "active_contributors": 148,
+      "new_contributors": 40,
+      "returning_contributors": 108,
+      "retention_rate": 72.97
     }
   ],
   "retention_by_year": [
@@ -3344,10 +3344,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 583,
-      "new_contributors": 421,
+      "active_contributors": 586,
+      "new_contributors": 424,
       "returning_contributors": 162,
-      "retention_rate": 27.79,
+      "retention_rate": 27.65,
       "is_current": true
     }
   ],

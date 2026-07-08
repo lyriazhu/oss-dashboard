@@ -318,18 +318,18 @@
       "zhutaoredhat",
       "zschwarz"
     ],
-    "last_extracted_at": "2026-07-06T10:24:42.948106"
+    "last_extracted_at": "2026-07-08T09:57:39.167183"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-06T10:24:56.272250"
+    "last_git_sync_at": "2026-07-08T09:57:49.348213"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-06T10:27:18.176129"
+    "last_extracted_at": "2026-07-08T09:59:37.101701"
   },
   "issues": {
-    "last_extracted_at": "2026-07-06T10:27:15.351701"
+    "last_extracted_at": "2026-07-08T09:59:35.724179"
   },
   "releases": {
-    "last_extracted_at": "2026-07-06T10:27:20.473126"
+    "last_extracted_at": "2026-07-08T09:59:39.225864"
   }
 }

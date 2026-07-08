@@ -1787,20 +1787,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 26,
+      "active_contributors": 24,
       "new_contributors": 8,
-      "returning_contributors": 18,
-      "retention_rate": 69.23
+      "returning_contributors": 16,
+      "retention_rate": 66.67
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 14,
+      "active_contributors": 16,
       "new_contributors": 2,
-      "returning_contributors": 12,
-      "retention_rate": 85.71
+      "returning_contributors": 14,
+      "retention_rate": 87.5
     }
   ],
   "retention_by_year": [

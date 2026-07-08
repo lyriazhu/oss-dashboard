@@ -163,7 +163,7 @@
       "location": null,
       "email": "boris.urbanik@ibm.com",
       "profile_url": null,
-      "commit_count": 40
+      "commit_count": 42
     },
     {
       "login": "Carl Kyrillos",
@@ -235,7 +235,7 @@
       "location": null,
       "email": "boris.urbanik.dev@gmail.com",
       "profile_url": null,
-      "commit_count": 13
+      "commit_count": 15
     },
     {
       "login": "Guilherme Cassolato",
@@ -270,6 +270,15 @@
       "company": "Unknown",
       "location": null,
       "email": "comalley@redhat.com",
+      "profile_url": null,
+      "commit_count": 11
+    },
+    {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 11
     },
@@ -317,15 +326,6 @@
       "email": "bmozaffa@redhat.com",
       "profile_url": null,
       "commit_count": 9
-    },
-    {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "115566047+borisurbanik@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 8
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-06T13:51:49.850055",
+  "extracted_at": "2026-07-08T10:00:27.422092",
   "years": [
     {
       "year": 2018,
@@ -711,7 +711,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 145,
+      "commit_count": 147,
       "is_current": true
     }
   ]

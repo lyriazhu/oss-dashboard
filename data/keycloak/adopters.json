@@ -1,412 +1,419 @@
 {
-  "total_adopters": 58,
+  "total_adopters": 59,
   "adopters": [
     {
       "name": "Accenture",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Actinver",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Akvo Foundation",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "AlmaLinux Foundation",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Appier",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Associazione Rousseau",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "BISPRO",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Bluestem Brands, Inc",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Bundesagentur f\u00fcr Arbeit",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Bundesversicherungsamt",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Capgemini",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "CERN (European Organisation for Nuclear Research)",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Chassi",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "CloudNative Inc.",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Conciso GmbH",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Copenhagen Optimization",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Curecomp GmbH",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Cybertech",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Devsu",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Devoxx / Voxxed",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "DUENE e.V - project",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "DukeCon",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "European Synchrotron Radiation Facility",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Fluance AG",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Genchi Genbutsu SRL",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Hewlett-Packard Enterprise",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Hitachi",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "INEAT",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Inventage",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "ISAAC",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "ITROI Solutions",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Kindly Ops, LLC",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Microcks",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": "https://landscape.cncf.io/?selected=microcks"
     },
     {
       "name": "Minder",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": "https://github.com/mindersec/minder"
     },
     {
       "name": "msg systems ag",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Netdava International",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Ohio Supercomputer Center",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Okta",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "PharmaPartners B.V.",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Plivo",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Price Insight",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Prodesan",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Quest Software",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Research Industrial Software Engineering (RISE)",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "SICK AG",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": "https://www.sick.com"
     },
     {
       "name": "SMF",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": "https://www.smf.de"
     },
     {
       "name": "Sportsbet.com.au",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Stacklok",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": "https://stacklok.com/"
     },
     {
       "name": "Stack Labs",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Storebrand",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Synekus",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Synetek Solutions",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Taklane",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "TrackingSport",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "TRT9 - Brasil",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "UnitedHealthcare",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Wayfair LLC",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
       "name": "Xata",
-      "type": "public references",
+      "type": "user",
       "description": "",
       "since": "",
       "url": "https://xata.io"
+    },
+    {
+      "name": "...More individuals",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
     }
   ],
-  "extracted_at": "2026-07-08T09:36:18.177791"
+  "extracted_at": "2026-07-08T09:59:40.228899"
 }

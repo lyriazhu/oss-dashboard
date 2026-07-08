@@ -50,7 +50,7 @@
       "company": "Ibm",
       "location": "Newtown, CT",
       "email": "eric.wittmann@redhat.com",
-      "contributions": 1305,
+      "contributions": 1308,
       "profile_url": "https://github.com/EricWittmann"
     },
     {
@@ -68,7 +68,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 798,
+      "contributions": 810,
       "profile_url": "https://github.com/apps/renovate"
     },
     {
@@ -77,7 +77,7 @@
       "company": "Ibm",
       "location": "Barcelona",
       "email": "carnalca@redhat.com",
-      "contributions": 579,
+      "contributions": 582,
       "profile_url": "https://github.com/carlesarnal"
     },
     {
@@ -1159,11 +1159,20 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/yxshwanth"
+    },
+    {
+      "login": "MayerZhe",
+      "name": "FinHacker",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/MayerZhe"
     }
   ],
-  "total_contributors_github_api": 124,
+  "total_contributors_github_api": 125,
   "companies": {
-    "Unknown": 53,
+    "Unknown": 54,
     "Ibm": 15,
     "Red Hat": 12,
     "Aws": 2,
@@ -1210,11 +1219,11 @@
   "total_companies": 43,
   "company_diversity": {
     "known_company_contributors": 71,
-    "unknown_company_contributors": 53,
+    "unknown_company_contributors": 54,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 53
+        "contributor_count": 54
       },
       {
         "company": "Ibm",
@@ -1360,20 +1369,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 29,
+      "active_contributors": 28,
       "new_contributors": 11,
-      "returning_contributors": 18,
-      "retention_rate": 62.07
+      "returning_contributors": 17,
+      "retention_rate": 60.71
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 15,
+      "active_contributors": 16,
       "new_contributors": 4,
-      "returning_contributors": 11,
-      "retention_rate": 73.33
+      "returning_contributors": 12,
+      "retention_rate": 75.0
     }
   ],
   "retention_by_year": [

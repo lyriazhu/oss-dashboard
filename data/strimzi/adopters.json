@@ -1,5 +1,5 @@
 {
-  "total_adopters": 30,
+  "total_adopters": 35,
   "adopters": [
     {
       "name": "Grupo MASMOVIL",
@@ -100,11 +100,25 @@
       "url": "https://digital.decathlon.net/"
     },
     {
+      "name": "Seamless data exchange with Kafka Connect and Strimzi on Kubernetes at Decathlon",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://medium.com/decathlondigital/seamless-data-exchange-with-kafka-connect-and-strimzi-on-kubernetes-at-decathlon-e6f81d034535"
+    },
+    {
       "name": "Skillsoft",
       "type": "users",
       "description": "",
       "since": "",
       "url": "https://www.skillsoft.com/"
+    },
+    {
+      "name": "Utilizes Strimzi to deploy Kafka Connect on Kubernetes for Apache Kafka backup & disaster recovery.",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": null
     },
     {
       "name": "Hetzner",
@@ -177,6 +191,13 @@
       "url": "https://rubinobservatory.org"
     },
     {
+      "name": "Strimzi is used to deploy and manage Kafka for the Observatory Control System and the telemetry and metrics infrastructure that supports the Rubin Science Platform.",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
       "name": "\u00c6nix",
       "type": "vendors",
       "description": "",
@@ -189,6 +210,13 @@
       "description": "",
       "since": "",
       "url": "https://axual.com/"
+    },
+    {
+      "name": "Optimizing Kafka Cluster Deployments in Kubernetes",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://itnext.io/optimizing-kafka-cluster-deployments-in-kubernetes-ceda3f95c157"
     },
     {
       "name": "Cloudera",
@@ -210,7 +238,14 @@
       "description": "",
       "since": "",
       "url": "https://www.redhat.com/en/"
+    },
+    {
+      "name": "Streams for Apache Kafka",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://developers.redhat.com/products/streams-for-apache-kafka/overview"
     }
   ],
-  "extracted_at": "2026-07-08T09:36:18.177074"
+  "extracted_at": "2026-07-08T09:54:41.588123"
 }
