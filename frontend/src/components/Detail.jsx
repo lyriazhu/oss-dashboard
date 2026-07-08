@@ -295,6 +295,21 @@ export default function Detail({ d, onOverview }) {
         );
       })()}
 
+      {d.aiPolicySummary && d.aiPolicySummary.length > 0 && (
+        <div className="section">
+          <h2 className="section-h">Artificial Intelligence Policy</h2>
+          <div className="table-wrap" style={{ padding: '1.25rem 1.5rem' }}>
+            <ul style={{ margin: 0, paddingLeft: '1.25rem', color: 'var(--text-primary)' }}>
+              {d.aiPolicySummary.map((item, index) => (
+                <li key={index} style={{ marginBottom: index === d.aiPolicySummary.length - 1 ? 0 : '0.75rem' }}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
       <p className="foot">
         Data via GitHub REST + GraphQL APIs
       </p>
