@@ -1648,6 +1648,131 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting releases: {e}")
             return {}
     
+    def extract_adopters(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
+        """Fetch and parse ADOPTERS.md (or ADOPTERS) from the GitHub repo.
+
+        Tries main branch then master. Parses bullet/table rows into a flat
+        list of adopter dicts: {name, type, description, since, url}.
+        Saves adopters.json in the project data directory.
+        """
+        import re
+        print(f"🏢 Extracting adopters for {owner}/{repo}...")
+
+        raw_content: Optional[str] = None
+        for branch in ("main", "master"):
+            for filename in ("ADOPTERS.md", "ADOPTERS"):
+                try:
+                    repo_obj = self.github.get_repo(f"{owner}/{repo}")
+                    file_content = repo_obj.get_contents(filename, ref=branch)
+                    raw_content = file_content.decoded_content.decode("utf-8")
+                    print(f"  ✓ Found {filename} on branch '{branch}'")
+                    break
+                except GithubException:
+                    continue
+            if raw_content is not None:
+                break
+
+        adopters: List[Dict[str, Any]] = []
+
+        if raw_content is None:
+            print(f"  ℹ️  No ADOPTERS.md found for {owner}/{repo}")
+        else:
+            current_section = None
+
+            # Match markdown table rows: | col | col | ...
+            table_row_re = re.compile(r"^\|\s*(.+?)\s*\|")
+            # Match separator rows like |---|---|
+            table_sep_re = re.compile(r"^\|\s*[-:]+\s*\|")
+            # Match bullet list items: * text or - text
+            bullet_re = re.compile(r"^[*\-]\s+(.+)")
+            # Section headings like ### Users or ### Vendors
+            heading_re = re.compile(r"^#{1,4}\s+(.*)")
+
+            # Detect markdown table headers to map column indices
+            table_headers: List[str] = []
+
+            for line in raw_content.splitlines():
+                line = line.strip()
+
+                # Track current section from headings
+                heading_match = heading_re.match(line)
+                if heading_match:
+                    current_section = heading_match.group(1).strip().lower()
+                    table_headers = []
+                    continue
+
+                # Skip table separator rows
+                if table_sep_re.match(line):
+                    continue
+
+                # Parse markdown table rows
+                if table_row_re.match(line) and "|" in line:
+                    cells = [c.strip() for c in line.strip("|").split("|")]
+                    cells = [c for c in cells if c]
+                    if not cells:
+                        continue
+
+                    # First non-separator table row in a section = header row
+                    if not table_headers:
+                        table_headers = [h.lower() for h in cells]
+                        continue
+
+                    row: Dict[str, Any] = {}
+                    for i, header in enumerate(table_headers):
+                        row[header] = cells[i] if i < len(cells) else ""
+
+                    # Extract markdown link text from name/organization column
+                    name_raw = row.get("organization") or row.get("name") or (cells[0] if cells else "")
+                    link_match = re.match(r"\[([^\]]+)\]\([^)]*\)", name_raw)
+                    name = link_match.group(1) if link_match else re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", name_raw)
+
+                    url_match = re.search(r"\(([^)]+)\)", row.get("website", ""))
+                    url = url_match.group(1) if url_match else None
+
+                    adopters.append({
+                        "name": name.strip(),
+                        "type": row.get("type", "").strip() or current_section or "user",
+                        "description": row.get("description", "").strip(),
+                        "since": row.get("since", "").strip(),
+                        "url": url,
+                    })
+                    continue
+
+                # Parse bullet list items
+                bullet_match = bullet_re.match(line)
+                if bullet_match:
+                    raw = bullet_match.group(1).strip()
+                    # Extract link text + URL if present: [Name](url)
+                    link_match = re.match(r"\[([^\]]+)\]\(([^)]+)\)", raw)
+                    if link_match:
+                        name = link_match.group(1)
+                        url = link_match.group(2)
+                    else:
+                        name = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", raw).split("\n")[0]
+                        url = None
+
+                    # Skip lines that look like meta/description (contain common prefixes)
+                    name = name.strip()
+                    if not name or name.lower().startswith("use ") or name.lower().startswith("running "):
+                        continue
+
+                    adopters.append({
+                        "name": name,
+                        "type": current_section or "user",
+                        "description": "",
+                        "since": "",
+                        "url": url,
+                    })
+
+            print(f"  ✓ Parsed {len(adopters)} adopter(s)")
+
+        result = {
+            "total_adopters": len(adopters),
+            "adopters": adopters,
+            "extracted_at": datetime.now().isoformat(),
+        }
+        return result
+
     def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str):
         """Save extracted data to JSON file"""
         project_dir = self._project_dir(project_name)
@@ -1743,7 +1868,10 @@ class GitHubDataExtractor:
             releases = self.extract_releases(owner, repo, project_name)
             if releases:
                 self.save_project_data(project_name, releases, "releases")
-            
+
+            adopters = self.extract_adopters(owner, repo, project_name)
+            self.save_project_data(project_name, adopters, "adopters")
+
             print(f"\n✅ Completed extraction for {project_name}\n")
             
             # Rate limiting between projects

@@ -1,0 +1,216 @@
+{
+  "total_adopters": 30,
+  "adopters": [
+    {
+      "name": "Grupo MASMOVIL",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.grupomasmovil.com/"
+    },
+    {
+      "name": "Helvetia",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://helvetia.com/"
+    },
+    {
+      "name": "Baloise",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://baloise.ch/"
+    },
+    {
+      "name": "Lightbend",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.lightbend.com/"
+    },
+    {
+      "name": "Marlow Navigation",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://marlow-navigation.com/"
+    },
+    {
+      "name": "Randoli",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.randoli.io"
+    },
+    {
+      "name": "SBB CFF FFS",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.sbb.ch/en/home.html"
+    },
+    {
+      "name": "Swisscom",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.swisscom.ch/"
+    },
+    {
+      "name": "CN Group",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.cngroup.dk/"
+    },
+    {
+      "name": "Atruvia",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://atruvia.de/"
+    },
+    {
+      "name": "Procure Ai",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.procure.ai/"
+    },
+    {
+      "name": "LittleHorse",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://littlehorse.dev/"
+    },
+    {
+      "name": "DPG Media",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.dpgmediagroup.com/"
+    },
+    {
+      "name": "Decathlon",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://digital.decathlon.net/"
+    },
+    {
+      "name": "Skillsoft",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.skillsoft.com/"
+    },
+    {
+      "name": "Hetzner",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.hetzner.com/"
+    },
+    {
+      "name": "Reddit",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.reddit.com/r/RedditEng/"
+    },
+    {
+      "name": "Alauda",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.alauda.io/"
+    },
+    {
+      "name": "SURF",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://surf.nl"
+    },
+    {
+      "name": "AppsFlyer",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.appsflyer.com/"
+    },
+    {
+      "name": "Feedzai",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.feedzai.com/"
+    },
+    {
+      "name": "Pattern",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.pattern.com"
+    },
+    {
+      "name": "CERN",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://cern.ch"
+    },
+    {
+      "name": "Banco Mercantil",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://bancomercantil.com.br/"
+    },
+    {
+      "name": "Vera C. Rubin Observatory",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://rubinobservatory.org"
+    },
+    {
+      "name": "\u00c6nix",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://aenix.io"
+    },
+    {
+      "name": "Axual",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://axual.com/"
+    },
+    {
+      "name": "Cloudera",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://www.cloudera.com/products/stream-processing.html"
+    },
+    {
+      "name": "IBM",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://www.ibm.com/products/event-streams"
+    },
+    {
+      "name": "Red Hat",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://www.redhat.com/en/"
+    }
+  ],
+  "extracted_at": "2026-07-08T09:36:18.177074"
+}

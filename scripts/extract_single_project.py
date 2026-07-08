@@ -69,6 +69,7 @@ def main():
         "issues": False,
         "pull_requests": False,
         "releases": False,
+        "adopters": False,
     }
 
     # Metadata
@@ -162,6 +163,14 @@ def main():
             extraction_status["releases"] = True
     except Exception as e:
         print(f"⚠️  Warning: Releases extraction failed: {e}")
+
+    # Adopters
+    try:
+        adopters = extractor.extract_adopters(owner, repo, project_name)
+        extractor.save_project_data(project_name, adopters, "adopters")
+        extraction_status["adopters"] = True
+    except Exception as e:
+        print(f"⚠️  Warning: Adopters extraction failed: {e}")
 
     # Summary
     print(f"\n{'='*60}")

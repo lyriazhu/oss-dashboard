@@ -103,7 +103,7 @@ export function transformProjectData(project, metrics) {
   if (!metrics) return null;
   
   // Backend uses camelCase, so map to snake_case for consistency
-  const { metadata, contributors, commits, issues, pullRequests, releases } = metrics;
+  const { metadata, contributors, commits, issues, pullRequests, releases, adopters } = metrics;
   const pull_requests = pullRequests; // Alias for compatibility
   
   // Calculate YTD data from current year
@@ -352,12 +352,16 @@ export function transformProjectData(project, metrics) {
       }))
     : [];
   
+  // Build adopters list from extracted data
+  const adoptersList = adopters?.adopters || [];
+
   return {
     name: project.name,
     sub: project.foundation || 'Independent',
     foundation: project.foundation || 'Independent',
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
     status,
+    adopters: adoptersList,
     ov,
     kpis,
     commits: commitHistory.length > 0 ? commitHistory : [{ y: '2025', v: 0, c: true }],

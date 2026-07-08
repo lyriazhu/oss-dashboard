@@ -89,6 +89,7 @@ public class DataService {
         metrics.setIssues(loadJsonFile(projectDir, "issues.json", IssueData.class));
         metrics.setPullRequests(loadJsonFile(projectDir, "pull_requests.json", PullRequestData.class));
         metrics.setReleases(loadJsonFile(projectDir, "releases.json", ReleaseData.class));
+        metrics.setAdopters(loadJsonFile(projectDir, "adopters.json", AdopterData.class));
         
         return metrics;
     }

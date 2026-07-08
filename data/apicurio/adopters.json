@@ -1,0 +1,48 @@
+{
+  "total_adopters": 6,
+  "adopters": [
+    {
+      "name": "Axual",
+      "type": "Vendor",
+      "description": "Axual provides mission-critical streaming platforms based on open source Apache Kafka and open source Apicurio Registry",
+      "since": "2021",
+      "url": "https://axual.com"
+    },
+    {
+      "name": "Castor",
+      "type": "End-user",
+      "description": "Castor uses Apicurio as its central schema registry",
+      "since": "2024",
+      "url": "https://www.castoredc.com/"
+    },
+    {
+      "name": "IBM",
+      "type": "Vendor",
+      "description": "Apicurio Registry is included as the schema registry component in IBM Event Streams",
+      "since": "2020",
+      "url": "https://www.ibm.com/products/event-automation"
+    },
+    {
+      "name": "Libon",
+      "type": "End-user",
+      "description": "At Libon we use apicurio as our source of truth across all the organization for Kafka AVRO schemas",
+      "since": "2025",
+      "url": "https://www.libon.com"
+    },
+    {
+      "name": "Red Hat",
+      "type": "Vendor",
+      "description": "Red Hat build of Apicurio Registry, part of Red Hat Application Foundations",
+      "since": "2020",
+      "url": "https://www.redhat.com"
+    },
+    {
+      "name": "ZenWave 360",
+      "type": "End-user",
+      "description": "ZenWave360 uses Apicurio Registry as schemas registry",
+      "since": "",
+      "url": null
+    }
+  ],
+  "extracted_at": "2026-07-08T09:36:18.178303"
+}

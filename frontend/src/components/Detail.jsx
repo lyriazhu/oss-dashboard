@@ -267,6 +267,21 @@ export default function Detail({ d, onOverview }) {
         </p>
       </div>
 
+      {d.adopters && d.adopters.length > 0 && (
+        <div className="section">
+          <h2 className="section-h">Project adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({d.adopters.length})</span></h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
+            {d.adopters.map((a, i) => (
+              <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                {a.url
+                  ? <a href={a.url} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontWeight: 600 }}>{a.name}</a>
+                  : a.name}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <p className="foot">
         Data via GitHub REST + GraphQL APIs
       </p>
