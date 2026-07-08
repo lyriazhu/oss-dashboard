@@ -265,7 +265,7 @@ export default function Detail({ d, onOverview }) {
                 {d.companies.map((c, i) => (
                   <tr key={i}>
                     <td
-                      className={c.strong ? "strong" : ""}
+                      className=""
                       style={c.muted ? { color: "var(--text-helper)" } : undefined}
                     >
                       {c.n}
