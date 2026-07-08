@@ -5,7 +5,7 @@
     --gray-90:#262626; --gray-100:#161616;
     --blue-20:#d0e2ff; --blue-30:#a6c8ff; --blue-40:#78a9ff; --blue-60:#0f62fe; --blue-70:#0043ce;
     --teal-50:#009d9a; --green-20:#a7f0ba; --green-50:#24a148; --green-70:#0e6027;
-    --red-60:#da1e28; --yellow-30:#f1c21b;
+    --red-30:#ffb3b8; --red-50:#fa4d56; --red-60:#da1e28; --yellow-30:#f1c21b;
 
     --background:#ffffff;
     --layer-01:#f4f4f4;
@@ -149,28 +149,28 @@
     transition:height .3s ease;
   }
   .bar.stacked .bar-segment.closed{
-    background:var(--green-50);
+    background:var(--blue-30);
   }
   .bar.stacked .bar-segment.open{
-    background:var(--blue-40);
+    background:var(--red-30);
   }
   .bar.stacked .bar-segment.returning{
-    background:var(--blue-60);
+    background:var(--blue-30);
   }
   .bar.stacked .bar-segment.newContributors{
-    background:var(--teal-50);
+    background:var(--red-30);
   }
   .bar.stacked.current .bar-segment.closed{
-    background:var(--green-70);
-  }
-  .bar.stacked.current .bar-segment.open{
     background:var(--blue-60);
   }
+  .bar.stacked.current .bar-segment.open{
+    background:var(--red-50);
+  }
   .bar.stacked.current .bar-segment.returning{
-    background:var(--blue-70);
+    background:var(--blue-60);
   }
   .bar.stacked.current .bar-segment.newContributors{
-    background:#007d79;
+    background:var(--red-50);
   }
   
   .bar-axis{

@@ -263,7 +263,7 @@ export default function Detail({ d, onOverview }) {
             />
           )}
         <p className="chart-cap">
-          Darker bar = current period · Green = closed issues, Blue = open issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
+          Darker bar = current period · Red = open issues, Blue = closed issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
         </p>
       </div>
 
