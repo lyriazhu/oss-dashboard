@@ -187,7 +187,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       </div>
 
       <div className="section">
-        <h2 className="section-h">Commit activity per quarter across all communities</h2>
+        <h2 className="section-h">Commits per quarter (Past 12 quarters)</h2>
         <div className="mini-grid">
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
@@ -207,7 +207,15 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
                 }}
               >
                 <div className="mini-title">{d.name}</div>
-                <BarChart values={d.ov.quarters} labels={QUARTERS} variant="mini" />
+                <BarChart
+                  values={d.ov.quarters}
+                  labels={d.quarters?.slice(-12).map((x) => x.q
+                    ? x.q.replace(/^(Q\d)\s(\d{2})(\d{2})$/, "$1'$3")
+                    : x.q) || QUARTERS}
+                  currentIndex={d.quarters?.slice(-12).findLastIndex?.((x) => x.c) ?? -1}
+                  variant="mini"
+                  slanted={true}
+                />
               </div>
             );
           })}
