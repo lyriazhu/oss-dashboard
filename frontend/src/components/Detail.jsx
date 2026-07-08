@@ -64,7 +64,7 @@ function ControlRow({ control }) {
 
       {/* Summary line always visible just below header when collapsed */}
       {!open && (
-        <p style={{ margin: '0 1.25rem .75rem calc(1.25rem + 12px + 1rem + 5rem + 1rem)', fontSize: '.8125rem', color: 'var(--text-helper)', lineHeight: 1.5 }}>
+        <p style={{ margin: '0 1.25rem .75rem calc(1.25rem + 12px + 1rem + 5rem + 1rem)', fontSize: '.875rem', color: 'var(--text-helper)', lineHeight: 1.5 }}>
           {control.summary}
         </p>
       )}
@@ -72,10 +72,10 @@ function ControlRow({ control }) {
       {/* Expanded content */}
       {open && (
         <div style={{ padding: '0 1.25rem 1rem calc(1.25rem + 12px + 1rem)' }}>
-          <p style={{ margin: '0 0 .875rem', fontSize: '.8125rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+          <p style={{ margin: '0 0 .875rem', fontSize: '.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
             {control.summary}
           </p>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '.8125rem' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '.875rem' }}>
             <thead>
               <tr>
                 <th style={{ textAlign: 'left', padding: '.5rem .75rem', background: 'var(--gray-10)', color: 'var(--text-primary)', fontWeight: 600, borderBottom: '1px solid var(--border-subtle)' }}>Check</th>
@@ -416,7 +416,7 @@ export default function Detail({ d, onOverview }) {
         <div className="section">
           <h2 className="section-h">Artificial Intelligence Policy</h2>
           <div className="table-wrap" style={{ padding: '1.25rem 1.5rem' }}>
-            <ul style={{ margin: 0, paddingLeft: '1.25rem', color: 'var(--text-primary)' }}>
+            <ul style={{ margin: 0, paddingLeft: '1.25rem', color: 'var(--text-primary)', fontSize: '.875rem' }}>
               {d.aiPolicySummary.map((item, index) => (
                 <li key={index} style={{ marginBottom: index === d.aiPolicySummary.length - 1 ? 0 : '0.75rem' }}>
                   {item}
