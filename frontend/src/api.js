@@ -118,9 +118,11 @@ export function transformProjectData(project, metrics) {
   const prYtd = currentYearPrData?.prCount || currentYearPrData?.pr_count || 0;
   const mergedPrYtd = currentYearPrData?.mergedPrCount || currentYearPrData?.merged_pr_count || 0;
   
-  // Determine status - use metadata.status if available, otherwise calculate
+  // Determine status - hardcode N/A for 3scale, otherwise use metadata or calculate
   let status;
-  if (metadata?.status) {
+  if (project.id === '3scale-operator') {
+    status = { label: 'N/A', cls: 'gray' };
+  } else if (metadata?.status) {
     // Use status from metadata if provided
     if (metadata.status === 'N/A') {
       status = { label: 'N/A', cls: 'gray' };
