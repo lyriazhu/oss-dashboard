@@ -189,7 +189,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       <div className="section">
         <h2 className="section-h">Commit activity per quarter across all communities</h2>
         <div className="mini-grid">
-          {order.map((key) => {
+          {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
             return (
               <div
