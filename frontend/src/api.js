@@ -437,6 +437,134 @@ export function transformProjectData(project, metrics) {
         ],
       },
     ],
+    keycloak: [
+      {
+        id: 'legal',
+        label: 'Legal',
+        pct: 78,
+        summary: 'Ensures code is under a valid open source license, reducing IP risks and ensuring proper licensing and distribution.',
+        details: [
+          {
+            label: 'OSPS-LE-02.01',
+            status: 'review',
+            note: 'While active, the license for the source code MUST meet the OSI Open Source Definition or the FSF Free Software Definition. All licenses found are OSI or FSF approved.',
+          },
+          {
+            label: 'OSPS-LE-03.01',
+            status: 'pass',
+            note: 'While active, the license for the source code MUST be maintained in the corresponding repository\'s LICENSE file, COPYING file, or LICENSE/ directory.',
+          },
+          {
+            label: 'OSPS-LE-03.02',
+            status: 'pass',
+            note: 'While active, the license for the released software assets MUST be included in the released source code, or in a LICENSE file, COPYING file, or LICENSE/ directory alongside the corresponding release assets.',
+          },
+          {
+            label: 'OSPS-LE-04.01',
+            status: 'fail',
+            note: 'While active, the project MUST have a documented policy to address license compliance issues in dependencies. No automated dependency license compliance process is documented in the repository.',
+          },
+          {
+            label: 'OSPS-LE-05.01',
+            status: 'pass',
+            note: 'While active, contributions MUST NOT knowingly incorporate code licensed under terms incompatible with the project\'s license. The project\'s Apache 2.0 license and DCO sign-off process enforce this.',
+          },
+          {
+            label: 'OSPS-LE-05.02',
+            status: 'pass',
+            note: 'The project MUST document its contribution license requirements (e.g., CLA or DCO). The Developer Certificate of Origin (DCO) is required and enforced via automated checks.',
+          },
+          {
+            label: 'OSPS-LE-06.01',
+            status: 'pass',
+            note: 'The project MUST have a mechanism to detect and respond to new license obligations introduced by dependency updates. Dependency updates are reviewed via automated tooling.',
+          },
+          {
+            label: 'OSPS-LE-07.01',
+            status: 'pass',
+            note: 'While active, the project MUST publish machine-readable metadata (e.g., SPDX or CycloneDX) associating each release with its corresponding license. License metadata is published in release artifacts.',
+          },
+          {
+            label: 'OSPS-LE-07.02',
+            status: 'fail',
+            note: 'While active, the project MUST generate and publish a Software Bill of Materials (SBOM) with each release. No SBOM artifacts are currently published alongside releases.',
+          },
+        ],
+      },
+      {
+        id: 'quality',
+        label: 'Quality',
+        pct: 77,
+        summary: 'Ensures code is secure, reliable, and well-maintained through strong processes, reducing bugs and vulnerabilities.',
+        details: [
+          {
+            label: 'OSPS-QA-01.01',
+            status: 'pass',
+            note: 'While active, the project\'s source code repository MUST be publicly readable at a static URL.',
+          },
+          {
+            label: 'OSPS-QA-01.02',
+            status: 'pass',
+            note: 'The version control system MUST contain a publicly readable record of all changes made, who made the changes, and when the changes were made.',
+          },
+          {
+            label: 'OSPS-QA-02.01',
+            status: 'pass',
+            note: 'When the package management system supports it, the source code repository MUST contain a dependency list that accounts for the direct language dependencies. Maven pom.xml files provide full dependency manifests.',
+          },
+          {
+            label: 'OSPS-QA-02.02',
+            status: 'pass',
+            note: 'While active, the build and release pipeline MUST NOT execute arbitrary code that is not a part of the build and deploy scripts. Build pipelines are defined and version-controlled in the repository.',
+          },
+          {
+            label: 'OSPS-QA-03.01',
+            status: 'pass',
+            note: 'While active, all released software assets MUST be assigned a version identifier that is unique within the project. Semantic versioning is used and enforced across all releases.',
+          },
+          {
+            label: 'OSPS-QA-03.02',
+            status: 'pass',
+            note: 'While active, the project MUST provide a mechanism for reporting defects. GitHub Issues are publicly open for defect reporting.',
+          },
+          {
+            label: 'OSPS-QA-04.01',
+            status: 'fail',
+            note: 'While active, the project documentation MUST contain a list of any codebases that are considered subprojects or additional repositories. Insights does not contain a list of repositories.',
+          },
+          {
+            label: 'OSPS-QA-05.01',
+            status: 'pass',
+            note: 'While active, the version control system MUST NOT contain generated executable artifacts.',
+          },
+          {
+            label: 'OSPS-QA-05.02',
+            status: 'pass',
+            note: 'While active, the project MUST have at least one automated test suite. CI pipelines with automated test suites are present and required for all pull requests.',
+          },
+          {
+            label: 'OSPS-QA-06.01',
+            status: 'fail',
+            note: 'While active, the project MUST enforce code review by a party other than the author before merging. Branch protection rules requiring review are not consistently enforced across all branches.',
+          },
+          {
+            label: 'OSPS-QA-07.01',
+            status: 'fail',
+            note: 'While active, the project MUST have a documented build and release process. A formal documented build and release process in the primary repository is not present.',
+          },
+          {
+            label: 'OSPS-QA-08.01',
+            status: 'pass',
+            note: 'While active, the project MUST apply fixes for publicly-known vulnerabilities within a reasonable time period. Keycloak maintains an active security advisory process and patches CVEs promptly.',
+          },
+          {
+            label: 'OSPS-QA-08.02',
+            status: 'pass',
+            note: 'While active, the project MUST use at least one automated static code analysis tool. Static analysis tooling (e.g., Checkstyle, SpotBugs) is integrated into the Maven build.',
+          },
+        ],
+      },
+    ],
   };
 
   return {
