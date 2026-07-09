@@ -208,8 +208,7 @@ export default function Detail({ d, onOverview }) {
               const returning = point?.returning || 0;
               const newContributors = point?.newContributors || 0;
               const active = point?.active || 0;
-              const contentionPct = active > 0 ? Math.round((returning / active) * 100) : 0;
-              return `${label}: ${contentionPct}% contributors returned next period (${returning} returning, ${newContributors} new, ${active} total contributors)`;
+              return `${label}: ${active} contributors (${newContributors} new, ${returning} returning)`;
             }}
           />
         ) : (
@@ -227,7 +226,7 @@ export default function Detail({ d, onOverview }) {
               const returning = point?.returning || 0;
               const newContributors = point?.newContributors || 0;
               const active = point?.active || 0;
-              return `${label}: ${newContributors} new, ${returning} returning, ${active} total`;
+              return `${label}: ${active} contributors (${newContributors} new, ${returning} returning)`;
             }}
           />
         )}
