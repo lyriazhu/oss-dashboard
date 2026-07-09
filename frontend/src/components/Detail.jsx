@@ -383,48 +383,6 @@ export default function Detail({ d, onOverview }) {
         </p>
       </div>
 
-      {d.adopters && d.adopters.length > 0 && (() => {
-        const _noiseRe = /^(\.\.|and more|more |see |\*\*|note:|please )/i;
-        const _articleHostRe = /https?:\/\/(medium\.com|itnext\.io|dev\.to|towardsdatascience\.com|blog\.|hackernoon\.com|dzone\.com|thenewstack\.io)/i;
-        const _articleTitleRe = /\b(on kubernetes| at [a-z]| in kubernetes|with kafka| for apache [a-z]+ [a-z]|uses?|using|deploy|utilizes?|seamless|optimizing)\b/i;
-        const cleanAdopters = d.adopters.filter(a =>
-          a.name &&
-          !_noiseRe.test(a.name.trim()) &&
-          a.name.length <= 60 &&
-          !_articleTitleRe.test(a.name) &&
-          !(a.url && _articleHostRe.test(a.url))
-        ).sort((a, b) => a.name.localeCompare(b.name));
-        if (!cleanAdopters.length) return null;
-        const visibleAdopters = showAllAdopters ? cleanAdopters : cleanAdopters.slice(0, 12);
-        return (
-        <div className="section">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-            <h2 className="section-h" style={{ margin: 0 }}>
-              Known project adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({cleanAdopters.length})</span>
-            </h2>
-            {cleanAdopters.length > 12 && (
-              <button
-                className="btn-secondary"
-                onClick={() => setShowAllAdopters((show) => !show)}
-                style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
-              >
-                {showAllAdopters ? 'Show fewer' : 'Expand'}
-              </button>
-            )}
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
-            {visibleAdopters.map((a, i) => (
-              <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 600 }}>
-                {a.url
-                  ? <a href={a.url} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontWeight: 600 }}>{a.name}</a>
-                  : a.name}
-              </div>
-            ))}
-          </div>
-        </div>
-        );
-      })()}
-
       {d.aiPolicySummary && d.aiPolicySummary.length > 0 && (
         <div className="section">
           <h2 className="section-h">Artificial Intelligence Policy</h2>
@@ -439,6 +397,49 @@ export default function Detail({ d, onOverview }) {
           </div>
         </div>
       )}
+
+      {d.adopters && d.adopters.length > 0 && (() => {
+        const _noiseRe = /^(\.\.|and more|more |see |\*\*|note:|please )/i;
+        const _articleHostRe = /https?:\/\/(medium\.com|itnext\.io|dev\.to|towardsdatascience\.com|blog\.|hackernoon\.com|dzone\.com|thenewstack\.io)/i;
+        const _articleTitleRe = /\b(on kubernetes| at [a-z]| in kubernetes|with kafka| for apache [a-z]+ [a-z]|uses?|using|deploy|utilizes?|seamless|optimizing)\b/i;
+        const cleanAdopters = d.adopters.filter(a =>
+          a.name &&
+          !_noiseRe.test(a.name.trim()) &&
+          a.name.length <= 60 &&
+          !_articleTitleRe.test(a.name) &&
+          !(a.url && _articleHostRe.test(a.url))
+        ).sort((a, b) => a.name.localeCompare(b.name));
+        if (!cleanAdopters.length) return null;
+        const visibleAdopters = showAllAdopters ? cleanAdopters : cleanAdopters.slice(0, 18);
+        return (
+        <div className="section">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <h2 className="section-h" style={{ margin: 0 }}>
+              Known project adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({cleanAdopters.length})</span>
+            </h2>
+            {cleanAdopters.length > 18 && (
+              <button
+                className="btn-secondary"
+                onClick={() => setShowAllAdopters((show) => !show)}
+                style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
+              >
+                {showAllAdopters ? 'Show fewer' : 'Expand'}
+              </button>
+            )}
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
+            {visibleAdopters.map((a, i) => (
+              <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                {a.url
+                  ? <a href={a.url} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontWeight: 600 }}>{a.name}</a>
+                  : a.name}
+              </div>
+            ))}
+          </div>
+        </div>
+        );
+      })()}
+
 
       {d.controls && d.controls.length > 0 && (
         <div className="section">
