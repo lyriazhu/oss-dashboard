@@ -232,6 +232,8 @@
   /* Carbon DataTable */
   .table-wrap{overflow-x:auto; border:1px solid var(--border-subtle); background:var(--layer-02);}
   .companies-table-wrap{align-self:start;}
+  .companies-table-wrap tbody tr:hover td,
+  .companies-table-wrap + .table-wrap tbody tr:hover td{background:transparent;}
   table{width:100%; border-collapse:collapse; font-size:.875rem;}
   thead th{
     background:var(--gray-10); color:var(--text-primary); font-weight:600;
@@ -266,7 +268,6 @@
 
   /* clickable community rows */
   #commTable tbody tr{cursor:pointer;}
-  #commTable tbody tr:hover td{background:var(--blue-20);}
   .chev{width:1rem;height:1rem;color:var(--gray-50);}
   #commTable tbody tr:hover .chev{color:var(--blue-60);}
   td.chev-cell{text-align:right; padding-right:1rem;}
