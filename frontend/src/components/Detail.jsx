@@ -14,14 +14,11 @@ const SEV_COLOR = {
 
 function SortArrow({ dir }) {
   return (
-    <span aria-hidden="true" style={{ display: 'inline-flex', flexDirection: 'column', marginLeft: '0.3rem', gap: '1px', verticalAlign: 'middle', opacity: dir ? 1 : 0.35 }}>
-      <svg width="7" height="5" viewBox="0 0 7 5" style={{ display: 'block', color: dir === 'asc' ? 'currentColor' : 'var(--text-helper)' }}>
-        <path d="M3.5 0L7 5H0z" fill="currentColor" />
-      </svg>
-      <svg width="7" height="5" viewBox="0 0 7 5" style={{ display: 'block', color: dir === 'desc' ? 'currentColor' : 'var(--text-helper)' }}>
-        <path d="M3.5 5L0 0h7z" fill="currentColor" />
-      </svg>
-    </span>
+    <svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12"
+      style={{ display: 'inline-block', marginLeft: '0.3rem', verticalAlign: 'middle', flexShrink: 0, opacity: dir ? 1 : 0.4 }}>
+      <path d="M4 0L8 5H0z" fill={dir === 'asc' ? 'currentColor' : 'var(--text-helper)'} />
+      <path d="M4 12L0 7h8z" fill={dir === 'desc' ? 'currentColor' : 'var(--text-helper)'} />
+    </svg>
   );
 }
 
@@ -58,12 +55,19 @@ function CveTable({ entries, showAll }) {
     userSelect: 'none',
     whiteSpace: 'nowrap',
     color: sortCol === col ? 'var(--text-primary)' : undefined,
+    verticalAlign: 'middle',
   });
 
   return (
     <div style={{ marginTop: '1rem' }}>
       <div className="table-wrap">
-        <table>
+        <table style={{ tableLayout: 'fixed' }}>
+          <colgroup>
+            <col style={{ width: '18%' }} />
+            <col style={{ width: '12%' }} />
+            <col style={{ width: '14%' }} />
+            <col style={{ width: '56%' }} />
+          </colgroup>
           <thead>
             <tr>
               {[
@@ -114,7 +118,7 @@ function CveTable({ entries, showAll }) {
                   <td style={{ whiteSpace: 'nowrap', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                     {cve.published}
                   </td>
-                  <td style={{ fontSize: '0.875rem', color: 'var(--text-primary)', lineHeight: 1.45 }}>
+                  <td style={{ fontSize: '0.875rem', color: 'var(--text-primary)', lineHeight: 1.45, wordBreak: 'break-word' }}>
                     {cve.summary}
                   </td>
                 </tr>
