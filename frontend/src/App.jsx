@@ -149,8 +149,6 @@ export default function App() {
           setTokenConfigured(false); // force token field to show in modal
           setModalOpen(true);
         }}
-        tokenConfigured={tokenConfigured}
-        onTokenClick={() => setModalOpen(true)}
       />
 
       <div className="layout">
