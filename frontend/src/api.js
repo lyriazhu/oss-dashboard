@@ -371,7 +371,7 @@ export function transformProjectData(project, metrics) {
         'When a pull request includes AI-generated code, contributors must provide proper attribution, including clear PR-level disclosure of the AI tool used.',
         'Camel also expects AI coding agents to be configured to add commit co-authorship trailers for AI-generated code when applicable.',
       ],
-      source: 'https://github.com/apache/camel/blob/main/CLAUDE.md',
+      source: 'https://github.com/apache/camel/blob/main/docs/main/modules/contributing/pages/index.adoc',
     },
     artemis: {
       points: [
