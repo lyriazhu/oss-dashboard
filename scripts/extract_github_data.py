@@ -1648,14 +1648,146 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting releases: {e}")
             return {}
     
-    def extract_adopters(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
-        """Fetch and parse ADOPTERS.md (or ADOPTERS) from the GitHub repo.
+    def _scrape_website_adopters(self, url: str) -> List[Dict[str, Any]]:
+        """Scrape an adopter/user-stories webpage and return a flat list of adopter dicts.
 
-        Tries main branch then master. Parses bullet/table rows into a flat
-        list of adopter dicts: {name, type, description, since, url}.
-        Saves adopters.json in the project data directory.
+        Parses HTML tables whose headers include a name-like column (company, product,
+        organization) and an optional description column.  Each table section is labelled
+        by the nearest preceding <h2> or <h3> heading.
+
+        Returns a list of dicts: {name, type, description, since, url}
         """
         import re
+        try:
+            import requests
+            from bs4 import BeautifulSoup
+        except ImportError:
+            print("  ⚠️  requests/beautifulsoup4 not installed — skipping website adopter scrape")
+            return []
+
+        print(f"  🌐 Scraping adopters from {url} ...")
+        try:
+            resp = requests.get(url, timeout=15, headers={"User-Agent": "oss-dashboard/1.0"})
+            resp.raise_for_status()
+        except Exception as e:
+            print(f"  ⚠️  Failed to fetch {url}: {e}")
+            return []
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+
+        # Strip navigation chrome so TOC headings don't pollute section labels
+        for noise in soup.find_all(["aside", "nav", "header", "footer"]):
+            noise.decompose()
+
+        adopters: List[Dict[str, Any]] = []
+
+        # Walk every table in the page, track the nearest preceding heading for section label
+        current_section = "user"
+        for element in soup.find_all(["h1", "h2", "h3", "table"]):
+            tag = element.name
+            if tag in ("h1", "h2", "h3"):
+                current_section = element.get_text(separator=" ", strip=True).lower()
+                continue
+
+            # --- parse <table> ---
+            headers_row = element.find("thead")
+            if not headers_row:
+                continue
+            header_cells = [th.get_text(strip=True).lower() for th in headers_row.find_all("th")]
+            if not header_cells:
+                continue
+
+            # Identify which column index holds the name and description
+            name_idx: Optional[int] = None
+            desc_idx: Optional[int] = None
+            url_col_idx: Optional[int] = None
+            for i, h in enumerate(header_cells):
+                if h in ("company", "product", "organization", "name", "project"):
+                    name_idx = i
+                elif h in ("description", "details", "notes", "use case"):
+                    desc_idx = i
+                elif h in ("website", "url", "link"):
+                    url_col_idx = i
+
+            if name_idx is None:
+                # Fall back to first column being the name
+                name_idx = 0
+
+            tbody = element.find("tbody")
+            if not tbody:
+                continue
+
+            for row in tbody.find_all("tr"):
+                cells = row.find_all("td")
+                if not cells or name_idx >= len(cells):
+                    continue
+
+                # Extract name + optional href from the name cell
+                name_cell = cells[name_idx]
+                anchor = name_cell.find("a")
+                name = name_cell.get_text(strip=True)
+                href: Optional[str] = None
+                if anchor:
+                    href = anchor.get("href") or None
+                    name = anchor.get_text(strip=True) or name
+
+                name = re.sub(r"\s+", " ", name).strip()
+                if not name or len(name) > 100:
+                    continue
+
+                description = ""
+                if desc_idx is not None and desc_idx < len(cells):
+                    description = cells[desc_idx].get_text(separator=" ", strip=True)
+                    description = re.sub(r"\s+", " ", description).strip()
+
+                row_url: Optional[str] = href
+                if url_col_idx is not None and url_col_idx < len(cells):
+                    url_anchor = cells[url_col_idx].find("a")
+                    if url_anchor:
+                        row_url = url_anchor.get("href") or row_url
+
+                adopters.append({
+                    "name": name,
+                    "type": current_section,
+                    "description": description,
+                    "since": "",
+                    "url": row_url,
+                })
+
+        adopters.sort(key=lambda a: a["name"].lower())
+        print(f"  ✓ Scraped {len(adopters)} adopter(s) from website")
+        return adopters
+
+    def extract_adopters(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
+        """Fetch and parse adopter data for a project.
+
+        For projects with an `adopters_url` in config.yaml the adopters are
+        scraped from that website.  Otherwise, tries ADOPTERS.md (or ADOPTERS)
+        from the GitHub repo on main/master branch.
+
+        Returns a dict with total_adopters, adopters list, and extracted_at.
+        """
+        import re
+
+        # Look up any per-project website URL for adopters
+        adopters_url: Optional[str] = None
+        for p in self.config.get("projects", []):
+            repos_for_p = p.get("repos") or [{"owner": p.get("owner"), "repo": p.get("repo")}]
+            primary = repos_for_p[0]
+            if primary.get("owner") == owner and primary.get("repo") == repo:
+                adopters_url = p.get("adopters_url")
+                break
+
+        if adopters_url:
+            adopters = self._scrape_website_adopters(adopters_url)
+            result = {
+                "total_adopters": len(adopters),
+                "adopters": adopters,
+                "source": adopters_url,
+                "extracted_at": datetime.now().isoformat(),
+            }
+            return result
+
         print(f"🏢 Extracting adopters for {owner}/{repo}...")
 
         raw_content: Optional[str] = None

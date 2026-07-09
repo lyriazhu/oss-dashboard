@@ -1,5 +1,1092 @@
 {
-  "total_adopters": 0,
-  "adopters": [],
-  "extracted_at": "2026-07-08T09:56:23.292738"
+  "total_adopters": 155,
+  "adopters": [
+    {
+      "name": "1&1 Internet AG",
+      "type": "who uses apache camel",
+      "description": "Germany\u2019s major internet hosting company uses Apache Camel for enterprise integration. Presented at JUG Karlsruhe 2008.",
+      "since": "",
+      "url": "http://dlinsin.blogspot.com/2008/11/apache-camel-talk-jug-ka.html"
+    },
+    {
+      "name": "314e Corporation",
+      "type": "who uses apache camel",
+      "description": "At 314e Corporation, Apache Camel is the powerhouse behind our SaaS-based healthcare integration engine \u2018ZSegment\u2019. It quietly runs 10K\u201320K messages per second, connecting EHRs, labs, payers and more in real-time.",
+      "since": "",
+      "url": "https://www.314e.com/"
+    },
+    {
+      "name": "AB InBev",
+      "type": "who uses apache camel",
+      "description": "World\u2019s largest brewer (Budweiser, Corona, Stella Artois). AB InBev engineers contribute directly to the Apache Camel K open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-k/commit/f5e245ab2855746ed0692b9bfc7810d88b1fbcdb"
+    },
+    {
+      "name": "Airport IMB",
+      "type": "who uses apache camel",
+      "description": "Airport Integration Message Broker \u2014 the digital nervous system of modern airports. Built on Apache Camel, Quarkus, ActiveMQ, and OpenShift. Zero message loss, event-driven backbone.",
+      "since": "",
+      "url": "https://www.linkedin.com/posts/spgangwar_airports-imb-activity-7425142847588319232-KCEJ"
+    },
+    {
+      "name": "Akamai",
+      "type": "who uses apache camel",
+      "description": "Global CDN and cybersecurity company. Akamai Security Intelligence Group (SIG) actively monitors Apache Camel and reported CVE-2025-29891.",
+      "since": "",
+      "url": "../../security/CVE-2025-29891.html"
+    },
+    {
+      "name": "Albert Heijn",
+      "type": "who uses apache camel",
+      "description": "Largest Dutch supermarket chain uses Apache Camel. Albert Heijn engineers contribute directly to the Apache Camel K open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-k/commit/b2ceac8f108a9744ff57d68084a4fd9aa12e6463"
+    },
+    {
+      "name": "Ally Financial",
+      "type": "who uses apache camel",
+      "description": "US digital financial services leader (8,000 employees). Uses Apache Camel and OpenShift for online banking, auto finance, insurance, and investing platforms.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/ally-financial"
+    },
+    {
+      "name": "Alm. Brand",
+      "type": "who uses apache camel",
+      "description": "Danish insurance company uses Apache Camel on Spring Boot. Alm. Brand engineers contribute directly to the Apache Camel open source project (12 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/6ef6f81a2f4641672d9324a761da210af5cbea28"
+    },
+    {
+      "name": "Amway",
+      "type": "who uses apache camel",
+      "description": "Fortune 500 consumer goods company with a 4-year Apache Camel journey. Runs production integrations on GCP Cloud Run. Now adding AI-augmented pipeline with agentic code reviews on every commit.",
+      "since": "",
+      "url": "https://www.linkedin.com/pulse/4-year-evolution-our-integration-journey-apache-camel-prathipati-3k3yc/"
+    },
+    {
+      "name": "Apache ActiveMQ",
+      "type": "open source projects using apache camel",
+      "description": "Uses Camel to add Enterprise Integration Patterns support into the ActiveMQ broker . Can be used to bridge ActiveMQ with any of the camel Components .",
+      "since": "",
+      "url": "http://activemq.apache.org"
+    },
+    {
+      "name": "Apache CXF",
+      "type": "open source projects using apache camel",
+      "description": "Apache CXF implements a Camel transport factory, allowing CXF web services to use Camel as a transport layer. Bidirectional integration \u2014 Camel also has dedicated CXF components.",
+      "since": "",
+      "url": "https://cxf.apache.org/"
+    },
+    {
+      "name": "Apache Ignite",
+      "type": "open source projects using apache camel",
+      "description": "Apache Ignite In-Memory Data Fabric is a high-performance, integrated and distributed in-memory platform for computing and transacting on large-scale data sets in real-time. It uses Camel for its universal streamer.",
+      "since": "",
+      "url": "https://ignite.apache.org/"
+    },
+    {
+      "name": "Apache Karaf Decanter",
+      "type": "open source projects using apache camel",
+      "description": "Karaf\u2019s observability framework has a Camel Appender (sends monitoring data to Camel endpoints) and a Camel Collector (gathers JMX metrics from Camel route MBeans).",
+      "since": "",
+      "url": "https://karaf.apache.org/"
+    },
+    {
+      "name": "Apache KIE",
+      "type": "open source projects using apache camel",
+      "description": "Apache KIE (incubating, formerly Kogito) SonataFlow serverless workflow engine integrates with Apache Camel via the kogito-addons-quarkus-camel add-on, enabling workflows to call any Camel route using camel:direct: function operations.",
+      "since": "",
+      "url": "https://kie.apache.org/"
+    },
+    {
+      "name": "Apache StreamPipes",
+      "type": "open source projects using apache camel",
+      "description": "IoT and streaming data platform uses Camel Kamelets as data sinks, enabling connectivity to databases, cloud services, and external systems.",
+      "since": "",
+      "url": "https://streampipes.apache.org/"
+    },
+    {
+      "name": "Apache Syncope",
+      "type": "open source projects using apache camel",
+      "description": "Apache Syncope identity management platform delegates its provisioning process to Apache Camel routes. User/group lifecycle events (create, update, delete) trigger Camel routes that can be modified at runtime via REST or admin console.",
+      "since": "",
+      "url": "https://syncope.apache.org/"
+    },
+    {
+      "name": "Apache Unomi",
+      "type": "open source projects using apache camel",
+      "description": "Apache Unomi customer data platform uses Apache Camel routes for import and export of user profiles via file, FTP/SFTP, and Kafka endpoints.",
+      "since": "",
+      "url": "https://unomi.apache.org/"
+    },
+    {
+      "name": "APIPass",
+      "type": "commercial products built on apache camel",
+      "description": "Provides an Integration Platform as a Service (iPaaS) built on Apache Camel.",
+      "since": "",
+      "url": "https://apipass.com.br/"
+    },
+    {
+      "name": "APIS IT (Croatian Government)",
+      "type": "who uses apache camel",
+      "description": "Provides critical IT infrastructure for Croatian government ministries and public administration. Uses Apache Camel, AMQ, and OpenShift. 80+ production projects running with 200+ more planned. Modernized 20 years of legacy systems.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/apis-it"
+    },
+    {
+      "name": "Argentina National Migration Dept",
+      "type": "who uses apache camel",
+      "description": "Argentina\u2019s border security and immigration agency (350,000 employees, 3,600 offices). Uses Apache Camel and OpenShift for a migration analysis platform accessing 2 billion+ data assets. AI-driven criminal threat analysis. Reports reduced from 48-72 hours to 1 day.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/dnm"
+    },
+    {
+      "name": "Argentine Ministry of Health",
+      "type": "who uses apache camel",
+      "description": "National digital health network connecting healthcare providers\u2019 databases across all 24 Argentine provinces using Apache Camel and Data Grid on OpenShift. Over 6 million patients registered.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/argentina-ministerio-de-salud-case-study"
+    },
+    {
+      "name": "Arla Foods",
+      "type": "who uses apache camel",
+      "description": "Uses Camel to integrate business backend with web application for farmers to access information about quality of their delivered milk. Application used in numerous european countries.",
+      "since": "",
+      "url": "https://www.arla.com"
+    },
+    {
+      "name": "Asiakastieto (Enento Group)",
+      "type": "who uses apache camel",
+      "description": "Finnish fintech serving the Nordic banking sector. Built Account Insight open banking platform using Apache Camel, Quarkus, and 3scale on OpenShift. Analyzes bank account data for credit assessment under EU PSD2. Reduced production deployment cycle by 95%. Quarkus delivered 90% less memory and 70% less CPU.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/asiakastieto-unlocks-open-banking-innovation-red-hat"
+    },
+    {
+      "name": "Assimbly Gateway",
+      "type": "open source projects using apache camel",
+      "description": "A message gateway based on Apache Camel.",
+      "since": "",
+      "url": "https://github.com/assimbly/gateway"
+    },
+    {
+      "name": "AT&T",
+      "type": "who uses apache camel",
+      "description": "US telecommunications giant uses Apache Camel in their Customer Management space. AT&T\u2019s security team actively monitors Camel \u2014 Mark Thorson of AT&T discovered and reported 3 CVEs (CVE-2025-27636, CVE-2025-29891, CVE-2025-30177). Presented at CamelOne 2011.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2011/"
+    },
+    {
+      "name": "Aviva Italy",
+      "type": "who uses apache camel",
+      "description": "One of the world\u2019s leading insurance groups (300+ year history, 33 million customers in 16 countries). Uses Apache Camel (Red Hat JBoss Fuse) to power MyAviva customer portal integrating 2 million customers, 12 million policies, 800,000 claims, and 530 million data records. Deployed in under 6 months. 30% more efficient, maintenance costs reduced by 50%.",
+      "since": "",
+      "url": "https://www.redhat.com/rhdc/managed-files/rh-aviva-italy-gruppo-euris-customer-portal-data-integration-jboss-fuse-data-virtualization-case-study-f8792kc-201710-en.pdf"
+    },
+    {
+      "name": "Banco Credicoop",
+      "type": "who uses apache camel",
+      "description": "Argentine cooperative bank serving 2.3 million customers. Replaced legacy ESB with Apache Camel on OpenShift for faster service delivery across all channels.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/bccl-case-study"
+    },
+    {
+      "name": "Banco da Amaz\u00f4nia",
+      "type": "who uses apache camel",
+      "description": "Brazilian federal government bank for the Amazon region (95% government-owned). Uses Apache Camel, 3scale, and OpenShift. Credit processing reduced from 6 months to 24 hours. 370% year-over-year digital credit growth. Serves remote Amazon communities \u2014 family farmers, fishers, and miners.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/Banco-da-amazonia"
+    },
+    {
+      "name": "Banco Galicia",
+      "type": "who uses apache camel",
+      "description": "One of Argentina\u2019s largest private banks (3 million customers, 150,000 businesses). Built an AI/NLP platform for digital onboarding on OpenShift, using Apache Camel and AMQ to integrate the AI platform with core banking systems. Reduced onboarding from days to minutes with 90% accuracy.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/banco-galicia-NLP"
+    },
+    {
+      "name": "BBC",
+      "type": "who uses apache camel",
+      "description": "British Broadcasting Corporation uses Apache Camel. BBC engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/91163f6d0387187cf9a2136b4fb889c21f9c3662"
+    },
+    {
+      "name": "BEC Financial Technologies",
+      "type": "who uses apache camel",
+      "description": "Danish financial IT provider serving 25% of all Danish bank customers (1,600 employees, DKK 2.3B revenue). Rewrote 20+ critical banking ETL applications using Apache Camel on Spring Boot. Presented at JEurope 2025.",
+      "since": "",
+      "url": "https://www.youtube.com/watch?v=dqOmWhUGd2A"
+    },
+    {
+      "name": "Behaim IT Solutions",
+      "type": "who uses apache camel",
+      "description": "German IoT company uses Apache Camel for receiving sensor data from Loriot for temperature monitoring at a dairy company, smart meters, and coffee machines. Integrated with MariaDB, Oracle, Artemis, SAP, and Sugar CRM.",
+      "since": "",
+      "url": "https://www.behaimits.com/our-life-with-apache-camel/"
+    },
+    {
+      "name": "Bertelsmann",
+      "type": "who uses apache camel",
+      "description": "Built an EAI middleware solution on Apache Camel connecting CRM systems to e-commerce webshop via AWS SQS. Around 15 internal teams send millions of data entries per year. Deployed on Kubernetes.",
+      "since": "",
+      "url": "https://tech.bertelsmann.com/en/blog/articles/automating-legacy-business-processes-using-cutting-edge-technologies-part-4-easiapache-camel"
+    },
+    {
+      "name": "BITMARCK",
+      "type": "who uses apache camel",
+      "description": "Provides managed IT services for over 85% of Germany\u2019s statutory health insurers. Built GesundheitsCockpit patient-facing mobile app using Apache Camel and API Management on OpenShift. Connects on-premises systems to cloud-based patient apps for medical records, prescriptions, and vaccination status while maintaining strict German/EU healthcare data protection compliance.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/Bitmarck"
+    },
+    {
+      "name": "Bosch",
+      "type": "who uses apache camel",
+      "description": "German engineering and technology multinational uses Apache Camel. Bosch engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/daab82ac0b1da97f4cdee5801a606776ad5f8a97"
+    },
+    {
+      "name": "BP",
+      "type": "who uses apache camel",
+      "description": "Global energy company (Fortune 10) uses Apache Camel for enterprise integration. BP engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/1067b19b90f32a7490012f05437bd11fb65d53b1"
+    },
+    {
+      "name": "bwin (Entain)",
+      "type": "who uses apache camel",
+      "description": "Online gaming company used Apache Camel and Spring Integration for real-time poker information processing and distribution to 30 receivers. Presented \u201cEnterprise Integration Patterns i praktiken\u201d at Jfokus 2010.",
+      "since": "",
+      "url": "https://www.jfokus.se/jfokus10/speakers.html"
+    },
+    {
+      "name": "CalHEERS (Covered California)",
+      "type": "who uses apache camel",
+      "description": "California\u2019s health insurance marketplace serving 39 million residents. Uses Apache Camel, 3scale, and DROOLS on OpenShift. Migrated 72 interfaces in 7 weeks with zero downtime. 170 million transactions during 2024 open enrollment. 60% reduction in VCPUs.",
+      "since": "",
+      "url": "https://www.redhat.com/en/engage/meet-the-innovators-customer-success-ebook"
+    },
+    {
+      "name": "Capgemini",
+      "type": "who uses apache camel",
+      "description": "\u201cBanking on Apache Camel\u201d \u2014 uses Apache Camel for banking integration solutions. Presented at CamelOne 2013.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2013/"
+    },
+    {
+      "name": "CAPI Gateway",
+      "type": "open source projects using apache camel",
+      "description": "Light API Gateway and load balancer powered by Apache Camel dynamic routes. Used at the European Commission. Features MCP support, OpenTelemetry tracing, Keycloak security, and Open Policy Agent authorization.",
+      "since": "",
+      "url": "https://github.com/surisoft-io/capi"
+    },
+    {
+      "name": "CERN",
+      "type": "who uses apache camel",
+      "description": "The European Organization for Nuclear Research uses Apache ActiveMQ and Camel for the Large Hadron Collider\u2019s mission-critical 24x7x365 controls, monitoring, and alarm systems. Processes 190 million messages per day across 85,000 machines with 99.98% uptime. As CERN\u2019s principal JMS engineer stated: \u201cIf there is no JMS there is no particle physics.\u201d Progress FUSE underpinned CERN\u2019s search for the Higgs boson (\u201cGod Particle\u201d).",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2012/"
+    },
+    {
+      "name": "Change Healthcare",
+      "type": "who uses apache camel",
+      "description": "US healthcare IT company (now part of Optum/UnitedHealth Group) uses Apache Camel. Change Healthcare engineers contribute directly to the Apache Camel Quarkus open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-quarkus/commit/61867773dbccee557390d96e5286b144e5e79cff"
+    },
+    {
+      "name": "Citigroup",
+      "type": "who uses apache camel",
+      "description": "Global financial services corporation migrating APAC trade technology from TIBCO to Apache Camel on Spring Boot. Enterprise integration for trading applications handling SWIFT, EDI, ISO XML, and NACHA financial formats. Citi Cyber Security Operations actively monitors Camel and reported CVE-2025-29891 .",
+      "since": "",
+      "url": "https://jobs.citi.com/job/pune/apac-trade-technology-integration-developer/287/30025152400"
+    },
+    {
+      "name": "Colombia SIC",
+      "type": "who uses apache camel",
+      "description": "Colombia\u2019s Superintendence of Industry and Commerce (2,000 employees). Uses Apache Camel as part of a service-oriented architecture for consumer protection and market regulation. Digital case management processing 51,000 cases and 24,000+ rulings per year. Citizen-facing mobile app and online dispute resolution.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/colombia-sic-case-study"
+    },
+    {
+      "name": "Convey911",
+      "type": "who uses apache camel",
+      "description": "Public safety communication service using Apache Camel (via Jetic iPaaS) to enhance emergency services and break language barriers in emergency calls. Running mission-critical production for 3+ years.",
+      "since": "",
+      "url": "https://www.businesswire.com/news/home/20231219718990/en/Jetic-Emerges-From-Stealth-to-Revolutionize-Cloud-Native-Integration"
+    },
+    {
+      "name": "DAB Pumps",
+      "type": "who uses apache camel",
+      "description": "Italian water technology manufacturer (founded 1975, multinational). Uses Apache Camel on Quarkus and OpenShift to integrate previously isolated IT systems. Reduced time to market by 60%. Migrating from monolithic architecture to microservices with Camel providing the integration layer for their hybrid cloud platform.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/dab-pumps-case-study"
+    },
+    {
+      "name": "Danish Tax Administration (Skatteforvaltningen)",
+      "type": "who uses apache camel",
+      "description": "Denmark\u2019s tax authority uses an Apache Camel integration platform. The platform was built by Netcompany, Denmark\u2019s largest IT consultancy.",
+      "since": "",
+      "url": "https://www.netcompany.com/int/events/2021/Tech%20Talk%20Kafka"
+    },
+    {
+      "name": "Digibee",
+      "type": "commercial products built on apache camel",
+      "description": "Cloud-native iPaaS built on Apache Camel. IBM partnership for hybrid integration. Highest-rated iPaaS on G2. Customers include Payless (200+ stores, 15 countries) and Bauducco. Headquartered in Weston, Florida and S\u00e3o Paulo, Brazil.",
+      "since": "",
+      "url": "https://www.digibee.com/"
+    },
+    {
+      "name": "DR (Danish Broadcasting Corporation)",
+      "type": "who uses apache camel",
+      "description": "Denmark\u2019s national public broadcaster. Has used Apache Camel in production for over a decade, since Camel 2.x. Camel powers integrations across broadcast and streaming applications.",
+      "since": "",
+      "url": "https://camel.zulipchat.com/#narrow/channel/257298-camel/topic/Question.20about.20deep.20otel.20traces.20and.20spans/near/602486101"
+    },
+    {
+      "name": "Dutch Ministry of Health",
+      "type": "who uses apache camel",
+      "description": "The Netherlands Ministry of Health, Welfare and Sport (MinVWS) uses Apache Camel. Ministry engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/ddd1045e57a26f5f6688d19067a143610ec7be4d"
+    },
+    {
+      "name": "Echovox",
+      "type": "who uses apache camel",
+      "description": "SMS gateway built on Apache Camel in 2012, processing millions of messages daily at 200+ SMS/second per node. Still running in production over a decade later.",
+      "since": "",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7435425357115064320"
+    },
+    {
+      "name": "Eclipse Dirigible",
+      "type": "open source projects using apache camel",
+      "description": "Eclipse Foundation high-productivity application platform (hpaPaaS), originally born out of SAP. Uses Apache Camel on Spring Boot as its core integration engine with a visual integration designer, Camel EIP snippets, and route templates. Connects databases, HTTP services, messaging brokers, SAP, and cloud services.",
+      "since": "",
+      "url": "https://www.dirigible.io/"
+    },
+    {
+      "name": "Eclipse Kapua",
+      "type": "open source projects using apache camel",
+      "description": "Eclipse IoT cloud management platform for device registry, management, messaging, and telemetry. Uses Apache Camel and ActiveMQ for message routing and integration. Co-sponsored by Red Hat and Eurotech.",
+      "since": "",
+      "url": "https://www.eclipse.org/kapua/"
+    },
+    {
+      "name": "Eclipse Kura",
+      "type": "open source projects using apache camel",
+      "description": "Eclipse IoT M2M gateway for edge devices. Apache Camel provides the built-in message routing engine for protocol translation (MQTT, AMQP, CoAP, OPC UA, HTTP) and enterprise integration patterns at the IoT edge. Deployed on Raspberry Pi and industrial gateways.",
+      "since": "",
+      "url": "https://eclipse.dev/kura/"
+    },
+    {
+      "name": "Edenor",
+      "type": "who uses apache camel",
+      "description": "Argentina\u2019s largest electricity distributor (3 million customers in greater Buenos Aires). Uses Apache Camel on OpenShift for billing, outage management, field service, and vehicle monitoring (800,000 events/day). Incident response times reduced by 70%. Replaced legacy integration platform that failed during peak demand.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/edenor-improves-service-delivery-and-continuity-container-based-agile-integration-red-hat"
+    },
+    {
+      "name": "eGRIS (Swiss Federal Land Registry)",
+      "type": "who uses apache camel",
+      "description": "Switzerland\u2019s electronic land registry information system (egris.admin.ch) connecting cantonal land registries nationwide. Uses Apache Camel for the integration layer. Presented at JUG Switzerland\u2019s \u201cApache Camel Night\u201d in Z\u00fcrich 2012.",
+      "since": "",
+      "url": "https://www.jug.ch/html/events/2012/apache_camel.html"
+    },
+    {
+      "name": "Evri",
+      "type": "who uses apache camel",
+      "description": "UK\u2019s largest dedicated parcel delivery company (formerly Hermes), handling 245 million parcels per year. Evri engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/968bac1d82d1b7c20be5210dad0d0bf8120c43fb"
+    },
+    {
+      "name": "Exolgan",
+      "type": "who uses apache camel",
+      "description": "Argentina\u2019s largest container port terminal (50%+ of the country\u2019s containerized foreign trade, 1,900 employees). Uses Apache Camel to integrate Navis N4 terminal system with SAP billing. Built paperless digital shipping operations with online payments, real-time cargo tracking, and mobile arrival app on OpenShift.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/exolgan-case-study"
+    },
+    {
+      "name": "FAA",
+      "type": "who uses apache camel",
+      "description": "The US Federal Aviation Administration uses Apache Camel and ActiveMQ for the SWIM program \u2014 real-time aviation weather, flight, and surveillance data sharing across the National Airspace System.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2011/"
+    },
+    {
+      "name": "FINN.no (Schibsted)",
+      "type": "who uses apache camel",
+      "description": "Integration at Norway\u2019s largest classifieds platform, part of the Schibsted media group. Presented at JavaZone 2014.",
+      "since": "",
+      "url": "https://sessionize.com/audun-fauchald-strand/"
+    },
+    {
+      "name": "Flinkflow",
+      "type": "open source projects using apache camel",
+      "description": "Declarative, low-code stream processing platform built on Apache Flink. Uses Apache Camel as one of three polyglot runtimes (alongside Java and Python) for embedding transformation and filtering logic inside Flink pipelines. Camel\u2019s Simple, JsonPath, Groovy, and YAML DSL expressions run as embedded evaluators within Flink operators. Apache 2.0 licensed, maintained by Talweg.",
+      "since": "",
+      "url": "https://github.com/talwegai/flinkflow"
+    },
+    {
+      "name": "Fluxygen",
+      "type": "commercial products built on apache camel",
+      "description": "Low-code integration platform built on Apache Camel. Used by logistics, retail, and e-commerce companies in the Netherlands and Belgium.",
+      "since": "",
+      "url": "https://fluxygen.com/"
+    },
+    {
+      "name": "Gamesys",
+      "type": "who uses apache camel",
+      "description": "UK online gaming company (now part of Bally\u2019s Corporation). Brands include Jackpotjoy and Virgin Games. Gamesys engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/54c63fc3beb9f63149f2b668f4bdb4b280b519cf"
+    },
+    {
+      "name": "GE (General Electric)",
+      "type": "who uses apache camel",
+      "description": "Fortune 50 industrial conglomerate uses Apache Camel. GE\u2019s security team actively monitors Camel \u2014 Eedo Shapira from GE discovered and reported CVE-2018-8041.",
+      "since": "",
+      "url": "../../security/CVE-2018-8041.html"
+    },
+    {
+      "name": "General Dynamics Canada",
+      "type": "who uses apache camel",
+      "description": "Rapid Technology Integration Framework built on Apache Camel for defense systems. Presented at CamelOne 2012.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2012/"
+    },
+    {
+      "name": "Gilt Groupe",
+      "type": "who uses apache camel",
+      "description": "Migrated from Ruby on Rails to Apache Camel for multi-datacenter warehouse and distribution center integration. Normalized messaging across FTP, SFTP, HTTPS with CSV, XML, and pipe-delimited formats for 24/7 international flash-sale operations.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2012/"
+    },
+    {
+      "name": "Globo",
+      "type": "who uses apache camel",
+      "description": "Brazil\u2019s largest media company uses Apache Camel for high-performance integration infrastructure processing 85,000 messages per hour.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/globo-case-study"
+    },
+    {
+      "name": "Government of Jalisco, Mexico",
+      "type": "who uses apache camel",
+      "description": "Mexican state government serving 7 million citizens. Uses Apache Camel for digitized public services \u2014 online tax payments, traffic fines, vehicle licensing. 60% of services digitized, 60% infrastructure cost reduction.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/government-of-state-of-jalisco"
+    },
+    {
+      "name": "Guidewire Integration Framework",
+      "type": "commercial products built on apache camel",
+      "description": "Integration Gateway is an open framework for developing integration apps that bridge Guidewire APIs with external apps and services. It is based on Apache Camel.",
+      "since": "",
+      "url": "https://www.guidewire.com/blog/technology/cloud-integration-framework-the-right-tools-for-the-job/"
+    },
+    {
+      "name": "Hennepin County, MN",
+      "type": "who uses apache camel",
+      "description": "\u201cApache Camel in Criminal Justice\u201d \u2014 US county government using Camel for justice system integration. Presented at CamelOne 2013.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2013/"
+    },
+    {
+      "name": "HMCTS",
+      "type": "who uses apache camel",
+      "description": "UK Her Majesty\u2019s Courts & Tribunals Service uses Apache Camel. HMCTS engineers contribute directly to the Apache Camel K open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-k/commit/bc08a41e327f26c5bd9133dbb64da8cd06c9aec2"
+    },
+    {
+      "name": "Huawei",
+      "type": "who uses apache camel",
+      "description": "Huawei Cloud ROMA uses Apache Camel as its integration engine. See Commercial Products below.",
+      "since": "",
+      "url": "https://www.huaweicloud.com/intl/en-us/solution/roma/"
+    },
+    {
+      "name": "Huawei Cloud ROMA",
+      "type": "commercial products built on apache camel",
+      "description": "Apache Camel powers the runtime engine for Huawei Cloud ROMA, a commercial iPaaS offering. ROMA integrates data, services, messages and devices under one unified platform.",
+      "since": "",
+      "url": "https://www.huaweicloud.com/intl/en-us/solution/roma/"
+    },
+    {
+      "name": "IBM i Integration",
+      "type": "open source projects using apache camel",
+      "description": "IBM maintains examples of Apache Camel routes for IBM i integration, connecting data queues to Kafka, message queues to email, and disk monitoring via Db2 queries.",
+      "since": "",
+      "url": "https://github.com/IBM/ibmi-oss-examples/tree/master/camel"
+    },
+    {
+      "name": "IBM Instana",
+      "type": "commercial products built on apache camel",
+      "description": "IBM\u2019s observability platform provides dedicated Apache Camel monitoring with automatic discovery, service mapping, tracing, and troubleshooting. Camel is a first-class supported technology.",
+      "since": "",
+      "url": "https://www.ibm.com/products/instana/supported-technologies/camel-monitoring"
+    },
+    {
+      "name": "IndiGo",
+      "type": "who uses apache camel",
+      "description": "India\u2019s largest airline (25,000+ employees). Uses Apache Camel to integrate 400+ applications with zero downtime. Saves \u20b9500 million/year in fuel costs through more accurate predictions. Post-flight crew reporting reduced from 30 minutes to 5 minutes.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/indigo"
+    },
+    {
+      "name": "ING Bank",
+      "type": "who uses apache camel",
+      "description": "Dutch multinational banking and financial services corporation with strategic Apache Camel adoption. ING built a dedicated Center of Excellence (CoE) for Apache Camel to support teams across the bank in adopting and migrating to the framework, handling lifecycle management and regulatory compliance. ING engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://www.ing.jobs/philippines/open-roles/vacancy/dev-engineer-apache-camel.htm"
+    },
+    {
+      "name": "Innovapost (Canada Post)",
+      "type": "who uses apache camel",
+      "description": "IT subsidiary of Canada Post Group uses Apache Camel. Innovapost engineers contribute directly to the Apache Camel open source project (11 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/625818c8820a1b1633e3784db051fe118e71458e"
+    },
+    {
+      "name": "Inventi",
+      "type": "who uses apache camel",
+      "description": "Lithuanian fintech company (Vilnius) building payment infrastructure \u2014 SEPA, SWIFT, and TARGET2 connectivity for banks and payment institutions across Europe. Inventi engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/d60324cbdf2ef12438a1d93f7bc466c4f77525b4"
+    },
+    {
+      "name": "IPF Open eHealth Integration Platform",
+      "type": "open source projects using apache camel",
+      "description": "The Open eHealth Integration Platform (IPF) is an extension of the Apache Camel routing and mediation engine with comprehensive support for message processing and connecting systems in the eHealth domain.",
+      "since": "",
+      "url": "https://oehf.github.io/ipf-docs/"
+    },
+    {
+      "name": "Ireland Dept of Transport",
+      "type": "who uses apache camel",
+      "description": "Ireland\u2019s Driver and Vehicle Computer Services Division. Uses Apache Camel, 3scale, and OpenShift for national vehicle and driver database API platform \u2014 2.4 million vehicles, 2.65 million drivers. Delivered COVID-19 emergency payment integration in 4 weeks.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/Ireland-DOT"
+    },
+    {
+      "name": "Isetan Mitsukoshi",
+      "type": "who uses apache camel",
+      "description": "Japan\u2019s largest department store group modernized core systems with Apache Camel, delivering digital retail experiences 4x faster.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/isetan-mitsukoshi-case-study"
+    },
+    {
+      "name": "JD.com",
+      "type": "who uses apache camel",
+      "description": "China\u2019s largest retailer by revenue uses Apache Camel. JD.com engineers contribute directly to the Apache Camel open source project (11 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/67b450995fc33f8caaa41eaab1445474273bfe29"
+    },
+    {
+      "name": "Jetic",
+      "type": "commercial products built on apache camel",
+      "description": "Cloud-native iPaaS built on Apache Camel K and Kubernetes. 300+ pre-built connectors. Zero vendor lock-in \u2014 native open-source framework code pushed to your Git. Customer: Convey911 (public safety/emergency services).",
+      "since": "",
+      "url": "https://jetic.io/"
+    },
+    {
+      "name": "KAN Group",
+      "type": "who uses apache camel",
+      "description": "Polish manufacturing company (1,100+ employees, exports to 68 countries) uses Apache Camel for ERP-MES integration connecting iScala ERP with PSIasm MES production management for continuous manufacturing.",
+      "since": "",
+      "url": "https://www.univio.com/case-studies/integration-of-erp-and-mes-systems-using-apache-camel/"
+    },
+    {
+      "name": "Korean Air",
+      "type": "who uses apache camel",
+      "description": "South Korea\u2019s largest airline (17,000 employees, 125 destinations). Uses Apache Camel for Cargo and Passenger Integration Platforms \u2014 100+ passenger systems and 50+ freight systems integrated. Transaction speed doubled. Replaced 20+ year old legacy platforms after evaluating IBM, TIBCO, and others.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/korean-air-case-study"
+    },
+    {
+      "name": "KPMG / Tennessee Dept of Human Services",
+      "type": "who uses apache camel",
+      "description": "KPMG built the KRIS Connected Platform using Apache Camel and OpenShift for US state government citizen services \u2014 SNAP, TANF, and energy assistance programs. Serves 2 million+ Tennessee residents. Already adopted by North Carolina and New Mexico, with 15+ additional states exploring.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/kpmg"
+    },
+    {
+      "name": "Lockheed Martin",
+      "type": "who uses apache camel",
+      "description": "Integration of Air Traffic Control systems using Enterprise Integration Patterns and Apache Camel. Camel routes integrating Java with legacy C++ flight scheduling systems.",
+      "since": "",
+      "url": "https://www.theserverside.com/news/2240186446/CamelOne-2013-Lockheed-engineers-explain-Java-and-C-messaging"
+    },
+    {
+      "name": "Logica",
+      "type": "who uses apache camel",
+      "description": "IT services company (39,000 employees, 36 countries) implementing Enterprise Integration Patterns with Apache Camel. Presented at WJAX 2012.",
+      "since": "",
+      "url": "https://slideshare.net/ehildebrandt/implementing-enterprise-integration-patterns-with-apache-camel-presentation"
+    },
+    {
+      "name": "Maersk",
+      "type": "who uses apache camel",
+      "description": "The world\u2019s largest container shipping company uses Apache Camel with Kafka and Artemis for warehouse automation, integrating Industrial IoT/AOT systems with Warehouse Management. From idea to production in 3 months. Presented at Community Over Code 2025.",
+      "since": "",
+      "url": "https://www.linkedin.com/posts/maratgubaidullin_communityovercode-apachecamel-karavan-activity-7372608306898681856-CsI4"
+    },
+    {
+      "name": "ManipalCigna Health Insurance",
+      "type": "who uses apache camel",
+      "description": "Indian health insurer. Uses Apache Camel (Red Hat Fuse), 3scale, Decision Manager, and OpenShift for partner onboarding and policy transaction processing. Won Red Hat APAC Innovation Award 2020 for Digital Transformation.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/red-hat-apac-innovation-awards-2020-india"
+    },
+    {
+      "name": "Medif\u00e9",
+      "type": "who uses apache camel",
+      "description": "Argentine nonprofit health insurer (300,000+ members). Uses Apache Camel and 3scale on OpenShift. Scaled telemedicine 100x during COVID-19 lockdown. Cut time-to-market by 92%. Built digital services for appointments, medical records, billing, and a COVID-19 monitoring app for vulnerable patients.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/medife-case-study"
+    },
+    {
+      "name": "mgm technology partners",
+      "type": "who uses apache camel",
+      "description": "German IT company built the \u201cCosmo Router\u201d on Apache Camel to integrate insurance software with CRM systems, exchanging XML documents between Java and .NET systems.",
+      "since": "",
+      "url": "http://blog.mgm-tp.com/2013/04/camel-router-part1/"
+    },
+    {
+      "name": "Mifos",
+      "type": "who uses apache camel",
+      "description": "An open core-banking platform , uses Camel.",
+      "since": "",
+      "url": "https://mifos.org/"
+    },
+    {
+      "name": "MIP",
+      "type": "commercial products built on apache camel",
+      "description": "Hybrid iPaaS built on Apache Camel by MDP Group (Istanbul, Turkey). Prebuilt integration packages for SAP-EDI (BMW, Audi, Porsche, Mercedes, VW), logistics (DHL, UPS, FedEx), e-commerce, and finance. On-premises and cloud deployment. 500+ integration projects across Europe. Customers include Borusan, Erciyes Holding, Penti, and Kaizen Gaming.",
+      "since": "",
+      "url": "https://usemip.com/"
+    },
+    {
+      "name": "Multi-Channel Framework (MCF)",
+      "type": "open source projects using apache camel",
+      "description": "MCF utilizes Camel to provide developers with an empowering framework, enabling them to create, test, and deploy integration scenarios intuitively. Its configuration-driven approach facilitates seamless integration using Camel.",
+      "since": "",
+      "url": "https://www.felpfe.com/multi-channel-framework-mcf/"
+    },
+    {
+      "name": "Murex MXopenconnect",
+      "type": "commercial products built on apache camel",
+      "description": "Capital markets trading platform integration framework built on Apache Camel. Connects trading platforms, clearing systems, and core banking for 300+ financial institutions worldwide.",
+      "since": "",
+      "url": "https://www.elenjicalsolutions.com/elenjical-solutions-pioneers-murexs-mxopenconnect-development-framework/"
+    },
+    {
+      "name": "NAV (Norwegian Labour and Welfare Administration)",
+      "type": "who uses apache camel",
+      "description": "Norway\u2019s largest public agency, handling one-third of Norway\u2019s state budget. NAV engineers presented \u201cHvordan f\u00e5 en kamel til \u00e5 danse\u201d (How to make a camel dance) at JavaZone 2014.",
+      "since": "",
+      "url": "https://vimeo.com/album/3031533/video/105743314"
+    },
+    {
+      "name": "Navitas",
+      "type": "who uses apache camel",
+      "description": "Australian global education provider (80,000+ students per year). Uses Apache Camel (Red Hat Fuse) on OpenShift with 3Scale API Gateway to integrate 20+ disparate systems for student applications, courses, visas, and accommodation. Over 100 integrations, 20 universities onboarded, no severe issues in 2 years of production.",
+      "since": "",
+      "url": "https://www.leonardo.com.au/case-study-navitas"
+    },
+    {
+      "name": "Netflix",
+      "type": "who uses apache camel",
+      "description": "Netflix uses Apache Camel as part of the cloud payment system.",
+      "since": "",
+      "url": "https://www.youtube.com/watch?v=k_ckJ7QgLW0#t=480"
+    },
+    {
+      "name": "Nets.no",
+      "type": "who uses apache camel",
+      "description": "Norwegian payment processor using Apache Camel for processing and validating payment transactions with message loss prevention and crash recovery. Presented at JavaZone 2011.",
+      "since": "",
+      "url": "http://www.davsclaus.com/2011/09/javazone-2011-conference.html"
+    },
+    {
+      "name": "New Zealand Customs Service",
+      "type": "who uses apache camel",
+      "description": "Protects and promotes New Zealand at the border. Uses Apache Camel (Red Hat Fuse), JBoss EAP, and AMQ for eGates automated passport system processing 20,000\u201325,000 passengers daily. Won Red Hat Innovation Award APAC 2018 for Enterprise Integration and Digital Transformation.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/anz-bank-and-new-zealand-customs-service-honored-red-hat-innovation-awards-apac-2018-winners-anz"
+    },
+    {
+      "name": "Nokia",
+      "type": "who uses apache camel",
+      "description": "Global telecommunications company uses Apache Camel. Nokia engineers contribute directly to the Apache Camel open source project (19 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/350b1885584d32d9105c0abe926779c63501d791"
+    },
+    {
+      "name": "Novartis",
+      "type": "who uses apache camel",
+      "description": "Swiss pharmaceutical giant uses Apache Camel. Novartis engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/a32d44eaae3a908306dc6a4d2cdf64744b5b440a"
+    },
+    {
+      "name": "Ocado",
+      "type": "who uses apache camel",
+      "description": "UK online supermarket and robotics technology company uses Apache Camel. Ocado engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/6fb40e212f38b8442261386d8fd7eaca770521f8"
+    },
+    {
+      "name": "Onsemi",
+      "type": "who uses apache camel",
+      "description": "Fortune 500 semiconductor company uses Apache Camel as their middleware integration platform handling thousands of daily integrations. Business users independently create integrations using Karavan and custom Kamelets on Spring Boot.",
+      "since": "",
+      "url": "https://www.onsemi.com/"
+    },
+    {
+      "name": "OpenHub",
+      "type": "open source projects using apache camel",
+      "description": "OpenHub is an integration platform that is built on top of Apache Camel.",
+      "since": "",
+      "url": "https://github.com/OpenWiseSolutions/openhub-framework"
+    },
+    {
+      "name": "OpenNMS",
+      "type": "open source projects using apache camel",
+      "description": "Enterprise-Grade Open-Source Network Management Platform uses Apache Camel.",
+      "since": "",
+      "url": "https://www.opennms.com/"
+    },
+    {
+      "name": "PERKESO (Malaysia Social Security)",
+      "type": "who uses apache camel",
+      "description": "Malaysia\u2019s Social Security Organization (3,400 employees). Uses Apache Camel to digitize national social security services for 400,000+ employers. 75% fewer manual processes, 90% boost in online engagement. Service delivery reduced from months to days.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/socso-perkeso"
+    },
+    {
+      "name": "PortX",
+      "type": "commercial products built on apache camel",
+      "description": "PortX, the Integration Platform as a Service (iPaaS) for financial institutions, is built on the open source Apache Camel framework.",
+      "since": "",
+      "url": "https://portx.io/"
+    },
+    {
+      "name": "PostNord",
+      "type": "who uses apache camel",
+      "description": "Scandinavian postal and logistics service (Denmark and Sweden) uses Apache Camel. PostNord engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/c08104ee967dbe112af83b7813084a61d0bbd89f"
+    },
+    {
+      "name": "Qlik Talend Cloud",
+      "type": "commercial products built on apache camel",
+      "description": "Qlik\u2019s enterprise data integration platform (formerly Talend) uses Apache Camel as its core routing and mediation engine for application and API integration, with Apache Karaf as runtime and Apache CXF for web services. Talend was acquired by Qlik in 2023. The platform upgraded to Camel 4 in February 2025. Qlik employs engineers contributing to Apache Camel, CXF, Karaf, and ActiveMQ. The former open-source Talend Open Studio was discontinued in January 2024.",
+      "since": "",
+      "url": "https://www.qlik.com/us/products/qlik-talend-cloud"
+    },
+    {
+      "name": "Red Hat Build of Apache Camel",
+      "type": "commercial products built on apache camel",
+      "description": "Red Hat provides a commercial, enterprise-supported distribution of Apache Camel with long-term support, security patching, and certification on Red Hat OpenShift. Many of the enterprise deployments listed above run on Red Hat\u2019s distribution.",
+      "since": "",
+      "url": "https://www.redhat.com/en/products/application-foundations"
+    },
+    {
+      "name": "Region Midtjylland",
+      "type": "who uses apache camel",
+      "description": "Central Denmark Region (1.3 million citizens, 600+ IT staff, 36,000 users) runs Apache Camel on Spring Boot on OpenShift as its healthcare integration platform. Migrated ~60 integrations from TIBCO to Camel over a six-year journey completed in 2025. The platform integrates with Systematic\u2019s Columna CIS (MidtEPJ) electronic patient record used across the region\u2019s hospitals. Systematic is the implementation partner. The integration layer connects hospital systems, prehospital patient journals (ambulances/helicopters), labs, and national registries \u2014 reliability is critical as human lives depend on it.",
+      "since": "",
+      "url": "https://www.rm.dk/"
+    },
+    {
+      "name": "Rivian",
+      "type": "who uses apache camel",
+      "description": "American electric vehicle manufacturer uses Apache Camel. Rivian engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/8f44bfe9480aac1c92f7a64977cf7374ecc8e7fe"
+    },
+    {
+      "name": "Sabre Holdings",
+      "type": "who uses apache camel",
+      "description": "National US travel gateway \u2014 migrated from proprietary TPF mainframe to Apache Camel with significant cost savings and zero system failures. Processes tens of thousands of transactions per second for airlines and hotels worldwide. Presented at CamelOne 2011 and 2012.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2012/"
+    },
+    {
+      "name": "SAP",
+      "type": "who uses apache camel",
+      "description": "SAP\u2019s Integration Suite uses Apache Camel as its core integration runtime. See Commercial Products below.",
+      "since": "",
+      "url": "https://www.sap.com/products/technology-platform/integration-suite.html"
+    },
+    {
+      "name": "SAP HANA",
+      "type": "open source projects using apache camel",
+      "description": "The platform from SAP uses Apache Camel.",
+      "since": "",
+      "url": "https://www.linkedin.com/pulse/hana-smart-data-integration-simplifies-connecting-facebook-shankar/"
+    },
+    {
+      "name": "SAP Integration Suite",
+      "type": "commercial products built on apache camel",
+      "description": "The Cloud Integration capability of SAP\u2019s iPaaS product uses Apache Camel as its integration runtime. SAP Integration Suite is positioned as a Leader in the Gartner Magic Quadrant for Integration Platform as a Service.",
+      "since": "",
+      "url": "https://www.sap.com/products/technology-platform/integration-suite.html"
+    },
+    {
+      "name": "Scentre Group (Westfield)",
+      "type": "who uses apache camel",
+      "description": "Australian operator of Westfield shopping centres uses Apache Camel. Scentre Group engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/9a08a2019a7938a6bbd0c91ca6916105937f983d"
+    },
+    {
+      "name": "Shinhan Bank",
+      "type": "who uses apache camel",
+      "description": "Korea\u2019s oldest bank (founded 1897, 13,500 employees, 900+ branches, 20 countries). Uses Apache Camel, 3scale, and OpenShift for global open banking front-end processing. Time to market reduced 50%+, development and operating costs reduced 60%.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/shinhan-bank-case-study"
+    },
+    {
+      "name": "Sioux Lookout First Nations Health Authority",
+      "type": "who uses apache camel",
+      "description": "Canadian healthcare organization innovating with Apache Camel on ROSA (Red Hat OpenShift on AWS). Presented at Red Hat Summit 2024.",
+      "since": "",
+      "url": "https://developers.redhat.com/blog/2024/04/17/camel-integration-quarterly-digest-q1-2024"
+    },
+    {
+      "name": "Sky",
+      "type": "who uses apache camel",
+      "description": "Major UK media and telecommunications company (part of Comcast). Sky engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/38e2c1f983cb9203dcfa0c002e31a39e8d137363"
+    },
+    {
+      "name": "Snam",
+      "type": "who uses apache camel",
+      "description": "One of the world\u2019s largest natural gas network operators (Italy, with operations in Austria, France, UK, Greece, UAE). Uses Apache Camel and OpenShift for IoT edge computing across Italy \u2014 connecting up to 30,000 devices with 100x data increase. Application deployment improved 10x (down to ~30 minutes). Expanding into hydrogen and biomethane sustainable energy.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/red-hat-and-snam-collaborate-deliver-energy-solutions-edge"
+    },
+    {
+      "name": "Standard Chartered Bank",
+      "type": "who uses apache camel",
+      "description": "Digital transformation across 60 markets using Apache Camel and OpenShift.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/gic-and-standard-chartered-bank-named-winners-red-hat-apac-innovation-awards-2020-singapore"
+    },
+    {
+      "name": "Systematic",
+      "type": "who uses apache camel",
+      "description": "Denmark\u2019s largest privately owned software company and Scandinavia\u2019s leading healthcare IT provider. Their Columna CIS electronic patient record is the most widespread EMR in Denmark, serving 3 of 5 Danish regions (Central, North, Southern Denmark) \u2014 approximately 60,000 doctors, nurses, and secretaries caring for 3.2 million citizens. Apache Camel powers the integration layer connecting Columna with hospital systems, labs, and national registries.",
+      "since": "",
+      "url": "https://systematic.com/int/industries/healthcare/solutions/hospital-care/columna-cis/"
+    },
+    {
+      "name": "Syvizo Open Runtime",
+      "type": "commercial products built on apache camel",
+      "description": "No-code/low-code API and integration platform with an Open Runtime for managing deployments of Apache Camel, Spring Boot, Python FastAPI, and Node.js projects across servers, cloud, and Kubernetes. Generates open-source code with no vendor lock-in.",
+      "since": "",
+      "url": "https://www.syvizo.com/platform/runtime"
+    },
+    {
+      "name": "T-Systems (Deutsche Telekom)",
+      "type": "who uses apache camel",
+      "description": "Deutsche Telekom\u2019s IT services subsidiary uses Apache Camel. T-Systems engineers report issues directly to the Apache Camel JIRA tracker.",
+      "since": "",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-22900"
+    },
+    {
+      "name": "Talisman Platform",
+      "type": "commercial products built on apache camel",
+      "description": "Enterprise integration lifecycle platform built on Apache Camel Karavan. Visual design, AI-assisted development, deployment control plane. Customers include Maersk and NTT DATA.",
+      "since": "",
+      "url": "https://talismancloud.io/"
+    },
+    {
+      "name": "Target",
+      "type": "who uses apache camel",
+      "description": "US retail giant uses Apache Camel. Target engineers contribute directly to the Apache Camel open source project (7 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/a81e4d7e35254e6dd39503f341bc240af99f291e"
+    },
+    {
+      "name": "Tata Motors",
+      "type": "who uses apache camel",
+      "description": "India\u2019s largest automobile manufacturer (Tata Group, USD 113B, 80,000+ employees). Uses Apache Camel, AMQ, and 3scale on OpenShift for dealer integration across 1,000+ dealers. Onboarding reduced from 30+ days to 7 days. API-driven transactions increased from 20% to 95%.",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/tatamotors"
+    },
+    {
+      "name": "Telef\u00f3nica Colombia (Movistar)",
+      "type": "who uses apache camel",
+      "description": "Serving 21 million customers across Colombia. Uses Apache Camel, 3scale, and OpenShift for its Mi Movistar customer app. Feature release time cut 51%. Security patches in 19 minutes (99% faster). Migrated from Oracle proprietary stack.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/telefonica-colombia-case-study"
+    },
+    {
+      "name": "Telegraph Media Group",
+      "type": "who uses apache camel",
+      "description": "Publisher of The Daily Telegraph, one of the UK\u2019s major national newspapers. Telegraph engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/a1325fd330bc5bf62d298d401ba9d4e68a074ee8"
+    },
+    {
+      "name": "Telia",
+      "type": "who uses apache camel",
+      "description": "Nordic and Baltic telecom operator uses Apache Camel. Telia engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/9499be837d2f2ca3d79e5c678fa4111c51ddb1b6"
+    },
+    {
+      "name": "Temenos",
+      "type": "who uses apache camel",
+      "description": "Temenos Transact (formerly T24) is the world\u2019s most widely deployed core banking platform, used by 1,000+ banks in 150+ countries. Apache Camel powers the integration layer with 50+ integration patterns , API routing via Swagger/OpenAPI, and system-to-system real-time integration via MQ and JMS. Every bank running Temenos Transact runs Apache Camel in production. Practitioner experience report .",
+      "since": "",
+      "url": "https://www.temenos.com/"
+    },
+    {
+      "name": "Tesco",
+      "type": "who uses apache camel",
+      "description": "UK\u2019s largest supermarket chain uses Apache Camel. Tesco engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel/commit/e85ea9d6e3a8c243d65ee53223db872a1a634252"
+    },
+    {
+      "name": "Thales",
+      "type": "who uses apache camel",
+      "description": "French defense, aerospace, and cybersecurity multinational uses Apache Camel. Thales Digital engineers contribute directly to the Apache Camel K open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-k/commit/11ad66407c23432a28731c98a09532ec9359592d"
+    },
+    {
+      "name": "THG (The Hut Group)",
+      "type": "who uses apache camel",
+      "description": "UK e-commerce and technology group uses Apache Camel on Spring Boot. THG engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/3978e75b453c5c9eb5c0f2366d0759f9279647eb"
+    },
+    {
+      "name": "Toast",
+      "type": "who uses apache camel",
+      "description": "US restaurant technology platform (NYSE: TOST) uses Apache Camel on Spring Boot. Toast engineers contribute directly to the Apache Camel open source project (9 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/e8e3b57b4d51f4550e23e8d19f31c25697ee205c"
+    },
+    {
+      "name": "Tokyo Electron",
+      "type": "who uses apache camel",
+      "description": "Japan\u2019s largest semiconductor manufacturing equipment maker. Uses Apache Camel (Red Hat Fuse) and Red Hat Integration on OpenShift to connect SAP S/4HANA with departmental subsystems. Deployed with Fujitsu, achieving 100% system availability and improved developer productivity.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/tokyo-electron-limited-case-study"
+    },
+    {
+      "name": "Transamerica",
+      "type": "who uses apache camel",
+      "description": "Major US insurance and financial services company uses Apache Camel on Spring Boot. Transamerica engineers contribute directly to the Apache Camel open source project (10 commits).",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/081474d7256cbbd9f041867e38115a85ab8daf0f"
+    },
+    {
+      "name": "Transpower New Zealand",
+      "type": "who uses apache camel",
+      "description": "Operates New Zealand\u2019s national electricity grid (174 substations, 25,000 towers, 6,800+ miles of lines). Uses Apache Camel as core ESB, AMQ Streams, and OpenShift. Saved NZ$50 million in avoided costs. Launched real-time electricity pricing in 2022 \u2014 \u201cthe largest single change in the electricity market since 1996.\u201d",
+      "since": "",
+      "url": "https://www.redhat.com/en/success-stories/transpower-new-zealand"
+    },
+    {
+      "name": "Trendyol",
+      "type": "who uses apache camel",
+      "description": "Turkey\u2019s largest e-commerce company uses Apache Camel for receiving data from business partners via SFTP/FTP and Kafka, processing and routing between internal systems.",
+      "since": "",
+      "url": "https://medium.com/trendyol-tech/how-apache-camel-simplified-our-process-integrations-9e17d0251650"
+    },
+    {
+      "name": "Uber",
+      "type": "who uses apache camel",
+      "description": "Built \u201cMedley,\u201d a Camel-based data integration platform for internal data integrations at scale. Presented at ApacheCon North America 2019.",
+      "since": "",
+      "url": "../../blog/2019/09/ApacheConNA-2019/"
+    },
+    {
+      "name": "UC Berkeley",
+      "type": "who uses apache camel",
+      "description": "University-wide integration solution \u2014 \u201cA Hundred Departments, Same Integration Solution\u201d \u2014 built on Apache Camel. Presented at CamelOne 2012.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2012/"
+    },
+    {
+      "name": "University Health Network (UHN)",
+      "type": "who uses apache camel",
+      "description": "Canada\u2019s largest hospital-based research center (5 major facilities, 15 programs). Integrates 170+ platforms and systems using Apache Camel. Reduced integration creation time from ~1 week to ~1 day. Scaled during COVID-19 for time-sensitive patient care data delivery.",
+      "since": "",
+      "url": "https://www.redhat.com/en/about/press-releases/university-health-network-transforms-core-connected-healthcare-system-red-hat-integration"
+    },
+    {
+      "name": "UPS",
+      "type": "who uses apache camel",
+      "description": "Processes tens of billions of messages per day on Apache Camel and ActiveMQ on OpenShift. The largest known Apache Camel deployment by message volume.",
+      "since": "",
+      "url": "https://www.youtube.com/watch?v=TDjwr16uaYU"
+    },
+    {
+      "name": "US Department of Transportation",
+      "type": "who uses apache camel",
+      "description": "Real-time weather tracking with Big Data and Apache Camel at the Volpe Center. Presented at CamelOne 2012.",
+      "since": "",
+      "url": "https://www.camelone.org/camelone-2012/"
+    },
+    {
+      "name": "Viva Energy",
+      "type": "who uses apache camel",
+      "description": "Australia\u2019s largest fuel and convenience retailer (A$28.7B revenue, 1,000+ retail sites including Shell, Coles Express, OTR). Uses Apache Camel (via Red Hat Fuse) for customer and delivery APIs \u2014 proactive delivery notifications, self-service across Shell card, fuel, and lubricant lines. Replaced legacy ESB platform. Integration platform built with Leonardo Consulting since 2016.",
+      "since": "",
+      "url": "https://www.computerworld.com/article/1640953/how-viva-energy-solved-integration-problems-to-put-customers-first.html"
+    },
+    {
+      "name": "Vocalink, a Mastercard company",
+      "type": "who uses apache camel",
+      "description": "Camel is the backbone of Vocalink\u2019s core real-time payment platform, processing millions of transactions.",
+      "since": "",
+      "url": "https://www.youtube.com/watch?v=5xQKG1TSrZc"
+    },
+    {
+      "name": "Vodafone",
+      "type": "who uses apache camel",
+      "description": "Global Integration Gateway migrated from IBM DataPower to Apache Camel. Over 100 integrated systems processing 10,000+ transactions per second.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/vodafone-prepares-cloud-red-hat-jboss-fuse"
+    },
+    {
+      "name": "V\u00e4stra G\u00f6talandsregionen",
+      "type": "who uses apache camel",
+      "description": "Sweden\u2019s second largest healthcare region (1.78 million inhabitants) migrated critical integrations from Mule ESB to Apache Camel on Spring Boot and Kubernetes. Presented at Cadec 2026.",
+      "since": "",
+      "url": "https://callistaenterprise.se/assets/presentationer/cadec2026-vgr-migration-case-study.pdf"
+    },
+    {
+      "name": "Wall Street Journal",
+      "type": "who uses apache camel",
+      "description": "Dow Jones / News Corp\u2019s flagship business publication uses Apache Camel. WSJ engineers contribute directly to the Apache Camel open source project.",
+      "since": "",
+      "url": "https://github.com/apache/camel-spring-boot/commit/2d032ef87b920132a13894407b8eaa838e4c821a"
+    },
+    {
+      "name": "Washington Health Benefit Exchange",
+      "type": "who uses apache camel",
+      "description": "US state healthcare marketplace serving 2 million+ residents (1 in 4 in Washington state). Uses Apache Camel, AMQ, and 3scale on OpenShift. API response times improved 50%. 75 APIs migrated in 100 days. 160% enrollment growth.",
+      "since": "",
+      "url": "https://www.redhat.com/en/resources/washington-health-benefits-exchange-case-study"
+    },
+    {
+      "name": "WW (Weight Watchers)",
+      "type": "who uses apache camel",
+      "description": "Migrated 200+ MuleSoft applications to Apache Camel in 8 months. Observed lower memory footprint, faster performance, and high production stability. Subsequently used Camel for X12 EDI transaction processing.",
+      "since": "",
+      "url": "https://medium.com/ww-tech-blog/migrating-apps-from-mulesoft-to-red-hat-fuse-apache-camel-a6d121c99515"
+    }
+  ],
+  "source": "https://camel.apache.org/community/user-stories/",
+  "extracted_at": "2026-07-09T09:15:13.853096"
 }
