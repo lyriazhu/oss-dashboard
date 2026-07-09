@@ -423,7 +423,7 @@ export default function Detail({ d, onOverview }) {
                 onClick={() => setShowAllAdopters((show) => !show)}
                 style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
               >
-                {showAllAdopters ? 'Show fewer' : 'Expand'}
+                {showAllAdopters ? 'Show fewer' : 'Show all'}
               </button>
             )}
           </div>
