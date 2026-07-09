@@ -270,7 +270,7 @@ export default function Detail({ d, onOverview }) {
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-h" style={{ margin: 0 }}>
-            {showCommitsQuarterly ? 'Commits per quarter' : 'Commits per year'}
+            {showCommitsQuarterly ? 'Commits Per Quarter' : 'Commits Per Year'}
           </h2>
           <button
             className="btn-secondary"
@@ -307,7 +307,7 @@ export default function Detail({ d, onOverview }) {
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-h" style={{ margin: 0 }}>
-            {showRetentionQuarterly ? 'Contributor retention per quarter' : 'Contributor retention per year'}
+            {showRetentionQuarterly ? 'Contributor Retention Per Quarter' : 'Contributor Retention Per Year'}
           </h2>
           <button
             className="btn-secondary"
@@ -376,7 +376,7 @@ export default function Detail({ d, onOverview }) {
       <hr className="divider" />
 
       <div className="section">
-        <h2 className="section-h">Top contributing companies & project metadata</h2>
+        <h2 className="section-h">Top Contributing Companies & Project Metadata</h2>
         <div className="two-col">
           <div className="table-wrap companies-table-wrap">
             <table>
@@ -427,7 +427,7 @@ export default function Detail({ d, onOverview }) {
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-h" style={{ margin: 0 }}>
-            {showPRMonthly ? 'New PRs per month' : 'New PRs per year'}
+            {showPRMonthly ? 'New PRs Per Month' : 'New PRs Per Year'}
           </h2>
             <button
               className="btn-secondary"
@@ -471,7 +471,7 @@ export default function Detail({ d, onOverview }) {
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-h" style={{ margin: 0 }}>
-            {showIssueMonthly ? 'Issue activity per month' : 'Issue activity per year'}
+            {showIssueMonthly ? 'Issue Activity Per Month' : 'Issue Activity Per Year'}
           </h2>
             <button
               className="btn-secondary"
@@ -522,7 +522,7 @@ export default function Detail({ d, onOverview }) {
           <div className="section">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <h2 className="section-h" style={{ margin: 0 }}>
-                {showCveMonthly ? 'CVEs per month' : 'CVEs per year'}
+                {showCveMonthly ? 'CVEs Per Month' : 'CVEs Per Year'}
                 {d.cveTotalAllTime > 0 && (
                   <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem', marginLeft: '0.5rem' }}>
                     ({d.cveTotalAllTime} total)
@@ -623,7 +623,7 @@ export default function Detail({ d, onOverview }) {
         <div className="section">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
             <h2 className="section-h" style={{ margin: 0 }}>
-              Known project adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({cleanAdopters.length})</span>
+              Known Project Adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({cleanAdopters.length})</span>
             </h2>
             {cleanAdopters.length > 18 && (
               <button

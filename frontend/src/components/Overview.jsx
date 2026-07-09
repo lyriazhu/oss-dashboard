@@ -187,7 +187,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       </div>
 
       <div className="section">
-        <h2 className="section-h">Commits per quarter (Past 12 quarters)</h2>
+        <h2 className="section-h">Commits Per Quarter (Past 12 Quarters)</h2>
         <div className="mini-grid">
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
@@ -223,7 +223,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       </div>
 
       <div className="section">
-        <h2 className="section-h">CVEs per month (Past 12 months)</h2>
+        <h2 className="section-h">CVEs Per Month (Past 12 Months)</h2>
         <div className="mini-grid">
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
