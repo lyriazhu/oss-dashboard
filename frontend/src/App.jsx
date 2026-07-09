@@ -1,10 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
 import SideNav from "./components/SideNav.jsx";
 import AddProjectModal from "./components/AddProjectModal.jsx";
+import ExtractionToast from "./components/ExtractionToast.jsx";
 
 export default function App() {
   const [data, setData] = useState({});
@@ -16,10 +17,13 @@ export default function App() {
   const [navCollapsed, setNavCollapsed] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [flashKey, setFlashKey] = useState(null);
+  const [extracting, setExtracting] = useState(null); // { id, name }
+  const [tokenConfigured, setTokenConfigured] = useState(false);
 
-  // Load projects from backend on mount
+  // Load projects and check token status on mount
   useEffect(() => {
     loadProjects();
+    fetchTokenStatus().then((s) => setTokenConfigured(s.configured));
   }, []);
 
   const loadProjects = async () => {
@@ -86,11 +90,12 @@ export default function App() {
     setSelectedKey(key);
   }, []);
 
-  const addProject = useCallback((key) => {
+  const addProject = useCallback((key, name) => {
     // loadProjects has already refreshed data/order by the time this fires;
     // we only need to trigger the flash animation on the new row.
     setFlashKey(key);
     setTimeout(() => setFlashKey(null), 1200);
+    if (key) setExtracting({ id: key, name: name || key });
   }, []);
 
   if (loading) {
@@ -134,7 +139,19 @@ export default function App() {
 
   return (
     <>
-      <UIShellHeader onToggleNav={() => setNavCollapsed((c) => !c)} navOpen={!navCollapsed} />
+      <UIShellHeader
+        onToggleNav={() => setNavCollapsed((c) => !c)}
+        navOpen={!navCollapsed}
+        extracting={extracting}
+        onExtractionDone={() => setExtracting(null)}
+        onTokenExpired={() => {
+          setExtracting(null);
+          setTokenConfigured(false); // force token field to show in modal
+          setModalOpen(true);
+        }}
+        tokenConfigured={tokenConfigured}
+        onTokenClick={() => setModalOpen(true)}
+      />
 
       <div className="layout">
         <SideNav
@@ -158,11 +175,13 @@ export default function App() {
         )}
       </div>
 
-      <AddProjectModal 
-        open={modalOpen} 
-        onClose={() => setModalOpen(false)} 
+      <AddProjectModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
         onAdd={addProject}
         onSuccess={loadProjects}
+        tokenConfigured={tokenConfigured}
+        onTokenSaved={() => setTokenConfigured(true)}
       />
     </>
   );

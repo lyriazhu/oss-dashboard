@@ -26,6 +26,17 @@ def main():
     config_path = Path(__file__).parent / "config.yaml"
     extractor = GitHubDataExtractor(str(config_path))
 
+    # Validate the token with a cheap API call before doing real work.
+    # A 401 means the token has expired or been revoked.
+    try:
+        extractor.github.get_user().login
+    except GithubException:
+        # Any GithubException here (401, 403 bad credentials) means the token is invalid
+        print("__TOKEN_EXPIRED__")
+        sys.exit(1)
+    except Exception:
+        pass  # network issue etc. — let the individual steps handle it
+
     # Find the project in config.yaml by name, owner/repo, or first repo owner/repo
     project = None
     for p in extractor.config['projects']:

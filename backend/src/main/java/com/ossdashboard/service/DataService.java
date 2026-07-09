@@ -7,17 +7,22 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ossdashboard.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,7 +37,25 @@ public class DataService {
     @Value("${app.data.directory}")
     private String dataDirectory;
 
+    @Autowired
+    private SettingsService settingsService;
+
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    // projectId -> live log lines from the running extraction process
+    private final ConcurrentHashMap<String, CopyOnWriteArrayList<String>> extractionLogs =
+        new ConcurrentHashMap<>();
+    // projectId -> whether extraction is still running
+    private final ConcurrentHashMap<String, Boolean> extractionRunning =
+        new ConcurrentHashMap<>();
+
+    public List<String> getExtractionLogs(String projectId) {
+        return extractionLogs.getOrDefault(projectId, new CopyOnWriteArrayList<>());
+    }
+
+    public boolean isExtractionRunning(String projectId) {
+        return extractionRunning.getOrDefault(projectId, false);
+    }
 
     /**
      * Get all projects from projects.json
@@ -245,12 +268,119 @@ public class DataService {
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(projectsFile.toFile(), root);
 
         log.info("Added new project: {} ({})", newProject.getName(), projectId);
+
+        // Also append to config.yaml so extract_single_project.py can find it
+        addProjectToConfig(owner, repo, newProject, request);
+
         return newProject;
     }
 
     /**
-     * Trigger data extraction for a specific project
+     * Append a new project entry to scripts/config.yaml so the Python
+     * extraction scripts can discover it by name or owner/repo.
      */
+    private void addProjectToConfig(String owner, String repo, Project project, AddProjectRequest request) {
+        try {
+            Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
+            if (!Files.exists(configPath)) {
+                log.warn("config.yaml not found at {}; skipping config update", configPath);
+                return;
+            }
+
+            // Build the YAML entry for this project
+            StringBuilder entry = new StringBuilder("\n");
+            entry.append("  - name: \"").append(project.getName()).append("\"\n");
+            entry.append("    github_url: \"").append(project.getGithubUrl()).append("\"\n");
+            entry.append("    owner: \"").append(owner).append("\"\n");
+            entry.append("    repo: \"").append(repo).append("\"\n");
+            if (project.getFoundation() != null && !project.getFoundation().isBlank()) {
+                entry.append("    foundation: \"").append(project.getFoundation()).append("\"\n");
+            }
+            if (project.getWebsite() != null && !project.getWebsite().isBlank()) {
+                entry.append("    website: \"").append(project.getWebsite()).append("\"\n");
+            }
+            // Issue source fields
+            String issueSource = request.getIssueSource();
+            if ("jira".equalsIgnoreCase(issueSource)) {
+                entry.append("    issue_source: jira\n");
+                if (request.getJiraProjectKey() != null && !request.getJiraProjectKey().isBlank()) {
+                    entry.append("    jira_project_key: ").append(request.getJiraProjectKey().strip()).append("\n");
+                }
+                if (request.getJiraBaseUrl() != null && !request.getJiraBaseUrl().isBlank()) {
+                    entry.append("    jira_base_url: \"").append(request.getJiraBaseUrl().strip()).append("\"\n");
+                }
+            } else {
+                // GitHub issues: if a separate issues repo URL was provided, write a repos list
+                String issuesUrl = request.getIssuesGithubUrl();
+                if (issuesUrl != null && !issuesUrl.isBlank()) {
+                    String[] issueParts = parseGithubUrl(issuesUrl.trim());
+                    if (issueParts != null &&
+                            !(issueParts[0].equalsIgnoreCase(owner) && issueParts[1].equalsIgnoreCase(repo))) {
+                        entry.append("    repos:\n");
+                        entry.append("      - owner: \"").append(owner).append("\"\n");
+                        entry.append("        repo: \"").append(repo).append("\"\n");
+                        entry.append("      - owner: \"").append(issueParts[0]).append("\"\n");
+                        entry.append("        repo: \"").append(issueParts[1]).append("\"\n");
+                    }
+                }
+            }
+
+            // Insert before the first top-level key that follows the projects list
+            // (e.g. "extraction:", a blank comment line, or "# Made with Bob").
+            // This keeps the entry inside the projects: sequence.
+            List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
+            int insertAt = lines.size(); // default: end of file
+            boolean inProjects = false;
+            for (int i = 0; i < lines.size(); i++) {
+                String l = lines.get(i);
+                if (l.startsWith("projects:")) { inProjects = true; continue; }
+                if (inProjects && !l.startsWith(" ") && !l.startsWith("\t") && !l.isEmpty()) {
+                    // First non-indented, non-blank line after projects: — insert here
+                    insertAt = i;
+                    break;
+                }
+            }
+
+            // Build the final file content with the entry spliced in
+            List<String> result = new ArrayList<>(lines.subList(0, insertAt));
+            // entry starts with \n; split into individual lines to add cleanly
+            for (String el : entry.toString().split("\n", -1)) {
+                result.add(el);
+            }
+            result.addAll(lines.subList(insertAt, lines.size()));
+            Files.writeString(configPath, String.join("\n", result));
+            log.info("Added project {} to config.yaml", project.getName());
+        } catch (Exception e) {
+            // Non-fatal: the project was written to projects.json; extraction can be retried manually
+            log.warn("Could not update config.yaml for project {}: {}", project.getName(), e.getMessage());
+        }
+    }
+
+    /**
+     * Returns the absolute path of python3, falling back to common fixed locations
+     * so the command works even when the Java process runs with a minimal PATH.
+     */
+    private String resolvePython3() {
+        // First try resolving via `which python3` so we honour any active venv or pyenv
+        for (String candidate : new String[]{"python3", "/usr/bin/python3", "/usr/local/bin/python3"}) {
+            try {
+                ProcessBuilder pb = new ProcessBuilder("which", candidate.startsWith("/") ? candidate : "python3");
+                pb.redirectErrorStream(true);
+                Process p = pb.start();
+                String found = new String(p.getInputStream().readAllBytes()).strip();
+                p.waitFor();
+                if (!found.isEmpty() && java.nio.file.Files.isExecutable(java.nio.file.Paths.get(found))) {
+                    return found;
+                }
+            } catch (Exception ignored) {}
+            // If the candidate is already an absolute path, check it directly
+            if (candidate.startsWith("/") && java.nio.file.Files.isExecutable(java.nio.file.Paths.get(candidate))) {
+                return candidate;
+            }
+        }
+        return "python3"; // last resort — rely on whatever PATH the process has
+    }
+
     public void triggerDataExtraction(String projectId) throws IOException, InterruptedException {
         Project project = getProjectById(projectId);
         if (project == null) {
@@ -265,33 +395,102 @@ public class DataService {
             throw new IOException("Data extraction script not found: " + extractScript);
         }
 
+        // Resolve python3 to its absolute path so it works regardless of the
+        // PATH visible to the Java process (e.g. when launched as a service).
+        String python3 = resolvePython3();
+
         // Build the command to run the Python script for a single project
         ProcessBuilder processBuilder = new ProcessBuilder(
-            "python3",
+            python3,
             extractScript.toString(),
             projectId  // Pass the project ID as argument
         );
         processBuilder.directory(scriptsDir.toFile());
         processBuilder.redirectErrorStream(true);
+        // Forward GITHUB_TOKEN so the Python script can authenticate with the GitHub API
+        String githubToken = settingsService.getGithubToken();
+        if (githubToken == null) {
+            throw new IllegalStateException("No GitHub token configured. Set one via the dashboard settings.");
+        }
+        processBuilder.environment().put("GITHUB_TOKEN", githubToken);
 
         log.info("Starting data extraction for project: {} ({})", project.getName(), projectId);
-        
+
+        // Initialise log buffer and mark as running
+        CopyOnWriteArrayList<String> logLines = new CopyOnWriteArrayList<>();
+        extractionLogs.put(projectId, logLines);
+        extractionRunning.put(projectId, true);
+
         // Start the process asynchronously in a separate thread
         new Thread(() -> {
             try {
                 Process process = processBuilder.start();
+                try (BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(process.getInputStream()))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        logLines.add(line);
+                        log.debug("[extraction {}] {}", projectId, line);
+                    }
+                }
                 int exitCode = process.waitFor();
                 if (exitCode == 0) {
                     log.info("Data extraction completed successfully for project: {}", projectId);
+                    // Also run CVE extraction for this project now that its data directory exists
+                    runCveExtraction(project.getName(), projectId, logLines, scriptsDir);
                 } else {
                     log.error("Data extraction failed for project: {} with exit code: {}", projectId, exitCode);
+                    logLines.add("__FAILED__");
                 }
             } catch (Exception e) {
+                logLines.add("__FAILED__");
                 log.error("Error during data extraction for project: {}", projectId, e);
+            } finally {
+                extractionRunning.put(projectId, false);
             }
         }).start();
-        
+
         log.info("Data extraction process started in background for project: {}", projectId);
+    }
+
+    /**
+     * Run extract_cves.py for a single project (by name) and append its output
+     * to the shared log buffer.  Emits __DONE__ or __FAILED__ when finished.
+     */
+    private void runCveExtraction(String projectName, String projectId,
+                                   CopyOnWriteArrayList<String> logLines, Path scriptsDir) {
+        Path cveScript = scriptsDir.resolve("extract_cves.py");
+        if (!Files.exists(cveScript)) {
+            log.warn("extract_cves.py not found at {}; skipping CVE extraction", cveScript);
+            logLines.add("__DONE__");
+            return;
+        }
+        String python3 = resolvePython3();
+        ProcessBuilder pb = new ProcessBuilder(python3, cveScript.toString(), projectName);
+        pb.directory(scriptsDir.toFile());
+        pb.redirectErrorStream(true);
+        try {
+            log.info("Starting CVE extraction for project: {}", projectId);
+            logLines.add("[CVE extraction]");
+            Process process = pb.start();
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    logLines.add(line);
+                    log.debug("[cve {}] {}", projectId, line);
+                }
+            }
+            int exitCode = process.waitFor();
+            if (exitCode == 0) {
+                log.info("CVE extraction completed successfully for project: {}", projectId);
+            } else {
+                log.error("CVE extraction failed for project: {} with exit code: {}", projectId, exitCode);
+            }
+        } catch (Exception e) {
+            log.error("Error during CVE extraction for project: {}", projectId, e);
+        }
+        logLines.add("__DONE__");
     }
 }
 

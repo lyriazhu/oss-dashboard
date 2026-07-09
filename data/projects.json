@@ -1,71 +1,73 @@
 {
-  "projects": [
-    {
-      "id": "strimzi-kafka-operator",
-      "name": "Strimzi",
-      "github_url": "https://github.com/strimzi/strimzi-kafka-operator",
-      "owner": "strimzi",
-      "repo": "strimzi-kafka-operator",
-      "foundation": "CNCF",
-      "website": "https://strimzi.io",
-      "enabled": true
-    },
-    {
-      "id": "camel",
-      "name": "Apache Camel",
-      "github_url": "https://github.com/apache/camel",
-      "owner": "apache",
-      "repo": "camel",
-      "foundation": "Apache Software Foundation",
-      "website": "https://camel.apache.org",
-      "issue_source": "jira",
-      "jira_project_key": "CAMEL",
-      "jira_base_url": "https://issues.apache.org/jira",
-      "enabled": true
-    },
-    {
-      "id": "artemis",
-      "name": "Apache Artemis",
-      "github_url": "https://github.com/apache/artemis",
-      "owner": "apache",
-      "repo": "artemis",
-      "foundation": "Apache Software Foundation",
-      "website": "https://activemq.apache.org/components/artemis/",
-      "issue_source": "jira",
-      "jira_project_key": "ARTEMIS",
-      "jira_base_url": "https://issues.apache.org/jira",
-      "enabled": true
-    },
-    {
-      "id": "keycloak",
-      "name": "Keycloak",
-      "github_url": "https://github.com/keycloak/keycloak",
-      "owner": "keycloak",
-      "repo": "keycloak",
-      "foundation": "CNCF",
-      "website": "https://www.keycloak.org",
-      "enabled": true
-    },
-    {
-      "id": "apicurio-registry",
-      "name": "Apicurio Registry",
-      "github_url": "https://github.com/Apicurio/apicurio-registry",
-      "owner": "Apicurio",
-      "repo": "apicurio-registry",
-      "foundation": "CNCF",
-      "website": "https://www.apicur.io/registry/",
-      "enabled": true
-    },
-    {
-      "id": "3scale-operator",
-      "name": "3scale",
-      "github_url": "https://github.com/3scale/3scale-operator",
-      "owner": "3scale",
-      "repo": "3scale-operator",
-      "foundation": "Red Hat",
-      "website": "https://www.3scale.net",
-      "enabled": true
-    }
-  ],
-  "last_updated": "2026-06-24T03:35:00.000Z"
+  "projects" : [ {
+    "id" : "strimzi-kafka-operator",
+    "name" : "Strimzi",
+    "github_url" : "https://github.com/strimzi/strimzi-kafka-operator",
+    "owner" : "strimzi",
+    "repo" : "strimzi-kafka-operator",
+    "foundation" : "CNCF",
+    "website" : "https://strimzi.io",
+    "enabled" : true
+  }, {
+    "id" : "camel",
+    "name" : "Apache Camel",
+    "github_url" : "https://github.com/apache/camel",
+    "owner" : "apache",
+    "repo" : "camel",
+    "foundation" : "Apache Software Foundation",
+    "website" : "https://camel.apache.org",
+    "issue_source" : "jira",
+    "jira_project_key" : "CAMEL",
+    "jira_base_url" : "https://issues.apache.org/jira",
+    "enabled" : true
+  }, {
+    "id" : "artemis",
+    "name" : "Apache Artemis",
+    "github_url" : "https://github.com/apache/artemis",
+    "owner" : "apache",
+    "repo" : "artemis",
+    "foundation" : "Apache Software Foundation",
+    "website" : "https://activemq.apache.org/components/artemis/",
+    "issue_source" : "jira",
+    "jira_project_key" : "ARTEMIS",
+    "jira_base_url" : "https://issues.apache.org/jira",
+    "enabled" : true
+  }, {
+    "id" : "keycloak",
+    "name" : "Keycloak",
+    "github_url" : "https://github.com/keycloak/keycloak",
+    "owner" : "keycloak",
+    "repo" : "keycloak",
+    "foundation" : "CNCF",
+    "website" : "https://www.keycloak.org",
+    "enabled" : true
+  }, {
+    "id" : "apicurio-registry",
+    "name" : "Apicurio Registry",
+    "github_url" : "https://github.com/Apicurio/apicurio-registry",
+    "owner" : "Apicurio",
+    "repo" : "apicurio-registry",
+    "foundation" : "CNCF",
+    "website" : "https://www.apicur.io/registry/",
+    "enabled" : true
+  }, {
+    "id" : "3scale-operator",
+    "name" : "3scale",
+    "github_url" : "https://github.com/3scale/3scale-operator",
+    "owner" : "3scale",
+    "repo" : "3scale-operator",
+    "foundation" : "Red Hat",
+    "website" : "https://www.3scale.net",
+    "enabled" : true
+  }, {
+    "id" : "debezium",
+    "name" : "debezium",
+    "owner" : "debezium",
+    "repo" : "debezium",
+    "foundation" : "Independent",
+    "website" : null,
+    "enabled" : true,
+    "github_url" : "https://github.com/debezium/debezium"
+  } ],
+  "last_updated" : "2026-07-09T17:21:32.208335Z"
 }

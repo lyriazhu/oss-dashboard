@@ -33,68 +33,91 @@ GH_HEADERS = {
     "User-Agent": "oss-dashboard-cve",
 }
 
-# Project configuration
-# Each entry: (display_name, data_dir, strategy, strategy_args)
-#   strategy = "github_repo"  → use GitHub security advisories API
-#   strategy = "osv"          → use OSV.dev package query
-PROJECTS = [
-    {
-        "name": "Strimzi",
-        "dir": "strimzi",
-        "strategy": "github_repo",
-        "owner": "strimzi",
-        "repo": "strimzi-kafka-operator",
-    },
-    {
-        "name": "Keycloak",
-        "dir": "keycloak",
-        "strategy": "github_repo",
-        "owner": "keycloak",
-        "repo": "keycloak",
-    },
-    {
-        "name": "Apache Camel",
-        "dir": "apache-camel",
-        "strategy": "osv",
-        "packages": [
-            ("org.apache.camel:camel-core", "Maven"),
-            ("org.apache.camel:camel-http", "Maven"),
-            ("org.apache.camel:camel-sql", "Maven"),
-            ("org.apache.camel:camel-ldap", "Maven"),
-            ("org.apache.camel:camel-xstream", "Maven"),
-            ("org.apache.camel:camel-netty", "Maven"),
-        ],
-    },
-    {
-        "name": "Apache Artemis",
-        "dir": "apache-artemis",
-        "strategy": "osv",
-        "packages": [
-            ("org.apache.activemq:artemis-core-client", "Maven"),
-            ("org.apache.activemq:artemis-server", "Maven"),
-            ("org.apache.activemq:activemq-all", "Maven"),
-            ("org.apache.activemq:activemq-broker", "Maven"),
-            ("org.apache.activemq:activemq-client", "Maven"),
-        ],
-    },
-    {
-        "name": "Apicurio Registry",
-        "dir": "apicurio",
-        "strategy": "osv",
-        "packages": [
-            ("io.apicurio:apicurio-registry-rest-client", "Maven"),
-            ("io.apicurio:apicurio-registry", "Maven"),
-        ],
-    },
-    {
-        "name": "3scale",
-        "dir": "3scale",
-        "strategy": "osv",
-        "packages": [
-            ("github.com/3scale/3scale-operator", "Go"),
-        ],
-    },
-]
+# Per-project OSV package overrides.
+# Keys are the project "name" field (lowercase) from projects.json.
+# Projects NOT listed here default to "github_repo" strategy using their owner/repo.
+OSV_OVERRIDES: Dict[str, List] = {
+    "apache camel": [
+        ("org.apache.camel:camel-core", "Maven"),
+        ("org.apache.camel:camel-http", "Maven"),
+        ("org.apache.camel:camel-sql", "Maven"),
+        ("org.apache.camel:camel-ldap", "Maven"),
+        ("org.apache.camel:camel-xstream", "Maven"),
+        ("org.apache.camel:camel-netty", "Maven"),
+    ],
+    "apache artemis": [
+        ("org.apache.activemq:artemis-core-client", "Maven"),
+        ("org.apache.activemq:artemis-server", "Maven"),
+        ("org.apache.activemq:activemq-all", "Maven"),
+        ("org.apache.activemq:activemq-broker", "Maven"),
+        ("org.apache.activemq:activemq-client", "Maven"),
+    ],
+    "apicurio registry": [
+        ("io.apicurio:apicurio-registry-rest-client", "Maven"),
+        ("io.apicurio:apicurio-registry", "Maven"),
+    ],
+    "3scale": [
+        ("github.com/3scale/3scale-operator", "Go"),
+    ],
+}
+
+
+def _load_projects_from_json() -> List[Dict]:
+    """Load projects from data/projects.json and map to CVE extraction config."""
+    projects_file = DATA_DIR / "projects.json"
+    if not projects_file.exists():
+        print(f"❌ projects.json not found at {projects_file}")
+        return []
+
+    with open(projects_file) as f:
+        root = json.load(f)
+
+    result = []
+    for p in root.get("projects", []):
+        if not p.get("enabled", True):
+            continue
+        name = p.get("name", "")
+        owner = p.get("owner", "")
+        repo = p.get("repo", "")
+        project_id = p.get("id", repo)
+
+        if not owner or not repo:
+            continue
+
+        # Directory name: derive the same way DataService.getProjectDirectoryName does
+        dir_name = _project_dir(project_id, name)
+
+        osv_packages = OSV_OVERRIDES.get(name.lower())
+        if osv_packages:
+            result.append({
+                "name": name,
+                "dir": dir_name,
+                "strategy": "osv",
+                "packages": osv_packages,
+            })
+        else:
+            result.append({
+                "name": name,
+                "dir": dir_name,
+                "strategy": "github_repo",
+                "owner": owner,
+                "repo": repo,
+            })
+
+    return result
+
+
+def _project_dir(project_id: str, name: str) -> str:
+    """Mirror DataService.getProjectDirectoryName logic."""
+    mapping = {
+        "strimzi-kafka-operator": "strimzi",
+        "camel": "apache-camel",
+        "artemis": "apache-artemis",
+        "apicurio-studio": "apicurio",
+        "apicurio-registry": "apicurio",
+        "3scale-operator": "3scale",
+    }
+    return mapping.get(project_id, project_id.lower().replace("_", "-"))
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
@@ -252,12 +275,15 @@ def extract_osv(project: Dict) -> Dict[str, Any]:
 def main() -> None:
     filter_name: Optional[str] = sys.argv[1].lower() if len(sys.argv) > 1 else None
 
-    projects = PROJECTS
+    projects = _load_projects_from_json()
+    if not projects:
+        print("❌ No projects loaded from projects.json")
+        sys.exit(1)
+
     if filter_name:
-        projects = [p for p in PROJECTS if filter_name in p["name"].lower()]
+        projects = [p for p in projects if filter_name in p["name"].lower()]
         if not projects:
             print(f"❌ No project matching '{sys.argv[1]}'")
-            print("Available:", ", ".join(p["name"] for p in PROJECTS))
             sys.exit(1)
 
     print(f"Extracting CVE data for {len(projects)} project(s)...\n")

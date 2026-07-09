@@ -5,11 +5,14 @@ import com.ossdashboard.service.DataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 /**
  * REST API controller for project data
@@ -154,9 +157,13 @@ public class ProjectController {
             try {
                 dataService.triggerDataExtraction(newProject.getId());
                 extractionStatus = "Data extraction started. This may take several minutes.";
+            } catch (IllegalStateException e) {
+                // No GitHub token — tell the user clearly
+                log.warn("Cannot start extraction for {}: {}", newProject.getId(), e.getMessage());
+                extractionStatus = "Project added but no GitHub token is set. Enter your token via the settings icon in the toolbar, then re-add the project.";
             } catch (Exception e) {
                 log.warn("Failed to trigger data extraction: {}", e.getMessage());
-                extractionStatus = "Project added but data extraction failed to start. Run manually: cd scripts && python3 extract_github_data.py";
+                extractionStatus = "Project added but data extraction failed to start. Run manually: cd scripts && python3 extract_single_project.py " + newProject.getId();
             }
 
             AddProjectResponse response = new AddProjectResponse(
@@ -187,6 +194,43 @@ public class ProjectController {
             );
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
+    /**
+     * GET /api/projects/{projectId}/extraction-progress
+     * Server-Sent Events stream of extraction log lines.
+     * Polls the in-memory log buffer and sends new lines until __DONE__ or __FAILED__.
+     */
+    @GetMapping(value = "/{projectId}/extraction-progress", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter extractionProgress(@PathVariable String projectId) {
+        SseEmitter emitter = new SseEmitter(10 * 60 * 1000L); // 10-minute timeout
+
+        Executors.newSingleThreadExecutor().submit(() -> {
+            int sent = 0;
+            try {
+                while (true) {
+                    List<String> lines = dataService.getExtractionLogs(projectId);
+                    while (sent < lines.size()) {
+                        String line = lines.get(sent++);
+                        emitter.send(SseEmitter.event().data(line));
+                        if ("__DONE__".equals(line) || "__FAILED__".equals(line)) {
+                            emitter.complete();
+                            return;
+                        }
+                    }
+                    // If extraction finished and we've sent all lines, close
+                    if (!dataService.isExtractionRunning(projectId) && sent >= lines.size()) {
+                        emitter.send(SseEmitter.event().data("__DONE__"));
+                        emitter.complete();
+                        return;
+                    }
+                    Thread.sleep(300);
+                }
+            } catch (Exception e) {
+                emitter.completeWithError(e);
+            }
+        });
+
+        return emitter;
     }
 }
 

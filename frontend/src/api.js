@@ -46,7 +46,7 @@ export async function fetchProjectMetrics(projectId) {
 /**
  * Add a new project
  */
-export async function addProject(githubUrl, foundation, website) {
+export async function addProject(githubUrl, foundation, website, issueSource, jiraProjectKey, jiraBaseUrl, issuesGithubUrl) {
   try {
     const response = await fetch(`${API_BASE}/projects`, {
       method: 'POST',
@@ -57,6 +57,10 @@ export async function addProject(githubUrl, foundation, website) {
         github_url: githubUrl,
         foundation: foundation || undefined,
         website: website || undefined,
+        issue_source: issueSource || undefined,
+        issues_github_url: issuesGithubUrl || undefined,
+        jira_project_key: jiraProjectKey || undefined,
+        jira_base_url: jiraBaseUrl || undefined,
       }),
     });
     
@@ -70,6 +74,60 @@ export async function addProject(githubUrl, foundation, website) {
     console.error('Error adding project:', error);
     throw error;
   }
+}
+
+const TOKEN_STORAGE_KEY = 'oss_dashboard_github_token';
+
+/**
+ * Save a GitHub token to the backend and persist it in localStorage so it
+ * survives backend restarts without the user needing to re-enter it.
+ */
+export async function saveGithubToken(token) {
+  const response = await fetch(`${API_BASE}/settings/github-token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token }),
+  });
+  if (!response.ok) {
+    const err = await response.json();
+    throw new Error(err.error || 'Failed to save token');
+  }
+  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+  return await response.json();
+}
+
+/**
+ * Check whether a GitHub token is configured on the backend.
+ * If the backend says no but localStorage has a saved token, restore it automatically.
+ */
+export async function fetchTokenStatus() {
+  try {
+    const response = await fetch(`${API_BASE}/settings/github-token/status`, fetchOptions);
+    if (!response.ok) return { configured: false };
+    const status = await response.json();
+    if (!status.configured) {
+      // Try to restore from localStorage (e.g. after backend restart)
+      const saved = localStorage.getItem(TOKEN_STORAGE_KEY);
+      if (saved) {
+        try {
+          await saveGithubToken(saved);
+          return { configured: true };
+        } catch {
+          localStorage.removeItem(TOKEN_STORAGE_KEY);
+        }
+      }
+    }
+    return status;
+  } catch {
+    return { configured: false };
+  }
+}
+
+/**
+ * Returns the token from localStorage if one is saved, otherwise null.
+ */
+export function getSavedToken() {
+  return localStorage.getItem(TOKEN_STORAGE_KEY) || '';
 }
 
 /**

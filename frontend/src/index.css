@@ -50,6 +50,7 @@
     display:flex; align-items:center;
     border-bottom:1px solid var(--gray-80);
     position:sticky; top:0; z-index:20;
+    overflow:visible;
   }
   .ui-shell .menu-btn{
     width:3rem; height:3rem; background:transparent; border:0; cursor:pointer;
@@ -73,6 +74,59 @@
   }
   .ui-shell .shell-action:hover{background:var(--gray-80);}
   .ui-shell .shell-action svg{width:20px;height:20px;}
+  .token-btn{position:relative;}
+  .token-btn--unset{color:var(--yellow-30, #f1c21b);}
+  .token-btn-dot{
+    position:absolute; top:8px; right:8px;
+    width:7px; height:7px; border-radius:50%;
+    background:var(--yellow-30, #f1c21b);
+    border:1.5px solid var(--header-bg);
+  }
+
+  /* ============ Extraction toast ============ */
+  .extraction-toast{
+    position:absolute; top:calc(3rem + .5rem); right:1rem;
+    z-index:100; min-width:260px; max-width:320px;
+  }
+  .extraction-toast-inner{
+    background:var(--gray-90); border:1px solid var(--gray-70);
+    border-radius:.25rem; padding:.75rem 1rem .625rem;
+    box-shadow:0 4px 12px rgba(0,0,0,.35);
+  }
+  .extraction-toast-header{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:.375rem;
+  }
+  .extraction-toast-title{
+    font-size:.75rem; font-weight:600; color:var(--header-text); letter-spacing:.01em;
+  }
+  .extraction-toast-close{
+    background:transparent; border:0; cursor:pointer; color:var(--header-text-dim);
+    padding:0; display:flex; align-items:center;
+  }
+  .extraction-toast-close:hover{color:var(--header-text);}
+  .extraction-toast-step{
+    font-size:.8125rem; color:var(--header-text-dim); margin-bottom:.5rem;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .extraction-toast-bar-track{
+    height:4px; background:var(--gray-70); border-radius:2px; overflow:hidden;
+    margin-bottom:.375rem;
+  }
+  .extraction-toast-bar-fill{
+    height:100%; border-radius:2px;
+    transition:width .4s ease, background .3s;
+  }
+  .extraction-toast-pct{
+    font-size:.6875rem; color:var(--header-text-dim); text-align:right;
+  }
+  .extraction-toast-token-btn{
+    display:block; width:100%; margin-top:.375rem;
+    padding:.3rem .75rem; border-radius:.25rem; border:1px solid var(--red-40,#fa4d56);
+    background:transparent; color:var(--red-40,#fa4d56); font-size:.75rem;
+    cursor:pointer; text-align:center;
+  }
+  .extraction-toast-token-btn:hover{background:rgba(250,77,86,.12);}
 
   /* ============ Shared ============ */
   .tag{
@@ -382,6 +436,11 @@
   .field.show-err .err{display:block;}
   .field-row{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
   .field-help{font-size:.75rem; color:var(--text-helper); margin:.5rem 0 0; line-height:1.4;}
+  .radio-group{display:flex; gap:1.5rem; margin-top:.375rem;}
+  .radio-label{display:flex; align-items:center; gap:.4rem; font-size:.875rem; color:var(--text-primary); cursor:pointer;}
+  .radio-label input[type=radio]{accent-color:var(--blue-60); cursor:pointer;}
+  .jira-fields{margin-top:.75rem; padding:.75rem; background:var(--layer-01); border:1px solid var(--border-subtle); border-radius:.25rem;}
+  .token-inline-section{margin-top:1rem; padding:.75rem; background:var(--layer-01); border:1px solid var(--border-subtle); border-radius:.25rem;}
   .field input:disabled{color:var(--gray-50); cursor:not-allowed;}
   .add-status{font-size:.8125rem; margin-top:1rem; padding:.75rem 1rem; line-height:1.4;}
   .add-status.err{background:#fff1f1; color:var(--red-60); border-left:3px solid var(--red-60);}
