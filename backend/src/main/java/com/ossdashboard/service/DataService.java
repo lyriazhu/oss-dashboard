@@ -232,6 +232,14 @@ public class DataService {
             throw new IllegalArgumentException("Invalid GitHub URL format. Expected: https://github.com/owner/repo");
         }
 
+        String[] issueParts = null;
+        if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()) {
+            issueParts = parseGithubUrl(request.getIssueGithubUrl().strip());
+            if (issueParts == null) {
+                throw new IllegalArgumentException("Invalid issue GitHub URL format. Expected: https://github.com/owner/repo");
+            }
+        }
+
         String owner = parts[0];
         String repo = parts[1];
         String projectId = generateProjectId(repo);
@@ -309,19 +317,11 @@ public class DataService {
                 if (request.getJiraBaseUrl() != null && !request.getJiraBaseUrl().isBlank()) {
                     entry.append("    jira_base_url: \"").append(request.getJiraBaseUrl().strip()).append("\"\n");
                 }
-            } else {
-                // GitHub issues: if a separate issues repo URL was provided, write a repos list
-                String issuesUrl = request.getIssuesGithubUrl();
-                if (issuesUrl != null && !issuesUrl.isBlank()) {
-                    String[] issueParts = parseGithubUrl(issuesUrl.trim());
-                    if (issueParts != null &&
-                            !(issueParts[0].equalsIgnoreCase(owner) && issueParts[1].equalsIgnoreCase(repo))) {
-                        entry.append("    repos:\n");
-                        entry.append("      - owner: \"").append(owner).append("\"\n");
-                        entry.append("        repo: \"").append(repo).append("\"\n");
-                        entry.append("      - owner: \"").append(issueParts[0]).append("\"\n");
-                        entry.append("        repo: \"").append(issueParts[1]).append("\"\n");
-                    }
+            } else if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()) {
+                String[] issueParts = parseGithubUrl(request.getIssueGithubUrl().strip());
+                if (issueParts != null) {
+                    entry.append("    issue_owner: \"").append(issueParts[0]).append("\"\n");
+                    entry.append("    issue_repo: \"").append(issueParts[1]).append("\"\n");
                 }
             }
 

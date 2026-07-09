@@ -124,8 +124,15 @@ def main():
     except Exception as e:
         print(f"⚠️  Warning: Commits extraction failed: {e}")
 
-    # Issues — route to jira, github, or skip
+    # Issues — route to jira or github (optionally from a dedicated issue repo)
     issue_source = project.get('issue_source', 'github')
+    issue_repos = repos
+    if project.get('issue_owner') and project.get('issue_repo'):
+        issue_repos = [{
+            'owner': project['issue_owner'],
+            'repo': project['issue_repo'],
+        }]
+
     if issue_source == 'jira':
         try:
             jira_script = Path(__file__).parent / "extract_jira_issues.py"
@@ -140,12 +147,10 @@ def main():
                 print(f"⚠️  Warning: Jira issues extraction failed with exit code {jira_result.returncode}")
         except Exception as e:
             print(f"⚠️  Warning: Jira issues extraction failed: {e}")
-    elif project.get('skip_issues', False):
-        print(f"⏭️  Skipping issue extraction (project uses external issue tracker)")
     else:
         try:
             if project_created_at:
-                issues = extractor.extract_issues(repos, project_created_at, project_name)
+                issues = extractor.extract_issues(issue_repos, project_created_at, project_name)
                 if issues:
                     extractor.save_project_data(project_name, issues, "issues")
                     extraction_status["issues"] = True

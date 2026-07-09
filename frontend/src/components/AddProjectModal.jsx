@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { addProject, saveGithubToken, getSavedToken } from "../api.js";
 
 export default function AddProjectModal({ open, onClose, onAdd, onSuccess, tokenConfigured, onTokenSaved }) {
-  const [url, setUrl]                       = useState("");
-  const [issueSource, setIssueSource]       = useState("github"); // "github" | "jira"
-  const [issuesGithubUrl, setIssuesGithubUrl] = useState("");
-  const [jiraKey, setJiraKey]               = useState("");
-  const [jiraBaseUrl, setJiraBaseUrl]       = useState("");
+  const [url, setUrl]                 = useState("");
+  const [issueGithubUrl, setIssueGithubUrl] = useState("");
+  const [issueSource, setIssueSource] = useState("github"); // "github" | "jira"
+  const [jiraKey, setJiraKey]         = useState("");
+  const [jiraBaseUrl, setJiraBaseUrl] = useState("");
   const [token, setToken]             = useState("");
   const [invalid, setInvalid]         = useState(false);
   const [loading, setLoading]         = useState(false);
@@ -19,8 +19,8 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
   useEffect(() => {
     if (open) {
       setUrl("");
+      setIssueGithubUrl("");
       setIssueSource("github");
-      setIssuesGithubUrl("");
       setJiraKey("");
       setJiraBaseUrl("");
       // Pre-fill token from localStorage if available
@@ -74,7 +74,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
         issueSource === "jira" ? "jira" : undefined,
         issueSource === "jira" ? jiraKey.trim() : undefined,
         issueSource === "jira" ? (jiraBaseUrl.trim() || undefined) : undefined,
-        issueSource === "github" ? (issuesGithubUrl.trim() || undefined) : undefined,
+        issueSource === "github" ? (issueGithubUrl.trim() || undefined) : undefined,
       );
 
       if (response.success) {
@@ -114,7 +114,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
       <div className="modal">
         <div className="modal-header">
           <h2 className="modal-title" id="addModalTitle">Add project</h2>
-          <p className="modal-sub">Paste a GitHub repository URL — we'll pull the metrics automatically.</p>
+          <p className="modal-sub">Paste a primary GitHub repository URL — we'll pull the metrics automatically.</p>
           <button className="modal-close" aria-label="Close" onClick={onClose}>
             <svg viewBox="0 0 32 32" fill="currentColor">
               <path d="M24 9.4 22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6z" />
@@ -123,9 +123,9 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
         </div>
 
         <div className="modal-body">
-          {/* GitHub URL */}
+          {/* Primary GitHub URL */}
           <div className={"field" + (invalid && !url.trim() ? " show-err" : "")}>
-            <label htmlFor="i-url">GitHub repository URL</label>
+            <label htmlFor="i-url">Primary GitHub repository URL</label>
             <input
               id="i-url"
               ref={inputRef}
@@ -141,6 +141,28 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
             />
             <div className="err">Enter a valid GitHub repository URL.</div>
           </div>
+
+          {issueSource === "github" && (
+            <div className="field" style={{ marginTop: ".75rem" }}>
+              <label htmlFor="i-issue-url">
+                Issue repository URL{" "}
+                <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
+              </label>
+              <input
+                id="i-issue-url"
+                type="text"
+                placeholder="https://github.com/owner/repo"
+                autoComplete="off"
+                spellCheck="false"
+                value={issueGithubUrl}
+                disabled={loading}
+                onChange={(e) => setIssueGithubUrl(e.target.value)}
+              />
+              <p className="field-help" style={{ marginTop: ".25rem" }}>
+                Use this only if issues are tracked in a different GitHub repository than the primary one.
+              </p>
+            </div>
+          )}
 
           {/* Issue source toggle */}
           <div className="field" style={{ marginTop: "1rem" }}>
@@ -170,29 +192,6 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
               </label>
             </div>
           </div>
-
-          {/* GitHub issues: optional separate issues repo URL */}
-          {issueSource === "github" && (
-            <div className="field" style={{ marginTop: ".75rem" }}>
-              <label htmlFor="i-issues-url">
-                Issues repository URL{" "}
-                <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
-              </label>
-              <input
-                id="i-issues-url"
-                type="text"
-                placeholder="https://github.com/owner/issues-repo"
-                autoComplete="off"
-                spellCheck="false"
-                value={issuesGithubUrl}
-                disabled={loading}
-                onChange={(e) => setIssuesGithubUrl(e.target.value)}
-              />
-              <p className="field-help" style={{ marginTop: ".25rem" }}>
-                Leave blank to extract issues from the same repository above.
-              </p>
-            </div>
-          )}
 
           {/* Jira fields — shown only when jira is selected */}
           {issueSource === "jira" && (

@@ -46,7 +46,7 @@ export async function fetchProjectMetrics(projectId) {
 /**
  * Add a new project
  */
-export async function addProject(githubUrl, foundation, website, issueSource, jiraProjectKey, jiraBaseUrl, issuesGithubUrl) {
+export async function addProject(githubUrl, foundation, website, issueSource, jiraProjectKey, jiraBaseUrl, issueGithubUrl) {
   try {
     const response = await fetch(`${API_BASE}/projects`, {
       method: 'POST',
@@ -58,9 +58,9 @@ export async function addProject(githubUrl, foundation, website, issueSource, ji
         foundation: foundation || undefined,
         website: website || undefined,
         issue_source: issueSource || undefined,
-        issues_github_url: issuesGithubUrl || undefined,
         jira_project_key: jiraProjectKey || undefined,
         jira_base_url: jiraBaseUrl || undefined,
+        issue_github_url: issueGithubUrl || undefined,
       }),
     });
     

@@ -59,15 +59,6 @@
     "foundation" : "Red Hat",
     "website" : "https://www.3scale.net",
     "enabled" : true
-  }, {
-    "id" : "debezium",
-    "name" : "debezium",
-    "owner" : "debezium",
-    "repo" : "debezium",
-    "foundation" : "Independent",
-    "website" : null,
-    "enabled" : true,
-    "github_url" : "https://github.com/debezium/debezium"
   } ],
-  "last_updated" : "2026-07-09T17:21:32.208335Z"
+  "last_updated" : "2026-07-09T18:06:22.076180Z"
 }

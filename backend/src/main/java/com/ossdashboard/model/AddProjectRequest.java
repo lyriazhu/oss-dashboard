@@ -17,18 +17,14 @@ public class AddProjectRequest {
     @JsonProperty("issue_source")
     private String issueSource;
 
-    /**
-     * Optional: a different GitHub repo URL to extract issues from.
-     * When blank, issues are extracted from the primary github_url repo.
-     */
-    @JsonProperty("issues_github_url")
-    private String issuesGithubUrl;
-
     @JsonProperty("jira_project_key")
     private String jiraProjectKey;
 
     @JsonProperty("jira_base_url")
     private String jiraBaseUrl;
+
+    @JsonProperty("issue_github_url")
+    private String issueGithubUrl;
 
     public AddProjectRequest() {}
 
@@ -44,14 +40,14 @@ public class AddProjectRequest {
     public String getIssueSource() { return issueSource; }
     public void setIssueSource(String v) { this.issueSource = v; }
 
-    public String getIssuesGithubUrl() { return issuesGithubUrl; }
-    public void setIssuesGithubUrl(String v) { this.issuesGithubUrl = v; }
-
     public String getJiraProjectKey() { return jiraProjectKey; }
     public void setJiraProjectKey(String v) { this.jiraProjectKey = v; }
 
     public String getJiraBaseUrl() { return jiraBaseUrl; }
     public void setJiraBaseUrl(String v) { this.jiraBaseUrl = v; }
+
+    public String getIssueGithubUrl() { return issueGithubUrl; }
+    public void setIssueGithubUrl(String v) { this.issueGithubUrl = v; }
 }
 
 // Made with Bob
