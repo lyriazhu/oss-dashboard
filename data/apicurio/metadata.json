@@ -16,7 +16,7 @@
   "has_discussions": null,
   "top_contributing_companies": [
     {
-      "company": "Ibm",
+      "company": "IBM",
       "commits": 2135,
       "percentage": 68.85
     },
@@ -56,12 +56,12 @@
       "percentage": 0.16
     },
     {
-      "company": "Ibm Pvt Ltd",
+      "company": "IBM Pvt Ltd",
       "commits": 4,
       "percentage": 0.13
     },
     {
-      "company": "Jboss By Red Hat By Ibm",
+      "company": "Jboss By Red Hat By IBM",
       "commits": 3,
       "percentage": 0.1
     }

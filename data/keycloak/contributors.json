@@ -113,7 +113,7 @@
     {
       "login": "edewit",
       "name": "Erik Jan de Wit",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Z\u00fcrich",
       "email": null,
       "contributions": 1517,
@@ -122,7 +122,7 @@
     {
       "login": "pedroigor",
       "name": "Pedro Igor",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Brasilia, Brazil",
       "email": null,
       "contributions": 1514,
@@ -140,7 +140,7 @@
     {
       "login": "ahus1",
       "name": "Alexander Schwartz",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Frankfurt/Main (Germany)",
       "email": "alexander.schwartz@gmx.net",
       "contributions": 763,
@@ -176,7 +176,7 @@
     {
       "login": "mabartos",
       "name": "Martin Barto\u0161",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Czech Republic",
       "email": "mabartos@redhat.com",
       "contributions": 524,
@@ -185,7 +185,7 @@
     {
       "login": "rmartinc",
       "name": "Ricardo Martin",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Spain",
       "email": "rmartinc@ibm.com",
       "contributions": 517,
@@ -212,7 +212,7 @@
     {
       "login": "vmuzikar",
       "name": "V\u00e1clav Muzik\u00e1\u0159",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Czech Republic",
       "email": "vmuzikar@ibm.com",
       "contributions": 354,
@@ -221,7 +221,7 @@
     {
       "login": "sguilhen",
       "name": "Stefan Guilhen",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Sao Paulo",
       "email": "sguilhen@redhat.com",
       "contributions": 334,
@@ -230,7 +230,7 @@
     {
       "login": "martin-kanis",
       "name": "Martin Kanis",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Brno",
       "email": null,
       "contributions": 294,
@@ -293,7 +293,7 @@
     {
       "login": "pruivo",
       "name": "Pedro Ruivo",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Lisbon",
       "email": null,
       "contributions": 221,
@@ -329,7 +329,7 @@
     {
       "login": "graziang",
       "name": "Giuseppe Graziano",
-      "company": "Ibm",
+      "company": "IBM",
       "location": null,
       "email": "g.graziano94@gmail.com",
       "contributions": 166,
@@ -365,7 +365,7 @@
     {
       "login": "ryanemerson",
       "name": "Ryan Emerson",
-      "company": "Ibm",
+      "company": "IBM",
       "location": null,
       "email": null,
       "contributions": 127,
@@ -410,7 +410,7 @@
     {
       "login": "abstractj",
       "name": "Bruno Oliveira da Silva",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Down the rabbit hole ",
       "email": "bruno@abstractj.com",
       "contributions": 104,
@@ -428,7 +428,7 @@
     {
       "login": "andreaTP",
       "name": "Andrea Peruffo",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Lisbon",
       "email": "andrea.peruffo1982@gmail.com",
       "contributions": 92,
@@ -446,7 +446,7 @@
     {
       "login": "pskopek",
       "name": "Peter Skopek",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Brno",
       "email": null,
       "contributions": 68,
@@ -455,7 +455,7 @@
     {
       "login": "tdiesler",
       "name": "Thomas Diesler",
-      "company": "Ibm",
+      "company": "IBM",
       "location": null,
       "email": "tdiesler@ibm.com",
       "contributions": 62,
@@ -482,7 +482,7 @@
     {
       "login": "vaceksimon",
       "name": "\u0160imon Vacek",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Brno, Czechia",
       "email": null,
       "contributions": 58,
@@ -797,7 +797,7 @@
     {
       "login": "jimmychakkalakal",
       "name": null,
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Dublin",
       "email": null,
       "contributions": 20,
@@ -833,7 +833,7 @@
     {
       "login": "gaoyikeshuer",
       "name": "Yike Gao",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Dublin",
       "email": null,
       "contributions": 18,
@@ -995,7 +995,7 @@
     {
       "login": "pedro-hos",
       "name": "Pedro Hos",
-      "company": "Ibm Software Labs",
+      "company": "IBM Software Labs",
       "location": "S\u00e3o Jos\u00e9 dos Campos, BR",
       "email": "pesilva@redhat.com",
       "contributions": 13,
@@ -1130,7 +1130,7 @@
     {
       "login": "grgrzybek",
       "name": "Grzegorz Grzybek",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Wroc\u0142aw",
       "email": "gr.grzybek@gmail.com",
       "contributions": 11,
@@ -1166,7 +1166,7 @@
     {
       "login": "vibe13",
       "name": "Andrea Vibelli",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Milan",
       "email": null,
       "contributions": 10,
@@ -1553,7 +1553,7 @@
     {
       "login": "pacostas",
       "name": "Costas Papastathis",
-      "company": "Ibm / Red Hat",
+      "company": "IBM / Red Hat",
       "location": "Madrid",
       "email": "papastathiscr@gmail.com",
       "contributions": 7,
@@ -1778,7 +1778,7 @@
     {
       "login": "jfdenise",
       "name": "Jean-Fran\u00e7ois Denise ",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "France, Grenoble",
       "email": "jfdenise@ibm.com",
       "contributions": 5,
@@ -2923,7 +2923,7 @@
   "companies": {
     "Unknown": 146,
     "Red Hat": 39,
-    "Ibm": 21,
+    "IBM": 21,
     "Red Hat, Inc.": 3,
     "Hitachi, Ltd.": 3,
     "Adorsys": 2,
@@ -2959,7 +2959,7 @@
     "Netceteragroup": 1,
     "Pelton Interactive": 1,
     "Fiware": 1,
-    "Ibm Software Labs": 1,
+    "IBM Software Labs": 1,
     "M13T": 1,
     "Vercel": 1,
     "Goodbytes": 1,
@@ -2973,7 +2973,7 @@
     "Red Hat Inc.": 1,
     "Agoda Company Pte Ltd.": 1,
     "Snovon": 1,
-    "Ibm / Red Hat": 1,
+    "IBM / Red Hat": 1,
     "Ai-Trust Zt Gmbh": 1,
     "Goto-Opensource": 1,
     "Xataio": 1,
@@ -3040,7 +3040,7 @@
         "contributor_count": 39
       },
       {
-        "company": "Ibm",
+        "company": "IBM",
         "contributor_count": 21
       },
       {

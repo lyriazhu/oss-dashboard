@@ -99,7 +99,7 @@
     {
       "login": "gemmellr",
       "name": "Robbie Gemmell",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Scotland",
       "email": null,
       "contributions": 560,
@@ -117,7 +117,7 @@
     {
       "login": "brusdev",
       "name": "Bruscino Domenico Francesco",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Naples, Italy",
       "email": null,
       "contributions": 358,
@@ -207,7 +207,7 @@
     {
       "login": "ehsavoie",
       "name": "Emmanuel Hugonnet",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Barraux, France",
       "email": null,
       "contributions": 47,
@@ -270,7 +270,7 @@
     {
       "login": "paulgallagher75",
       "name": "Paul Gallagher",
-      "company": "Ibm",
+      "company": "IBM",
       "location": null,
       "email": null,
       "contributions": 25,
@@ -279,7 +279,7 @@
     {
       "login": "jmesnil",
       "name": "Jeff Mesnil",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "France",
       "email": "jmesnil@gmail.com",
       "contributions": 23,
@@ -315,7 +315,7 @@
     {
       "login": "orpiske",
       "name": "Otavio Rodolfo Piske",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Brno, Czech Republic",
       "email": null,
       "contributions": 17,
@@ -351,7 +351,7 @@
     {
       "login": "gnodet",
       "name": "Guillaume Nodet",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Caen, France",
       "email": "gnodet@gmail.com",
       "contributions": 12,
@@ -405,7 +405,7 @@
     {
       "login": "TomasHofman",
       "name": "Tomas Hofman",
-      "company": "Red Hat / Ibm",
+      "company": "Red Hat / IBM",
       "location": null,
       "email": "thofman@redhat.com",
       "contributions": 10,
@@ -441,7 +441,7 @@
     {
       "login": "grgrzybek",
       "name": "Grzegorz Grzybek",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Wroc\u0142aw",
       "email": "gr.grzybek@gmail.com",
       "contributions": 8,
@@ -495,7 +495,7 @@
     {
       "login": "k-wall",
       "name": "Keith Wall",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Stirling, Scotland, UK",
       "email": "kwall@redhat.com",
       "contributions": 7,
@@ -567,7 +567,7 @@
     {
       "login": "davsclaus",
       "name": "Claus Ibsen",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Denmark",
       "email": "claus.ibsen@gmail.com",
       "contributions": 5,
@@ -774,7 +774,7 @@
     {
       "login": "tadayosi",
       "name": "Tadayoshi Sato",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Tokyo, Japan",
       "email": null,
       "contributions": 3,
@@ -837,7 +837,7 @@
     {
       "login": "ryanemerson",
       "name": "Ryan Emerson",
-      "company": "Ibm",
+      "company": "IBM",
       "location": null,
       "email": null,
       "contributions": 3,
@@ -855,7 +855,7 @@
     {
       "login": "jamezp",
       "name": "James R. Perkins",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Oregon",
       "email": null,
       "contributions": 3,
@@ -909,7 +909,7 @@
     {
       "login": "xstefank",
       "name": "Martin Stefanko",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Brno, Czechia",
       "email": "xstefank122@gmail.com",
       "contributions": 2,
@@ -1377,7 +1377,7 @@
     {
       "login": "pferraro",
       "name": "Paul Ferraro",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Edinburgh, UK",
       "email": null,
       "contributions": 1,
@@ -1755,7 +1755,7 @@
     {
       "login": "apupier",
       "name": "Aur\u00e9lien Pupier",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Grenoble Area, France",
       "email": "apupier@ibm.com",
       "contributions": 1,
@@ -1953,7 +1953,7 @@
     {
       "login": "oscerd",
       "name": "Andrea Cosentino",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Rome, Italy",
       "email": "ancosen@gmail.com",
       "contributions": 1,
@@ -2259,7 +2259,7 @@
     {
       "login": "gastaldi",
       "name": "George Gastaldi",
-      "company": "Ibm",
+      "company": "IBM",
       "location": "Joinville, Santa Catarina, Brasil",
       "email": "gegastaldi@gmail.com",
       "contributions": 1,
@@ -2369,7 +2369,7 @@
   "companies": {
     "Unknown": 146,
     "Red Hat": 30,
-    "Ibm": 18,
+    "IBM": 18,
     "Redhat": 2,
     "Redhatofficial": 2,
     "Naumen": 2,
@@ -2380,7 +2380,7 @@
     "Contrast Security": 1,
     "Aimtec A.S.": 1,
     "Tymiq": 1,
-    "Red Hat / Ibm": 1,
+    "Red Hat / IBM": 1,
     "Beihang University": 1,
     "Sygic": 1,
     "Google": 1,
@@ -2443,7 +2443,7 @@
         "contributor_count": 30
       },
       {
-        "company": "Ibm",
+        "company": "IBM",
         "contributor_count": 18
       },
       {

@@ -29,7 +29,7 @@
   "has_discussions": null,
   "top_contributing_companies": [
     {
-      "company": "Ibm",
+      "company": "IBM",
       "commits": 2473,
       "percentage": 78.61
     },
@@ -44,7 +44,7 @@
       "percentage": 2.45
     },
     {
-      "company": "Ibm, Ex-Red Hat",
+      "company": "IBM, Ex-Red Hat",
       "commits": 57,
       "percentage": 1.81
     },
