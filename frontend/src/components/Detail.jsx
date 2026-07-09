@@ -114,6 +114,7 @@ export default function Detail({ d, onOverview }) {
   const [showPRMonthly, setShowPRMonthly] = useState(true);
   const [showIssueMonthly, setShowIssueMonthly] = useState(true);
   const [showRetentionQuarterly, setShowRetentionQuarterly] = useState(false);
+  const [showAllAdopters, setShowAllAdopters] = useState(false);
   
   return (
     <main>
@@ -394,11 +395,25 @@ export default function Detail({ d, onOverview }) {
           !(a.url && _articleHostRe.test(a.url))
         ).sort((a, b) => a.name.localeCompare(b.name));
         if (!cleanAdopters.length) return null;
+        const visibleAdopters = showAllAdopters ? cleanAdopters : cleanAdopters.slice(0, 12);
         return (
         <div className="section">
-          <h2 className="section-h">Known project adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({cleanAdopters.length})</span></h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+            <h2 className="section-h" style={{ margin: 0 }}>
+              Known project adopters <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem' }}>({cleanAdopters.length})</span>
+            </h2>
+            {cleanAdopters.length > 12 && (
+              <button
+                className="btn-secondary"
+                onClick={() => setShowAllAdopters((show) => !show)}
+                style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
+              >
+                {showAllAdopters ? 'Show fewer' : 'Expand'}
+              </button>
+            )}
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
-            {cleanAdopters.map((a, i) => (
+            {visibleAdopters.map((a, i) => (
               <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 600 }}>
                 {a.url
                   ? <a href={a.url} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontWeight: 600 }}>{a.name}</a>
