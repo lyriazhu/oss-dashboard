@@ -88,21 +88,14 @@ def _load_projects_from_json() -> List[Dict]:
         dir_name = _project_dir(project_id, name)
 
         osv_packages = OSV_OVERRIDES.get(name.lower())
-        if osv_packages:
-            result.append({
-                "name": name,
-                "dir": dir_name,
-                "strategy": "osv",
-                "packages": osv_packages,
-            })
-        else:
-            result.append({
-                "name": name,
-                "dir": dir_name,
-                "strategy": "github_repo",
-                "owner": owner,
-                "repo": repo,
-            })
+        result.append({
+            "name": name,
+            "dir": dir_name,
+            "strategy": "github_repo",
+            "owner": owner,
+            "repo": repo,
+            "packages": osv_packages,
+        })
 
     return result
 
@@ -251,7 +244,18 @@ def extract_github_repo(project: Dict) -> Dict[str, Any]:
     advisories = _gh_fetch_all(url)
     print(f"  Found {len(advisories)} advisories")
     entries = _normalize_github(advisories)
-    return _build_cve_json(entries, "github_security_advisories")
+    if entries:
+        return _build_cve_json(entries, "github_security_advisories")
+
+    packages = project.get("packages")
+    if not packages:
+        packages = [(f"github.com/{owner}/{repo}", "Go")]
+
+    print("  No repo advisories found; falling back to OSV...")
+    return extract_osv({
+        "name": project["name"],
+        "packages": packages,
+    })
 
 
 def extract_osv(project: Dict) -> Dict[str, Any]:
@@ -291,10 +295,7 @@ def main() -> None:
     for project in projects:
         print(f"[{project['name']}]")
         try:
-            if project["strategy"] == "github_repo":
-                data = extract_github_repo(project)
-            else:
-                data = extract_osv(project)
+            data = extract_github_repo(project)
             _write(project["dir"], data)
         except Exception as e:
             print(f"  ❌ Error: {e}")

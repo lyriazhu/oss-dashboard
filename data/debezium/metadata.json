@@ -1,0 +1,82 @@
+{
+  "name": "debezium",
+  "full_name": "debezium/debezium",
+  "description": "Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues.",
+  "created_at": "2016-01-22T20:17:05+00:00",
+  "updated_at": "2026-07-09T17:39:11+00:00",
+  "stars": 12893,
+  "forks": 2975,
+  "watchers": 12893,
+  "open_issues": 160,
+  "language": "Java",
+  "topics": [
+    "change-data-capture",
+    "kafka-connect",
+    "apache-kafka",
+    "debezium",
+    "cdc",
+    "database",
+    "kafka",
+    "kafka-producer",
+    "event-streaming",
+    "data-pipeline",
+    "hacktoberfest"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://debezium.io",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 3301,
+      "percentage": 37.44
+    },
+    {
+      "company": "Ibm @Redhatofficial @Commonhaus",
+      "commits": 2538,
+      "percentage": 28.79
+    },
+    {
+      "company": "Confluent",
+      "commits": 1259,
+      "percentage": 14.28
+    },
+    {
+      "company": "Redhatofficial @Debezium @Ibm",
+      "commits": 585,
+      "percentage": 6.63
+    },
+    {
+      "company": "Affirm",
+      "commits": 96,
+      "percentage": 1.09
+    },
+    {
+      "company": "Redis",
+      "commits": 90,
+      "percentage": 1.02
+    },
+    {
+      "company": "Ibm , Red Hat Partner",
+      "commits": 85,
+      "percentage": 0.96
+    },
+    {
+      "company": "Kakao",
+      "commits": 63,
+      "percentage": 0.71
+    },
+    {
+      "company": "Slack",
+      "commits": 49,
+      "percentage": 0.56
+    },
+    {
+      "company": "Dnanexus",
+      "commits": 32,
+      "percentage": 0.36
+    }
+  ],
+  "extracted_at": "2026-07-09T15:07:55.799796"
+}
