@@ -38,7 +38,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
 
         // Get open issues from KPIs
         if (project.kpis) {
-          const issuesKpi = project.kpis.find(k => k.l === 'Open issues');
+          const issuesKpi = project.kpis.find(k => k.l === 'Open Issues');
           if (issuesKpi) {
             const num = parseInt(issuesKpi.v.replace(/[,+]/g, ''));
             if (!isNaN(num)) totalIssues += num;
@@ -76,7 +76,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
         { l: "Total communities", v: totalCommunities.toString(), h: `${totalCommunities} active projects` },
         { l: "Total contributors (All-Time)", v: formatNum(totalContributors), h: "Across all active repos" },
         { l: "Commits (All-Time)", v: formatNum(totalCommits), h: "All communities combined" },
-        { l: "Open issues", v: formatNum(totalIssues), h: "Across all communities" },
+        { l: "Open Issues", v: formatNum(totalIssues), h: "Across all communities" },
       ],
       lastUpdated: formattedDate
     };
@@ -130,7 +130,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
               <tr>
                 <th>Community</th>
                 <th>Foundation</th>
-                <th className="num">Companies</th>
+                <th className="num">Contributing Companies</th>
                 <th className="num">Contributors (YTD)</th>
                 <th className="num">Contributors (All-Time)</th>
                 <th className="num">Commits (YTD)</th>

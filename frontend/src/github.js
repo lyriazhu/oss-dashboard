@@ -128,7 +128,7 @@ export async function fetchProject(url) {
     },
     kpis: [
       { l: "Contributors", v: contribCount != null ? fmt(contribCount) : "—", h: "All-time, incl. anonymous" },
-      { l: "Companies", v: "—", h: "Not exposed via API" },
+      { l: "Contributing companies", v: "—", h: "Not exposed via API" },
       { l: "Commits YTD", v: commitYTD != null ? fmt(commitYTD) : "—", h: "Default branch, since Jan 1" },
       { l: "GitHub stars", v: fmt(stars), h: fmt(repo.forks_count || 0) + " forks" },
       { l: "Open issues", v: fmt(repo.open_issues_count || 0), h: "Open issues + PRs" },

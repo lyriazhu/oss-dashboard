@@ -170,11 +170,11 @@ export function transformProjectData(project, metrics) {
   
   // Format KPIs with safety checks
   const kpis = [
-    { l: 'Companies', v: formatNumber(countDistinctCompanies(contributors?.contributors)), h: 'Distinct companies (excl. independents)' },
+    { l: 'Contributing Companies', v: formatNumber(countDistinctCompanies(contributors?.contributors)), h: 'Distinct companies (excl. independents)' },
     { l: 'Contributors (YTD)', v: formatNumber(contributorsYtd), h: 'Unique contributors this year' },
     { l: 'Commits (YTD)', v: formatNumber(commitsYtd), h: 'Total commits this year' },
-    { l: 'GitHub stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
-    { l: 'Open issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? issues.median_resolution_time_days.toFixed(1) : '—'} days` },
+    { l: 'GitHub Stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
+    { l: 'Open Issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? issues.median_resolution_time_days.toFixed(1) : '—'} days` },
     { l: 'Pull Requests (YTD)', v: formatNumber(prYtd), h: `${formatNumber(mergedPrYtd)} merged` },
     { l: 'Releases', v: formatNumber(releases?.total_releases), h: 'Total releases' },
     { l: 'Language', v: metadata?.language || '—', h: metadata?.license || 'No license' },
