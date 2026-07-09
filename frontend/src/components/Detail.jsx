@@ -249,10 +249,11 @@ export default function Detail({ d, onOverview }) {
       <hr className="divider" />
 
       <div className="section">
-        <h2 className="section-h">Top contributing companies & project metadata</h2>
         <div className="two-col">
-          <div className="table-wrap companies-table-wrap">
-            <table>
+          <div>
+            <h2 className="section-h">Top contributing companies</h2>
+            <div className="table-wrap companies-table-wrap">
+              <table>
               <thead>
                 <tr>
                   <th>Company</th>
@@ -274,10 +275,13 @@ export default function Detail({ d, onOverview }) {
                   </tr>
                 ))}
               </tbody>
-            </table>
+              </table>
+            </div>
           </div>
-          <div className="table-wrap">
-            <table>
+          <div>
+            <h2 className="section-h">Project metadata</h2>
+            <div className="table-wrap">
+              <table>
               <thead>
                 <tr>
                   <th>Field</th>
@@ -292,7 +296,8 @@ export default function Detail({ d, onOverview }) {
                   </tr>
                 ))}
               </tbody>
-            </table>
+              </table>
+            </div>
           </div>
         </div>
       </div>
