@@ -86,9 +86,9 @@ export default function App() {
     setSelectedKey(key);
   }, []);
 
-  const addProject = useCallback((key, project) => {
-    setData((prev) => ({ ...prev, [key]: project }));
-    setOrder((prev) => [...prev, key]);
+  const addProject = useCallback((key) => {
+    // loadProjects has already refreshed data/order by the time this fires;
+    // we only need to trigger the flash animation on the new row.
     setFlashKey(key);
     setTimeout(() => setFlashKey(null), 1200);
   }, []);

@@ -38,16 +38,20 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess }) {
       const response = await addProject(url);
       
       if (response.success) {
-        setStatus({ 
-          msg: `${response.message}. ${response.extractionStatus}`, 
-          type: "info" 
+        setStatus({
+          msg: `${response.message}. ${response.extractionStatus}`,
+          type: "info"
         });
         
         // Wait a moment to show success message, then close and refresh
-        setTimeout(() => {
+        setTimeout(async () => {
           onClose();
           if (onSuccess) {
-            onSuccess(); // Reload projects from backend
+            await onSuccess(); // Reload projects from backend
+          }
+          // Fire flash on the newly added project so the row animates in
+          if (onAdd && response.project) {
+            onAdd(response.project.id, null);
           }
         }, 2000);
       } else {

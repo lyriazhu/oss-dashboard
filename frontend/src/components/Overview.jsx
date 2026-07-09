@@ -19,7 +19,8 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
     let totalContributors = 0;
     let totalCommits = 0;
     let totalIssues = 0;
-    let mostRecentExtraction = null;
+    let oldestExtraction = null;
+    let allHaveExtraction = true;
     
     order.forEach(key => {
       const project = data[key];
@@ -45,12 +46,15 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
           }
         }
         
-        // Track most recent extraction time
+        // Track oldest extraction time — the dashboard is fully up to date only
+        // once every project has been extracted, so we use the minimum.
         if (project.extractedAt) {
           const extractionDate = new Date(project.extractedAt);
-          if (!mostRecentExtraction || extractionDate > mostRecentExtraction) {
-            mostRecentExtraction = extractionDate;
+          if (!oldestExtraction || extractionDate < oldestExtraction) {
+            oldestExtraction = extractionDate;
           }
+        } else {
+          allHaveExtraction = false;
         }
       }
     });
@@ -58,13 +62,13 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
     // Format numbers with commas only
     const formatNum = (num) => num.toLocaleString('en-US');
     
-    // Format last updated date and time
-    const formattedDate = mostRecentExtraction
-      ? mostRecentExtraction.toLocaleDateString('en-US', {
+    // Only show timestamp when every project has been extracted
+    const formattedDate = (allHaveExtraction && oldestExtraction)
+      ? oldestExtraction.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric'
-        }) + ' at ' + mostRecentExtraction.toLocaleTimeString('en-US', {
+        }) + ' at ' + oldestExtraction.toLocaleTimeString('en-US', {
           hour: 'numeric',
           minute: '2-digit',
           hour12: true
@@ -97,7 +101,6 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
           <span>
             Last updated: <b>{lastUpdated}</b>
           </span>
-          <span>Data from GitHub API</span>
         </div>
       </div>
       <hr className="ov-rule" />
