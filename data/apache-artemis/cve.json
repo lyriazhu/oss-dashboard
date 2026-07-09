@@ -1,0 +1,291 @@
+{
+  "source": "github_advisory_database",
+  "total_cves": 31,
+  "months": [
+    {
+      "month": "2018-10",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2018-11775",
+          "severity": "high",
+          "summary": "Improper Certificate Validation in Apache activemq-client",
+          "published": "2018-10-19"
+        }
+      ]
+    },
+    {
+      "month": "2019-04",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2019-0222",
+          "severity": "high",
+          "summary": "Improper Control of Generation of Code ('Code Injection') in org.apache.activemq:activemq-client",
+          "published": "2019-04-02"
+        }
+      ]
+    },
+    {
+      "month": "2019-08",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2015-7559",
+          "severity": "moderate",
+          "summary": "Improper Input Validation and Missing Authentication for Critical Function in Apache ActiveMQ",
+          "published": "2019-08-01"
+        }
+      ]
+    },
+    {
+      "month": "2022-02",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2022-23913",
+          "severity": "high",
+          "summary": "Apache ActiveMQ Artemis Uncontrolled Resource Consumption (DoS)",
+          "published": "2022-02-06"
+        }
+      ]
+    },
+    {
+      "month": "2022-05",
+      "count": 13,
+      "cves": [
+        {
+          "id": "CVE-2015-6524",
+          "severity": "moderate",
+          "summary": "Improper Input Validation in Apache ActiveMQ",
+          "published": "2022-05-17"
+        },
+        {
+          "id": "CVE-2014-3600",
+          "severity": "critical",
+          "summary": "Improper Restriction of XML External Entity Reference in Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2014-3612",
+          "severity": "high",
+          "summary": "Improper Authentication in Apache WSS4J",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2015-1830",
+          "severity": "moderate",
+          "summary": "Improper Limitation of a Pathname to a Restricted Directory in Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2014-3576",
+          "severity": "high",
+          "summary": "Improper Neutralization of Special Elements used in an OS Command in Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2016-6810",
+          "severity": "moderate",
+          "summary": "Improper Neutralization of Input During Web Page Generation Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2016-0782",
+          "severity": "moderate",
+          "summary": "Improper Neutralization of Input During Web Page Generation in Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2014-8110",
+          "severity": "moderate",
+          "summary": "Improper Neutralization of Input During Web Page Generation in Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2013-1879",
+          "severity": "moderate",
+          "summary": "Improper Neutralization of Input During Web Page Generation in Apache ActiveMQ",
+          "published": "2022-05-17"
+        },
+        {
+          "id": "CVE-2013-3060",
+          "severity": "moderate",
+          "summary": "Improper Authentication in Apache ActiveMQ",
+          "published": "2022-05-17"
+        },
+        {
+          "id": "CVE-2015-5254",
+          "severity": "critical",
+          "summary": "Improper Input Validation in Apache ActiveMQ",
+          "published": "2022-05-13"
+        },
+        {
+          "id": "CVE-2016-3088",
+          "severity": "critical",
+          "summary": "Improper Input Validation in Apache ActiveMQ",
+          "published": "2022-05-14"
+        },
+        {
+          "id": "CVE-2016-0734",
+          "severity": "moderate",
+          "summary": "Improper Neutralization of Input During Web Page Generation in Apache ActiveMQ",
+          "published": "2022-05-14"
+        }
+      ]
+    },
+    {
+      "month": "2022-08",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2021-4040",
+          "severity": "moderate",
+          "summary": "org.apache.activemq:artemis-core-client Vulnerable to Out-of-Bounds Write",
+          "published": "2022-08-25"
+        },
+        {
+          "id": "CVE-2022-35278",
+          "severity": "moderate",
+          "summary": "HTML Injection in ActiveMQ Artemis Web Console",
+          "published": "2022-08-24"
+        }
+      ]
+    },
+    {
+      "month": "2023-10",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2023-46604",
+          "severity": "critical",
+          "summary": "Apache ActiveMQ is vulnerable to Remote Code Execution",
+          "published": "2023-10-27"
+        }
+      ]
+    },
+    {
+      "month": "2025-04",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2025-27427",
+          "severity": "low",
+          "summary": "Apache ActiveMQ Artemis User Without Create Address Permissions can Modify Address Routing-Type",
+          "published": "2025-04-01"
+        }
+      ]
+    },
+    {
+      "month": "2025-05",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2025-27533",
+          "severity": "moderate",
+          "summary": "Apache ActiveMQ: Unchecked buffer length can cause excessive memory allocation",
+          "published": "2025-05-07"
+        }
+      ]
+    },
+    {
+      "month": "2026-03",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2026-27446",
+          "severity": "critical",
+          "summary": "Apache Artemis and Apache ActiveMQ Artemis are Missing Authentication for Critical Functions",
+          "published": "2026-03-04"
+        },
+        {
+          "id": "CVE-2025-66168",
+          "severity": "moderate",
+          "summary": "Apache ActiveMQ is Vulnerable to Integer Overflow or Wraparound",
+          "published": "2026-03-04"
+        }
+      ]
+    },
+    {
+      "month": "2026-04",
+      "count": 7,
+      "cves": [
+        {
+          "id": "CVE-2026-41043",
+          "severity": "moderate",
+          "summary": "Apache ActiveMQ Vulnerable to Cross-site Scripting",
+          "published": "2026-04-24"
+        },
+        {
+          "id": "CVE-2026-39304",
+          "severity": "high",
+          "summary": " Apache ActiveMQ: Denial of Service via Out of Memory vulnerability",
+          "published": "2026-04-10"
+        },
+        {
+          "id": "CVE-2026-33227",
+          "severity": "moderate",
+          "summary": "Apache ActiveMQ: Improper validation and restriction of a classpath path name",
+          "published": "2026-04-07"
+        },
+        {
+          "id": "CVE-2026-41044",
+          "severity": "high",
+          "summary": "Apache ActiveMQ Vulnerable to Code Injection",
+          "published": "2026-04-24"
+        },
+        {
+          "id": "CVE-2026-34197",
+          "severity": "high",
+          "summary": "Authenticated Apache ActiveMQ Broker and Apache ActiveMQ users could perform RCE via Jolokia MBeans",
+          "published": "2026-04-07"
+        },
+        {
+          "id": "CVE-2026-40466",
+          "severity": "high",
+          "summary": "Apache ActiveMQ Vulnerable to Improper Input Validation and Code Injection",
+          "published": "2026-04-24"
+        },
+        {
+          "id": "CVE-2026-40046",
+          "severity": "moderate",
+          "summary": "Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ MQTT vulnerable to Integer Overflow or Wraparound",
+          "published": "2026-04-09"
+        }
+      ]
+    }
+  ],
+  "years": [
+    {
+      "year": "2018",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2019",
+      "count": 2,
+      "is_current": false
+    },
+    {
+      "year": "2022",
+      "count": 16,
+      "is_current": false
+    },
+    {
+      "year": "2023",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2025",
+      "count": 2,
+      "is_current": false
+    },
+    {
+      "year": "2026",
+      "count": 9,
+      "is_current": true
+    }
+  ],
+  "extracted_at": "2026-07-09T11:07:06.121032"
+}

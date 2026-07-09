@@ -13,13 +13,15 @@ public class ProjectMetrics {
     private PullRequestData pullRequests;
     private ReleaseData releases;
     private AdopterData adopters;
+    private CveData cves;
 
     public ProjectMetrics() {
     }
 
     public ProjectMetrics(String projectId, String projectName, ProjectMetadata metadata,
                          ContributorData contributors, CommitData commits, IssueData issues,
-                         PullRequestData pullRequests, ReleaseData releases, AdopterData adopters) {
+                         PullRequestData pullRequests, ReleaseData releases, AdopterData adopters,
+                         CveData cves) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.metadata = metadata;
@@ -29,6 +31,7 @@ public class ProjectMetrics {
         this.pullRequests = pullRequests;
         this.releases = releases;
         this.adopters = adopters;
+        this.cves = cves;
     }
 
     public String getProjectId() {
@@ -101,6 +104,14 @@ public class ProjectMetrics {
 
     public void setAdopters(AdopterData adopters) {
         this.adopters = adopters;
+    }
+
+    public CveData getCves() {
+        return cves;
+    }
+
+    public void setCves(CveData cves) {
+        this.cves = cves;
     }
 }
 

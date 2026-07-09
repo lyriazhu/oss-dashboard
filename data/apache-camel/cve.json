@@ -1,0 +1,177 @@
+{
+  "source": "github_advisory_database",
+  "total_cves": 16,
+  "months": [
+    {
+      "month": "2018-10",
+      "count": 8,
+      "cves": [
+        {
+          "id": "CVE-2014-0002",
+          "severity": "high",
+          "summary": "Apache Camel's XSLT component allows remote attackers to read arbitrary files",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2015-0263",
+          "severity": "moderate",
+          "summary": "Apache Camel XML External Entity vulnerability",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2018-8027",
+          "severity": "critical",
+          "summary": "Apache is vulnerable to XXE in XSD validation processor",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2014-0003",
+          "severity": "high",
+          "summary": "Apache Camel's XSLT component allows remote attackers to execute arbitrary Java methods",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2015-0264",
+          "severity": "moderate",
+          "summary": "Apache Camel allows remote actor to read arbitrary files via external entity in invalid XML string or GenericFile object",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2017-5643",
+          "severity": "high",
+          "summary": "Apache Camel's Validation Component is vulnerable against SSRF via remote DTDs and XXE.",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2015-5348",
+          "severity": "high",
+          "summary": "Apache Camel can allow remote attackers to execute arbitrary commands",
+          "published": "2018-10-16"
+        },
+        {
+          "id": "CVE-2015-5344",
+          "severity": "critical",
+          "summary": "Camel-xstream component in Apache Camel can allow remote attackers to execute arbitrary commands ",
+          "published": "2018-10-16"
+        }
+      ]
+    },
+    {
+      "month": "2019-05",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2019-0194",
+          "severity": "high",
+          "summary": "Path Traversal in Apache Camel",
+          "published": "2019-05-02"
+        },
+        {
+          "id": "CVE-2019-0188",
+          "severity": "high",
+          "summary": "XML External Entity injection in Apache Camel",
+          "published": "2019-05-29"
+        }
+      ]
+    },
+    {
+      "month": "2020-05",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2020-11973",
+          "severity": "critical",
+          "summary": "Apache Camel Netty enables Java deserialization by default",
+          "published": "2020-05-21"
+        }
+      ]
+    },
+    {
+      "month": "2021-05",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2020-11971",
+          "severity": "high",
+          "summary": "Improper Input Validation in Apache Camel",
+          "published": "2021-05-21"
+        }
+      ]
+    },
+    {
+      "month": "2022-05",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2013-4330",
+          "severity": "moderate",
+          "summary": "Improper Control of Generation of Code in Apache Camel",
+          "published": "2022-05-13"
+        }
+      ]
+    },
+    {
+      "month": "2022-12",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2022-45046",
+          "severity": "critical",
+          "summary": "camel-ldap component allows LDAP Injection when using the filter option",
+          "published": "2022-12-05"
+        }
+      ]
+    },
+    {
+      "month": "2024-02",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2024-22371",
+          "severity": "low",
+          "summary": "Apache Camel data exposure vulnerability",
+          "published": "2024-02-26"
+        },
+        {
+          "id": "CVE-2024-22369",
+          "severity": "high",
+          "summary": "Deserialization of Untrusted Data in Apache Camel SQL",
+          "published": "2024-02-20"
+        }
+      ]
+    }
+  ],
+  "years": [
+    {
+      "year": "2018",
+      "count": 8,
+      "is_current": false
+    },
+    {
+      "year": "2019",
+      "count": 2,
+      "is_current": false
+    },
+    {
+      "year": "2020",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2021",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2022",
+      "count": 2,
+      "is_current": false
+    },
+    {
+      "year": "2024",
+      "count": 2,
+      "is_current": false
+    }
+  ],
+  "extracted_at": "2026-07-09T11:07:01.415877"
+}

@@ -103,7 +103,7 @@ export function transformProjectData(project, metrics) {
   if (!metrics) return null;
   
   // Backend uses camelCase, so map to snake_case for consistency
-  const { metadata, contributors, commits, issues, pullRequests, releases, adopters } = metrics;
+  const { metadata, contributors, commits, issues, pullRequests, releases, adopters, cves } = metrics;
   const pull_requests = pullRequests; // Alias for compatibility
   
   // Calculate YTD data from current year
@@ -567,6 +567,30 @@ export function transformProjectData(project, metrics) {
     ],
   };
 
+  // ── CVE data ────────────────────────────────────────────────────────
+  // cves.months: [{ month: "YYYY-MM", count, cves: [...] }]
+  // cves.years:  [{ year: "YYYY", count, is_current }]
+  const cveMonths = (cves?.months || []).map((m, idx, arr) => ({
+    m: m.month,
+    v: m.count || 0,
+    c: idx === arr.length - 1,
+    cves: m.cves || [],  // preserve individual CVE entries for the detail table
+  }));
+
+  const cveYears = (cves?.years || []).map((y) => ({
+    y: y.year,
+    v: y.count || 0,
+    c: y.is_current || y.isCurrent || false,
+  }));
+
+  // Flat list of all CVE entries for the detail table (sorted newest first)
+  const cveEntries = (cves?.months || [])
+    .flatMap((m) => (m.cves || []).map((c) => ({ ...c, month: m.month })))
+    .sort((a, b) => b.published.localeCompare(a.published));
+
+  // For the overview mini-chart: last 6 years of CVE counts (or fill zeros)
+  const cveYearValues = cveYears.map((y) => y.v);
+
   return {
     name: project.name,
     sub: project.foundation || 'Independent',
@@ -589,6 +613,12 @@ export function transformProjectData(project, metrics) {
     issueYearly: issueYearlyData.length > 0 ? issueYearlyData : [{ y: '2025', v: 0, c: true }],
     issueMonthly: issueMonthlyData.length > 0 ? issueMonthlyData : [],
     issueMedianResolutionDays: issues?.median_resolution_time_days ?? issues?.medianResolutionTimeDays ?? null,
+    cveYearly: cveYears.length > 0 ? cveYears : [],
+    cveMonthly: cveMonths.length > 0 ? cveMonths : [],
+    cveEntries,
+    cveSource: cves?.source || null,
+    cveTotalAllTime: cves?.total_cves || cves?.totalCves || 0,
+    cveYearValues,
     aiPolicySummary: aiPolicySummaries[project.id] || [],
     controls: controlsAssessments[project.id] || [],
     extractedAt: metadata?.extracted_at || null, // Store the extraction timestamp

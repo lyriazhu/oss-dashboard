@@ -1,0 +1,67 @@
+{
+  "source": "github_security_advisories",
+  "total_cves": 5,
+  "months": [
+    {
+      "month": "2025-12",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2025-66623",
+          "severity": "high",
+          "summary": "Unrestricted access to all Secrets in the same Kubernetes namespace from Kafka Connect and MirrorMaker 2 operands",
+          "published": "2025-12-05"
+        }
+      ]
+    },
+    {
+      "month": "2026-02",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2026-27134",
+          "severity": "high",
+          "summary": "All CAs from a custom CA chain consisting of multiple CAs are trusted for mTLS user authentication",
+          "published": "2026-02-19"
+        },
+        {
+          "id": "CVE-2026-27133",
+          "severity": "medium",
+          "summary": "All CAs from CA chain will be trusted in Kafka Connect and Kafka MirrorMaker 2 target clusters",
+          "published": "2026-02-19"
+        }
+      ]
+    },
+    {
+      "month": "2026-06",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2026-55226",
+          "severity": "medium",
+          "summary": "Unrestricted access to all Secrets within namespace watched by the Topic operator",
+          "published": "2026-06-17"
+        },
+        {
+          "id": "CVE-2026-55225",
+          "severity": "high",
+          "summary": "Cross-namespace privilege escalation via `Kafka.spec.entityOperator`",
+          "published": "2026-06-17"
+        }
+      ]
+    }
+  ],
+  "years": [
+    {
+      "year": "2025",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2026",
+      "count": 4,
+      "is_current": true
+    }
+  ],
+  "extracted_at": "2026-07-09T11:06:56.354611"
+}

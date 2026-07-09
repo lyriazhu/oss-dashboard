@@ -115,6 +115,7 @@ export default function Detail({ d, onOverview }) {
   const [showIssueMonthly, setShowIssueMonthly] = useState(true);
   const [showRetentionQuarterly, setShowRetentionQuarterly] = useState(false);
   const [showAllAdopters, setShowAllAdopters] = useState(false);
+  const [showCveMonthly, setShowCveMonthly] = useState(false);
   
   return (
     <main>
@@ -249,11 +250,10 @@ export default function Detail({ d, onOverview }) {
       <hr className="divider" />
 
       <div className="section">
+        <h2 className="section-h">Top contributing companies & project metadata</h2>
         <div className="two-col">
-          <div>
-            <h2 className="section-h">Top contributing companies</h2>
-            <div className="table-wrap companies-table-wrap">
-              <table>
+          <div className="table-wrap companies-table-wrap">
+            <table>
               <thead>
                 <tr>
                   <th>Company</th>
@@ -275,13 +275,10 @@ export default function Detail({ d, onOverview }) {
                   </tr>
                 ))}
               </tbody>
-              </table>
-            </div>
+            </table>
           </div>
-          <div>
-            <h2 className="section-h">Project metadata</h2>
-            <div className="table-wrap">
-              <table>
+          <div className="table-wrap">
+            <table>
               <thead>
                 <tr>
                   <th>Field</th>
@@ -296,8 +293,7 @@ export default function Detail({ d, onOverview }) {
                   </tr>
                 ))}
               </tbody>
-              </table>
-            </div>
+            </table>
           </div>
         </div>
       </div>
@@ -387,6 +383,152 @@ export default function Detail({ d, onOverview }) {
           )}
         </p>
       </div>
+
+      {(() => {
+        const allCves = d.cveEntries || [];
+        const hasCves = d.cveYearly?.length > 0 || allCves.length > 0;
+        const sevOrder = { critical: 0, high: 1, medium: 2, moderate: 2, low: 3, unknown: 4 };
+        const sevColor = {
+          critical: { bg: '#fff1f1', text: '#da1e28', border: '#ffd7d9' },
+          high:     { bg: '#fff3cd', text: '#b76900', border: '#ffe08a' },
+          medium:   { bg: '#edf5ff', text: '#0043ce', border: '#d0e2ff' },
+          moderate: { bg: '#edf5ff', text: '#0043ce', border: '#d0e2ff' },
+          low:      { bg: '#defbe6', text: '#198038', border: '#a7f0ba' },
+          unknown:  { bg: 'var(--gray-10)', text: 'var(--text-helper)', border: 'var(--border-subtle)' },
+        };
+        const sourceLabel = d.cveSource === 'github_security_advisories'
+          ? 'GitHub Security Advisories'
+          : d.cveSource === 'github_advisory_database'
+          ? 'GitHub Advisory Database'
+          : null;
+        return (
+          <div className="section">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h2 className="section-h" style={{ margin: 0 }}>
+                Security vulnerabilities (CVEs)
+                {d.cveTotalAllTime > 0 && (
+                  <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem', marginLeft: '0.5rem' }}>
+                    ({d.cveTotalAllTime} total)
+                  </span>
+                )}
+              </h2>
+              {hasCves && d.cveMonthly?.length > 0 && (
+                <button
+                  className="btn-secondary"
+                  onClick={() => setShowCveMonthly(!showCveMonthly)}
+                  style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
+                >
+                  {showCveMonthly ? 'Show yearly' : 'Show monthly'}
+                </button>
+              )}
+            </div>
+
+            {hasCves ? (
+              <>
+                {showCveMonthly && d.cveMonthly?.length > 0 ? (
+                  <BarChart
+                    values={d.cveMonthly.map((x) => x.v)}
+                    labels={d.cveMonthly.map((x) => x.m)}
+                    currentIndex={d.cveMonthly.findIndex((x) => x.c)}
+                    tooltipLabel="CVEs"
+                    fitWhenDense={true}
+                  />
+                ) : (
+                  <BarChart
+                    values={d.cveYearly.map((x) => x.v)}
+                    labels={d.cveYearly.map((x) => x.y)}
+                    currentIndex={d.cveYearly.findIndex((x) => x.c)}
+                    tooltipLabel="CVEs"
+                    fitWhenDense={true}
+                  />
+                )}
+                <p className="chart-cap">
+                  Darker bar = current period · {showCveMonthly ? `Last ${d.cveMonthly?.length || 0} months` : 'Total CVEs per year'}
+                  {sourceLabel && <> · Source: <strong>{sourceLabel}</strong></>}
+                </p>
+
+                {allCves.length > 0 && (
+                  <div className="table-wrap" style={{ marginTop: '1rem' }}>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>CVE ID</th>
+                          <th>Severity</th>
+                          <th>Published</th>
+                          <th>Summary</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[...allCves]
+                          .sort((a, b) => {
+                            const sd = (sevOrder[a.severity?.toLowerCase()] ?? 4) - (sevOrder[b.severity?.toLowerCase()] ?? 4);
+                            if (sd !== 0) return sd;
+                            return b.published.localeCompare(a.published);
+                          })
+                          .map((cve, i) => {
+                            const sev = cve.severity?.toLowerCase() || 'unknown';
+                            const sc = sevColor[sev] || sevColor.unknown;
+                            return (
+                              <tr key={i}>
+                                <td style={{ fontFamily: 'monospace', fontSize: '0.8125rem', whiteSpace: 'nowrap' }}>
+                                  {cve.id?.startsWith('CVE-') ? (
+                                    <a
+                                      href={`https://www.cve.org/CVERecord?id=${cve.id}`}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      style={{ color: 'var(--link)' }}
+                                    >
+                                      {cve.id}
+                                    </a>
+                                  ) : (
+                                    <a
+                                      href={`https://github.com/advisories/${cve.id}`}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      style={{ color: 'var(--link)' }}
+                                    >
+                                      {cve.id}
+                                    </a>
+                                  )}
+                                </td>
+                                <td style={{ whiteSpace: 'nowrap' }}>
+                                  <span style={{
+                                    display: 'inline-block',
+                                    padding: '0.125rem 0.5rem',
+                                    fontSize: '0.75rem',
+                                    fontWeight: 600,
+                                    borderRadius: '0.25rem',
+                                    background: sc.bg,
+                                    color: sc.text,
+                                    border: `1px solid ${sc.border}`,
+                                    textTransform: 'capitalize',
+                                  }}>
+                                    {sev === 'moderate' ? 'medium' : sev}
+                                  </span>
+                                </td>
+                                <td style={{ whiteSpace: 'nowrap', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                                  {cve.published}
+                                </td>
+                                <td style={{ fontSize: '0.875rem', color: 'var(--text-primary)', lineHeight: 1.45 }}>
+                                  {cve.summary}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div style={{ padding: '1.5rem', background: 'var(--layer-02)', border: '1px solid var(--border-subtle)', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                No CVEs reported for this project.
+                {sourceLabel && <span> Source checked: {sourceLabel}.</span>}
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {d.aiPolicySummary && d.aiPolicySummary.length > 0 && (
         <div className="section">

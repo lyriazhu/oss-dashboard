@@ -1,0 +1,663 @@
+{
+  "source": "github_security_advisories",
+  "total_cves": 75,
+  "months": [
+    {
+      "month": "2021-12",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2021-4133",
+          "severity": "high",
+          "summary": "Incorrect authorization allows unpriviledged users to create other users",
+          "published": "2021-12-20"
+        }
+      ]
+    },
+    {
+      "month": "2022-04",
+      "count": 5,
+      "cves": [
+        {
+          "id": "CVE-2022-1245",
+          "severity": "medium",
+          "summary": "Privilege escalation vulnerability on Token Exchange feature",
+          "published": "2022-04-25"
+        },
+        {
+          "id": "CVE-2021-3424",
+          "severity": "low",
+          "summary": "Keycloak is vulnerable to IDN homograph attack",
+          "published": "2022-04-25"
+        },
+        {
+          "id": "CVE-2021-3827",
+          "severity": "medium",
+          "summary": "ECP SAML binding bypasses authentication flows",
+          "published": "2022-04-25"
+        },
+        {
+          "id": "CVE-2020-10734",
+          "severity": "low",
+          "summary": "OIDC Logout redirects can happen even if no id_token_hint is provided",
+          "published": "2022-04-25"
+        },
+        {
+          "id": "CVE-2021-20323",
+          "severity": "medium",
+          "summary": "Reflected XSS on clients-registrations endpoint",
+          "published": "2022-04-25"
+        }
+      ]
+    },
+    {
+      "month": "2022-09",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2022-2668",
+          "severity": "low",
+          "summary": "SAML javascript protocol mapper: Uploading of scripts through admin console",
+          "published": "2022-09-22"
+        },
+        {
+          "id": "CVE-2022-2256",
+          "severity": "medium",
+          "summary": "Stored XSS when loading default roles",
+          "published": "2022-09-22"
+        }
+      ]
+    },
+    {
+      "month": "2022-11",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2022-0225",
+          "severity": "medium",
+          "summary": "Stored XSS in groups dropdown",
+          "published": "2022-11-24"
+        }
+      ]
+    },
+    {
+      "month": "2022-12",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2022-3916",
+          "severity": "medium",
+          "summary": "Session takeover with OIDC offline refreshtokens",
+          "published": "2022-12-13"
+        },
+        {
+          "id": "CVE-2022-3782",
+          "severity": "high",
+          "summary": "Path traversal via double URL encoding ",
+          "published": "2022-12-13"
+        }
+      ]
+    },
+    {
+      "month": "2023-01",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2023-0091",
+          "severity": "low",
+          "summary": "Lack of validation of access token on client registrations endpoint",
+          "published": "2023-01-12"
+        }
+      ]
+    },
+    {
+      "month": "2023-02",
+      "count": 3,
+      "cves": [
+        {
+          "id": "CVE-2022-1438",
+          "severity": "medium",
+          "summary": "XSS on impersonation under specific circumstances ",
+          "published": "2023-02-27"
+        },
+        {
+          "id": "CVE-2022-4137",
+          "severity": "high",
+          "summary": "Reflected XSS on OpenID connect login service",
+          "published": "2023-02-27"
+        },
+        {
+          "id": "CVE-2022-1274",
+          "severity": "medium",
+          "summary": "HTML Injection in Keycloak Admin REST API",
+          "published": "2023-02-27"
+        }
+      ]
+    },
+    {
+      "month": "2023-03",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2023-0264",
+          "severity": "high",
+          "summary": "User impersonation via stolen UUID code",
+          "published": "2023-03-02"
+        }
+      ]
+    },
+    {
+      "month": "2023-06",
+      "count": 4,
+      "cves": [
+        {
+          "id": "CVE-2023-2585",
+          "severity": "medium",
+          "summary": "Client Spoofing within the Keycloak Device Authorisation Grant",
+          "published": "2023-06-28"
+        },
+        {
+          "id": "CVE-2023-1664",
+          "severity": "low",
+          "summary": "Untrusted Certificate Validation",
+          "published": "2023-06-28"
+        },
+        {
+          "id": "CVE-2023-2422",
+          "severity": "high",
+          "summary": "Improper Client Certificate Validation for OAuth/OpenID clients",
+          "published": "2023-06-28"
+        },
+        {
+          "id": "CVE-2022-4361",
+          "severity": "low",
+          "summary": "Cross-site scripting when validating URI-schemes on SAML and OIDC",
+          "published": "2023-06-28"
+        }
+      ]
+    },
+    {
+      "month": "2023-07",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2023-0105",
+          "severity": "medium",
+          "summary": "Impersonation and lockout possible through incorrect handling of email trust",
+          "published": "2023-07-18"
+        }
+      ]
+    },
+    {
+      "month": "2023-09",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2023-4918",
+          "severity": "high",
+          "summary": "Plaintext Storage of User Password",
+          "published": "2023-09-12"
+        }
+      ]
+    },
+    {
+      "month": "2023-11",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2022-2232",
+          "severity": "low",
+          "summary": "LDAP Injection on UsernameForm Login",
+          "published": "2023-11-29"
+        }
+      ]
+    },
+    {
+      "month": "2023-12",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2023-6291",
+          "severity": "high",
+          "summary": "The redirect_uri validation logic allows for bypassing explicitly allowed hosts that would otherwise be restricted",
+          "published": "2023-12-19"
+        },
+        {
+          "id": "CVE-2023-6134",
+          "severity": "medium",
+          "summary": "Reflected XSS via wildcard in OIDC redirect_uri",
+          "published": "2023-12-18"
+        }
+      ]
+    },
+    {
+      "month": "2024-01",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2023-6927",
+          "severity": "medium",
+          "summary": "keycloak-core: open redirect via \"form_post.jwt\" JARM response mode",
+          "published": "2024-01-22"
+        }
+      ]
+    },
+    {
+      "month": "2024-04",
+      "count": 9,
+      "cves": [
+        {
+          "id": "CVE-2024-1249",
+          "severity": "high",
+          "summary": "Unvalidated cross-origin messages in checkLoginIframe leads to DDoS",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2024-1132",
+          "severity": "high",
+          "summary": "Path transversal in redirection validation",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2023-6787",
+          "severity": "medium",
+          "summary": "Session hijacking via re-authentication",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2023-0657",
+          "severity": "low",
+          "summary": "Impersonation via logout token exchange",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2023-6717",
+          "severity": "high",
+          "summary": "XSS via assertion consumer service URL in SAML POST-binding flow",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2024-2419",
+          "severity": "high",
+          "summary": "Path traversal in the redirect validation",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2023-6544",
+          "severity": "medium",
+          "summary": "Authorization Bypass",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2023-6484",
+          "severity": "low",
+          "summary": "Log Injection during WebAuthn authentication or registration",
+          "published": "2024-04-17"
+        },
+        {
+          "id": "CVE-2023-3597",
+          "severity": "medium",
+          "summary": "Secondary factor bypass in step-up authentication",
+          "published": "2024-04-17"
+        }
+      ]
+    },
+    {
+      "month": "2024-06",
+      "count": 5,
+      "cves": [
+        {
+          "id": "CVE-2024-5967",
+          "severity": "low",
+          "summary": "Leak of configured LDAP bind credentials through the Keycloak admin console",
+          "published": "2024-06-21"
+        },
+        {
+          "id": "CVE-2021-3754",
+          "severity": "low",
+          "summary": "Improper input validation on Keycloak allows using email as username",
+          "published": "2024-06-12"
+        },
+        {
+          "id": "CVE-2024-1722",
+          "severity": "low",
+          "summary": "DoS via account lockout",
+          "published": "2024-06-12"
+        },
+        {
+          "id": "CVE-2024-3656",
+          "severity": "medium",
+          "summary": "Unguarded admin REST API endpoints allows low privilege users to use administrative functionalities",
+          "published": "2024-06-11"
+        },
+        {
+          "id": "CVE-2024-4540",
+          "severity": "high",
+          "summary": "Exposure of sensitive information in Pushed Authorization Requests (PAR)",
+          "published": "2024-06-10"
+        }
+      ]
+    },
+    {
+      "month": "2024-09",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2024-4629",
+          "severity": "medium",
+          "summary": "Potential bypass of brute force protection",
+          "published": "2024-09-17"
+        }
+      ]
+    },
+    {
+      "month": "2024-10",
+      "count": 4,
+      "cves": [
+        {
+          "id": "CVE-2024-7318",
+          "severity": "medium",
+          "summary": "One Time Passcode (OTP) is valid longer than expiration timeSeverity",
+          "published": "2024-10-14"
+        },
+        {
+          "id": "CVE-2024-8698",
+          "severity": "high",
+          "summary": "Improper Verification of SAML Responses Leading to Privilege Escalation in Keycloak",
+          "published": "2024-10-14"
+        },
+        {
+          "id": "CVE-2024-8883",
+          "severity": "medium",
+          "summary": "Vulnerable Redirect URI Validation Results in Open Redirect",
+          "published": "2024-10-14"
+        },
+        {
+          "id": "CVE-2024-7341",
+          "severity": "high",
+          "summary": "Session fixation in Elytron SAML adapters",
+          "published": "2024-10-14"
+        }
+      ]
+    },
+    {
+      "month": "2024-11",
+      "count": 5,
+      "cves": [
+        {
+          "id": "CVE-2024-10039",
+          "severity": "high",
+          "summary": "Keycloak mTLS Authentication Bypass via Reverse Proxy TLS Termination ",
+          "published": "2024-11-25"
+        },
+        {
+          "id": "CVE-2024-9666",
+          "severity": "medium",
+          "summary": "Keycloak proxy header handling Denial-of-Service (DoS) vulnerability",
+          "published": "2024-11-25"
+        },
+        {
+          "id": "CVE-2024-10492",
+          "severity": "low",
+          "summary": "Keycloak Path Traversal Vulnerability Due to External Control of File Name or Path",
+          "published": "2024-11-25"
+        },
+        {
+          "id": "CVE-2024-10270",
+          "severity": "medium",
+          "summary": "Inefficient Regular Expression Complexity in org.keycloak:keycloak-services",
+          "published": "2024-11-25"
+        },
+        {
+          "id": "CVE-2024-10451",
+          "severity": "medium",
+          "summary": "Sensitive Data Exposure in Keycloak Build Process",
+          "published": "2024-11-25"
+        }
+      ]
+    },
+    {
+      "month": "2025-01",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2024-11736",
+          "severity": "medium",
+          "summary": "Unrestricted admin use of system and environment variables",
+          "published": "2025-01-13"
+        },
+        {
+          "id": "CVE-2024-11734",
+          "severity": "medium",
+          "summary": "Denial of Service in Keycloak Server via Security Headers",
+          "published": "2025-01-13"
+        }
+      ]
+    },
+    {
+      "month": "2025-02",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2024-10973",
+          "severity": "medium",
+          "summary": "CLI option for encrypted JGroups ignored",
+          "published": "2025-02-04"
+        }
+      ]
+    },
+    {
+      "month": "2025-03",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2025-1391",
+          "severity": "medium",
+          "summary": "Improper Authorization in Keycloak Organization Mapper Allows Unauthorized Organization Claims ",
+          "published": "2025-03-10"
+        },
+        {
+          "id": "CVE-2025-0604",
+          "severity": "medium",
+          "summary": "Authentication Bypass Due to Missing LDAP Bind After Password Reset in Keycloak",
+          "published": "2025-03-10"
+        }
+      ]
+    },
+    {
+      "month": "2025-04",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2025-3910",
+          "severity": "medium",
+          "summary": "Two factor authentication bypass",
+          "published": "2025-04-30"
+        },
+        {
+          "id": "CVE-2025-3501",
+          "severity": "high",
+          "summary": "Keycloak hostname verification",
+          "published": "2025-04-30"
+        }
+      ]
+    },
+    {
+      "month": "2025-07",
+      "count": 2,
+      "cves": [
+        {
+          "id": "CVE-2025-7784",
+          "severity": "medium",
+          "summary": "Privilege Escalation in Keycloak Admin Console (FGAPv2 Enabled)",
+          "published": "2025-07-29"
+        },
+        {
+          "id": "CVE-2025-7365",
+          "severity": "medium",
+          "summary": "Phishing attack via email verification step in first login flow",
+          "published": "2025-07-29"
+        }
+      ]
+    },
+    {
+      "month": "2025-09",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2025-8419",
+          "severity": "medium",
+          "summary": "Keycloak SMTP Inject Vulnerability",
+          "published": "2025-09-17"
+        }
+      ]
+    },
+    {
+      "month": "2025-10",
+      "count": 3,
+      "cves": [
+        {
+          "id": "CVE-2025-11419",
+          "severity": "high",
+          "summary": "Keycloak TLS Client-Initiated Renegotiation Denial of Service",
+          "published": "2025-10-27"
+        },
+        {
+          "id": "CVE-2025-9162",
+          "severity": "medium",
+          "summary": "Variable resolution on imports can expose environment variables",
+          "published": "2025-10-08"
+        },
+        {
+          "id": "CVE-2025-10044",
+          "severity": "medium",
+          "summary": "Keycloak error_description injection on error pages that can trigger phishing attacks",
+          "published": "2025-10-08"
+        }
+      ]
+    },
+    {
+      "month": "2025-12",
+      "count": 3,
+      "cves": [
+        {
+          "id": "CVE-2025-13467",
+          "severity": "medium",
+          "summary": "Deserialization of Untrusted Data in LDAP User Federation",
+          "published": "2025-12-19"
+        },
+        {
+          "id": "CVE-2025-11538",
+          "severity": "medium",
+          "summary": "Debug default bind address",
+          "published": "2025-12-01"
+        },
+        {
+          "id": "CVE-2025-10939",
+          "severity": "low",
+          "summary": "Unable to restrict access to the admin console",
+          "published": "2025-12-01"
+        }
+      ]
+    },
+    {
+      "month": "2026-05",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2026-2092",
+          "severity": "high",
+          "summary": "Keycloak: Unauthorized access via improper validation of encrypted SAML assertions",
+          "published": "2026-05-29"
+        }
+      ]
+    },
+    {
+      "month": "2026-06",
+      "count": 8,
+      "cves": [
+        {
+          "id": "CVE-2026-11800",
+          "severity": "high",
+          "summary": "Authentication bypass via jwt algorithm confusion",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9800",
+          "severity": "high",
+          "summary": "Authorization bypass via incorrect uri comparison",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9799",
+          "severity": "medium",
+          "summary": "Unauthorized access to resources via uma permission ticket bypass",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9795",
+          "severity": "high",
+          "summary": "Privilege escalation via improper scope mapping enforcement",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9705",
+          "severity": "medium",
+          "summary": "Attacker can re-enable and take over disabled clients via registration access token",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9086",
+          "severity": "high",
+          "summary": "Cross-site scripting (xss) via case-insensitive uri validation bypass",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9083",
+          "severity": "medium",
+          "summary": "Information disclosure through arbitrary filesystem path probing",
+          "published": "2026-06-26"
+        },
+        {
+          "id": "CVE-2026-9099",
+          "severity": "high",
+          "summary": "group-admin escalation to realm-admin",
+          "published": "2026-06-26"
+        }
+      ]
+    }
+  ],
+  "years": [
+    {
+      "year": "2021",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2022",
+      "count": 10,
+      "is_current": false
+    },
+    {
+      "year": "2023",
+      "count": 14,
+      "is_current": false
+    },
+    {
+      "year": "2024",
+      "count": 25,
+      "is_current": false
+    },
+    {
+      "year": "2025",
+      "count": 16,
+      "is_current": false
+    },
+    {
+      "year": "2026",
+      "count": 9,
+      "is_current": true
+    }
+  ],
+  "extracted_at": "2026-07-09T11:06:56.895766"
+}

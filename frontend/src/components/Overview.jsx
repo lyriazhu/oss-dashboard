@@ -222,6 +222,47 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
         </div>
       </div>
 
+      <div className="section">
+        <h2 className="section-h">CVEs per year</h2>
+        <div className="mini-grid">
+          {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
+            const d = data[key];
+            const hasCveData = d.cveYearly && d.cveYearly.length > 0;
+            return (
+              <div
+                className="mini-card"
+                key={key}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${d.name} CVE metrics`}
+                onClick={() => onSelect(key)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelect(key);
+                  }
+                }}
+              >
+                <div className="mini-title">{d.name}</div>
+                {hasCveData ? (
+                  <BarChart
+                    values={d.cveYearly.map((x) => x.v)}
+                    labels={d.cveYearly.map((x) => x.y)}
+                    currentIndex={d.cveYearly.findIndex((x) => x.c)}
+                    variant="mini"
+                    slanted={true}
+                  />
+                ) : (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-helper)', padding: '0.5rem 0', textAlign: 'center' }}>
+                    No CVEs reported
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       <p className="foot">
         Wireframe — illustrative data only · Click any community row to view project-specific metrics · Data
         via GitHub REST + GraphQL APIs
