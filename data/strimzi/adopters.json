@@ -1,5 +1,6 @@
 {
   "total_adopters": 35,
+  "source": "https://github.com/strimzi/strimzi-kafka-operator/blob/main/ADOPTERS.md",
   "adopters": [
     {
       "name": "Grupo MASMOVIL",

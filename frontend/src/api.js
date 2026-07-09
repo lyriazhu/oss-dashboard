@@ -354,28 +354,41 @@ export function transformProjectData(project, metrics) {
   
   // Build adopters list from extracted data
   const adoptersList = adopters?.adopters || [];
+  const adoptersSource = adopters?.source || null;
 
   const aiPolicySummaries = {
-    'strimzi-kafka-operator': [
-      'Strimzi allows AI-assisted contributions, but contributors remain fully responsible for every submitted change and must understand, review, test, and defend their work without acting as a proxy for an AI tool.',
-      'AI use must be disclosed in the PR description, but AI tools must not appear in commit trailers such as Signed-off-by or Co-authored-by.',
-      'The policy also prohibits large or rapid-fire AI-generated PRs, bans AI use for good-start issues, requires Apache 2.0 license compatibility, and makes clear that human maintainers retain full review and merge authority.'
-    ],
-    camel: [
-      'Apache Camel supports AI-assisted contributions and provides repository-specific guidance for AI tools through `.oss-ai-helper-rules/` and `CLAUDE.md` so generated work follows project build, style, branching, and contribution conventions.',
-      'When a pull request includes AI-generated code, contributors must provide proper attribution, including clear PR-level disclosure of the AI tool used.',
-      'Camel also expects AI coding agents to be configured to add commit co-authorship trailers for AI-generated code when applicable.'
-    ],
-    artemis: [
-      'Apache Artemis defines detailed AI agent rules covering attribution, branch and fork usage, JIRA ownership, PR description upkeep, reviewer selection, merge requirements, code quality, and investigation steps before implementation.',
-      'AI-generated content must identify itself and the human operator, agents should limit PR volume, work only on their own branches and forks, and avoid force-pushing shared branches or merging without human approval.',
-      'The guidance also requires tests, documentation updates when needed, Apache license headers on new files, security-conscious coding, and disciplined issue investigation using git history, JIRA, and project documentation.'
-    ],
-    keycloak: [
-      'Keycloak allows generative AI to help write code, tests, or documentation, but contributors must fully understand every submitted change and be able to explain and revise it themselves.',
-      'Contributors are expected to engage directly with reviewer feedback, even if they use AI to help draft responses, and they must edit and verify those responses before posting them.',
-      'If AI agents were used to generate complete solutions from a prompt, the PR description must disclose that usage, and contributors remain responsible for ensuring the generated code is compatible with Keycloak’s Apache 2.0 licensing.'
-    ]
+    'strimzi-kafka-operator': {
+      points: [
+        'Strimzi allows AI-assisted contributions, but contributors remain fully responsible for every submitted change and must understand, review, test, and defend their work without acting as a proxy for an AI tool.',
+        'AI use must be disclosed in the PR description, but AI tools must not appear in commit trailers such as Signed-off-by or Co-authored-by.',
+        'The policy also prohibits large or rapid-fire AI-generated PRs, bans AI use for good-start issues, requires Apache 2.0 license compatibility, and makes clear that human maintainers retain full review and merge authority.',
+      ],
+      source: 'https://github.com/strimzi/strimzi-kafka-operator/blob/main/CONTRIBUTING.md',
+    },
+    camel: {
+      points: [
+        'Apache Camel supports AI-assisted contributions and provides repository-specific guidance for AI tools through `.oss-ai-helper-rules/` and `CLAUDE.md` so generated work follows project build, style, branching, and contribution conventions.',
+        'When a pull request includes AI-generated code, contributors must provide proper attribution, including clear PR-level disclosure of the AI tool used.',
+        'Camel also expects AI coding agents to be configured to add commit co-authorship trailers for AI-generated code when applicable.',
+      ],
+      source: 'https://github.com/apache/camel/blob/main/CLAUDE.md',
+    },
+    artemis: {
+      points: [
+        'Apache Artemis defines detailed AI agent rules covering attribution, branch and fork usage, JIRA ownership, PR description upkeep, reviewer selection, merge requirements, code quality, and investigation steps before implementation.',
+        'AI-generated content must identify itself and the human operator, agents should limit PR volume, work only on their own branches and forks, and avoid force-pushing shared branches or merging without human approval.',
+        'The guidance also requires tests, documentation updates when needed, Apache license headers on new files, security-conscious coding, and disciplined issue investigation using git history, JIRA, and project documentation.',
+      ],
+      source: 'https://github.com/apache/activemq-artemis/blob/main/CONTRIBUTING.md',
+    },
+    keycloak: {
+      points: [
+        'Keycloak allows generative AI to help write code, tests, or documentation, but contributors must fully understand every submitted change and be able to explain and revise it themselves.',
+        'Contributors are expected to engage directly with reviewer feedback, even if they use AI to help draft responses, and they must edit and verify those responses before posting them.',
+        'If AI agents were used to generate complete solutions from a prompt, the PR description must disclose that usage, and contributors remain responsible for ensuring the generated code is compatible with Keycloak\'s Apache 2.0 licensing.',
+      ],
+      source: 'https://github.com/keycloak/keycloak/blob/main/CONTRIBUTING.md',
+    },
   };
 
   const controlsAssessments = {
@@ -635,6 +648,7 @@ export function transformProjectData(project, metrics) {
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
     status,
     adopters: adoptersList,
+    adoptersSource,
     ov,
     kpis,
     commits: commitHistory.length > 0 ? commitHistory : [{ y: '2025', v: 0, c: true }],
@@ -656,7 +670,8 @@ export function transformProjectData(project, metrics) {
     cveSource: cves?.source || null,
     cveTotalAllTime: cves?.total_cves || cves?.totalCves || 0,
     cveYearValues,
-    aiPolicySummary: aiPolicySummaries[project.id] || [],
+    aiPolicySummary: aiPolicySummaries[project.id]?.points || [],
+    aiPolicySource: aiPolicySummaries[project.id]?.source || null,
     controls: controlsAssessments[project.id] || [],
     extractedAt: metadata?.extracted_at || null, // Store the extraction timestamp
   };

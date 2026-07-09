@@ -1791,12 +1791,14 @@ class GitHubDataExtractor:
         print(f"🏢 Extracting adopters for {owner}/{repo}...")
 
         raw_content: Optional[str] = None
+        adopters_file_url: Optional[str] = None
         for branch in ("main", "master"):
             for filename in ("ADOPTERS.md", "ADOPTERS"):
                 try:
                     repo_obj = self.github.get_repo(f"{owner}/{repo}")
                     file_content = repo_obj.get_contents(filename, ref=branch)
                     raw_content = file_content.decoded_content.decode("utf-8")
+                    adopters_file_url = f"https://github.com/{owner}/{repo}/blob/{branch}/{filename}"
                     print(f"  ✓ Found {filename} on branch '{branch}'")
                     break
                 except GithubException:
@@ -1945,6 +1947,8 @@ class GitHubDataExtractor:
             "adopters": adopters,
             "extracted_at": datetime.now().isoformat(),
         }
+        if adopters_file_url:
+            result["source"] = adopters_file_url
         return result
 
     def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str):

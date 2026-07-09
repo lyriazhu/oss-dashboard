@@ -16,6 +16,8 @@ public class AdopterData {
 
     public List<Adopter> adopters;
 
+    public String source;
+
     @JsonProperty("extracted_at")
     public String extractedAt;
 

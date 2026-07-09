@@ -603,6 +603,11 @@ export default function Detail({ d, onOverview }) {
               ))}
             </ul>
           </div>
+          {d.aiPolicySource && (
+            <p style={{ margin: '1rem 0 0', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+              Source: <a href={d.aiPolicySource} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>{d.aiPolicySource}</a>
+            </p>
+          )}
         </div>
       )}
 
@@ -644,6 +649,11 @@ export default function Detail({ d, onOverview }) {
               </div>
             ))}
           </div>
+          {d.adoptersSource && (
+            <p style={{ margin: '1rem 0 0', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+              Source: <a href={d.adoptersSource} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>{d.adoptersSource}</a>
+            </p>
+          )}
         </div>
         );
       })()}

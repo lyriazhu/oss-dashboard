@@ -1,5 +1,6 @@
 {
   "total_adopters": 59,
+  "source": "https://github.com/keycloak/keycloak/blob/main/ADOPTERS.md",
   "adopters": [
     {
       "name": "Accenture",
