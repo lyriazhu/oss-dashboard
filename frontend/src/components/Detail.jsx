@@ -512,7 +512,7 @@ export default function Detail({ d, onOverview }) {
 
       {(() => {
         const allCves = d.cveEntries || [];
-        const hasCves = d.cveYearly?.length > 0 || allCves.length > 0;
+        const hasCves = d.cveTotalAllTime > 0 || allCves.length > 0;
         const sourceLabel = d.cveSource === 'github_security_advisories'
           ? 'GitHub Security Advisories'
           : d.cveSource === 'github_advisory_database'
@@ -522,14 +522,14 @@ export default function Detail({ d, onOverview }) {
           <div className="section">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <h2 className="section-h" style={{ margin: 0 }}>
-                Security vulnerabilities (CVEs)
+                {showCveMonthly ? 'CVEs per month' : 'CVEs per year'}
                 {d.cveTotalAllTime > 0 && (
                   <span style={{ fontWeight: 400, color: 'var(--text-secondary)', fontSize: '0.875rem', marginLeft: '0.5rem' }}>
                     ({d.cveTotalAllTime} total)
                   </span>
                 )}
               </h2>
-              {hasCves && d.cveMonthly?.length > 0 && (
+              {hasCves && (
                 <button
                   className="btn-secondary"
                   onClick={() => setShowCveMonthly(!showCveMonthly)}
@@ -560,7 +560,7 @@ export default function Detail({ d, onOverview }) {
                   />
                 )}
                 <p className="chart-cap">
-                  Darker bar = current period · {showCveMonthly ? `Last ${d.cveMonthly?.length || 0} months` : 'Total CVEs per year'}
+                  Darker bar = current period · {showCveMonthly ? 'Last 12 months' : 'All years since project creation'}
                   {sourceLabel && <> · Source: <strong>{sourceLabel}</strong></>}
                 </p>
                 {allCves.length > 0 && (

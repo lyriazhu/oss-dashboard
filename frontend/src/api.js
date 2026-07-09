@@ -174,7 +174,7 @@ export function transformProjectData(project, metrics) {
     { l: 'Contributors (YTD)', v: formatNumber(contributorsYtd), h: 'Unique contributors this year' },
     { l: 'Commits (YTD)', v: formatNumber(commitsYtd), h: 'Total commits this year' },
     { l: 'GitHub Stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
-    { l: 'Open Issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? issues.median_resolution_time_days.toFixed(1) : '—'} days` },
+    { l: 'Open Issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? (issues.median_resolution_time_days < 1 ? `${Math.round(issues.median_resolution_time_days * 24)} hrs` : `${issues.median_resolution_time_days.toFixed(1)} days`) : '—'}` },
     { l: 'Pull Requests (YTD)', v: formatNumber(prYtd), h: `${formatNumber(mergedPrYtd)} merged` },
     { l: 'Releases', v: formatNumber(releases?.total_releases), h: 'Total releases' },
     { l: 'Language', v: metadata?.language || '—', h: metadata?.license || 'No license' },
@@ -570,18 +570,55 @@ export function transformProjectData(project, metrics) {
   // ── CVE data ────────────────────────────────────────────────────────
   // cves.months: [{ month: "YYYY-MM", count, cves: [...] }]
   // cves.years:  [{ year: "YYYY", count, is_current }]
-  const cveMonths = (cves?.months || []).map((m, idx, arr) => ({
-    m: m.month,
-    v: m.count || 0,
-    c: idx === arr.length - 1,
-    cves: m.cves || [],  // preserve individual CVE entries for the detail table
-  }));
 
-  const cveYears = (cves?.years || []).map((y) => ({
-    y: y.year,
-    v: y.count || 0,
-    c: y.is_current || y.isCurrent || false,
-  }));
+  // Determine the project's founding year/month from metadata
+  const foundedDate = metadata?.created_at ? new Date(metadata.created_at) : null;
+  const foundedYear = foundedDate ? foundedDate.getFullYear() : null;
+  const foundedMonth = foundedDate
+    ? `${foundedDate.getFullYear()}-${String(foundedDate.getMonth() + 1).padStart(2, '0')}`
+    : null;
+
+  // Build a lookup from existing CVE data
+  const cveYearMap = Object.fromEntries((cves?.years || []).map((y) => [y.year, y]));
+  const cveMonthMap = Object.fromEntries((cves?.months || []).map((m) => [m.month, m]));
+
+  // Build full yearly series from founding year to current year (zeros for missing)
+  const cveYears = (() => {
+    const now = new Date();
+    const endYear = now.getFullYear();
+    const startYear = foundedYear || endYear;
+    const result = [];
+    for (let yr = startYear; yr <= endYear; yr++) {
+      const key = String(yr);
+      const existing = cveYearMap[key];
+      result.push({
+        y: key,
+        v: existing?.count || 0,
+        c: existing?.is_current || existing?.isCurrent || yr === endYear,
+      });
+    }
+    return result;
+  })();
+
+  // Build monthly series for the last 12 months (zeros for months with no data)
+  const cveMonths = (() => {
+    const now = new Date();
+    const result = [];
+    for (let i = 11; i >= 0; i--) {
+      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      const yr = d.getFullYear();
+      const mo = d.getMonth() + 1;
+      const key = `${yr}-${String(mo).padStart(2, '0')}`;
+      const existing = cveMonthMap[key];
+      result.push({
+        m: key,
+        v: existing?.count || 0,
+        c: i === 0,
+        cves: existing?.cves || [],
+      });
+    }
+    return result;
+  })();
 
   // Flat list of all CVE entries for the detail table (sorted newest first)
   const cveEntries = (cves?.months || [])

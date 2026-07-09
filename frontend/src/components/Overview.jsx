@@ -223,11 +223,11 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
       </div>
 
       <div className="section">
-        <h2 className="section-h">CVEs per year</h2>
+        <h2 className="section-h">CVEs per month (Past 12 months)</h2>
         <div className="mini-grid">
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
-            const hasCveData = d.cveYearly && d.cveYearly.length > 0;
+            const hasCveData = d.cveTotalAllTime > 0;
             return (
               <div
                 className="mini-card"
@@ -246,9 +246,10 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
                 <div className="mini-title">{d.name}</div>
                 {hasCveData ? (
                   <BarChart
-                    values={d.cveYearly.map((x) => x.v)}
-                    labels={d.cveYearly.map((x) => x.y)}
-                    currentIndex={d.cveYearly.findIndex((x) => x.c)}
+                    values={d.cveMonthly.map((x) => x.v)}
+                    labels={d.cveMonthly.map((x) => x.m)}
+                    currentIndex={d.cveMonthly.findIndex((x) => x.c)}
+                    tooltipLabel="CVEs"
                     variant="mini"
                     slanted={true}
                   />
