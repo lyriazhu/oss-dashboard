@@ -157,6 +157,8 @@ public class DataService {
                 return "apicurio";
             case "3scale-operator":
                 return "3scale";
+            case "console":
+                return "streamshub";
             default:
                 return projectId.toLowerCase().replace("_", "-");
         }

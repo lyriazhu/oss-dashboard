@@ -77,12 +77,14 @@ class GitHubDataExtractor:
             "Apicurio Registry": "apicurio",
             "3scale": "3scale",
             "Keycloak": "keycloak",
+            "StreamsHub": "streamshub",
             # legacy repo-name keys kept for backward compatibility
             "strimzi-kafka-operator": "strimzi",
             "camel": "apache-camel",
             "artemis": "apache-artemis",
             "apicurio-registry": "apicurio",
             "3scale-operator": "3scale",
+            "console": "streamshub",
         }
         
         # Use mapped name if exists, otherwise normalize the project name
