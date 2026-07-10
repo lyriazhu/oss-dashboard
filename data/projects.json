@@ -86,6 +86,17 @@
     "website" : null,
     "enabled" : true,
     "github_url" : "https://github.com/quarkusio/quarkus"
+  }, {
+    "id" : "wildfly",
+    "name" : "Wildfly",
+    "owner" : "wildfly",
+    "repo" : "wildfly",
+    "foundation" : "Independent",
+    "enabled" : true,
+    "github_url" : "https://github.com/wildfly/wildfly",
+    "issue_source" : "jira",
+    "jira_project_key" : "WFLY",
+    "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
   } ],
-  "last_updated" : "2026-07-10T17:19:38.608137Z"
+  "last_updated" : "2026-07-10T17:35:52.432800Z"
 }

@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -98,6 +98,20 @@ export default function App() {
     if (key) setExtracting({ id: key, name: name || key });
   }, []);
 
+  const handleRemove = useCallback(async (key) => {
+    try {
+      await removeProject(key);
+      // If we were viewing the removed project, go back to overview
+      if (selectedKey === key) {
+        setView("overview");
+        setSelectedKey(null);
+      }
+      await loadProjects();
+    } catch (err) {
+      console.error("Failed to remove project:", err);
+    }
+  }, [selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (loading) {
     return (
       <div style={{ 
@@ -159,6 +173,7 @@ export default function App() {
           collapsed={navCollapsed}
           onSelect={view === "overview" ? showDetail : selectCommunity}
           onOverview={showOverview}
+          onRemove={handleRemove}
         />
         {view === "overview" ? (
           <Overview

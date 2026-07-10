@@ -18,6 +18,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional, TypedDict
+from urllib.parse import urlparse
 
 import requests
 

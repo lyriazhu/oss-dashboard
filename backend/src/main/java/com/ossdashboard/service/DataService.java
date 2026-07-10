@@ -299,6 +299,94 @@ public class DataService {
     }
 
     /**
+     * Remove a project from projects.json, config.yaml, and its data directory.
+     */
+    public void removeProject(String projectId) throws IOException {
+        // Verify it exists first
+        if (!projectExists(projectId)) {
+            throw new IllegalArgumentException("Project not found: " + projectId);
+        }
+
+        // 1. Remove from projects.json
+        Path projectsFile = Paths.get(dataDirectory, "projects.json");
+        JsonNode root = objectMapper.readTree(projectsFile.toFile());
+        ArrayNode projectsArray = (ArrayNode) root.get("projects");
+        for (int i = 0; i < projectsArray.size(); i++) {
+            if (projectId.equals(projectsArray.get(i).path("id").asText())) {
+                projectsArray.remove(i);
+                break;
+            }
+        }
+        ((ObjectNode) root).put("last_updated", Instant.now().toString());
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(projectsFile.toFile(), root);
+        log.info("Removed {} from projects.json", projectId);
+
+        // 2. Remove from config.yaml (delete the project's block)
+        removeProjectFromConfig(projectId);
+
+        // 3. Delete the data directory
+        Path dataDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
+        if (Files.exists(dataDir)) {
+            try (var stream = Files.walk(dataDir)) {
+                stream.sorted(java.util.Comparator.reverseOrder())
+                      .map(java.nio.file.Path::toFile)
+                      .forEach(java.io.File::delete);
+            }
+            log.info("Deleted data directory: {}", dataDir);
+        }
+    }
+
+    /**
+     * Remove a project's YAML block from config.yaml.
+     * Deletes every line from "  - name: ..." up to (not including) the next
+     * "  - " entry or a top-level key.
+     */
+    private void removeProjectFromConfig(String projectId) {
+        try {
+            Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
+            if (!Files.exists(configPath)) return;
+
+            // Resolve the project name from projects.json to match the config name field
+            Project project = getProjectById(projectId);
+            String projectName = project != null ? project.getName() : null;
+
+            List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
+            int blockStart = -1;
+            int blockEnd   = lines.size();
+
+            for (int i = 0; i < lines.size(); i++) {
+                String trimmed = lines.get(i).trim();
+                // Match "- name: "projectName"" or "- name: projectName"
+                if (trimmed.equals("- name: \"" + projectName + "\"")
+                        || trimmed.equals("- name: " + projectName)) {
+                    blockStart = i;
+                    // Find where the next list item or top-level key starts
+                    for (int j = i + 1; j < lines.size(); j++) {
+                        String l = lines.get(j);
+                        if ((l.startsWith("  - ") || (!l.startsWith(" ") && !l.isEmpty() && !l.startsWith("#")))) {
+                            blockEnd = j;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            if (blockStart == -1) {
+                log.warn("Could not find {} in config.yaml; skipping config removal", projectName);
+                return;
+            }
+
+            List<String> result = new ArrayList<>(lines.subList(0, blockStart));
+            result.addAll(lines.subList(blockEnd, lines.size()));
+            Files.writeString(configPath, String.join("\n", result));
+            log.info("Removed {} from config.yaml", projectName);
+        } catch (Exception e) {
+            log.warn("Could not remove project from config.yaml: {}", e.getMessage());
+        }
+    }
+
+    /**
      * Append a new project entry to scripts/config.yaml so the Python
      * extraction scripts can discover it by name or owner/repo.
      */

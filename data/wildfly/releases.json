@@ -1,0 +1,148 @@
+{
+  "total_releases": 78,
+  "recent_releases": [
+    {
+      "tag_name": "16.0.0.Final",
+      "name": "WildFly 16.0.0.Final",
+      "published_at": "2019-05-24T21:00:15+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "17.0.0.Beta1",
+      "name": "WildFly 17.0.0.Beta1",
+      "published_at": "2019-05-24T19:06:08+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "18.0.0.Final",
+      "name": "WildFly 18.0.0.Final",
+      "published_at": "2019-10-03T17:32:56+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "18.0.1.Final",
+      "name": "18.0.1.Final",
+      "published_at": "2020-01-17T22:03:35+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "19.0.0.Beta1",
+      "name": "19.0.0.Beta1",
+      "published_at": "2020-01-17T22:02:03+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "19.0.0.Final",
+      "name": "19.0.0.Final",
+      "published_at": "2020-03-17T23:58:26+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "19.1.0.Final",
+      "name": "19.1.0.Final",
+      "published_at": "2020-05-04T21:22:22+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "20.0.0.Final",
+      "name": "20.0.0.Final",
+      "published_at": "2020-06-08T18:22:21+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "20.0.1.Final",
+      "name": "20.0.1.Final",
+      "published_at": "2020-09-08T19:26:58+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "21.0.0.Final",
+      "name": "21.0.0.Final",
+      "published_at": "2020-10-13T19:40:02+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "21.0.1.Final",
+      "name": "21.0.1.Final",
+      "published_at": "2020-11-19T23:32:29+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "22.0.0.Final",
+      "name": "22.0.0.Final",
+      "published_at": "2021-01-18T16:30:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "22.0.1.Final",
+      "name": "22.0.1.Final",
+      "published_at": "2021-02-11T20:38:45+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "23.0.0.Final",
+      "name": "23.0.0.Final",
+      "published_at": "2021-03-11T16:02:14+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "23.0.1.Final",
+      "name": "23.0.1.Final",
+      "published_at": "2021-04-14T02:12:23+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "23.0.2.Final",
+      "name": "23.0.2.Final",
+      "published_at": "2021-04-29T15:40:15+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "24.0.0.Final",
+      "name": "24.0.0.Final",
+      "published_at": "2021-06-17T19:44:25+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "24.0.1.Final",
+      "name": "24.0.1.Final",
+      "published_at": "2021-07-28T15:33:48+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "25.0.0.Beta1",
+      "name": "25.0.0.Beta1",
+      "published_at": "2021-09-20T16:52:12+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "25.0.0.Final",
+      "name": "25.0.0.Final",
+      "published_at": "2021-10-06T02:32:18+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "avg_days_between_releases": 45.16,
+  "release_frequency": "medium",
+  "extracted_at": "2026-07-10T13:47:27.882575"
+}

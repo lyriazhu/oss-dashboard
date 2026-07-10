@@ -196,6 +196,25 @@ public class ProjectController {
         }
     }
     /**
+     * DELETE /api/projects/{projectId}
+     * Remove a project from projects.json, config.yaml, and its data directory.
+     */
+    @DeleteMapping("/{projectId}")
+    public ResponseEntity<Void> removeProject(@PathVariable String projectId) {
+        try {
+            log.info("Removing project: {}", projectId);
+            dataService.removeProject(projectId);
+            return ResponseEntity.noContent().build();
+        } catch (IllegalArgumentException e) {
+            log.warn("Remove project failed: {}", e.getMessage());
+            return ResponseEntity.notFound().build();
+        } catch (IOException e) {
+            log.error("Error removing project: {}", projectId, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
      * GET /api/projects/{projectId}/extraction-progress
      * Server-Sent Events stream of extraction log lines.
      * Polls the in-memory log buffer and sends new lines until __DONE__ or __FAILED__.

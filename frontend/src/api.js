@@ -76,6 +76,13 @@ export async function addProject(githubUrl, foundation, website, issueSource, ji
   }
 }
 
+export async function removeProject(projectId) {
+  const response = await fetch(`${API_BASE}/projects/${projectId}`, { method: 'DELETE' });
+  if (!response.ok) {
+    throw new Error(`Failed to remove project (HTTP ${response.status})`);
+  }
+}
+
 const TOKEN_STORAGE_KEY = 'oss_dashboard_github_token';
 
 /**
