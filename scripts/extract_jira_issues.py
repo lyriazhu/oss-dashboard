@@ -269,11 +269,14 @@ def _fetch_jira_issues_v3(session: requests.Session, base: str, project_key: str
 
 
 def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
-    base = base_url.rstrip("/")
+    # Strip any path/query the user may have pasted from their browser — we only
+    # need scheme + host (e.g. "https://issues.redhat.com").
+    _parsed = urlparse(base_url)
+    base = f"{_parsed.scheme}://{_parsed.netloc}"
     session = requests.Session()
     jql = f"project = {project_key} ORDER BY created ASC"
 
-    print(f"📥 Fetching Jira issues for project {project_key} from {base_url}...")
+    print(f"📥 Fetching Jira issues for project {project_key} from {base}...")
 
     # Probe v2 first; if it returns 410 (removed) fall back to v3.
     probe = session.get(
