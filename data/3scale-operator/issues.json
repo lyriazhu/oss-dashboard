@@ -83,7 +83,7 @@
     },
     {
       "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-07-10T14:16:35.482825",
+      "end_date": "2026-07-10T14:27:50.772067",
       "issue_count": 0,
       "closed_issue_count": 0,
       "month": "2026-07"
@@ -136,5 +136,5 @@
       "closed_issue_count": 0
     }
   ],
-  "extracted_at": "2026-07-10T14:16:35.482852"
+  "extracted_at": "2026-07-10T14:27:50.772088"
 }

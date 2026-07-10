@@ -300,10 +300,12 @@ public class DataService {
      * Remove a project from projects.json, config.yaml, and its data directory.
      */
     public void removeProject(String projectId) throws IOException {
-        // Verify it exists first
-        if (!projectExists(projectId)) {
+        // Verify it exists first and capture the name BEFORE modifying projects.json
+        Project project = getProjectById(projectId);
+        if (project == null) {
             throw new IllegalArgumentException("Project not found: " + projectId);
         }
+        String projectName = project.getName();
 
         // 1. Remove from projects.json
         Path projectsFile = Paths.get(dataDirectory, "projects.json");
@@ -320,7 +322,7 @@ public class DataService {
         log.info("Removed {} from projects.json", projectId);
 
         // 2. Remove from config.yaml (delete the project's block)
-        removeProjectFromConfig(projectId);
+        removeProjectFromConfig(projectName);
 
         // 3. Delete the data directory
         Path dataDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
@@ -339,14 +341,10 @@ public class DataService {
      * Deletes every line from "  - name: ..." up to (not including) the next
      * "  - " entry or a top-level key.
      */
-    private void removeProjectFromConfig(String projectId) {
+    private void removeProjectFromConfig(String projectName) {
         try {
             Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
             if (!Files.exists(configPath)) return;
-
-            // Resolve the project name from projects.json to match the config name field
-            Project project = getProjectById(projectId);
-            String projectName = project != null ? project.getName() : null;
 
             List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
             int blockStart = -1;

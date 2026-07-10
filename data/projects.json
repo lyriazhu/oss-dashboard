@@ -90,12 +90,12 @@
     "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
   }, {
     "id" : "3scale-operator",
-    "name" : "3scale",
+    "name" : "3scale operator",
     "owner" : "3scale",
     "repo" : "3scale-operator",
-    "foundation" : "Red Hat",
+    "foundation" : "Independent",
     "enabled" : true,
     "github_url" : "https://github.com/3scale/3scale-operator"
   } ],
-  "last_updated" : "2026-07-10T18:16:22.333653Z"
+  "last_updated" : "2026-07-10T18:27:38.449110Z"
 }
