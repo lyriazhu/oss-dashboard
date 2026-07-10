@@ -7,6 +7,8 @@ import SideNav from "./components/SideNav.jsx";
 import AddProjectModal from "./components/AddProjectModal.jsx";
 import ExtractionToast from "./components/ExtractionToast.jsx";
 
+const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
+
 export default function App() {
   const [data, setData] = useState({});
   const [order, setOrder] = useState([]);
@@ -17,8 +19,28 @@ export default function App() {
   const [navCollapsed, setNavCollapsed] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [flashKey, setFlashKey] = useState(null);
-  const [extracting, setExtracting] = useState(null); // { id, name }
+  const [selectMode, setSelectMode] = useState(false);
+  const [selectedKeys, setSelectedKeys] = useState(new Set());
+  const [deleting, setDeleting] = useState(false);
+  const [extracting, setExtracting] = useState(() => {
+    // Restore extraction state that survived a page reload
+    try {
+      const saved = localStorage.getItem(EXTRACTION_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
   const [tokenConfigured, setTokenConfigured] = useState(false);
+
+  // Persist extracting state to localStorage whenever it changes
+  useEffect(() => {
+    if (extracting) {
+      localStorage.setItem(EXTRACTION_STORAGE_KEY, JSON.stringify(extracting));
+    } else {
+      localStorage.removeItem(EXTRACTION_STORAGE_KEY);
+    }
+  }, [extracting]);
 
   // Load projects and check token status on mount
   useEffect(() => {
@@ -112,6 +134,42 @@ export default function App() {
     }
   }, [selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const toggleSelectMode = useCallback(() => {
+    setSelectMode((m) => {
+      if (m) setSelectedKeys(new Set()); // clear selections on exit
+      return !m;
+    });
+  }, []);
+
+  const toggleSelectKey = useCallback((key) => {
+    setSelectedKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key); else next.add(key);
+      return next;
+    });
+  }, []);
+
+  const handleDeleteSelected = useCallback(async () => {
+    if (selectedKeys.size === 0) return;
+    setDeleting(true);
+    try {
+      for (const key of selectedKeys) {
+        await removeProject(key);
+        if (selectedKey === key) {
+          setView("overview");
+          setSelectedKey(null);
+        }
+      }
+      setSelectedKeys(new Set());
+      setSelectMode(false);
+      await loadProjects();
+    } catch (err) {
+      console.error("Failed to delete selected projects:", err);
+    } finally {
+      setDeleting(false);
+    }
+  }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (loading) {
     return (
       <div style={{ 
@@ -182,6 +240,12 @@ export default function App() {
             flashKey={flashKey}
             onSelect={showDetail}
             onAddClick={() => setModalOpen(true)}
+            selectMode={selectMode}
+            selectedKeys={selectedKeys}
+            onSelectToggle={toggleSelectKey}
+            onToggleSelectMode={toggleSelectMode}
+            onDeleteSelected={handleDeleteSelected}
+            deleting={deleting}
           />
         ) : (
           <Detail d={data[selectedKey]} onOverview={showOverview} />

@@ -60,7 +60,7 @@ function CveTable({ entries, showAll }) {
 
   return (
     <div style={{ marginTop: '1rem' }}>
-      <div className="table-wrap">
+      <div className="table-wrap table-wrap--no-row-hover">
         <table style={{ tableLayout: 'fixed' }}>
           <colgroup>
             <col style={{ width: '18%' }} />

@@ -21,6 +21,7 @@ export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtr
           projectId={extracting.id}
           projectName={extracting.name}
           onDone={onExtractionDone}
+          onTokenExpired={onTokenExpired}
         />
       )}
     </header>
