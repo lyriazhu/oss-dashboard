@@ -703,6 +703,7 @@ export function transformProjectData(project, metrics) {
     name: project.name,
     sub: project.foundation || 'Independent',
     foundation: project.foundation || 'Independent',
+    repoUrl: project.github_url || null,
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
     status,
     adopters: adoptersList,

@@ -133,7 +133,7 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
               <tr>
                 <th>Community</th>
                 <th>Foundation</th>
-                <th className="num">Contributing Companies</th>
+                <th>Repo</th>
                 <th className="num">Contributors (YTD)</th>
                 <th className="num">Contributors (All-Time)</th>
                 <th className="num">Commits (YTD)</th>
@@ -165,7 +165,19 @@ export default function Overview({ data, order, flashKey, onSelect, onAddClick }
                   >
                     <td className="strong">{d.name}</td>
                     <td>{o.foundation}</td>
-                    <td className="num">{o.companies}</td>
+                    <td>
+                      {d.repoUrl ? (
+                        <a
+                          href={d.repoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ color: "var(--link)", fontSize: ".8125rem" }}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {d.repoUrl.replace("https://github.com/", "")}
+                        </a>
+                      ) : "—"}
+                    </td>
                     <td className="num">{o.contributorsYtd}</td>
                     <td className="num">{o.contributorsAllTime}</td>
                     <td className="num">{o.commits}</td>
