@@ -91,7 +91,7 @@
     "name" : "Wildfly",
     "owner" : "wildfly",
     "repo" : "wildfly",
-    "foundation" : "Independent",
+    "foundation" : "Commonhaus Foundation",
     "enabled" : true,
     "github_url" : "https://github.com/wildfly/wildfly",
     "issue_source" : "jira",
