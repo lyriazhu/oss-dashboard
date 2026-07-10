@@ -437,8 +437,8 @@
   .field-row{display:grid; grid-template-columns:1fr 1fr; gap:1rem;}
   .field-help{font-size:.75rem; color:var(--text-helper); margin:.5rem 0 0; line-height:1.4;}
   .radio-group{display:flex; gap:1rem; margin-top:.375rem;}
-  .radio-label{display:flex; flex-direction:row; align-items:center; gap:.35rem; font-size:.8125rem; color:var(--text-primary); cursor:pointer;}
-  .radio-label input[type=radio]{accent-color:var(--blue-60); cursor:pointer; width:.875rem; height:.875rem; flex-shrink:0;}
+  .radio-label{display:flex !important; flex-direction:row; align-items:center; gap:.5rem; font-size:.8125rem; color:var(--text-primary); cursor:pointer; margin-bottom:0;}
+  .radio-label input[type=radio]{accent-color:var(--blue-60); cursor:pointer; width:.875rem; height:.875rem; flex-shrink:0; vertical-align:middle; margin:0;}
   .jira-fields{margin-top:.75rem; padding:.75rem; background:var(--layer-01); border:1px solid var(--border-subtle); border-radius:.25rem;}
   .token-inline-section{margin-top:1rem; padding:.75rem; background:var(--layer-01); border:1px solid var(--border-subtle); border-radius:.25rem;}
   .field input:disabled{color:var(--gray-50); cursor:not-allowed;}
