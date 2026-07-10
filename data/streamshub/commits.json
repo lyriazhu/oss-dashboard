@@ -1,10 +1,10 @@
 {
-  "total_commits": 2352,
+  "total_commits": 2354,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 29,
+      "commit_count": 31,
       "quarter": "Q3 2026"
     },
     {
@@ -91,7 +91,7 @@
       "location": null,
       "email": "medgar@redhat.com",
       "profile_url": null,
-      "commit_count": 1468
+      "commit_count": 1472
     },
     {
       "login": "Jan Kalinic",
@@ -172,7 +172,7 @@
       "location": null,
       "email": "michael@xlate.io",
       "profile_url": null,
-      "commit_count": 31
+      "commit_count": 33
     },
     {
       "login": "David Conde",
@@ -343,7 +343,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-10T11:49:36.230864",
+  "extracted_at": "2026-07-10T15:24:20.285385",
   "years": [
     {
       "year": 2022,

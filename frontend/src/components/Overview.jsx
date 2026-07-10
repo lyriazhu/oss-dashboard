@@ -1,12 +1,115 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { QUARTERS } from "../data.js";
 import { Tag, BarChart } from "./ui.jsx";
+import { saveGithubToken, getSavedToken, refreshAllProjects } from "../api.js";
 
 function Chevron() {
   return (
     <svg className="chev" viewBox="0 0 16 16" fill="currentColor">
       <path d="M6 4l4 4-4 4-.7-.7L8.6 8 5.3 4.7z" />
     </svg>
+  );
+}
+
+function RefreshModal({ open, onClose, onStarted }) {
+  const [token, setToken]     = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      setToken(getSavedToken() || "");
+      setError(null);
+      setLoading(false);
+      setTimeout(() => inputRef.current?.focus(), 0);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  async function submit() {
+    if (!token.trim()) { setError("A GitHub token is required."); return; }
+    setError(null);
+    setLoading(true);
+    try {
+      await saveGithubToken(token.trim());
+      const result = await refreshAllProjects();
+      onClose();
+      onStarted(result.started || []);
+    } catch (err) {
+      setError(err.message || "Failed to start refresh.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="refreshModalTitle"
+      onClick={(e) => { if (e.target.classList.contains("modal-overlay")) onClose(); }}
+    >
+      <div className="modal">
+        <div className="modal-header">
+          <h2 className="modal-title" id="refreshModalTitle">Refresh all projects</h2>
+          <p className="modal-sub">
+            Re-extract data for every project on the dashboard. Enter your GitHub personal
+            access token to authenticate with the GitHub API.
+          </p>
+          <button className="modal-close" aria-label="Close" onClick={onClose}>
+            <svg viewBox="0 0 32 32" fill="currentColor">
+              <path d="M24 9.4 22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6z" />
+            </svg>
+          </button>
+        </div>
+        <div className="modal-body">
+          <div className={"field" + (error ? " show-err" : "")}>
+            <label htmlFor="i-refresh-token">Personal access token</label>
+            <input
+              id="i-refresh-token"
+              ref={inputRef}
+              type="password"
+              placeholder="ghp_..."
+              autoComplete="off"
+              spellCheck="false"
+              className={error ? "invalid" : ""}
+              value={token}
+              disabled={loading}
+              onChange={(e) => setToken(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
+            />
+            {error && <div className="err">{error}</div>}
+          </div>
+          <p className="field-help">
+            Needs at least <code>public_repo</code> read access.{" "}
+            <a
+              href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "var(--link)" }}
+            >
+              Create one on GitHub ↗
+            </a>
+          </p>
+        </div>
+        <div className="modal-footer">
+          <button className="btn-cancel" onClick={onClose} disabled={loading}>Cancel</button>
+          <button className="btn-add" onClick={submit} disabled={loading}>
+            {loading ? "Starting…" : "Refresh all"}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -65,11 +168,198 @@ function Checkbox({ checked, onChange, label }) {
   );
 }
 
-export default function Overview({
-  data, order, flashKey, onSelect, onAddClick,
-  selectMode, selectedKeys, onSelectToggle, onToggleSelectMode, onDeleteSelected, deleting,
+// Inline editable cell. Activated externally via the `active` prop.
+// onCancelNav: called on focus to cancel any pending row navigation timer.
+function InlineEdit({ value, field, projectId, onSave, active, onDeactivate, onCancelNav }) {
+  const [draft, setDraft] = useState(value);
+  const committed = useRef(false); // guard against double-fire from Enter then onBlur
+
+  // When the cell is deactivated, reset draft to the latest value for the next open.
+  // We deliberately do NOT reset draft while active — that would clobber what the
+  // user is typing if a parent re-render happens mid-edit.
+  useEffect(() => {
+    if (!active) {
+      committed.current = false;
+      setDraft(value);
+    }
+  }, [active]); // intentionally omit `value` — only reset on deactivation, not on every prop change
+
+  function commit() {
+    if (committed.current) return; // already committed from Enter key; swallow the blur
+    committed.current = true;
+    const trimmed = draft.trim();
+    if (trimmed && trimmed !== value) onSave(projectId, { [field]: trimmed });
+    onDeactivate();
+  }
+
+  function onKeyDown(e) {
+    e.stopPropagation();
+    if (e.key === 'Enter')  { e.preventDefault(); commit(); }
+    if (e.key === 'Escape') {
+      committed.current = true; // suppress the onBlur that follows focus loss
+      setDraft(value);
+      onDeactivate();
+    }
+  }
+
+  if (active) {
+    return (
+      <input
+        className="inline-edit-input"
+        value={draft}
+        autoFocus
+        onChange={(e) => setDraft(e.target.value)}
+        onFocus={() => onCancelNav?.()}
+        onBlur={commit}
+        onKeyDown={onKeyDown}
+        onClick={(e) => e.stopPropagation()}
+        aria-label={`Edit ${field}`}
+      />
+    );
+  }
+
+  return (
+    <span className="inline-edit-text inline-edit-text--editable">
+      {value}
+    </span>
+  );
+}
+
+function CommunityRow({
+  rowKey, d, o, isSelected, rowClass, selectMode,
+  onSelect, onSelectToggle, onUpdateProject,
 }) {
-  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [activeEdit, setActiveEdit] = useState(null); // null | "name" | "foundation"
+  const pendingNav = useRef(null);
+  // Ref mirrors activeEdit so handleClick always sees the current value
+  // without stale closure issues.
+  const activeEditRef = useRef(null);
+
+  function setEdit(field) {
+    activeEditRef.current = field;
+    setActiveEdit(field);
+  }
+
+  function cancelNav() { clearTimeout(pendingNav.current); }
+
+  // Clear the pending navigation timer on unmount
+  useEffect(() => () => cancelNav(), []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function getEditField(e) {
+    const td = e.target.closest('td[data-field]');
+    return td ? td.dataset.field : null;
+  }
+
+  function handleClick(e) {
+    if (selectMode) { onSelectToggle(rowKey); return; }
+    if (activeEditRef.current) return; // edit input is open — ignore click
+    const field = getEditField(e);
+    if (field) {
+      // Click landed on an editable cell — delay navigation so a second click
+      // (double-click) has time to cancel it and open the editor instead.
+      clearTimeout(pendingNav.current);
+      pendingNav.current = setTimeout(() => onSelect(rowKey), 300);
+    } else {
+      // Click on a non-editable cell — navigate immediately.
+      cancelNav();
+      onSelect(rowKey);
+    }
+  }
+
+  function handleDoubleClick(e) {
+    if (selectMode) return;
+    cancelNav(); // stop navigation scheduled by the two preceding click events
+    const field = getEditField(e);
+    if (field) setEdit(field);
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      selectMode ? onSelectToggle(rowKey) : onSelect(rowKey);
+    }
+  }
+
+  return (
+    <tr
+      data-key={rowKey}
+      tabIndex={0}
+      role={selectMode ? "checkbox" : "button"}
+      aria-checked={selectMode ? isSelected : undefined}
+      aria-label={selectMode ? `Select ${d.name}` : `View ${d.name} metrics`}
+      className={rowClass}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
+      onKeyDown={handleKeyDown}
+    >
+      {selectMode && (
+        <td className="chk-cell">
+          <Checkbox
+            checked={isSelected}
+            onChange={() => onSelectToggle(rowKey)}
+            label={`Select ${d.name}`}
+          />
+        </td>
+      )}
+      <td className="strong" data-field="name">
+        <InlineEdit
+          value={d.name}
+          field="name"
+          projectId={rowKey}
+          onSave={onUpdateProject}
+          active={activeEdit === "name"}
+          onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
+          onCancelNav={cancelNav}
+        />
+      </td>
+      <td data-field="foundation">
+        <InlineEdit
+          value={o.foundation}
+          field="foundation"
+          projectId={rowKey}
+          onSave={onUpdateProject}
+          active={activeEdit === "foundation"}
+          onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
+          onCancelNav={cancelNav}
+        />
+      </td>
+      <td>
+        {d.repoUrl ? (
+          <a
+            href={d.repoUrl}
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "var(--link)", fontSize: ".8125rem" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {d.repoUrl.replace("https://github.com/", "")}
+          </a>
+        ) : "—"}
+      </td>
+      <td className="num">{o.contributorsYtd}</td>
+      <td className="num">{o.contributorsAllTime}</td>
+      <td className="num">{o.commits}</td>
+      <td className="num">{o.commitsAllTime}</td>
+      <td className="num">{o.stars}</td>
+      <td>
+        <Tag cls={d.status.cls} label={d.status.label} />
+      </td>
+      {!selectMode && (
+        <td className="chev-cell">
+          <Chevron />
+        </td>
+      )}
+    </tr>
+  );
+}
+
+export default function Overview({
+  data, order, flashKey, onSelect, onAddClick, onUpdateProject,
+  selectMode, selectedKeys, onSelectToggle, onToggleSelectMode, onDeleteSelected, deleting,
+  onRefreshAll,
+}) {
+  const [confirmOpen, setConfirmOpen]       = useState(false);
+  const [refreshModalOpen, setRefreshModalOpen] = useState(false);
 
   // Calculate summary statistics and last updated date from actual data
   const { summary, lastUpdated } = useMemo(() => {
@@ -155,9 +445,24 @@ export default function Overview({
 
   return (
     <main>
+      <RefreshModal
+        open={refreshModalOpen}
+        onClose={() => setRefreshModalOpen(false)}
+        onStarted={(ids) => { onRefreshAll?.(ids); }}
+      />
       <div className="ov-header">
         <h1 className="ov-title">Open Source Dashboard</h1>
         <div className="ov-meta">
+          <button
+            className="btn-refresh"
+            aria-label="Refresh all projects"
+            onClick={() => setRefreshModalOpen(true)}
+          >
+            <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16" aria-hidden="true">
+              <path d="M12 10H6.78A11 11 0 0 1 27 16a1 1 0 0 0 2 0A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16a1 1 0 0 0-2 0 13 13 0 0 0 23 8.32V28h2v-8h-8z"/>
+            </svg>
+            Refresh all
+          </button>
           <span>
             Last updated: <b>{lastUpdated}</b>
           </span>
@@ -233,65 +538,23 @@ export default function Overview({
                 const d = data[key];
                 const o = d.ov;
                 const isSelected = selectedKeys.has(key);
-                const rowClasses = [
+                const rowClass = [
                   key === flashKey ? "row-flash" : "",
                   selectMode && isSelected ? "row-selected" : "",
                 ].filter(Boolean).join(" ") || undefined;
                 return (
-                  <tr
+                  <CommunityRow
                     key={key}
-                    data-key={key}
-                    tabIndex={0}
-                    role={selectMode ? "checkbox" : "button"}
-                    aria-checked={selectMode ? isSelected : undefined}
-                    aria-label={selectMode ? `Select ${d.name}` : `View ${d.name} metrics`}
-                    className={rowClasses}
-                    onClick={() => selectMode ? onSelectToggle(key) : onSelect(key)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        selectMode ? onSelectToggle(key) : onSelect(key);
-                      }
-                    }}
-                  >
-                    {selectMode && (
-                      <td className="chk-cell">
-                        <Checkbox
-                          checked={isSelected}
-                          onChange={() => onSelectToggle(key)}
-                          label={`Select ${d.name}`}
-                        />
-                      </td>
-                    )}
-                    <td className="strong">{d.name}</td>
-                    <td>{o.foundation}</td>
-                    <td>
-                      {d.repoUrl ? (
-                        <a
-                          href={d.repoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ color: "var(--link)", fontSize: ".8125rem" }}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          {d.repoUrl.replace("https://github.com/", "")}
-                        </a>
-                      ) : "—"}
-                    </td>
-                    <td className="num">{o.contributorsYtd}</td>
-                    <td className="num">{o.contributorsAllTime}</td>
-                    <td className="num">{o.commits}</td>
-                    <td className="num">{o.commitsAllTime}</td>
-                    <td className="num">{o.stars}</td>
-                    <td>
-                      <Tag cls={d.status.cls} label={d.status.label} />
-                    </td>
-                    {!selectMode && (
-                      <td className="chev-cell">
-                        <Chevron />
-                      </td>
-                    )}
-                  </tr>
+                    rowKey={key}
+                    d={d}
+                    o={o}
+                    isSelected={isSelected}
+                    rowClass={rowClass}
+                    selectMode={selectMode}
+                    onSelect={onSelect}
+                    onSelectToggle={onSelectToggle}
+                    onUpdateProject={onUpdateProject}
+                  />
                 );
               })}
             </tbody>

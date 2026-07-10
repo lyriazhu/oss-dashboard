@@ -196,6 +196,27 @@ public class ProjectController {
         }
     }
     /**
+     * PATCH /api/projects/{projectId}
+     * Update mutable project fields (name, foundation) in projects.json and config.yaml.
+     */
+    @PatchMapping("/{projectId}")
+    public ResponseEntity<Project> updateProject(
+            @PathVariable String projectId,
+            @RequestBody java.util.Map<String, String> updates) {
+        try {
+            log.info("Updating project: {}", projectId);
+            Project updated = dataService.updateProject(projectId, updates);
+            if (updated == null) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(updated);
+        } catch (IOException e) {
+            log.error("Error updating project: {}", projectId, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
      * DELETE /api/projects/{projectId}
      * Remove a project from projects.json, config.yaml, and its data directory.
      */
@@ -211,6 +232,44 @@ public class ProjectController {
         } catch (IOException e) {
             log.error("Error removing project: {}", projectId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
+     * POST /api/projects/refresh-all
+     * Trigger data extraction for every project on the dashboard, one after another.
+     * Returns immediately with the ordered list of project IDs that will be refreshed.
+     */
+    @PostMapping("/refresh-all")
+    public ResponseEntity<java.util.Map<String, Object>> refreshAll() {
+        try {
+            List<Project> projects = dataService.getAllProjects();
+            List<String> ids = projects.stream().map(Project::getId).collect(java.util.stream.Collectors.toList());
+            if (ids.isEmpty()) {
+                return ResponseEntity.ok(java.util.Map.of("started", ids));
+            }
+            // Kick off sequential extraction in a background thread so the request returns immediately
+            new Thread(() -> {
+                for (Project p : projects) {
+                    try {
+                        dataService.triggerDataExtraction(p.getId());
+                        // Wait for this project to finish before starting the next
+                        while (dataService.isExtractionRunning(p.getId())) {
+                            Thread.sleep(500);
+                        }
+                    } catch (IllegalStateException e) {
+                        log.warn("Refresh-all: no token for {}; aborting", p.getId());
+                        break;
+                    } catch (Exception e) {
+                        log.error("Refresh-all: extraction failed for {}", p.getId(), e);
+                    }
+                }
+            }).start();
+            return ResponseEntity.ok(java.util.Map.of("started", ids));
+        } catch (IOException e) {
+            log.error("Error starting refresh-all", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(java.util.Map.of("error", "Failed to start refresh"));
         }
     }
 

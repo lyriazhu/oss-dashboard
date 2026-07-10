@@ -65,29 +65,41 @@ class GitHubDataExtractor:
         with open(path, 'w') as f:
             json.dump(data, f, indent=2)
 
-    def _project_dir(self, project_name: str) -> Path:
-        """Return normalized project data directory with ID mapping"""
-        # Keys are config 'name' values; values are the data directory names
-        # (must match backend DataService.java getProjectDirectoryName())
+    def _project_dir(self, project_name: str, repo: str = None) -> Path:
+        """Return normalized project data directory.
+
+        Priority:
+        1. Explicit name -> dir mapping (for projects whose display name differs
+           from their repo slug, e.g. 'Strimzi' -> 'strimzi').
+        2. repo slug lowercased (matches Java's getProjectDirectoryName default,
+           which uses the project ID derived from the repo name).
+        3. display name lowercased with spaces replaced by '-' (last resort).
+
+        This means renaming a project in the UI never breaks the data directory
+        lookup, because the directory is always keyed on the repo slug, not the
+        display name.
+        """
+        # Explicit overrides for projects where display name != repo slug
         dir_name_map = {
-            # config name -> data dir
-            "Strimzi": "strimzi",
-            "Apache Camel": "apache-camel",
-            "Apache Artemis": "apache-artemis",
-            "Apicurio Registry": "apicurio",
-            "Keycloak": "keycloak",
-            "StreamsHub": "streamshub",
+            "Strimzi":          "strimzi",
+            "Apache Camel":     "apache-camel",
+            "Apache Artemis":   "apache-artemis",
+            "Apicurio Registry":"apicurio",
+            "Keycloak":         "keycloak",
+            "StreamsHub":       "streamshub",
             # legacy repo-name keys kept for backward compatibility
             "strimzi-kafka-operator": "strimzi",
-            "camel": "apache-camel",
-            "artemis": "apache-artemis",
-            "apicurio-registry": "apicurio",
-            "console": "streamshub",
+            "camel":            "apache-camel",
+            "artemis":          "apache-artemis",
+            "apicurio-registry":"apicurio",
+            "console":          "streamshub",
         }
-        
-        # Use mapped name if exists, otherwise normalize the project name
-        dir_name = dir_name_map.get(project_name, project_name.lower().replace(" ", "-"))
-        return self.data_dir / dir_name
+
+        if project_name in dir_name_map:
+            return self.data_dir / dir_name_map[project_name]
+        if repo:
+            return self.data_dir / repo.lower().replace("_", "-")
+        return self.data_dir / project_name.lower().replace(" ", "-")
 
     def _project_state_path(self, project_name: str) -> Path:
         """Return project state file path"""
@@ -684,10 +696,10 @@ class GitHubDataExtractor:
             "extracted_at": datetime.now().isoformat()
         }
     
-    def _compute_top_companies(self, project_name: str) -> List[Dict[str, Any]]:
+    def _compute_top_companies(self, project_name: str, repo: str = None) -> List[Dict[str, Any]]:
         """Compute top contributing companies from the saved contributors.json file."""
         contributors_data = self._load_json_file(
-            self._project_dir(project_name) / "contributors.json", {}
+            self._project_dir(project_name, repo=repo) / "contributors.json", {}
         )
         company_contribution_counts: Dict[str, int] = defaultdict(int)
         for contributor in contributors_data.get("contributors", []):
@@ -713,19 +725,19 @@ class GitHubDataExtractor:
             )[:10]
         ]
 
-    def refresh_metadata_companies(self, project_name: str) -> bool:
+    def refresh_metadata_companies(self, project_name: str, repo: str = None) -> bool:
         """Patch the saved metadata.json with fresh top_contributing_companies from contributors.json.
 
         Called after extract_contributors so the company data is always up to date.
         Returns True if metadata was updated, False otherwise.
         """
-        meta_path = self._project_dir(project_name) / "metadata.json"
+        meta_path = self._project_dir(project_name, repo=repo) / "metadata.json"
         if not meta_path.exists():
             return False
         metadata = self._load_json_file(meta_path, {})
         if not metadata:
             return False
-        top_companies = self._compute_top_companies(project_name)
+        top_companies = self._compute_top_companies(project_name, repo=repo)
         metadata["top_contributing_companies"] = top_companies
         self._save_json_file(meta_path, metadata)
         print(f"  ✓ Updated top_contributing_companies ({len(top_companies)} companies)")
@@ -1951,9 +1963,9 @@ class GitHubDataExtractor:
             result["source"] = adopters_file_url
         return result
 
-    def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str):
+    def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str, repo: str = None):
         """Save extracted data to JSON file"""
-        project_dir = self._project_dir(project_name)
+        project_dir = self._project_dir(project_name, repo=repo)
         project_dir.mkdir(exist_ok=True)
         
         output_file = project_dir / f"{data_type}.json"

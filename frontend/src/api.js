@@ -76,11 +76,36 @@ export async function addProject(githubUrl, foundation, website, issueSource, ji
   }
 }
 
+export async function updateProject(projectId, fields) {
+  const response = await fetch(`${API_BASE}/projects/${projectId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(fields),
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to update project (HTTP ${response.status})`);
+  }
+  return response.json();
+}
+
 export async function removeProject(projectId) {
   const response = await fetch(`${API_BASE}/projects/${projectId}`, { method: 'DELETE' });
   if (!response.ok) {
     throw new Error(`Failed to remove project (HTTP ${response.status})`);
   }
+}
+
+/**
+ * Trigger a full dashboard refresh: re-extract data for every project.
+ * Returns { started: [projectId, ...] }.
+ */
+export async function refreshAllProjects() {
+  const response = await fetch(`${API_BASE}/projects/refresh-all`, { method: 'POST' });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || `Failed to start refresh (HTTP ${response.status})`);
+  }
+  return response.json();
 }
 
 const TOKEN_STORAGE_KEY = 'oss_dashboard_github_token';

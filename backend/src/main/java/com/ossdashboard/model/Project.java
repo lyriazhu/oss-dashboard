@@ -22,6 +22,10 @@ public class Project {
     private String website;
     private boolean enabled;
 
+    /** Directory name under data/ that holds this project's JSON files */
+    @JsonProperty("data_dir")
+    private String dataDir;
+
     /** "github" (default) or "jira" */
     @JsonProperty("issue_source")
     private String issueSource;
@@ -86,6 +90,9 @@ public class Project {
 
     public String getIssueGithubUrl() { return issueGithubUrl; }
     public void setIssueGithubUrl(String issueGithubUrl) { this.issueGithubUrl = issueGithubUrl; }
+
+    public String getDataDir() { return dataDir; }
+    public void setDataDir(String dataDir) { this.dataDir = dataDir; }
 }
 
 // Made with Bob

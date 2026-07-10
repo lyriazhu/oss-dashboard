@@ -88,7 +88,7 @@ def main():
     try:
         metadata = extractor.extract_project_metadata(owner, repo, project_name=project_name)
         if metadata:
-            extractor.save_project_data(project_name, metadata, "metadata")
+            extractor.save_project_data(project_name, metadata, "metadata", repo=repo)
             extraction_status["metadata"] = True
             project_created_at = datetime.fromisoformat(metadata['created_at'].replace('+00:00', ''))
     except Exception as e:
@@ -109,9 +109,9 @@ def main():
     try:
         contributors = extractor.extract_contributors(owner, repo, project_name)
         if contributors:
-            extractor.save_project_data(project_name, contributors, "contributors")
+            extractor.save_project_data(project_name, contributors, "contributors", repo=repo)
             extraction_status["contributors"] = True
-            extractor.refresh_metadata_companies(project_name)
+            extractor.refresh_metadata_companies(project_name, repo=repo)
     except Exception as e:
         print(f"⚠️  Warning: Contributors extraction failed: {e}")
 
@@ -119,7 +119,7 @@ def main():
     try:
         commits = extractor.extract_commits(owner, repo, project_name)
         if commits:
-            extractor.save_project_data(project_name, commits, "commits")
+            extractor.save_project_data(project_name, commits, "commits", repo=repo)
             extraction_status["commits"] = True
     except Exception as e:
         print(f"⚠️  Warning: Commits extraction failed: {e}")
@@ -152,7 +152,7 @@ def main():
             if project_created_at:
                 issues = extractor.extract_issues(issue_repos, project_created_at, project_name)
                 if issues:
-                    extractor.save_project_data(project_name, issues, "issues")
+                    extractor.save_project_data(project_name, issues, "issues", repo=repo)
                     extraction_status["issues"] = True
             else:
                 print(f"⚠️  Warning: Cannot extract issues - metadata not available")
@@ -164,7 +164,7 @@ def main():
         if project_created_at:
             pull_requests = extractor.extract_pull_requests(repos, project_created_at, project_name)
             if pull_requests:
-                extractor.save_project_data(project_name, pull_requests, "pull_requests")
+                extractor.save_project_data(project_name, pull_requests, "pull_requests", repo=repo)
                 extraction_status["pull_requests"] = True
         else:
             print(f"⚠️  Warning: Cannot extract pull requests - metadata not available")
@@ -175,7 +175,7 @@ def main():
     try:
         releases = extractor.extract_releases(owner, repo, project_name)
         if releases:
-            extractor.save_project_data(project_name, releases, "releases")
+            extractor.save_project_data(project_name, releases, "releases", repo=repo)
             extraction_status["releases"] = True
     except Exception as e:
         print(f"⚠️  Warning: Releases extraction failed: {e}")
@@ -183,7 +183,7 @@ def main():
     # Adopters
     try:
         adopters = extractor.extract_adopters(owner, repo, project_name)
-        extractor.save_project_data(project_name, adopters, "adopters")
+        extractor.save_project_data(project_name, adopters, "adopters", repo=repo)
         extraction_status["adopters"] = True
     except Exception as e:
         print(f"⚠️  Warning: Adopters extraction failed: {e}")

@@ -144,21 +144,26 @@ public class DataService {
         return loadJsonFile(projectDir, "contributors.json", ContributorData.class);
     }
 
-    private String getProjectDirectoryName(String projectId) {
+    /**
+     * Return the data directory name for a project.
+     * Prefers the `data_dir` field stored in projects.json (set on add/rename).
+     * Falls back to the legacy hardcoded map so existing projects keep working
+     * before they are migrated (i.e. their data_dir field is populated).
+     */
+    private String getProjectDirectoryName(String projectId) throws IOException {
+        Project project = getProjectById(projectId);
+        if (project != null && project.getDataDir() != null && !project.getDataDir().isBlank()) {
+            return project.getDataDir();
+        }
+        // Legacy fallback — covers pre-existing projects that don't yet have data_dir
         switch (projectId) {
-            case "strimzi-kafka-operator":
-                return "strimzi";
-            case "camel":
-                return "apache-camel";
-            case "artemis":
-                return "apache-artemis";
+            case "strimzi-kafka-operator": return "strimzi";
+            case "camel":                  return "apache-camel";
+            case "artemis":                return "apache-artemis";
             case "apicurio-studio":
-            case "apicurio-registry":
-                return "apicurio";
-            case "console":
-                return "streamshub";
-            default:
-                return projectId.toLowerCase().replace("_", "-");
+            case "apicurio-registry":      return "apicurio";
+            case "console":                return "streamshub";
+            default: return projectId.toLowerCase().replace("_", "-");
         }
     }
 
@@ -259,6 +264,9 @@ public class DataService {
         newProject.setFoundation(request.getFoundation() != null ? request.getFoundation() : "Independent");
         newProject.setWebsite(request.getWebsite());
         newProject.setEnabled(true);
+        // Derive and persist the data directory name from the repo slug so that
+        // future renames only need to update this single field.
+        newProject.setDataDir(projectId.toLowerCase().replace("_", "-"));
 
         // Persist issue-tracker configuration so it survives backend restarts
         if ("jira".equalsIgnoreCase(request.getIssueSource())) {
@@ -294,6 +302,119 @@ public class DataService {
         addProjectToConfig(owner, repo, newProject, request);
 
         return newProject;
+    }
+
+    /**
+     * Update mutable fields (name, foundation) on a project in projects.json and config.yaml.
+     * Returns the updated Project, or null if not found.
+     */
+    public Project updateProject(String projectId, java.util.Map<String, String> updates) throws IOException {
+        Project project = getProjectById(projectId);
+        if (project == null) return null;
+
+        String oldName       = project.getName();
+        String newName       = updates.getOrDefault("name",       oldName).strip();
+        String newFoundation = updates.getOrDefault("foundation", project.getFoundation());
+        if (newFoundation != null) newFoundation = newFoundation.strip();
+
+        // Compute new data directory name from the slugified new name (only when name changes)
+        String oldDataDir = getProjectDirectoryName(projectId);
+        boolean nameChanged = !newName.equals(oldName) && !newName.isEmpty();
+        String newDataDir = nameChanged
+                ? newName.toLowerCase().replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "")
+                : oldDataDir;
+
+        // 1. Update projects.json
+        Path projectsFile = Paths.get(dataDirectory, "projects.json");
+        JsonNode root = objectMapper.readTree(projectsFile.toFile());
+        ArrayNode projectsArray = (ArrayNode) root.get("projects");
+        for (int i = 0; i < projectsArray.size(); i++) {
+            JsonNode node = projectsArray.get(i);
+            if (projectId.equals(node.path("id").asText())) {
+                ObjectNode obj = (ObjectNode) node;
+                if (!newName.isEmpty()) obj.put("name", newName);
+                if (newFoundation != null) obj.put("foundation", newFoundation);
+                obj.put("data_dir", newDataDir);
+                break;
+            }
+        }
+        ((ObjectNode) root).put("last_updated", Instant.now().toString());
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(projectsFile.toFile(), root);
+        log.info("Updated project {} in projects.json", projectId);
+
+        // 2. Rename the data directory on disk when the name changed
+        if (nameChanged && !newDataDir.equals(oldDataDir)) {
+            Path oldDir = Paths.get(dataDirectory, oldDataDir);
+            Path newDir = Paths.get(dataDirectory, newDataDir);
+            if (Files.exists(oldDir)) {
+                Files.move(oldDir, newDir);
+                log.info("Renamed data directory {} -> {}", oldDataDir, newDataDir);
+            } else {
+                log.warn("Data directory {} not found; skipping rename", oldDir);
+            }
+        }
+
+        // 3. Update config.yaml — patch the name: and foundation: lines inside this project's block
+        updateProjectInConfig(oldName, newName, newFoundation);
+
+        // 4. Return the refreshed project
+        return getProjectById(projectId);
+    }
+
+    /**
+     * Update the name: and/or foundation: fields for a project block in config.yaml.
+     * Uses the old name to locate the block, then rewrites those specific lines in-place.
+     */
+    private void updateProjectInConfig(String oldName, String newName, String newFoundation) {
+        try {
+            Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
+            if (!Files.exists(configPath)) return;
+
+            List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
+            int blockStart = -1;
+            int blockEnd   = lines.size();
+
+            // Find the block by old name
+            for (int i = 0; i < lines.size(); i++) {
+                String trimmed = lines.get(i).trim();
+                if (trimmed.equals("- name: \"" + oldName + "\"")
+                        || trimmed.equals("- name: " + oldName)) {
+                    blockStart = i;
+                    for (int j = i + 1; j < lines.size(); j++) {
+                        String l = lines.get(j);
+                        if (l.startsWith("  - ") || (!l.startsWith(" ") && !l.isEmpty() && !l.startsWith("#"))) {
+                            blockEnd = j;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            if (blockStart == -1) {
+                log.warn("Could not find '{}' in config.yaml; skipping config update", oldName);
+                return;
+            }
+
+            for (int i = blockStart; i < blockEnd; i++) {
+                String l = lines.get(i);
+                String trimmed = l.trim();
+                // Update name line
+                if (trimmed.startsWith("- name:") && i == blockStart) {
+                    lines.set(i, "  - name: \"" + newName + "\"");
+                }
+                // Update foundation line (keep indentation)
+                if (trimmed.startsWith("foundation:") && newFoundation != null) {
+                    String indent = l.substring(0, l.indexOf("foundation:"));
+                    lines.set(i, indent + "foundation: \"" + newFoundation + "\"");
+                }
+            }
+
+            Files.writeString(configPath, String.join("\n", lines));
+            log.info("Updated '{}' -> '{}' in config.yaml", oldName, newName);
+        } catch (Exception e) {
+            log.warn("Could not update project in config.yaml: {}", e.getMessage());
+        }
     }
 
     /**

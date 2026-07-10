@@ -7,6 +7,7 @@
     "repo" : "strimzi-kafka-operator",
     "foundation" : "CNCF",
     "website" : "https://strimzi.io",
+    "data_dir" : "strimzi",
     "enabled" : true
   }, {
     "id" : "camel",
@@ -16,6 +17,7 @@
     "repo" : "camel",
     "foundation" : "Apache Software Foundation",
     "website" : "https://camel.apache.org",
+    "data_dir" : "apache-camel",
     "issue_source" : "jira",
     "jira_project_key" : "CAMEL",
     "jira_base_url" : "https://issues.apache.org/jira",
@@ -28,6 +30,7 @@
     "repo" : "artemis",
     "foundation" : "Apache Software Foundation",
     "website" : "https://activemq.apache.org/components/artemis/",
+    "data_dir" : "apache-artemis",
     "issue_source" : "jira",
     "jira_project_key" : "ARTEMIS",
     "jira_base_url" : "https://issues.apache.org/jira",
@@ -40,6 +43,7 @@
     "repo" : "keycloak",
     "foundation" : "CNCF",
     "website" : "https://www.keycloak.org",
+    "data_dir" : "keycloak",
     "enabled" : true
   }, {
     "id" : "apicurio-registry",
@@ -49,6 +53,7 @@
     "repo" : "apicurio-registry",
     "foundation" : "CNCF",
     "website" : "https://www.apicur.io/registry/",
+    "data_dir" : "apicurio",
     "enabled" : true
   }, {
     "id" : "debezium",
@@ -57,6 +62,7 @@
     "repo" : "debezium",
     "foundation" : "Commonhaus Foundation",
     "website" : null,
+    "data_dir" : "debezium",
     "enabled" : true,
     "github_url" : "https://github.com/debezium/debezium"
   }, {
@@ -66,6 +72,7 @@
     "repo" : "console",
     "foundation" : "Independent",
     "website" : null,
+    "data_dir" : "streamshub",
     "enabled" : true,
     "github_url" : "https://github.com/streamshub/console"
   }, {
@@ -75,6 +82,7 @@
     "repo" : "quarkus",
     "foundation" : "Independent",
     "website" : null,
+    "data_dir" : "quarkus",
     "enabled" : true,
     "github_url" : "https://github.com/quarkusio/quarkus"
   }, {
@@ -83,6 +91,7 @@
     "owner" : "wildfly",
     "repo" : "wildfly",
     "foundation" : "Commonhaus Foundation",
+    "data_dir" : "wildfly",
     "enabled" : true,
     "github_url" : "https://github.com/wildfly/wildfly",
     "issue_source" : "jira",
@@ -93,9 +102,10 @@
     "name" : "3scale operator",
     "owner" : "3scale",
     "repo" : "3scale-operator",
-    "foundation" : "Independent",
+    "foundation" : "Red Hat",
+    "data_dir" : "3scale-operator",
     "enabled" : true,
     "github_url" : "https://github.com/3scale/3scale-operator"
   } ],
-  "last_updated" : "2026-07-10T18:27:38.449110Z"
+  "last_updated" : "2026-07-10T19:19:13.924528Z"
 }

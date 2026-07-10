@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -22,6 +22,8 @@ export default function App() {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState(new Set());
   const [deleting, setDeleting] = useState(false);
+  // refreshQueue: ordered list of {id, name} objects waiting to be extracted
+  const [refreshQueue, setRefreshQueue] = useState([]);
   const [extracting, setExtracting] = useState(() => {
     // Restore extraction state that survived a page reload
     try {
@@ -42,15 +44,9 @@ export default function App() {
     }
   }, [extracting]);
 
-  // Load projects and check token status on mount
-  useEffect(() => {
-    loadProjects();
-    fetchTokenStatus().then((s) => setTokenConfigured(s.configured));
-  }, []);
-
-  const loadProjects = async () => {
+  const loadProjects = useCallback(async ({ silent = false } = {}) => {
     try {
-      setLoading(true);
+      if (!silent) setLoading(true);
       setError(null);
       
       console.log('🔄 Loading projects from backend...');
@@ -79,7 +75,6 @@ export default function App() {
       }
       
       console.log('✅ All projects loaded:', projectOrder.length);
-      console.log('📦 Project data:', projectData);
       
       setData(projectData);
       setOrder(projectOrder);
@@ -90,11 +85,17 @@ export default function App() {
       }
     } catch (err) {
       console.error('❌ Failed to load projects:', err);
-      setError('Failed to load projects. Please check if the backend is running.');
+      if (!silent) setError('Failed to load projects. Please check if the backend is running.');
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
-  };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Load projects and check token status on mount
+  useEffect(() => {
+    loadProjects();
+    fetchTokenStatus().then((s) => setTokenConfigured(s.configured));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const showOverview = useCallback(() => {
     setView("overview");
@@ -112,6 +113,43 @@ export default function App() {
     setSelectedKey(key);
   }, []);
 
+  const handleUpdateProject = useCallback(async (projectId, fields) => {
+    // 1. Optimistically patch the in-memory data so the UI updates instantly.
+    setData((prev) => {
+      if (!prev[projectId]) return prev;
+      const updated = { ...prev[projectId] };
+      if (fields.name)       updated.name = fields.name;
+      if (fields.foundation) {
+        updated.foundation = fields.foundation;
+        updated.sub        = fields.foundation;
+        updated.ov         = { ...updated.ov, foundation: fields.foundation };
+      }
+      return { ...prev, [projectId]: updated };
+    });
+    // 2. Persist to backend. The PATCH response returns the updated Project object;
+    //    use it to confirm the state rather than re-fetching all projects (which
+    //    would be slow and could race with the optimistic update).
+    try {
+      const saved = await updateProject(projectId, fields);
+      // Confirm the write by applying whatever the backend actually persisted.
+      setData((prev) => {
+        if (!prev[projectId]) return prev;
+        const updated = { ...prev[projectId] };
+        if (saved.name)       updated.name       = saved.name;
+        if (saved.foundation) {
+          updated.foundation = saved.foundation;
+          updated.sub        = saved.foundation;
+          updated.ov         = { ...updated.ov, foundation: saved.foundation };
+        }
+        return { ...prev, [projectId]: updated };
+      });
+    } catch (err) {
+      console.error('Failed to save project update:', err);
+      // On failure, reload to restore the true persisted state.
+      await loadProjects({ silent: true });
+    }
+  }, [loadProjects]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const addProject = useCallback((key, name) => {
     // loadProjects has already refreshed data/order by the time this fires;
     // we only need to trigger the flash animation on the new row.
@@ -119,6 +157,30 @@ export default function App() {
     setTimeout(() => setFlashKey(null), 1200);
     if (key) setExtracting({ id: key, name: name || key });
   }, []);
+
+  // Called when the Refresh All button completes the token modal.
+  // `ids` is the ordered list of project IDs returned by the backend.
+  const handleRefreshAll = useCallback((ids) => {
+    if (!ids || ids.length === 0) return;
+    // Build queue entries using display names from current data
+    const queue = ids.map((id) => ({ id, name: data[id]?.name || id }));
+    setRefreshQueue(queue.slice(1));          // tail — will advance after each toast
+    setExtracting({ id: queue[0].id, name: queue[0].name }); // head starts immediately
+  }, [data]);
+
+  // Advance to the next project in the refresh queue once a toast reports done.
+  const handleExtractionDone = useCallback(() => {
+    setExtracting(null);
+    if (refreshQueue.length > 0) {
+      const [next, ...rest] = refreshQueue;
+      setRefreshQueue(rest);
+      // Small delay so the previous toast fully clears before the next one appears
+      setTimeout(() => setExtracting({ id: next.id, name: next.name }), 300);
+    } else {
+      // All done — reload project data to pick up updated timestamps
+      loadProjects({ silent: true });
+    }
+  }, [refreshQueue, loadProjects]);
 
   const handleRemove = useCallback(async (key) => {
     try {
@@ -215,9 +277,10 @@ export default function App() {
         onToggleNav={() => setNavCollapsed((c) => !c)}
         navOpen={!navCollapsed}
         extracting={extracting}
-        onExtractionDone={() => setExtracting(null)}
+        onExtractionDone={handleExtractionDone}
         onTokenExpired={() => {
           setExtracting(null);
+          setRefreshQueue([]);
           setTokenConfigured(false); // force token field to show in modal
           setModalOpen(true);
         }}
@@ -240,12 +303,14 @@ export default function App() {
             flashKey={flashKey}
             onSelect={showDetail}
             onAddClick={() => setModalOpen(true)}
+            onUpdateProject={handleUpdateProject}
             selectMode={selectMode}
             selectedKeys={selectedKeys}
             onSelectToggle={toggleSelectKey}
             onToggleSelectMode={toggleSelectMode}
             onDeleteSelected={handleDeleteSelected}
             deleting={deleting}
+            onRefreshAll={handleRefreshAll}
           />
         ) : (
           <Detail d={data[selectedKey]} onOverview={showOverview} />
