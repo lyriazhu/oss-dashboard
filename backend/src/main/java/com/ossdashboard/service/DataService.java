@@ -248,7 +248,7 @@ public class DataService {
 
         // Check if project already exists
         if (projectExists(projectId)) {
-            throw new IllegalArgumentException("Project with ID '" + projectId + "' already exists");
+            throw new IllegalArgumentException("This project has already been added.");
         }
 
         // Create new project

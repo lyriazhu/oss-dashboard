@@ -6,22 +6,21 @@ const TOKEN_STORAGE_KEY = 'oss_dashboard_github_token';
 // Returns null for lines that shouldn't update the visible step.
 function parseLine(line) {
   const l = line.toLowerCase();
-  if (l.includes('metadata'))       return { step: 'Extracting metadata',     pct: 14 };
-  if (l.includes('contributor'))    return { step: 'Extracting contributors', pct: 28 };
-  if (l.includes('commit'))         return { step: 'Extracting commits',      pct: 42 };
-  if (l.includes('issue'))          return { step: 'Extracting issues',       pct: 57 };
-  if (l.includes('pull request'))   return { step: 'Extracting pull requests',pct: 71 };
-  if (l.includes('release'))        return { step: 'Extracting releases',     pct: 85 };
-  if (l.includes('adopter'))        return { step: 'Extracting adopters',     pct: 95 };
-  if (line === '__DONE__')          return { step: 'Extraction complete',      pct: 100, done: true };
-  if (line === '__TOKEN_EXPIRED__') return { step: 'Token expired or invalid', pct: 100, failed: true, tokenExpired: true };
-  if (line === '__FAILED__')        return { step: 'Extraction failed',        pct: 100, failed: true };
+  if (l.includes('metadata'))       return { step: 'Extracting metadata…',      done: false };
+  if (l.includes('contributor'))    return { step: 'Extracting contributors…',  done: false };
+  if (l.includes('commit'))         return { step: 'Extracting commits…',       done: false };
+  if (l.includes('issue'))          return { step: 'Extracting issues…',        done: false };
+  if (l.includes('pull request'))   return { step: 'Extracting pull requests…', done: false };
+  if (l.includes('release'))        return { step: 'Extracting releases…',      done: false };
+  if (l.includes('adopter'))        return { step: 'Extracting adopters…',      done: false };
+  if (line === '__DONE__')          return { step: 'Extraction complete',        done: true };
+  if (line === '__TOKEN_EXPIRED__') return { step: 'Token expired or invalid',  done: false, failed: true, tokenExpired: true };
+  if (line === '__FAILED__')        return { step: 'Extraction failed',          done: false, failed: true };
   return null;
 }
 
 export default function ExtractionToast({ projectId, projectName, onDone, onTokenExpired }) {
   const [step, setStep]           = useState('Starting extraction…');
-  const [pct, setPct]             = useState(0);
   const [failed, setFailed]       = useState(false);
   const [done, setDone]           = useState(false);
   const [tokenExpired, setTokenExpired] = useState(false);
@@ -39,7 +38,6 @@ export default function ExtractionToast({ projectId, projectName, onDone, onToke
         const parsed = parseLine(e.data);
         if (!parsed) return;
         setStep(parsed.step);
-        setPct(parsed.pct);
         if (parsed.done) { setDone(true); es.close(); }
         if (parsed.failed) {
           setFailed(true);
@@ -73,7 +71,7 @@ export default function ExtractionToast({ projectId, projectName, onDone, onToke
     return () => clearTimeout(t);
   }, [done, failed, tokenExpired, onDone]);
 
-  const barColor = failed ? 'var(--red-50)' : done ? 'var(--green-40)' : 'var(--blue-40)';
+  const stepColor = failed ? 'var(--red-40)' : done ? 'var(--green-40)' : 'var(--header-text-dim)';
 
   return (
     <div className="extraction-toast">
@@ -92,13 +90,10 @@ export default function ExtractionToast({ projectId, projectName, onDone, onToke
             </svg>
           </button>
         </div>
-        <div className="extraction-toast-step">{step}</div>
-        <div className="extraction-toast-bar-track">
-          <div
-            className="extraction-toast-bar-fill"
-            style={{ width: `${pct}%`, background: barColor }}
-          />
-        </div>
+        <div className="extraction-toast-step" style={{ color: stepColor }}>{step}</div>
+        {!done && !failed && (
+          <div className="extraction-toast-notice">Do not refresh — extraction is in progress.</div>
+        )}
         {tokenExpired ? (
           <button
             className="extraction-toast-token-btn"
@@ -106,9 +101,7 @@ export default function ExtractionToast({ projectId, projectName, onDone, onToke
           >
             Update token
           </button>
-        ) : (
-          <div className="extraction-toast-pct">{pct}%</div>
-        )}
+        ) : null}
       </div>
     </div>
   );

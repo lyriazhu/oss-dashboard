@@ -98,8 +98,15 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
     } catch (err) {
       setLoading(false);
       const msg = err.message || "Network error. Please check if the backend is running.";
+      const isDuplicate = msg.includes("already been added");
       if (msg.includes("Invalid GitHub URL")) setInvalid(true);
-      setStatus({ msg, type: "err" });
+      setStatus({
+        msg: isDuplicate
+          ? "This project has already been added. Remove it first if you want to re-extract data."
+          : msg,
+        type: "err",
+        duplicate: isDuplicate,
+      });
     }
   }
 

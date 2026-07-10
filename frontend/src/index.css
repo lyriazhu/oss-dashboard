@@ -90,7 +90,7 @@
   }
   .extraction-toast-inner{
     background:var(--gray-90); border:1px solid var(--gray-70);
-    border-radius:.25rem; padding:.75rem 1rem .625rem;
+    border-radius:.25rem; padding:.75rem 1rem .75rem;
     box-shadow:0 4px 12px rgba(0,0,0,.35);
   }
   .extraction-toast-header{
@@ -106,22 +106,14 @@
   }
   .extraction-toast-close:hover{color:var(--header-text);}
   .extraction-toast-step{
-    font-size:.8125rem; color:var(--header-text-dim); margin-bottom:.5rem;
+    font-size:.8125rem; margin-bottom:.375rem;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .extraction-toast-bar-track{
-    height:4px; background:var(--gray-70); border-radius:2px; overflow:hidden;
-    margin-bottom:.375rem;
-  }
-  .extraction-toast-bar-fill{
-    height:100%; border-radius:2px;
-    transition:width .4s ease, background .3s;
-  }
-  .extraction-toast-pct{
-    font-size:.6875rem; color:var(--header-text-dim); text-align:right;
+  .extraction-toast-notice{
+    font-size:.6875rem; color:var(--header-text-dim); font-style:italic;
   }
   .extraction-toast-token-btn{
-    display:block; width:100%; margin-top:.375rem;
+    display:block; width:100%; margin-top:.5rem;
     padding:.3rem .75rem; border-radius:.25rem; border:1px solid var(--red-40,#fa4d56);
     background:transparent; color:var(--red-40,#fa4d56); font-size:.75rem;
     cursor:pointer; text-align:center;
