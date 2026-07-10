@@ -163,7 +163,7 @@
       "location": null,
       "email": "boris.urbanik@ibm.com",
       "profile_url": null,
-      "commit_count": 42
+      "commit_count": 40
     },
     {
       "login": "Carl Kyrillos",
@@ -220,20 +220,20 @@
       "commit_count": 18
     },
     {
-      "login": "Daria Mayorova",
-      "name": "Daria Mayorova",
-      "company": "Unknown",
-      "location": null,
-      "email": "mayorova@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 15
-    },
-    {
       "login": "Boris Urbanik",
       "name": "Boris Urbanik",
       "company": "Unknown",
       "location": null,
       "email": "boris.urbanik.dev@gmail.com",
+      "profile_url": null,
+      "commit_count": 15
+    },
+    {
+      "login": "Daria Mayorova",
+      "name": "Daria Mayorova",
+      "company": "Unknown",
+      "location": null,
+      "email": "mayorova@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 15
     },
@@ -270,15 +270,6 @@
       "company": "Unknown",
       "location": null,
       "email": "comalley@redhat.com",
-      "profile_url": null,
-      "commit_count": 11
-    },
-    {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 11
     },
@@ -326,6 +317,15 @@
       "email": "bmozaffa@redhat.com",
       "profile_url": null,
       "commit_count": 9
+    },
+    {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "115566047+borisurbanik@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 8
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-10T11:45:09.015533",
+  "extracted_at": "2026-07-10T14:16:35.480551",
   "years": [
     {
       "year": 2018,

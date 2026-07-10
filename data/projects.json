@@ -51,15 +51,6 @@
     "website" : "https://www.apicur.io/registry/",
     "enabled" : true
   }, {
-    "id" : "3scale-operator",
-    "name" : "3scale",
-    "github_url" : "https://github.com/3scale/3scale-operator",
-    "owner" : "3scale",
-    "repo" : "3scale-operator",
-    "foundation" : "Red Hat",
-    "website" : "https://www.3scale.net",
-    "enabled" : true
-  }, {
     "id" : "debezium",
     "name" : "Debezium",
     "owner" : "debezium",
@@ -97,6 +88,14 @@
     "issue_source" : "jira",
     "jira_project_key" : "WFLY",
     "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
+  }, {
+    "id" : "3scale-operator",
+    "name" : "3scale",
+    "owner" : "3scale",
+    "repo" : "3scale-operator",
+    "foundation" : "Red Hat",
+    "enabled" : true,
+    "github_url" : "https://github.com/3scale/3scale-operator"
   } ],
-  "last_updated" : "2026-07-10T17:35:52.432800Z"
+  "last_updated" : "2026-07-10T18:16:22.333653Z"
 }

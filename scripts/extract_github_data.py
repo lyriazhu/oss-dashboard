@@ -75,7 +75,6 @@ class GitHubDataExtractor:
             "Apache Camel": "apache-camel",
             "Apache Artemis": "apache-artemis",
             "Apicurio Registry": "apicurio",
-            "3scale": "3scale",
             "Keycloak": "keycloak",
             "StreamsHub": "streamshub",
             # legacy repo-name keys kept for backward compatibility
@@ -83,7 +82,6 @@ class GitHubDataExtractor:
             "camel": "apache-camel",
             "artemis": "apache-artemis",
             "apicurio-registry": "apicurio",
-            "3scale-operator": "3scale",
             "console": "streamshub",
         }
         

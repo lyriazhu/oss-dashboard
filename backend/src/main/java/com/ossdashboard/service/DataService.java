@@ -155,8 +155,6 @@ public class DataService {
             case "apicurio-studio":
             case "apicurio-registry":
                 return "apicurio";
-            case "3scale-operator":
-                return "3scale";
             case "console":
                 return "streamshub";
             default:
