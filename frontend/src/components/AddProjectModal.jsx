@@ -255,7 +255,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
               </div>
               <p className="field-help">
                 Required to fetch data from GitHub. Stored in your browser and restored automatically on future visits.
-                Needs at least <code>public_repo</code> read access.{" "}
+                Needs at least <code>public_repo</code> read access.<br />
                 <a
                   href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
                   target="_blank"
