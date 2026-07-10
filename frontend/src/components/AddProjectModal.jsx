@@ -53,6 +53,11 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
       setStatus({ msg: "Jira project key is required.", type: "err" });
       return;
     }
+    if (issueSource === "jira" && !jiraBaseUrl.trim()) {
+      setInvalid(true);
+      setStatus({ msg: "Jira base URL is required.", type: "err" });
+      return;
+    }
 
     setLoading(true);
     setStatus({ msg: "Adding project to backend...", type: "info" });
@@ -68,7 +73,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
         undefined,
         issueSource === "jira" ? "jira" : undefined,
         issueSource === "jira" ? jiraKey.trim() : undefined,
-        issueSource === "jira" ? (jiraBaseUrl.trim() || undefined) : undefined,
+        issueSource === "jira" ? jiraBaseUrl.trim() : undefined,
         issueSource === "github" ? (issueGithubUrl.trim() || undefined) : undefined,
       );
 
@@ -244,10 +249,9 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
                 />
                 <div className="err">Jira project key is required.</div>
               </div>
-              <div className="field" style={{ marginTop: ".75rem" }}>
+              <div className={"field" + (invalid && !jiraBaseUrl.trim() ? " show-err" : "")} style={{ marginTop: ".75rem" }}>
                 <label htmlFor="i-jira-url">
-                  Jira base URL{" "}
-                  <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
+                  Jira base URL <span style={{ color: "var(--red-50)" }}>*</span>
                 </label>
                 <input
                   id="i-jira-url"
@@ -255,13 +259,12 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
                   placeholder="https://issues.apache.org/jira"
                   autoComplete="off"
                   spellCheck="false"
+                  className={invalid && !jiraBaseUrl.trim() ? "invalid" : ""}
                   value={jiraBaseUrl}
                   disabled={loading}
                   onChange={(e) => setJiraBaseUrl(e.target.value)}
                 />
-                <p className="field-help" style={{ marginTop: ".25rem" }}>
-                  Leave blank to use the default Apache Jira instance.
-                </p>
+                <div className="err">Jira base URL is required.</div>
               </div>
             </div>
           )}

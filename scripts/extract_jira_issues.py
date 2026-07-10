@@ -195,19 +195,18 @@ def aggregate_issue_metrics(normalized_issues: List[Dict[str, Any]]) -> Dict[str
     }
 
 
-def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
+def _fetch_jira_issues_v2(session: requests.Session, base: str, project_key: str) -> List[Dict[str, Any]]:
+    """Fetch using the classic offset-based REST API v2 (Apache Jira, self-hosted)."""
     issues: List[Dict[str, Any]] = []
     start_at = 0
     max_results = 100
-    session = requests.Session()
-
-    print(f"📥 Fetching Jira issues for project {project_key} from {base_url}...")
+    jql = f"project = {project_key} ORDER BY created ASC"
 
     while True:
         response = session.get(
-            f"{base_url.rstrip('/')}/rest/api/2/search",
+            f"{base}/rest/api/2/search",
             params={
-                "jql": f"project = {project_key} ORDER BY created ASC",
+                "jql": jql,
                 "startAt": start_at,
                 "maxResults": max_results,
                 "fields": "created,resolutiondate,status",
@@ -228,6 +227,64 @@ def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
             break
 
     return issues
+
+
+def _fetch_jira_issues_v3(session: requests.Session, base: str, project_key: str) -> List[Dict[str, Any]]:
+    """Fetch using the cursor-based REST API v3 (Atlassian Cloud / issues.redhat.com)."""
+    issues: List[Dict[str, Any]] = []
+    jql = f"project = {project_key} ORDER BY created ASC"
+    next_page_token: Optional[str] = None
+    max_results = 100
+
+    while True:
+        params: Dict[str, Any] = {
+            "jql": jql,
+            "maxResults": max_results,
+            "fields": "created,resolutiondate,status",
+        }
+        if next_page_token:
+            params["nextPageToken"] = next_page_token
+
+        response = session.get(
+            f"{base}/rest/api/3/search/jql",
+            params=params,
+            timeout=60,
+        )
+        response.raise_for_status()
+        payload = response.json()
+
+        batch = payload.get("issues", [])
+        issues.extend(batch)
+        print(f"  ✓ Retrieved {len(issues)} issues so far")
+
+        if payload.get("isLast", True) or not batch:
+            break
+        next_page_token = payload.get("nextPageToken")
+        if not next_page_token:
+            break
+
+    return issues
+
+
+def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
+    base = base_url.rstrip("/")
+    session = requests.Session()
+    jql = f"project = {project_key} ORDER BY created ASC"
+
+    print(f"📥 Fetching Jira issues for project {project_key} from {base_url}...")
+
+    # Probe v2 first; if it returns 410 (removed) fall back to v3.
+    probe = session.get(
+        f"{base}/rest/api/2/search",
+        params={"jql": jql, "maxResults": 1, "fields": "created"},
+        timeout=30,
+    )
+    if probe.status_code == 410:
+        print("  ℹ️  REST API v2 has been removed on this instance; switching to v3...")
+        return _fetch_jira_issues_v3(session, base, project_key)
+
+    probe.raise_for_status()
+    return _fetch_jira_issues_v2(session, base, project_key)
 
 
 def normalize_jira_issues(raw_issues: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

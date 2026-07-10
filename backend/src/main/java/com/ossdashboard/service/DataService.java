@@ -260,6 +260,19 @@ public class DataService {
         newProject.setWebsite(request.getWebsite());
         newProject.setEnabled(true);
 
+        // Persist issue-tracker configuration so it survives backend restarts
+        if ("jira".equalsIgnoreCase(request.getIssueSource())) {
+            newProject.setIssueSource("jira");
+            if (request.getJiraProjectKey() != null && !request.getJiraProjectKey().isBlank()) {
+                newProject.setJiraProjectKey(request.getJiraProjectKey().strip());
+            }
+            if (request.getJiraBaseUrl() != null && !request.getJiraBaseUrl().isBlank()) {
+                newProject.setJiraBaseUrl(request.getJiraBaseUrl().strip());
+            }
+        } else if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()) {
+            newProject.setIssueGithubUrl(request.getIssueGithubUrl().strip());
+        }
+
         // Read existing projects.json
         Path projectsFile = Paths.get(dataDirectory, "projects.json");
         JsonNode root = objectMapper.readTree(projectsFile.toFile());
@@ -399,11 +412,13 @@ public class DataService {
         // PATH visible to the Java process (e.g. when launched as a service).
         String python3 = resolvePython3();
 
-        // Build the command to run the Python script for a single project
+        // Build the command to run the Python script for a single project.
+        // Pass the project's config name (matches p['name'] in config.yaml) rather
+        // than the project ID, which may differ for hyphenated repo names.
         ProcessBuilder processBuilder = new ProcessBuilder(
             python3,
             extractScript.toString(),
-            projectId  // Pass the project ID as argument
+            project.getName()
         );
         processBuilder.directory(scriptsDir.toFile());
         processBuilder.redirectErrorStream(true);
