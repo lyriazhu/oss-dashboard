@@ -13,9 +13,6 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
   const [status, setStatus]           = useState(null); // {msg, type}
   const inputRef = useRef(null);
 
-  // Decide whether to show the token field
-  const needsToken = !tokenConfigured;
-
   useEffect(() => {
     if (open) {
       setUrl("");
@@ -24,7 +21,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
       setJiraKey("");
       setJiraBaseUrl("");
       // Pre-fill token from localStorage if available
-      setToken(needsToken ? getSavedToken() : "");
+      setToken(getSavedToken() || "");
       setInvalid(false);
       setLoading(false);
       setStatus(null);
@@ -44,8 +41,8 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
   async function submit() {
     setInvalid(false);
 
-    // Validate token if needed
-    if (needsToken && !token.trim()) {
+    // Validate token — always required
+    if (!token.trim()) {
       setInvalid(true);
       setStatus({ msg: "GitHub token is required to extract data.", type: "err" });
       return;
@@ -61,11 +58,9 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
     setStatus({ msg: "Adding project to backend...", type: "info" });
 
     try {
-      // Save token first if it was just entered
-      if (needsToken && token.trim()) {
-        await saveGithubToken(token.trim());
-        onTokenSaved?.();
-      }
+      // Always save the token
+      await saveGithubToken(token.trim());
+      onTokenSaved?.();
 
       const response = await addProject(
         url,
@@ -123,46 +118,59 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
         </div>
 
         <div className="modal-body">
-          {/* Primary GitHub URL */}
-          <div className={"field" + (invalid && !url.trim() ? " show-err" : "")}>
-            <label htmlFor="i-url">Primary GitHub repository URL</label>
-            <input
-              id="i-url"
-              ref={inputRef}
-              type="text"
-              placeholder="https://github.com/owner/repo"
-              autoComplete="off"
-              spellCheck="false"
-              className={invalid && !url.trim() ? "invalid" : ""}
-              value={url}
-              disabled={loading}
-              onChange={(e) => setUrl(e.target.value)}
-              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
-            />
-            <div className="err">Enter a valid GitHub repository URL.</div>
-          </div>
-
-          {issueSource === "github" && (
-            <div className="field" style={{ marginTop: ".75rem" }}>
-              <label htmlFor="i-issue-url">
-                Issue repository URL{" "}
-                <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
+          {/* GitHub token — always required */}
+          <div className="token-inline-section">
+            <div className={"field" + (invalid && !token.trim() ? " show-err" : "")}>
+              <label htmlFor="i-token-inline">
+                GitHub personal access token <span style={{ color: "var(--red-50)" }}>*</span>
               </label>
               <input
-                id="i-issue-url"
+                id="i-token-inline"
+                type="password"
+                placeholder="Paste token here — ghp_..."
+                autoComplete="off"
+                spellCheck="false"
+                className={invalid && !token.trim() ? "invalid" : ""}
+                value={token}
+                disabled={loading}
+                onChange={(e) => setToken(e.target.value)}
+              />
+              <div className="err">GitHub token is required.</div>
+            </div>
+            <p className="field-help">
+              Required to fetch data from GitHub. Stored in your browser and restored automatically on future visits.
+              Needs at least <code>public_repo</code> read access.<br />
+              <a
+                href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "var(--link)" }}
+              >
+                Create one ↗
+              </a>
+            </p>
+          </div>
+
+          {/* Primary GitHub URL */}
+          <div className="jira-fields">
+            <div className={"field" + (invalid && !url.trim() ? " show-err" : "")}>
+              <label htmlFor="i-url">Primary GitHub repository URL <span style={{ color: "var(--red-50)" }}>*</span></label>
+              <input
+                id="i-url"
+                ref={inputRef}
                 type="text"
                 placeholder="https://github.com/owner/repo"
                 autoComplete="off"
                 spellCheck="false"
-                value={issueGithubUrl}
+                className={invalid && !url.trim() ? "invalid" : ""}
+                value={url}
                 disabled={loading}
-                onChange={(e) => setIssueGithubUrl(e.target.value)}
+                onChange={(e) => setUrl(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
               />
-              <p className="field-help" style={{ marginTop: ".25rem" }}>
-                Use this only if issues are tracked in a different GitHub repository than the primary one.
-              </p>
+              <div className="err">Enter a valid GitHub repository URL.</div>
             </div>
-          )}
+          </div>
 
           {/* Issue source toggle */}
           <div className="field" style={{ marginTop: "1rem" }}>
@@ -192,6 +200,31 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
               </label>
             </div>
           </div>
+
+          {/* GitHub Issues field — shown only when github is selected */}
+          {issueSource === "github" && (
+            <div className="jira-fields">
+              <div className="field">
+                <label htmlFor="i-issue-url">
+                  Issue repository URL{" "}
+                  <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
+                </label>
+                <input
+                  id="i-issue-url"
+                  type="text"
+                  placeholder="https://github.com/owner/repo"
+                  autoComplete="off"
+                  spellCheck="false"
+                  value={issueGithubUrl}
+                  disabled={loading}
+                  onChange={(e) => setIssueGithubUrl(e.target.value)}
+                />
+                <p className="field-help" style={{ marginTop: ".25rem" }}>
+                  Use this only if issues are tracked in a different GitHub repository than the primary one.
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Jira fields — shown only when jira is selected */}
           {issueSource === "jira" && (
@@ -230,41 +263,6 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
                   Leave blank to use the default Apache Jira instance.
                 </p>
               </div>
-            </div>
-          )}
-
-          {/* GitHub token — only shown when not yet configured */}
-          {needsToken && (
-            <div className="token-inline-section">
-              <div className={"field" + (invalid && !token.trim() ? " show-err" : "")}>
-                <label htmlFor="i-token-inline">
-                  GitHub personal access token
-                </label>
-                <input
-                  id="i-token-inline"
-                  type="password"
-                  placeholder="Paste token here — ghp_..."
-                  autoComplete="off"
-                  spellCheck="false"
-                  className={invalid && !token.trim() ? "invalid" : ""}
-                  value={token}
-                  disabled={loading}
-                  onChange={(e) => setToken(e.target.value)}
-                />
-                <div className="err">GitHub token is required.</div>
-              </div>
-              <p className="field-help">
-                Required to fetch data from GitHub. Stored in your browser and restored automatically on future visits.
-                Needs at least <code>public_repo</code> read access.<br />
-                <a
-                  href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: "var(--link)" }}
-                >
-                  Create one ↗
-                </a>
-              </p>
             </div>
           )}
 
