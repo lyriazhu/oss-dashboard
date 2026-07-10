@@ -136,23 +136,23 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
                 onChange={(e) => setToken(e.target.value)}
               />
               <div className="err">GitHub token is required.</div>
+              <p className="field-help" style={{ marginTop: ".25rem" }}>
+                Required to fetch data from GitHub. Stored in your browser and restored automatically on future visits.
+                Needs at least <code>public_repo</code> read access.<br />
+                <a
+                  href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "var(--link)" }}
+                >
+                  Create one ↗
+                </a>
+              </p>
             </div>
-            <p className="field-help">
-              Required to fetch data from GitHub. Stored in your browser and restored automatically on future visits.
-              Needs at least <code>public_repo</code> read access.<br />
-              <a
-                href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
-                target="_blank"
-                rel="noreferrer"
-                style={{ color: "var(--link)" }}
-              >
-                Create one ↗
-              </a>
-            </p>
           </div>
 
           {/* Primary GitHub URL */}
-          <div className="jira-fields">
+          <div className="jira-fields" style={{ marginTop: "1.75rem" }}>
             <div className={"field" + (invalid && !url.trim() ? " show-err" : "")}>
               <label htmlFor="i-url">Primary GitHub repository URL <span style={{ color: "var(--red-50)" }}>*</span></label>
               <input
@@ -173,7 +173,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
           </div>
 
           {/* Issue source toggle */}
-          <div className="field" style={{ marginTop: "1rem" }}>
+          <div className="field" style={{ marginTop: "1.75rem" }}>
             <label>Issue tracker</label>
             <div className="radio-group">
               <label className="radio-label">

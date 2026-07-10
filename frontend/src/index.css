@@ -416,7 +416,7 @@
   .modal-close svg{width:20px; height:20px;}
   .modal-body{padding:1rem; overflow-y:auto;}
   .modal-footer{display:flex; margin-top:1.5rem;}
-  .modal-footer button{flex:1; height:4rem; border:0; cursor:pointer; font-family:inherit; font-size:.875rem; text-align:left; padding:.9rem 1rem 0; color:#fff;}
+  .modal-footer button{flex:1; border:0; cursor:pointer; font-family:inherit; font-size:.875rem; text-align:left; padding:1.25rem 1rem; color:#fff;}
   .btn-cancel{background:var(--gray-80);}
   .btn-cancel:hover{background:#4c4c4c;}
   .btn-add{background:var(--blue-60);}
@@ -441,7 +441,7 @@
   .radio-label input[type=radio]{accent-color:var(--blue-60); cursor:pointer; width:.875rem; height:.875rem; flex-shrink:0; vertical-align:middle; margin:0;}
   .jira-fields{margin-top:.75rem;}
   .jira-fields .field:last-child{margin-bottom:0;}
-  .token-inline-section{margin-bottom:1rem;}
+  .token-inline-section{margin-bottom:0;}
   .field input:disabled{color:var(--gray-50); cursor:not-allowed;}
   .add-status{font-size:.8125rem; margin-top:1rem; padding:.75rem 1rem; line-height:1.4;}
   .add-status.err{background:#fff1f1; color:var(--red-60); border-left:3px solid var(--red-60);}
