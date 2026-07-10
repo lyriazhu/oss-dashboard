@@ -1,7 +1,90 @@
 {
-  "total_adopters": 35,
-  "source": "https://github.com/strimzi/strimzi-kafka-operator/blob/main/ADOPTERS.md",
+  "total_adopters": 32,
   "adopters": [
+    {
+      "name": "Alauda",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.alauda.io/"
+    },
+    {
+      "name": "AppsFlyer",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.appsflyer.com/"
+    },
+    {
+      "name": "Atruvia",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://atruvia.de/"
+    },
+    {
+      "name": "Axual",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://axual.com/"
+    },
+    {
+      "name": "Baloise",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://baloise.ch/"
+    },
+    {
+      "name": "Banco Mercantil",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://bancomercantil.com.br/"
+    },
+    {
+      "name": "CERN",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://cern.ch"
+    },
+    {
+      "name": "Cloudera",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://www.cloudera.com/products/stream-processing.html"
+    },
+    {
+      "name": "CN Group",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.cngroup.dk/"
+    },
+    {
+      "name": "Decathlon",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://digital.decathlon.net/"
+    },
+    {
+      "name": "DPG Media",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.dpgmediagroup.com/"
+    },
+    {
+      "name": "Feedzai",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.feedzai.com/"
+    },
     {
       "name": "Grupo MASMOVIL",
       "type": "users",
@@ -17,214 +100,11 @@
       "url": "https://helvetia.com/"
     },
     {
-      "name": "Baloise",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://baloise.ch/"
-    },
-    {
-      "name": "Lightbend",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.lightbend.com/"
-    },
-    {
-      "name": "Marlow Navigation",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://marlow-navigation.com/"
-    },
-    {
-      "name": "Randoli",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.randoli.io"
-    },
-    {
-      "name": "SBB CFF FFS",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.sbb.ch/en/home.html"
-    },
-    {
-      "name": "Swisscom",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.swisscom.ch/"
-    },
-    {
-      "name": "CN Group",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.cngroup.dk/"
-    },
-    {
-      "name": "Atruvia",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://atruvia.de/"
-    },
-    {
-      "name": "Procure Ai",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.procure.ai/"
-    },
-    {
-      "name": "LittleHorse",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://littlehorse.dev/"
-    },
-    {
-      "name": "DPG Media",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.dpgmediagroup.com/"
-    },
-    {
-      "name": "Decathlon",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://digital.decathlon.net/"
-    },
-    {
-      "name": "Seamless data exchange with Kafka Connect and Strimzi on Kubernetes at Decathlon",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://medium.com/decathlondigital/seamless-data-exchange-with-kafka-connect-and-strimzi-on-kubernetes-at-decathlon-e6f81d034535"
-    },
-    {
-      "name": "Skillsoft",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.skillsoft.com/"
-    },
-    {
-      "name": "Utilizes Strimzi to deploy Kafka Connect on Kubernetes for Apache Kafka backup & disaster recovery.",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
       "name": "Hetzner",
       "type": "users",
       "description": "",
       "since": "",
       "url": "https://www.hetzner.com/"
-    },
-    {
-      "name": "Reddit",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.reddit.com/r/RedditEng/"
-    },
-    {
-      "name": "Alauda",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.alauda.io/"
-    },
-    {
-      "name": "SURF",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://surf.nl"
-    },
-    {
-      "name": "AppsFlyer",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.appsflyer.com/"
-    },
-    {
-      "name": "Feedzai",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.feedzai.com/"
-    },
-    {
-      "name": "Pattern",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://www.pattern.com"
-    },
-    {
-      "name": "CERN",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://cern.ch"
-    },
-    {
-      "name": "Banco Mercantil",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://bancomercantil.com.br/"
-    },
-    {
-      "name": "Vera C. Rubin Observatory",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": "https://rubinobservatory.org"
-    },
-    {
-      "name": "Strimzi is used to deploy and manage Kafka for the Observatory Control System and the telemetry and metrics infrastructure that supports the Rubin Science Platform.",
-      "type": "users",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "\u00c6nix",
-      "type": "vendors",
-      "description": "",
-      "since": "",
-      "url": "https://aenix.io"
-    },
-    {
-      "name": "Axual",
-      "type": "vendors",
-      "description": "",
-      "since": "",
-      "url": "https://axual.com/"
-    },
-    {
-      "name": "Optimizing Kafka Cluster Deployments in Kubernetes",
-      "type": "vendors",
-      "description": "",
-      "since": "",
-      "url": "https://itnext.io/optimizing-kafka-cluster-deployments-in-kubernetes-ceda3f95c157"
-    },
-    {
-      "name": "Cloudera",
-      "type": "vendors",
-      "description": "",
-      "since": "",
-      "url": "https://www.cloudera.com/products/stream-processing.html"
     },
     {
       "name": "IBM",
@@ -234,6 +114,48 @@
       "url": "https://www.ibm.com/products/event-streams"
     },
     {
+      "name": "Lightbend",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.lightbend.com/"
+    },
+    {
+      "name": "LittleHorse",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://littlehorse.dev/"
+    },
+    {
+      "name": "Marlow Navigation",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://marlow-navigation.com/"
+    },
+    {
+      "name": "Pattern",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.pattern.com"
+    },
+    {
+      "name": "Procure Ai",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.procure.ai/"
+    },
+    {
+      "name": "Randoli",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.randoli.io"
+    },
+    {
       "name": "Red Hat",
       "type": "vendors",
       "description": "",
@@ -241,12 +163,69 @@
       "url": "https://www.redhat.com/en/"
     },
     {
+      "name": "Reddit",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.reddit.com/r/RedditEng/"
+    },
+    {
+      "name": "REWE digital GmbH",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.rewe-digital.com/"
+    },
+    {
+      "name": "SBB CFF FFS",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.sbb.ch/en/home.html"
+    },
+    {
+      "name": "Skillsoft",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.skillsoft.com/"
+    },
+    {
       "name": "Streams for Apache Kafka",
       "type": "vendors",
       "description": "",
       "since": "",
       "url": "https://developers.redhat.com/products/streams-for-apache-kafka/overview"
+    },
+    {
+      "name": "SURF",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://surf.nl"
+    },
+    {
+      "name": "Swisscom",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://www.swisscom.ch/"
+    },
+    {
+      "name": "Vera C. Rubin Observatory",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": "https://rubinobservatory.org"
+    },
+    {
+      "name": "\u00c6nix",
+      "type": "vendors",
+      "description": "",
+      "since": "",
+      "url": "https://aenix.io"
     }
   ],
-  "extracted_at": "2026-07-08T09:54:41.588123"
+  "extracted_at": "2026-07-10T11:46:10.520783",
+  "source": "https://github.com/strimzi/strimzi-kafka-operator/blob/main/ADOPTERS.md"
 }

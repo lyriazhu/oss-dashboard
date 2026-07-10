@@ -77,6 +77,15 @@
     "website" : null,
     "enabled" : true,
     "github_url" : "https://github.com/streamshub/console"
+  }, {
+    "id" : "quarkus",
+    "name" : "Quarkus",
+    "owner" : "quarkusio",
+    "repo" : "quarkus",
+    "foundation" : "Independent",
+    "website" : null,
+    "enabled" : true,
+    "github_url" : "https://github.com/quarkusio/quarkus"
   } ],
-  "last_updated" : "2026-07-09T19:14:22.937805Z"
+  "last_updated" : "2026-07-10T15:27:41.658867Z"
 }

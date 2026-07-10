@@ -205,7 +205,7 @@
     {
       "login": "akostadinov",
       "name": "Aleksandar N. Kostadinov",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Bulgaria",
       "email": null,
       "contributions": 7,
@@ -424,7 +424,7 @@
     "Red Hat": 17,
     "Unknown": 16,
     "Redhatofficial": 2,
-    "IBM": 1,
+    "Ibm": 1,
     "Datadog": 1,
     "Propitech": 1,
     "Webtypes": 1,
@@ -449,7 +449,7 @@
         "contributor_count": 2
       },
       {
-        "company": "IBM",
+        "company": "Ibm",
         "contributor_count": 1
       },
       {

@@ -1,6 +1,5 @@
 {
-  "total_adopters": 59,
-  "source": "https://github.com/keycloak/keycloak/blob/main/ADOPTERS.md",
+  "total_adopters": 58,
   "adopters": [
     {
       "name": "Accenture",
@@ -129,14 +128,14 @@
       "url": null
     },
     {
-      "name": "Devsu",
+      "name": "Devoxx / Voxxed",
       "type": "user",
       "description": "",
       "since": "",
       "url": null
     },
     {
-      "name": "Devoxx / Voxxed",
+      "name": "Devsu",
       "type": "user",
       "description": "",
       "since": "",
@@ -332,18 +331,18 @@
       "url": null
     },
     {
-      "name": "Stacklok",
-      "type": "user",
-      "description": "",
-      "since": "",
-      "url": "https://stacklok.com/"
-    },
-    {
       "name": "Stack Labs",
       "type": "user",
       "description": "",
       "since": "",
       "url": null
+    },
+    {
+      "name": "Stacklok",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": "https://stacklok.com/"
     },
     {
       "name": "Storebrand",
@@ -407,14 +406,8 @@
       "description": "",
       "since": "",
       "url": "https://xata.io"
-    },
-    {
-      "name": "...More individuals",
-      "type": "user",
-      "description": "",
-      "since": "",
-      "url": null
     }
   ],
-  "extracted_at": "2026-07-08T09:59:40.228899"
+  "extracted_at": "2026-07-10T11:54:14.786645",
+  "source": "https://github.com/keycloak/keycloak/blob/main/ADOPTERS.md"
 }

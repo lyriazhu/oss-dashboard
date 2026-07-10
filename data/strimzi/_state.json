@@ -45,6 +45,7 @@
       "RouxAntoine",
       "Sam-Kramer",
       "SamBarker",
+      "ShashwatSinha03",
       "ShazaAldawamneh",
       "ShubhamRwt",
       "Slayv",
@@ -136,6 +137,7 @@
       "gaganhr94",
       "gertschouten",
       "gferon",
+      "gggeon96",
       "gilvansfilho",
       "giskou",
       "goern",
@@ -249,6 +251,7 @@
       "rajith77",
       "rao2100",
       "rareddy",
+      "rd-patrick-wegner",
       "rickywraith",
       "rjuare8",
       "rkpattnaik780",
@@ -317,18 +320,18 @@
       "zivi-dodis",
       "zzhu2"
     ],
-    "last_extracted_at": "2026-07-08T09:54:19.432230"
+    "last_extracted_at": "2026-07-10T11:45:40.489908"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-08T09:54:27.899743"
+    "last_git_sync_at": "2026-07-10T11:45:49.665643"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-08T09:54:38.667290"
+    "last_extracted_at": "2026-07-10T11:46:07.415622"
   },
   "issues": {
-    "last_extracted_at": "2026-07-08T09:54:32.149961"
+    "last_extracted_at": "2026-07-10T11:46:01.265968"
   },
   "releases": {
-    "last_extracted_at": "2026-07-08T09:54:40.587115"
+    "last_extracted_at": "2026-07-10T11:46:09.503945"
   }
 }

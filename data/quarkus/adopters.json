@@ -1,0 +1,147 @@
+{
+  "total_adopters": 20,
+  "adopters": [
+    {
+      "name": "Abraxas Informatik AG",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Artes",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "B<>com",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Carrefour",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Cytech",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "DataCater",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Decathlon",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Ennovative Solutions",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "GoWithFlow",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Logicdrop",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Lufthansa Technik",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Microcks",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Payair",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Sedona",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Stargate",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Suomen Asiakastieto Oy",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Talkdesk",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "UTN Faculty C\u00f3rdoba",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Vodafone Greece",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "Wipro",
+      "type": "user",
+      "description": "",
+      "since": "",
+      "url": null
+    }
+  ],
+  "extracted_at": "2026-07-10T12:36:18.765974",
+  "source": "https://github.com/quarkusio/quarkus/blob/main/ADOPTERS.md"
+}

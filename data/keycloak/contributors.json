@@ -67,12 +67,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 586,
+      "contributor_count": 595,
       "is_current": true
     }
   ],
-  "total_contributors": 3297,
-  "total_contributors_git": 3297,
+  "total_contributors": 3305,
+  "total_contributors_git": 3305,
   "contributors": [
     {
       "login": "stianst",
@@ -80,7 +80,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 4830,
+      "contributions": 4833,
       "profile_url": "https://github.com/stianst"
     },
     {
@@ -113,19 +113,19 @@
     {
       "login": "edewit",
       "name": "Erik Jan de Wit",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Z\u00fcrich",
       "email": null,
-      "contributions": 1517,
+      "contributions": 1521,
       "profile_url": "https://github.com/edewit"
     },
     {
       "login": "pedroigor",
       "name": "Pedro Igor",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brasilia, Brazil",
       "email": null,
-      "contributions": 1514,
+      "contributions": 1515,
       "profile_url": "https://github.com/pedroigor"
     },
     {
@@ -140,7 +140,7 @@
     {
       "login": "ahus1",
       "name": "Alexander Schwartz",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Frankfurt/Main (Germany)",
       "email": "alexander.schwartz@gmx.net",
       "contributions": 763,
@@ -176,16 +176,16 @@
     {
       "login": "mabartos",
       "name": "Martin Barto\u0161",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Czech Republic",
       "email": "mabartos@redhat.com",
-      "contributions": 524,
+      "contributions": 531,
       "profile_url": "https://github.com/mabartos"
     },
     {
       "login": "rmartinc",
       "name": "Ricardo Martin",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Spain",
       "email": "rmartinc@ibm.com",
       "contributions": 517,
@@ -212,7 +212,7 @@
     {
       "login": "vmuzikar",
       "name": "V\u00e1clav Muzik\u00e1\u0159",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Czech Republic",
       "email": "vmuzikar@ibm.com",
       "contributions": 354,
@@ -221,19 +221,19 @@
     {
       "login": "sguilhen",
       "name": "Stefan Guilhen",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Sao Paulo",
       "email": "sguilhen@redhat.com",
-      "contributions": 334,
+      "contributions": 335,
       "profile_url": "https://github.com/sguilhen"
     },
     {
       "login": "martin-kanis",
       "name": "Martin Kanis",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno",
       "email": null,
-      "contributions": 294,
+      "contributions": 295,
       "profile_url": "https://github.com/martin-kanis"
     },
     {
@@ -282,6 +282,15 @@
       "profile_url": "https://github.com/jenmalloy"
     },
     {
+      "login": "pruivo",
+      "name": "Pedro Ruivo",
+      "company": "Ibm",
+      "location": "Lisbon",
+      "email": null,
+      "contributions": 222,
+      "profile_url": "https://github.com/pruivo"
+    },
+    {
       "login": "andymunro",
       "name": null,
       "company": "Unknown",
@@ -289,15 +298,6 @@
       "email": null,
       "contributions": 221,
       "profile_url": "https://github.com/andymunro"
-    },
-    {
-      "login": "pruivo",
-      "name": "Pedro Ruivo",
-      "company": "IBM",
-      "location": "Lisbon",
-      "email": null,
-      "contributions": 221,
-      "profile_url": "https://github.com/pruivo"
     },
     {
       "login": "tnorimat",
@@ -323,13 +323,13 @@
       "company": "Unknown",
       "location": "Czechia",
       "email": null,
-      "contributions": 171,
+      "contributions": 173,
       "profile_url": "https://github.com/tkyjovsk"
     },
     {
       "login": "graziang",
       "name": "Giuseppe Graziano",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": "g.graziano94@gmail.com",
       "contributions": 166,
@@ -365,7 +365,7 @@
     {
       "login": "ryanemerson",
       "name": "Ryan Emerson",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": null,
       "contributions": 127,
@@ -410,7 +410,7 @@
     {
       "login": "abstractj",
       "name": "Bruno Oliveira da Silva",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Down the rabbit hole ",
       "email": "bruno@abstractj.com",
       "contributions": 104,
@@ -428,7 +428,7 @@
     {
       "login": "andreaTP",
       "name": "Andrea Peruffo",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Lisbon",
       "email": "andrea.peruffo1982@gmail.com",
       "contributions": 92,
@@ -446,7 +446,7 @@
     {
       "login": "pskopek",
       "name": "Peter Skopek",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno",
       "email": null,
       "contributions": 68,
@@ -455,7 +455,7 @@
     {
       "login": "tdiesler",
       "name": "Thomas Diesler",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": "tdiesler@ibm.com",
       "contributions": 62,
@@ -482,7 +482,7 @@
     {
       "login": "vaceksimon",
       "name": "\u0160imon Vacek",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno, Czechia",
       "email": null,
       "contributions": 58,
@@ -797,7 +797,7 @@
     {
       "login": "jimmychakkalakal",
       "name": null,
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Dublin",
       "email": null,
       "contributions": 20,
@@ -811,6 +811,15 @@
       "email": null,
       "contributions": 19,
       "profile_url": "https://github.com/sventorben"
+    },
+    {
+      "login": "gaoyikeshuer",
+      "name": "Yike Gao",
+      "company": "Ibm",
+      "location": "Dublin",
+      "email": null,
+      "contributions": 19,
+      "profile_url": "https://github.com/gaoyikeshuer"
     },
     {
       "login": "ammendonca",
@@ -829,15 +838,6 @@
       "email": null,
       "contributions": 18,
       "profile_url": "https://github.com/keycloak-packages"
-    },
-    {
-      "login": "gaoyikeshuer",
-      "name": "Yike Gao",
-      "company": "IBM",
-      "location": "Dublin",
-      "email": null,
-      "contributions": 18,
-      "profile_url": "https://github.com/gaoyikeshuer"
     },
     {
       "login": "drichtarik",
@@ -995,7 +995,7 @@
     {
       "login": "pedro-hos",
       "name": "Pedro Hos",
-      "company": "IBM Software Labs",
+      "company": "Ibm Software Labs",
       "location": "S\u00e3o Jos\u00e9 dos Campos, BR",
       "email": "pesilva@redhat.com",
       "contributions": 13,
@@ -1130,7 +1130,7 @@
     {
       "login": "grgrzybek",
       "name": "Grzegorz Grzybek",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Wroc\u0142aw",
       "email": "gr.grzybek@gmail.com",
       "contributions": 11,
@@ -1166,7 +1166,7 @@
     {
       "login": "vibe13",
       "name": "Andrea Vibelli",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Milan",
       "email": null,
       "contributions": 10,
@@ -1553,7 +1553,7 @@
     {
       "login": "pacostas",
       "name": "Costas Papastathis",
-      "company": "IBM / Red Hat",
+      "company": "Ibm / Red Hat",
       "location": "Madrid",
       "email": "papastathiscr@gmail.com",
       "contributions": 7,
@@ -1731,6 +1731,15 @@
       "profile_url": "https://github.com/foliengriller"
     },
     {
+      "login": "dominikschlosser",
+      "name": "Dominik Schlosser",
+      "company": "Unknown",
+      "location": null,
+      "email": "Dominik.Schlosser@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/dominikschlosser"
+    },
+    {
       "login": "dario-campagna",
       "name": "Dario Campagna",
       "company": "Unknown",
@@ -1778,20 +1787,11 @@
     {
       "login": "jfdenise",
       "name": "Jean-Fran\u00e7ois Denise ",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "France, Grenoble",
       "email": "jfdenise@ibm.com",
       "contributions": 5,
       "profile_url": "https://github.com/jfdenise"
-    },
-    {
-      "login": "dominikschlosser",
-      "name": "Dominik Schlosser",
-      "company": "Unknown",
-      "location": null,
-      "email": "Dominik.Schlosser@gmail.com",
-      "contributions": 5,
-      "profile_url": "https://github.com/dominikschlosser"
     },
     {
       "login": "bdovaz",
@@ -2923,7 +2923,7 @@
   "companies": {
     "Unknown": 146,
     "Red Hat": 39,
-    "IBM": 21,
+    "Ibm": 21,
     "Red Hat, Inc.": 3,
     "Hitachi, Ltd.": 3,
     "Adorsys": 2,
@@ -2959,7 +2959,7 @@
     "Netceteragroup": 1,
     "Pelton Interactive": 1,
     "Fiware": 1,
-    "IBM Software Labs": 1,
+    "Ibm Software Labs": 1,
     "M13T": 1,
     "Vercel": 1,
     "Goodbytes": 1,
@@ -2973,7 +2973,7 @@
     "Red Hat Inc.": 1,
     "Agoda Company Pte Ltd.": 1,
     "Snovon": 1,
-    "IBM / Red Hat": 1,
+    "Ibm / Red Hat": 1,
     "Ai-Trust Zt Gmbh": 1,
     "Goto-Opensource": 1,
     "Xataio": 1,
@@ -3040,7 +3040,7 @@
         "contributor_count": 39
       },
       {
-        "company": "IBM",
+        "company": "Ibm",
         "contributor_count": 21
       },
       {
@@ -3179,20 +3179,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 388,
-      "new_contributors": 224,
-      "returning_contributors": 164,
-      "retention_rate": 42.27
+      "active_contributors": 379,
+      "new_contributors": 221,
+      "returning_contributors": 158,
+      "retention_rate": 41.69
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 148,
-      "new_contributors": 40,
-      "returning_contributors": 108,
-      "retention_rate": 72.97
+      "active_contributors": 184,
+      "new_contributors": 51,
+      "returning_contributors": 133,
+      "retention_rate": 72.28
     }
   ],
   "retention_by_year": [
@@ -3344,10 +3344,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 586,
-      "new_contributors": 424,
-      "returning_contributors": 162,
-      "retention_rate": 27.65,
+      "active_contributors": 595,
+      "new_contributors": 432,
+      "returning_contributors": 163,
+      "retention_rate": 27.39,
       "is_current": true
     }
   ],

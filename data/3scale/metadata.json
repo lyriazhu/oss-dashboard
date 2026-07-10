@@ -5,7 +5,7 @@
   "created_at": "2018-11-21T16:11:35+00:00",
   "updated_at": "2026-06-19T08:49:57+00:00",
   "stars": 49,
-  "forks": 101,
+  "forks": 100,
   "watchers": 49,
   "open_issues": 21,
   "language": "Go",
@@ -26,7 +26,7 @@
       "percentage": 0.48
     },
     {
-      "company": "IBM",
+      "company": "Ibm",
       "commits": 7,
       "percentage": 0.28
     },
@@ -56,5 +56,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-08T10:00:15.985398"
+  "extracted_at": "2026-07-10T11:44:58.972153"
 }

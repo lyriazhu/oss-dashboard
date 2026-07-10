@@ -1,0 +1,76 @@
+{
+  "name": "quarkus",
+  "full_name": "quarkusio/quarkus",
+  "description": "Quarkus: Supersonic Subatomic Java. ",
+  "created_at": "2018-07-06T00:44:20+00:00",
+  "updated_at": "2026-07-10T15:47:52+00:00",
+  "stars": 15767,
+  "forks": 3234,
+  "watchers": 15767,
+  "open_issues": 2832,
+  "language": "Java",
+  "topics": [
+    "kubernetes",
+    "java",
+    "cloud-native",
+    "reactive",
+    "hacktoberfest"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://quarkus.io",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 40460,
+      "percentage": 76.96
+    },
+    {
+      "company": "Red Hat",
+      "commits": 4645,
+      "percentage": 8.84
+    },
+    {
+      "company": "Block",
+      "commits": 2619,
+      "percentage": 4.98
+    },
+    {
+      "company": "Ibm - @Hibernate",
+      "commits": 1426,
+      "percentage": 2.71
+    },
+    {
+      "company": "Kestra-Io",
+      "commits": 464,
+      "percentage": 0.88
+    },
+    {
+      "company": "Cyber Ranges",
+      "commits": 452,
+      "percentage": 0.86
+    },
+    {
+      "company": "Jboss By Red Hat By Ibm",
+      "commits": 415,
+      "percentage": 0.79
+    },
+    {
+      "company": "Zenika",
+      "commits": 337,
+      "percentage": 0.64
+    },
+    {
+      "company": "Ibm, @Commonhaus",
+      "commits": 263,
+      "percentage": 0.5
+    },
+    {
+      "company": "Dremio",
+      "commits": 83,
+      "percentage": 0.16
+    }
+  ],
+  "extracted_at": "2026-07-10T11:54:23.012715"
+}
