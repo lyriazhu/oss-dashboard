@@ -313,7 +313,11 @@ export default function App() {
             onRefreshAll={handleRefreshAll}
           />
         ) : (
-          <Detail d={data[selectedKey]} onOverview={showOverview} />
+          <Detail
+            d={data[selectedKey]}
+            onOverview={showOverview}
+            onRefreshProject={(id, name) => setExtracting({ id, name })}
+          />
         )}
       </div>
 

@@ -236,13 +236,54 @@ public class ProjectController {
     }
 
     /**
+     * POST /api/projects/{projectId}/extract
+     * Trigger data extraction for a single existing project.
+     * Accepts an optional JSON body { "token": "ghp_..." } to set/refresh the GitHub token
+     * before extraction starts, so callers don't have to make a separate token-save call.
+     * Returns immediately; progress is streamed via the extraction-progress SSE endpoint.
+     */
+    @PostMapping("/{projectId}/extract")
+    public ResponseEntity<java.util.Map<String, Object>> extractProject(
+            @PathVariable String projectId,
+            @RequestBody(required = false) java.util.Map<String, String> body) {
+        try {
+            if (body != null) {
+                String token = body.get("token");
+                if (token != null && !token.isBlank()) {
+                    dataService.getSettingsService().setGithubToken(token.strip());
+                }
+            }
+            dataService.triggerDataExtraction(projectId);
+            return ResponseEntity.ok(java.util.Map.of("started", projectId));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(java.util.Map.of("error", e.getMessage()));
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(java.util.Map.of("error", e.getMessage()));
+        } catch (Exception e) {
+            log.error("Error starting extraction for project: {}", projectId, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(java.util.Map.of("error", "Failed to start extraction"));
+        }
+    }
+
+    /**
      * POST /api/projects/refresh-all
      * Trigger data extraction for every project on the dashboard, one after another.
+     * Accepts an optional JSON body { "token": "ghp_..." } to set/refresh the GitHub token.
      * Returns immediately with the ordered list of project IDs that will be refreshed.
      */
     @PostMapping("/refresh-all")
-    public ResponseEntity<java.util.Map<String, Object>> refreshAll() {
+    public ResponseEntity<java.util.Map<String, Object>> refreshAll(
+            @RequestBody(required = false) java.util.Map<String, String> body) {
         try {
+            if (body != null) {
+                String token = body.get("token");
+                if (token != null && !token.isBlank()) {
+                    dataService.getSettingsService().setGithubToken(token.strip());
+                }
+            }
             List<Project> projects = dataService.getAllProjects();
             List<String> ids = projects.stream().map(Project::getId).collect(java.util.stream.Collectors.toList());
             if (ids.isEmpty()) {

@@ -49,6 +49,10 @@ public class DataService {
     private final ConcurrentHashMap<String, Boolean> extractionRunning =
         new ConcurrentHashMap<>();
 
+    public SettingsService getSettingsService() {
+        return settingsService;
+    }
+
     public List<String> getExtractionLogs(String projectId) {
         return extractionLogs.getOrDefault(projectId, new CopyOnWriteArrayList<>());
     }

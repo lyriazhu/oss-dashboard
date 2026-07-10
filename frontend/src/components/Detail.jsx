@@ -1,6 +1,108 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MONTHS } from "../data.js";
 import { Tag, Tile, BarChart, StackedBarChart } from "./ui.jsx";
+import { saveGithubToken, getSavedToken, triggerProjectExtraction } from "../api.js";
+
+function RefreshProjectModal({ open, onClose, onConfirm, projectName, projectId }) {
+  const [token, setToken]     = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      setToken(getSavedToken() || "");
+      setError(null);
+      setLoading(false);
+      setTimeout(() => inputRef.current?.focus(), 0);
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  async function submit() {
+    if (!token.trim()) { setError("A GitHub token is required."); return; }
+    setError(null);
+    setLoading(true);
+    try {
+      await saveGithubToken(token.trim());                    // persist to localStorage + backend memory
+      await triggerProjectExtraction(projectId, token.trim()); // also sent in body as safety net
+      onClose();
+      onConfirm();
+    } catch (err) {
+      setError(err.message || "Failed to start extraction.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="refreshProjModalTitle"
+      onClick={(e) => { if (e.target.classList.contains("modal-overlay")) onClose(); }}
+    >
+      <div className="modal">
+        <div className="modal-header">
+          <h2 className="modal-title" id="refreshProjModalTitle">Refresh "{projectName}"</h2>
+          <p className="modal-sub">
+            Re-extract data for this project from GitHub. Enter your personal access token to authenticate.
+          </p>
+          <button className="modal-close" aria-label="Close" onClick={onClose}>
+            <svg viewBox="0 0 32 32" fill="currentColor">
+              <path d="M24 9.4 22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6z" />
+            </svg>
+          </button>
+        </div>
+        <div className="modal-body">
+          <div className={"field" + (error ? " show-err" : "")}>
+            <label htmlFor="i-refresh-proj-token">Personal access token</label>
+            <input
+              id="i-refresh-proj-token"
+              ref={inputRef}
+              type="password"
+              placeholder="ghp_..."
+              autoComplete="off"
+              spellCheck="false"
+              className={error ? "invalid" : ""}
+              value={token}
+              disabled={loading}
+              onChange={(e) => setToken(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
+            />
+            {error && <div className="err">{error}</div>}
+          </div>
+          <p className="field-help">
+            Needs at least <code>public_repo</code> read access.{" "}
+            <a
+              href="https://github.com/settings/tokens/new?description=oss-dashboard&scopes=public_repo"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "var(--link)" }}
+            >
+              Create one on GitHub ↗
+            </a>
+          </p>
+        </div>
+        <div className="modal-footer">
+          <button className="btn-cancel" onClick={onClose} disabled={loading}>Cancel</button>
+          <button className="btn-add" onClick={submit} disabled={loading}>
+            {loading ? "Saving…" : "Refresh project"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const SEV_ORDER = { critical: 0, high: 1, medium: 2, moderate: 2, low: 3, unknown: 4 };
 const SEV_COLOR = {
@@ -238,7 +340,7 @@ function ControlRow({ control }) {
   );
 }
 
-export default function Detail({ d, onOverview }) {
+export default function Detail({ d, onOverview, onRefreshProject }) {
   const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
   const [showPRMonthly, setShowPRMonthly] = useState(true);
   const [showIssueMonthly, setShowIssueMonthly] = useState(true);
@@ -246,9 +348,17 @@ export default function Detail({ d, onOverview }) {
   const [showAllAdopters, setShowAllAdopters] = useState(false);
   const [showCveMonthly, setShowCveMonthly] = useState(false);
   const [showAllCves, setShowAllCves] = useState(false);
-  
+  const [refreshModalOpen, setRefreshModalOpen] = useState(false);
+
   return (
     <main>
+      <RefreshProjectModal
+        open={refreshModalOpen}
+        onClose={() => setRefreshModalOpen(false)}
+        onConfirm={() => onRefreshProject?.(d.id, d.name)}
+        projectName={d.name}
+        projectId={d.id}
+      />
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <button onClick={onOverview}>Overview</button>
         <span className="sep">/</span>
@@ -258,6 +368,17 @@ export default function Detail({ d, onOverview }) {
       <div className="title-row">
         <h1 className="page-title">{d.name}</h1>
         <Tag cls={d.status.cls} label={d.status.label} />
+        <button
+          className="btn-refresh"
+          aria-label={`Refresh ${d.name}`}
+          onClick={() => setRefreshModalOpen(true)}
+          style={{ marginLeft: "auto" }}
+        >
+          <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16" aria-hidden="true">
+            <path d="M12 10H6.78A11 11 0 0 1 27 16a1 1 0 0 0 2 0A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16a1 1 0 0 0-2 0 13 13 0 0 0 23 8.32V28h2v-8h-8z"/>
+          </svg>
+          Refresh project
+        </button>
       </div>
       <p className="meta-line">
         <span>{d.foundation}</span>

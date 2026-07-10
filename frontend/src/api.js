@@ -96,11 +96,35 @@ export async function removeProject(projectId) {
 }
 
 /**
+ * Trigger data extraction for a single existing project.
+ * Pass the GitHub token so the backend sets it atomically before starting extraction,
+ * which avoids "token not found" errors caused by backend restarts clearing in-memory state.
+ * Returns { started: projectId }.
+ */
+export async function triggerProjectExtraction(projectId, token) {
+  const response = await fetch(`${API_BASE}/projects/${projectId}/extract`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: token || getSavedToken() || '' }),
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || `Failed to start extraction (HTTP ${response.status})`);
+  }
+  return response.json();
+}
+
+/**
  * Trigger a full dashboard refresh: re-extract data for every project.
+ * Pass the GitHub token so the backend sets it atomically before starting extraction.
  * Returns { started: [projectId, ...] }.
  */
-export async function refreshAllProjects() {
-  const response = await fetch(`${API_BASE}/projects/refresh-all`, { method: 'POST' });
+export async function refreshAllProjects(token) {
+  const response = await fetch(`${API_BASE}/projects/refresh-all`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: token || getSavedToken() || '' }),
+  });
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
     throw new Error(err.error || `Failed to start refresh (HTTP ${response.status})`);

@@ -40,8 +40,8 @@ function RefreshModal({ open, onClose, onStarted }) {
     setError(null);
     setLoading(true);
     try {
-      await saveGithubToken(token.trim());
-      const result = await refreshAllProjects();
+      await saveGithubToken(token.trim());          // persist to localStorage + backend memory
+      const result = await refreshAllProjects(token.trim()); // also sent in body as safety net
       onClose();
       onStarted(result.started || []);
     } catch (err) {
