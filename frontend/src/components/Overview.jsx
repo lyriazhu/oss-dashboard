@@ -760,8 +760,7 @@ export default function Overview({
       </div>
 
       <p className="foot">
-        Wireframe — illustrative data only · Click any community row to view project-specific metrics · Data
-        via GitHub REST + GraphQL APIs
+        Click any community row to view project-specific metrics · Data sources: GitHub REST &amp; GraphQL APIs · Git History · GitHub Issues · Jira · GitHub Security Advisories · GitHub Advisory Database
       </p>
 
       {confirmOpen && (
