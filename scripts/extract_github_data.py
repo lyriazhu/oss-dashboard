@@ -1573,8 +1573,76 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting pull requests: {e}")
             return {}
     
+    # Regex patterns that identify a stable (non-prerelease) git tag.
+    # Each pattern is tried in order; the first match wins.
+    # Groups are not required — the pattern just needs to match the whole tag name.
+    _STABLE_TAG_PATTERNS = [
+        # camel-X.Y.Z  (Apache Camel)
+        r"^camel-\d+\.\d+\.\d+$",
+        # vX.Y.Z.Final  (Debezium and similar JBoss/Red Hat projects)
+        r"^v\d+\.\d+\.\d+\.Final$",
+        # X.Y.Z  (bare semver — Artemis, Tomcat, Kroxylicious, …)
+        r"^\d+\.\d+\.\d+$",
+    ]
+
+    @staticmethod
+    def _is_stable_tag(tag_name: str) -> bool:
+        """Return True if tag_name matches any known stable-release pattern."""
+        import re
+        for pattern in GitHubDataExtractor._STABLE_TAG_PATTERNS:
+            if re.match(pattern, tag_name):
+                return True
+        return False
+
+    def _releases_from_tags(self, repository, existing_tags: set) -> tuple:
+        """
+        Fall back to git tags when the repo doesn't use GitHub Releases.
+        Returns (release_list, total_count, new_count).
+        Fetches up to 100 tags, keeps the 20 most recent stable ones.
+        """
+        import re
+        print(f"  ℹ️  No GitHub Releases found — falling back to git tags")
+        release_list = []
+        total_count = 0
+
+        # PyGitHub's get_tags() returns a PaginatedList; fetch first 100 to find 20 stable ones
+        try:
+            tags = repository.get_tags()
+            for tag in tags:
+                if total_count >= 100:
+                    break
+                total_count += 1
+                if not self._is_stable_tag(tag.name):
+                    continue
+                if tag.name in existing_tags:
+                    continue
+                # Resolve the tag date via the commit it points to
+                try:
+                    commit_date = tag.commit.commit.committer.date
+                    published_at = self._safe_isoformat(commit_date)
+                except Exception:
+                    published_at = None
+
+                release_list.append({
+                    "tag_name": tag.name,
+                    "name": tag.name,
+                    "published_at": published_at,
+                    "prerelease": False,
+                    "draft": False,
+                })
+                if len(release_list) >= 20:
+                    break
+        except GithubException as e:
+            print(f"  ⚠️  Could not fetch tags: {e}")
+
+        new_count = len(release_list)
+        # total_count here is tags iterated, not a precise all-time total;
+        # use len(release_list) as a minimum floor so the field is non-zero.
+        return release_list, max(new_count, total_count), new_count
+
     def extract_releases(self, owner: str, repo: str, project_name: str) -> Dict[str, Any]:
-        """Extract release information and cadence summary with incremental updates"""
+        """Extract release information and cadence summary with incremental updates.
+        Falls back to git tags for repos that don't publish GitHub Releases."""
         print(f"🚀 Extracting releases for {owner}/{repo}...")
         
         try:
@@ -1589,48 +1657,54 @@ class GitHubDataExtractor:
             release_list = existing_data.get("recent_releases", [])
             existing_tags = {r["tag_name"] for r in release_list}
             
-            published_dates = []
             new_releases_count = 0
+            total_releases_count = releases.totalCount
 
-            # For incremental updates, only process new releases
-            if last_extracted_at:
-                print(f"  ℹ️  Incremental update: checking for new releases since {last_extracted_at}")
-                last_extracted_date = datetime.fromisoformat(last_extracted_at)
+            if releases.totalCount == 0:
+                # Repo doesn't use GitHub Releases — fall back to stable git tags
+                new_tag_entries, total_releases_count, new_releases_count = self._releases_from_tags(
+                    repository, existing_tags
+                )
+                for entry in new_tag_entries:
+                    release_list.insert(0, entry)
             else:
-                print(f"  ℹ️  Initial extraction: fetching all releases")
-                last_extracted_date = None
+                # For incremental updates, only process new releases
+                if last_extracted_at:
+                    print(f"  ℹ️  Incremental update: checking for new releases since {last_extracted_at}")
+                    last_extracted_date = datetime.fromisoformat(last_extracted_at)
+                else:
+                    print(f"  ℹ️  Initial extraction: fetching all releases")
+                    last_extracted_date = None
 
-            release_count = 0
-            for release in releases:
-                # Stop after checking enough releases
-                if release_count >= 20 and last_extracted_date:
-                    break
-                
-                # Skip if we already have this release
-                if release.tag_name in existing_tags:
-                    release_count += 1
-                    continue
-                
-                # For incremental updates, stop when we reach old releases
-                if last_extracted_date and release.published_at:
-                    release_published = release.published_at.replace(tzinfo=None) if release.published_at.tzinfo else release.published_at
-                    if release_published < last_extracted_date:
+                release_count = 0
+                for release in releases:
+                    # Stop after checking enough releases
+                    if release_count >= 20 and last_extracted_date:
                         break
                     
-                published_at = self._safe_isoformat(release.published_at)
-                if release.published_at:
-                    published_dates.append(release.published_at)
+                    # Skip if we already have this release
+                    if release.tag_name in existing_tags:
+                        release_count += 1
+                        continue
+                    
+                    # For incremental updates, stop when we reach old releases
+                    if last_extracted_date and release.published_at:
+                        release_published = release.published_at.replace(tzinfo=None) if release.published_at.tzinfo else release.published_at
+                        if release_published < last_extracted_date:
+                            break
+                        
+                    published_at = self._safe_isoformat(release.published_at)
 
-                release_info = {
-                    "tag_name": release.tag_name,
-                    "name": release.title,
-                    "published_at": published_at,
-                    "prerelease": release.prerelease,
-                    "draft": release.draft
-                }
-                release_list.insert(0, release_info)  # Add to beginning to maintain order
-                new_releases_count += 1
-                release_count += 1
+                    release_info = {
+                        "tag_name": release.tag_name,
+                        "name": release.title,
+                        "published_at": published_at,
+                        "prerelease": release.prerelease,
+                        "draft": release.draft
+                    }
+                    release_list.insert(0, release_info)  # Add to beginning to maintain order
+                    new_releases_count += 1
+                    release_count += 1
 
             # Keep only the most recent 20 releases
             release_list = release_list[:20]
@@ -1639,7 +1713,7 @@ class GitHubDataExtractor:
             published_dates = []
             for release_info in release_list:
                 if release_info["published_at"]:
-                    published_dates.append(datetime.fromisoformat(release_info["published_at"].replace('+00:00', '')))
+                    published_dates.append(datetime.fromisoformat(release_info["published_at"].replace('+00:00', '').replace('Z', '')))
             
             cadence_days = []
             sorted_dates = sorted([dt for dt in published_dates if dt], reverse=True)
@@ -1647,7 +1721,7 @@ class GitHubDataExtractor:
                 cadence_days.append((sorted_dates[i] - sorted_dates[i + 1]).days)
             
             releases_data = {
-                "total_releases": releases.totalCount,
+                "total_releases": total_releases_count,
                 "recent_releases": release_list,
                 "avg_days_between_releases": (
                     round(sum(cadence_days) / len(cadence_days), 2) if cadence_days else None

@@ -25,9 +25,9 @@
   }, {
     "id" : "artemis",
     "name" : "Apache Artemis",
-    "github_url" : "https://github.com/apache/artemis",
+    "github_url" : "https://github.com/apache/activemq-artemis",
     "owner" : "apache",
-    "repo" : "artemis",
+    "repo" : "activemq-artemis",
     "foundation" : "Apache Software Foundation",
     "website" : "https://activemq.apache.org/components/artemis/",
     "data_dir" : "apache-artemis",
