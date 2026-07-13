@@ -54,9 +54,10 @@ export default function SideNav({ data, order, selectedKey, collapsed, onSelect,
                     <span className="nav-remove-label">Remove?</span>
                   ) : (
                     <svg viewBox="0 0 32 32" fill="currentColor" width="14" height="14" aria-hidden="true">
-                      <path d="M12 12h2v11h-2zm6 0h2v11h-2z"/>
-                      <path d="M4 6v2h2l2 20h16l2-20h2V6zm4.64 20L8.98 8h14.04l-.66 18z"/>
-                      <path d="M11 2h10v2H11z"/>
+                      <rect x="12" y="12" width="2" height="12"/>
+                      <rect x="18" y="12" width="2" height="12"/>
+                      <path d="M4,6V8H6V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V8h2V6ZM8,28V8H24V28Z"/>
+                      <rect x="12" y="2" width="8" height="2"/>
                     </svg>
                   )}
                 </button>
