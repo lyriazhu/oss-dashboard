@@ -1,28 +1,147 @@
 {
   "total_releases": 20,
   "recent_releases": [
-    {"tag_name": "camel-4.21.0", "name": "camel-4.21.0", "published_at": "2026-06-26T22:37:35Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.20.0", "name": "camel-4.20.0", "published_at": "2026-04-23T16:13:44Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.19.0", "name": "camel-4.19.0", "published_at": "2026-04-12T16:22:59Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.18.3", "name": "camel-4.18.3", "published_at": "2026-06-28T09:36:29Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.18.2", "name": "camel-4.18.2", "published_at": "2026-04-15T11:12:50Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.18.1", "name": "camel-4.18.1", "published_at": "2026-03-23T15:25:05Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.18.0", "name": "camel-4.18.0", "published_at": "2026-02-13T13:06:09Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.17.0", "name": "camel-4.17.0", "published_at": "2026-01-08T14:12:52Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.16.0", "name": "camel-4.16.0", "published_at": "2025-11-01T10:16:52Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.15.0", "name": "camel-4.15.0", "published_at": "2025-10-03T13:53:34Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.14.0", "name": "camel-4.14.0", "published_at": "2025-08-15T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.13.0", "name": "camel-4.13.0", "published_at": "2025-07-01T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.12.0", "name": "camel-4.12.0", "published_at": "2025-05-15T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.11.0", "name": "camel-4.11.0", "published_at": "2025-04-01T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.10.0", "name": "camel-4.10.0", "published_at": "2025-02-15T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.9.0",  "name": "camel-4.9.0",  "published_at": "2025-01-01T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.8.0",  "name": "camel-4.8.0",  "published_at": "2024-11-15T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.7.0",  "name": "camel-4.7.0",  "published_at": "2024-10-01T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.6.0",  "name": "camel-4.6.0",  "published_at": "2024-08-15T00:00:00Z", "prerelease": false, "draft": false},
-    {"tag_name": "camel-4.5.0",  "name": "camel-4.5.0",  "published_at": "2024-07-01T00:00:00Z", "prerelease": false, "draft": false}
+    {
+      "tag_name": "camel-4.21.0",
+      "name": "camel-4.21.0",
+      "published_at": "2026-06-26T22:37:35Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.20.0",
+      "name": "camel-4.20.0",
+      "published_at": "2026-04-23T16:13:44Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.19.0",
+      "name": "camel-4.19.0",
+      "published_at": "2026-04-12T16:22:59Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.18.3",
+      "name": "camel-4.18.3",
+      "published_at": "2026-06-28T09:36:29Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.18.2",
+      "name": "camel-4.18.2",
+      "published_at": "2026-04-15T11:12:50Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.18.1",
+      "name": "camel-4.18.1",
+      "published_at": "2026-03-23T15:25:05Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.18.0",
+      "name": "camel-4.18.0",
+      "published_at": "2026-02-13T13:06:09Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.17.0",
+      "name": "camel-4.17.0",
+      "published_at": "2026-01-08T14:12:52Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.16.0",
+      "name": "camel-4.16.0",
+      "published_at": "2025-11-01T10:16:52Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.15.0",
+      "name": "camel-4.15.0",
+      "published_at": "2025-10-03T13:53:34Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.8",
+      "name": "camel-4.14.8",
+      "published_at": "2026-06-28T19:34:38Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.7",
+      "name": "camel-4.14.7",
+      "published_at": "2026-04-23T06:29:45Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.6",
+      "name": "camel-4.14.6",
+      "published_at": "2026-04-14T12:12:54Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.5",
+      "name": "camel-4.14.5",
+      "published_at": "2026-02-07T18:47:56Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.4",
+      "name": "camel-4.14.4",
+      "published_at": "2026-01-05T19:04:17Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.3",
+      "name": "camel-4.14.3",
+      "published_at": "2025-12-21T16:57:54Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.2",
+      "name": "camel-4.14.2",
+      "published_at": "2025-10-28T13:18:54Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.1",
+      "name": "camel-4.14.1",
+      "published_at": "2025-09-26T11:21:44Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.14.0",
+      "name": "camel-4.14.0",
+      "published_at": "2025-08-15T12:29:04Z",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "camel-4.13.0",
+      "name": "camel-4.13.0",
+      "published_at": "2025-07-04T13:43:12Z",
+      "prerelease": false,
+      "draft": false
+    }
   ],
-  "avg_days_between_releases": 18.75,
-  "release_frequency": "high",
-  "extracted_at": "2026-07-13T15:30:00.000000"
+  "median_days_between_releases": 7,
+  "extracted_at": "2026-07-13T16:08:46.936222"
 }

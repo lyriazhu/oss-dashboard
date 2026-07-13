@@ -142,7 +142,6 @@
       "draft": false
     }
   ],
-  "avg_days_between_releases": 9.16,
-  "release_frequency": "high",
-  "extracted_at": "2026-07-13T09:12:21.513499"
+  "extracted_at": "2026-07-13T09:12:21.513499",
+  "median_days_between_releases": 7
 }

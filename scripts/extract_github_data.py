@@ -1723,13 +1723,8 @@ class GitHubDataExtractor:
             releases_data = {
                 "total_releases": total_releases_count,
                 "recent_releases": release_list,
-                "avg_days_between_releases": (
-                    round(sum(cadence_days) / len(cadence_days), 2) if cadence_days else None
-                ),
-                "release_frequency": (
-                    "high" if cadence_days and (sum(cadence_days) / len(cadence_days)) <= 30 else
-                    "medium" if cadence_days and (sum(cadence_days) / len(cadence_days)) <= 90 else
-                    "low" if cadence_days else None
+                "median_days_between_releases": (
+                    round(statistics.median(cadence_days), 2) if cadence_days else None
                 ),
                 "extracted_at": datetime.now().isoformat()
             }

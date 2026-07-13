@@ -14,6 +14,7 @@ Usage:
 import json
 import os
 import re
+import statistics
 import sys
 import time
 import urllib.request
@@ -92,7 +93,7 @@ def fetch_stable_tags(owner, repo, pattern, max_stable=20):
     return results
 
 
-def cadence_and_frequency(release_list):
+def cadence_and_median(release_list):
     dates = []
     for r in release_list:
         if r.get("published_at"):
@@ -103,12 +104,10 @@ def cadence_and_frequency(release_list):
             except ValueError:
                 pass
     if len(dates) < 2:
-        return None, None
+        return None
     sorted_dates = sorted(dates, reverse=True)
     gaps = [(sorted_dates[i] - sorted_dates[i + 1]).days for i in range(len(sorted_dates) - 1)]
-    avg = sum(gaps) / len(gaps)
-    freq = "high" if avg <= 30 else "medium" if avg <= 90 else "low"
-    return round(avg, 2), freq
+    return round(statistics.median(gaps), 2)
 
 
 def main():
@@ -120,19 +119,18 @@ def main():
         print(f"Backfilling {owner}/{repo}  →  data/{data_dir}/releases.json")
         try:
             release_list = fetch_stable_tags(owner, repo, pattern)
-            avg_days, frequency = cadence_and_frequency(release_list)
+            median_days = cadence_and_median(release_list)
             out = {
                 "total_releases": len(release_list),
                 "recent_releases": release_list,
-                "avg_days_between_releases": avg_days,
-                "release_frequency": frequency,
+                "median_days_between_releases": median_days,
                 "extracted_at": datetime.now().isoformat(),
             }
             out_path = DATA_DIR / data_dir / "releases.json"
             out_path.parent.mkdir(parents=True, exist_ok=True)
             with open(out_path, "w") as f:
                 json.dump(out, f, indent=2)
-            print(f"  ✓ {len(release_list)} releases, avg {avg_days} days, frequency={frequency}")
+            print(f"  ✓ {len(release_list)} releases, median {median_days} days")
             print(f"  Saved → {out_path}")
         except Exception as e:
             print(f"  ❌ Error: {e}")

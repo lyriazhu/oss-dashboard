@@ -757,17 +757,9 @@ export function transformProjectData(project, metrics) {
 
   // Derive a human-readable release cadence label
   const releaseFrequencyLabel = (() => {
-    const freq = releases?.release_frequency || releases?.releaseFrequency;
-    if (freq === 'high') return 'Releases are typically weekly';
-    if (freq === 'medium') return 'Releases are typically monthly';
-    if (freq === 'low') return 'Releases are typically quarterly';
-    // Fallback: derive from avg_days_between_releases when release_frequency is null
-    const avgDays = releases?.avg_days_between_releases ?? releases?.avgDaysBetweenReleases;
-    if (avgDays != null) {
-      if (avgDays <= 14) return 'Releases are typically weekly';
-      if (avgDays <= 45) return 'Releases are typically monthly';
-      if (avgDays <= 120) return 'Releases are typically quarterly';
-      return 'Releases are typically annual';
+    const medianDays = releases?.median_days_between_releases ?? releases?.medianDaysBetweenReleases;
+    if (medianDays != null) {
+      return `Median release cadence: ${Math.round(medianDays)} days`;
     }
     return null;
   })();
