@@ -672,11 +672,10 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
                       <h2 className="section-h" style={{ margin: 0 }}>CVE List</h2>
                       {allCves.length > 5 && (
                         <button
-                          className="btn-secondary"
+                          className="btn-refresh"
                           onClick={() => setShowAllCves((s) => !s)}
-                          style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
                         >
-                          {showAllCves ? 'Show fewer' : 'Show all'}
+                          {showAllCves ? 'Show less' : 'Show all'}
                         </button>
                       )}
                     </div>
@@ -735,11 +734,10 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             </h2>
             {cleanAdopters.length > 18 && (
               <button
-                className="btn-secondary"
+                className="btn-refresh"
                 onClick={() => setShowAllAdopters((show) => !show)}
-                style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
               >
-                {showAllAdopters ? 'Show fewer' : 'Show all'}
+                {showAllAdopters ? 'Show less' : 'Show all'}
               </button>
             )}
           </div>
