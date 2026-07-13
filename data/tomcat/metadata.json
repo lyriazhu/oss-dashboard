@@ -1,0 +1,76 @@
+{
+  "name": "tomcat",
+  "full_name": "apache/tomcat",
+  "description": "Apache Tomcat",
+  "created_at": "2011-10-01T07:00:19+00:00",
+  "updated_at": "2026-07-11T17:25:21+00:00",
+  "stars": 8199,
+  "forks": 5378,
+  "watchers": 8199,
+  "open_issues": 31,
+  "language": "Java",
+  "topics": [
+    "javaee",
+    "http",
+    "java",
+    "network-server",
+    "tomcat"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://tomcat.apache.org",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 2987,
+      "percentage": 58.31
+    },
+    {
+      "company": "Broadcom - Tanzu",
+      "commits": 1115,
+      "percentage": 21.76
+    },
+    {
+      "company": "Vmware",
+      "commits": 391,
+      "percentage": 7.63
+    },
+    {
+      "company": "Red Hat, Inc.",
+      "commits": 129,
+      "percentage": 2.52
+    },
+    {
+      "company": "Chadis, Inc.",
+      "commits": 128,
+      "percentage": 2.5
+    },
+    {
+      "company": "Ibm / Red Hat",
+      "commits": 114,
+      "percentage": 2.23
+    },
+    {
+      "company": "Apache",
+      "commits": 64,
+      "percentage": 1.25
+    },
+    {
+      "company": "Innomotics",
+      "commits": 57,
+      "percentage": 1.11
+    },
+    {
+      "company": "Woshidaniugroup",
+      "commits": 27,
+      "percentage": 0.53
+    },
+    {
+      "company": "Apache Software Foundation",
+      "commits": 16,
+      "percentage": 0.31
+    }
+  ],
+  "extracted_at": "2026-07-13T08:25:29.081475"
+}

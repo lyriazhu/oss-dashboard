@@ -1,0 +1,28 @@
+{
+  "total_adopters": 3,
+  "adopters": [
+    {
+      "name": "![Confluent",
+      "type": "kroxylicious adopters",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "![Red Hat",
+      "type": "kroxylicious adopters",
+      "description": "",
+      "since": "",
+      "url": null
+    },
+    {
+      "name": "![Shopify",
+      "type": "kroxylicious adopters",
+      "description": "",
+      "since": "",
+      "url": null
+    }
+  ],
+  "extracted_at": "2026-07-13T08:33:43.685535",
+  "source": "https://github.com/kroxylicious/kroxylicious/blob/main/ADOPTERS.md"
+}

@@ -106,6 +106,24 @@
     "data_dir" : "3scale-operator",
     "enabled" : true,
     "github_url" : "https://github.com/3scale/3scale-operator"
+  }, {
+    "id" : "tomcat",
+    "name" : "tomcat",
+    "owner" : "apache",
+    "repo" : "tomcat",
+    "foundation" : "Independent",
+    "enabled" : true,
+    "github_url" : "https://github.com/apache/tomcat",
+    "data_dir" : "tomcat"
+  }, {
+    "id" : "kroxylicious",
+    "name" : "kroxylicious",
+    "owner" : "kroxylicious",
+    "repo" : "kroxylicious",
+    "foundation" : "Independent",
+    "enabled" : true,
+    "github_url" : "https://github.com/kroxylicious/kroxylicious",
+    "data_dir" : "kroxylicious"
   } ],
-  "last_updated" : "2026-07-10T19:19:13.924528Z"
+  "last_updated" : "2026-07-13T12:26:03.377573Z"
 }
