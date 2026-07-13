@@ -374,10 +374,10 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             aria-label={`Refresh ${d.name}`}
             onClick={() => setRefreshModalOpen(true)}
           >
+            Refresh project
             <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16" aria-hidden="true">
               <path d="M12 10H6.78A11 11 0 0 1 27 16a1 1 0 0 0 2 0A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16a1 1 0 0 0-2 0 13 13 0 0 0 23 8.32V28h2v-8h-8z"/>
             </svg>
-            Refresh project
           </button>
           {d.extractedAt && (
             <span style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>
@@ -404,13 +404,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             {showCommitsQuarterly ? 'Commits Per Quarter' : 'Commits Per Year'}
           </h2>
           <button
-            className="btn-secondary"
+            className="btn-refresh"
             onClick={() => setShowCommitsQuarterly(!showCommitsQuarterly)}
-            style={{
-              fontSize: '0.875rem',
-              padding: '0.5rem 1rem',
-              fontFamily: 'inherit'
-            }}
           >
             {showCommitsQuarterly ? 'Show yearly' : 'Show quarterly'}
           </button>
@@ -441,13 +436,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             {showRetentionQuarterly ? 'Contributor Retention Per Quarter' : 'Contributor Retention Per Year'}
           </h2>
           <button
-            className="btn-secondary"
+            className="btn-refresh"
             onClick={() => setShowRetentionQuarterly(!showRetentionQuarterly)}
-            style={{
-              fontSize: '0.875rem',
-              padding: '0.5rem 1rem',
-              fontFamily: 'inherit'
-            }}
           >
             {showRetentionQuarterly ? 'Show yearly' : 'Show quarterly'}
           </button>
@@ -492,16 +482,9 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         <p className="chart-cap">
           Darker bar = current period · Red = New Contributors · Blue = Returning Contributors · {showRetentionQuarterly ? `Last ${d.retentionQuarterly?.length || 0} quarters` : `Since ${d.founded.replace('Founded ', '')}`}
         </p>
-        <p className="chart-cap">
-          {showRetentionQuarterly
-            ? d.retention.cap
-            : (() => {
-                const latestYear = d.retentionYearly?.find((x) => x.c) || d.retentionYearly?.[d.retentionYearly.length - 1];
-                return latestYear
-                  ? `${latestYear.returning || 0} customers were retained in ${latestYear.y} (${latestYear.v || 0}%).`
-                  : 'No yearly retention data available.';
-              })()}
-        </p>
+        {showRetentionQuarterly && (
+          <p className="chart-cap">{d.retention.cap}</p>
+        )}
       </div>
 
       <hr className="divider" />
@@ -561,13 +544,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             {showPRMonthly ? 'New PRs Per Month' : 'New PRs Per Year'}
           </h2>
             <button
-              className="btn-secondary"
+              className="btn-refresh"
               onClick={() => setShowPRMonthly(!showPRMonthly)}
-              style={{
-                fontSize: '0.875rem',
-                padding: '0.5rem 1rem',
-                fontFamily: 'inherit'
-              }}
             >
               {showPRMonthly ? 'Show yearly' : 'Show monthly'}
             </button>
@@ -605,13 +583,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             {showIssueMonthly ? 'Issue Activity Per Month' : 'Issue Activity Per Year'}
           </h2>
             <button
-              className="btn-secondary"
+              className="btn-refresh"
               onClick={() => setShowIssueMonthly(!showIssueMonthly)}
-              style={{
-                fontSize: '0.875rem',
-                padding: '0.5rem 1rem',
-                fontFamily: 'inherit'
-              }}
             >
               {showIssueMonthly ? 'Show yearly' : 'Show monthly'}
             </button>
@@ -662,9 +635,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
               </h2>
               {hasCves && (
                 <button
-                  className="btn-secondary"
+                  className="btn-refresh"
                   onClick={() => setShowCveMonthly(!showCveMonthly)}
-                  style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', fontFamily: 'inherit' }}
                 >
                   {showCveMonthly ? 'Show yearly' : 'Show monthly'}
                 </button>

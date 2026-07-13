@@ -458,10 +458,10 @@ export default function Overview({
             aria-label="Refresh all projects"
             onClick={() => setRefreshModalOpen(true)}
           >
+            Refresh all
             <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16" aria-hidden="true">
               <path d="M12 10H6.78A11 11 0 0 1 27 16a1 1 0 0 0 2 0A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16a1 1 0 0 0-2 0 13 13 0 0 0 23 8.32V28h2v-8h-8z"/>
             </svg>
-            Refresh all
           </button>
           <span>
             Last updated: <b>{lastUpdated}</b>
