@@ -82,7 +82,7 @@
       "location": null,
       "email": "kwall@apache.org",
       "profile_url": null,
-      "commit_count": 2643
+      "commit_count": 2645
     },
     {
       "login": "Tom Bentley",
@@ -271,7 +271,7 @@
       "location": null,
       "email": "kwall@redhat.com",
       "profile_url": null,
-      "commit_count": 53
+      "commit_count": 54
     },
     {
       "login": "Hari",
@@ -838,7 +838,7 @@
       "location": null,
       "email": "mauro.clavoconesa@alum.uca.es",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Geonhyeon Kim",
@@ -1045,7 +1045,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T09:17:07.148557",
+  "extracted_at": "2026-07-13T09:56:16.821385",
   "years": [
     {
       "year": 2021,
@@ -1074,7 +1074,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 5968,
+      "commit_count": 5971,
       "is_current": true
     }
   ]

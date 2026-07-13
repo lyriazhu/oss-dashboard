@@ -7,7 +7,7 @@
   "stars": 293,
   "forks": 119,
   "watchers": 293,
-  "open_issues": 353,
+  "open_issues": 354,
   "language": "Java",
   "topics": [
     "apache-kafka",
@@ -71,5 +71,5 @@
       "percentage": 0.03
     }
   ],
-  "extracted_at": "2026-07-13T09:16:41.510936"
+  "extracted_at": "2026-07-13T09:56:05.257971"
 }
