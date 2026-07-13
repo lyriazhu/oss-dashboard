@@ -155,7 +155,7 @@ export default function App() {
     // we only need to trigger the flash animation on the new row.
     setFlashKey(key);
     setTimeout(() => setFlashKey(null), 1200);
-    if (key) setExtracting({ id: key, name: name || key });
+    if (key) setExtracting({ id: key, name: name || key, mode: 'add' });
   }, []);
 
   // Called when the Refresh All button completes the token modal.
@@ -165,7 +165,7 @@ export default function App() {
     // Build queue entries using display names from current data
     const queue = ids.map((id) => ({ id, name: data[id]?.name || id }));
     setRefreshQueue(queue.slice(1));          // tail — will advance after each toast
-    setExtracting({ id: queue[0].id, name: queue[0].name }); // head starts immediately
+    setExtracting({ id: queue[0].id, name: queue[0].name, mode: 'refresh' }); // head starts immediately
   }, [data]);
 
   // Advance to the next project in the refresh queue once a toast reports done.
@@ -175,7 +175,7 @@ export default function App() {
       const [next, ...rest] = refreshQueue;
       setRefreshQueue(rest);
       // Small delay so the previous toast fully clears before the next one appears
-      setTimeout(() => setExtracting({ id: next.id, name: next.name }), 300);
+      setTimeout(() => setExtracting({ id: next.id, name: next.name, mode: 'refresh' }), 300);
     } else {
       // All done — reload project data to pick up updated timestamps
       loadProjects({ silent: true });
@@ -316,7 +316,7 @@ export default function App() {
           <Detail
             d={data[selectedKey]}
             onOverview={showOverview}
-            onRefreshProject={(id, name) => setExtracting({ id, name })}
+            onRefreshProject={(id, name) => setExtracting({ id, name, mode: 'refresh' })}
           />
         )}
       </div>

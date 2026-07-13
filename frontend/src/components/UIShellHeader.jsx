@@ -20,6 +20,7 @@ export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtr
         <ExtractionToast
           projectId={extracting.id}
           projectName={extracting.name}
+          mode={extracting.mode}
           onDone={onExtractionDone}
           onTokenExpired={onTokenExpired}
         />

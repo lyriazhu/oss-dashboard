@@ -122,7 +122,7 @@
     "foundation" : "Independent",
     "enabled" : true,
     "github_url" : "https://github.com/streamshub/console",
-    "data_dir" : "streamshub"
+    "data_dir" : "console"
   } ],
-  "last_updated" : "2026-07-13T13:53:52.567077Z"
+  "last_updated" : "2026-07-13T14:01:18.754900Z"
 }

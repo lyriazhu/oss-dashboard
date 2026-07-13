@@ -19,7 +19,7 @@ function parseLine(line) {
   return null;
 }
 
-export default function ExtractionToast({ projectId, projectName, onDone, onTokenExpired }) {
+export default function ExtractionToast({ projectId, projectName, mode, onDone, onTokenExpired }) {
   const [step, setStep]           = useState('Starting extraction…');
   const [failed, setFailed]       = useState(false);
   const [done, setDone]           = useState(false);
@@ -93,7 +93,9 @@ export default function ExtractionToast({ projectId, projectName, onDone, onToke
       <div className="extraction-toast-inner">
         <div className="extraction-toast-header">
           <span className="extraction-toast-title">
-            {projectName ? `Adding ${projectName}` : 'Data extraction'}
+            {projectName
+              ? (mode === 'refresh' ? `Refreshing ${projectName}` : `Adding ${projectName}`)
+              : 'Data extraction'}
           </span>
           <button
             className="extraction-toast-close"
@@ -109,7 +111,7 @@ export default function ExtractionToast({ projectId, projectName, onDone, onToke
         <div className="extraction-toast-step" style={{ color: stepColor }}>{step}</div>
 
         {!done && !failed && (
-          <div className="extraction-toast-notice">Do not refresh — extraction is in progress.</div>
+          <div className="extraction-toast-notice">Extraction is in progress.</div>
         )}
 
         {/* Carbon-style inline success notification */}

@@ -69,30 +69,37 @@ class GitHubDataExtractor:
         """Return normalized project data directory.
 
         Priority:
-        1. Explicit name -> dir mapping (for projects whose display name differs
-           from their repo slug, e.g. 'Strimzi' -> 'strimzi').
-        2. repo slug lowercased (matches Java's getProjectDirectoryName default,
-           which uses the project ID derived from the repo name).
-        3. display name lowercased with spaces replaced by '-' (last resort).
-
-        This means renaming a project in the UI never breaks the data directory
-        lookup, because the directory is always keyed on the repo slug, not the
-        display name.
+        1. Existing data_dir from projects.json (stable across renames).
+        2. Explicit name -> dir mapping (legacy overrides for non-obvious slugs).
+        3. repo slug lowercased.
+        4. display name lowercased with spaces replaced by '-' (last resort).
         """
+        # If a repo slug is known, check whether projects.json already recorded a
+        # data_dir for this project — that value is frozen at creation time and
+        # must not change when the display name is updated.
+        if repo:
+            project_id = repo.lower().replace("_", "-")
+            projects_file = self.data_dir / "projects.json"
+            if projects_file.exists():
+                try:
+                    with open(projects_file) as f:
+                        for p in json.load(f).get("projects", []):
+                            if p.get("id") == project_id and p.get("data_dir"):
+                                return self.data_dir / p["data_dir"]
+                except (json.JSONDecodeError, OSError):
+                    pass
+
         # Explicit overrides for projects where display name != repo slug
         dir_name_map = {
             "Strimzi":          "strimzi",
             "Apache Camel":     "apache-camel",
             "Apache Artemis":   "apache-artemis",
             "Apicurio Registry":"apicurio",
-            "Keycloak":         "keycloak",
-            "StreamsHub":       "streamshub",
             # legacy repo-name keys kept for backward compatibility
             "strimzi-kafka-operator": "strimzi",
             "camel":            "apache-camel",
             "artemis":          "apache-artemis",
             "apicurio-registry":"apicurio",
-            "console":          "streamshub",
         }
 
         if project_name in dir_name_map:
@@ -2001,12 +2008,17 @@ class GitHubDataExtractor:
             name = cfg.get("name", repo)
             project_id = repo.lower().replace("_", "-")
 
-            # data_dir is derived the same way _project_dir() resolves it
-            data_dir_path = self._project_dir(name, repo=repo)
-            data_dir_name = data_dir_path.name
-
             # Start from any previously persisted record so extra fields survive
             record = dict(existing.get(project_id, {}))
+
+            # data_dir is frozen at project creation; preserve it if it already
+            # exists so that renaming the project never moves the data folder.
+            if record.get("data_dir"):
+                data_dir_name = record["data_dir"]
+            else:
+                data_dir_path = self._project_dir(name, repo=repo)
+                data_dir_name = data_dir_path.name
+
             record.update({
                 "id": project_id,
                 "name": name,

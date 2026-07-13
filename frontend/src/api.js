@@ -756,6 +756,7 @@ export function transformProjectData(project, metrics) {
   const cveYearValues = cveYears.map((y) => y.v);
 
   return {
+    id: project.id,
     name: project.name,
     sub: project.foundation || 'Independent',
     foundation: project.foundation || 'Independent',
