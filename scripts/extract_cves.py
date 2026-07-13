@@ -101,14 +101,14 @@ def _load_projects_from_json() -> List[Dict]:
 
 
 def _project_dir(project_id: str, name: str) -> str:
-    """Mirror DataService.getProjectDirectoryName logic."""
+    """Mirror DataService.deriveDataDir logic."""
     mapping = {
         "strimzi-kafka-operator": "strimzi",
-        "camel": "apache-camel",
-        "artemis": "apache-artemis",
-        "apicurio-studio": "apicurio",
-        "apicurio-registry": "apicurio",
-        "3scale-operator": "3scale",
+        "camel":                  "apache-camel",
+        "artemis":                "apache-artemis",
+        "apicurio-studio":        "apicurio",
+        "apicurio-registry":      "apicurio",
+        "console":                "streamshub",
     }
     return mapping.get(project_id, project_id.lower().replace("_", "-"))
 
