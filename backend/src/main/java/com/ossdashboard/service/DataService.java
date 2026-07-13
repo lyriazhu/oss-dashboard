@@ -360,14 +360,8 @@ public class DataService {
         String newFoundation = updates.getOrDefault("foundation", project.getFoundation());
         if (newFoundation != null) newFoundation = newFoundation.strip();
 
-        // Compute new data directory name from the slugified new name (only when name changes)
-        String oldDataDir = getProjectDirectoryName(projectId);
-        boolean nameChanged = !newName.equals(oldName) && !newName.isEmpty();
-        String newDataDir = nameChanged
-                ? newName.toLowerCase().replaceAll("[^a-z0-9]+", "-").replaceAll("(^-|-$)", "")
-                : oldDataDir;
-
-        // 1. Update projects.json
+        // 1. Update projects.json — only patch name and foundation; data_dir is never changed
+        //    on a rename because it is a filesystem path set at creation time.
         Path projectsFile = Paths.get(dataDirectory, "projects.json");
         JsonNode root = objectMapper.readTree(projectsFile.toFile());
         ArrayNode projectsArray = (ArrayNode) root.get("projects");
@@ -377,7 +371,6 @@ public class DataService {
                 ObjectNode obj = (ObjectNode) node;
                 if (!newName.isEmpty()) obj.put("name", newName);
                 if (newFoundation != null) obj.put("foundation", newFoundation);
-                obj.put("data_dir", newDataDir);
                 break;
             }
         }
@@ -385,22 +378,10 @@ public class DataService {
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(projectsFile.toFile(), root);
         log.info("Updated project {} in projects.json", projectId);
 
-        // 2. Rename the data directory on disk when the name changed
-        if (nameChanged && !newDataDir.equals(oldDataDir)) {
-            Path oldDir = Paths.get(dataDirectory, oldDataDir);
-            Path newDir = Paths.get(dataDirectory, newDataDir);
-            if (Files.exists(oldDir)) {
-                Files.move(oldDir, newDir);
-                log.info("Renamed data directory {} -> {}", oldDataDir, newDataDir);
-            } else {
-                log.warn("Data directory {} not found; skipping rename", oldDir);
-            }
-        }
-
-        // 3. Update config.yaml — patch the name: and foundation: lines inside this project's block
+        // 2. Update config.yaml — patch the name: and foundation: lines inside this project's block
         updateProjectInConfig(oldName, newName, newFoundation);
 
-        // 4. Return the refreshed project
+        // 3. Return the refreshed project
         return getProjectById(projectId);
     }
 

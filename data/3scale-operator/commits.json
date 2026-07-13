@@ -199,7 +199,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 24
+      "commit_count": 23
     },
     {
       "login": "Kevin Fan",
@@ -265,15 +265,6 @@
       "commit_count": 12
     },
     {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "115566047+borisurbanik@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 12
-    },
-    {
       "login": "Conor O'Malley",
       "name": "Conor O'Malley",
       "company": "Unknown",
@@ -326,6 +317,15 @@
       "email": "bmozaffa@redhat.com",
       "profile_url": null,
       "commit_count": 9
+    },
+    {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "115566047+borisurbanik@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 8
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T09:14:22.419358",
+  "extracted_at": "2026-07-13T09:52:25.420937",
   "years": [
     {
       "year": 2018,

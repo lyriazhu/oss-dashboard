@@ -89,7 +89,7 @@
     "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
   }, {
     "id" : "3scale-operator",
-    "name" : "3scale operator",
+    "name" : "3scale",
     "owner" : "3scale",
     "repo" : "3scale-operator",
     "foundation" : "Red Hat",
@@ -98,7 +98,7 @@
     "github_url" : "https://github.com/3scale/3scale-operator"
   }, {
     "id" : "tomcat",
-    "name" : "tomcat",
+    "name" : "Tomcat",
     "owner" : "apache",
     "repo" : "tomcat",
     "foundation" : "Independent",
@@ -107,7 +107,7 @@
     "data_dir" : "tomcat"
   }, {
     "id" : "kroxylicious",
-    "name" : "kroxylicious",
+    "name" : "Kroxylicious",
     "owner" : "kroxylicious",
     "repo" : "kroxylicious",
     "foundation" : "Independent",
@@ -124,5 +124,5 @@
     "github_url" : "https://github.com/streamshub/console",
     "data_dir" : "streamshub"
   } ],
-  "last_updated" : "2026-07-13T13:17:23.316845Z"
+  "last_updated" : "2026-07-13T13:53:52.567077Z"
 }
