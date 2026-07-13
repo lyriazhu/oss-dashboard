@@ -18,6 +18,7 @@ export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtr
 
       {extracting && (
         <ExtractionToast
+          key={extracting.id}
           projectId={extracting.id}
           projectName={extracting.name}
           mode={extracting.mode}

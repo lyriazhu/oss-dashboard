@@ -170,13 +170,13 @@ export default function App() {
 
   // Advance to the next project in the refresh queue once a toast reports done.
   const handleExtractionDone = useCallback(() => {
-    setExtracting(null);
     if (refreshQueue.length > 0) {
       const [next, ...rest] = refreshQueue;
       setRefreshQueue(rest);
-      // Small delay so the previous toast fully clears before the next one appears
-      setTimeout(() => setExtracting({ id: next.id, name: next.name, mode: 'refresh' }), 300);
+      // Start the next project immediately — no gap between toasts
+      setExtracting({ id: next.id, name: next.name, mode: 'refresh' });
     } else {
+      setExtracting(null);
       // All done — reload project data to pick up updated timestamps
       loadProjects({ silent: true });
     }
