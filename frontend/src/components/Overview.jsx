@@ -678,6 +678,7 @@ export default function Overview({
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
             const yearlyIssues = (d.issueYearly || []).slice(-10);
+            const hasIssueData = yearlyIssues.some((x) => x.v > 0);
             return (
               <div
                 className="mini-card"
@@ -694,14 +695,20 @@ export default function Overview({
                 }}
               >
                 <div className="mini-title">{d.name}</div>
-                <BarChart
-                  values={yearlyIssues.map((x) => x.v)}
-                  labels={yearlyIssues.map((x) => x.y)}
-                  currentIndex={yearlyIssues.findLastIndex?.((x) => x.c) ?? -1}
-                  tooltipLabel="Issues"
-                  variant="mini"
-                  slanted={false}
-                />
+                {hasIssueData ? (
+                  <BarChart
+                    values={yearlyIssues.map((x) => x.v)}
+                    labels={yearlyIssues.map((x) => x.y)}
+                    currentIndex={yearlyIssues.findLastIndex?.((x) => x.c) ?? -1}
+                    tooltipLabel="Issues"
+                    variant="mini"
+                    slanted={false}
+                  />
+                ) : (
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-helper)', minHeight: '5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    No issues reported
+                  </div>
+                )}
               </div>
             );
           })}

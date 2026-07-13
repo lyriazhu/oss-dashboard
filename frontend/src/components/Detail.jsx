@@ -532,51 +532,72 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         </p>
       </div>
 
-      <div className="section">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <h2 className="section-h" style={{ margin: 0 }}>
-            {showIssueMonthly ? 'Issue Activity Per Month' : 'Issue Activity Per Year'}
-          </h2>
-            <button
-              className="btn-refresh"
-              onClick={() => setShowIssueMonthly(!showIssueMonthly)}
-            >
-              {showIssueMonthly ? 'Show yearly' : 'Show monthly'}
-            </button>
+      {(() => {
+        const hasIssues =
+          (d.issueYearly?.some((x) => (x.open || 0) + (x.closed || 0) > 0)) ||
+          (d.issueMonthly?.some((x) => (x.open || 0) + (x.closed || 0) > 0));
+        const issueSourceLabel = d.issueSource === 'jira'
+          ? `Jira${d.jiraProjectKey ? ` (${d.jiraProjectKey})` : ''}`
+          : 'GitHub Issues';
+        return (
+          <div className="section">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <h2 className="section-h" style={{ margin: 0 }}>
+                {showIssueMonthly ? 'Issue Activity Per Month' : 'Issue Activity Per Year'}
+              </h2>
+              {hasIssues && (
+                <button
+                  className="btn-refresh"
+                  onClick={() => setShowIssueMonthly(!showIssueMonthly)}
+                >
+                  {showIssueMonthly ? 'Show yearly' : 'Show monthly'}
+                </button>
+              )}
+            </div>
+            {hasIssues ? (
+              <>
+                {showIssueMonthly && d.issueMonthly && d.issueMonthly.length > 0 ? (
+                  <StackedBarChart
+                    values={d.issueMonthly.map((x) => ({ open: x.open || 0, closed: x.closed || 0 }))}
+                    labels={d.issueMonthly.map((x) => x.m)}
+                    currentIndex={d.issueMonthly.findIndex((x) => x.c)}
+                    fitWhenDense={true}
+                  />
+                ) : (
+                  <StackedBarChart
+                    values={d.issueYearly?.map((x) => ({ open: x.open || 0, closed: x.closed || 0 })) || [{ open: 0, closed: 0 }]}
+                    labels={d.issueYearly?.map((x) => x.y) || ['2025']}
+                    currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
+                    fitWhenDense={true}
+                  />
+                )}
+                <p className="chart-cap">
+                  Darker bar = current period · Red = open issues, Blue = closed issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
+                  {d.issueMedianResolutionDays != null && (
+                    <> · Median resolution time: <strong>{d.issueMedianResolutionDays < 1
+                      ? `${Math.round(d.issueMedianResolutionDays * 24)} hrs`
+                      : `${d.issueMedianResolutionDays.toFixed(1)} days`}</strong></>
+                  )}
+                </p>
+              </>
+            ) : (
+              <div style={{ padding: '1.5rem', background: 'var(--layer-02)', border: '1px solid var(--border-subtle)', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                No issues found for this project.
+                <span> Source checked: {issueSourceLabel}.</span>
+              </div>
+            )}
+            <p className="chart-cap">
+              Source:{' '}
+              {d.issueSource === 'jira' && d.jiraBaseUrl ? (
+                <>Jira{d.jiraProjectKey && <> · Project key: {d.jiraProjectKey}</>}{' · '}
+                <a href={d.jiraBaseUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>{d.jiraBaseUrl}</a></>
+              ) : (
+                <>GitHub Issues</>
+              )}
+            </p>
           </div>
-          {showIssueMonthly && d.issueMonthly && d.issueMonthly.length > 0 ? (
-            <StackedBarChart
-              values={d.issueMonthly.map((x) => ({ open: x.open || 0, closed: x.closed || 0 }))}
-              labels={d.issueMonthly.map((x) => x.m)}
-              currentIndex={d.issueMonthly.findIndex((x) => x.c)}
-              fitWhenDense={true}
-            />
-          ) : (
-            <StackedBarChart
-              values={d.issueYearly?.map((x) => ({ open: x.open || 0, closed: x.closed || 0 })) || [{ open: 0, closed: 0 }]}
-              labels={d.issueYearly?.map((x) => x.y) || ['2025']}
-              currentIndex={d.issueYearly?.findIndex((x) => x.c) || 0}
-              fitWhenDense={true}
-            />
-          )}
-        <p className="chart-cap">
-          Darker bar = current period · Red = open issues, Blue = closed issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
-          {d.issueMedianResolutionDays != null && (
-            <> · Median resolution time: <strong>{d.issueMedianResolutionDays < 1
-              ? `${Math.round(d.issueMedianResolutionDays * 24)} hrs`
-              : `${d.issueMedianResolutionDays.toFixed(1)} days`}</strong></>
-          )}
-        </p>
-        <p className="chart-cap">
-          Source:{' '}
-          {d.issueSource === 'jira' && d.jiraBaseUrl ? (
-            <>Jira{d.jiraProjectKey && <> · Project key: {d.jiraProjectKey}</>}{' · '}
-            <a href={d.jiraBaseUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>{d.jiraBaseUrl}</a></>
-          ) : (
-            <>GitHub Issues</>
-          )}
-        </p>
-      </div>
+        );
+      })()}
 
       {(() => {
         const allCves = d.cveEntries || [];
