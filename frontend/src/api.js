@@ -755,6 +755,23 @@ export function transformProjectData(project, metrics) {
   // For the overview mini-chart: last 6 years of CVE counts (or fill zeros)
   const cveYearValues = cveYears.map((y) => y.v);
 
+  // Derive a human-readable release cadence label
+  const releaseFrequencyLabel = (() => {
+    const freq = releases?.release_frequency || releases?.releaseFrequency;
+    if (freq === 'high') return 'Releases are typically weekly';
+    if (freq === 'medium') return 'Releases are typically monthly';
+    if (freq === 'low') return 'Releases are typically quarterly';
+    // Fallback: derive from avg_days_between_releases when release_frequency is null
+    const avgDays = releases?.avg_days_between_releases ?? releases?.avgDaysBetweenReleases;
+    if (avgDays != null) {
+      if (avgDays <= 14) return 'Releases are typically weekly';
+      if (avgDays <= 45) return 'Releases are typically monthly';
+      if (avgDays <= 120) return 'Releases are typically quarterly';
+      return 'Releases are typically annual';
+    }
+    return null;
+  })();
+
   return {
     id: project.id,
     name: project.name,
@@ -762,6 +779,7 @@ export function transformProjectData(project, metrics) {
     foundation: project.foundation || 'Independent',
     repoUrl: project.github_url || null,
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
+    releaseFrequency: releaseFrequencyLabel,
     status,
     adopters: adoptersList,
     adoptersSource,

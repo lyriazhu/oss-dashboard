@@ -390,6 +390,12 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         <span>{d.foundation}</span>
         <span>|</span>
         <span>{d.founded}</span>
+        {d.releaseFrequency && (
+          <>
+            <span>|</span>
+            <span>{d.releaseFrequency}</span>
+          </>
+        )}
       </p>
 
       <div className="tile-grid det-tiles">
