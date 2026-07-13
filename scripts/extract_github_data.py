@@ -74,20 +74,25 @@ class GitHubDataExtractor:
         3. repo slug lowercased.
         4. display name lowercased with spaces replaced by '-' (last resort).
         """
-        # If a repo slug is known, check whether projects.json already recorded a
-        # data_dir for this project — that value is frozen at creation time and
-        # must not change when the display name is updated.
-        if repo:
-            project_id = repo.lower().replace("_", "-")
-            projects_file = self.data_dir / "projects.json"
-            if projects_file.exists():
-                try:
-                    with open(projects_file) as f:
-                        for p in json.load(f).get("projects", []):
-                            if p.get("id") == project_id and p.get("data_dir"):
-                                return self.data_dir / p["data_dir"]
-                except (json.JSONDecodeError, OSError):
-                    pass
+        # Check projects.json first — data_dir is frozen at project creation time
+        # and must not change when the display name is updated.
+        # Match by repo-derived id when repo is known, otherwise fall back to name.
+        projects_file = self.data_dir / "projects.json"
+        if projects_file.exists():
+            try:
+                with open(projects_file) as f:
+                    records = json.load(f).get("projects", [])
+                if repo:
+                    project_id = repo.lower().replace("_", "-")
+                    for p in records:
+                        if p.get("id") == project_id and p.get("data_dir"):
+                            return self.data_dir / p["data_dir"]
+                # Fall back to matching by name (for callers that don't pass repo=)
+                for p in records:
+                    if p.get("name") == project_name and p.get("data_dir"):
+                        return self.data_dir / p["data_dir"]
+            except (json.JSONDecodeError, OSError):
+                pass
 
         # Explicit overrides for projects where display name != repo slug
         dir_name_map = {

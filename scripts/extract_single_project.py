@@ -37,6 +37,9 @@ def main():
     except Exception:
         pass  # network issue etc. — let the individual steps handle it
 
+    # Keep projects.json in sync with config.yaml (preserves data_dir across renames)
+    extractor._sync_projects_json()
+
     # Find the project in config.yaml by name, owner/repo, or first repo owner/repo
     project = None
     for p in extractor.config['projects']:

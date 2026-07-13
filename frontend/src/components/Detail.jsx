@@ -368,17 +368,23 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
       <div className="title-row">
         <h1 className="page-title">{d.name}</h1>
         <Tag cls={d.status.cls} label={d.status.label} />
-        <button
-          className="btn-refresh"
-          aria-label={`Refresh ${d.name}`}
-          onClick={() => setRefreshModalOpen(true)}
-          style={{ marginLeft: "auto" }}
-        >
-          <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16" aria-hidden="true">
-            <path d="M12 10H6.78A11 11 0 0 1 27 16a1 1 0 0 0 2 0A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16a1 1 0 0 0-2 0 13 13 0 0 0 23 8.32V28h2v-8h-8z"/>
-          </svg>
-          Refresh project
-        </button>
+        <div style={{ marginLeft: "auto", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.5rem" }}>
+          <button
+            className="btn-refresh"
+            aria-label={`Refresh ${d.name}`}
+            onClick={() => setRefreshModalOpen(true)}
+          >
+            <svg viewBox="0 0 32 32" fill="currentColor" width="16" height="16" aria-hidden="true">
+              <path d="M12 10H6.78A11 11 0 0 1 27 16a1 1 0 0 0 2 0A13 13 0 0 0 6 7.68V4H4v8h8zm8 12h5.22A11 11 0 0 1 5 16a1 1 0 0 0-2 0 13 13 0 0 0 23 8.32V28h2v-8h-8z"/>
+            </svg>
+            Refresh project
+          </button>
+          {d.extractedAt && (
+            <span style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>
+              Last updated: <b style={{ fontWeight: 400, color: "var(--text-primary)" }}>{new Date(d.extractedAt).toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</b>
+            </span>
+          )}
+        </div>
       </div>
       <p className="meta-line">
         <span>{d.foundation}</span>

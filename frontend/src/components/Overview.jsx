@@ -634,7 +634,7 @@ export default function Overview({
                     slanted={true}
                   />
                 ) : (
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-helper)', padding: '0.5rem 0', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-helper)', minHeight: '5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     No CVEs reported
                   </div>
                 )}
