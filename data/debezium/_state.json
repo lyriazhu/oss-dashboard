@@ -57,6 +57,7 @@
       "ThomasVerhoeven1998",
       "TimoWilhelm",
       "TimurRakhmatullin86",
+      "Tlinian",
       "TomBillietKlarrio",
       "TovaCohen",
       "VJean",
@@ -83,11 +84,9 @@
       "ani-sha",
       "ankurg03",
       "ant0nk",
-      "anton-martynov",
       "aofisherzg",
       "aozmen121",
       "aqhil07",
-      "arawind",
       "archiedx",
       "artiship",
       "aryadharmadhikari",
@@ -162,6 +161,7 @@
       "gunnarmorling",
       "gurpiarbassi",
       "gustavolira",
+      "hagar-yasser1",
       "harveyyue",
       "hauntingEcho",
       "hpgrahsl",
@@ -216,6 +216,7 @@
       "kucharo2",
       "laughingman7743",
       "lbroudoux",
+      "lekhrocks",
       "leoloel",
       "leosanqing",
       "lga-zurich",
@@ -230,7 +231,6 @@
       "martin-vlk-gen",
       "martin-walsh",
       "maver1ck",
-      "maxant",
       "mdrillin",
       "methodmissing",
       "metlos",
@@ -296,7 +296,6 @@
       "rolevinks",
       "rophy",
       "ruanhang1993",
-      "runabol",
       "ryanvanhuuksloot",
       "sagarrao",
       "sairam881990",
@@ -355,6 +354,7 @@
       "xmzhou00",
       "yoheimuta",
       "yrodiere",
+      "zach-all",
       "zahid75",
       "zalmane",
       "zeldanerd24",
@@ -363,18 +363,18 @@
       "zrlurb",
       "zxpzlp"
     ],
-    "last_extracted_at": "2026-07-09T15:08:07.540895"
+    "last_extracted_at": "2026-07-13T09:09:22.597626"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-09T15:08:15.784262"
+    "last_git_sync_at": "2026-07-13T09:09:30.991866"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-09T15:09:03.641208"
+    "last_extracted_at": "2026-07-13T09:10:33.690712"
   },
   "issues": {
-    "last_extracted_at": "2026-07-09T15:09:02.335858"
+    "last_extracted_at": "2026-07-13T09:10:32.276184"
   },
   "releases": {
-    "last_extracted_at": "2026-07-09T15:09:05.251191"
+    "last_extracted_at": "2026-07-13T09:10:35.217755"
   }
 }

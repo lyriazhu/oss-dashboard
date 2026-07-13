@@ -82,7 +82,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 3381
+      "commit_count": 3383
     },
     {
       "login": "Michael Edgar",
@@ -91,7 +91,7 @@
       "location": null,
       "email": "medgar@redhat.com",
       "profile_url": null,
-      "commit_count": 1472
+      "commit_count": 1470
     },
     {
       "login": "Jan Kalinic",
@@ -100,7 +100,7 @@
       "location": null,
       "email": "jkalinic@redhat.com",
       "profile_url": null,
-      "commit_count": 488
+      "commit_count": 498
     },
     {
       "login": "Riccardo Forina",
@@ -172,7 +172,7 @@
       "location": null,
       "email": "michael@xlate.io",
       "profile_url": null,
-      "commit_count": 33
+      "commit_count": 29
     },
     {
       "login": "David Conde",
@@ -343,7 +343,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-10T15:24:20.285385",
+  "extracted_at": "2026-07-13T09:33:00.563264",
   "years": [
     {
       "year": 2022,
@@ -367,7 +367,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1249,
+      "commit_count": 1261,
       "is_current": true
     }
   ]

@@ -3,11 +3,11 @@
   "full_name": "quarkusio/quarkus",
   "description": "Quarkus: Supersonic Subatomic Java. ",
   "created_at": "2018-07-06T00:44:20+00:00",
-  "updated_at": "2026-07-10T15:47:52+00:00",
+  "updated_at": "2026-07-13T12:51:48+00:00",
   "stars": 15767,
-  "forks": 3234,
+  "forks": 3235,
   "watchers": 15767,
-  "open_issues": 2832,
+  "open_issues": 2830,
   "language": "Java",
   "topics": [
     "kubernetes",
@@ -23,13 +23,13 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 40460,
-      "percentage": 76.96
+      "commits": 40481,
+      "percentage": 76.97
     },
     {
       "company": "Red Hat",
       "commits": 4645,
-      "percentage": 8.84
+      "percentage": 8.83
     },
     {
       "company": "Block",
@@ -72,5 +72,5 @@
       "percentage": 0.16
     }
   ],
-  "extracted_at": "2026-07-10T11:54:23.012715"
+  "extracted_at": "2026-07-13T09:11:08.483398"
 }

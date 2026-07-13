@@ -3,11 +3,11 @@
   "full_name": "apache/artemis",
   "description": "Apache Artemis",
   "created_at": "2015-05-22T07:00:05+00:00",
-  "updated_at": "2026-07-08T03:52:05+00:00",
-  "stars": 1031,
+  "updated_at": "2026-07-12T20:57:06+00:00",
+  "stars": 1032,
   "forks": 954,
-  "watchers": 1031,
-  "open_issues": 23,
+  "watchers": 1032,
+  "open_issues": 27,
   "language": "Java",
   "topics": [
     "java",
@@ -30,14 +30,14 @@
   "has_discussions": null,
   "top_contributing_companies": [
     {
-      "company": "IBM",
+      "company": "Ibm",
       "commits": 1077,
-      "percentage": 36.8
+      "percentage": 36.78
     },
     {
       "company": "Red Hat",
-      "commits": 803,
-      "percentage": 27.43
+      "commits": 804,
+      "percentage": 27.46
     },
     {
       "company": "Bartr Technologies",
@@ -47,7 +47,7 @@
     {
       "company": "Upcloudltd",
       "commits": 184,
-      "percentage": 6.29
+      "percentage": 6.28
     },
     {
       "company": "Red Hat @Openshift Ai",
@@ -80,5 +80,5 @@
       "percentage": 0.38
     }
   ],
-  "extracted_at": "2026-07-08T15:23:40.858337"
+  "extracted_at": "2026-07-13T09:04:49.341029"
 }

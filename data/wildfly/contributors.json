@@ -2998,10 +2998,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 38,
+      "active_contributors": 39,
       "new_contributors": 6,
-      "returning_contributors": 32,
-      "retention_rate": 84.21
+      "returning_contributors": 33,
+      "retention_rate": 84.62
     }
   ],
   "retention_by_year": [

@@ -1,62 +1,6 @@
 {
-  "total_adopters": 14,
+  "total_adopters": 6,
   "adopters": [
-    {
-      "name": "**Organization**: Your company or project name",
-      "type": "how to add your organization",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**Type**: How you use Apicurio Registry (see types below)",
-      "type": "how to add your organization",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**Description**: A brief description of your use case",
-      "type": "how to add your organization",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**Since**: The year you started using Apicurio Registry",
-      "type": "how to add your organization",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**Website**: A link to your organization's website (optional)",
-      "type": "how to add your organization",
-      "description": "",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**End-user**",
-      "type": "**End-user**",
-      "description": "Organizations running Apicurio Registry in production environments",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**Integration**",
-      "type": "**Integration**",
-      "description": "Organizations whose products integrate with Apicurio Registry",
-      "since": "",
-      "url": null
-    },
-    {
-      "name": "**Vendor**",
-      "type": "**Vendor**",
-      "description": "Organizations that embed or distribute Apicurio Registry as part of a commercial product",
-      "since": "",
-      "url": null
-    },
     {
       "name": "Axual",
       "type": "Vendor",
@@ -100,5 +44,6 @@
       "url": null
     }
   ],
-  "extracted_at": "2026-07-08T10:00:12.941965"
+  "extracted_at": "2026-07-13T09:09:01.067248",
+  "source": "https://github.com/Apicurio/apicurio-registry/blob/main/ADOPTERS.md"
 }

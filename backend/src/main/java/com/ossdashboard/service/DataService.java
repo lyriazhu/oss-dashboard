@@ -154,12 +154,11 @@ public class DataService {
      * Falls back to the legacy hardcoded map so existing projects keep working
      * before they are migrated (i.e. their data_dir field is populated).
      */
-    private String getProjectDirectoryName(String projectId) throws IOException {
-        Project project = getProjectById(projectId);
-        if (project != null && project.getDataDir() != null && !project.getDataDir().isBlank()) {
-            return project.getDataDir();
-        }
-        // Legacy fallback — covers pre-existing projects that don't yet have data_dir
+    /**
+     * Derive a data directory name purely from a project ID, without reading projects.json.
+     * Handles legacy IDs whose directory name differs from the repo slug.
+     */
+    private String deriveDataDir(String projectId) {
         switch (projectId) {
             case "strimzi-kafka-operator": return "strimzi";
             case "camel":                  return "apache-camel";
@@ -169,6 +168,15 @@ public class DataService {
             case "console":                return "streamshub";
             default: return projectId.toLowerCase().replace("_", "-");
         }
+    }
+
+    private String getProjectDirectoryName(String projectId) throws IOException {
+        Project project = getProjectById(projectId);
+        if (project != null && project.getDataDir() != null && !project.getDataDir().isBlank()) {
+            return project.getDataDir();
+        }
+        // Legacy fallback — covers pre-existing projects that don't yet have data_dir
+        return deriveDataDir(projectId);
     }
 
     /**
@@ -268,9 +276,11 @@ public class DataService {
         newProject.setFoundation(request.getFoundation() != null ? request.getFoundation() : "Independent");
         newProject.setWebsite(request.getWebsite());
         newProject.setEnabled(true);
-        // Derive and persist the data directory name from the repo slug so that
-        // future renames only need to update this single field.
-        newProject.setDataDir(projectId.toLowerCase().replace("_", "-"));
+        // Derive and persist the data directory name so that future renames only
+        // need to update this single field.  Uses the same mapping as
+        // getProjectDirectoryName so legacy repos (e.g. console → streamshub)
+        // are handled correctly on first add.
+        newProject.setDataDir(deriveDataDir(projectId));
 
         // Persist issue-tracker configuration so it survives backend restarts
         if ("jira".equalsIgnoreCase(request.getIssueSource())) {

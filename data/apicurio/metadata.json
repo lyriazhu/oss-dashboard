@@ -3,11 +3,11 @@
   "full_name": "Apicurio/apicurio-registry",
   "description": "An API/Schema registry - stores APIs and Schemas.",
   "created_at": "2019-07-16T12:44:20+00:00",
-  "updated_at": "2026-07-08T13:17:26+00:00",
-  "stars": 823,
-  "forks": 323,
-  "watchers": 823,
-  "open_issues": 336,
+  "updated_at": "2026-07-13T11:10:52+00:00",
+  "stars": 830,
+  "forks": 347,
+  "watchers": 830,
+  "open_issues": 399,
   "language": "Java",
   "topics": [],
   "license": "Apache License 2.0",
@@ -16,19 +16,19 @@
   "has_discussions": null,
   "top_contributing_companies": [
     {
-      "company": "IBM",
-      "commits": 2135,
-      "percentage": 68.85
+      "company": "Ibm",
+      "commits": 2139,
+      "percentage": 68.8
     },
     {
       "company": "Red Hat",
-      "commits": 729,
-      "percentage": 23.51
+      "commits": 733,
+      "percentage": 23.58
     },
     {
       "company": "Diagrid",
       "commits": 141,
-      "percentage": 4.55
+      "percentage": 4.54
     },
     {
       "company": "Senior Software Engineer @ Netsearch",
@@ -56,15 +56,15 @@
       "percentage": 0.16
     },
     {
-      "company": "IBM Pvt Ltd",
+      "company": "Ibm Pvt Ltd",
       "commits": 4,
       "percentage": 0.13
     },
     {
-      "company": "Jboss By Red Hat By IBM",
+      "company": "Jboss By Red Hat By Ibm",
       "commits": 3,
       "percentage": 0.1
     }
   ],
-  "extracted_at": "2026-07-08T09:59:43.056317"
+  "extracted_at": "2026-07-13T09:07:42.898473"
 }

@@ -1,10 +1,10 @@
 {
-  "total_commits": 1814,
+  "total_commits": 1817,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 25,
+      "commit_count": 28,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 7149
+      "commit_count": 7154
     },
     {
       "login": "Paolo Patierno",
@@ -91,7 +91,7 @@
       "location": null,
       "email": "ppatierno@live.com",
       "profile_url": null,
-      "commit_count": 2561
+      "commit_count": 2562
     },
     {
       "login": "Tom Bentley",
@@ -109,7 +109,7 @@
       "location": null,
       "email": "xstejs24@gmail.com",
       "profile_url": null,
-      "commit_count": 1840
+      "commit_count": 1846
     },
     {
       "login": "prmellor",
@@ -154,7 +154,7 @@
       "location": null,
       "email": "maros.orsak159@gmail.com",
       "profile_url": null,
-      "commit_count": 976
+      "commit_count": 977
     },
     {
       "login": "PaulRMellor",
@@ -271,7 +271,7 @@
       "location": null,
       "email": "11195226+katheris@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 248
+      "commit_count": 251
     },
     {
       "login": "ShubhamRwt",
@@ -373,6 +373,15 @@
       "commit_count": 120
     },
     {
+      "login": "Venkatesh Kannan",
+      "name": "Venkatesh Kannan",
+      "company": "Unknown",
+      "location": null,
+      "email": "venkatesprasad512@gmail.com",
+      "profile_url": null,
+      "commit_count": 114
+    },
+    {
       "login": "john-mcpeek",
       "name": "john-mcpeek",
       "company": "Unknown",
@@ -416,15 +425,6 @@
       "email": "cytar@infradvisor.fr",
       "profile_url": null,
       "commit_count": 85
-    },
-    {
-      "login": "Venkatesh Kannan",
-      "name": "Venkatesh Kannan",
-      "company": "Unknown",
-      "location": null,
-      "email": "venkatesprasad512@gmail.com",
-      "profile_url": null,
-      "commit_count": 82
     },
     {
       "login": "dependabot[bot]",
@@ -910,7 +910,7 @@
       "location": null,
       "email": "parameshwaran.k@ibm.com",
       "profile_url": null,
-      "commit_count": 16
+      "commit_count": 17
     },
     {
       "login": "Ralf",
@@ -1417,20 +1417,20 @@
       "commit_count": 9
     },
     {
-      "login": "Kuan-Hao (Michael) Lai",
-      "name": "Kuan-Hao (Michael) Lai",
-      "company": "Unknown",
-      "location": null,
-      "email": "42037371+guancioul@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 8
-    },
-    {
       "login": "Paramesh324",
       "name": "Paramesh324",
       "company": "Unknown",
       "location": null,
       "email": "52658021+paramesh324@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 9
+    },
+    {
+      "login": "Kuan-Hao (Michael) Lai",
+      "name": "Kuan-Hao (Michael) Lai",
+      "company": "Unknown",
+      "location": null,
+      "email": "42037371+guancioul@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 8
     },
@@ -1678,6 +1678,15 @@
       "commit_count": 7
     },
     {
+      "login": "Venkatesh Prasad Kannan",
+      "name": "Venkatesh Prasad Kannan",
+      "company": "Unknown",
+      "location": null,
+      "email": "personal@venkateshkannan.me",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
       "login": "ocorriga",
       "name": "ocorriga",
       "company": "Unknown",
@@ -1890,15 +1899,6 @@
       "company": "Unknown",
       "location": null,
       "email": "bboyleonp@gmail.com",
-      "profile_url": null,
-      "commit_count": 6
-    },
-    {
-      "login": "Venkatesh Prasad Kannan",
-      "name": "Venkatesh Prasad Kannan",
-      "company": "Unknown",
-      "location": null,
-      "email": "personal@venkateshkannan.me",
       "profile_url": null,
       "commit_count": 6
     },
@@ -3046,6 +3046,15 @@
       "commit_count": 3
     },
     {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "paolo.patierno@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "HCL",
       "name": "HCL",
       "company": "Unknown",
@@ -4171,20 +4180,20 @@
       "commit_count": 2
     },
     {
-      "login": "Paolo Patierno",
-      "name": "Paolo Patierno",
-      "company": "Unknown",
-      "location": null,
-      "email": "paolo.patierno@gmail.com",
-      "profile_url": null,
-      "commit_count": 2
-    },
-    {
       "login": "Patrick Wegner",
       "name": "Patrick Wegner",
       "company": "Unknown",
       "location": null,
       "email": "144433797+rd-patrick-wegner@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "David Mach\u00e1\u010dek",
+      "name": "David Mach\u00e1\u010dek",
+      "company": "Unknown",
+      "location": null,
+      "email": "davido.machacek@gmail.com",
       "profile_url": null,
       "commit_count": 2
     },
@@ -5822,15 +5831,6 @@
       "name": "David Mach\u00e1\u010dek",
       "company": "Unknown",
       "location": null,
-      "email": "davido.machacek@gmail.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "David Mach\u00e1\u010dek",
-      "name": "David Mach\u00e1\u010dek",
-      "company": "Unknown",
-      "location": null,
       "email": "david@machackovi.com",
       "profile_url": null,
       "commit_count": 1
@@ -5851,7 +5851,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-10T11:45:49.665637",
+  "extracted_at": "2026-07-13T09:03:22.243370",
   "years": [
     {
       "year": 2016,
@@ -5905,7 +5905,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1262,
+      "commit_count": 1279,
       "is_current": true
     }
   ]

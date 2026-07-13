@@ -1,0 +1,67 @@
+{
+  "source": "github_security_advisories",
+  "total_cves": 4,
+  "months": [
+    {
+      "month": "2025-06",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2025-49574",
+          "severity": "medium",
+          "summary": "Potential data leak when duplicating a duplicated context",
+          "published": "2025-06-23"
+        }
+      ]
+    },
+    {
+      "month": "2026-01",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2025-66560",
+          "severity": "medium",
+          "summary": "Potential worker thread starvation when HTTP connection is closed while waiting to write",
+          "published": "2026-01-07"
+        }
+      ]
+    },
+    {
+      "month": "2026-05",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2026-39852",
+          "severity": "high",
+          "summary": "Authentication/Authorization bypasses",
+          "published": "2026-05-04"
+        }
+      ]
+    },
+    {
+      "month": "2026-06",
+      "count": 1,
+      "cves": [
+        {
+          "id": "CVE-2026-50559",
+          "severity": "high",
+          "summary": "Authentication/Authorization Bypass via Advanced Path Normalization Vulnerabilities",
+          "published": "2026-06-17"
+        }
+      ]
+    }
+  ],
+  "years": [
+    {
+      "year": "2025",
+      "count": 1,
+      "is_current": false
+    },
+    {
+      "year": "2026",
+      "count": 3,
+      "is_current": true
+    }
+  ],
+  "extracted_at": "2026-07-13T09:12:23.319359"
+}

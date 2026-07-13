@@ -3,11 +3,11 @@
   "full_name": "3scale/3scale-operator",
   "description": "Openshift operator to install a 3scale API Management solution",
   "created_at": "2018-11-21T16:11:35+00:00",
-  "updated_at": "2026-06-19T08:49:57+00:00",
+  "updated_at": "2026-07-13T05:57:11+00:00",
   "stars": 49,
   "forks": 100,
   "watchers": 49,
-  "open_issues": 21,
+  "open_issues": 20,
   "language": "Go",
   "topics": [],
   "license": "Apache License 2.0",
@@ -17,7 +17,7 @@
   "top_contributing_companies": [
     {
       "company": "Red Hat",
-      "commits": 2453,
+      "commits": 2454,
       "percentage": 98.83
     },
     {
@@ -56,5 +56,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-10T15:23:40.232810"
+  "extracted_at": "2026-07-13T09:14:11.247890"
 }

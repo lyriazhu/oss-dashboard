@@ -75,7 +75,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 4853,
+      "contributions": 4854,
       "profile_url": "https://github.com/clebertsuconic"
     },
     {
@@ -99,7 +99,7 @@
     {
       "login": "gemmellr",
       "name": "Robbie Gemmell",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Scotland",
       "email": null,
       "contributions": 560,
@@ -117,7 +117,7 @@
     {
       "login": "brusdev",
       "name": "Bruscino Domenico Francesco",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Naples, Italy",
       "email": null,
       "contributions": 358,
@@ -207,7 +207,7 @@
     {
       "login": "ehsavoie",
       "name": "Emmanuel Hugonnet",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Barraux, France",
       "email": null,
       "contributions": 47,
@@ -270,7 +270,7 @@
     {
       "login": "paulgallagher75",
       "name": "Paul Gallagher",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": null,
       "contributions": 25,
@@ -279,7 +279,7 @@
     {
       "login": "jmesnil",
       "name": "Jeff Mesnil",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "France",
       "email": "jmesnil@gmail.com",
       "contributions": 23,
@@ -315,7 +315,7 @@
     {
       "login": "orpiske",
       "name": "Otavio Rodolfo Piske",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno, Czech Republic",
       "email": null,
       "contributions": 17,
@@ -351,7 +351,7 @@
     {
       "login": "gnodet",
       "name": "Guillaume Nodet",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Caen, France",
       "email": "gnodet@gmail.com",
       "contributions": 12,
@@ -405,7 +405,7 @@
     {
       "login": "TomasHofman",
       "name": "Tomas Hofman",
-      "company": "Red Hat / IBM",
+      "company": "Red Hat / Ibm",
       "location": null,
       "email": "thofman@redhat.com",
       "contributions": 10,
@@ -441,7 +441,7 @@
     {
       "login": "grgrzybek",
       "name": "Grzegorz Grzybek",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Wroc\u0142aw",
       "email": "gr.grzybek@gmail.com",
       "contributions": 8,
@@ -495,7 +495,7 @@
     {
       "login": "k-wall",
       "name": "Keith Wall",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Stirling, Scotland, UK",
       "email": "kwall@redhat.com",
       "contributions": 7,
@@ -565,9 +565,18 @@
       "profile_url": "https://github.com/cschneider"
     },
     {
+      "login": "lavocatt",
+      "name": "Thomas Lavocat",
+      "company": "Red Hat",
+      "location": "France",
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/lavocatt"
+    },
+    {
       "login": "davsclaus",
       "name": "Claus Ibsen",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Denmark",
       "email": "claus.ibsen@gmail.com",
       "contributions": 5,
@@ -581,15 +590,6 @@
       "email": "ondrusek.jiri@gmail.com",
       "contributions": 5,
       "profile_url": "https://github.com/JiriOndrusek"
-    },
-    {
-      "login": "lavocatt",
-      "name": "Thomas Lavocat",
-      "company": "Red Hat",
-      "location": "France",
-      "email": null,
-      "contributions": 5,
-      "profile_url": "https://github.com/lavocatt"
     },
     {
       "login": "ryeats",
@@ -774,7 +774,7 @@
     {
       "login": "tadayosi",
       "name": "Tadayoshi Sato",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Tokyo, Japan",
       "email": null,
       "contributions": 3,
@@ -837,7 +837,7 @@
     {
       "login": "ryanemerson",
       "name": "Ryan Emerson",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": null,
       "contributions": 3,
@@ -855,7 +855,7 @@
     {
       "login": "jamezp",
       "name": "James R. Perkins",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Oregon",
       "email": null,
       "contributions": 3,
@@ -909,7 +909,7 @@
     {
       "login": "xstefank",
       "name": "Martin Stefanko",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno, Czechia",
       "email": "xstefank122@gmail.com",
       "contributions": 2,
@@ -1377,7 +1377,7 @@
     {
       "login": "pferraro",
       "name": "Paul Ferraro",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Edinburgh, UK",
       "email": null,
       "contributions": 1,
@@ -1755,7 +1755,7 @@
     {
       "login": "apupier",
       "name": "Aur\u00e9lien Pupier",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Grenoble Area, France",
       "email": "apupier@ibm.com",
       "contributions": 1,
@@ -1953,7 +1953,7 @@
     {
       "login": "oscerd",
       "name": "Andrea Cosentino",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Rome, Italy",
       "email": "ancosen@gmail.com",
       "contributions": 1,
@@ -2259,7 +2259,7 @@
     {
       "login": "gastaldi",
       "name": "George Gastaldi",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Joinville, Santa Catarina, Brasil",
       "email": "gegastaldi@gmail.com",
       "contributions": 1,
@@ -2369,7 +2369,7 @@
   "companies": {
     "Unknown": 146,
     "Red Hat": 30,
-    "IBM": 18,
+    "Ibm": 18,
     "Redhat": 2,
     "Redhatofficial": 2,
     "Naumen": 2,
@@ -2380,7 +2380,7 @@
     "Contrast Security": 1,
     "Aimtec A.S.": 1,
     "Tymiq": 1,
-    "Red Hat / IBM": 1,
+    "Red Hat / Ibm": 1,
     "Beihang University": 1,
     "Sygic": 1,
     "Google": 1,
@@ -2443,7 +2443,7 @@
         "contributor_count": 30
       },
       {
-        "company": "IBM",
+        "company": "Ibm",
         "contributor_count": 18
       },
       {
@@ -2592,10 +2592,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 18,
+      "active_contributors": 20,
       "new_contributors": 4,
-      "returning_contributors": 14,
-      "retention_rate": 77.78
+      "returning_contributors": 16,
+      "retention_rate": 80.0
     }
   ],
   "retention_by_year": [

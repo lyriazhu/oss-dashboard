@@ -42,12 +42,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 301,
+      "contributor_count": 304,
       "is_current": true
     }
   ],
-  "total_contributors": 1849,
-  "total_contributors_git": 1849,
+  "total_contributors": 1852,
+  "total_contributors_git": 1852,
   "contributors": [
     {
       "login": "gsmet",
@@ -55,7 +55,7 @@
       "company": "Ibm",
       "location": "Lyon, France",
       "email": "guillaume.smet@gmail.com",
-      "contributions": 13646,
+      "contributions": 13648,
       "profile_url": "https://github.com/gsmet"
     },
     {
@@ -64,7 +64,7 @@
       "company": "Ibm",
       "location": "Athens, Greece",
       "email": null,
-      "contributions": 7752,
+      "contributions": 7760,
       "profile_url": "https://github.com/geoand"
     },
     {
@@ -100,7 +100,7 @@
       "company": "Ibm",
       "location": "Valence",
       "email": null,
-      "contributions": 2463,
+      "contributions": 2468,
       "profile_url": "https://github.com/cescoffier"
     },
     {
@@ -127,7 +127,7 @@
       "company": "Ibm",
       "location": "Neuchatel, Switzerland",
       "email": null,
-      "contributions": 1631,
+      "contributions": 1634,
       "profile_url": "https://github.com/aloubyansky"
     },
     {
@@ -190,7 +190,7 @@
       "company": "Ibm",
       "location": "Planet X",
       "email": "dmlloyd@ibm.com",
-      "contributions": 561,
+      "contributions": 562,
       "profile_url": "https://github.com/dmlloyd"
     },
     {
@@ -532,7 +532,7 @@
       "company": "Ibm",
       "location": "Mondragone, Italy",
       "email": "mario.fusco@gmail.com",
-      "contributions": 78,
+      "contributions": 79,
       "profile_url": "https://github.com/mariofusco"
     },
     {
@@ -937,7 +937,7 @@
       "company": "Ibm",
       "location": "Italy",
       "email": "marcobladel@gmail.com",
-      "contributions": 25,
+      "contributions": 26,
       "profile_url": "https://github.com/mbellade"
     },
     {
@@ -1238,6 +1238,15 @@
       "profile_url": "https://github.com/mmusgrov"
     },
     {
+      "login": "MdTanwer",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 12,
+      "profile_url": "https://github.com/MdTanwer"
+    },
+    {
       "login": "Malandril",
       "name": "Thomas Canava",
       "company": "Unknown",
@@ -1308,15 +1317,6 @@
       "email": null,
       "contributions": 10,
       "profile_url": "https://github.com/aoudiamoncef"
-    },
-    {
-      "login": "MdTanwer",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 10,
-      "profile_url": "https://github.com/MdTanwer"
     },
     {
       "login": "amusarra",
@@ -3712,20 +3712,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 182,
+      "active_contributors": 181,
       "new_contributors": 71,
-      "returning_contributors": 111,
-      "retention_rate": 60.99
+      "returning_contributors": 110,
+      "retention_rate": 60.77
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 113,
-      "new_contributors": 29,
-      "returning_contributors": 84,
-      "retention_rate": 74.34
+      "active_contributors": 117,
+      "new_contributors": 32,
+      "returning_contributors": 85,
+      "retention_rate": 72.65
     }
   ],
   "retention_by_year": [
@@ -3822,10 +3822,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 301,
-      "new_contributors": 162,
+      "active_contributors": 304,
+      "new_contributors": 165,
       "returning_contributors": 139,
-      "retention_rate": 46.18,
+      "retention_rate": 45.72,
       "is_current": true
     }
   ],

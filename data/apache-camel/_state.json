@@ -134,7 +134,6 @@
       "essobedo",
       "evmin",
       "ex324",
-      "fanyang",
       "favalos",
       "ffang",
       "fg78nc",
@@ -330,18 +329,18 @@
       "zhfeng",
       "zregvart"
     ],
-    "last_extracted_at": "2026-07-09T09:14:04.474638"
+    "last_extracted_at": "2026-07-13T09:04:07.188563"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-09T09:14:16.775885"
+    "last_git_sync_at": "2026-07-13T09:04:21.169491"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-09T09:15:12.006959"
+    "last_extracted_at": "2026-07-13T09:04:39.191452"
   },
   "issues": {
     "last_extracted_at": null
   },
   "releases": {
-    "last_extracted_at": "2026-07-09T09:15:13.535297"
+    "last_extracted_at": "2026-07-13T09:04:40.656620"
   }
 }

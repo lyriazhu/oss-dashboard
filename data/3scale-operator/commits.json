@@ -1,16 +1,16 @@
 {
-  "total_commits": 498,
+  "total_commits": 500,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 0,
+      "commit_count": 1,
       "quarter": "Q3 2026"
     },
     {
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "commit_count": 30,
+      "commit_count": 31,
       "quarter": "Q2 2026"
     },
     {
@@ -109,7 +109,7 @@
       "location": null,
       "email": "tkan145@gmail.com",
       "profile_url": null,
-      "commit_count": 246
+      "commit_count": 247
     },
     {
       "login": "Joaquim Moreno Prusi",
@@ -265,6 +265,15 @@
       "commit_count": 12
     },
     {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
+      "email": "115566047+borisurbanik@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 12
+    },
+    {
       "login": "Conor O'Malley",
       "name": "Conor O'Malley",
       "company": "Unknown",
@@ -317,15 +326,6 @@
       "email": "bmozaffa@redhat.com",
       "profile_url": null,
       "commit_count": 9
-    },
-    {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "115566047+borisurbanik@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 8
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-10T15:23:50.499886",
+  "extracted_at": "2026-07-13T09:14:22.419358",
   "years": [
     {
       "year": 2018,

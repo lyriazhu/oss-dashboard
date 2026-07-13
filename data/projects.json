@@ -66,16 +66,6 @@
     "enabled" : true,
     "github_url" : "https://github.com/debezium/debezium"
   }, {
-    "id" : "console",
-    "name" : "StreamsHub",
-    "owner" : "streamshub",
-    "repo" : "console",
-    "foundation" : "Independent",
-    "website" : null,
-    "data_dir" : "streamshub",
-    "enabled" : true,
-    "github_url" : "https://github.com/streamshub/console"
-  }, {
     "id" : "quarkus",
     "name" : "Quarkus",
     "owner" : "quarkusio",
@@ -124,6 +114,15 @@
     "enabled" : true,
     "github_url" : "https://github.com/kroxylicious/kroxylicious",
     "data_dir" : "kroxylicious"
+  }, {
+    "id" : "console",
+    "name" : "StreamsHub",
+    "owner" : "streamshub",
+    "repo" : "console",
+    "foundation" : "Independent",
+    "enabled" : true,
+    "github_url" : "https://github.com/streamshub/console",
+    "data_dir" : "streamshub"
   } ],
-  "last_updated" : "2026-07-13T12:26:03.377573Z"
+  "last_updated" : "2026-07-13T13:17:23.316845Z"
 }

@@ -67,12 +67,12 @@
     },
     {
       "year": 2026,
-      "contributor_count": 595,
+      "contributor_count": 602,
       "is_current": true
     }
   ],
-  "total_contributors": 3305,
-  "total_contributors_git": 3305,
+  "total_contributors": 3312,
+  "total_contributors_git": 3312,
   "contributors": [
     {
       "login": "stianst",
@@ -197,7 +197,7 @@
       "company": "Red Hat",
       "location": "Reading PA",
       "email": null,
-      "contributions": 503,
+      "contributions": 504,
       "profile_url": "https://github.com/shawkins"
     },
     {
@@ -287,7 +287,7 @@
       "company": "Ibm",
       "location": "Lisbon",
       "email": null,
-      "contributions": 222,
+      "contributions": 223,
       "profile_url": "https://github.com/pruivo"
     },
     {
@@ -3179,20 +3179,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 379,
-      "new_contributors": 221,
-      "returning_contributors": 158,
-      "retention_rate": 41.69
+      "active_contributors": 350,
+      "new_contributors": 205,
+      "returning_contributors": 145,
+      "retention_rate": 41.43
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 184,
-      "new_contributors": 51,
-      "returning_contributors": 133,
-      "retention_rate": 72.28
+      "active_contributors": 231,
+      "new_contributors": 74,
+      "returning_contributors": 157,
+      "retention_rate": 67.97
     }
   ],
   "retention_by_year": [
@@ -3344,10 +3344,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 595,
-      "new_contributors": 432,
+      "active_contributors": 602,
+      "new_contributors": 439,
       "returning_contributors": 163,
-      "retention_rate": 27.39,
+      "retention_rate": 27.08,
       "is_current": true
     }
   ],

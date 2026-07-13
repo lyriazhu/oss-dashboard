@@ -1,5 +1,5 @@
 {
-  "total_open": 309,
+  "total_open": 310,
   "total_closed": 253,
   "total_issues": 430,
   "median_resolution_time_days": 7.07,
@@ -128,5 +128,5 @@
       "closed_issue_count": 166
     }
   ],
-  "extracted_at": "2026-07-13T08:26:59.430069"
+  "extracted_at": "2026-07-13T09:17:07.150590"
 }

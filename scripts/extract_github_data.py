@@ -1974,10 +1974,74 @@ class GitHubDataExtractor:
         
         print(f"✅ Saved {data_type} data to {output_file}")
     
+    def _sync_projects_json(self):
+        """Regenerate data/projects.json from config.yaml.
+
+        config.yaml is the single source of truth.  This method derives every
+        field that data/projects.json must contain (id, name, data_dir, …) from
+        config so that projects.json never drifts out of sync when you rename or
+        re-add a project in config.yaml.
+        """
+        projects_file = self.data_dir / "projects.json"
+
+        # Preserve any extra fields that may have been written by a previous run
+        existing: Dict[str, Dict] = {}
+        if projects_file.exists():
+            try:
+                with open(projects_file) as f:
+                    for p in json.load(f).get("projects", []):
+                        existing[p.get("id", "")] = p
+            except (json.JSONDecodeError, OSError):
+                pass
+
+        out = []
+        for cfg in self.config.get("projects", []):
+            repo = cfg.get("repo", "")
+            owner = cfg.get("owner", "")
+            name = cfg.get("name", repo)
+            project_id = repo.lower().replace("_", "-")
+
+            # data_dir is derived the same way _project_dir() resolves it
+            data_dir_path = self._project_dir(name, repo=repo)
+            data_dir_name = data_dir_path.name
+
+            # Start from any previously persisted record so extra fields survive
+            record = dict(existing.get(project_id, {}))
+            record.update({
+                "id": project_id,
+                "name": name,
+                "github_url": cfg.get("github_url", f"https://github.com/{owner}/{repo}"),
+                "owner": owner,
+                "repo": repo,
+                "foundation": cfg.get("foundation", ""),
+                "data_dir": data_dir_name,
+                "enabled": cfg.get("enabled", True),
+            })
+            # Copy optional fields from config when present
+            for key in ("website", "issue_source", "jira_project_key", "jira_base_url"):
+                if key in cfg:
+                    record[key] = cfg[key]
+                elif key not in record:
+                    record.setdefault(key, None)
+                    # remove null-valued optional keys to keep the file tidy
+                    if record[key] is None:
+                        del record[key]
+            out.append(record)
+
+        payload = {
+            "projects": out,
+            "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") + "Z",
+        }
+        self._save_json_file(projects_file, payload)
+        print(f"✅ Synced projects.json ({len(out)} projects)")
+
     def extract_all_projects(self):
         """Extract data for all configured projects"""
         projects = self.config['projects']
-        
+
+        # Keep projects.json in sync with config.yaml before any extraction runs
+        self._sync_projects_json()
+
         print(f"\n🚀 Starting data extraction for {len(projects)} projects...\n")
         
         for project in projects:

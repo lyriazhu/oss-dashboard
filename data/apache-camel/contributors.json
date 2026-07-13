@@ -97,7 +97,7 @@
     },
     {
       "year": 2026,
-      "contributor_count": 144,
+      "contributor_count": 143,
       "is_current": true
     }
   ],
@@ -107,19 +107,19 @@
     {
       "login": "davsclaus",
       "name": "Claus Ibsen",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Denmark",
       "email": "claus.ibsen@gmail.com",
-      "contributions": 27093,
+      "contributions": 27144,
       "profile_url": "https://github.com/davsclaus"
     },
     {
       "login": "oscerd",
       "name": "Andrea Cosentino",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Rome, Italy",
       "email": "ancosen@gmail.com",
-      "contributions": 18623,
+      "contributions": 18628,
       "profile_url": "https://github.com/oscerd"
     },
     {
@@ -128,13 +128,13 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 5133,
+      "contributions": 5146,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
       "login": "orpiske",
       "name": "Otavio Rodolfo Piske",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno, Czech Republic",
       "email": null,
       "contributions": 4677,
@@ -152,10 +152,10 @@
     {
       "login": "gnodet",
       "name": "Guillaume Nodet",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Caen, France",
       "email": "gnodet@gmail.com",
-      "contributions": 1536,
+      "contributions": 1568,
       "profile_url": "https://github.com/gnodet"
     },
     {
@@ -200,7 +200,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 687,
+      "contributions": 690,
       "profile_url": "https://github.com/apps/github-actions"
     },
     {
@@ -215,10 +215,10 @@
     {
       "login": "apupier",
       "name": "Aur\u00e9lien Pupier",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Grenoble Area, France",
       "email": "apupier@ibm.com",
-      "contributions": 519,
+      "contributions": 524,
       "profile_url": "https://github.com/apupier"
     },
     {
@@ -269,10 +269,10 @@
     {
       "login": "Croway",
       "name": "Federico Mariani",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Rome, Italy",
       "email": null,
-      "contributions": 393,
+      "contributions": 400,
       "profile_url": "https://github.com/Croway"
     },
     {
@@ -413,7 +413,7 @@
     {
       "login": "tadayosi",
       "name": "Tadayoshi Sato",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Tokyo, Japan",
       "email": null,
       "contributions": 169,
@@ -422,7 +422,7 @@
     {
       "login": "cmoulliard",
       "name": "Charles Moulliard",
-      "company": "Red Hat -> IBM",
+      "company": "Red Hat -> Ibm",
       "location": "Belgium",
       "email": "ch007m@gmail.com",
       "contributions": 163,
@@ -431,7 +431,7 @@
     {
       "login": "cunningt",
       "name": "Tom Cunningham",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Medfield, MA",
       "email": "tcunning@redhat.com",
       "contributions": 162,
@@ -452,13 +452,13 @@
       "company": "Unknown",
       "location": null,
       "email": "ondrusek.jiri@gmail.com",
-      "contributions": 143,
+      "contributions": 146,
       "profile_url": "https://github.com/JiriOndrusek"
     },
     {
       "login": "grgrzybek",
       "name": "Grzegorz Grzybek",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Wroc\u0142aw",
       "email": "gr.grzybek@gmail.com",
       "contributions": 141,
@@ -467,7 +467,7 @@
     {
       "login": "ppalaga",
       "name": "Peter Palaga",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": "ppalaga@redhat.com",
       "contributions": 130,
@@ -492,22 +492,22 @@
       "profile_url": "https://github.com/gertv"
     },
     {
-      "login": "igarashitm",
-      "name": "Tomo Igarashi",
-      "company": "IBM",
-      "location": "Lowell, Massachusetts",
-      "email": null,
-      "contributions": 105,
-      "profile_url": "https://github.com/igarashitm"
-    },
-    {
       "login": "ammachado",
       "name": "Adriano Machado",
       "company": "Red Hat",
       "location": null,
       "email": null,
-      "contributions": 102,
+      "contributions": 109,
       "profile_url": "https://github.com/ammachado"
+    },
+    {
+      "login": "igarashitm",
+      "name": "Tomo Igarashi",
+      "company": "Ibm",
+      "location": "Lowell, Massachusetts",
+      "email": null,
+      "contributions": 105,
+      "profile_url": "https://github.com/igarashitm"
     },
     {
       "login": "elakito",
@@ -521,7 +521,7 @@
     {
       "login": "christophd",
       "name": "Christoph Deppisch",
-      "company": "IBM Research & Development",
+      "company": "Ibm Research & Development",
       "location": "Randersacker, Germany",
       "email": "cfreakyd@gmail.com",
       "contributions": 95,
@@ -575,7 +575,7 @@
     {
       "login": "zbendhiba",
       "name": "Zineb BENDHIBA",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Paris",
       "email": null,
       "contributions": 72,
@@ -647,7 +647,7 @@
     {
       "login": "luigidemasi",
       "name": "Luigi De Masi",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Pisa,  Italy ",
       "email": null,
       "contributions": 55,
@@ -692,7 +692,7 @@
     {
       "login": "gansheer",
       "name": "Ga\u00eblle Fournier",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "France",
       "email": null,
       "contributions": 43,
@@ -998,7 +998,7 @@
     {
       "login": "rnetuka",
       "name": "Radovan Netuka",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Prague, Czech Republic",
       "email": null,
       "contributions": 19,
@@ -1187,7 +1187,7 @@
     {
       "login": "Balavva-Mirji",
       "name": "Balavva Mirji",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Bengaluru",
       "email": "Balavva.Mirji@ibm.com",
       "contributions": 13,
@@ -1232,7 +1232,7 @@
     {
       "login": "sberyozkin",
       "name": "Sergey Beryozkin",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Dublin, Ireland",
       "email": null,
       "contributions": 13,
@@ -1250,7 +1250,7 @@
     {
       "login": "mcarlett",
       "name": "Marco Carletti",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Italy",
       "email": null,
       "contributions": 13,
@@ -1313,7 +1313,7 @@
     {
       "login": "phantomjinx",
       "name": "Paul Richardson",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "UK",
       "email": null,
       "contributions": 11,
@@ -1437,9 +1437,18 @@
       "profile_url": "https://github.com/Kinae"
     },
     {
+      "login": "rkdfx",
+      "name": "Ravi",
+      "company": "Guidewire",
+      "location": "India",
+      "email": null,
+      "contributions": 10,
+      "profile_url": "https://github.com/rkdfx"
+    },
+    {
       "login": "anushkajuli",
       "name": "Anushka Juli",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "India",
       "email": "anushka.juli1@ibm.com",
       "contributions": 9,
@@ -1471,15 +1480,6 @@
       "email": null,
       "contributions": 9,
       "profile_url": "https://github.com/rubenvp8510"
-    },
-    {
-      "login": "rkdfx",
-      "name": "Ravi",
-      "company": "Guidewire",
-      "location": "India",
-      "email": null,
-      "contributions": 9,
-      "profile_url": "https://github.com/rkdfx"
     },
     {
       "login": "jameshilliard",
@@ -1646,7 +1646,7 @@
     {
       "login": "tmielke",
       "name": "Torsten Mielke",
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": null,
       "contributions": 8,
@@ -1664,7 +1664,7 @@
     {
       "login": "lordrip",
       "name": "Ricardo M.",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Barcelona, Spain",
       "email": null,
       "contributions": 7,
@@ -1700,7 +1700,7 @@
     {
       "login": "RadhikaAjabe7",
       "name": null,
-      "company": "IBM",
+      "company": "Ibm",
       "location": null,
       "email": "RADHIKA.AJABE@IBM.COM",
       "contributions": 7,
@@ -1727,7 +1727,7 @@
     {
       "login": "ahus1",
       "name": "Alexander Schwartz",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Frankfurt/Main (Germany)",
       "email": "alexander.schwartz@gmx.net",
       "contributions": 7,
@@ -1763,7 +1763,7 @@
     {
       "login": "ibek",
       "name": "Ivo Bek",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Brno",
       "email": null,
       "contributions": 7,
@@ -1916,7 +1916,7 @@
     {
       "login": "Delawen",
       "name": "Mar\u00eda Arias de Reyna Dom\u00ednguez",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Seville",
       "email": null,
       "contributions": 6,
@@ -2258,7 +2258,7 @@
     {
       "login": "lhein",
       "name": "Lars Heinemann",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Germany",
       "email": null,
       "contributions": 5,
@@ -2357,7 +2357,7 @@
     {
       "login": "akihikokuroda",
       "name": "Akihiko (Aki) Kuroda",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Cary, Noth Carolina",
       "email": null,
       "contributions": 5,
@@ -2537,7 +2537,7 @@
     {
       "login": "tristantarrant",
       "name": "Tristan Tarrant",
-      "company": "IBM",
+      "company": "Ibm",
       "location": "Italy",
       "email": "tristan@infinispan.org",
       "contributions": 4,
@@ -3061,7 +3061,7 @@
   "companies": {
     "Unknown": 168,
     "Red Hat": 31,
-    "IBM": 29,
+    "Ibm": 29,
     "Adobe": 3,
     "Redhatofficial": 3,
     "Qlik": 2,
@@ -3072,10 +3072,10 @@
     "Redpanda Data": 1,
     "Https://Www.Redhat.Com/": 1,
     "Dremio": 1,
-    "Red Hat -> IBM": 1,
+    "Red Hat -> Ibm": 1,
     "Elevation Solutions": 1,
     "Anova R&D Bvba": 1,
-    "IBM Research & Development": 1,
+    "Ibm Research & Development": 1,
     "Het Cak": 1,
     "Diagrid": 1,
     "Westpac": 1,
@@ -3171,7 +3171,7 @@
         "contributor_count": 31
       },
       {
-        "company": "IBM",
+        "company": "Ibm",
         "contributor_count": 29
       },
       {
@@ -3320,10 +3320,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 28,
+      "active_contributors": 30,
       "new_contributors": 6,
-      "returning_contributors": 22,
-      "retention_rate": 78.57
+      "returning_contributors": 24,
+      "retention_rate": 80.0
     }
   ],
   "retention_by_year": [
@@ -3541,10 +3541,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 144,
+      "active_contributors": 143,
       "new_contributors": 67,
-      "returning_contributors": 77,
-      "retention_rate": 53.47,
+      "returning_contributors": 76,
+      "retention_rate": 53.15,
       "is_current": true
     }
   ],

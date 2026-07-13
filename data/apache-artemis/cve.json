@@ -1,6 +1,6 @@
 {
   "source": "github_advisory_database",
-  "total_cves": 31,
+  "total_cves": 34,
   "months": [
     {
       "month": "2018-10",
@@ -253,6 +253,30 @@
           "published": "2026-04-09"
         }
       ]
+    },
+    {
+      "month": "2026-06",
+      "count": 3,
+      "cves": [
+        {
+          "id": "CVE-2026-49270",
+          "severity": "moderate",
+          "summary": "Apache ActiveMQ Broker, Apache ActiveMQ, Apache ActiveMQ All have an Exposure of Sensitive Information Through Metadata ",
+          "published": "2026-06-01"
+        },
+        {
+          "id": "CVE-2026-42588",
+          "severity": "high",
+          "summary": "Apache ActiveMQ Broker, Apache ActiveMQ All, Apache ActiveMQ have a Code Injection issue",
+          "published": "2026-06-01"
+        },
+        {
+          "id": "CVE-2026-45505",
+          "severity": "high",
+          "summary": "Apache ActiveMQ Broker, Apache ActiveMQ All, Apache ActiveMQ have a Code Injection issue",
+          "published": "2026-06-01"
+        }
+      ]
     }
   ],
   "years": [
@@ -283,9 +307,9 @@
     },
     {
       "year": "2026",
-      "count": 9,
+      "count": 12,
       "is_current": true
     }
   ],
-  "extracted_at": "2026-07-09T11:07:06.121032"
+  "extracted_at": "2026-07-13T09:05:26.125097"
 }
