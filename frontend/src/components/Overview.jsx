@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { QUARTERS } from "../data.js";
 import { Tag, BarChart } from "./ui.jsx";
 import { saveGithubToken, getSavedToken, refreshAllProjects } from "../api.js";
 
@@ -567,10 +566,11 @@ export default function Overview({
       </div>
 
       <div className="section">
-        <h2 className="section-h">Commits Per Quarter (Past 12 Quarters)</h2>
+        <h2 className="section-h">Commits Per Year (Capped to 10 Years)</h2>
         <div className="mini-grid">
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
+            const yearlyCommits = (d.commits || []).slice(-10);
             return (
               <div
                 className="mini-card"
@@ -588,13 +588,11 @@ export default function Overview({
               >
                 <div className="mini-title">{d.name}</div>
                 <BarChart
-                  values={d.ov.quarters}
-                  labels={d.quarters?.slice(-12).map((x) => x.q
-                    ? x.q.replace(/^(Q\d)\s(\d{2})(\d{2})$/, "$1'$3")
-                    : x.q) || QUARTERS}
-                  currentIndex={d.quarters?.slice(-12).findLastIndex?.((x) => x.c) ?? -1}
+                  values={yearlyCommits.map((x) => x.v)}
+                  labels={yearlyCommits.map((x) => x.y)}
+                  currentIndex={yearlyCommits.findLastIndex?.((x) => x.c) ?? -1}
                   variant="mini"
-                  slanted={true}
+                  slanted={false}
                 />
               </div>
             );
@@ -603,10 +601,119 @@ export default function Overview({
       </div>
 
       <div className="section">
-        <h2 className="section-h">CVEs Per Month (Past 12 Months)</h2>
+        <h2 className="section-h">Contributors Per Year (Capped to 10 Years)</h2>
         <div className="mini-grid">
           {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
             const d = data[key];
+            const yearlyContributors = (d.retentionYearly || []).slice(-10);
+            return (
+              <div
+                className="mini-card"
+                key={key}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${d.name} metrics`}
+                onClick={() => onSelect(key)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelect(key);
+                  }
+                }}
+              >
+                <div className="mini-title">{d.name}</div>
+                <BarChart
+                  values={yearlyContributors.map((x) => x.active || 0)}
+                  labels={yearlyContributors.map((x) => x.y)}
+                  currentIndex={yearlyContributors.findLastIndex?.((x) => x.c) ?? -1}
+                  tooltipLabel="Contributors"
+                  variant="mini"
+                  slanted={false}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="section">
+        <h2 className="section-h">New PRs Per Year (Capped to 10 Years)</h2>
+        <div className="mini-grid">
+          {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
+            const d = data[key];
+            const yearlyPrs = (d.prYearly || []).slice(-10);
+            return (
+              <div
+                className="mini-card"
+                key={key}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${d.name} metrics`}
+                onClick={() => onSelect(key)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelect(key);
+                  }
+                }}
+              >
+                <div className="mini-title">{d.name}</div>
+                <BarChart
+                  values={yearlyPrs.map((x) => x.v)}
+                  labels={yearlyPrs.map((x) => x.y)}
+                  currentIndex={yearlyPrs.findLastIndex?.((x) => x.c) ?? -1}
+                  tooltipLabel="PRs"
+                  variant="mini"
+                  slanted={false}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="section">
+        <h2 className="section-h">Issues Per Year (Capped to 10 Years)</h2>
+        <div className="mini-grid">
+          {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
+            const d = data[key];
+            const yearlyIssues = (d.issueYearly || []).slice(-10);
+            return (
+              <div
+                className="mini-card"
+                key={key}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${d.name} metrics`}
+                onClick={() => onSelect(key)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelect(key);
+                  }
+                }}
+              >
+                <div className="mini-title">{d.name}</div>
+                <BarChart
+                  values={yearlyIssues.map((x) => x.v)}
+                  labels={yearlyIssues.map((x) => x.y)}
+                  currentIndex={yearlyIssues.findLastIndex?.((x) => x.c) ?? -1}
+                  tooltipLabel="Issues"
+                  variant="mini"
+                  slanted={false}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="section">
+        <h2 className="section-h">CVEs Per Year (Capped to 10 Years)</h2>
+        <div className="mini-grid">
+          {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
+            const d = data[key];
+            const yearlyCves = (d.cveYearly || []).slice(-10);
             const hasCveData = d.cveTotalAllTime > 0;
             return (
               <div
@@ -626,12 +733,12 @@ export default function Overview({
                 <div className="mini-title">{d.name}</div>
                 {hasCveData ? (
                   <BarChart
-                    values={d.cveMonthly.map((x) => x.v)}
-                    labels={d.cveMonthly.map((x) => x.m)}
-                    currentIndex={d.cveMonthly.findIndex((x) => x.c)}
+                    values={yearlyCves.map((x) => x.v)}
+                    labels={yearlyCves.map((x) => x.y)}
+                    currentIndex={yearlyCves.findLastIndex?.((x) => x.c) ?? -1}
                     tooltipLabel="CVEs"
                     variant="mini"
-                    slanted={true}
+                    slanted={false}
                   />
                 ) : (
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-helper)', minHeight: '5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

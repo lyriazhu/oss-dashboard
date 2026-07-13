@@ -1746,6 +1746,60 @@ class GitHubDataExtractor:
             print(f"❌ Error extracting releases: {e}")
             return {}
     
+    @staticmethod
+    def _clean_adopter_name(raw: str) -> str:
+        """Extract a plain display name from a markdown cell that may contain image-links.
+
+        Handles three patterns found in the wild:
+
+        1. Plain text — returned as-is.
+        2. ``[Name](url)`` — standard markdown link; returns ``Name``.
+        3. ``[![Alt](img)](url)`` — image-as-link (e.g. Kroxylicious ADOPTERS.md);
+           returns the image alt-text ``Alt``.
+
+        Multiple occurrences of the same pattern (e.g. dark-mode + light-mode
+        variants separated by nothing) are deduplicated: if all resolved names
+        are identical the string is returned once, otherwise names are joined
+        with " / ".
+
+        GitHub dark/light-mode URL fragments (``#gh-dark-mode-only``,
+        ``#gh-light-mode-only``) are ignored during URL matching but never
+        appear in the returned name.
+        """
+        import re
+        # Pattern for an image-as-link: [![Alt text](img_url)](link_url)
+        img_link_re = re.compile(r"\[!\[([^\]]*)\]\([^)]*\)\]\([^)]*\)")
+        # Pattern for a plain markdown link: [text](url)
+        plain_link_re = re.compile(r"\[([^\]]*)\]\([^)]*\)")
+
+        names: List[str] = []
+
+        # First try image-links (must run before plain links to avoid partial match)
+        img_matches = list(img_link_re.finditer(raw))
+        if img_matches:
+            for m in img_matches:
+                alt = m.group(1).strip()
+                if alt:
+                    names.append(alt)
+        else:
+            # Fall back to plain markdown links
+            plain_matches = list(plain_link_re.finditer(raw))
+            if plain_matches:
+                for m in plain_matches:
+                    text = m.group(1).strip()
+                    if text:
+                        names.append(text)
+            else:
+                # No markdown — strip any residual markup and return plain text
+                names.append(re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", raw).strip())
+
+        # Deduplicate while preserving order
+        seen: List[str] = []
+        for n in names:
+            if n not in seen:
+                seen.append(n)
+        return " / ".join(seen) if seen else raw.strip()
+
     def _scrape_website_adopters(self, url: str) -> List[Dict[str, Any]]:
         """Scrape an adopter/user-stories webpage and return a flat list of adopter dicts.
 
@@ -1958,11 +2012,10 @@ class GitHubDataExtractor:
                     for i, header in enumerate(table_headers):
                         row[header] = cells[i] if i < len(cells) else ""
 
-                    # Extract markdown link text from name/organization column
-                    name_raw = row.get("organization") or row.get("name") or (cells[0] if cells else "")
-                    link_match = re.match(r"\[([^\]]+)\]\([^)]*\)", name_raw)
-                    name = link_match.group(1) if link_match else re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", name_raw)
-                    name = name.strip()
+                    # Extract plain display name from name/organization column.
+                    # Handles image-as-link markup: [![Alt](img)](url)
+                    name_raw = row.get("organisation") or row.get("organization") or row.get("name") or (cells[0] if cells else "")
+                    name = self._clean_adopter_name(name_raw)
 
                     # Skip template/instruction rows
                     _nl = name.lower()
@@ -1976,8 +2029,27 @@ class GitHubDataExtractor:
                     ):
                         continue
 
+                    # Extract URL: prefer dedicated website column; fall back to the
+                    # link target embedded in the name cell (covers image-as-link rows
+                    # like Kroxylicious where there is no separate website column).
+                    # Strip GitHub dark/light-mode fragments before storing.
+                    _gh_fragment_re = re.compile(r"#gh-(dark|light)-mode-only$")
                     url_match = re.search(r"\(([^)]+)\)", row.get("website", ""))
-                    url = url_match.group(1) if url_match else None
+                    if url_match:
+                        url = _gh_fragment_re.sub("", url_match.group(1)).rstrip("#") or None
+                    else:
+                        # Try to pull the first non-image URL from the name cell
+                        # Image-as-link: [![Alt](img)](link_url) — grab link_url
+                        img_link_url_re = re.compile(r"\[!\[[^\]]*\]\([^)]*\)\]\(([^)]*)\)")
+                        cell_url_match = img_link_url_re.search(name_raw)
+                        if not cell_url_match:
+                            # Plain link: [text](url)
+                            cell_url_match = re.search(r"\[([^\]]*)\]\(([^)]*)\)", name_raw)
+                            raw_url = cell_url_match.group(2) if cell_url_match else None
+                        else:
+                            raw_url = cell_url_match.group(1)
+                        url = _gh_fragment_re.sub("", raw_url).rstrip("#") if raw_url else None
+                        url = url or None
 
                     adopters.append({
                         "name": name.strip(),

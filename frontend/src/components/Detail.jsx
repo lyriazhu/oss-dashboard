@@ -439,7 +439,7 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-h" style={{ margin: 0 }}>
-            {showRetentionQuarterly ? 'Contributor Retention Per Quarter' : 'Contributor Retention Per Year'}
+            {showRetentionQuarterly ? 'Contributor Retention Per Quarter' : 'Contributors Per Year'}
           </h2>
           <button
             className="btn-refresh"
@@ -491,57 +491,6 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         {showRetentionQuarterly && (
           <p className="chart-cap">{d.retention.cap}</p>
         )}
-      </div>
-
-      <hr className="divider" />
-
-      <div className="section">
-        <h2 className="section-h">Top Contributing Companies & Project Metadata</h2>
-        <div className="two-col">
-          <div className="table-wrap companies-table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Company</th>
-                  <th className="num">Commits</th>
-                  <th className="num">%</th>
-                </tr>
-              </thead>
-              <tbody>
-                {d.companies.map((c, i) => (
-                  <tr key={i}>
-                    <td
-                      className=""
-                      style={c.muted ? { color: "var(--text-helper)" } : undefined}
-                    >
-                      {c.n}
-                    </td>
-                    <td className="num">{c.c}</td>
-                    <td className="num">{c.p}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Field</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                {d.meta.map((m, i) => (
-                  <tr key={i}>
-                    <td style={{ color: "var(--text-primary)" }}>{m.f}</td>
-                    <td className={m.flag ? "flag" : ""}>{m.v}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
 
       <div className="section">
@@ -616,6 +565,15 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             <> · Median resolution time: <strong>{d.issueMedianResolutionDays < 1
               ? `${Math.round(d.issueMedianResolutionDays * 24)} hrs`
               : `${d.issueMedianResolutionDays.toFixed(1)} days`}</strong></>
+          )}
+        </p>
+        <p className="chart-cap">
+          Source:{' '}
+          {d.issueSource === 'jira' && d.jiraBaseUrl ? (
+            <>Jira{d.jiraProjectKey && <> · Project key: {d.jiraProjectKey}</>}{' · '}
+            <a href={d.jiraBaseUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>{d.jiraBaseUrl}</a></>
+          ) : (
+            <>GitHub Issues</>
           )}
         </p>
       </div>
@@ -699,6 +657,55 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         );
       })()}
 
+      <div className="section">
+        <h2 className="section-h">Top Contributing Companies & Project Metadata</h2>
+        <div className="two-col">
+          <div className="table-wrap companies-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th className="num">Commits</th>
+                  <th className="num">%</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.companies.map((c, i) => (
+                  <tr key={i}>
+                    <td
+                      className=""
+                      style={c.muted ? { color: "var(--text-helper)" } : undefined}
+                    >
+                      {c.n}
+                    </td>
+                    <td className="num">{c.c}</td>
+                    <td className="num">{c.p}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.meta.map((m, i) => (
+                  <tr key={i}>
+                    <td style={{ color: "var(--text-primary)" }}>{m.f}</td>
+                    <td className={m.flag ? "flag" : ""}>{m.v}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       {d.aiPolicySummary && d.aiPolicySummary.length > 0 && (
         <div className="section">
           <h2 className="section-h">Artificial Intelligence Policy</h2>
@@ -712,8 +719,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             </ul>
           </div>
           {d.aiPolicySource && (
-            <p style={{ margin: '1rem 0 0', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-              Source: <a href={d.aiPolicySource} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>{d.aiPolicySource}</a>
+            <p className="chart-cap">
+              Source: <a href={d.aiPolicySource} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>{d.aiPolicySource}</a>
             </p>
           )}
         </div>
@@ -757,8 +764,8 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
             ))}
           </div>
           {d.adoptersSource && (
-            <p style={{ margin: '1rem 0 0', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-              Source: <a href={d.adoptersSource} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>{d.adoptersSource}</a>
+            <p className="chart-cap">
+              Source: <a href={d.adoptersSource} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>{d.adoptersSource}</a>
             </p>
           )}
         </div>
@@ -781,7 +788,14 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
       )}
 
       <p className="foot">
-        Data via GitHub REST + GraphQL APIs
+        Data sources: GitHub REST &amp; GraphQL APIs · Git History
+        {d.issueSource === 'jira' ? ' · Jira' : ' · GitHub Issues'}
+        {d.cveSource === 'github_security_advisories'
+          ? ' · GitHub Security Advisories'
+          : d.cveSource === 'github_advisory_database'
+          ? ' · GitHub Advisory Database'
+          : null}
+        {d.adoptersSource ? ' · Project Adopters File' : null}
       </p>
     </main>
   );
