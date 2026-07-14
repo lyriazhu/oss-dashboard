@@ -25,15 +25,15 @@
     "last_extracted_at": "2026-07-14T10:25:33.100365"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-14T10:25:40.677382"
+    "last_git_sync_at": null
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-14T10:27:43.348474"
+    "last_extracted_at": null
   },
   "issues": {
-    "last_extracted_at": "2026-07-14T10:26:57.698363"
+    "last_extracted_at": null
   },
   "releases": {
-    "last_extracted_at": "2026-07-14T10:27:46.564821"
+    "last_extracted_at": null
   }
 }

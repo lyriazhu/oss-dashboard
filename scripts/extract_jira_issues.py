@@ -270,10 +270,12 @@ def _fetch_jira_issues_v3(session: requests.Session, base: str, project_key: str
 
 
 def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
-    # Strip any path/query the user may have pasted from their browser — we only
-    # need scheme + host (e.g. "https://issues.redhat.com").
+    # Normalise the URL: keep scheme + host + path, but drop query/fragment that
+    # a user may have copied from their browser.  The path matters for instances
+    # like Apache Jira which lives at /jira (e.g. https://issues.apache.org/jira),
+    # unlike Atlassian Cloud where Jira is at the domain root.
     _parsed = urlparse(base_url)
-    base = f"{_parsed.scheme}://{_parsed.netloc}"
+    base = f"{_parsed.scheme}://{_parsed.netloc}{_parsed.path}".rstrip("/")
     session = requests.Session()
     jql = f"project = {project_key} ORDER BY created ASC"
 

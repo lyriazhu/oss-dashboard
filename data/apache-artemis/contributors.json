@@ -520,6 +520,15 @@
       "profile_url": "https://github.com/pwright"
     },
     {
+      "login": "lavocatt",
+      "name": "Thomas Lavocat",
+      "company": "Red Hat",
+      "location": "France",
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/lavocatt"
+    },
+    {
       "login": "jostbg",
       "name": "Johan Stenberg",
       "company": "Unknown",
@@ -547,15 +556,6 @@
       "profile_url": "https://github.com/ldebello"
     },
     {
-      "login": "dudaerich",
-      "name": "Erich Duda",
-      "company": "Redhat",
-      "location": null,
-      "email": "dudaerich@gmail.com",
-      "contributions": 6,
-      "profile_url": "https://github.com/dudaerich"
-    },
-    {
       "login": "cschneider",
       "name": "Christian Schneider",
       "company": "Adobe",
@@ -565,13 +565,13 @@
       "profile_url": "https://github.com/cschneider"
     },
     {
-      "login": "lavocatt",
-      "name": "Thomas Lavocat",
-      "company": "Red Hat",
-      "location": "France",
-      "email": null,
+      "login": "dudaerich",
+      "name": "Erich Duda",
+      "company": "Redhat",
+      "location": null,
+      "email": "dudaerich@gmail.com",
       "contributions": 6,
-      "profile_url": "https://github.com/lavocatt"
+      "profile_url": "https://github.com/dudaerich"
     },
     {
       "login": "davsclaus",

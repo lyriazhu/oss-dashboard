@@ -240,35 +240,6 @@ public class DataService {
     }
 
     /**
-     * Return a human-readable display name for a repo.
-     * Known repos that have a canonical display name different from their slug
-     * are listed explicitly; everything else falls back to title-casing the slug.
-     */
-    private String resolveDisplayName(String owner, String repo) {
-        // Key: "owner/repo" (lowercase) -> canonical display name
-        java.util.Map<String, String> knownNames = new java.util.HashMap<>();
-        knownNames.put("strimzi/strimzi-kafka-operator", "Strimzi");
-        knownNames.put("apache/camel",                   "Apache Camel");
-        knownNames.put("apache/artemis",                 "Apache Artemis");
-        knownNames.put("apicurio/apicurio-registry",     "Apicurio Registry");
-        knownNames.put("keycloak/keycloak",              "Keycloak");
-        knownNames.put("debezium/debezium",              "Debezium");
-        knownNames.put("quarkusio/quarkus",              "Quarkus");
-        knownNames.put("wildfly/wildfly",                "Wildfly");
-        knownNames.put("3scale/3scale-operator",         "3scale operator");
-        knownNames.put("apache/tomcat",                  "tomcat");
-        knownNames.put("kroxylicious/kroxylicious",      "kroxylicious");
-        knownNames.put("streamshub/console",             "StreamsHub");
-
-        String key = (owner + "/" + repo).toLowerCase();
-        if (knownNames.containsKey(key)) {
-            return knownNames.get(key);
-        }
-        // Fallback: humanise the repo slug (replace hyphens/underscores with spaces)
-        return repo.replaceAll("[-_]", " ");
-    }
-
-    /**
      * Add a new project to projects.json
      */
     public Project addProject(AddProjectRequest request) throws IOException {
@@ -298,7 +269,7 @@ public class DataService {
         // Create new project
         Project newProject = new Project();
         newProject.setId(projectId);
-        newProject.setName(resolveDisplayName(owner, repo));
+        newProject.setName(repo.replaceAll("[-_]", " "));
         newProject.setGithubUrl(request.getGithubUrl());
         newProject.setOwner(owner);
         newProject.setRepo(repo);

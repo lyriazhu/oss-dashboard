@@ -2,6 +2,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Tag, BarChart } from "./ui.jsx";
 import { saveGithubToken, getSavedToken, refreshAllProjects } from "../api.js";
 
+function SortArrow({ dir }) {
+  return (
+    <svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12"
+      style={{ display: 'inline-block', marginLeft: '0.3rem', verticalAlign: 'middle', flexShrink: 0, opacity: dir ? 1 : 0.4 }}>
+      <path d="M4 0L8 5H0z" fill={dir === 'asc' ? 'currentColor' : 'var(--text-helper)'} />
+      <path d="M4 12L0 7h8z" fill={dir === 'desc' ? 'currentColor' : 'var(--text-helper)'} />
+    </svg>
+  );
+}
+
 function Chevron() {
   return (
     <svg className="chev" viewBox="0 0 16 16" fill="currentColor">
@@ -359,6 +369,23 @@ export default function Overview({
 }) {
   const [confirmOpen, setConfirmOpen]       = useState(false);
   const [refreshModalOpen, setRefreshModalOpen] = useState(false);
+  const [sortCol, setSortCol] = useState('name');
+  const [sortDir, setSortDir] = useState('asc');
+
+  function handleSort(col) {
+    if (sortCol === col) {
+      setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortCol(col);
+      // numeric columns default to descending so biggest is first
+      setSortDir(['contributorsYtd', 'contributorsAllTime', 'commits', 'commitsAllTime', 'stars'].includes(col) ? 'desc' : 'asc');
+    }
+  }
+
+  function parseNum(v) {
+    if (v == null) return -1;
+    return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
+  }
 
   // Calculate summary statistics and last updated date from actual data
   const { summary, lastUpdated } = useMemo(() => {
@@ -521,20 +548,48 @@ export default function Overview({
             <thead>
               <tr>
                 {selectMode && <th className="chk-cell" aria-label="Select" />}
-                <th>Community</th>
-                <th>Foundation</th>
-                <th>Repository</th>
-                <th className="num">Contributors (YTD)</th>
-                <th className="num">Contributors (All-Time)</th>
-                <th className="num">Commits (YTD)</th>
-                <th className="num">Commits (All-Time)</th>
-                <th className="num">Stars</th>
-                <th>Status</th>
+                {[
+                  { key: 'name',                label: 'Community',              cls: undefined },
+                  { key: 'foundation',          label: 'Foundation',             cls: undefined },
+                  { key: 'repo',                label: 'Repository',             cls: undefined },
+                  { key: 'contributorsYtd',     label: 'Contributors (YTD)',     cls: 'num'     },
+                  { key: 'contributorsAllTime', label: 'Contributors (All-Time)', cls: 'num'    },
+                  { key: 'commits',             label: 'Commits (YTD)',          cls: 'num'     },
+                  { key: 'commitsAllTime',      label: 'Commits (All-Time)',     cls: 'num'     },
+                  { key: 'stars',               label: 'Stars',                  cls: 'num'     },
+                  { key: 'status',              label: 'Status',                 cls: undefined },
+                ].map(({ key, label, cls }) => (
+                  <th
+                    key={key}
+                    className={cls}
+                    style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap', color: sortCol === key ? 'var(--text-primary)' : undefined }}
+                    onClick={() => handleSort(key)}
+                  >
+                    {label}
+                    <SortArrow dir={sortCol === key ? sortDir : null} />
+                  </th>
+                ))}
                 {!selectMode && <th aria-label="Open" />}
               </tr>
             </thead>
             <tbody>
-              {[...order].sort((a, b) => data[a].name.localeCompare(data[b].name)).map((key) => {
+              {[...order].sort((a, b) => {
+                const da = data[a], db = data[b];
+                let cmp = 0;
+                switch (sortCol) {
+                  case 'name':                cmp = da.name.localeCompare(db.name); break;
+                  case 'foundation':          cmp = (da.ov.foundation || '').localeCompare(db.ov.foundation || ''); break;
+                  case 'repo':                cmp = (da.repoUrl || '').localeCompare(db.repoUrl || ''); break;
+                  case 'contributorsYtd':     cmp = parseNum(da.ov.contributorsYtd) - parseNum(db.ov.contributorsYtd); break;
+                  case 'contributorsAllTime': cmp = parseNum(da.ov.contributorsAllTime) - parseNum(db.ov.contributorsAllTime); break;
+                  case 'commits':             cmp = parseNum(da.ov.commits) - parseNum(db.ov.commits); break;
+                  case 'commitsAllTime':      cmp = parseNum(da.ov.commitsAllTime) - parseNum(db.ov.commitsAllTime); break;
+                  case 'stars':               cmp = parseNum(da.ov.stars) - parseNum(db.ov.stars); break;
+                  case 'status':              cmp = (da.status.label || '').localeCompare(db.status.label || ''); break;
+                  default: break;
+                }
+                return sortDir === 'asc' ? cmp : -cmp;
+              }).map((key) => {
                 const d = data[key];
                 const o = d.ov;
                 const isSelected = selectedKeys.has(key);
