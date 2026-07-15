@@ -76,7 +76,7 @@
     "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
   }, {
     "id" : "3scale-operator",
-    "name" : "Merge",
+    "name" : "3scale",
     "owner" : "3scale",
     "repo" : "3scale-operator",
     "foundation" : "Red Hat",
@@ -115,7 +115,7 @@
     "jira_base_url" : "https://issues.apache.org/jira"
   }, {
     "id" : "console",
-    "name" : "Merge",
+    "name" : "StreamsHub",
     "owner" : "streamshub",
     "repo" : "console",
     "foundation" : "Independent",
@@ -123,5 +123,5 @@
     "github_url" : "https://github.com/streamshub/console",
     "data_dir" : "streamshub"
   } ],
-  "last_updated" : "2026-07-15T19:34:28.632415Z"
+  "last_updated" : "2026-07-15T19:42:31.111485Z"
 }

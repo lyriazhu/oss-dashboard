@@ -315,6 +315,37 @@ public class ProjectController {
     }
 
     /**
+     * GET /api/merges
+     * Return the persisted merge definitions from data/merges.json.
+     */
+    @GetMapping("/merges")
+    public ResponseEntity<java.util.List<java.util.Map<String, Object>>> getMerges() {
+        try {
+            return ResponseEntity.ok(dataService.getMerges());
+        } catch (IOException e) {
+            log.error("Error reading merges", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
+     * PUT /api/merges
+     * Overwrite the persisted merge definitions in data/merges.json.
+     * Body: [ { "mergedKey": "...", "memberKeys": [...], "name": "..." }, ... ]
+     */
+    @PutMapping("/merges")
+    public ResponseEntity<Void> saveMerges(
+            @RequestBody java.util.List<java.util.Map<String, Object>> merges) {
+        try {
+            dataService.saveMerges(merges);
+            return ResponseEntity.noContent().build();
+        } catch (IOException e) {
+            log.error("Error saving merges", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
      * GET /api/projects/{projectId}/extraction-progress
      * Server-Sent Events stream of extraction log lines.
      * Polls the in-memory log buffer and sends new lines until __DONE__ or __FAILED__.

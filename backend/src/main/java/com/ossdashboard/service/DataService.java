@@ -498,6 +498,63 @@ public class DataService {
         }
     }
 
+    // -------------------------------------------------------------------------
+    // Merge persistence — data/merges.json
+    // Structure: { "merges": [ { "mergedKey": "...", "memberKeys": [...], "name": "..." } ] }
+    // -------------------------------------------------------------------------
+
+    /**
+     * Read the current merge map from data/merges.json.
+     * Returns an empty list if the file does not exist.
+     */
+    public List<java.util.Map<String, Object>> getMerges() throws IOException {
+        Path mergesFile = Paths.get(dataDirectory, "merges.json");
+        if (!Files.exists(mergesFile)) {
+            return new ArrayList<>();
+        }
+        JsonNode root = objectMapper.readTree(mergesFile.toFile());
+        JsonNode arr = root.get("merges");
+        List<java.util.Map<String, Object>> result = new ArrayList<>();
+        if (arr != null && arr.isArray()) {
+            for (JsonNode item : arr) {
+                java.util.Map<String, Object> entry = new java.util.LinkedHashMap<>();
+                entry.put("mergedKey", item.path("mergedKey").asText());
+                List<String> memberKeys = new ArrayList<>();
+                for (JsonNode k : item.path("memberKeys")) memberKeys.add(k.asText());
+                entry.put("memberKeys", memberKeys);
+                if (item.has("name")) entry.put("name", item.path("name").asText());
+                result.add(entry);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Overwrite data/merges.json with the supplied list of merge records.
+     * Each record must have: mergedKey (String), memberKeys (List<String>), name (String, optional).
+     */
+    public void saveMerges(List<java.util.Map<String, Object>> merges) throws IOException {
+        Path mergesFile = Paths.get(dataDirectory, "merges.json");
+        ObjectNode root = objectMapper.createObjectNode();
+        ArrayNode arr = objectMapper.createArrayNode();
+        for (java.util.Map<String, Object> m : merges) {
+            ObjectNode item = objectMapper.createObjectNode();
+            item.put("mergedKey", (String) m.get("mergedKey"));
+            ArrayNode keys = objectMapper.createArrayNode();
+            @SuppressWarnings("unchecked")
+            List<String> memberKeys = (List<String>) m.get("memberKeys");
+            if (memberKeys != null) memberKeys.forEach(keys::add);
+            item.set("memberKeys", keys);
+            Object name = m.get("name");
+            if (name != null && !name.toString().isBlank()) item.put("name", name.toString());
+            arr.add(item);
+        }
+        root.set("merges", arr);
+        root.put("last_updated", Instant.now().toString());
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(mergesFile.toFile(), root);
+        log.info("Saved {} merge(s) to merges.json", merges.size());
+    }
+
     /**
      * Append a new project entry to scripts/config.yaml so the Python
      * extraction scripts can discover it by name or owner/repo.

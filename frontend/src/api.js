@@ -88,6 +88,29 @@ export async function updateProject(projectId, fields) {
   return response.json();
 }
 
+export async function fetchMerges() {
+  try {
+    const response = await fetch(`${API_BASE}/projects/merges`, fetchOptions);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching merges:', error);
+    return [];
+  }
+}
+
+export async function saveMerges(merges) {
+  try {
+    await fetch(`${API_BASE}/projects/merges`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(merges),
+    });
+  } catch (error) {
+    console.error('Error saving merges:', error);
+  }
+}
+
 export async function removeProject(projectId) {
   const response = await fetch(`${API_BASE}/projects/${projectId}`, { method: 'DELETE' });
   if (!response.ok) {

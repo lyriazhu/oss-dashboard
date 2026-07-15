@@ -441,7 +441,7 @@ function CommunityRow({
 
       {/* Expanded sub-rows for each repo in a merged entry */}
       {isMerged && expanded && d._mergedFrom.map(({ key: repoKey, data: repo }) => (
-        <tr key={repoKey} className="merged-sub-row" style={{ cursor: 'pointer' }} onClick={() => onSelect(repoKey)}>
+        <tr key={repoKey} className="merged-sub-row" style={{ cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); onSelect(repoKey, repo); }}>
           {selectMode && <td className="chk-cell" />}
           <td className="strong">
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', paddingLeft: '1.5rem' }}>
@@ -648,9 +648,9 @@ export default function Overview({
                 className="btn-join"
                 onClick={() => onJoinSelected?.()}
                 disabled={selectedKeys.size < 2}
-                title={selectedKeys.size < 2 ? "Select at least 2 communities to join" : `Join ${selectedKeys.size} communities`}
+                title={selectedKeys.size < 2 ? "Select at least 2 communities to merge" : `Merge ${selectedKeys.size} communities`}
               >
-                Join
+                Merge
                 <svg viewBox="0 0 32 32" fill="currentColor" width="1rem" height="1rem" aria-hidden="true">
                   <path d="M26 6a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-4 2a2 2 0 1 1 2-2 2 2 0 0 1-2 2zM10 6a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2zm8 14a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-4 2a2 2 0 1 1 2-2 2 2 0 0 1-2 2z"/>
                   <path d="M22 11v7a6 6 0 0 1-6 6h-1v-3l-4 4 4 4v-3h1a8 8 0 0 0 8-8v-7z"/>
@@ -692,7 +692,7 @@ export default function Overview({
               <tr>
                 {selectMode && <th className="chk-cell" aria-label="Select" />}
                 {[
-                  { key: 'name',                label: 'Community',              cls: undefined },
+                  { key: 'name',                label: 'Community',              cls: undefined, extraStyle: { paddingLeft: '2.5rem' } },
                   { key: 'foundation',          label: 'Foundation',             cls: undefined },
                   { key: 'repo',                label: 'Repository',             cls: undefined },
                   { key: 'contributorsYtd',     label: 'Contributors (YTD)',     cls: 'num'     },
@@ -701,11 +701,11 @@ export default function Overview({
                   { key: 'commitsAllTime',      label: 'Commits (All-Time)',     cls: 'num'     },
                   { key: 'stars',               label: 'Stars',                  cls: 'num'     },
                   { key: 'status',              label: 'Status',                 cls: undefined },
-                ].map(({ key, label, cls }) => (
+                ].map(({ key, label, cls, extraStyle }) => (
                   <th
                     key={key}
                     className={cls}
-                    style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap', color: sortCol === key ? 'var(--text-primary)' : undefined }}
+                    style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap', color: sortCol === key ? 'var(--text-primary)' : undefined, ...extraStyle }}
                     onClick={() => handleSort(key)}
                   >
                     {label}

@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -8,7 +8,6 @@ import AddProjectModal from "./components/AddProjectModal.jsx";
 import ExtractionToast from "./components/ExtractionToast.jsx";
 
 const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
-const MERGES_STORAGE_KEY = 'oss_dashboard_merges';
 
 export default function App() {
   const [data, setData] = useState({});
@@ -17,6 +16,9 @@ export default function App() {
   const [error, setError] = useState(null);
   const [view, setView] = useState("overview"); // 'overview' | 'detail'
   const [selectedKey, setSelectedKey] = useState(null);
+  // detailData holds the exact data object to render in Detail — may differ
+  // from data[selectedKey] when a merged sub-repo is opened directly.
+  const [detailData, setDetailData] = useState(null);
   const [navCollapsed, setNavCollapsed] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [flashKey, setFlashKey] = useState(null);
@@ -45,16 +47,17 @@ export default function App() {
     }
   }, [extracting]);
 
-  // Restore merged state after projects are loaded from backend
-  const applyPersistedMerges = useCallback((projectData, projectOrder) => {
+  // Restore merged state using merge records loaded from data/merges.json via the backend.
+  const applyPersistedMerges = useCallback((projectData, projectOrder, mergesFromBackend) => {
     try {
-      const saved = localStorage.getItem(MERGES_STORAGE_KEY);
-      if (!saved) return { projectData, projectOrder };
-      const merges = JSON.parse(saved);
+      if (!mergesFromBackend || mergesFromBackend.length === 0) return { projectData, projectOrder };
       let newData = { ...projectData };
       let newOrder = [...projectOrder];
 
-      for (const [mergedKey, memberKeys] of Object.entries(merges)) {
+      for (const entry of mergesFromBackend) {
+        const mergedKey = entry.mergedKey;
+        const memberKeys = entry.memberKeys;
+        const customName = entry.name || null;
         if (!memberKeys.every((k) => newData[k])) continue;
         const keys = memberKeys;
         const communities = keys.map((k) => newData[k]);
@@ -104,7 +107,7 @@ export default function App() {
 
         const merged = {
           ...base,
-          name: combinedName,
+          name: customName || combinedName,
           _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
           sub: base.sub,
           ov: { ...base.ov, contributorsYtd: sumOv('contributorsYtd'), contributorsAllTime: sumOv('contributorsAllTime'), companies: sumOv('companies'), commits: sumOv('commits'), commitsAllTime: sumOv('commitsAllTime'), pullRequests: sumOv('pullRequests'), stars: sumOv('stars'), quarters: base.ov?.quarters || [] },
@@ -137,8 +140,11 @@ export default function App() {
       
       console.log('🔄 Loading projects from backend...');
       
-      // Fetch all projects
-      const projects = await fetchProjects();
+      // Fetch all projects and saved merges in parallel
+      const [projects, mergesFromBackend] = await Promise.all([
+        fetchProjects(),
+        fetchMerges(),
+      ]);
       console.log('✅ Fetched projects:', projects.length, 'projects');
       
       // Fetch metrics for each project
@@ -162,7 +168,7 @@ export default function App() {
       
       console.log('✅ All projects loaded:', projectOrder.length);
       
-      const { projectData: mergedData, projectOrder: mergedOrder } = applyPersistedMerges(projectData, projectOrder);
+      const { projectData: mergedData, projectOrder: mergedOrder } = applyPersistedMerges(projectData, projectOrder, mergesFromBackend);
       setData(mergedData);
       setOrder(mergedOrder);
       
@@ -186,11 +192,13 @@ export default function App() {
 
   const showOverview = useCallback(() => {
     setView("overview");
+    setDetailData(null);
     window.scrollTo(0, 0);
   }, []);
 
-  const showDetail = useCallback((key) => {
+  const showDetail = useCallback((key, overrideData) => {
     setSelectedKey(key);
+    setDetailData(overrideData || null);
     setNavCollapsed(true);
     setView("detail");
     window.scrollTo(0, 0);
@@ -201,7 +209,11 @@ export default function App() {
   }, []);
 
   const handleUpdateProject = useCallback(async (projectId, fields) => {
-    // 1. Optimistically patch the in-memory data so the UI updates instantly.
+    // For merged entries, only update in-memory — the rename is stored in
+    // localStorage as part of the merge record and is discarded on unmerge.
+    const isMergedEntry = Boolean(data[projectId]?._mergedFrom);
+
+    // 1. Patch in-memory immediately.
     setData((prev) => {
       if (!prev[projectId]) return prev;
       const updated = { ...prev[projectId] };
@@ -213,12 +225,12 @@ export default function App() {
       }
       return { ...prev, [projectId]: updated };
     });
-    // 2. Persist to backend. The PATCH response returns the updated Project object;
-    //    use it to confirm the state rather than re-fetching all projects (which
-    //    would be slow and could race with the optimistic update).
+
+    if (isMergedEntry) return; // localStorage persistence is handled by the data effect
+
+    // 2. Persist to backend for non-merged projects.
     try {
       const saved = await updateProject(projectId, fields);
-      // Confirm the write by applying whatever the backend actually persisted.
       setData((prev) => {
         if (!prev[projectId]) return prev;
         const updated = { ...prev[projectId] };
@@ -232,10 +244,9 @@ export default function App() {
       });
     } catch (err) {
       console.error('Failed to save project update:', err);
-      // On failure, reload to restore the true persisted state.
       await loadProjects({ silent: true });
     }
-  }, [loadProjects]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loadProjects, data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addProject = useCallback((key, name) => {
     // loadProjects has already refreshed data/order by the time this fires;
@@ -319,20 +330,21 @@ export default function App() {
     }
   }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Persist merges to localStorage whenever data changes
+  // Persist merges to backend (data/merges.json) whenever data changes
   useEffect(() => {
-    // Collect all merged entries from current data
-    const merges = {};
+    const mergeRecords = [];
     Object.entries(data).forEach(([key, d]) => {
       if (d._mergedFrom) {
-        merges[key] = d._mergedFrom.map((e) => e.key);
+        const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
+        mergeRecords.push({
+          mergedKey: key,
+          memberKeys: d._mergedFrom.map((e) => e.key),
+          name: d.name !== defaultName ? d.name : null,
+        });
       }
     });
-    if (Object.keys(merges).length > 0) {
-      localStorage.setItem(MERGES_STORAGE_KEY, JSON.stringify(merges));
-    } else {
-      localStorage.removeItem(MERGES_STORAGE_KEY);
-    }
+    // Always write — empty array clears the file
+    saveMerges(mergeRecords);
   }, [data]);
 
   const handleUnmerge = useCallback((mergedKey) => {
@@ -603,18 +615,7 @@ export default function App() {
           />
         ) : (
           <Detail
-            d={(() => {
-              // Key exists directly (normal or merged entry)
-              if (data[selectedKey]) return data[selectedKey];
-              // Key is a sub-repo inside a merged entry — find its original data
-              for (const entry of Object.values(data)) {
-                if (entry._mergedFrom) {
-                  const match = entry._mergedFrom.find(e => e.key === selectedKey);
-                  if (match) return match.data;
-                }
-              }
-              return null;
-            })()}
+            d={detailData || data[selectedKey] || null}
             onOverview={showOverview}
             onRefreshProject={(id, name) => setExtracting({ id, name, mode: 'refresh' })}
           />
