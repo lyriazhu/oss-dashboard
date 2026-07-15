@@ -603,7 +603,18 @@ export default function App() {
           />
         ) : (
           <Detail
-            d={data[selectedKey]}
+            d={(() => {
+              // Key exists directly (normal or merged entry)
+              if (data[selectedKey]) return data[selectedKey];
+              // Key is a sub-repo inside a merged entry — find its original data
+              for (const entry of Object.values(data)) {
+                if (entry._mergedFrom) {
+                  const match = entry._mergedFrom.find(e => e.key === selectedKey);
+                  if (match) return match.data;
+                }
+              }
+              return null;
+            })()}
             onOverview={showOverview}
             onRefreshProject={(id, name) => setExtracting({ id, name, mode: 'refresh' })}
           />

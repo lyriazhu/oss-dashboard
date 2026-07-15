@@ -115,7 +115,7 @@
     "jira_base_url" : "https://issues.apache.org/jira"
   }, {
     "id" : "console",
-    "name" : "StreamsHub",
+    "name" : "Merge",
     "owner" : "streamshub",
     "repo" : "console",
     "foundation" : "Independent",
@@ -123,5 +123,5 @@
     "github_url" : "https://github.com/streamshub/console",
     "data_dir" : "streamshub"
   } ],
-  "last_updated" : "2026-07-15T19:20:24.614385Z"
+  "last_updated" : "2026-07-15T19:34:28.632415Z"
 }
