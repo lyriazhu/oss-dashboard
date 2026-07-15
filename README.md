@@ -1,6 +1,6 @@
 # Open Source Dashboard
 
-Enterprise-grade dashboard to monitor contributor activity and project health metrics across multiple open-source projects. It combines a Python data extraction pipeline, a Java/Spring Boot API, and a React frontend.
+A scalable, low-maintenance, replicable dashboard to track contributors and other project health metrics across different open-source projects.
 
 ---
 
