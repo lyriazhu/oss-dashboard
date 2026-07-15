@@ -456,6 +456,17 @@
   .btn-ghost:hover{background:var(--layer-hover);}
   .btn-ghost:active{background:var(--layer-selected);}
 
+  /* Join button — blue, disabled until ≥2 communities selected */
+  .btn-join{
+    display:inline-flex; align-items:center; justify-content:space-between; gap:2.5rem;
+    background:var(--blue-60); color:#fff; border:0; cursor:pointer;
+    font-family:inherit; font-size:.875rem; height:3rem; padding:0 1rem; min-width:8rem;
+  }
+  .btn-join:hover:not(:disabled){background:var(--blue-70);}
+  .btn-join:active:not(:disabled){background:#002d9c;}
+  .btn-join:disabled{background:var(--gray-20); color:var(--gray-50); cursor:not-allowed;}
+  .btn-join svg{width:1rem; height:1rem; flex:0 0 auto;}
+
   /* Delete button — grayed when nothing selected, dim pink when ready */
   .btn-danger{
     display:inline-flex; align-items:center; justify-content:space-between; gap:2.5rem;
@@ -468,6 +479,17 @@
   .btn-danger svg{width:1rem; height:1rem; flex:0 0 auto;}
   .btn-danger--dim{background:var(--gray-20); color:var(--gray-50);}
   .btn-danger--dim svg{opacity:.5;}
+
+  /* Unmerge button — inline in table row chevron cell */
+  .btn-unmerge{
+    display:inline-flex; align-items:center;
+    background:transparent; color:var(--teal-50);
+    border:1px solid var(--teal-50); cursor:pointer;
+    font-family:inherit; font-size:.75rem; height:1.75rem; padding:0 .625rem;
+    white-space:nowrap;
+  }
+  .btn-unmerge:hover{background:rgba(0,157,154,.08);}
+  .btn-unmerge:active{background:rgba(0,157,154,.16);}
 
   /* Select mode — checkbox column and selected row */
   .chk-cell{width:2.75rem; padding:0 0 0 1rem !important; text-align:left;}

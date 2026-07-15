@@ -236,7 +236,7 @@ function InlineEdit({ value, field, projectId, onSave, active, onDeactivate, onC
 
 function CommunityRow({
   rowKey, d, o, isSelected, rowClass, selectMode,
-  onSelect, onSelectToggle, onUpdateProject,
+  onSelect, onSelectToggle, onUpdateProject, onUnmerge,
 }) {
   const [activeEdit, setActiveEdit] = useState(null); // null | "name" | "foundation"
   const pendingNav = useRef(null);
@@ -355,7 +355,17 @@ function CommunityRow({
       </td>
       {!selectMode && (
         <td className="chev-cell">
-          <Chevron />
+          {d._mergedFrom ? (
+            <button
+              className="btn-unmerge"
+              title={`Unmerge: ${d._mergedFrom.map((e) => e.data.name).join(', ')}`}
+              onClick={(e) => { e.stopPropagation(); onUnmerge?.(rowKey); }}
+            >
+              Unmerge
+            </button>
+          ) : (
+            <Chevron />
+          )}
         </td>
       )}
     </tr>
@@ -365,7 +375,7 @@ function CommunityRow({
 export default function Overview({
   data, order, flashKey, onSelect, onAddClick, onUpdateProject,
   selectMode, selectedKeys, onSelectToggle, onToggleSelectMode, onDeleteSelected, deleting,
-  onRefreshAll,
+  onRefreshAll, onJoinSelected, onUnmerge,
 }) {
   const [confirmOpen, setConfirmOpen]       = useState(false);
   const [refreshModalOpen, setRefreshModalOpen] = useState(false);
@@ -515,6 +525,21 @@ export default function Overview({
             <button className="btn-ghost" onClick={onToggleSelectMode}>
               {selectMode ? "Unselect" : "Select"}
             </button>
+            {selectMode && (
+              <button
+                className="btn-join"
+                onClick={() => onJoinSelected?.()}
+                disabled={selectedKeys.size < 2}
+                title={selectedKeys.size < 2 ? "Select at least 2 communities to join" : `Join ${selectedKeys.size} communities`}
+              >
+                Join
+                <svg viewBox="0 0 32 32" fill="currentColor" width="1rem" height="1rem" aria-hidden="true">
+                  <path d="M26 6a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-4 2a2 2 0 1 1 2-2 2 2 0 0 1-2 2zM10 6a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2zm8 14a4 4 0 1 0-4 4 4 4 0 0 0 4-4zm-4 2a2 2 0 1 1 2-2 2 2 0 0 1-2 2z"/>
+                  <path d="M22 11v7a6 6 0 0 1-6 6h-1v-3l-4 4 4 4v-3h1a8 8 0 0 0 8-8v-7z"/>
+                  <path d="M11 8h3v2h-3z"/>
+                </svg>
+              </button>
+            )}
             {selectMode ? (
               <button
                 className={"btn-danger" + (selectedKeys.size === 0 ? " btn-danger--dim" : "")}
@@ -609,6 +634,7 @@ export default function Overview({
                     onSelect={onSelect}
                     onSelectToggle={onSelectToggle}
                     onUpdateProject={onUpdateProject}
+                    onUnmerge={onUnmerge}
                   />
                 );
               })}

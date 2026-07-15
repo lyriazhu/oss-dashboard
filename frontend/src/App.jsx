@@ -232,6 +232,150 @@ export default function App() {
     }
   }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const handleUnmerge = useCallback((mergedKey) => {
+    setData((prev) => {
+      const merged = prev[mergedKey];
+      if (!merged?._mergedFrom) return prev;
+      const next = { ...prev };
+      delete next[mergedKey];
+      merged._mergedFrom.forEach(({ key, data: original }) => {
+        next[key] = original;
+      });
+      return next;
+    });
+    setOrder((prev) => {
+      const merged = data[mergedKey];
+      if (!merged?._mergedFrom) return prev;
+      const idx = prev.indexOf(mergedKey);
+      const next = prev.filter((k) => k !== mergedKey);
+      const originals = merged._mergedFrom.map((e) => e.key);
+      next.splice(idx, 0, ...originals);
+      return next;
+    });
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleJoinSelected = useCallback(() => {
+    if (selectedKeys.size < 2) return;
+    const keys = [...selectedKeys];
+    const communities = keys.map((k) => data[k]);
+
+    // Helper: parse a formatted number string like "1,234" or "1,234+" back to int
+    const parseNum = (v) => {
+      if (v == null) return 0;
+      return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
+    };
+    const fmt = (n) => n.toLocaleString('en-US');
+
+    // Combine names with " + "
+    const combinedName = communities.map((c) => c.name).join(' + ');
+
+    // The first community is used as the base; the rest are merged into it.
+    const base = communities[0];
+
+    // Sum numeric ov fields
+    const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
+
+    // Merge yearly time-series arrays by matching on year label
+    function mergeYearly(arrays, yKey = 'y', vKey = 'v') {
+      const map = new Map();
+      arrays.flat().forEach((entry) => {
+        const label = entry[yKey];
+        const existing = map.get(label) || { ...entry, [vKey]: 0 };
+        map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+      });
+      return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+    }
+
+    function mergeYearlyRetention(arrays) {
+      const map = new Map();
+      arrays.flat().forEach((entry) => {
+        const label = entry.y;
+        const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
+        map.set(label, {
+          ...ex,
+          returning: ex.returning + (entry.returning || 0),
+          newContributors: ex.newContributors + (entry.newContributors || 0),
+          active: ex.active + (entry.active || 0),
+          c: ex.c || entry.c,
+        });
+      });
+      const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+      // Recalculate retention % from merged active/returning totals
+      return merged.map((e) => ({
+        ...e,
+        v: e.active ? Math.round((e.returning / e.active) * 100) : 0,
+      }));
+    }
+
+    // Merge kpis by summing numeric values, keeping label/help from base
+    const mergedKpis = (base.kpis || []).map((kpi) => {
+      const total = communities.reduce((acc, c) => {
+        const match = (c.kpis || []).find((k) => k.l === kpi.l);
+        return acc + parseNum(match?.v);
+      }, 0);
+      // Non-numeric KPIs like Language keep the base value
+      const isNumeric = !isNaN(parseNum(kpi.v)) && kpi.l !== 'Language';
+      return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
+    });
+
+    // Status: pick the most prominent (Healthy > Growing > Watch > N/A)
+    const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
+    const bestStatus = communities.reduce((best, c) => {
+      return (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1)
+        ? c.status
+        : best;
+    }, base.status);
+
+    const merged = {
+      ...base,
+      name: combinedName,
+      _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
+      sub: base.sub, // keep foundation from the primary
+      ov: {
+        ...base.ov,
+        contributorsYtd: sumOv('contributorsYtd'),
+        contributorsAllTime: sumOv('contributorsAllTime'),
+        companies: sumOv('companies'),
+        commits: sumOv('commits'),
+        commitsAllTime: sumOv('commitsAllTime'),
+        pullRequests: sumOv('pullRequests'),
+        stars: sumOv('stars'),
+        quarters: base.ov?.quarters || [],
+      },
+      kpis: mergedKpis,
+      status: bestStatus,
+      commits: mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
+      retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
+      prYearly: mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
+      issueYearly: mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
+      cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
+    };
+
+    const mergedKey = keys[0];
+
+    // Remove all selected keys except the base (which we replace with the merged entry)
+    setData((prev) => {
+      const next = { ...prev };
+      keys.forEach((k) => delete next[k]);
+      next[mergedKey] = merged;
+      return next;
+    });
+    setOrder((prev) => {
+      const next = prev.filter((k) => !keys.includes(k));
+      // Insert the merged entry where the base was (before the filtered position)
+      const insertIdx = Math.min(...keys.map((k) => prev.indexOf(k)));
+      next.splice(insertIdx, 0, mergedKey);
+      return next;
+    });
+
+    // Exit select mode and clear selection
+    setSelectedKeys(new Set());
+    setSelectMode(false);
+    // Flash the merged row
+    setFlashKey(mergedKey);
+    setTimeout(() => setFlashKey(null), 1200);
+  }, [selectedKeys, data]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (loading) {
     return (
       <div style={{ 
@@ -311,6 +455,8 @@ export default function App() {
             onDeleteSelected={handleDeleteSelected}
             deleting={deleting}
             onRefreshAll={handleRefreshAll}
+            onJoinSelected={handleJoinSelected}
+            onUnmerge={handleUnmerge}
           />
         ) : (
           <Detail
