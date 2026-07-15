@@ -22,18 +22,18 @@
       "tomncooper",
       "wipheg"
     ],
-    "last_extracted_at": "2026-07-14T10:52:19.234482"
+    "last_extracted_at": "2026-07-15T10:19:34.346207"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-14T10:52:26.719750"
+    "last_git_sync_at": "2026-07-15T10:19:42.160613"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-14T10:54:29.262300"
+    "last_extracted_at": null
   },
   "issues": {
-    "last_extracted_at": "2026-07-14T10:53:44.427926"
+    "last_extracted_at": null
   },
   "releases": {
-    "last_extracted_at": "2026-07-14T10:54:32.638606"
+    "last_extracted_at": null
   }
 }

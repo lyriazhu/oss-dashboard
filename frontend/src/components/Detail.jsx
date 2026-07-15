@@ -386,17 +386,46 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
           )}
         </div>
       </div>
-      <p className="meta-line">
-        <span>{d.foundation}</span>
-        <span>|</span>
-        <span>{d.founded}</span>
-        {d.releaseFrequency && (
-          <>
-            <span>|</span>
-            <span>{d.releaseFrequency}</span>
-          </>
-        )}
-      </p>
+      {d._mergedFrom ? (
+        <div className="meta-line merged-meta">
+          <table className="merged-repos-table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Foundation</th>
+                <th>Repository</th>
+              </tr>
+            </thead>
+            <tbody>
+              {d._mergedFrom.map(({ data: repo }, i) => (
+                <tr key={i}>
+                  <td className="strong">{repo.name}</td>
+                  <td>{repo.ov?.foundation || '—'}</td>
+                  <td>
+                    {repo.repoUrl ? (
+                      <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)' }}>
+                        {repo.repoUrl.replace('https://github.com/', '')}
+                      </a>
+                    ) : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p className="meta-line">
+          <span>{d.foundation}</span>
+          <span>|</span>
+          <span>{d.founded}</span>
+          {d.releaseFrequency && (
+            <>
+              <span>|</span>
+              <span>{d.releaseFrequency}</span>
+            </>
+          )}
+        </p>
+      )}
 
       <div className="tile-grid det-tiles">
         {d.kpis.map((k, i) => (

@@ -12,14 +12,6 @@ function SortArrow({ dir }) {
   );
 }
 
-function Chevron() {
-  return (
-    <svg className="chev" viewBox="0 0 16 16" fill="currentColor">
-      <path d="M6 4l4 4-4 4-.7-.7L8.6 8 5.3 4.7z" />
-    </svg>
-  );
-}
-
 function RefreshModal({ open, onClose, onStarted }) {
   const [token, setToken]     = useState("");
   const [loading, setLoading] = useState(false);
@@ -116,6 +108,47 @@ function RefreshModal({ open, onClose, onStarted }) {
           <button className="btn-add" onClick={submit} disabled={loading}>
             {loading ? "Starting…" : "Refresh all"}
           </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function UnmergeConfirmModal({ mergedName, repos, onConfirm, onCancel }) {
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onCancel(); };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [onCancel]);
+
+  return (
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="unmerge-modal-title"
+      onClick={(e) => { if (e.target.classList.contains('modal-overlay')) onCancel(); }}
+    >
+      <div className="modal" style={{ maxWidth: '28rem' }}>
+        <div className="modal-header">
+          <h2 className="modal-title" id="unmerge-modal-title">Unmerge all repos?</h2>
+          <p className="modal-sub">
+            This will split <strong>{mergedName}</strong> back into {repos.length} separate communities:
+          </p>
+          <button className="modal-close" aria-label="Cancel" onClick={onCancel}>
+            <svg viewBox="0 0 32 32" fill="currentColor">
+              <path d="M24 9.4 22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6z" />
+            </svg>
+          </button>
+        </div>
+        <div className="modal-body">
+          <ul style={{ margin: '0 0 .5rem', paddingLeft: '1.25rem', fontSize: '.875rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
+            {repos.map((name, i) => <li key={i}>{name}</li>)}
+          </ul>
+        </div>
+        <div className="modal-footer">
+          <button className="btn-cancel" onClick={onCancel}>Cancel</button>
+          <button className="btn-confirm-delete" onClick={onConfirm}>Unmerge all</button>
         </div>
       </div>
     </div>
@@ -236,13 +269,19 @@ function InlineEdit({ value, field, projectId, onSave, active, onDeactivate, onC
 
 function CommunityRow({
   rowKey, d, o, isSelected, rowClass, selectMode,
-  onSelect, onSelectToggle, onUpdateProject, onUnmerge,
+  onSelect, onSelectToggle, onUpdateProject, onUnmerge, onRemoveFromMerge,
 }) {
   const [activeEdit, setActiveEdit] = useState(null); // null | "name" | "foundation"
+  const [expanded, setExpanded] = useState(false);
+  const [unmergeConfirm, setUnmergeConfirm] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const pendingNav = useRef(null);
   // Ref mirrors activeEdit so handleClick always sees the current value
   // without stale closure issues.
   const activeEditRef = useRef(null);
+
+  const isMerged = Boolean(d._mergedFrom);
+  const colSpan = selectMode ? 11 : 10;
 
   function setEdit(field) {
     activeEditRef.current = field;
@@ -264,12 +303,9 @@ function CommunityRow({
     if (activeEditRef.current) return; // edit input is open — ignore click
     const field = getEditField(e);
     if (field) {
-      // Click landed on an editable cell — delay navigation so a second click
-      // (double-click) has time to cancel it and open the editor instead.
       clearTimeout(pendingNav.current);
       pendingNav.current = setTimeout(() => onSelect(rowKey), 300);
     } else {
-      // Click on a non-editable cell — navigate immediately.
       cancelNav();
       onSelect(rowKey);
     }
@@ -277,7 +313,7 @@ function CommunityRow({
 
   function handleDoubleClick(e) {
     if (selectMode) return;
-    cancelNav(); // stop navigation scheduled by the two preceding click events
+    cancelNav();
     const field = getEditField(e);
     if (field) setEdit(field);
   }
@@ -290,92 +326,174 @@ function CommunityRow({
   }
 
   return (
-    <tr
-      data-key={rowKey}
-      tabIndex={0}
-      role={selectMode ? "checkbox" : "button"}
-      aria-checked={selectMode ? isSelected : undefined}
-      aria-label={selectMode ? `Select ${d.name}` : `View ${d.name} metrics`}
-      className={rowClass}
-      onClick={handleClick}
-      onDoubleClick={handleDoubleClick}
-      onKeyDown={handleKeyDown}
-    >
-      {selectMode && (
-        <td className="chk-cell">
-          <Checkbox
-            checked={isSelected}
-            onChange={() => onSelectToggle(rowKey)}
-            label={`Select ${d.name}`}
-          />
+    <>
+      <tr
+        data-key={rowKey}
+        tabIndex={0}
+        role={selectMode ? "checkbox" : "button"}
+        aria-checked={selectMode ? isSelected : undefined}
+        aria-label={selectMode ? `Select ${d.name}` : `View ${d.name} metrics`}
+        className={rowClass}
+        onClick={handleClick}
+        onDoubleClick={handleDoubleClick}
+        onKeyDown={handleKeyDown}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {selectMode && (
+          <td className="chk-cell">
+            <Checkbox
+              checked={isSelected}
+              onChange={() => onSelectToggle(rowKey)}
+              label={`Select ${d.name}`}
+            />
+          </td>
+        )}
+        <td className="strong" data-field="name">
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.375rem' }}>
+            {isMerged ? (
+              <button
+                className={"btn-expand-arrow" + (expanded ? " btn-expand-arrow--open" : "")}
+                aria-label={expanded ? `Collapse ${d.name}` : `Expand ${d.name}`}
+                aria-expanded={expanded}
+                onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); }}
+              >
+                <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12" aria-hidden="true">
+                  <path d="M6 4l4 4-4 4-.7-.7L8.6 8 5.3 4.7z" />
+                </svg>
+              </button>
+            ) : (
+              <span className="btn-expand-arrow-spacer" aria-hidden="true" />
+            )}
+            <InlineEdit
+              value={d.name}
+              field="name"
+              projectId={rowKey}
+              onSave={onUpdateProject}
+              active={activeEdit === "name"}
+              onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
+              onCancelNav={cancelNav}
+            />
+          </span>
         </td>
-      )}
-      <td className="strong" data-field="name">
-        <InlineEdit
-          value={d.name}
-          field="name"
-          projectId={rowKey}
-          onSave={onUpdateProject}
-          active={activeEdit === "name"}
-          onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
-          onCancelNav={cancelNav}
-        />
-      </td>
-      <td data-field="foundation">
-        <InlineEdit
-          value={o.foundation}
-          field="foundation"
-          projectId={rowKey}
-          onSave={onUpdateProject}
-          active={activeEdit === "foundation"}
-          onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
-          onCancelNav={cancelNav}
-        />
-      </td>
-      <td>
-        {d.repoUrl ? (
-          <a
-            href={d.repoUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "var(--link)", fontSize: ".8125rem" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {d.repoUrl.replace("https://github.com/", "")}
-          </a>
-        ) : "—"}
-      </td>
-      <td className="num">{o.contributorsYtd}</td>
-      <td className="num">{o.contributorsAllTime}</td>
-      <td className="num">{o.commits}</td>
-      <td className="num">{o.commitsAllTime}</td>
-      <td className="num">{o.stars}</td>
-      <td>
-        <Tag cls={d.status.cls} label={d.status.label} />
-      </td>
-      {!selectMode && (
-        <td className="chev-cell">
-          {d._mergedFrom ? (
-            <button
-              className="btn-unmerge"
-              title={`Unmerge: ${d._mergedFrom.map((e) => e.data.name).join(', ')}`}
-              onClick={(e) => { e.stopPropagation(); onUnmerge?.(rowKey); }}
-            >
-              Unmerge
-            </button>
-          ) : (
-            <Chevron />
+        <td data-field="foundation">
+          {isMerged ? (() => {
+            const foundations = [...new Set(d._mergedFrom.map(e => e.data.ov?.foundation).filter(Boolean))];
+            return foundations.length > 1 ? 'Multiple' : (foundations[0] || '—');
+          })() : (
+            <InlineEdit
+              value={o.foundation}
+              field="foundation"
+              projectId={rowKey}
+              onSave={onUpdateProject}
+              active={activeEdit === "foundation"}
+              onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
+              onCancelNav={cancelNav}
+            />
           )}
         </td>
+        <td>
+          {isMerged ? (() => {
+            const repos = d._mergedFrom.map(e => e.data.repoUrl).filter(Boolean);
+            if (repos.length === 0) return '—';
+            // Extract org/owner from first URL, check if all share the same owner
+            const owners = repos.map(u => u.replace('https://github.com/', '').split('/')[0]);
+            const allSameOwner = owners.every(o => o === owners[0]);
+            return allSameOwner
+              ? `${owners[0]} (Multiple)`
+              : 'Multiple';
+          })() : (
+            d.repoUrl ? (
+              <a
+                href={d.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "var(--link)", fontSize: ".8125rem" }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {d.repoUrl.replace("https://github.com/", "")}
+              </a>
+            ) : "—"
+          )}
+        </td>
+        <td className="num">{o.contributorsYtd}</td>
+        <td className="num">{o.contributorsAllTime}</td>
+        <td className="num">{o.commits}</td>
+        <td className="num">{o.commitsAllTime}</td>
+        <td className="num">{o.stars}</td>
+        <td>
+          <Tag cls={d.status.cls} label={d.status.label} />
+        </td>
+        {!selectMode && (
+          <td className="chev-cell">
+            {isMerged && (
+              <button
+                className={"btn-unmerge" + (hovered ? " btn-unmerge--visible" : "")}
+                title={`Unmerge all: ${d._mergedFrom.map((e) => e.data.name).join(', ')}`}
+                onClick={(e) => { e.stopPropagation(); setUnmergeConfirm(true); }}
+              >
+                Unmerge all
+              </button>
+            )}
+          </td>
+        )}
+      </tr>
+
+      {/* Expanded sub-rows for each repo in a merged entry */}
+      {isMerged && expanded && d._mergedFrom.map(({ key: repoKey, data: repo }) => (
+        <tr key={repoKey} className="merged-sub-row" style={{ cursor: 'pointer' }} onClick={() => onSelect(repoKey)}>
+          {selectMode && <td className="chk-cell" />}
+          <td className="strong">
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', paddingLeft: '1.5rem' }}>
+              <span style={{ color: 'var(--gray-40)', fontSize: '.75rem', flexShrink: 0 }}>↳</span>
+              {repo.name}
+            </span>
+          </td>
+          <td>{repo.ov?.foundation || '—'}</td>
+          <td>
+            {repo.repoUrl ? (
+              <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
+                {repo.repoUrl.replace('https://github.com/', '')}
+              </a>
+            ) : '—'}
+          </td>
+          <td className="num">{repo.ov?.contributorsYtd || '—'}</td>
+          <td className="num">{repo.ov?.contributorsAllTime || '—'}</td>
+          <td className="num">{repo.ov?.commits || '—'}</td>
+          <td className="num">{repo.ov?.commitsAllTime || '—'}</td>
+          <td className="num">{repo.ov?.stars || '—'}</td>
+          <td>{repo.status ? <Tag cls={repo.status.cls} label={repo.status.label} /> : '—'}</td>
+          {!selectMode && (
+            <td className="chev-cell">
+              <button
+                className="btn-unmerge-single"
+                title={`Unmerge ${repo.name} from this group`}
+                onClick={(e) => { e.stopPropagation(); onRemoveFromMerge?.(rowKey, repoKey); }}
+              >
+                Unmerge
+              </button>
+            </td>
+          )}
+        </tr>
+      ))}
+
+      {/* Confirmation modal for full unmerge */}
+      {unmergeConfirm && (
+        <UnmergeConfirmModal
+          mergedName={d.name}
+          repos={d._mergedFrom.map((e) => e.data.name)}
+          onConfirm={() => { setUnmergeConfirm(false); onUnmerge?.(rowKey); }}
+          onCancel={() => setUnmergeConfirm(false)}
+        />
       )}
-    </tr>
+    </>
   );
 }
 
 export default function Overview({
   data, order, flashKey, onSelect, onAddClick, onUpdateProject,
   selectMode, selectedKeys, onSelectToggle, onToggleSelectMode, onDeleteSelected, deleting,
-  onRefreshAll, onJoinSelected, onUnmerge,
+  onRefreshAll, onJoinSelected, onUnmerge, onRemoveFromMerge,
 }) {
   const [confirmOpen, setConfirmOpen]       = useState(false);
   const [refreshModalOpen, setRefreshModalOpen] = useState(false);
@@ -635,6 +753,7 @@ export default function Overview({
                     onSelectToggle={onSelectToggle}
                     onUpdateProject={onUpdateProject}
                     onUnmerge={onUnmerge}
+                    onRemoveFromMerge={onRemoveFromMerge}
                   />
                 );
               })}

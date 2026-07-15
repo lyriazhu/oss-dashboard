@@ -8,6 +8,7 @@ import AddProjectModal from "./components/AddProjectModal.jsx";
 import ExtractionToast from "./components/ExtractionToast.jsx";
 
 const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
+const MERGES_STORAGE_KEY = 'oss_dashboard_merges';
 
 export default function App() {
   const [data, setData] = useState({});
@@ -44,6 +45,91 @@ export default function App() {
     }
   }, [extracting]);
 
+  // Restore merged state after projects are loaded from backend
+  const applyPersistedMerges = useCallback((projectData, projectOrder) => {
+    try {
+      const saved = localStorage.getItem(MERGES_STORAGE_KEY);
+      if (!saved) return { projectData, projectOrder };
+      const merges = JSON.parse(saved);
+      let newData = { ...projectData };
+      let newOrder = [...projectOrder];
+
+      for (const [mergedKey, memberKeys] of Object.entries(merges)) {
+        if (!memberKeys.every((k) => newData[k])) continue;
+        const keys = memberKeys;
+        const communities = keys.map((k) => newData[k]);
+
+        const parseNum = (v) => {
+          if (v == null) return 0;
+          return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
+        };
+        const fmt = (n) => n.toLocaleString('en-US');
+        const combinedName = communities.map((c) => c.name).join(' + ');
+        const base = communities[0];
+        const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
+
+        const mergeYearly = (arrays, yKey = 'y', vKey = 'v') => {
+          const map = new Map();
+          arrays.flat().forEach((entry) => {
+            const label = entry[yKey];
+            const existing = map.get(label) || { ...entry, [vKey]: 0 };
+            map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+          });
+          return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+        };
+        const mergeYearlyRetention = (arrays) => {
+          const map = new Map();
+          arrays.flat().forEach((entry) => {
+            const label = entry.y;
+            const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
+            map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0), c: ex.c || entry.c });
+          });
+          const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+          return merged.map((e) => ({ ...e, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+        };
+
+        const mergedKpis = (base.kpis || []).map((kpi) => {
+          const total = communities.reduce((acc, c) => {
+            const match = (c.kpis || []).find((k) => k.l === kpi.l);
+            return acc + parseNum(match?.v);
+          }, 0);
+          const isNumeric = !isNaN(parseNum(kpi.v)) && kpi.l !== 'Language';
+          return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
+        });
+
+        const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
+        const bestStatus = communities.reduce((best, c) => {
+          return (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1) ? c.status : best;
+        }, base.status);
+
+        const merged = {
+          ...base,
+          name: combinedName,
+          _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
+          sub: base.sub,
+          ov: { ...base.ov, contributorsYtd: sumOv('contributorsYtd'), contributorsAllTime: sumOv('contributorsAllTime'), companies: sumOv('companies'), commits: sumOv('commits'), commitsAllTime: sumOv('commitsAllTime'), pullRequests: sumOv('pullRequests'), stars: sumOv('stars'), quarters: base.ov?.quarters || [] },
+          kpis: mergedKpis,
+          status: bestStatus,
+          commits: mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
+          retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
+          prYearly: mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
+          issueYearly: mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
+          cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
+        };
+
+        keys.forEach((k) => delete newData[k]);
+        newData[mergedKey] = merged;
+        const positions = keys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
+        const insertIdx = positions.length > 0 ? Math.min(...positions) : newOrder.length;
+        newOrder = newOrder.filter((k) => !keys.includes(k));
+        newOrder.splice(insertIdx, 0, mergedKey);
+      }
+      return { projectData: newData, projectOrder: newOrder };
+    } catch {
+      return { projectData, projectOrder };
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const loadProjects = useCallback(async ({ silent = false } = {}) => {
     try {
       if (!silent) setLoading(true);
@@ -76,8 +162,9 @@ export default function App() {
       
       console.log('✅ All projects loaded:', projectOrder.length);
       
-      setData(projectData);
-      setOrder(projectOrder);
+      const { projectData: mergedData, projectOrder: mergedOrder } = applyPersistedMerges(projectData, projectOrder);
+      setData(mergedData);
+      setOrder(mergedOrder);
       
       // Set first project as selected if none selected
       if (!selectedKey && projectOrder.length > 0) {
@@ -232,6 +319,22 @@ export default function App() {
     }
   }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Persist merges to localStorage whenever data changes
+  useEffect(() => {
+    // Collect all merged entries from current data
+    const merges = {};
+    Object.entries(data).forEach(([key, d]) => {
+      if (d._mergedFrom) {
+        merges[key] = d._mergedFrom.map((e) => e.key);
+      }
+    });
+    if (Object.keys(merges).length > 0) {
+      localStorage.setItem(MERGES_STORAGE_KEY, JSON.stringify(merges));
+    } else {
+      localStorage.removeItem(MERGES_STORAGE_KEY);
+    }
+  }, [data]);
+
   const handleUnmerge = useCallback((mergedKey) => {
     setData((prev) => {
       const merged = prev[mergedKey];
@@ -250,6 +353,45 @@ export default function App() {
       const next = prev.filter((k) => k !== mergedKey);
       const originals = merged._mergedFrom.map((e) => e.key);
       next.splice(idx, 0, ...originals);
+      return next;
+    });
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Remove a single repo from a merged entry
+  const handleRemoveFromMerge = useCallback((mergedKey, repoKey) => {
+    setData((prev) => {
+      const merged = prev[mergedKey];
+      if (!merged?._mergedFrom) return prev;
+      const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
+      const removed = merged._mergedFrom.find((e) => e.key === repoKey);
+      if (!removed) return prev;
+      const next = { ...prev };
+      // Restore the removed repo as its own entry
+      next[repoKey] = removed.data;
+      if (remaining.length < 2) {
+        // Only one left — unmerge entirely
+        delete next[mergedKey];
+        if (remaining.length === 1) {
+          next[remaining[0].key] = remaining[0].data;
+        }
+      } else {
+        next[mergedKey] = { ...merged, _mergedFrom: remaining };
+      }
+      return next;
+    });
+    setOrder((prev) => {
+      const merged = data[mergedKey];
+      if (!merged?._mergedFrom) return prev;
+      const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
+      const idx = prev.indexOf(mergedKey);
+      const next = prev.filter((k) => k !== mergedKey);
+      if (remaining.length < 2) {
+        // Unmerge all remaining too
+        const all = merged._mergedFrom.map((e) => e.key);
+        next.splice(idx, 0, ...all);
+      } else {
+        next.splice(idx, 0, mergedKey, repoKey);
+      }
       return next;
     });
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -457,6 +599,7 @@ export default function App() {
             onRefreshAll={handleRefreshAll}
             onJoinSelected={handleJoinSelected}
             onUnmerge={handleUnmerge}
+            onRemoveFromMerge={handleRemoveFromMerge}
           />
         ) : (
           <Detail

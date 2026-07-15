@@ -349,8 +349,6 @@
 
   /* clickable community rows */
   #commTable tbody tr{cursor:pointer;}
-  .chev{width:1rem;height:1rem;color:var(--gray-50);}
-  #commTable tbody tr:hover .chev{color:var(--blue-60);}
   td.chev-cell{text-align:right; padding-right:1rem;}
 
   .legend{font-size:.75rem; color:var(--text-helper); font-style:italic; margin-top:.75rem;}
@@ -421,6 +419,20 @@
   .title-row{display:flex; align-items:center !important; gap:1rem; flex-wrap:wrap;}
   .page-title{font-size:2rem; line-height:2.5rem; font-weight:400; letter-spacing:0; margin:0; color:var(--text-primary);}
   .meta-line{margin:.25rem 0 0; font-size:.875rem; color:var(--text-secondary); display:flex; gap:1rem; flex-wrap:wrap;}
+  .merged-meta{ display:block; margin-top:.5rem; }
+  .merged-repos-table{ width:auto; border-collapse:collapse; font-size:.8125rem; }
+  .merged-repos-table th{
+    background:transparent; font-weight:600; color:var(--text-secondary);
+    text-align:left; padding:.25rem 1.25rem .25rem 0; height:auto;
+    border-bottom:1px solid var(--border-subtle); white-space:nowrap;
+  }
+  .merged-repos-table td{
+    padding:.3125rem 1.25rem .3125rem 0; height:auto;
+    border-bottom:1px solid var(--border-subtle); color:var(--text-secondary);
+  }
+  .merged-repos-table tbody tr:last-child td{ border-bottom:0; }
+  .merged-repos-table tbody tr:hover td{ background:transparent; }
+  .merged-repos-table td.strong{ color:var(--text-primary); font-weight:600; }
   .title-row .tag{margin:0 !important; align-self:center !important;}
 
   .det-tiles{margin-top:var(--sp-06);}
@@ -480,16 +492,61 @@
   .btn-danger--dim{background:var(--gray-20); color:var(--gray-50);}
   .btn-danger--dim svg{opacity:.5;}
 
-  /* Unmerge button — inline in table row chevron cell */
+  /* Expand arrow button — left of community name for merged rows */
+  .btn-expand-arrow{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:1.125rem; height:1.125rem; padding:0; flex-shrink:0;
+    background:transparent; border:0; cursor:pointer;
+    color:var(--text-helper);
+    transition:transform .18s ease, color .15s, opacity .15s;
+    border-radius:.125rem;
+    opacity:0;
+  }
+  .btn-expand-arrow--open{ opacity:1; transform:rotate(90deg); }
+  tr:hover .btn-expand-arrow{ opacity:1; }
+  .btn-expand-arrow:hover{ color:var(--blue-60); }
+
+  /* Same-width invisible spacer for non-merged rows */
+  .btn-expand-arrow-spacer{
+    display:inline-block; width:1.125rem; height:1.125rem; flex-shrink:0;
+  }
+
+  /* Unmerge button — inline in table row chevron cell, hover-only on the merged row */
   .btn-unmerge{
     display:inline-flex; align-items:center;
     background:transparent; color:var(--red-60);
     border:1px solid var(--red-60); cursor:pointer;
     font-family:inherit; font-size:.75rem; height:1.75rem; padding:0 .625rem;
     white-space:nowrap;
+    /* hidden by default; shown via .btn-unmerge--visible when row is hovered */
+    opacity:0; pointer-events:none; transition:opacity .15s;
   }
+  .btn-unmerge--visible{opacity:1; pointer-events:auto;}
   .btn-unmerge:hover{background:rgba(218,30,40,.08);}
   .btn-unmerge:active{background:rgba(218,30,40,.16);}
+
+  /* Per-repo unmerge button in expanded sub-rows — hover-only, same size as .btn-unmerge */
+  .btn-unmerge-single{
+    display:inline-flex; align-items:center;
+    background:transparent; color:var(--red-60);
+    border:1px solid var(--red-60); cursor:pointer;
+    font-family:inherit; font-size:.75rem; height:1.75rem; padding:0 .625rem;
+    white-space:nowrap;
+    opacity:0; pointer-events:none; transition:opacity .15s;
+  }
+  .btn-unmerge-single--visible{opacity:1; pointer-events:auto;}
+  .btn-unmerge-single:hover{background:rgba(218,30,40,.08);}
+  .btn-unmerge-single:active{background:rgba(218,30,40,.16);}
+
+  /* Merged sub-rows — slightly inset background */
+  .merged-sub-row td{
+    background:var(--layer-01);
+    border-bottom:1px solid var(--border-subtle);
+  }
+  .merged-sub-row:hover td{background:var(--layer-hover);}
+  .merged-sub-row:last-child td{border-bottom:0;}
+  .merged-sub-row td:first-child{border-left:3px solid var(--blue-30);}
+  .merged-sub-row:hover .btn-unmerge-single{opacity:1; pointer-events:auto;}
 
   /* Select mode — checkbox column and selected row */
   .chk-cell{width:2.75rem; padding:0 0 0 1rem !important; text-align:left;}
