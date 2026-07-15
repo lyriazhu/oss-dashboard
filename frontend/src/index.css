@@ -605,6 +605,49 @@
   .add-status.info{background:var(--blue-20); color:var(--blue-70); border-left:3px solid var(--blue-60);}
   .btn-add:disabled{background:var(--gray-50); cursor:not-allowed;}
 
+  /* ============ Carbon Content Switcher — Add-mode toggle ============ */
+  /* Follows the Carbon "Content switcher" component spec:
+     - flat, equal-width buttons separated by 1px rule
+     - active = --layer-selected bg + --text-primary text + 2px --interactive bottom border
+     - hover = --layer-hover bg
+     Blue fill is reserved for primary actions; switchers never fill blue.        */
+  .add-mode-toggle{
+    display:flex; gap:0; margin-top:.375rem;
+    border:1px solid var(--border-strong);
+    background:var(--layer-01);
+    overflow:hidden;
+  }
+  .add-mode-btn{
+    flex:1 1 0; min-width:0; border:0; cursor:pointer;
+    font-family:inherit; font-size:.875rem; font-weight:400;
+    color:var(--text-secondary);
+    height:2.5rem; padding:0 1rem; text-align:center;
+    background:transparent;
+    border-right:1px solid var(--border-strong);
+    border-bottom:2px solid transparent;
+    transition:background .1s, color .1s, border-bottom-color .1s;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .add-mode-btn:last-child{ border-right:0; }
+  .add-mode-btn:hover:not(:disabled):not(.active){
+    background:var(--layer-hover); color:var(--text-primary);
+  }
+  .add-mode-btn.active{
+    background:var(--layer-selected); color:var(--text-primary);
+    font-weight:600;
+    border-bottom-color:var(--interactive);
+  }
+  .add-mode-btn:disabled{ opacity:.4; cursor:not-allowed; }
+
+  /* Nested scope sub-group inside GitHub Issues (entire-project mode) */
+  .scope-subgroup{
+    margin-top:.5rem; padding:.75rem 1rem;
+    background:var(--layer-01); border-left:3px solid var(--blue-30);
+  }
+  .scope-subgroup .field{ margin-bottom:.5rem; }
+  .scope-subgroup .field:last-child{ margin-bottom:0; }
+
   /* Inline edit — name and foundation cells in the communities table */
   .inline-edit-text{
     display:block; min-width:2rem;

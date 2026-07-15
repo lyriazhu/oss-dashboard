@@ -26,6 +26,10 @@ public class AddProjectRequest {
     @JsonProperty("issue_github_url")
     private String issueGithubUrl;
 
+    /** true when the github_url points to an org/user rather than a single repo */
+    @JsonProperty("is_org")
+    private Boolean isOrg;
+
     public AddProjectRequest() {}
 
     public String getGithubUrl() { return githubUrl; }
@@ -48,6 +52,9 @@ public class AddProjectRequest {
 
     public String getIssueGithubUrl() { return issueGithubUrl; }
     public void setIssueGithubUrl(String v) { this.issueGithubUrl = v; }
+
+    public Boolean getIsOrg() { return isOrg; }
+    public void setIsOrg(Boolean v) { this.isOrg = v; }
 }
 
 // Made with Bob

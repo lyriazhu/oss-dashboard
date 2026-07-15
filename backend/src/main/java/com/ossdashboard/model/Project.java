@@ -40,6 +40,10 @@ public class Project {
     @JsonProperty("issue_github_url")
     private String issueGithubUrl;
 
+    /** true when the github_url points to an org/user rather than a single repo */
+    @JsonProperty("is_org")
+    private Boolean isOrg;
+
     public Project() {
     }
 
@@ -90,6 +94,9 @@ public class Project {
 
     public String getIssueGithubUrl() { return issueGithubUrl; }
     public void setIssueGithubUrl(String issueGithubUrl) { this.issueGithubUrl = issueGithubUrl; }
+
+    public Boolean getIsOrg() { return isOrg; }
+    public void setIsOrg(Boolean isOrg) { this.isOrg = isOrg; }
 
     public String getDataDir() { return dataDir; }
     public void setDataDir(String dataDir) { this.dataDir = dataDir; }

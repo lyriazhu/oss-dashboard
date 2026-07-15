@@ -2,25 +2,30 @@ import { useEffect, useRef, useState } from "react";
 import { addProject, saveGithubToken, getSavedToken } from "../api.js";
 
 export default function AddProjectModal({ open, onClose, onAdd, onSuccess, tokenConfigured, onTokenSaved }) {
-  const [url, setUrl]                 = useState("");
+  const [addMode, setAddMode]             = useState("repo");   // "repo" | "project"
+  const [url, setUrl]                     = useState("");
+  const [orgUrl, setOrgUrl]               = useState("");
   const [issueGithubUrl, setIssueGithubUrl] = useState("");
-  const [issueSource, setIssueSource] = useState("github"); // "github" | "jira"
-  const [jiraKey, setJiraKey]         = useState("");
-  const [jiraBaseUrl, setJiraBaseUrl] = useState("");
-  const [token, setToken]             = useState("");
-  const [invalid, setInvalid]         = useState(false);
-  const [loading, setLoading]         = useState(false);
-  const [status, setStatus]           = useState(null); // {msg, type}
+  const [issueSource, setIssueSource]     = useState("github"); // "github" | "jira"
+  const [orgIssueScope, setOrgIssueScope] = useState("one");    // "one" | "all"  (entire-project only)
+  const [jiraKey, setJiraKey]             = useState("");
+  const [jiraBaseUrl, setJiraBaseUrl]     = useState("");
+  const [token, setToken]                 = useState("");
+  const [invalid, setInvalid]             = useState(false);
+  const [loading, setLoading]             = useState(false);
+  const [status, setStatus]               = useState(null); // {msg, type}
   const inputRef = useRef(null);
 
   useEffect(() => {
     if (open) {
+      setAddMode("repo");
       setUrl("");
+      setOrgUrl("");
       setIssueGithubUrl("");
       setIssueSource("github");
+      setOrgIssueScope("one");
       setJiraKey("");
       setJiraBaseUrl("");
-      // Pre-fill token from localStorage if available
       setToken(getSavedToken() || "");
       setInvalid(false);
       setLoading(false);
@@ -38,16 +43,27 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
 
   if (!open) return null;
 
+  // The "primary" URL being used, depending on mode
+  const primaryUrl = addMode === "repo" ? url : orgUrl;
+
   async function submit() {
     setInvalid(false);
 
-    // Validate token — always required
     if (!token.trim()) {
       setInvalid(true);
       setStatus({ msg: "GitHub token is required to extract data.", type: "err" });
       return;
     }
-    // Validate Jira fields if selected
+    if (!primaryUrl.trim()) {
+      setInvalid(true);
+      setStatus({
+        msg: addMode === "repo"
+          ? "Enter a valid GitHub repository URL."
+          : "Enter a valid GitHub project (org/user) URL.",
+        type: "err",
+      });
+      return;
+    }
     if (issueSource === "jira" && !jiraKey.trim()) {
       setInvalid(true);
       setStatus({ msg: "Jira project key is required.", type: "err" });
@@ -63,18 +79,27 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
     setStatus({ msg: "Adding project to backend...", type: "info" });
 
     try {
-      // Always save the token
       await saveGithubToken(token.trim());
       onTokenSaved?.();
 
+      // For "entire project" + GitHub Issues + "all repos", pass a sentinel so the
+      // backend (or future scripts) knows to pull issues from every org repo.
+      const resolvedIssueGithubUrl =
+        issueSource === "github"
+          ? addMode === "project" && orgIssueScope === "all"
+            ? "__all__"
+            : (issueGithubUrl.trim() || undefined)
+          : undefined;
+
       const response = await addProject(
-        url,
+        addMode === "repo" ? url : orgUrl,
         undefined,
         undefined,
         issueSource === "jira" ? "jira" : undefined,
         issueSource === "jira" ? jiraKey.trim() : undefined,
         issueSource === "jira" ? jiraBaseUrl.trim() : undefined,
-        issueSource === "github" ? (issueGithubUrl.trim() || undefined) : undefined,
+        resolvedIssueGithubUrl,
+        addMode === "project" ? true : undefined,   // is_org flag
       );
 
       if (response.success) {
@@ -121,7 +146,7 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
       <div className="modal">
         <div className="modal-header">
           <h2 className="modal-title" id="addModalTitle">Add project</h2>
-          <p className="modal-sub">Paste a primary GitHub repository URL — we'll pull the metrics automatically.</p>
+          <p className="modal-sub">Choose whether to add a single repository or an entire GitHub project (org&nbsp;/&nbsp;user).</p>
           <button className="modal-close" aria-label="Close" onClick={onClose}>
             <svg viewBox="0 0 32 32" fill="currentColor">
               <path d="M24 9.4 22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6z" />
@@ -163,29 +188,81 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
             </div>
           </div>
 
-          {/* Primary GitHub URL */}
-          <div className="jira-fields" style={{ marginTop: "1.75rem" }}>
-            <div className={"field" + (invalid && !url.trim() ? " show-err" : "")}>
-              <label htmlFor="i-url">Primary GitHub repository URL <span style={{ color: "var(--red-50)" }}>*</span></label>
-              <input
-                id="i-url"
-                ref={inputRef}
-                type="text"
-                placeholder="https://github.com/owner/repo"
-                autoComplete="off"
-                spellCheck="false"
-                className={invalid && !url.trim() ? "invalid" : ""}
-                value={url}
+          {/* Add-mode toggle — Carbon Content Switcher pattern */}
+          <div className="field" style={{ marginTop: "1.75rem" }}>
+            <label id="add-mode-label">Add type</label>
+            <div className="add-mode-toggle" role="group" aria-labelledby="add-mode-label">
+              <button
+                type="button"
+                className={"add-mode-btn" + (addMode === "repo" ? " active" : "")}
+                aria-pressed={addMode === "repo"}
                 disabled={loading}
-                onChange={(e) => setUrl(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
-              />
-              <div className="err">Enter a valid GitHub repository URL.</div>
+                onClick={() => setAddMode("repo")}
+              >
+                Single repository
+              </button>
+              <button
+                type="button"
+                className={"add-mode-btn" + (addMode === "project" ? " active" : "")}
+                aria-pressed={addMode === "project"}
+                disabled={loading}
+                onClick={() => setAddMode("project")}
+              >
+                Entire project
+              </button>
             </div>
           </div>
 
+          {/* Primary URL — label/placeholder change based on mode */}
+          <div className="jira-fields" style={{ marginTop: "1.25rem" }}>
+            {addMode === "repo" ? (
+              <div className={"field" + (invalid && !url.trim() ? " show-err" : "")}>
+                <label htmlFor="i-url">
+                  Primary GitHub repository URL <span style={{ color: "var(--red-50)" }}>*</span>
+                </label>
+                <input
+                  id="i-url"
+                  ref={inputRef}
+                  type="text"
+                  placeholder="https://github.com/owner/repo"
+                  autoComplete="off"
+                  spellCheck="false"
+                  className={invalid && !url.trim() ? "invalid" : ""}
+                  value={url}
+                  disabled={loading}
+                  onChange={(e) => setUrl(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
+                />
+                <div className="err">Enter a valid GitHub repository URL.</div>
+              </div>
+            ) : (
+              <div className={"field" + (invalid && !orgUrl.trim() ? " show-err" : "")}>
+                <label htmlFor="i-org-url">
+                  GitHub project URL <span style={{ color: "var(--red-50)" }}>*</span>
+                </label>
+                <input
+                  id="i-org-url"
+                  ref={inputRef}
+                  type="text"
+                  placeholder="https://github.com/owner"
+                  autoComplete="off"
+                  spellCheck="false"
+                  className={invalid && !orgUrl.trim() ? "invalid" : ""}
+                  value={orgUrl}
+                  disabled={loading}
+                  onChange={(e) => setOrgUrl(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } }}
+                />
+                <div className="err">Enter a valid GitHub org or user URL.</div>
+                <p className="field-help" style={{ marginTop: ".25rem" }}>
+                  Provide the top-level URL of your GitHub organisation or user — all repositories under it will be tracked.
+                </p>
+              </div>
+            )}
+          </div>
+
           {/* Issue source toggle */}
-          <div className="field" style={{ marginTop: "1.75rem" }}>
+          <div className="field" style={{ marginTop: "1.5rem" }}>
             <label>Issue tracker</label>
             <div className="radio-group">
               <label className="radio-label">
@@ -213,32 +290,98 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
             </div>
           </div>
 
-          {/* GitHub Issues field — shown only when github is selected */}
+          {/* GitHub Issues fields */}
           {issueSource === "github" && (
             <div className="jira-fields">
-              <div className="field">
-                <label htmlFor="i-issue-url">
-                  Issue repository URL{" "}
-                  <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
-                </label>
-                <input
-                  id="i-issue-url"
-                  type="text"
-                  placeholder="https://github.com/owner/repo"
-                  autoComplete="off"
-                  spellCheck="false"
-                  value={issueGithubUrl}
-                  disabled={loading}
-                  onChange={(e) => setIssueGithubUrl(e.target.value)}
-                />
-                <p className="field-help" style={{ marginTop: ".25rem" }}>
-                  Use this only if issues are tracked in a different GitHub repository than the primary one.
-                </p>
-              </div>
+              {/* Entire-project mode: offer "one repo" vs "all repos" sub-choice */}
+              {addMode === "project" && (
+                <div className="scope-subgroup">
+                  <div className="field">
+                    <label>Issues scope</label>
+                    <div className="radio-group">
+                      <label className="radio-label">
+                        <input
+                          type="radio"
+                          name="orgIssueScope"
+                          value="one"
+                          checked={orgIssueScope === "one"}
+                          disabled={loading}
+                          onChange={() => setOrgIssueScope("one")}
+                        />
+                        One repository
+                      </label>
+                      <label className="radio-label">
+                        <input
+                          type="radio"
+                          name="orgIssueScope"
+                          value="all"
+                          checked={orgIssueScope === "all"}
+                          disabled={loading}
+                          onChange={() => setOrgIssueScope("all")}
+                        />
+                        All repositories
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* "one repo" sub-option: issue URL input */}
+                  {orgIssueScope === "one" && (
+                    <div className="field">
+                      <label htmlFor="i-issue-url">
+                        Issue repository URL{" "}
+                        <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
+                      </label>
+                      <input
+                        id="i-issue-url"
+                        type="text"
+                        placeholder="https://github.com/owner/repo"
+                        autoComplete="off"
+                        spellCheck="false"
+                        value={issueGithubUrl}
+                        disabled={loading}
+                        onChange={(e) => setIssueGithubUrl(e.target.value)}
+                      />
+                      <p className="field-help" style={{ marginTop: ".25rem" }}>
+                        Specify a single repository within the project whose issues will be tracked.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* "all repos" sub-option: informational note */}
+                  {orgIssueScope === "all" && (
+                    <p className="field-help" style={{ margin: 0 }}>
+                      Issues will be collected from every repository within the project.
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Single-repo mode: optional override issue repo */}
+              {addMode === "repo" && (
+                <div className="field">
+                  <label htmlFor="i-issue-url">
+                    Issue repository URL{" "}
+                    <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>(optional)</span>
+                  </label>
+                  <input
+                    id="i-issue-url"
+                    type="text"
+                    placeholder="https://github.com/owner/repo"
+                    autoComplete="off"
+                    spellCheck="false"
+                    value={issueGithubUrl}
+                    disabled={loading}
+                    onChange={(e) => setIssueGithubUrl(e.target.value)}
+                  />
+                  <p className="field-help" style={{ marginTop: ".25rem" }}>
+                    Use this only if issues are tracked in a different GitHub repository than the primary one.
+                  </p>
+                </div>
+              )}
             </div>
           )}
 
-          {/* Jira fields — shown only when jira is selected */}
+          {/* Jira fields */}
           {issueSource === "jira" && (
             <div className="jira-fields">
               <div className={"field" + (invalid && !jiraKey.trim() ? " show-err" : "")}>

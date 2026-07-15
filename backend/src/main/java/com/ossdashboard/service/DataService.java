@@ -225,6 +225,22 @@ public class DataService {
     }
 
     /**
+     * Parse a GitHub org/user URL to extract just the owner name.
+     * Supports formats:
+     * - https://github.com/owner
+     * - github.com/owner
+     */
+    public String parseGithubOrgUrl(String githubUrl) {
+        if (githubUrl == null || githubUrl.trim().isEmpty()) {
+            return null;
+        }
+        githubUrl = githubUrl.trim().replaceAll("/$", "");
+        Pattern pattern = Pattern.compile("(?:https?://)?(?:www\\.)?github\\.com/([^/]+)$");
+        Matcher matcher = pattern.matcher(githubUrl);
+        return matcher.find() ? matcher.group(1) : null;
+    }
+
+    /**
      * Generate a project ID from the repository name
      */
     private String generateProjectId(String repoName) {
@@ -243,23 +259,40 @@ public class DataService {
      * Add a new project to projects.json
      */
     public Project addProject(AddProjectRequest request) throws IOException {
-        // Parse GitHub URL
-        String[] parts = parseGithubUrl(request.getGithubUrl());
-        if (parts == null) {
-            throw new IllegalArgumentException("Invalid GitHub URL format. Expected: https://github.com/owner/repo");
+        boolean isOrg = Boolean.TRUE.equals(request.getIsOrg());
+
+        String owner;
+        String repo;
+
+        if (isOrg) {
+            // Org/user-level project — only an owner is required
+            owner = parseGithubOrgUrl(request.getGithubUrl());
+            if (owner == null) {
+                throw new IllegalArgumentException("Invalid GitHub project URL format. Expected: https://github.com/owner");
+            }
+            repo = null;
+        } else {
+            // Single-repo project — owner + repo required
+            String[] parts = parseGithubUrl(request.getGithubUrl());
+            if (parts == null) {
+                throw new IllegalArgumentException("Invalid GitHub URL format. Expected: https://github.com/owner/repo");
+            }
+            owner = parts[0];
+            repo = parts[1];
         }
 
         String[] issueParts = null;
-        if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()) {
+        if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()
+                && !"__all__".equals(request.getIssueGithubUrl().strip())) {
             issueParts = parseGithubUrl(request.getIssueGithubUrl().strip());
             if (issueParts == null) {
                 throw new IllegalArgumentException("Invalid issue GitHub URL format. Expected: https://github.com/owner/repo");
             }
         }
 
-        String owner = parts[0];
-        String repo = parts[1];
-        String projectId = generateProjectId(repo);
+        // Project ID: use repo name for single-repo, org name for entire-project
+        String idBase = isOrg ? owner : repo;
+        String projectId = generateProjectId(idBase);
 
         // Check if project already exists
         if (projectExists(projectId)) {
@@ -269,10 +302,11 @@ public class DataService {
         // Create new project
         Project newProject = new Project();
         newProject.setId(projectId);
-        newProject.setName(repo.replaceAll("[-_]", " "));
+        newProject.setName(idBase.replaceAll("[-_]", " "));
         newProject.setGithubUrl(request.getGithubUrl());
         newProject.setOwner(owner);
         newProject.setRepo(repo);
+        newProject.setIsOrg(isOrg ? true : null);
         newProject.setFoundation(request.getFoundation() != null ? request.getFoundation() : "Independent");
         newProject.setWebsite(request.getWebsite());
         newProject.setEnabled(true);
@@ -292,6 +326,7 @@ public class DataService {
                 newProject.setJiraBaseUrl(request.getJiraBaseUrl().strip());
             }
         } else if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()) {
+            // Store the raw value (including the "__all__" sentinel)
             newProject.setIssueGithubUrl(request.getIssueGithubUrl().strip());
         }
 
@@ -572,7 +607,12 @@ public class DataService {
             entry.append("  - name: \"").append(project.getName()).append("\"\n");
             entry.append("    github_url: \"").append(project.getGithubUrl()).append("\"\n");
             entry.append("    owner: \"").append(owner).append("\"\n");
-            entry.append("    repo: \"").append(repo).append("\"\n");
+            if (repo != null) {
+                entry.append("    repo: \"").append(repo).append("\"\n");
+            }
+            if (Boolean.TRUE.equals(project.getIsOrg())) {
+                entry.append("    is_org: true\n");
+            }
             if (project.getFoundation() != null && !project.getFoundation().isBlank()) {
                 entry.append("    foundation: \"").append(project.getFoundation()).append("\"\n");
             }
@@ -590,10 +630,15 @@ public class DataService {
                     entry.append("    jira_base_url: \"").append(request.getJiraBaseUrl().strip()).append("\"\n");
                 }
             } else if (request.getIssueGithubUrl() != null && !request.getIssueGithubUrl().isBlank()) {
-                String[] issueParts = parseGithubUrl(request.getIssueGithubUrl().strip());
-                if (issueParts != null) {
-                    entry.append("    issue_owner: \"").append(issueParts[0]).append("\"\n");
-                    entry.append("    issue_repo: \"").append(issueParts[1]).append("\"\n");
+                String rawIssueUrl = request.getIssueGithubUrl().strip();
+                if ("__all__".equals(rawIssueUrl)) {
+                    entry.append("    issue_scope: all\n");
+                } else {
+                    String[] issueParts = parseGithubUrl(rawIssueUrl);
+                    if (issueParts != null) {
+                        entry.append("    issue_owner: \"").append(issueParts[0]).append("\"\n");
+                        entry.append("    issue_repo: \"").append(issueParts[1]).append("\"\n");
+                    }
                 }
             }
 

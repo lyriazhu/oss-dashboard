@@ -136,13 +136,19 @@ public class ProjectController {
     public ResponseEntity<AddProjectResponse> addProject(@RequestBody AddProjectRequest request) {
         try {
             log.info("Adding new project from GitHub URL: {}", request.getGithubUrl());
-            
-            // Validate GitHub URL
-            String[] parts = dataService.parseGithubUrl(request.getGithubUrl());
-            if (parts == null) {
+
+            // Validate GitHub URL — accept org/user URLs when is_org flag is set
+            boolean isOrg = Boolean.TRUE.equals(request.getIsOrg());
+            boolean urlValid = isOrg
+                    ? dataService.parseGithubOrgUrl(request.getGithubUrl()) != null
+                    : dataService.parseGithubUrl(request.getGithubUrl()) != null;
+            if (!urlValid) {
+                String expectedFormat = isOrg
+                        ? "https://github.com/owner"
+                        : "https://github.com/owner/repo";
                 AddProjectResponse response = new AddProjectResponse(
                     false,
-                    "Invalid GitHub URL format. Expected: https://github.com/owner/repo",
+                    "Invalid GitHub URL format. Expected: " + expectedFormat,
                     null,
                     null
                 );
