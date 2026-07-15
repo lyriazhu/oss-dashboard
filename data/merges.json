@@ -1,7 +1,4 @@
 {
-  "merges" : [ {
-    "mergedKey" : "3scale-operator",
-    "memberKeys" : [ "3scale-operator", "artemis" ]
-  } ],
-  "last_updated" : "2026-07-15T19:53:09.267114Z"
+  "merges" : [ ],
+  "last_updated" : "2026-07-15T19:54:03.522735Z"
 }
