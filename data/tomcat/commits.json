@@ -1279,7 +1279,7 @@
       "location": null,
       "email": "claude@renegat.net",
       "profile_url": null,
-      "commit_count": 6
+      "commit_count": 7
     },
     {
       "login": "chenjipeng",
@@ -5527,7 +5527,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T10:11:43.525076",
+  "extracted_at": "2026-07-14T10:49:00.498863",
   "years": [
     {
       "year": 2005,

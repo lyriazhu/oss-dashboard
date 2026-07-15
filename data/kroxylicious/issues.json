@@ -1,8 +1,8 @@
 {
-  "total_open": 310,
-  "total_closed": 253,
-  "total_issues": 430,
-  "median_resolution_time_days": 7.07,
+  "total_open": 322,
+  "total_closed": 254,
+  "total_issues": 447,
+  "median_resolution_time_days": 0.0,
   "months": [
     {
       "start_date": "2025-08-01T00:00:00",
@@ -95,10 +95,10 @@
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-07-13T08:26:59.430047",
-      "issue_count": 26,
-      "closed_issue_count": 1,
+      "issue_count": 43,
+      "closed_issue_count": 2,
       "month": "2026-07",
-      "median_resolution_time_days": 4.93
+      "median_resolution_time_days": 0.0
     }
   ],
   "years": [
@@ -128,5 +128,5 @@
       "closed_issue_count": 166
     }
   ],
-  "extracted_at": "2026-07-13T09:56:16.823415"
+  "extracted_at": "2026-07-14T10:51:03.460205"
 }

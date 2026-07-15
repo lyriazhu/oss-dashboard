@@ -1,8 +1,8 @@
 {
-  "total_open": 547,
-  "total_closed": 23370,
-  "total_issues": 23917,
-  "median_resolution_time_days": 1.86,
+  "total_open": 554,
+  "total_closed": 23448,
+  "total_issues": 24002,
+  "median_resolution_time_days": 1.85,
   "months": [
     {
       "start_date": "2025-08-01T00:00:00",
@@ -64,7 +64,7 @@
       "start_date": "2026-03-01T00:00:00",
       "end_date": "2026-03-31T23:59:59",
       "issue_count": 172,
-      "closed_issue_count": 145,
+      "closed_issue_count": 146,
       "month": "2026-03",
       "median_resolution_time_days": 1.8
     },
@@ -80,25 +80,25 @@
       "start_date": "2026-05-01T00:00:00",
       "end_date": "2026-05-31T23:59:59",
       "issue_count": 256,
-      "closed_issue_count": 202,
+      "closed_issue_count": 203,
       "month": "2026-05",
-      "median_resolution_time_days": 2.67
+      "median_resolution_time_days": 2.81
     },
     {
       "start_date": "2026-06-01T00:00:00",
       "end_date": "2026-06-30T23:59:59",
       "issue_count": 209,
-      "closed_issue_count": 163,
+      "closed_issue_count": 171,
       "month": "2026-06",
-      "median_resolution_time_days": 0.78
+      "median_resolution_time_days": 0.84
     },
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-07-31T23:59:59",
-      "issue_count": 112,
-      "closed_issue_count": 64,
+      "issue_count": 197,
+      "closed_issue_count": 130,
       "month": "2026-07",
-      "median_resolution_time_days": 0.42
+      "median_resolution_time_days": 0.57
     }
   ],
   "years": [
@@ -185,7 +185,7 @@
     {
       "year": 2023,
       "issue_count": 1436,
-      "closed_issue_count": 1390
+      "closed_issue_count": 1392
     },
     {
       "year": 2024,
@@ -199,9 +199,9 @@
     },
     {
       "year": 2026,
-      "issue_count": 1168,
-      "closed_issue_count": 945
+      "issue_count": 1253,
+      "closed_issue_count": 1021
     }
   ],
-  "extracted_at": "2026-07-09T09:15:00.481763"
+  "extracted_at": "2026-07-14T10:40:44.668904"
 }

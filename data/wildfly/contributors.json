@@ -86,8 +86,8 @@
       "is_current": true
     }
   ],
-  "total_contributors": 827,
-  "total_contributors_git": 827,
+  "total_contributors": 828,
+  "total_contributors_git": 828,
   "contributors": [
     {
       "login": "bstansberry",
@@ -95,7 +95,7 @@
       "company": "Ibm",
       "location": "St. Louis, MO",
       "email": "bstansberry@gmail.com",
-      "contributions": 9275,
+      "contributions": 9286,
       "profile_url": "https://github.com/bstansberry"
     },
     {
@@ -113,7 +113,7 @@
       "company": "Ibm",
       "location": "Edinburgh, UK",
       "email": null,
-      "contributions": 3706,
+      "contributions": 3707,
       "profile_url": "https://github.com/pferraro"
     },
     {
@@ -149,7 +149,7 @@
       "company": "Ibm, Ex-@Redhatofficial, Ex-Elemental Media",
       "location": "Bohemia",
       "email": null,
-      "contributions": 1353,
+      "contributions": 1354,
       "profile_url": "https://github.com/rhusar"
     },
     {
@@ -194,7 +194,7 @@
       "company": "Ibm",
       "location": null,
       "email": "scott.marlow@ibm.com",
-      "contributions": 667,
+      "contributions": 669,
       "profile_url": "https://github.com/scottmarlow"
     },
     {
@@ -221,7 +221,7 @@
       "company": "Red Hat",
       "location": "Canary Islands, Spain",
       "email": null,
-      "contributions": 484,
+      "contributions": 485,
       "profile_url": "https://github.com/yersan"
     },
     {
@@ -230,7 +230,7 @@
       "company": "Red Hat",
       "location": "Sesimbra, Portugal",
       "email": "emartins@redhat.com",
-      "contributions": 434,
+      "contributions": 436,
       "profile_url": "https://github.com/emmartins"
     },
     {
@@ -252,6 +252,15 @@
       "profile_url": "https://github.com/fjuma"
     },
     {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 363,
+      "profile_url": "https://github.com/apps/dependabot"
+    },
+    {
       "login": "tadamski",
       "name": "Tomasz Adamski",
       "company": "Unknown",
@@ -259,15 +268,6 @@
       "email": null,
       "contributions": 362,
       "profile_url": "https://github.com/tadamski"
-    },
-    {
-      "login": "dependabot[bot]",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 361,
-      "profile_url": "https://github.com/apps/dependabot"
     },
     {
       "login": "asoldano",
@@ -2178,6 +2178,15 @@
       "profile_url": "https://github.com/dfj"
     },
     {
+      "login": "HliasMpGH",
+      "name": "Ilias Bourdakos",
+      "company": "Agile Actors | Red Hat | Ibm",
+      "location": "Athens, GR",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/HliasMpGH"
+    },
+    {
       "login": "rarguello",
       "name": "Ricardo Arguello",
       "company": "Unknown",
@@ -2410,15 +2419,6 @@
       "email": "hrupp@redhat.com",
       "contributions": 2,
       "profile_url": "https://github.com/pilhuhn"
-    },
-    {
-      "login": "HliasMpGH",
-      "name": "Ilias Bourdakos",
-      "company": "Agile Actors | Red Hat | Ibm",
-      "location": "Athens, GR",
-      "email": null,
-      "contributions": 2,
-      "profile_url": "https://github.com/HliasMpGH"
     },
     {
       "login": "lasombra",
@@ -2814,6 +2814,7 @@
     "Tyler Technologies": 1,
     "\u26a1": 1,
     "Soptim": 1,
+    "Agile Actors | Red Hat | Ibm": 1,
     "Natwest": 1,
     "Cloudera": 1,
     "Upcloudltd": 1,
@@ -2823,7 +2824,6 @@
     "Nitor Creations": 1,
     "Ibm & Blazebit": 1,
     "Opendevise Inc.": 1,
-    "Agile Actors | Red Hat | Ibm": 1,
     "Independent Contractor": 1,
     "John Lewis & Partners": 1,
     "Bison Schweiz Ag": 1,
@@ -2999,9 +2999,9 @@
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
       "active_contributors": 39,
-      "new_contributors": 6,
-      "returning_contributors": 33,
-      "retention_rate": 84.62
+      "new_contributors": 7,
+      "returning_contributors": 32,
+      "retention_rate": 82.05
     }
   ],
   "retention_by_year": [
@@ -3187,9 +3187,9 @@
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
       "active_contributors": 85,
-      "new_contributors": 25,
-      "returning_contributors": 60,
-      "retention_rate": 70.59,
+      "new_contributors": 26,
+      "returning_contributors": 59,
+      "retention_rate": 69.41,
       "is_current": true
     }
   ],

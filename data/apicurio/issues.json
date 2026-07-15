@@ -1,7 +1,7 @@
 {
-  "total_open": 335,
+  "total_open": 333,
   "total_closed": 366,
-  "total_issues": 577,
+  "total_issues": 582,
   "median_resolution_time_days": 0.25,
   "months": [
     {
@@ -95,7 +95,7 @@
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-07-01T13:43:48.207038",
-      "issue_count": 53,
+      "issue_count": 58,
       "closed_issue_count": 8,
       "month": "2026-07",
       "median_resolution_time_days": 0.25
@@ -143,5 +143,5 @@
       "closed_issue_count": 268
     }
   ],
-  "extracted_at": "2026-07-13T09:07:59.615737"
+  "extracted_at": "2026-07-14T10:43:56.876394"
 }

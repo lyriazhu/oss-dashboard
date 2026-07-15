@@ -65,7 +65,7 @@
       "company": "Unknown",
       "location": "Prague, Czech Republic",
       "email": "github@scholzj.com",
-      "contributions": 2363,
+      "contributions": 2364,
       "profile_url": "https://github.com/scholzj"
     },
     {
@@ -74,7 +74,7 @@
       "company": "Ibm",
       "location": "Italy",
       "email": null,
-      "contributions": 869,
+      "contributions": 870,
       "profile_url": "https://github.com/ppatierno"
     },
     {
@@ -191,7 +191,7 @@
       "company": "Unknown",
       "location": "UK",
       "email": null,
-      "contributions": 55,
+      "contributions": 56,
       "profile_url": "https://github.com/katheris"
     },
     {
@@ -402,6 +402,15 @@
       "profile_url": "https://github.com/seglo"
     },
     {
+      "login": "Paramesh324",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 8,
+      "profile_url": "https://github.com/Paramesh324"
+    },
+    {
       "login": "matzew",
       "name": "Matthias Wessendorf",
       "company": "Red Hat",
@@ -418,15 +427,6 @@
       "email": null,
       "contributions": 7,
       "profile_url": "https://github.com/jcpunk"
-    },
-    {
-      "login": "Paramesh324",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 7,
-      "profile_url": "https://github.com/Paramesh324"
     },
     {
       "login": "Kcruz28",

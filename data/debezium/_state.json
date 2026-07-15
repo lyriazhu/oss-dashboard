@@ -82,7 +82,6 @@
       "andreaTP",
       "andreas-ibm",
       "ani-sha",
-      "ankurg03",
       "ant0nk",
       "aofisherzg",
       "aozmen121",
@@ -126,6 +125,7 @@
       "cwholmes",
       "d1vyanshu-kumar",
       "dasl-",
+      "dasvh",
       "ddseapy",
       "ddsr-ops",
       "debezium-builder",
@@ -363,18 +363,18 @@
       "zrlurb",
       "zxpzlp"
     ],
-    "last_extracted_at": "2026-07-13T09:09:22.597626"
+    "last_extracted_at": "2026-07-14T10:44:56.148961"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-13T09:09:30.991866"
+    "last_git_sync_at": "2026-07-14T10:45:04.048250"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-13T09:10:33.690712"
+    "last_extracted_at": "2026-07-14T10:45:58.535845"
   },
   "issues": {
-    "last_extracted_at": "2026-07-13T09:10:32.276184"
+    "last_extracted_at": "2026-07-14T10:45:57.247082"
   },
   "releases": {
-    "last_extracted_at": "2026-07-13T09:10:35.217755"
+    "last_extracted_at": "2026-07-14T10:46:13.214531"
   }
 }

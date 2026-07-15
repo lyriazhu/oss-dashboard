@@ -6,23 +6,23 @@
       "type": "kroxylicious adopters",
       "description": "",
       "since": "",
-      "url": null
+      "url": "https://www.confluent.io/"
     },
     {
       "name": "Red Hat",
       "type": "kroxylicious adopters",
       "description": "",
       "since": "",
-      "url": null
+      "url": "https://access.redhat.com/products/streams-apache-kafka/"
     },
     {
       "name": "Shopify",
       "type": "kroxylicious adopters",
       "description": "",
       "since": "",
-      "url": null
+      "url": "https://www.shopify.com/"
     }
   ],
-  "extracted_at": "2026-07-13T09:56:23.192501",
+  "extracted_at": "2026-07-14T10:51:20.911497",
   "source": "https://github.com/kroxylicious/kroxylicious/blob/main/ADOPTERS.md"
 }

@@ -1,10 +1,10 @@
 {
-  "total_commits": 1817,
+  "total_commits": 1821,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 28,
+      "commit_count": 32,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 7154
+      "commit_count": 7157
     },
     {
       "login": "Paolo Patierno",
@@ -91,7 +91,7 @@
       "location": null,
       "email": "ppatierno@live.com",
       "profile_url": null,
-      "commit_count": 2562
+      "commit_count": 2564
     },
     {
       "login": "Tom Bentley",
@@ -154,7 +154,7 @@
       "location": null,
       "email": "maros.orsak159@gmail.com",
       "profile_url": null,
-      "commit_count": 973
+      "commit_count": 974
     },
     {
       "login": "PaulRMellor",
@@ -271,7 +271,7 @@
       "location": null,
       "email": "11195226+katheris@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 249
+      "commit_count": 251
     },
     {
       "login": "ShubhamRwt",
@@ -307,7 +307,7 @@
       "location": null,
       "email": "tina.selenge@gmail.com",
       "profile_url": null,
-      "commit_count": 173
+      "commit_count": 174
     },
     {
       "login": "ShubhamRwt",
@@ -913,6 +913,15 @@
       "commit_count": 17
     },
     {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "haifengc@twitter.com",
+      "profile_url": null,
+      "commit_count": 17
+    },
+    {
       "login": "Ralf",
       "name": "Ralf",
       "company": "Unknown",
@@ -1055,15 +1064,6 @@
       "email": "chas@honton.org",
       "profile_url": null,
       "commit_count": 13
-    },
-    {
-      "login": "Haifeng Chen",
-      "name": "Haifeng Chen",
-      "company": "Unknown",
-      "location": null,
-      "email": "haifengc@twitter.com",
-      "profile_url": null,
-      "commit_count": 12
     },
     {
       "login": "Haifeng Chen",
@@ -1306,7 +1306,7 @@
       "location": null,
       "email": "52658021+paramesh324@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 9
+      "commit_count": 10
     },
     {
       "login": "QuentinBisson",
@@ -2458,7 +2458,7 @@
       "location": null,
       "email": "personal@venkateshkannan.me",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Bill Kim (\uae40\ube4c)",
@@ -3010,6 +3010,15 @@
       "commit_count": 3
     },
     {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "hchen@x.ai",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "Patrick Wegner",
       "name": "Patrick Wegner",
       "company": "Unknown",
@@ -3033,15 +3042,6 @@
       "company": "Unknown",
       "location": null,
       "email": "geon1120@gmail.com",
-      "profile_url": null,
-      "commit_count": 2
-    },
-    {
-      "login": "Haifeng Chen",
-      "name": "Haifeng Chen",
-      "company": "Unknown",
-      "location": null,
-      "email": "hchen@x.ai",
       "profile_url": null,
       "commit_count": 2
     },
@@ -4159,7 +4159,7 @@
       "location": null,
       "email": "paolo.patierno@gmail.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "David Mach\u00e1\u010dek",
@@ -4168,7 +4168,7 @@
       "location": null,
       "email": "davido.machacek@gmail.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "David Mach\u00e1\u010dek",
@@ -4177,7 +4177,7 @@
       "location": null,
       "email": "david@machackovi.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Geonhyeon Kim",
@@ -5842,7 +5842,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T10:10:44.383325",
+  "extracted_at": "2026-07-14T10:38:58.317294",
   "years": [
     {
       "year": 2016,
@@ -5896,7 +5896,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1279,
+      "commit_count": 1291,
       "is_current": true
     }
   ]

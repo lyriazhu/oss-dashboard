@@ -3,11 +3,11 @@
   "full_name": "debezium/debezium",
   "description": "Change data capture for a variety of databases. Please log issues at https://github.com/debezium/dbz/issues.",
   "created_at": "2016-01-22T20:17:05+00:00",
-  "updated_at": "2026-07-13T11:56:18+00:00",
-  "stars": 12907,
-  "forks": 2976,
-  "watchers": 12907,
-  "open_issues": 161,
+  "updated_at": "2026-07-14T13:59:37+00:00",
+  "stars": 12911,
+  "forks": 2975,
+  "watchers": 12911,
+  "open_issues": 159,
   "language": "Java",
   "topics": [
     "change-data-capture",
@@ -30,17 +30,17 @@
     {
       "company": "Ibm",
       "commits": 3301,
-      "percentage": 37.36
+      "percentage": 37.34
     },
     {
       "company": "Ibm @Redhatofficial @Commonhaus",
-      "commits": 2539,
-      "percentage": 28.73
+      "commits": 2542,
+      "percentage": 28.75
     },
     {
       "company": "Confluent",
       "commits": 1259,
-      "percentage": 14.25
+      "percentage": 14.24
     },
     {
       "company": "Redhatofficial @Debezium @Ibm",
@@ -64,8 +64,8 @@
     },
     {
       "company": "Kakao",
-      "commits": 68,
-      "percentage": 0.77
+      "commits": 70,
+      "percentage": 0.79
     },
     {
       "company": "Slack",
@@ -78,5 +78,5 @@
       "percentage": 0.36
     }
   ],
-  "extracted_at": "2026-07-13T09:09:05.035884"
+  "extracted_at": "2026-07-14T10:44:42.484596"
 }

@@ -3,11 +3,11 @@
   "full_name": "keycloak/keycloak",
   "description": "Open Source Identity and Access Management For Modern Applications and Services",
   "created_at": "2013-07-02T13:38:51+00:00",
-  "updated_at": "2026-07-13T12:24:33+00:00",
-  "stars": 35635,
-  "forks": 8632,
-  "watchers": 35635,
-  "open_issues": 2948,
+  "updated_at": "2026-07-14T14:35:31+00:00",
+  "stars": 35649,
+  "forks": 8623,
+  "watchers": 35649,
+  "open_issues": 2958,
   "language": "Java",
   "topics": [
     "keycloak",
@@ -21,13 +21,13 @@
   "top_contributing_companies": [
     {
       "company": "Red Hat",
-      "commits": 7568,
-      "percentage": 42.88
+      "commits": 7570,
+      "percentage": 42.87
     },
     {
       "company": "Ibm",
-      "commits": 6796,
-      "percentage": 38.51
+      "commits": 6805,
+      "percentage": 38.53
     },
     {
       "company": "Red Hat, Inc.",
@@ -37,7 +37,7 @@
     {
       "company": "Redhatofficial",
       "commits": 444,
-      "percentage": 2.52
+      "percentage": 2.51
     },
     {
       "company": "Hitachi, Ltd.",
@@ -57,7 +57,7 @@
     {
       "company": "Chainguard",
       "commits": 128,
-      "percentage": 0.73
+      "percentage": 0.72
     },
     {
       "company": "Red Hat Ltd",
@@ -70,5 +70,5 @@
       "percentage": 0.69
     }
   ],
-  "extracted_at": "2026-07-13T09:05:28.032846"
+  "extracted_at": "2026-07-14T10:41:24.014722"
 }

@@ -40,7 +40,7 @@
       "company": "Ibm",
       "location": "Christchurch, NZ",
       "email": "sbarker@redhat.com",
-      "contributions": 1372,
+      "contributions": 1373,
       "profile_url": "https://github.com/SamBarker"
     },
     {
@@ -49,7 +49,7 @@
       "company": "Ibm",
       "location": "New Zealand",
       "email": null,
-      "contributions": 1177,
+      "contributions": 1178,
       "profile_url": "https://github.com/robobario"
     },
     {
@@ -67,7 +67,7 @@
       "company": "Ibm",
       "location": "Stirling, Scotland, UK",
       "email": "kwall@redhat.com",
-      "contributions": 728,
+      "contributions": 730,
       "profile_url": "https://github.com/k-wall"
     },
     {
@@ -350,6 +350,15 @@
       "profile_url": "https://github.com/Cali0707"
     },
     {
+      "login": "AdityaThakur1998",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/AdityaThakur1998"
+    },
+    {
       "login": "polachandu",
       "name": null,
       "company": "Unknown",
@@ -512,16 +521,16 @@
       "profile_url": "https://github.com/dvulpe"
     },
     {
-      "login": "AdityaThakur1998",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
+      "login": "gggeon96",
+      "name": "Geonhyeon Kim",
+      "company": "Bitsensing",
+      "location": "Seong-nam KR",
+      "email": "geon1120@gmail.com",
       "contributions": 1,
-      "profile_url": "https://github.com/AdityaThakur1998"
+      "profile_url": "https://github.com/gggeon96"
     }
   ],
-  "total_contributors_github_api": 54,
+  "total_contributors_github_api": 55,
   "companies": {
     "Unknown": 29,
     "Ibm": 8,
@@ -536,11 +545,12 @@
     "Irori": 1,
     "Checkout.Com": 1,
     "Kyriba": 1,
-    "Redhat": 1
+    "Redhat": 1,
+    "Bitsensing": 1
   },
-  "total_companies": 14,
+  "total_companies": 15,
   "company_diversity": {
-    "known_company_contributors": 25,
+    "known_company_contributors": 26,
     "unknown_company_contributors": 29,
     "top_companies": [
       {
@@ -701,10 +711,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 23,
+      "active_contributors": 24,
       "new_contributors": 8,
-      "returning_contributors": 15,
-      "retention_rate": 65.22
+      "returning_contributors": 16,
+      "retention_rate": 66.67
     }
   ],
   "retention_by_year": [

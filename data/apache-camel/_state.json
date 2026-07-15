@@ -122,7 +122,6 @@
       "dpocock",
       "drekbour",
       "driseley",
-      "drsquidop",
       "dschulten",
       "dsimansk",
       "dvilaverde",
@@ -145,6 +144,7 @@
       "gansheer",
       "garethahealy",
       "gautric",
+      "gbhavya07",
       "ge0ffrey",
       "geekrupam",
       "gertv",
@@ -329,18 +329,18 @@
       "zhfeng",
       "zregvart"
     ],
-    "last_extracted_at": "2026-07-13T09:04:07.188563"
+    "last_extracted_at": "2026-07-14T10:39:46.457362"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-13T09:04:21.169491"
+    "last_git_sync_at": "2026-07-14T10:40:00.324676"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-13T09:04:39.191452"
+    "last_extracted_at": "2026-07-14T10:40:57.247116"
   },
   "issues": {
     "last_extracted_at": null
   },
   "releases": {
-    "last_extracted_at": "2026-07-13T09:04:40.656620"
+    "last_extracted_at": "2026-07-14T10:41:15.957521"
   }
 }

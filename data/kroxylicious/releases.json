@@ -1,6 +1,13 @@
 {
-  "total_releases": 26,
+  "total_releases": 27,
   "recent_releases": [
+    {
+      "tag_name": "v0.20.1",
+      "name": "v0.20.1",
+      "published_at": "2026-07-13T16:50:07+00:00",
+      "prerelease": false,
+      "draft": false
+    },
     {
       "tag_name": "api-v0.1.0",
       "name": "Kroxylicious API 0.1.0",
@@ -133,15 +140,8 @@
       "published_at": "2025-10-01T14:37:20+00:00",
       "prerelease": false,
       "draft": false
-    },
-    {
-      "tag_name": "v0.17.0",
-      "name": "v0.17.0",
-      "published_at": "2025-10-28T16:53:32+00:00",
-      "prerelease": false,
-      "draft": false
     }
   ],
-  "extracted_at": "2026-07-13T09:56:22.222321",
-  "median_days_between_releases": 45
+  "median_days_between_releases": 46,
+  "extracted_at": "2026-07-14T10:51:20.017671"
 }

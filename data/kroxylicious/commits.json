@@ -1,10 +1,10 @@
 {
-  "total_commits": 4417,
+  "total_commits": 4423,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 40,
+      "commit_count": 46,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "kwall@apache.org",
       "profile_url": null,
-      "commit_count": 2645
+      "commit_count": 2654
     },
     {
       "login": "Tom Bentley",
@@ -100,7 +100,7 @@
       "location": null,
       "email": "sam@quadrocket.co.uk",
       "profile_url": null,
-      "commit_count": 2139
+      "commit_count": 2150
     },
     {
       "login": "dependabot[bot]",
@@ -109,7 +109,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1654
+      "commit_count": 1662
     },
     {
       "login": "Robert Young",
@@ -118,7 +118,7 @@
       "location": null,
       "email": "robeyoun@redhat.com",
       "profile_url": null,
-      "commit_count": 1198
+      "commit_count": 1200
     },
     {
       "login": "Francisco Vila",
@@ -136,7 +136,7 @@
       "location": null,
       "email": "robertyoungnz@gmail.com",
       "profile_url": null,
-      "commit_count": 1042
+      "commit_count": 1076
     },
     {
       "login": "Sam Barker",
@@ -199,7 +199,7 @@
       "location": null,
       "email": "18440250+k-wall@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 127
+      "commit_count": 131
     },
     {
       "login": "ShubhamRwt",
@@ -256,6 +256,15 @@
       "commit_count": 58
     },
     {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@redhat.com",
+      "profile_url": null,
+      "commit_count": 56
+    },
+    {
       "login": "Carles Arnal",
       "name": "Carles Arnal",
       "company": "Unknown",
@@ -263,15 +272,6 @@
       "email": "carlesarnal92@gmail.com",
       "profile_url": null,
       "commit_count": 55
-    },
-    {
-      "login": "Keith Wall",
-      "name": "Keith Wall",
-      "company": "Unknown",
-      "location": null,
-      "email": "kwall@redhat.com",
-      "profile_url": null,
-      "commit_count": 54
     },
     {
       "login": "Hari",
@@ -481,6 +481,15 @@
       "commit_count": 10
     },
     {
+      "login": "AdityaThakur1998",
+      "name": "AdityaThakur1998",
+      "company": "Unknown",
+      "location": null,
+      "email": "adthakur@redhat.com",
+      "profile_url": null,
+      "commit_count": 9
+    },
+    {
       "login": "hzrncik",
       "name": "hzrncik",
       "company": "Unknown",
@@ -550,7 +559,7 @@
       "location": null,
       "email": "lukman_uki@yahoo.co.id",
       "profile_url": null,
-      "commit_count": 5
+      "commit_count": 6
     },
     {
       "login": "Carles Arnal",
@@ -578,15 +587,6 @@
       "email": "trevin@trevinchow.com",
       "profile_url": null,
       "commit_count": 5
-    },
-    {
-      "login": "AdityaThakur1998",
-      "name": "AdityaThakur1998",
-      "company": "Unknown",
-      "location": null,
-      "email": "adthakur@redhat.com",
-      "profile_url": null,
-      "commit_count": 4
     },
     {
       "login": "Rafael Reia",
@@ -630,6 +630,15 @@
       "company": "Unknown",
       "location": null,
       "email": "41898282+github-actions[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Geonhyeon Kim",
+      "name": "Geonhyeon Kim",
+      "company": "Unknown",
+      "location": null,
+      "email": "geon1120@gmail.com",
       "profile_url": null,
       "commit_count": 4
     },
@@ -697,13 +706,13 @@
       "commit_count": 3
     },
     {
-      "login": "Geonhyeon Kim",
-      "name": "Geonhyeon Kim",
+      "login": "DragonFSKY",
+      "name": "DragonFSKY",
       "company": "Unknown",
       "location": null,
-      "email": "geon1120@gmail.com",
+      "email": "38503900+dragonfsky@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "henryZrncik",
@@ -847,7 +856,7 @@
       "location": null,
       "email": "rjsgus20@naver.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Mauro Clavo",
@@ -864,15 +873,6 @@
       "company": "Unknown",
       "location": null,
       "email": "agent@thsort.dev",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "DragonFSKY",
-      "name": "DragonFSKY",
-      "company": "Unknown",
-      "location": null,
-      "email": "38503900+dragonfsky@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 1
     },
@@ -1045,7 +1045,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T09:56:16.821385",
+  "extracted_at": "2026-07-14T10:51:03.457373",
   "years": [
     {
       "year": 2021,
@@ -1074,7 +1074,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 5971,
+      "commit_count": 6001,
       "is_current": true
     }
   ]

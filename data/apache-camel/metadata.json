@@ -3,11 +3,11 @@
   "full_name": "apache/camel",
   "description": "Apache Camel is an open source integration framework with 350+ connectors. Write routes in Java, YAML, or XML. Run on Spring Boot, Quarkus, or standalone. Apache License 2.0.",
   "created_at": "2009-05-21T00:25:36+00:00",
-  "updated_at": "2026-07-13T12:53:26+00:00",
-  "stars": 6260,
+  "updated_at": "2026-07-14T13:23:19+00:00",
+  "stars": 6262,
   "forks": 5130,
-  "watchers": 6260,
-  "open_issues": 16,
+  "watchers": 6262,
+  "open_issues": 21,
   "language": "Java",
   "topics": [
     "camel",
@@ -34,12 +34,12 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 53952,
+      "commits": 53968,
       "percentage": 84.49
     },
     {
       "company": "Red Hat",
-      "commits": 3647,
+      "commits": 3649,
       "percentage": 5.71
     },
     {
@@ -83,5 +83,5 @@
       "percentage": 0.28
     }
   ],
-  "extracted_at": "2026-07-13T09:03:41.115795"
+  "extracted_at": "2026-07-14T10:39:16.605711"
 }

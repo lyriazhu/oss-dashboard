@@ -70,7 +70,7 @@
       "company": "Ibm @Redhatofficial @Commonhaus",
       "location": "Charlotte, NC, United States",
       "email": "ccranfor@ibm.com",
-      "contributions": 2539,
+      "contributions": 2542,
       "profile_url": "https://github.com/Naros"
     },
     {
@@ -97,7 +97,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 793,
+      "contributions": 795,
       "profile_url": "https://github.com/roldanbob"
     },
     {
@@ -911,6 +911,15 @@
       "profile_url": "https://github.com/siddhantcvdi"
     },
     {
+      "login": "sundongkim-dev",
+      "name": "Paul_Kim",
+      "company": "Kakao",
+      "location": "Seoul, South Korea",
+      "email": "mok03127@gmail.com",
+      "contributions": 8,
+      "profile_url": "https://github.com/sundongkim-dev"
+    },
+    {
       "login": "uidoyen",
       "name": "Ashique Ansari",
       "company": "Redhatofficial",
@@ -1287,15 +1296,6 @@
       "email": "johngraf@gmail.com",
       "contributions": 6,
       "profile_url": "https://github.com/jgraf50"
-    },
-    {
-      "login": "sundongkim-dev",
-      "name": "Paul_Kim",
-      "company": "Kakao",
-      "location": "Seoul, South Korea",
-      "email": "mok03127@gmail.com",
-      "contributions": 6,
-      "profile_url": "https://github.com/sundongkim-dev"
     },
     {
       "login": "zach-all",
@@ -3125,6 +3125,15 @@
       "profile_url": "https://github.com/lekhrocks"
     },
     {
+      "login": "dasvh",
+      "name": null,
+      "company": "Unknown",
+      "location": "Switzerland",
+      "email": "dasvh@protonmail.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/dasvh"
+    },
+    {
       "login": "samssh",
       "name": "Amirmohammad Sadat Shokouhi",
       "company": "Unknown",
@@ -3350,9 +3359,9 @@
       "profile_url": "https://github.com/adamstrickland"
     }
   ],
-  "total_contributors_github_api": 365,
+  "total_contributors_github_api": 366,
   "companies": {
-    "Unknown": 205,
+    "Unknown": 206,
     "Ibm": 14,
     "Confluent": 4,
     "Red Hat": 4,
@@ -3491,11 +3500,11 @@
   "total_companies": 135,
   "company_diversity": {
     "known_company_contributors": 160,
-    "unknown_company_contributors": 205,
+    "unknown_company_contributors": 206,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 205
+        "contributor_count": 206
       },
       {
         "company": "Ibm",
@@ -3641,20 +3650,20 @@
       "period_type": "quarter",
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "active_contributors": 93,
-      "new_contributors": 46,
+      "active_contributors": 91,
+      "new_contributors": 44,
       "returning_contributors": 47,
-      "retention_rate": 50.54
+      "retention_rate": 51.65
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 70,
-      "new_contributors": 26,
+      "active_contributors": 72,
+      "new_contributors": 28,
       "returning_contributors": 44,
-      "retention_rate": 62.86
+      "retention_rate": 61.11
     }
   ],
   "retention_by_year": [

@@ -226,7 +226,7 @@
       "location": null,
       "email": "boris.urbanik.dev@gmail.com",
       "profile_url": null,
-      "commit_count": 15
+      "commit_count": 16
     },
     {
       "login": "Daria Mayorova",
@@ -325,7 +325,7 @@
       "location": null,
       "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 8
+      "commit_count": 9
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T10:30:41.975754",
+  "extracted_at": "2026-07-14T10:48:31.045299",
   "years": [
     {
       "year": 2018,
@@ -711,7 +711,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 147,
+      "commit_count": 149,
       "is_current": true
     }
   ]
