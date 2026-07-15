@@ -46,6 +46,14 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
   // The "primary" URL being used, depending on mode
   const primaryUrl = addMode === "repo" ? url : orgUrl;
 
+  // Client-side URL format validation
+  function isValidRepoUrl(u) {
+    return /^https?:\/\/(?:www\.)?github\.com\/[^/]+\/[^/]/.test(u.trim());
+  }
+  function isValidOrgUrl(u) {
+    return /^https?:\/\/(?:www\.)?github\.com\/[^/]+\/?$/.test(u.trim());
+  }
+
   async function submit() {
     setInvalid(false);
 
@@ -62,6 +70,16 @@ export default function AddProjectModal({ open, onClose, onAdd, onSuccess, token
           : "Enter a valid GitHub project (org/user) URL.",
         type: "err",
       });
+      return;
+    }
+    if (addMode === "repo" && !isValidRepoUrl(primaryUrl)) {
+      setInvalid(true);
+      setStatus({ msg: "Enter a valid GitHub repository URL (https://github.com/owner/repo).", type: "err" });
+      return;
+    }
+    if (addMode === "project" && !isValidOrgUrl(primaryUrl)) {
+      setInvalid(true);
+      setStatus({ msg: "Enter a valid GitHub org or user URL (https://github.com/owner).", type: "err" });
       return;
     }
     if (issueSource === "jira" && !jiraKey.trim()) {

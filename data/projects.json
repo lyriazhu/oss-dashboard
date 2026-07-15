@@ -113,15 +113,6 @@
     "issue_source" : "jira",
     "jira_project_key" : "ARTEMIS",
     "jira_base_url" : "https://issues.apache.org/jira"
-  }, {
-    "id" : "console",
-    "name" : "StreamsHub",
-    "owner" : "streamshub",
-    "repo" : "console",
-    "foundation" : "Independent",
-    "enabled" : true,
-    "github_url" : "https://github.com/streamshub/console",
-    "data_dir" : "streamshub"
   } ],
-  "last_updated" : "2026-07-15T19:42:31.111485Z"
+  "last_updated" : "2026-07-15T20:31:06.862130Z"
 }

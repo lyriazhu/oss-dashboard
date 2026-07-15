@@ -704,21 +704,22 @@ public class DataService {
             throw new IllegalArgumentException("Project not found: " + projectId);
         }
 
-        // Get the scripts directory path
         Path scriptsDir = Paths.get(dataDirectory).getParent().resolve("scripts");
-        Path extractScript = scriptsDir.resolve("extract_single_project.py");
 
+        // Org-level projects use a dedicated extraction script
+        if (Boolean.TRUE.equals(project.getIsOrg())) {
+            triggerOrgExtraction(project, projectId, scriptsDir);
+            return;
+        }
+
+        Path extractScript = scriptsDir.resolve("extract_single_project.py");
         if (!Files.exists(extractScript)) {
             throw new IOException("Data extraction script not found: " + extractScript);
         }
 
-        // Resolve python3 to its absolute path so it works regardless of the
-        // PATH visible to the Java process (e.g. when launched as a service).
         String python3 = resolvePython3();
 
-        // Build the command to run the Python script for a single project.
-        // Pass the project's config name (matches p['name'] in config.yaml) rather
-        // than the project ID, which may differ for hyphenated repo names.
+        // Pass the project's config name (matches p['name'] in config.yaml)
         ProcessBuilder processBuilder = new ProcessBuilder(
             python3,
             extractScript.toString(),
@@ -726,7 +727,6 @@ public class DataService {
         );
         processBuilder.directory(scriptsDir.toFile());
         processBuilder.redirectErrorStream(true);
-        // Forward GITHUB_TOKEN so the Python script can authenticate with the GitHub API
         String githubToken = settingsService.getGithubToken();
         if (githubToken == null) {
             throw new IllegalStateException("No GitHub token configured. Set one via the dashboard settings.");
@@ -735,12 +735,10 @@ public class DataService {
 
         log.info("Starting data extraction for project: {} ({})", project.getName(), projectId);
 
-        // Initialise log buffer and mark as running
         CopyOnWriteArrayList<String> logLines = new CopyOnWriteArrayList<>();
         extractionLogs.put(projectId, logLines);
         extractionRunning.put(projectId, true);
 
-        // Start the process asynchronously in a separate thread
         new Thread(() -> {
             try {
                 Process process = processBuilder.start();
@@ -755,7 +753,6 @@ public class DataService {
                 int exitCode = process.waitFor();
                 if (exitCode == 0) {
                     log.info("Data extraction completed successfully for project: {}", projectId);
-                    // Also run CVE extraction for this project now that its data directory exists
                     runCveExtraction(project.getName(), projectId, logLines, scriptsDir);
                 } else {
                     log.error("Data extraction failed for project: {} with exit code: {}", projectId, exitCode);
@@ -770,6 +767,82 @@ public class DataService {
         }).start();
 
         log.info("Data extraction process started in background for project: {}", projectId);
+    }
+
+    /**
+     * Trigger extraction for an org-level project.
+     * Runs extract_org_project.py which discovers all repos, extracts each one,
+     * and writes a merge record to data/merges.json when done.
+     */
+    private void triggerOrgExtraction(Project project, String projectId, Path scriptsDir)
+            throws IOException {
+        Path orgScript = scriptsDir.resolve("extract_org_project.py");
+        if (!Files.exists(orgScript)) {
+            throw new IOException("Org extraction script not found: " + orgScript);
+        }
+
+        String githubToken = settingsService.getGithubToken();
+        if (githubToken == null) {
+            throw new IllegalStateException("No GitHub token configured.");
+        }
+
+        String python3 = resolvePython3();
+        String orgName = project.getOwner();
+
+        // Build command — pass issue scope flag if relevant
+        java.util.List<String> cmd = new java.util.ArrayList<>(java.util.Arrays.asList(
+            python3, orgScript.toString(), orgName
+        ));
+        String issueGithubUrl = project.getIssueGithubUrl();
+        if ("__all__".equals(issueGithubUrl)) {
+            cmd.add("--issue-scope");
+            cmd.add("all");
+        } else if (issueGithubUrl != null && !issueGithubUrl.isBlank()) {
+            cmd.add("--issue-scope");
+            cmd.add("one");
+            cmd.add("--issue-repo");
+            cmd.add(issueGithubUrl);
+        }
+
+        ProcessBuilder pb = new ProcessBuilder(cmd);
+        pb.directory(scriptsDir.toFile());
+        pb.redirectErrorStream(true);
+        pb.environment().put("GITHUB_TOKEN", githubToken);
+
+        log.info("Starting org extraction for: {} ({})", orgName, projectId);
+
+        CopyOnWriteArrayList<String> logLines = new CopyOnWriteArrayList<>();
+        extractionLogs.put(projectId, logLines);
+        extractionRunning.put(projectId, true);
+
+        new Thread(() -> {
+            try {
+                Process process = pb.start();
+                try (BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(process.getInputStream()))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        logLines.add(line);
+                        log.debug("[org-extraction {}] {}", projectId, line);
+                    }
+                }
+                int exitCode = process.waitFor();
+                if (exitCode == 0) {
+                    log.info("Org extraction completed for: {}", projectId);
+                    logLines.add("__DONE__");
+                } else {
+                    log.error("Org extraction failed for: {} (exit {})", projectId, exitCode);
+                    logLines.add("__FAILED__");
+                }
+            } catch (Exception e) {
+                logLines.add("__FAILED__");
+                log.error("Error during org extraction for: {}", projectId, e);
+            } finally {
+                extractionRunning.put(projectId, false);
+            }
+        }).start();
+
+        log.info("Org extraction started in background for: {}", projectId);
     }
 
     /**

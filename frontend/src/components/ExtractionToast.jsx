@@ -6,6 +6,37 @@ const TOKEN_STORAGE_KEY = 'oss_dashboard_github_token';
 // Returns null for lines that shouldn't update the visible step.
 function parseLine(line) {
   const l = line.toLowerCase();
+
+  // Org-extraction progress markers
+  // ORG_REPOS_FOUND <n>
+  const foundMatch = line.match(/^ORG_REPOS_FOUND (\d+)$/);
+  if (foundMatch) return { orgTotal: parseInt(foundMatch[1], 10) };
+
+  // ORG_REPO_START <i> <n> <repoName>
+  const startMatch = line.match(/^ORG_REPO_START (\d+) (\d+) (.+)$/);
+  if (startMatch) return {
+    orgIdx:   parseInt(startMatch[1], 10),
+    orgTotal: parseInt(startMatch[2], 10),
+    orgRepo:  startMatch[3],
+    step:     `Repo ${startMatch[1]}/${startMatch[2]}: ${startMatch[3]}`,
+    done:     false,
+  };
+
+  // ORG_REPO_DONE <i> <n> <repoName>
+  const doneRepoMatch = line.match(/^ORG_REPO_DONE (\d+) (\d+) (.+)$/);
+  if (doneRepoMatch) return {
+    orgIdx:   parseInt(doneRepoMatch[1], 10),
+    orgTotal: parseInt(doneRepoMatch[2], 10),
+    orgRepo:  doneRepoMatch[3],
+    orgRepoDone: true,
+    step:     `Repo ${doneRepoMatch[1]}/${doneRepoMatch[2]}: ${doneRepoMatch[3]}`,
+    done:     false,
+  };
+
+  // ORG_MERGING
+  if (line === 'ORG_MERGING') return { step: 'Grouping repositories…', done: false };
+
+  // Standard single-repo extraction steps
   if (l.includes('metadata'))       return { step: 'Extracting metadata…',      done: false };
   if (l.includes('contributor'))    return { step: 'Extracting contributors…',  done: false };
   if (l.includes('commit'))         return { step: 'Extracting commits…',       done: false };
@@ -20,11 +51,14 @@ function parseLine(line) {
 }
 
 export default function ExtractionToast({ projectId, projectName, mode, onDone, onTokenExpired }) {
-  const [step, setStep]           = useState('Starting extraction…');
-  const [failed, setFailed]       = useState(false);
-  const [done, setDone]           = useState(false);
-  const [tokenExpired, setTokenExpired] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [step, setStep]                   = useState('Starting extraction…');
+  const [failed, setFailed]               = useState(false);
+  const [done, setDone]                   = useState(false);
+  const [tokenExpired, setTokenExpired]   = useState(false);
+  const [dismissed, setDismissed]         = useState(false);
+  // Org-extraction progress state
+  const [orgTotal, setOrgTotal]           = useState(null);   // null = not an org extraction
+  const [orgIdx, setOrgIdx]               = useState(0);
   const esRef = useRef(null);
 
   useEffect(() => {
@@ -38,13 +72,18 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
       es.onmessage = (e) => {
         const parsed = parseLine(e.data);
         if (!parsed) return;
-        setStep(parsed.step);
-        if (parsed.done) { setDone(true); es.close(); }
+
+        // Org progress tracking
+        if (parsed.orgTotal != null) setOrgTotal(parsed.orgTotal);
+        if (parsed.orgIdx   != null) setOrgIdx(parsed.orgIdx);
+
+        if (parsed.step) setStep(parsed.step);
+
+        if (parsed.done)  { setDone(true);  es.close(); }
         if (parsed.failed) {
           setFailed(true);
           es.close();
           if (parsed.tokenExpired) {
-            // Clear the stale token from localStorage so it doesn't auto-restore
             localStorage.removeItem(TOKEN_STORAGE_KEY);
             setTokenExpired(true);
           }
@@ -52,9 +91,6 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
       };
 
       es.onerror = () => {
-        // If the SSE connection errors immediately (e.g. backend restarted and
-        // extraction logs were cleared), treat it as already complete rather
-        // than a failure — the project data was already written to disk.
         if (!done && !failed) {
           setStep('Extraction complete');
           setDone(true);
@@ -69,8 +105,7 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
     };
   }, [projectId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Auto-dismiss after generic failure (not token expiry). Done state stays
-  // visible until the user explicitly dismisses it.
+  // Auto-dismiss after generic failure (not token expiry)
   useEffect(() => {
     if (!(failed && !tokenExpired)) return;
     const t = setTimeout(() => onDone?.(), 3000);
@@ -80,13 +115,14 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
   const dismiss = () => {
     esRef.current?.close();
     setDismissed(true);
-    // Small delay so the fade feels natural before calling onDone
     setTimeout(() => onDone?.(), 200);
   };
 
   if (dismissed) return null;
 
-  const stepColor = failed ? 'var(--red-40)' : done ? 'var(--green-40)' : 'var(--header-text-dim)';
+  const isOrg       = orgTotal !== null;
+  const pct         = isOrg && orgTotal > 0 ? Math.round((orgIdx / orgTotal) * 100) : 0;
+  const stepColor   = failed ? 'var(--red-40)' : done ? 'var(--green-40)' : 'var(--header-text-dim)';
 
   return (
     <div className="extraction-toast">
@@ -110,7 +146,19 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
 
         <div className="extraction-toast-step" style={{ color: stepColor }}>{step}</div>
 
-        {!done && !failed && (
+        {/* Progress bar — shown for org extractions while in flight */}
+        {isOrg && !done && !failed && (
+          <div className="extraction-progress-wrap" role="progressbar"
+               aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}
+               aria-label={`Extracting repository ${orgIdx} of ${orgTotal}`}>
+            <div className="extraction-progress-bar" style={{ width: `${pct}%` }} />
+            <span className="extraction-progress-label">
+              {orgIdx} / {orgTotal} repos
+            </span>
+          </div>
+        )}
+
+        {!done && !failed && !isOrg && (
           <div className="extraction-toast-notice">Extraction is in progress.</div>
         )}
 
@@ -118,7 +166,6 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
         {done && (
           <div className="extraction-inline-notification extraction-inline-notification--success" role="status">
             <div className="ein-icon">
-              {/* Carbon CheckmarkFilled 16 */}
               <svg viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
                 <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm3.78 5.387-4.5 4.5a.5.5 0 0 1-.707 0l-2-2a.5.5 0 1 1 .707-.707L7 9.826l4.146-4.146a.5.5 0 1 1 .707.707z"/>
               </svg>
@@ -126,7 +173,9 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
             <div className="ein-content">
               <p className="ein-title">Extraction complete</p>
               <p className="ein-subtitle">
-                {projectName ? `${projectName} is ready to view.` : 'Project data is ready to view.'}
+                {isOrg
+                  ? `${orgTotal} repos extracted and grouped under ${projectName}.`
+                  : (projectName ? `${projectName} is ready to view.` : 'Project data is ready to view.')}
               </p>
             </div>
             <button className="ein-close" aria-label="Dismiss notification" onClick={dismiss}>

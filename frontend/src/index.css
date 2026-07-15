@@ -120,6 +120,23 @@
   }
   .extraction-toast-token-btn:hover{background:rgba(250,77,86,.12);}
 
+  /* Org extraction progress bar — Carbon inline-loading style */
+  .extraction-progress-wrap{
+    margin-top:.5rem; position:relative;
+    height:.25rem; background:var(--gray-70); border-radius:0;
+    overflow:hidden;
+  }
+  .extraction-progress-bar{
+    height:100%; background:var(--blue-40);
+    transition:width .4s ease;
+    min-width:0;
+  }
+  .extraction-progress-label{
+    display:block; margin-top:.3rem;
+    font-size:.6875rem; color:var(--header-text-dim);
+    letter-spacing:.01em;
+  }
+
   /* Carbon inline notification — success variant inside extraction toast */
   .extraction-inline-notification{
     display:flex; align-items:flex-start; gap:.5rem;
