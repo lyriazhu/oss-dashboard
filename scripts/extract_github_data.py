@@ -381,7 +381,8 @@ class GitHubDataExtractor:
             yearly_data.append({
                 "year": year,
                 "contributor_count": len(yearly_contributors[year]),
-                "is_current": year == current_year
+                "is_current": year == current_year,
+                "contributor_logins": sorted(yearly_contributors[year]),
             })
         
         return yearly_data
@@ -482,7 +483,10 @@ class GitHubDataExtractor:
                 "active_contributors": active_count,
                 "new_contributors": new_count,
                 "returning_contributors": returning_count,
-                "retention_rate": round((returning_count / active_count) * 100, 2) if active_count else None
+                "retention_rate": round((returning_count / active_count) * 100, 2) if active_count else None,
+                "active_logins": sorted(active),
+                "new_logins": sorted(new_contributors),
+                "returning_logins": sorted(returning),
             })
 
         return retention_rows
@@ -542,7 +546,10 @@ class GitHubDataExtractor:
                 "new_contributors": new_count,
                 "returning_contributors": returning_count,
                 "retention_rate": round((returning_count / active_count) * 100, 2) if active_count else None,
-                "is_current": year == current_year
+                "is_current": year == current_year,
+                "active_logins": sorted(active),
+                "new_logins": sorted(new_contributors),
+                "returning_logins": sorted(returning),
             })
 
         return retention_rows

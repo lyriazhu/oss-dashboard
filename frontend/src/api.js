@@ -289,9 +289,11 @@ export function transformProjectData(project, metrics) {
   const quarters = commits?.quarters?.slice(-16).map(q => q.commit_count) || Array(16).fill(0);
   
   // Format overview data
-  const contributorsYtd = contributors?.yearlyContributors?.find(y => y.year === currentYear)?.contributorCount
-    || contributors?.yearly_contributors?.find(y => y.year === currentYear)?.contributor_count
-    || 0;
+  const currentYearEntry = contributors?.yearlyContributors?.find(y => y.year === currentYear)
+    || contributors?.yearly_contributors?.find(y => y.year === currentYear);
+  const contributorsYtd = currentYearEntry?.contributorCount || currentYearEntry?.contributor_count || 0;
+  // Login list for the current year — used by buildMergedEntry to deduplicate YTD contributors
+  const contributorsYtdLogins = currentYearEntry?.contributorLogins || currentYearEntry?.contributor_logins || null;
   const commitsAllTime = commits?.committers?.reduce((sum, committer) => sum + (committer.commitCount || committer.commit_count || 0), 0) || 0;
 
   const ov = {
@@ -391,6 +393,10 @@ export function transformProjectData(project, metrics) {
     newContributors: entry.newContributors || entry.new_contributors || 0,
     active: entry.activeContributors || entry.active_contributors || 0,
     c: idx === arr.length - 1,
+    // login sets for cross-repo deduplication in merged entries
+    activeLogins:    entry.activeLogins    || entry.active_logins    || null,
+    newLogins:       entry.newLogins       || entry.new_logins       || null,
+    returningLogins: entry.returningLogins || entry.returning_logins || null,
   }));
 
   // Yearly: read directly from retention_by_year (all-time, proper new/returning counts)
@@ -401,6 +407,10 @@ export function transformProjectData(project, metrics) {
     newContributors: entry.newContributors || entry.new_contributors || 0,
     active: entry.activeContributors || entry.active_contributors || 0,
     c: entry.isCurrent || entry.is_current || idx === arr.length - 1,
+    // login sets for cross-repo deduplication in merged entries
+    activeLogins:    entry.activeLogins    || entry.active_logins    || null,
+    newLogins:       entry.newLogins       || entry.new_logins       || null,
+    returningLogins: entry.returningLogins || entry.returning_logins || null,
   }));
 
   const latestRetention = retentionQuarters[retentionQuarters.length - 1];
@@ -794,8 +804,9 @@ export function transformProjectData(project, metrics) {
     sub: project.foundation || 'Independent',
     foundation: project.foundation || 'Independent',
     repoUrl: project.github_url || null,
-    // Raw contributor list + language kept for merge de-duplication in buildMergedEntry
+    // Raw contributor data kept for merge de-duplication in buildMergedEntry
     _rawContributors: contributors?.contributors || [],
+    _rawContributorsYtdLogins: contributorsYtdLogins,
     _rawLanguage: metadata?.language || null,
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
     releaseFrequency: releaseFrequencyLabel,

@@ -47,6 +47,46 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
   }
   const mergedContributors = [...contributorMap.values()];
 
+  // ── All-time contributor count ──
+  // The GitHub API only returns a partial contributor list (those who committed
+  // directly to the default branch), so _rawContributors can be significantly
+  // smaller than the real total stored in ov.contributorsAllTime.  When any
+  // member repo's raw list is truncated, summing the per-repo totals is more
+  // accurate than counting the de-duplicated union of the truncated lists.
+  const allTimeContributorCount = (() => {
+    const allTruncated = communities.every((c) => {
+      const rawLen  = (c._rawContributors || []).length;
+      const reported = parseNum(c.ov?.contributorsAllTime);
+      // Truncated = the raw list is shorter than what the backend reports as total
+      return rawLen < reported;
+    });
+    if (allTruncated) {
+      // Fall back to summing per-repo totals (slight overcount for cross-repo
+      // contributors, but far closer to reality than the union of partial lists)
+      return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsAllTime), 0);
+    }
+    return mergedContributors.length;
+  })();
+
+  // ── YTD contributor count: union login sets from each repo's current year ──
+  // Each repo now carries _rawContributorsYtdLogins (a list of git identities
+  // active this year) which we union across repos to get a deduplicated count.
+  // Falls back to summing ov.contributorsYtd when login lists are unavailable
+  // (e.g. data extracted before this feature was added).
+  const mergedContributorsYtd = (() => {
+    const hasLoginSets = communities.some((c) => c._rawContributorsYtdLogins != null);
+    if (!hasLoginSets) {
+      return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsYtd), 0);
+    }
+    const ytdSet = new Set();
+    for (const c of communities) {
+      for (const login of (c._rawContributorsYtdLogins || [])) {
+        if (login) ytdSet.add(login);
+      }
+    }
+    return ytdSet.size;
+  })();
+
   // ── Contributing Companies: count distinct companies from the unioned list ──
   const companySet = new Set();
   for (const contrib of mergedContributors) {
@@ -92,8 +132,8 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
 
   const mergedOv = {
     ...base.ov,
-    contributorsYtd:    sumOv('contributorsYtd'),
-    contributorsAllTime: fmt(mergedContributors.length),
+    contributorsYtd:    fmt(mergedContributorsYtd),
+    contributorsAllTime: fmt(allTimeContributorCount),
     companies:          fmt(mergedCompanyCount ?? 0),
     commits:            sumOv('commits'),
     commitsAllTime:     sumOv('commitsAllTime'),
@@ -110,9 +150,9 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
     if (kpi.l === 'Language') {
       return { ...kpi, v: mergedLanguage };
     }
-    // For contributor counts, use the de-duped total
+    // For contributor counts, use the deduplicated YTD total
     if (kpi.l === 'Contributors (YTD)') {
-      return { ...kpi, v: sumOv('contributorsYtd') };
+      return { ...kpi, v: fmt(mergedContributorsYtd) };
     }
     const total = communities.reduce((acc, c) => {
       const match = (c.kpis || []).find((k) => k.l === kpi.l);
@@ -145,8 +185,19 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
     const map = new Map();
     arrays.flat().forEach((entry) => {
       const label = entry.y;
-      const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0 };
-      map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0) });
+      const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0,
+        activeLoginsSet: null, newLoginsSet: null, returningLoginsSet: null };
+      // If login sets are available, union them for accurate deduplication; otherwise sum counts
+      const activeLoginsSet  = (ex.activeLoginsSet  || entry.activeLogins)  ? new Set([...(ex.activeLoginsSet  || []), ...(entry.activeLogins  || [])]) : null;
+      const newLoginsSet     = (ex.newLoginsSet      || entry.newLogins)     ? new Set([...(ex.newLoginsSet      || []), ...(entry.newLogins      || [])]) : null;
+      const returningLoginsSet = (ex.returningLoginsSet || entry.returningLogins) ? new Set([...(ex.returningLoginsSet || []), ...(entry.returningLogins || [])]) : null;
+      map.set(label, {
+        ...ex,
+        activeLoginsSet, newLoginsSet, returningLoginsSet,
+        returning:        returningLoginsSet ? returningLoginsSet.size : ex.returning + (entry.returning || 0),
+        newContributors:  newLoginsSet       ? newLoginsSet.size       : ex.newContributors + (entry.newContributors || 0),
+        active:           activeLoginsSet    ? activeLoginsSet.size    : ex.active + (entry.active || 0),
+      });
     });
     const sorted = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
     // Mark only the last entry as current (recomputed after sort, not inherited from individual repos)
@@ -180,8 +231,20 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
     const map = new Map();
     arrays.flat().forEach((entry) => {
       const label = entry.q;
-      const ex = map.get(label) || { q: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
-      map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0), c: ex.c || entry.c });
+      const ex = map.get(label) || { q: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c,
+        activeLoginsSet: null, newLoginsSet: null, returningLoginsSet: null };
+      // If login sets are available, union them for accurate deduplication; otherwise sum counts
+      const activeLoginsSet    = (ex.activeLoginsSet    || entry.activeLogins)    ? new Set([...(ex.activeLoginsSet    || []), ...(entry.activeLogins    || [])]) : null;
+      const newLoginsSet       = (ex.newLoginsSet       || entry.newLogins)       ? new Set([...(ex.newLoginsSet       || []), ...(entry.newLogins       || [])]) : null;
+      const returningLoginsSet = (ex.returningLoginsSet || entry.returningLogins) ? new Set([...(ex.returningLoginsSet || []), ...(entry.returningLogins || [])]) : null;
+      map.set(label, {
+        ...ex,
+        c: ex.c || entry.c,
+        activeLoginsSet, newLoginsSet, returningLoginsSet,
+        returning:       returningLoginsSet ? returningLoginsSet.size : ex.returning + (entry.returning || 0),
+        newContributors: newLoginsSet       ? newLoginsSet.size       : ex.newContributors + (entry.newContributors || 0),
+        active:          activeLoginsSet    ? activeLoginsSet.size    : ex.active + (entry.active || 0),
+      });
     });
     const parseQ = (s) => {
       const m = /Q(\d)\s+(\d{4})/.exec(s || '');
