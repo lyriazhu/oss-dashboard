@@ -143,11 +143,70 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
     const map = new Map();
     arrays.flat().forEach((entry) => {
       const label = entry.y;
-      const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
+      const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0 };
+      map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0) });
+    });
+    const sorted = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+    // Mark only the last entry as current (recomputed after sort, not inherited from individual repos)
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+  }
+
+  // ── Quarterly time-series merge (by label string e.g. "Q3 2024") ──
+  function mergeQuarterly(arrays, qKey = 'q', vKey = 'v') {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry[qKey];
+      const existing = map.get(label) || { ...entry, [vKey]: 0 };
+      map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+    });
+    // Sort by label — "Q3 2024", "Q4 2024", "Q1 2025" … using a custom comparator
+    const sorted = [...map.values()].sort((a, b) => {
+      const parseQ = (s) => {
+        const m = /Q(\d)\s+(\d{4})/.exec(s || '');
+        if (!m) return 0;
+        const [, q, y] = m;
+        return parseInt(y) * 4 + parseInt(q);
+      };
+      return parseQ(a[qKey]) - parseQ(b[qKey]);
+    });
+    // Re-apply current-period flag to the last entry only
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
+  }
+
+  // ── Quarterly retention merge ──
+  function mergeQuarterlyRetention(arrays) {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry.q;
+      const ex = map.get(label) || { q: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
       map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0), c: ex.c || entry.c });
     });
-    const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
-    return merged.map((e) => ({ ...e, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+    const parseQ = (s) => {
+      const m = /Q(\d)\s+(\d{4})/.exec(s || '');
+      if (!m) return 0;
+      const [, q, y] = m;
+      return parseInt(y) * 4 + parseInt(q);
+    };
+    const sorted = [...map.values()].sort((a, b) => parseQ(a.q) - parseQ(b.q));
+    return sorted
+      .map((e, idx) => ({ ...e, c: idx === sorted.length - 1, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+  }
+
+  // ── Monthly time-series merge (by YYYY-MM key) ──
+  function mergeMonthly(arrays, mKey = 'm') {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry[mKey];
+      const ex = map.get(label) || { ...entry, v: 0, open: 0, closed: 0 };
+      map.set(label, {
+        ...ex,
+        v: (ex.v || 0) + (entry.v || 0),
+        open: (ex.open || 0) + (entry.open || 0),
+        closed: (ex.closed || 0) + (entry.closed || 0),
+      });
+    });
+    const sorted = [...map.values()].sort((a, b) => String(a[mKey]).localeCompare(String(b[mKey])));
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
   }
 
   // ── Repo URL: org URL if provided, else shared owner prefix, else first ──
@@ -166,21 +225,148 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
 
   const combinedName = communities.map((c) => c.name).join(' + ');
 
+  // ── CVE entries: concatenate and re-sort newest first ──
+  const mergedCveEntries = communities
+    .flatMap((c) => c.cveEntries || [])
+    .sort((a, b) => (b.published || '').localeCompare(a.published || ''));
+
+  // ── CVE total all-time: sum across all repos ──
+  const mergedCveTotalAllTime = communities.reduce((s, c) => s + (c.cveTotalAllTime || 0), 0);
+
+  // ── Median merge/resolution days: weighted mean (by pr/issue count) where available ──
+  const computeWeightedMedian = (communities, valueFn, weightFn) => {
+    let totalWeight = 0;
+    let weightedSum = 0;
+    for (const c of communities) {
+      const val = valueFn(c);
+      const wt  = weightFn(c);
+      if (val != null && wt > 0) {
+        weightedSum += val * wt;
+        totalWeight += wt;
+      }
+    }
+    if (totalWeight === 0) return null;
+    return Math.round((weightedSum / totalWeight) * 10) / 10;
+  };
+  const mergedPrMedianMergeDays = computeWeightedMedian(
+    communities,
+    (c) => c.prMedianMergeDays,
+    (c) => (c.prYearly || []).reduce((s, y) => s + (y.v || 0), 0),
+  );
+  const mergedIssueMedianResolutionDays = computeWeightedMedian(
+    communities,
+    (c) => c.issueMedianResolutionDays,
+    (c) => (c.issueYearly || []).reduce((s, y) => s + ((y.open || 0) + (y.closed || 0)), 0),
+  );
+
+  // ── Meta table: sum releases; pick earliest founded year; join languages ──
+  const totalReleasesNum = communities.reduce((s, c) => {
+    const v = c.meta?.find((m) => m.f === 'Total releases')?.v;
+    return s + (parseInt(String(v || '0').replace(/[^0-9]/g, ''), 10) || 0);
+  }, 0);
+  const earliestCreated = communities.reduce((best, c) => {
+    const v = c.meta?.find((m) => m.f === 'Created')?.v;
+    const n = parseInt(v, 10);
+    if (!n) return best;
+    return (best === null || n < best) ? n : best;
+  }, null);
+  const allLicenses = [...new Set(
+    communities
+      .map((c) => c.meta?.find((m) => m.f === 'License')?.v)
+      .filter((v) => v && v !== '—'),
+  )];
+  const mergedMeta = [
+    { f: 'Total releases', v: String(totalReleasesNum) },
+    { f: 'Created', v: earliestCreated ? String(earliestCreated) : '—' },
+    { f: 'Language', v: mergedLanguage },
+    { f: 'License', v: allLicenses.length > 0 ? allLicenses.join(', ') : '—' },
+  ];
+
+  // ── Founded: derive from earliest created year ──
+  const mergedFounded = earliestCreated ? `Founded ${earliestCreated}` : base.founded;
+
+  // ── Retention summary (latest quarter across all repos combined) ──
+  const allRetentionQuarterly = mergeQuarterlyRetention(communities.map((c) => c.retentionQuarterly || []));
+  const latestMergedRetention = allRetentionQuarterly[allRetentionQuarterly.length - 1];
+  const mergedRetention = latestMergedRetention
+    ? {
+        returning: latestMergedRetention.v,
+        neu: latestMergedRetention.active
+          ? Math.round((latestMergedRetention.newContributors / latestMergedRetention.active) * 100)
+          : 0,
+        cap: `${latestMergedRetention.newContributors} new · ${latestMergedRetention.returning} returning (${latestMergedRetention.q})`,
+      }
+    : base.retention;
+
+  // ── Adopters: union by name, deduplicated ──
+  const adoptersMap = new Map();
+  for (const c of communities) {
+    for (const a of (c.adopters || [])) {
+      if (a.name && !adoptersMap.has(a.name.toLowerCase())) {
+        adoptersMap.set(a.name.toLowerCase(), a);
+      }
+    }
+  }
+  const mergedAdopters = [...adoptersMap.values()];
+  // Use adoptersSource from whichever repo has one
+  const mergedAdoptersSource = communities.find((c) => c.adoptersSource)?.adoptersSource || null;
+
+  // ── extractedAt: most recent across all repos ──
+  const mergedExtractedAt = communities.reduce((latest, c) => {
+    if (!c.extractedAt) return latest;
+    return (!latest || c.extractedAt > latest) ? c.extractedAt : latest;
+  }, null);
+
   return {
     ...base,
-    name:            customName || combinedName,
-    _mergedFrom:     flatEntries,
-    sub:             base.sub,
-    repoUrl:         mergedRepoUrl,
-    ov:              mergedOv,
-    kpis:            mergedKpis,
-    companies:       topCompanies.length > 0 ? topCompanies : base.companies,
-    status:          bestStatus,
-    commits:         mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
-    retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
-    prYearly:        mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
-    issueYearly:     mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
-    cveYearly:       mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
+    name:                      customName || combinedName,
+    _mergedFrom:               flatEntries,
+    sub:                       base.sub,
+    founded:                   mergedFounded,
+    repoUrl:                   mergedRepoUrl,
+    ov:                        mergedOv,
+    kpis:                      mergedKpis,
+    companies:                 topCompanies.length > 0 ? topCompanies : base.companies,
+    status:                    bestStatus,
+    meta:                      mergedMeta,
+    retention:                 mergedRetention,
+    extractedAt:               mergedExtractedAt,
+    adopters:                  mergedAdopters,
+    adoptersSource:            mergedAdoptersSource,
+    // Yearly time-series (summed by year)
+    commits:                   mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
+    retentionYearly:           mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
+    prYearly:                  mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
+    issueYearly:               (() => {
+      // issueYearly entries carry `open` and `closed` separately — mergeYearly only sums `v`,
+      // so we need a dedicated merge that accumulates all three fields.
+      const map = new Map();
+      communities.flatMap((c) => c.issueYearly || []).forEach((entry) => {
+        const ex = map.get(entry.y) || { y: entry.y, v: 0, open: 0, closed: 0 };
+        map.set(entry.y, {
+          ...ex,
+          v:      (ex.v      || 0) + (entry.v      || 0),
+          open:   (ex.open   || 0) + (entry.open   || 0),
+          closed: (ex.closed || 0) + (entry.closed || 0),
+        });
+      });
+      const sorted = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+      return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
+    })(),
+    cveYearly:                 mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
+    // Quarterly time-series (summed by quarter label)
+    quarters:                  mergeQuarterly(communities.map((c) => c.quarters || []), 'q', 'v'),
+    retentionQuarterly:        allRetentionQuarterly,
+    // Monthly time-series (summed by YYYY-MM)
+    prMonthly:                 mergeMonthly(communities.map((c) => c.prMonthly || []), 'm'),
+    issueMonthly:              mergeMonthly(communities.map((c) => c.issueMonthly || []), 'm'),
+    cveMonthly:                mergeMonthly(communities.map((c) => c.cveMonthly || []), 'm'),
+    // CVE detail
+    cveEntries:                mergedCveEntries,
+    cveTotalAllTime:           mergedCveTotalAllTime,
+    // Median timing stats (weighted)
+    prMedianMergeDays:         mergedPrMedianMergeDays,
+    issueMedianResolutionDays: mergedIssueMedianResolutionDays,
   };
 }
 
