@@ -1,8 +1,8 @@
 {
   "merges" : [ {
-    "mergedKey" : ".github",
-    "memberKeys" : [ ".github", "alignment-reporter-plugin", "console", "console-datagen", "developer-quickstart", "flink-sql", "flink-sql-examples", "governance", "keycloak-auth-demo", "kmetadb", "proposals", "shade-enforcer", "streams-e2e", "streamshub-gitops", "streamshub-mcp", "streamshub-site" ],
+    "mergedKey" : "__merged__alignment-reporter-plugin__.github__console__console-datagen__developer-quickstart__flink-sql__flink-sql-examples__governance__keycloak-auth-demo__kmetadb__proposals__shade-enforcer__streams-e2e__streamshub-gitops__streamshub-mcp__streamshub-site",
+    "memberKeys" : [ "alignment-reporter-plugin", ".github", "console", "console-datagen", "developer-quickstart", "flink-sql", "flink-sql-examples", "governance", "keycloak-auth-demo", "kmetadb", "proposals", "shade-enforcer", "streams-e2e", "streamshub-gitops", "streamshub-mcp", "streamshub-site" ],
     "name" : "StreamsHub"
   } ],
-  "last_updated" : "2026-07-16T15:03:15.191872Z"
+  "last_updated" : "2026-07-16T15:28:11.545925Z"
 }
