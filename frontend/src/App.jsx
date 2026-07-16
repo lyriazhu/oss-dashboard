@@ -410,8 +410,24 @@ export default function App() {
 
   const handleJoinSelected = useCallback(() => {
     if (selectedKeys.size < 2) return;
-    const keys = [...selectedKeys];
-    const communities = keys.map((k) => data[k]);
+    const selectedKeysList = [...selectedKeys];
+
+    // Flatten: if any selected entry is already a merged group, expand its
+    // members so the new merged entry only ever contains atomic (non-merged) repos.
+    // This ensures the _mergedFrom list survives the saveMerges/applyPersistedMerges
+    // round-trip, where every memberKey must correspond to a real project in projects.json.
+    const flatEntries = [];
+    for (const k of selectedKeysList) {
+      const d = data[k];
+      if (d?._mergedFrom) {
+        // Expand the nested group into its atomic members
+        d._mergedFrom.forEach((m) => flatEntries.push({ key: m.key, data: m.data }));
+      } else {
+        flatEntries.push({ key: k, data: d });
+      }
+    }
+    const keys = flatEntries.map((e) => e.key);
+    const communities = flatEntries.map((e) => e.data);
 
     // Helper: parse a formatted number string like "1,234" or "1,234+" back to int
     const parseNum = (v) => {
@@ -483,7 +499,7 @@ export default function App() {
     const merged = {
       ...base,
       name: combinedName,
-      _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
+      _mergedFrom: flatEntries,
       sub: base.sub, // keep foundation from the primary
       ov: {
         ...base.ov,
@@ -505,20 +521,24 @@ export default function App() {
       cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
     };
 
-    const mergedKey = keys[0];
+    // The merged entry takes the key of the first selected item (which may have
+    // been a merged group itself — use its key too so it lands in the same slot).
+    const mergedKey = selectedKeysList[0];
 
-    // Remove all selected keys except the base (which we replace with the merged entry)
+    // All keys to remove: the flat atomic keys + any selected merged-group keys
+    const allKeysToRemove = new Set([...selectedKeysList, ...keys]);
+
     setData((prev) => {
       const next = { ...prev };
-      keys.forEach((k) => delete next[k]);
+      allKeysToRemove.forEach((k) => delete next[k]);
       next[mergedKey] = merged;
       return next;
     });
     setOrder((prev) => {
-      const next = prev.filter((k) => !keys.includes(k));
-      // Insert the merged entry where the base was (before the filtered position)
-      const insertIdx = Math.min(...keys.map((k) => prev.indexOf(k)));
-      next.splice(insertIdx, 0, mergedKey);
+      const next = prev.filter((k) => !allKeysToRemove.has(k));
+      // Insert the merged entry at the earliest position any of the selected keys occupied
+      const insertIdx = Math.min(...[...selectedKeysList].map((k) => prev.indexOf(k)).filter((i) => i >= 0));
+      next.splice(insertIdx < 0 ? next.length : insertIdx, 0, mergedKey);
       return next;
     });
 

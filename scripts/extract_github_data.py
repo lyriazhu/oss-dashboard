@@ -2149,6 +2149,18 @@ class GitHubDataExtractor:
 
         out = []
         for cfg in self.config.get("projects", []):
+            # is_org entries are org-level sentinels: their repos are discovered
+            # and registered individually at extraction time, not at sync time.
+            # Skip them here so we don't create a broken entry with repo="".
+            if cfg.get("is_org"):
+                # Preserve any existing org-sentinel record so the dashboard can
+                # still display it while extraction is in progress.
+                owner = cfg.get("owner", "")
+                project_id = owner.lower().replace("_", "-")
+                if project_id in existing:
+                    out.append(existing[project_id])
+                continue
+
             repo = cfg.get("repo", "")
             owner = cfg.get("owner", "")
             name = cfg.get("name", repo)
