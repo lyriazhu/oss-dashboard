@@ -735,16 +735,30 @@ export default function App() {
     // Flatten: if any selected entry is already a merged group, expand its
     // members so the new merged entry only ever contains atomic (non-merged) repos.
     const flatEntries = [];
+    const existingMergedGroups = [];
     for (const k of selectedKeysList) {
       const d = data[k];
       if (d?._mergedFrom) {
+        existingMergedGroups.push(d);
         d._mergedFrom.forEach((m) => flatEntries.push({ key: m.key, data: m.data }));
       } else {
         flatEntries.push({ key: k, data: d });
       }
     }
 
-    const merged = buildMergedEntry(flatEntries);
+    // Carry forward a custom name only when exactly one existing named group is
+    // being expanded — i.e. the user is adding more repos to an already-named
+    // group.  If two named groups are merged together, or if everything comes
+    // from individual repos, fall back to the default "A + B + C" name so the
+    // name is not silently inherited from an arbitrary group.
+    const inheritedName = (() => {
+      if (existingMergedGroups.length !== 1) return null;
+      const group = existingMergedGroups[0];
+      const defaultName = group._mergedFrom.map((e) => e.data.name).join(' + ');
+      return group.name !== defaultName ? group.name : null;
+    })();
+
+    const merged = buildMergedEntry(flatEntries, { customName: inheritedName });
 
     // Use a synthetic key that cannot collide with any real backend project ID.
     // Previously this reused the first selected project's ID, which caused the
