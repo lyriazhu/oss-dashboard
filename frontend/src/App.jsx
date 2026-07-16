@@ -127,6 +127,15 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
   }
   const mergedLanguage = langSet.size > 0 ? [...langSet].join(', ') : '—';
 
+  // ── Licenses: collect non-null licenses across repos, deduplicate ──
+  const licenseSet = new Set();
+  for (const c of communities) {
+    const langKpi = (c.kpis || []).find((k) => k.l === 'Language');
+    const lic = langKpi?.h;
+    if (lic && lic !== 'No license') licenseSet.add(lic);
+  }
+  const mergedLicense = licenseSet.size > 0 ? [...licenseSet].join(', ') : 'No license';
+
   // ── Numeric ov fields: sum everything except contributors/companies (de-duped above) ──
   const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
 
@@ -148,7 +157,7 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
       return { ...kpi, v: fmt(mergedCompanyCount ?? 0) };
     }
     if (kpi.l === 'Language') {
-      return { ...kpi, v: mergedLanguage };
+      return { ...kpi, v: mergedLanguage, h: mergedLicense };
     }
     // For contributor counts, use the deduplicated YTD total
     if (kpi.l === 'Contributors (YTD)') {
