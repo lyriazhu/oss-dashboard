@@ -1,0 +1,179 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2024,
+      "contributor_count": 2,
+      "is_current": false
+    }
+  ],
+  "total_contributors": 2,
+  "total_contributors_git": 2,
+  "contributors": [
+    {
+      "login": "robobario",
+      "name": "Robert Young",
+      "company": "Ibm",
+      "location": "New Zealand",
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/robobario"
+    }
+  ],
+  "total_contributors_github_api": 1,
+  "companies": {
+    "Ibm": 1
+  },
+  "total_companies": 1,
+  "company_diversity": {
+    "known_company_contributors": 1,
+    "unknown_company_contributors": 0,
+    "top_companies": [
+      {
+        "company": "Ibm",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 1,
+      "returning_contributors": 0,
+      "retention_rate": 0.0
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 2,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}

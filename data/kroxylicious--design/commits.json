@@ -1,0 +1,279 @@
+{
+  "total_commits": 192,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 4,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 59,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 22,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 30,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 42,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 28,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tbentley@redhat.com",
+      "profile_url": null,
+      "commit_count": 139
+    },
+    {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@apache.org",
+      "profile_url": null,
+      "commit_count": 105
+    },
+    {
+      "login": "Sam Barker",
+      "name": "Sam Barker",
+      "company": "Unknown",
+      "location": null,
+      "email": "sam@quadrocket.co.uk",
+      "profile_url": null,
+      "commit_count": 104
+    },
+    {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@redhat.com",
+      "profile_url": null,
+      "commit_count": 49
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robertyoungnz@gmail.com",
+      "profile_url": null,
+      "commit_count": 41
+    },
+    {
+      "login": "Piotr P\u0142aczek",
+      "name": "Piotr P\u0142aczek",
+      "company": "Unknown",
+      "location": null,
+      "email": "piotrpdev@gmail.com",
+      "profile_url": null,
+      "commit_count": 20
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tombentley@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 18
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robeyoun@redhat.com",
+      "profile_url": null,
+      "commit_count": 11
+    },
+    {
+      "login": "Oleksiy Pylypenko",
+      "name": "Oleksiy Pylypenko",
+      "company": "Unknown",
+      "location": null,
+      "email": "oleksiy.pylypenko@gmail.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Gunnar Morling",
+      "name": "Gunnar Morling",
+      "company": "Unknown",
+      "location": null,
+      "email": "gunnar.morling@googlemail.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Hrishabh Gupta",
+      "name": "Hrishabh Gupta",
+      "company": "Unknown",
+      "location": null,
+      "email": "hgupta@confluent.io",
+      "profile_url": null,
+      "commit_count": 9
+    },
+    {
+      "login": "Urjit Patel",
+      "name": "Urjit Patel",
+      "company": "Unknown",
+      "location": null,
+      "email": "105218041+uzziee@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 8
+    },
+    {
+      "login": "Urjit Patel",
+      "name": "Urjit Patel",
+      "company": "Unknown",
+      "location": null,
+      "email": "upatel@confluent.io",
+      "profile_url": null,
+      "commit_count": 8
+    },
+    {
+      "login": "Ejas khan",
+      "name": "Ejas khan",
+      "company": "Unknown",
+      "location": null,
+      "email": "iamejaskhan@gmail.com",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "ShubhamRwt",
+      "name": "ShubhamRwt",
+      "company": "Unknown",
+      "location": null,
+      "email": "shubhamrwt02@gmail.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Hrishabh Gupta",
+      "name": "Hrishabh Gupta",
+      "company": "Unknown",
+      "location": null,
+      "email": "hrishabhg@gmail.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Katherine Stanley",
+      "name": "Katherine Stanley",
+      "company": "Unknown",
+      "location": null,
+      "email": "11195226+katheris@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Shubham Rawat",
+      "name": "Shubham Rawat",
+      "company": "Unknown",
+      "location": null,
+      "email": "40595489+shubhamrwt@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T12:38:15.856297",
+  "years": [
+    {
+      "year": 2022,
+      "commit_count": 12,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "commit_count": 59,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 196,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "commit_count": 289,
+      "is_current": true
+    }
+  ]
+}

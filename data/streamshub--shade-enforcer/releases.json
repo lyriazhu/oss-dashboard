@@ -1,0 +1,14 @@
+{
+  "total_releases": 1,
+  "recent_releases": [
+    {
+      "tag_name": "v1.0.0",
+      "name": "v1.0.0",
+      "published_at": "2024-10-11T10:23:30+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "median_days_between_releases": null,
+  "extracted_at": "2026-07-16T09:35:08.487438"
+}

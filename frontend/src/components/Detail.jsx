@@ -386,46 +386,23 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
           )}
         </div>
       </div>
-      {d._mergedFrom ? (
-        <div className="meta-line merged-meta">
-          <table className="merged-repos-table">
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Foundation</th>
-                <th>Repository</th>
-              </tr>
-            </thead>
-            <tbody>
-              {d._mergedFrom.map(({ data: repo }, i) => (
-                <tr key={i}>
-                  <td className="strong">{repo.name}</td>
-                  <td>{repo.ov?.foundation || '—'}</td>
-                  <td>
-                    {repo.repoUrl ? (
-                      <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)' }}>
-                        {repo.repoUrl.replace('https://github.com/', '')}
-                      </a>
-                    ) : '—'}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p className="meta-line">
-          <span>{d.foundation}</span>
-          <span>|</span>
-          <span>{d.founded}</span>
-          {d.releaseFrequency && (
-            <>
-              <span>|</span>
-              <span>{d.releaseFrequency}</span>
-            </>
-          )}
-        </p>
-      )}
+      <p className="meta-line">
+        {d._mergedFrom ? (
+          <span>{d._mergedFrom.length} repositories</span>
+        ) : (
+          <>
+            <span>{d.foundation}</span>
+            <span>|</span>
+            <span>{d.founded}</span>
+            {d.releaseFrequency && (
+              <>
+                <span>|</span>
+                <span>{d.releaseFrequency}</span>
+              </>
+            )}
+          </>
+        )}
+      </p>
 
       <div className="tile-grid det-tiles">
         {d.kpis.map((k, i) => (
@@ -756,6 +733,28 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         </div>
       </div>
 
+      {d._mergedFrom && (() => {
+        const repos = [...d._mergedFrom].sort((a, b) => a.data.name.localeCompare(b.data.name));
+        return (
+          <div className="section">
+            <h2 className="section-h">Repositories</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
+              {repos.map((entry, i) => (
+                <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                  {entry?.data.repoUrl ? (
+                    <a href={entry.data.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)' }}>
+                      {entry.data.repoUrl.replace('https://github.com/', '')}
+                    </a>
+                  ) : (
+                    <span style={{ color: 'var(--text-secondary)' }}>—</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+
       {d.aiPolicySummary && d.aiPolicySummary.length > 0 && (
         <div className="section">
           <h2 className="section-h">Artificial Intelligence Policy</h2>
@@ -806,9 +805,9 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '1px', background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}>
             {visibleAdopters.map((a, i) => (
-              <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+              <div key={i} style={{ background: 'var(--layer-02)', padding: '0.75rem 1rem', fontSize: '0.875rem', color: 'var(--text-primary)' }}>
                 {a.url
-                  ? <a href={a.url} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontWeight: 600 }}>{a.name}</a>
+                  ? <a href={a.url} target="_blank" rel="noreferrer" style={{ color: 'var(--link)' }}>{a.name}</a>
                   : a.name}
               </div>
             ))}

@@ -53,6 +53,9 @@ public class ContributorData {
         
         @JsonProperty("is_current")
         public Boolean isCurrent;
+
+        @JsonProperty("contributor_logins")
+        public List<String> contributorLogins;
     }
     
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -92,6 +95,15 @@ public class ContributorData {
 
         @JsonProperty("retention_rate")
         public Double retentionRate;
+
+        @JsonProperty("active_logins")
+        public List<String> activeLogins;
+
+        @JsonProperty("new_logins")
+        public List<String> newLogins;
+
+        @JsonProperty("returning_logins")
+        public List<String> returningLogins;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -121,6 +133,15 @@ public class ContributorData {
 
         @JsonProperty("is_current")
         public Boolean isCurrent;
+
+        @JsonProperty("active_logins")
+        public List<String> activeLogins;
+
+        @JsonProperty("new_logins")
+        public List<String> newLogins;
+
+        @JsonProperty("returning_logins")
+        public List<String> returningLogins;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)

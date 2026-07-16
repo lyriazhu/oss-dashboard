@@ -44,6 +44,14 @@ public class Project {
     @JsonProperty("is_org")
     private Boolean isOrg;
 
+    /**
+     * For per-repo entries that were discovered under an org project, this holds
+     * the org owner slug (e.g. "streamshub").  The script must be invoked with the
+     * org name rather than the individual repo name so it finds the is_org config entry.
+     */
+    @JsonProperty("org_owner")
+    private String orgOwner;
+
     public Project() {
     }
 
@@ -97,6 +105,9 @@ public class Project {
 
     public Boolean getIsOrg() { return isOrg; }
     public void setIsOrg(Boolean isOrg) { this.isOrg = isOrg; }
+
+    public String getOrgOwner() { return orgOwner; }
+    public void setOrgOwner(String orgOwner) { this.orgOwner = orgOwner; }
 
     public String getDataDir() { return dataDir; }
     public void setDataDir(String dataDir) { this.dataDir = dataDir; }

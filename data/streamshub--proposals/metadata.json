@@ -1,0 +1,25 @@
+{
+  "name": "proposals",
+  "full_name": "streamshub/proposals",
+  "description": "Proposals for changes to the StreamsHub Organisation and it's sub-projects ",
+  "created_at": "2026-02-11T11:52:12+00:00",
+  "updated_at": "2026-03-26T06:39:29+00:00",
+  "stars": 0,
+  "forks": 1,
+  "watchers": 0,
+  "open_issues": 4,
+  "language": null,
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 4,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T09:38:48.954090"
+}

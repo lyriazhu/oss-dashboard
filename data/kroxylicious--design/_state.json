@@ -1,0 +1,29 @@
+{
+  "contributors": {
+    "known_logins": [
+      "SamBarker",
+      "ShubhamRwt",
+      "Uzziee",
+      "gunnarmorling",
+      "k-wall",
+      "katheris",
+      "oleksiyp",
+      "piotrpdev",
+      "robobario",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T12:38:08.839358"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T12:38:15.856301"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T12:39:11.320460"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T12:38:43.771326"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T12:39:13.904823"
+  }
+}

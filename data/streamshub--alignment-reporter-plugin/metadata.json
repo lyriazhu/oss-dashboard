@@ -1,0 +1,25 @@
+{
+  "name": "alignment-reporter-plugin",
+  "full_name": "streamshub/alignment-reporter-plugin",
+  "description": null,
+  "created_at": "2019-01-14T10:44:15+00:00",
+  "updated_at": "2025-10-01T08:50:04+00:00",
+  "stars": 3,
+  "forks": 2,
+  "watchers": 3,
+  "open_issues": 0,
+  "language": "Java",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 25,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T09:27:43.872073"
+}

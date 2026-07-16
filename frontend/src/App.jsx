@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -8,6 +8,441 @@ import AddProjectModal from "./components/AddProjectModal.jsx";
 import ExtractionToast from "./components/ExtractionToast.jsx";
 
 const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
+
+// ---------------------------------------------------------------------------
+// Shared merge helper — used by both handleJoinSelected and applyPersistedMerges
+// ---------------------------------------------------------------------------
+
+/**
+ * Given a flat list of { key, data } atomic repo entries, build the merged
+ * dashboard object that represents them as a single community row.
+ *
+ * @param {Array<{key: string, data: object}>} flatEntries  Atomic repos to merge
+ * @param {object} opts
+ *   opts.customName  {string|null}  Override the combined "A + B" auto-name
+ *   opts.orgUrl      {string|null}  GitHub org URL to use as repoUrl (e.g. "https://github.com/streamshub")
+ */
+function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}) {
+  const keys        = flatEntries.map((e) => e.key);
+  const communities = flatEntries.map((e) => e.data);
+  const base        = communities[0];
+
+  const parseNum = (v) => {
+    if (v == null) return 0;
+    return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
+  };
+  const fmt = (n) => n.toLocaleString('en-US');
+
+  // ── Contributors: union by login, keep the highest contributions count ──
+  const contributorMap = new Map(); // login → contributor object
+  for (const c of communities) {
+    for (const contrib of (c._rawContributors || [])) {
+      const login = contrib.login || contrib.email || '';
+      if (!login) continue;
+      const existing = contributorMap.get(login);
+      if (!existing || (contrib.contributions || 0) > (existing.contributions || 0)) {
+        contributorMap.set(login, contrib);
+      }
+    }
+  }
+  const mergedContributors = [...contributorMap.values()];
+
+  // ── All-time contributor count ──
+  // The GitHub API only returns a partial contributor list (those who committed
+  // directly to the default branch), so _rawContributors can be significantly
+  // smaller than the real total stored in ov.contributorsAllTime.  When any
+  // member repo's raw list is truncated, summing the per-repo totals is more
+  // accurate than counting the de-duplicated union of the truncated lists.
+  const allTimeContributorCount = (() => {
+    const allTruncated = communities.every((c) => {
+      const rawLen  = (c._rawContributors || []).length;
+      const reported = parseNum(c.ov?.contributorsAllTime);
+      // Truncated = the raw list is shorter than what the backend reports as total
+      return rawLen < reported;
+    });
+    if (allTruncated) {
+      // Fall back to summing per-repo totals (slight overcount for cross-repo
+      // contributors, but far closer to reality than the union of partial lists)
+      return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsAllTime), 0);
+    }
+    return mergedContributors.length;
+  })();
+
+  // ── YTD contributor count: union login sets from each repo's current year ──
+  // Each repo now carries _rawContributorsYtdLogins (a list of git identities
+  // active this year) which we union across repos to get a deduplicated count.
+  // Falls back to summing ov.contributorsYtd when login lists are unavailable
+  // (e.g. data extracted before this feature was added).
+  const mergedContributorsYtd = (() => {
+    const hasLoginSets = communities.some((c) => c._rawContributorsYtdLogins != null);
+    if (!hasLoginSets) {
+      return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsYtd), 0);
+    }
+    const ytdSet = new Set();
+    for (const c of communities) {
+      for (const login of (c._rawContributorsYtdLogins || [])) {
+        if (login) ytdSet.add(login);
+      }
+    }
+    return ytdSet.size;
+  })();
+
+  // ── Contributing Companies: count distinct companies from the unioned list ──
+  const companySet = new Set();
+  for (const contrib of mergedContributors) {
+    const co = (contrib.company || '').trim();
+    if (!co) continue;
+    if (EXCLUDED_COMPANY_PATTERNS.some((p) => p.test(co))) continue;
+    companySet.add(co.toLowerCase());
+  }
+  const mergedCompanyCount = companySet.size || null;
+
+  // ── Top companies: sum commits per company across all repos ──
+  const companyCommits = new Map(); // companyName (lowercase) → { display, commits }
+  for (const c of communities) {
+    for (const contrib of (c._rawContributors || [])) {
+      const co = (contrib.company || '').trim();
+      if (!co || EXCLUDED_COMPANY_PATTERNS.some((p) => p.test(co))) continue;
+      const key = co.toLowerCase();
+      const existing = companyCommits.get(key) || { display: co, commits: 0 };
+      companyCommits.set(key, { display: existing.display, commits: existing.commits + (contrib.contributions || 0) });
+    }
+  }
+  const totalCompanyCommits = [...companyCommits.values()].reduce((s, v) => s + v.commits, 0);
+  const topCompanies = [...companyCommits.values()]
+    .sort((a, b) => b.commits - a.commits)
+    .slice(0, 4)
+    .map((v, idx) => ({
+      n: v.display,
+      c: fmt(v.commits),
+      p: totalCompanyCommits > 0 ? `${Math.round((v.commits / totalCompanyCommits) * 100)}%` : '0%',
+      strong: idx === 0,
+    }));
+
+  // ── Languages: collect primary language of each repo, deduplicate ──
+  const langSet = new Set();
+  for (const c of communities) {
+    const lang = c._rawLanguage;
+    if (lang && lang !== '—') langSet.add(lang);
+  }
+  const mergedLanguage = langSet.size > 0 ? [...langSet].join(', ') : '—';
+
+  // ── Licenses: collect non-null licenses across repos, deduplicate ──
+  const licenseSet = new Set();
+  for (const c of communities) {
+    const langKpi = (c.kpis || []).find((k) => k.l === 'Language');
+    const lic = langKpi?.h;
+    if (lic && lic !== 'No license') licenseSet.add(lic);
+  }
+  const mergedLicense = licenseSet.size > 0 ? [...licenseSet].join(', ') : 'No license';
+
+  // ── Numeric ov fields: sum everything except contributors/companies (de-duped above) ──
+  const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
+
+  const mergedOv = {
+    ...base.ov,
+    contributorsYtd:    fmt(mergedContributorsYtd),
+    contributorsAllTime: fmt(allTimeContributorCount),
+    companies:          fmt(mergedCompanyCount ?? 0),
+    commits:            sumOv('commits'),
+    commitsAllTime:     sumOv('commitsAllTime'),
+    pullRequests:       sumOv('pullRequests'),
+    stars:              sumOv('stars'),
+    quarters:           base.ov?.quarters || [],
+  };
+
+  // ── KPIs: sum numeric values; special-case Contributors, Companies, Language ──
+  const mergedKpis = (base.kpis || []).map((kpi) => {
+    if (kpi.l === 'Contributing Companies') {
+      return { ...kpi, v: fmt(mergedCompanyCount ?? 0) };
+    }
+    if (kpi.l === 'Language') {
+      return { ...kpi, v: mergedLanguage, h: mergedLicense };
+    }
+    // For contributor counts, use the deduplicated YTD total
+    if (kpi.l === 'Contributors (YTD)') {
+      return { ...kpi, v: fmt(mergedContributorsYtd) };
+    }
+    const total = communities.reduce((acc, c) => {
+      const match = (c.kpis || []).find((k) => k.l === kpi.l);
+      return acc + parseNum(match?.v);
+    }, 0);
+    const isNumeric = !isNaN(parseNum(kpi.v));
+    return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
+  });
+
+  // ── Status: pick most prominent ──
+  const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
+  const bestStatus = communities.reduce(
+    (best, c) => (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1) ? c.status : best,
+    base.status,
+  );
+
+  // ── Time-series merges ──
+  function mergeYearly(arrays, yKey = 'y', vKey = 'v') {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry[yKey];
+      const existing = map.get(label) || { ...entry, [vKey]: 0 };
+      map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+    });
+    const sorted = [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+    // Mark only the last (most recent) entry as current — never inherit from individual repos
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
+  }
+  function mergeYearlyRetention(arrays) {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry.y;
+      const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0,
+        activeLoginsSet: null, newLoginsSet: null, returningLoginsSet: null };
+      // If login sets are available, union them for accurate deduplication; otherwise sum counts
+      const activeLoginsSet  = (ex.activeLoginsSet  || entry.activeLogins)  ? new Set([...(ex.activeLoginsSet  || []), ...(entry.activeLogins  || [])]) : null;
+      const newLoginsSet     = (ex.newLoginsSet      || entry.newLogins)     ? new Set([...(ex.newLoginsSet      || []), ...(entry.newLogins      || [])]) : null;
+      const returningLoginsSet = (ex.returningLoginsSet || entry.returningLogins) ? new Set([...(ex.returningLoginsSet || []), ...(entry.returningLogins || [])]) : null;
+      map.set(label, {
+        ...ex,
+        activeLoginsSet, newLoginsSet, returningLoginsSet,
+        returning:        returningLoginsSet ? returningLoginsSet.size : ex.returning + (entry.returning || 0),
+        newContributors:  newLoginsSet       ? newLoginsSet.size       : ex.newContributors + (entry.newContributors || 0),
+        active:           activeLoginsSet    ? activeLoginsSet.size    : ex.active + (entry.active || 0),
+      });
+    });
+    const sorted = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+    // Mark only the last entry as current (recomputed after sort, not inherited from individual repos)
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+  }
+
+  // ── Quarterly time-series merge (by label string e.g. "Q3 2024") ──
+  function mergeQuarterly(arrays, qKey = 'q', vKey = 'v') {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry[qKey];
+      const existing = map.get(label) || { ...entry, [vKey]: 0 };
+      map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+    });
+    // Sort by label — "Q3 2024", "Q4 2024", "Q1 2025" … using a custom comparator
+    const sorted = [...map.values()].sort((a, b) => {
+      const parseQ = (s) => {
+        const m = /Q(\d)\s+(\d{4})/.exec(s || '');
+        if (!m) return 0;
+        const [, q, y] = m;
+        return parseInt(y) * 4 + parseInt(q);
+      };
+      return parseQ(a[qKey]) - parseQ(b[qKey]);
+    });
+    // Re-apply current-period flag to the last entry only
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
+  }
+
+  // ── Quarterly retention merge ──
+  function mergeQuarterlyRetention(arrays) {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry.q;
+      const ex = map.get(label) || { q: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c,
+        activeLoginsSet: null, newLoginsSet: null, returningLoginsSet: null };
+      // If login sets are available, union them for accurate deduplication; otherwise sum counts
+      const activeLoginsSet    = (ex.activeLoginsSet    || entry.activeLogins)    ? new Set([...(ex.activeLoginsSet    || []), ...(entry.activeLogins    || [])]) : null;
+      const newLoginsSet       = (ex.newLoginsSet       || entry.newLogins)       ? new Set([...(ex.newLoginsSet       || []), ...(entry.newLogins       || [])]) : null;
+      const returningLoginsSet = (ex.returningLoginsSet || entry.returningLogins) ? new Set([...(ex.returningLoginsSet || []), ...(entry.returningLogins || [])]) : null;
+      map.set(label, {
+        ...ex,
+        c: ex.c || entry.c,
+        activeLoginsSet, newLoginsSet, returningLoginsSet,
+        returning:       returningLoginsSet ? returningLoginsSet.size : ex.returning + (entry.returning || 0),
+        newContributors: newLoginsSet       ? newLoginsSet.size       : ex.newContributors + (entry.newContributors || 0),
+        active:          activeLoginsSet    ? activeLoginsSet.size    : ex.active + (entry.active || 0),
+      });
+    });
+    const parseQ = (s) => {
+      const m = /Q(\d)\s+(\d{4})/.exec(s || '');
+      if (!m) return 0;
+      const [, q, y] = m;
+      return parseInt(y) * 4 + parseInt(q);
+    };
+    const sorted = [...map.values()].sort((a, b) => parseQ(a.q) - parseQ(b.q));
+    return sorted
+      .map((e, idx) => ({ ...e, c: idx === sorted.length - 1, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+  }
+
+  // ── Monthly time-series merge (by YYYY-MM key) ──
+  function mergeMonthly(arrays, mKey = 'm') {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry[mKey];
+      const ex = map.get(label) || { ...entry, v: 0, open: 0, closed: 0 };
+      map.set(label, {
+        ...ex,
+        v: (ex.v || 0) + (entry.v || 0),
+        open: (ex.open || 0) + (entry.open || 0),
+        closed: (ex.closed || 0) + (entry.closed || 0),
+      });
+    });
+    const sorted = [...map.values()].sort((a, b) => String(a[mKey]).localeCompare(String(b[mKey])));
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
+  }
+
+  // ── Repo URL: org URL if provided, else shared owner prefix, else first ──
+  let mergedRepoUrl = orgUrl || null;
+  if (!mergedRepoUrl) {
+    const urls = communities.map((c) => c.repoUrl).filter(Boolean);
+    if (urls.length > 0) {
+      const owners = urls.map((u) => u.replace('https://github.com/', '').split('/')[0]);
+      if (owners.every((o) => o === owners[0])) {
+        mergedRepoUrl = `https://github.com/${owners[0]}`;
+      } else {
+        mergedRepoUrl = urls[0];
+      }
+    }
+  }
+
+  const combinedName = communities.map((c) => c.name).join(' + ');
+
+  // ── CVE entries: concatenate and re-sort newest first ──
+  const mergedCveEntries = communities
+    .flatMap((c) => c.cveEntries || [])
+    .sort((a, b) => (b.published || '').localeCompare(a.published || ''));
+
+  // ── CVE total all-time: sum across all repos ──
+  const mergedCveTotalAllTime = communities.reduce((s, c) => s + (c.cveTotalAllTime || 0), 0);
+
+  // ── Median merge/resolution days: weighted mean (by pr/issue count) where available ──
+  const computeWeightedMedian = (communities, valueFn, weightFn) => {
+    let totalWeight = 0;
+    let weightedSum = 0;
+    for (const c of communities) {
+      const val = valueFn(c);
+      const wt  = weightFn(c);
+      if (val != null && wt > 0) {
+        weightedSum += val * wt;
+        totalWeight += wt;
+      }
+    }
+    if (totalWeight === 0) return null;
+    return Math.round((weightedSum / totalWeight) * 10) / 10;
+  };
+  const mergedPrMedianMergeDays = computeWeightedMedian(
+    communities,
+    (c) => c.prMedianMergeDays,
+    (c) => (c.prYearly || []).reduce((s, y) => s + (y.v || 0), 0),
+  );
+  const mergedIssueMedianResolutionDays = computeWeightedMedian(
+    communities,
+    (c) => c.issueMedianResolutionDays,
+    (c) => (c.issueYearly || []).reduce((s, y) => s + ((y.open || 0) + (y.closed || 0)), 0),
+  );
+
+  // ── Meta table: sum releases; pick earliest founded year; join languages ──
+  const totalReleasesNum = communities.reduce((s, c) => {
+    const v = c.meta?.find((m) => m.f === 'Total releases')?.v;
+    return s + (parseInt(String(v || '0').replace(/[^0-9]/g, ''), 10) || 0);
+  }, 0);
+  const earliestCreated = communities.reduce((best, c) => {
+    const v = c.meta?.find((m) => m.f === 'Created')?.v;
+    const n = parseInt(v, 10);
+    if (!n) return best;
+    return (best === null || n < best) ? n : best;
+  }, null);
+  const allLicenses = [...new Set(
+    communities
+      .map((c) => c.meta?.find((m) => m.f === 'License')?.v)
+      .filter((v) => v && v !== '—'),
+  )];
+  const mergedMeta = [
+    { f: 'Total releases', v: String(totalReleasesNum) },
+    { f: 'Created', v: earliestCreated ? String(earliestCreated) : '—' },
+    { f: 'Language', v: mergedLanguage },
+    { f: 'License', v: allLicenses.length > 0 ? allLicenses.join(', ') : '—' },
+  ];
+
+  // ── Founded: derive from earliest created year ──
+  const mergedFounded = earliestCreated ? `Founded ${earliestCreated}` : base.founded;
+
+  // ── Retention summary (latest quarter across all repos combined) ──
+  const allRetentionQuarterly = mergeQuarterlyRetention(communities.map((c) => c.retentionQuarterly || []));
+  const latestMergedRetention = allRetentionQuarterly[allRetentionQuarterly.length - 1];
+  const mergedRetention = latestMergedRetention
+    ? {
+        returning: latestMergedRetention.v,
+        neu: latestMergedRetention.active
+          ? Math.round((latestMergedRetention.newContributors / latestMergedRetention.active) * 100)
+          : 0,
+        cap: `${latestMergedRetention.newContributors} new · ${latestMergedRetention.returning} returning (${latestMergedRetention.q})`,
+      }
+    : base.retention;
+
+  // ── Adopters: union by name, deduplicated ──
+  const adoptersMap = new Map();
+  for (const c of communities) {
+    for (const a of (c.adopters || [])) {
+      if (a.name && !adoptersMap.has(a.name.toLowerCase())) {
+        adoptersMap.set(a.name.toLowerCase(), a);
+      }
+    }
+  }
+  const mergedAdopters = [...adoptersMap.values()];
+  // Use adoptersSource from whichever repo has one
+  const mergedAdoptersSource = communities.find((c) => c.adoptersSource)?.adoptersSource || null;
+
+  // ── extractedAt: most recent across all repos ──
+  const mergedExtractedAt = communities.reduce((latest, c) => {
+    if (!c.extractedAt) return latest;
+    return (!latest || c.extractedAt > latest) ? c.extractedAt : latest;
+  }, null);
+
+  return {
+    ...base,
+    name:                      customName || combinedName,
+    _mergedFrom:               flatEntries,
+    sub:                       base.sub,
+    founded:                   mergedFounded,
+    repoUrl:                   mergedRepoUrl,
+    ov:                        mergedOv,
+    kpis:                      mergedKpis,
+    companies:                 topCompanies.length > 0 ? topCompanies : base.companies,
+    status:                    bestStatus,
+    meta:                      mergedMeta,
+    retention:                 mergedRetention,
+    extractedAt:               mergedExtractedAt,
+    adopters:                  mergedAdopters,
+    adoptersSource:            mergedAdoptersSource,
+    // Yearly time-series (summed by year)
+    commits:                   mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
+    retentionYearly:           mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
+    prYearly:                  mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
+    issueYearly:               (() => {
+      // issueYearly entries carry `open` and `closed` separately — mergeYearly only sums `v`,
+      // so we need a dedicated merge that accumulates all three fields.
+      const map = new Map();
+      communities.flatMap((c) => c.issueYearly || []).forEach((entry) => {
+        const ex = map.get(entry.y) || { y: entry.y, v: 0, open: 0, closed: 0 };
+        map.set(entry.y, {
+          ...ex,
+          v:      (ex.v      || 0) + (entry.v      || 0),
+          open:   (ex.open   || 0) + (entry.open   || 0),
+          closed: (ex.closed || 0) + (entry.closed || 0),
+        });
+      });
+      const sorted = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+      return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
+    })(),
+    cveYearly:                 mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
+    // Quarterly time-series (summed by quarter label)
+    quarters:                  mergeQuarterly(communities.map((c) => c.quarters || []), 'q', 'v'),
+    retentionQuarterly:        allRetentionQuarterly,
+    // Monthly time-series (summed by YYYY-MM)
+    prMonthly:                 mergeMonthly(communities.map((c) => c.prMonthly || []), 'm'),
+    issueMonthly:              mergeMonthly(communities.map((c) => c.issueMonthly || []), 'm'),
+    cveMonthly:                mergeMonthly(communities.map((c) => c.cveMonthly || []), 'm'),
+    // CVE detail
+    cveEntries:                mergedCveEntries,
+    cveTotalAllTime:           mergedCveTotalAllTime,
+    // Median timing stats (weighted)
+    prMedianMergeDays:         mergedPrMedianMergeDays,
+    issueMedianResolutionDays: mergedIssueMedianResolutionDays,
+  };
+}
 
 export default function App() {
   const [data, setData] = useState({});
@@ -55,76 +490,37 @@ export default function App() {
       let newOrder = [...projectOrder];
 
       for (const entry of mergesFromBackend) {
-        const mergedKey = entry.mergedKey;
         const memberKeys = entry.memberKeys;
-        const customName = entry.name || null;
-        if (!memberKeys.every((k) => newData[k])) continue;
-        const keys = memberKeys;
-        const communities = keys.map((k) => newData[k]);
+        const customName = entry.name   || null;
+        const orgUrl     = entry.orgUrl || null;
 
-        const parseNum = (v) => {
-          if (v == null) return 0;
-          return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
-        };
-        const fmt = (n) => n.toLocaleString('en-US');
-        const combinedName = communities.map((c) => c.name).join(' + ');
-        const base = communities[0];
-        const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
+        // Only include members that have already finished loading (extraction may
+        // still be running for newly-added repos).  As long as at least one member
+        // is ready we can render a partial merge; the rest will be folded in on the
+        // next loadProjects call once their extraction completes.
+        const availableKeys = memberKeys.filter((k) => newData[k]);
+        if (availableKeys.length === 0) continue;
 
-        const mergeYearly = (arrays, yKey = 'y', vKey = 'v') => {
-          const map = new Map();
-          arrays.flat().forEach((entry) => {
-            const label = entry[yKey];
-            const existing = map.get(label) || { ...entry, [vKey]: 0 };
-            map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
-          });
-          return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
-        };
-        const mergeYearlyRetention = (arrays) => {
-          const map = new Map();
-          arrays.flat().forEach((entry) => {
-            const label = entry.y;
-            const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
-            map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0), c: ex.c || entry.c });
-          });
-          const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
-          return merged.map((e) => ({ ...e, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
-        };
+        // Re-derive a synthetic key from the FULL member list so it never collides
+        // with a real backend project ID and stays stable across partial/full loads.
+        // Old records stored mergedKey = first member's project ID, which caused the
+        // first member to be deleted from newData and never restored on unmerge.
+        const mergedKey = '__merged__' + memberKeys.join('__');
 
-        const mergedKpis = (base.kpis || []).map((kpi) => {
-          const total = communities.reduce((acc, c) => {
-            const match = (c.kpis || []).find((k) => k.l === kpi.l);
-            return acc + parseNum(match?.v);
-          }, 0);
-          const isNumeric = !isNaN(parseNum(kpi.v)) && kpi.l !== 'Language';
-          return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
-        });
+        const flatEntries = availableKeys.map((k) => ({ key: k, data: newData[k] }));
+        const merged = buildMergedEntry(flatEntries, { customName, orgUrl });
+        // When only a subset of members is available (others still extracting), store
+        // the full intended member key list so persistMerges can write the correct
+        // record to merges.json even before all repos have finished loading.
+        if (availableKeys.length < memberKeys.length) {
+          merged._allMemberKeys = memberKeys;
+        }
 
-        const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
-        const bestStatus = communities.reduce((best, c) => {
-          return (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1) ? c.status : best;
-        }, base.status);
-
-        const merged = {
-          ...base,
-          name: customName || combinedName,
-          _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
-          sub: base.sub,
-          ov: { ...base.ov, contributorsYtd: sumOv('contributorsYtd'), contributorsAllTime: sumOv('contributorsAllTime'), companies: sumOv('companies'), commits: sumOv('commits'), commitsAllTime: sumOv('commitsAllTime'), pullRequests: sumOv('pullRequests'), stars: sumOv('stars'), quarters: base.ov?.quarters || [] },
-          kpis: mergedKpis,
-          status: bestStatus,
-          commits: mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
-          retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
-          prYearly: mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
-          issueYearly: mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
-          cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
-        };
-
-        keys.forEach((k) => delete newData[k]);
+        availableKeys.forEach((k) => delete newData[k]);
         newData[mergedKey] = merged;
-        const positions = keys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
+        const positions = availableKeys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
         const insertIdx = positions.length > 0 ? Math.min(...positions) : newOrder.length;
-        newOrder = newOrder.filter((k) => !keys.includes(k));
+        newOrder = newOrder.filter((k) => !availableKeys.includes(k));
         newOrder.splice(insertIdx, 0, mergedKey);
       }
       return { projectData: newData, projectOrder: newOrder };
@@ -208,25 +604,48 @@ export default function App() {
     setSelectedKey(key);
   }, []);
 
+  // Write the current merge state to the backend. Call this explicitly whenever
+  // merges change — do NOT derive from a useEffect on `data` to avoid races where
+  // an earlier render's effect fires after a later one and overwrites the correct state.
+  // Returns the promise from saveMerges so callers can await completion.
+  const persistMerges = useCallback((newData) => {
+    const mergeRecords = [];
+    Object.entries(newData).forEach(([key, d]) => {
+      if (d._mergedFrom) {
+        // Use _allMemberKeys when present — this is set for partial merges where some
+        // repos haven't finished extracting yet.  It preserves the full intended member
+        // list in merges.json so the complete group is restored once all repos load.
+        const memberKeys = d._allMemberKeys || d._mergedFrom.map((e) => e.key);
+        const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
+        mergeRecords.push({
+          mergedKey: key,
+          memberKeys,
+          name: d.name !== defaultName ? d.name : null,
+        });
+      }
+    });
+    return saveMerges(mergeRecords);
+  }, []);
+
   const handleUpdateProject = useCallback(async (projectId, fields) => {
-    // For merged entries, only update in-memory — the rename is stored in
-    // localStorage as part of the merge record and is discarded on unmerge.
     const isMergedEntry = Boolean(data[projectId]?._mergedFrom);
 
     // 1. Patch in-memory immediately.
-    setData((prev) => {
-      if (!prev[projectId]) return prev;
-      const updated = { ...prev[projectId] };
-      if (fields.name)       updated.name = fields.name;
-      if (fields.foundation) {
-        updated.foundation = fields.foundation;
-        updated.sub        = fields.foundation;
-        updated.ov         = { ...updated.ov, foundation: fields.foundation };
-      }
-      return { ...prev, [projectId]: updated };
-    });
+    const updated = { ...data[projectId] };
+    if (fields.name)       updated.name = fields.name;
+    if (fields.foundation) {
+      updated.foundation = fields.foundation;
+      updated.sub        = fields.foundation;
+      updated.ov         = { ...updated.ov, foundation: fields.foundation };
+    }
+    const next = { ...data, [projectId]: updated };
+    setData(next);
 
-    if (isMergedEntry) return; // localStorage persistence is handled by the data effect
+    if (isMergedEntry) {
+      // For merged entries persist the rename directly — no backend project record to update.
+      persistMerges(next);
+      return;
+    }
 
     // 2. Persist to backend for non-merged projects.
     try {
@@ -246,7 +665,7 @@ export default function App() {
       console.error('Failed to save project update:', err);
       await loadProjects({ silent: true });
     }
-  }, [loadProjects, data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loadProjects, data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addProject = useCallback((key, name) => {
     // loadProjects has already refreshed data/order by the time this fires;
@@ -330,196 +749,132 @@ export default function App() {
     }
   }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Persist merges to backend (data/merges.json) whenever data changes
-  useEffect(() => {
-    const mergeRecords = [];
-    Object.entries(data).forEach(([key, d]) => {
-      if (d._mergedFrom) {
-        const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
-        mergeRecords.push({
-          mergedKey: key,
-          memberKeys: d._mergedFrom.map((e) => e.key),
-          name: d.name !== defaultName ? d.name : null,
-        });
-      }
-    });
-    // Always write — empty array clears the file
-    saveMerges(mergeRecords);
-  }, [data]);
+  const handleUnmerge = useCallback(async (mergedKey) => {
+    const merged = data[mergedKey];
+    if (!merged?._mergedFrom) return;
 
-  const handleUnmerge = useCallback((mergedKey) => {
-    setData((prev) => {
-      const merged = prev[mergedKey];
-      if (!merged?._mergedFrom) return prev;
-      const next = { ...prev };
-      delete next[mergedKey];
-      merged._mergedFrom.forEach(({ key, data: original }) => {
-        next[key] = original;
-      });
-      return next;
+    const next = { ...data };
+    delete next[mergedKey];
+    merged._mergedFrom.forEach(({ key, data: original }) => {
+      next[key] = original;
     });
+    // Await the save so merges.json is cleared on disk before any concurrent
+    // loadProjects call can read and re-apply the old merge record.
+    await persistMerges(next);
+    setData(next);
+
     setOrder((prev) => {
-      const merged = data[mergedKey];
-      if (!merged?._mergedFrom) return prev;
       const idx = prev.indexOf(mergedKey);
-      const next = prev.filter((k) => k !== mergedKey);
+      const without = prev.filter((k) => k !== mergedKey);
       const originals = merged._mergedFrom.map((e) => e.key);
-      next.splice(idx, 0, ...originals);
-      return next;
+      without.splice(idx >= 0 ? idx : without.length, 0, ...originals);
+      return without;
     });
-  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Remove a single repo from a merged entry
   const handleRemoveFromMerge = useCallback((mergedKey, repoKey) => {
-    setData((prev) => {
-      const merged = prev[mergedKey];
-      if (!merged?._mergedFrom) return prev;
-      const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
-      const removed = merged._mergedFrom.find((e) => e.key === repoKey);
-      if (!removed) return prev;
-      const next = { ...prev };
-      // Restore the removed repo as its own entry
-      next[repoKey] = removed.data;
-      if (remaining.length < 2) {
-        // Only one left — unmerge entirely
-        delete next[mergedKey];
-        if (remaining.length === 1) {
-          next[remaining[0].key] = remaining[0].data;
-        }
-      } else {
-        next[mergedKey] = { ...merged, _mergedFrom: remaining };
+    // Read the current merged entry once, synchronously, before any state updates.
+    const merged = data[mergedKey];
+    if (!merged?._mergedFrom) return;
+    const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
+    const removed   = merged._mergedFrom.find((e) => e.key === repoKey);
+    if (!removed) return;
+
+    const next = { ...data };
+    // Restore the removed repo as its own entry
+    next[repoKey] = removed.data;
+    if (remaining.length < 2) {
+      // Only one left — dissolve the group entirely
+      delete next[mergedKey];
+      if (remaining.length === 1) {
+        next[remaining[0].key] = remaining[0].data;
       }
-      return next;
-    });
+    } else {
+      // Rebuild merged entry without the removed repo.
+      // A name is "custom" only if it differs from the auto-generated default of ALL
+      // original members (not just the remaining ones). If the name was auto-generated
+      // (e.g. "A + B + C"), removing a member should regenerate it from the remaining
+      // members. Truly custom names (e.g. "StreamsHub") are always preserved.
+      const oldDefaultName = merged._mergedFrom.map((e) => e.data.name).join(' + ');
+      const customName = merged.name !== oldDefaultName ? merged.name : null;
+      const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
+        ? merged.repoUrl : null;
+      next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl });
+    }
+    setData(next);
+    persistMerges(next);
+
     setOrder((prev) => {
-      const merged = data[mergedKey];
-      if (!merged?._mergedFrom) return prev;
-      const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
       const idx = prev.indexOf(mergedKey);
-      const next = prev.filter((k) => k !== mergedKey);
+      const without = prev.filter((k) => k !== mergedKey && k !== repoKey);
       if (remaining.length < 2) {
-        // Unmerge all remaining too
+        // Dissolve group — put all original keys at the same position
         const all = merged._mergedFrom.map((e) => e.key);
-        next.splice(idx, 0, ...all);
+        without.splice(idx >= 0 ? idx : without.length, 0, ...all);
       } else {
-        next.splice(idx, 0, mergedKey, repoKey);
+        // Keep the merged group at its original position; insert the removed repo right after
+        without.splice(idx >= 0 ? idx : without.length, 0, mergedKey, repoKey);
       }
-      return next;
+      return without;
     });
-  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleJoinSelected = useCallback(() => {
     if (selectedKeys.size < 2) return;
-    const keys = [...selectedKeys];
-    const communities = keys.map((k) => data[k]);
+    const selectedKeysList = [...selectedKeys];
 
-    // Helper: parse a formatted number string like "1,234" or "1,234+" back to int
-    const parseNum = (v) => {
-      if (v == null) return 0;
-      return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
-    };
-    const fmt = (n) => n.toLocaleString('en-US');
-
-    // Combine names with " + "
-    const combinedName = communities.map((c) => c.name).join(' + ');
-
-    // The first community is used as the base; the rest are merged into it.
-    const base = communities[0];
-
-    // Sum numeric ov fields
-    const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
-
-    // Merge yearly time-series arrays by matching on year label
-    function mergeYearly(arrays, yKey = 'y', vKey = 'v') {
-      const map = new Map();
-      arrays.flat().forEach((entry) => {
-        const label = entry[yKey];
-        const existing = map.get(label) || { ...entry, [vKey]: 0 };
-        map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
-      });
-      return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+    // Flatten: if any selected entry is already a merged group, expand its
+    // members so the new merged entry only ever contains atomic (non-merged) repos.
+    const flatEntries = [];
+    const existingMergedGroups = [];
+    for (const k of selectedKeysList) {
+      const d = data[k];
+      if (d?._mergedFrom) {
+        existingMergedGroups.push(d);
+        d._mergedFrom.forEach((m) => flatEntries.push({ key: m.key, data: m.data }));
+      } else {
+        flatEntries.push({ key: k, data: d });
+      }
     }
 
-    function mergeYearlyRetention(arrays) {
-      const map = new Map();
-      arrays.flat().forEach((entry) => {
-        const label = entry.y;
-        const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
-        map.set(label, {
-          ...ex,
-          returning: ex.returning + (entry.returning || 0),
-          newContributors: ex.newContributors + (entry.newContributors || 0),
-          active: ex.active + (entry.active || 0),
-          c: ex.c || entry.c,
-        });
-      });
-      const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
-      // Recalculate retention % from merged active/returning totals
-      return merged.map((e) => ({
-        ...e,
-        v: e.active ? Math.round((e.returning / e.active) * 100) : 0,
-      }));
-    }
+    // Carry forward a custom name only when exactly one existing named group is
+    // being expanded — i.e. the user is adding more repos to an already-named
+    // group.  If two named groups are merged together, or if everything comes
+    // from individual repos, fall back to the default "A + B + C" name so the
+    // name is not silently inherited from an arbitrary group.
+    const inheritedName = (() => {
+      if (existingMergedGroups.length !== 1) return null;
+      const group = existingMergedGroups[0];
+      const defaultName = group._mergedFrom.map((e) => e.data.name).join(' + ');
+      return group.name !== defaultName ? group.name : null;
+    })();
 
-    // Merge kpis by summing numeric values, keeping label/help from base
-    const mergedKpis = (base.kpis || []).map((kpi) => {
-      const total = communities.reduce((acc, c) => {
-        const match = (c.kpis || []).find((k) => k.l === kpi.l);
-        return acc + parseNum(match?.v);
-      }, 0);
-      // Non-numeric KPIs like Language keep the base value
-      const isNumeric = !isNaN(parseNum(kpi.v)) && kpi.l !== 'Language';
-      return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
-    });
+    const merged = buildMergedEntry(flatEntries, { customName: inheritedName });
 
-    // Status: pick the most prominent (Healthy > Growing > Watch > N/A)
-    const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
-    const bestStatus = communities.reduce((best, c) => {
-      return (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1)
-        ? c.status
-        : best;
-    }, base.status);
+    // Use a synthetic key that cannot collide with any real backend project ID.
+    // Previously this reused the first selected project's ID, which caused the
+    // merged group's key to also appear as a memberKey.  That created two bugs:
+    //   1. applyPersistedMerges would delete the raw ".github" project entry from
+    //      newData (as a member) making it vanish after an unmerge.
+    //   2. A race between the async saveMerges PUT and a concurrent loadProjects
+    //      call could re-apply the stale merge record against the already-unmerged
+    //      order, producing a duplicate row in the community table.
+    const mergedKey = '__merged__' + flatEntries.map((e) => e.key).join('__');
+    // All keys to remove: selected (including any group keys) + their flat members
+    const allKeysToRemove = new Set([...selectedKeysList, ...flatEntries.map((e) => e.key)]);
 
-    const merged = {
-      ...base,
-      name: combinedName,
-      _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
-      sub: base.sub, // keep foundation from the primary
-      ov: {
-        ...base.ov,
-        contributorsYtd: sumOv('contributorsYtd'),
-        contributorsAllTime: sumOv('contributorsAllTime'),
-        companies: sumOv('companies'),
-        commits: sumOv('commits'),
-        commitsAllTime: sumOv('commitsAllTime'),
-        pullRequests: sumOv('pullRequests'),
-        stars: sumOv('stars'),
-        quarters: base.ov?.quarters || [],
-      },
-      kpis: mergedKpis,
-      status: bestStatus,
-      commits: mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
-      retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
-      prYearly: mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
-      issueYearly: mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
-      cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
-    };
+    const next = { ...data };
+    allKeysToRemove.forEach((k) => delete next[k]);
+    next[mergedKey] = merged;
+    setData(next);
+    persistMerges(next);
 
-    const mergedKey = keys[0];
-
-    // Remove all selected keys except the base (which we replace with the merged entry)
-    setData((prev) => {
-      const next = { ...prev };
-      keys.forEach((k) => delete next[k]);
-      next[mergedKey] = merged;
-      return next;
-    });
     setOrder((prev) => {
-      const next = prev.filter((k) => !keys.includes(k));
-      // Insert the merged entry where the base was (before the filtered position)
-      const insertIdx = Math.min(...keys.map((k) => prev.indexOf(k)));
-      next.splice(insertIdx, 0, mergedKey);
-      return next;
+      const without = prev.filter((k) => !allKeysToRemove.has(k));
+      const insertIdx = Math.min(...[...selectedKeysList].map((k) => prev.indexOf(k)).filter((i) => i >= 0));
+      without.splice(insertIdx < 0 ? without.length : insertIdx, 0, mergedKey);
+      return without;
     });
 
     // Exit select mode and clear selection
@@ -528,7 +883,7 @@ export default function App() {
     // Flash the merged row
     setFlashKey(mergedKey);
     setTimeout(() => setFlashKey(null), 1200);
-  }, [selectedKeys, data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selectedKeys, data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
@@ -617,7 +972,17 @@ export default function App() {
           <Detail
             d={detailData || data[selectedKey] || null}
             onOverview={showOverview}
-            onRefreshProject={(id, name) => setExtracting({ id, name, mode: 'refresh' })}
+            onRefreshProject={(id, name) => {
+              const entry = data[id];
+              if (entry?._mergedFrom) {
+                // Merged entry — queue each member repo individually, same as Refresh All
+                const members = entry._mergedFrom.map((e) => ({ id: e.key, name: e.data.name }));
+                setRefreshQueue(members.slice(1));
+                setExtracting({ id: members[0].id, name: members[0].name, mode: 'refresh' });
+              } else {
+                setExtracting({ id, name, mode: 'refresh' });
+              }
+            }}
           />
         )}
       </div>

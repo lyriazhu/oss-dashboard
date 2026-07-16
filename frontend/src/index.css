@@ -450,6 +450,8 @@
   .merged-repos-table tbody tr:last-child td{ border-bottom:0; }
   .merged-repos-table tbody tr:hover td{ background:transparent; }
   .merged-repos-table td.strong{ color:var(--text-primary); font-weight:600; }
+  .repos-grid-table td:not(:last-child){ border-right:1px solid var(--border-subtle); }
+  .repos-grid-table tbody tr:hover td{ background:inherit; }
   .title-row .tag{margin:0 !important; align-self:center !important;}
 
   .det-tiles{margin-top:var(--sp-06);}
@@ -519,6 +521,7 @@
     border-radius:.125rem;
     opacity:0;
   }
+  .btn-expand-arrow{ opacity:.65; }
   .btn-expand-arrow--open{ opacity:1; transform:rotate(90deg); }
   tr:hover .btn-expand-arrow{ opacity:1; }
   .btn-expand-arrow:hover{ color:var(--blue-60); }

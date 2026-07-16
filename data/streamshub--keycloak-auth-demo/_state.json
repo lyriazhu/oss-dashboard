@@ -1,0 +1,20 @@
+{
+  "contributors": {
+    "known_logins": [
+      "tomncooper"
+    ],
+    "last_extracted_at": "2026-07-16T09:39:54.995417"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:40:01.273174"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:40:13.138758"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:40:07.370488"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:40:15.232847"
+  }
+}

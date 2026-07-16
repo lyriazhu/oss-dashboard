@@ -1,0 +1,39 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "GabrielBBaldez",
+      "MikeEdgar",
+      "Paramesh324",
+      "PaulRMellor",
+      "Vaibhav-Nazare",
+      "alexcreasy",
+      "btison",
+      "daveconde",
+      "dependabot[bot]",
+      "flo-kn",
+      "github-actions[bot]",
+      "hemahg",
+      "jankalinic",
+      "paoloantinori",
+      "riccardo-forina",
+      "sebastiangaiser",
+      "suyash-naithani",
+      "tomncooper",
+      "wipheg"
+    ],
+    "last_extracted_at": "2026-07-16T09:29:27.254091"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:29:35.277754"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:29:39.217906"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:29:37.959806"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:29:41.033296"
+  }
+}

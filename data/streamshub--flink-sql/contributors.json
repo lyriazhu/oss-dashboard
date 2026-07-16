@@ -1,0 +1,307 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2024,
+      "contributor_count": 13,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "contributor_count": 7,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "contributor_count": 1,
+      "is_current": true
+    }
+  ],
+  "total_contributors": 16,
+  "total_contributors_git": 16,
+  "contributors": [
+    {
+      "login": "kornys",
+      "name": "David Kornel",
+      "company": "Ibm",
+      "location": "Brno",
+      "email": "kornys@outlook.com",
+      "contributions": 35,
+      "profile_url": "https://github.com/kornys"
+    },
+    {
+      "login": "robobario",
+      "name": "Robert Young",
+      "company": "Ibm",
+      "location": "New Zealand",
+      "email": null,
+      "contributions": 28,
+      "profile_url": "https://github.com/robobario"
+    },
+    {
+      "login": "tomncooper",
+      "name": "Thomas Cooper",
+      "company": "Ibm",
+      "location": "Newcastle upon Tyne, UK",
+      "email": "code@tomcooper.dev",
+      "contributions": 15,
+      "profile_url": "https://github.com/tomncooper"
+    },
+    {
+      "login": "tinaselenge",
+      "name": "Gantigmaa Selenge",
+      "company": "Red Hat",
+      "location": "London",
+      "email": null,
+      "contributions": 15,
+      "profile_url": "https://github.com/tinaselenge"
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 14,
+      "profile_url": "https://github.com/apps/dependabot"
+    },
+    {
+      "login": "MikeEdgar",
+      "name": "Michael Edgar",
+      "company": "Ibm",
+      "location": "Cleveland, Ohio",
+      "email": "michael@xlate.io",
+      "contributions": 8,
+      "profile_url": "https://github.com/MikeEdgar"
+    },
+    {
+      "login": "SamBarker",
+      "name": "Sam Barker",
+      "company": "Ibm",
+      "location": "Christchurch, NZ",
+      "email": "sbarker@redhat.com",
+      "contributions": 8,
+      "profile_url": "https://github.com/SamBarker"
+    },
+    {
+      "login": "piotrpdev",
+      "name": "Piotr P\u0142aczek",
+      "company": "Ibm / @Redhatofficial",
+      "location": "Waterford, Ireland",
+      "email": "piotrpdev@gmail.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/piotrpdev"
+    },
+    {
+      "login": "katheris",
+      "name": "Kate Stanley",
+      "company": "Unknown",
+      "location": "UK",
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/katheris"
+    },
+    {
+      "login": "tombentley",
+      "name": "Tom Bentley",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/tombentley"
+    }
+  ],
+  "total_contributors_github_api": 10,
+  "companies": {
+    "Ibm": 6,
+    "Unknown": 2,
+    "Red Hat": 1,
+    "Ibm / @Redhatofficial": 1
+  },
+  "total_companies": 4,
+  "company_diversity": {
+    "known_company_contributors": 8,
+    "unknown_company_contributors": 2,
+    "top_companies": [
+      {
+        "company": "Ibm",
+        "contributor_count": 6
+      },
+      {
+        "company": "Unknown",
+        "contributor_count": 2
+      },
+      {
+        "company": "Red Hat",
+        "contributor_count": 1
+      },
+      {
+        "company": "Ibm / @Redhatofficial",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 9,
+      "new_contributors": 9,
+      "returning_contributors": 0,
+      "retention_rate": 0.0
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 10,
+      "new_contributors": 4,
+      "returning_contributors": 6,
+      "retention_rate": 60.0
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 1,
+      "returning_contributors": 4,
+      "retention_rate": 80.0
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 2,
+      "returning_contributors": 4,
+      "retention_rate": 66.67
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 13,
+      "new_contributors": 13,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 7,
+      "new_contributors": 3,
+      "returning_contributors": 4,
+      "retention_rate": 57.14,
+      "is_current": false
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "is_current": true
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}

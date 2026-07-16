@@ -1,0 +1,75 @@
+{
+  "name": "kroxylicious",
+  "full_name": "kroxylicious/kroxylicious",
+  "description": "Kroxylicious, the snappy open source proxy for Apache Kafka\u00ae",
+  "created_at": "2022-03-23T10:14:45+00:00",
+  "updated_at": "2026-07-16T15:36:18+00:00",
+  "stars": 294,
+  "forks": 120,
+  "watchers": 294,
+  "open_issues": 353,
+  "language": "Java",
+  "topics": [
+    "apache-kafka",
+    "java",
+    "kafka",
+    "proxy"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://kroxylicious.io",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 3737,
+      "percentage": 93.94
+    },
+    {
+      "company": "Confluent",
+      "commits": 76,
+      "percentage": 1.91
+    },
+    {
+      "company": "Ibm / @Redhatofficial",
+      "commits": 72,
+      "percentage": 1.81
+    },
+    {
+      "company": "Engineer At Red Hat",
+      "commits": 37,
+      "percentage": 0.93
+    },
+    {
+      "company": "Red Hat",
+      "commits": 17,
+      "percentage": 0.43
+    },
+    {
+      "company": "Line",
+      "commits": 16,
+      "percentage": 0.4
+    },
+    {
+      "company": "Alibaba Group",
+      "commits": 9,
+      "percentage": 0.23
+    },
+    {
+      "company": "Gravitee-Io",
+      "commits": 5,
+      "percentage": 0.13
+    },
+    {
+      "company": "Shandong University Of Technology",
+      "commits": 4,
+      "percentage": 0.1
+    },
+    {
+      "company": "Irori",
+      "commits": 1,
+      "percentage": 0.03
+    }
+  ],
+  "extracted_at": "2026-07-16T13:15:31.038320"
+}

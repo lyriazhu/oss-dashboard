@@ -1,0 +1,21 @@
+{
+  "contributors": {
+    "known_logins": [
+      "piotrpdev",
+      "tomncooper"
+    ],
+    "last_extracted_at": "2026-07-16T09:36:07.803029"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:36:14.889302"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:36:38.982017"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:36:27.636075"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:36:40.842143"
+  }
+}

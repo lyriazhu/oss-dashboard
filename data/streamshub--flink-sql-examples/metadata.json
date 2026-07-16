@@ -1,0 +1,40 @@
+{
+  "name": "flink-sql-examples",
+  "full_name": "streamshub/flink-sql-examples",
+  "description": null,
+  "created_at": "2024-07-29T10:58:03+00:00",
+  "updated_at": "2026-06-03T08:39:01+00:00",
+  "stars": 10,
+  "forks": 10,
+  "watchers": 10,
+  "open_issues": 2,
+  "language": "Java",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 88,
+      "percentage": 66.17
+    },
+    {
+      "company": "Ibm / @Redhatofficial",
+      "commits": 20,
+      "percentage": 15.04
+    },
+    {
+      "company": "Redhat",
+      "commits": 17,
+      "percentage": 12.78
+    },
+    {
+      "company": "Red Hat",
+      "commits": 8,
+      "percentage": 6.02
+    }
+  ],
+  "extracted_at": "2026-07-16T09:33:33.791277"
+}

@@ -1,0 +1,126 @@
+{
+  "total_releases": 17,
+  "recent_releases": [
+    {
+      "tag_name": "release-0.1",
+      "name": "Inital release",
+      "published_at": "2023-03-02T08:04:53+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.2.0",
+      "name": "Release 0.2.0",
+      "published_at": "2023-04-27T09:29:45+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.3.0",
+      "name": "Release v0.3.0",
+      "published_at": "2023-06-19T01:57:31+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.4.0",
+      "name": "Release v0.4.0",
+      "published_at": "2023-06-19T01:59:21+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.5.0",
+      "name": "v0.5.0",
+      "published_at": "2023-08-30T00:40:30+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.6.0",
+      "name": "v0.6.0",
+      "published_at": "2023-10-10T09:41:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.7.0",
+      "name": "v0.7.0",
+      "published_at": "2023-11-23T15:27:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.8.0",
+      "name": "v0.8.0",
+      "published_at": "2023-12-11T09:24:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.8.1",
+      "name": "v0.8.1",
+      "published_at": "2024-01-12T09:59:48+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.9.0",
+      "name": "v0.9.0",
+      "published_at": "2024-07-15T09:48:54+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.9.1",
+      "name": "v0.9.1",
+      "published_at": "2024-11-05T20:00:03+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.10.0",
+      "name": "v0.10.0",
+      "published_at": "2024-11-22T13:53:33+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.11.0",
+      "name": "v0.11.0",
+      "published_at": "2025-04-01T17:41:09+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.12.0",
+      "name": "v0.12.0",
+      "published_at": "2025-09-16T01:44:05+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.13.0",
+      "name": "v0.13.0",
+      "published_at": "2025-11-07T14:36:46+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.14.0",
+      "name": "v0.14.0",
+      "published_at": "2026-01-05T17:07:21+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.15.0",
+      "name": "v0.15.0",
+      "published_at": "2026-02-18T10:54:54+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "median_days_between_releases": 52.0,
+  "extracted_at": "2026-07-16T12:40:45.157152"
+}

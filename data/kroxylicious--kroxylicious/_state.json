@@ -1,0 +1,75 @@
+{
+  "contributors": {
+    "known_logins": [
+      "AdityaThakur1998",
+      "Cali0707",
+      "Decluttered",
+      "DragonFSKY",
+      "Liberty-Swine",
+      "MClavo",
+      "May-Abo",
+      "PaulRMellor",
+      "RafaelReia",
+      "Roshr2211",
+      "SamBarker",
+      "ShubhamRwt",
+      "The-East-Wind",
+      "Uzziee",
+      "ZhangDT-sky",
+      "aaditya9899",
+      "alanrobinson-dwp",
+      "callaertanthony",
+      "carlesarnal",
+      "dahyvuun",
+      "deepika1214",
+      "dependabot[bot]",
+      "devareddy05",
+      "devguyio",
+      "dvulpe",
+      "franvila",
+      "franz1981",
+      "gggeon96",
+      "gracegrimwood",
+      "griffonbyte",
+      "gunnarmorling",
+      "henryZrncik",
+      "hrishabhg",
+      "k-wall",
+      "kidpollo",
+      "kroxylicious-robot",
+      "lucamolteni",
+      "luozhenyu",
+      "m1a2st",
+      "majialoong",
+      "mapan1984",
+      "msalinas-se",
+      "mvanhorn",
+      "oleksiyp",
+      "piotrpdev",
+      "polachandu",
+      "ppatierno",
+      "racheljpg",
+      "robobario",
+      "showuon",
+      "sinmir",
+      "sullis",
+      "tibisabau",
+      "tmchow",
+      "tomas-irori",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T13:15:35.572479"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T13:15:42.966469"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T13:15:47.147875"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T13:15:45.822766"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T13:15:48.976185"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "MikeEdgar",
+      "dependabot[bot]",
+      "k-wall"
+    ],
+    "last_extracted_at": "2026-07-16T09:27:46.165775"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:27:52.917308"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:29:15.592588"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:28:34.273258"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:29:17.432178"
+  }
+}
