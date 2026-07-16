@@ -1,0 +1,242 @@
+{
+  "total_commits": 154,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 15,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 31,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 4,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 64,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 40,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "Piotr P\u0142aczek",
+      "name": "Piotr P\u0142aczek",
+      "company": "Unknown",
+      "location": null,
+      "email": "piotrpdev@gmail.com",
+      "profile_url": null,
+      "commit_count": 147
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 37
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robeyoun@redhat.com",
+      "profile_url": null,
+      "commit_count": 24
+    },
+    {
+      "login": "Sam Barker",
+      "name": "Sam Barker",
+      "company": "Unknown",
+      "location": null,
+      "email": "sbarker@redhat.com",
+      "profile_url": null,
+      "commit_count": 18
+    },
+    {
+      "login": "Kate Stanley",
+      "name": "Kate Stanley",
+      "company": "Unknown",
+      "location": null,
+      "email": "11195226+katheris@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 18
+    },
+    {
+      "login": "Luke Chen",
+      "name": "Luke Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "showuon@gmail.com",
+      "profile_url": null,
+      "commit_count": 17
+    },
+    {
+      "login": "David Kornel",
+      "name": "David Kornel",
+      "company": "Unknown",
+      "location": null,
+      "email": "kornys@outlook.com",
+      "profile_url": null,
+      "commit_count": 16
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robertyoungnz@gmail.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@redhat.com",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
+      "login": "Gantigmaa Selenge",
+      "name": "Gantigmaa Selenge",
+      "company": "Unknown",
+      "location": null,
+      "email": "tina.selenge@gmail.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Gantigmaa Selenge",
+      "name": "Gantigmaa Selenge",
+      "company": "Unknown",
+      "location": null,
+      "email": "39860586+tinaselenge@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "tom.cooper@reddit.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Michael Edgar",
+      "name": "Michael Edgar",
+      "company": "Unknown",
+      "location": null,
+      "email": "michael@xlate.io",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "piotrpdev",
+      "name": "piotrpdev",
+      "company": "Unknown",
+      "location": null,
+      "email": "99439005+piotrpdev@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "robobario",
+      "name": "robobario",
+      "company": "Unknown",
+      "location": null,
+      "email": "1667008+robobario@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Sam Barker",
+      "name": "Sam Barker",
+      "company": "Unknown",
+      "location": null,
+      "email": "sam@quadrocket.co.uk",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T09:33:42.943201",
+  "years": [
+    {
+      "year": 2024,
+      "commit_count": 129,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 183,
+      "is_current": false
+    }
+  ]
+}

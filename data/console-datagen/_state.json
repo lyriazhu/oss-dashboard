@@ -1,0 +1,22 @@
+{
+  "contributors": {
+    "known_logins": [
+      "MikeEdgar",
+      "dependabot[bot]",
+      "github-actions[bot]"
+    ],
+    "last_extracted_at": "2026-07-16T09:29:50.174808"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:29:57.908941"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:30:45.652665"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:30:21.238334"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:30:47.197318"
+  }
+}

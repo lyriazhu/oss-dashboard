@@ -1,0 +1,25 @@
+{
+  "name": "console-datagen",
+  "full_name": "streamshub/console-datagen",
+  "description": "Generates activity and data in Apache Kafka",
+  "created_at": "2023-12-14T18:57:04+00:00",
+  "updated_at": "2026-07-13T15:38:22+00:00",
+  "stars": 0,
+  "forks": 0,
+  "watchers": 0,
+  "open_issues": 1,
+  "language": "Java",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 39,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T09:29:47.570723"
+}

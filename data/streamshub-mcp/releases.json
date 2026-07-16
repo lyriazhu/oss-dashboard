@@ -1,0 +1,28 @@
+{
+  "total_releases": 3,
+  "recent_releases": [
+    {
+      "tag_name": "v0.0.1-RC1",
+      "name": "v0.0.1-RC1",
+      "published_at": "2026-04-24T11:02:27+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.0.1",
+      "name": "v0.0.1",
+      "published_at": "2026-04-24T11:55:32+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.1.0",
+      "name": "v0.1.0",
+      "published_at": "2026-06-02T12:58:55+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "median_days_between_releases": 19.5,
+  "extracted_at": "2026-07-16T09:37:37.410242"
+}

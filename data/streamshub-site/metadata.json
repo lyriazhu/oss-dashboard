@@ -1,0 +1,36 @@
+{
+  "name": "streamshub-site",
+  "full_name": "streamshub/streamshub-site",
+  "description": "The StreamsHub website source code",
+  "created_at": "2025-04-15T13:04:48+00:00",
+  "updated_at": "2026-04-16T07:50:47+00:00",
+  "stars": 1,
+  "forks": 2,
+  "watchers": 1,
+  "open_issues": 4,
+  "language": "Java",
+  "topics": [
+    "event-driven",
+    "flink",
+    "kafka",
+    "stream-processing",
+    "strimzi"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "https://www.streamshub.io/",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 21,
+      "percentage": 55.26
+    },
+    {
+      "company": "Ibm / @Redhatofficial",
+      "commits": 17,
+      "percentage": 44.74
+    }
+  ],
+  "extracted_at": "2026-07-16T09:36:05.141571"
+}

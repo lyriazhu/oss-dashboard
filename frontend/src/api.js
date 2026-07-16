@@ -214,7 +214,7 @@ export function getSavedToken() {
  * Transform backend data to match the frontend format
  */
 // Patterns that indicate a non-company entry (independent, unknown, bots, etc.)
-const EXCLUDED_COMPANY_PATTERNS = [
+export const EXCLUDED_COMPANY_PATTERNS = [
   /^unknown$/i,
   /^independent/i,
   /^freelance/i,
@@ -794,6 +794,9 @@ export function transformProjectData(project, metrics) {
     sub: project.foundation || 'Independent',
     foundation: project.foundation || 'Independent',
     repoUrl: project.github_url || null,
+    // Raw contributor list + language kept for merge de-duplication in buildMergedEntry
+    _rawContributors: contributors?.contributors || [],
+    _rawLanguage: metadata?.language || null,
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
     releaseFrequency: releaseFrequencyLabel,
     status,

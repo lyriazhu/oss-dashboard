@@ -1,0 +1,25 @@
+{
+  "name": "keycloak-auth-demo",
+  "full_name": "streamshub/keycloak-auth-demo",
+  "description": "A demo deployment of the StreamsHub Stack using Keycloak Authorization Services",
+  "created_at": "2026-04-22T16:07:58+00:00",
+  "updated_at": "2026-04-24T13:50:45+00:00",
+  "stars": 0,
+  "forks": 0,
+  "watchers": 0,
+  "open_issues": 0,
+  "language": "Java",
+  "topics": [],
+  "license": null,
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 26,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T09:39:50.982600"
+}

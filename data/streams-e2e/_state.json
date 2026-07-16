@@ -1,0 +1,23 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "dependabot[bot]",
+      "kornys",
+      "piotrpdev"
+    ],
+    "last_extracted_at": "2026-07-16T09:32:44.009792"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:32:51.328103"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:33:25.413420"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:33:08.668257"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:33:27.426300"
+  }
+}

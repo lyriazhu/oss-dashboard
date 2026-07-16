@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -8,6 +8,181 @@ import AddProjectModal from "./components/AddProjectModal.jsx";
 import ExtractionToast from "./components/ExtractionToast.jsx";
 
 const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
+
+// ---------------------------------------------------------------------------
+// Shared merge helper — used by both handleJoinSelected and applyPersistedMerges
+// ---------------------------------------------------------------------------
+
+/**
+ * Given a flat list of { key, data } atomic repo entries, build the merged
+ * dashboard object that represents them as a single community row.
+ *
+ * @param {Array<{key: string, data: object}>} flatEntries  Atomic repos to merge
+ * @param {object} opts
+ *   opts.customName  {string|null}  Override the combined "A + B" auto-name
+ *   opts.orgUrl      {string|null}  GitHub org URL to use as repoUrl (e.g. "https://github.com/streamshub")
+ */
+function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}) {
+  const keys        = flatEntries.map((e) => e.key);
+  const communities = flatEntries.map((e) => e.data);
+  const base        = communities[0];
+
+  const parseNum = (v) => {
+    if (v == null) return 0;
+    return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
+  };
+  const fmt = (n) => n.toLocaleString('en-US');
+
+  // ── Contributors: union by login, keep the highest contributions count ──
+  const contributorMap = new Map(); // login → contributor object
+  for (const c of communities) {
+    for (const contrib of (c._rawContributors || [])) {
+      const login = contrib.login || contrib.email || '';
+      if (!login) continue;
+      const existing = contributorMap.get(login);
+      if (!existing || (contrib.contributions || 0) > (existing.contributions || 0)) {
+        contributorMap.set(login, contrib);
+      }
+    }
+  }
+  const mergedContributors = [...contributorMap.values()];
+
+  // ── Contributing Companies: count distinct companies from the unioned list ──
+  const companySet = new Set();
+  for (const contrib of mergedContributors) {
+    const co = (contrib.company || '').trim();
+    if (!co) continue;
+    if (EXCLUDED_COMPANY_PATTERNS.some((p) => p.test(co))) continue;
+    companySet.add(co.toLowerCase());
+  }
+  const mergedCompanyCount = companySet.size || null;
+
+  // ── Top companies: sum commits per company across all repos ──
+  const companyCommits = new Map(); // companyName (lowercase) → { display, commits }
+  for (const c of communities) {
+    for (const contrib of (c._rawContributors || [])) {
+      const co = (contrib.company || '').trim();
+      if (!co || EXCLUDED_COMPANY_PATTERNS.some((p) => p.test(co))) continue;
+      const key = co.toLowerCase();
+      const existing = companyCommits.get(key) || { display: co, commits: 0 };
+      companyCommits.set(key, { display: existing.display, commits: existing.commits + (contrib.contributions || 0) });
+    }
+  }
+  const totalCompanyCommits = [...companyCommits.values()].reduce((s, v) => s + v.commits, 0);
+  const topCompanies = [...companyCommits.values()]
+    .sort((a, b) => b.commits - a.commits)
+    .slice(0, 4)
+    .map((v, idx) => ({
+      n: v.display,
+      c: fmt(v.commits),
+      p: totalCompanyCommits > 0 ? `${Math.round((v.commits / totalCompanyCommits) * 100)}%` : '0%',
+      strong: idx === 0,
+    }));
+
+  // ── Languages: collect primary language of each repo, deduplicate ──
+  const langSet = new Set();
+  for (const c of communities) {
+    const lang = c._rawLanguage;
+    if (lang && lang !== '—') langSet.add(lang);
+  }
+  const mergedLanguage = langSet.size > 0 ? [...langSet].join(', ') : '—';
+
+  // ── Numeric ov fields: sum everything except contributors/companies (de-duped above) ──
+  const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
+
+  const mergedOv = {
+    ...base.ov,
+    contributorsYtd:    sumOv('contributorsYtd'),
+    contributorsAllTime: fmt(mergedContributors.length),
+    companies:          fmt(mergedCompanyCount ?? 0),
+    commits:            sumOv('commits'),
+    commitsAllTime:     sumOv('commitsAllTime'),
+    pullRequests:       sumOv('pullRequests'),
+    stars:              sumOv('stars'),
+    quarters:           base.ov?.quarters || [],
+  };
+
+  // ── KPIs: sum numeric values; special-case Contributors, Companies, Language ──
+  const mergedKpis = (base.kpis || []).map((kpi) => {
+    if (kpi.l === 'Contributing Companies') {
+      return { ...kpi, v: fmt(mergedCompanyCount ?? 0) };
+    }
+    if (kpi.l === 'Language') {
+      return { ...kpi, v: mergedLanguage };
+    }
+    // For contributor counts, use the de-duped total
+    if (kpi.l === 'Contributors (YTD)') {
+      return { ...kpi, v: sumOv('contributorsYtd') };
+    }
+    const total = communities.reduce((acc, c) => {
+      const match = (c.kpis || []).find((k) => k.l === kpi.l);
+      return acc + parseNum(match?.v);
+    }, 0);
+    const isNumeric = !isNaN(parseNum(kpi.v));
+    return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
+  });
+
+  // ── Status: pick most prominent ──
+  const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
+  const bestStatus = communities.reduce(
+    (best, c) => (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1) ? c.status : best,
+    base.status,
+  );
+
+  // ── Time-series merges ──
+  function mergeYearly(arrays, yKey = 'y', vKey = 'v') {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry[yKey];
+      const existing = map.get(label) || { ...entry, [vKey]: 0 };
+      map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+    });
+    return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+  }
+  function mergeYearlyRetention(arrays) {
+    const map = new Map();
+    arrays.flat().forEach((entry) => {
+      const label = entry.y;
+      const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
+      map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0), c: ex.c || entry.c });
+    });
+    const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
+    return merged.map((e) => ({ ...e, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
+  }
+
+  // ── Repo URL: org URL if provided, else shared owner prefix, else first ──
+  let mergedRepoUrl = orgUrl || null;
+  if (!mergedRepoUrl) {
+    const urls = communities.map((c) => c.repoUrl).filter(Boolean);
+    if (urls.length > 0) {
+      const owners = urls.map((u) => u.replace('https://github.com/', '').split('/')[0]);
+      if (owners.every((o) => o === owners[0])) {
+        mergedRepoUrl = `https://github.com/${owners[0]}`;
+      } else {
+        mergedRepoUrl = urls[0];
+      }
+    }
+  }
+
+  const combinedName = communities.map((c) => c.name).join(' + ');
+
+  return {
+    ...base,
+    name:            customName || combinedName,
+    _mergedFrom:     flatEntries,
+    sub:             base.sub,
+    repoUrl:         mergedRepoUrl,
+    ov:              mergedOv,
+    kpis:            mergedKpis,
+    companies:       topCompanies.length > 0 ? topCompanies : base.companies,
+    status:          bestStatus,
+    commits:         mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
+    retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
+    prYearly:        mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
+    issueYearly:     mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
+    cveYearly:       mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
+  };
+}
 
 export default function App() {
   const [data, setData] = useState({});
@@ -55,76 +230,21 @@ export default function App() {
       let newOrder = [...projectOrder];
 
       for (const entry of mergesFromBackend) {
-        const mergedKey = entry.mergedKey;
+        const mergedKey  = entry.mergedKey;
         const memberKeys = entry.memberKeys;
-        const customName = entry.name || null;
+        const customName = entry.name   || null;
+        const orgUrl     = entry.orgUrl || null;
+        // Skip if any member is not yet loaded (extraction may still be running)
         if (!memberKeys.every((k) => newData[k])) continue;
-        const keys = memberKeys;
-        const communities = keys.map((k) => newData[k]);
 
-        const parseNum = (v) => {
-          if (v == null) return 0;
-          return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
-        };
-        const fmt = (n) => n.toLocaleString('en-US');
-        const combinedName = communities.map((c) => c.name).join(' + ');
-        const base = communities[0];
-        const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
+        const flatEntries = memberKeys.map((k) => ({ key: k, data: newData[k] }));
+        const merged = buildMergedEntry(flatEntries, { customName, orgUrl });
 
-        const mergeYearly = (arrays, yKey = 'y', vKey = 'v') => {
-          const map = new Map();
-          arrays.flat().forEach((entry) => {
-            const label = entry[yKey];
-            const existing = map.get(label) || { ...entry, [vKey]: 0 };
-            map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
-          });
-          return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
-        };
-        const mergeYearlyRetention = (arrays) => {
-          const map = new Map();
-          arrays.flat().forEach((entry) => {
-            const label = entry.y;
-            const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
-            map.set(label, { ...ex, returning: ex.returning + (entry.returning || 0), newContributors: ex.newContributors + (entry.newContributors || 0), active: ex.active + (entry.active || 0), c: ex.c || entry.c });
-          });
-          const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
-          return merged.map((e) => ({ ...e, v: e.active ? Math.round((e.returning / e.active) * 100) : 0 }));
-        };
-
-        const mergedKpis = (base.kpis || []).map((kpi) => {
-          const total = communities.reduce((acc, c) => {
-            const match = (c.kpis || []).find((k) => k.l === kpi.l);
-            return acc + parseNum(match?.v);
-          }, 0);
-          const isNumeric = !isNaN(parseNum(kpi.v)) && kpi.l !== 'Language';
-          return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
-        });
-
-        const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
-        const bestStatus = communities.reduce((best, c) => {
-          return (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1) ? c.status : best;
-        }, base.status);
-
-        const merged = {
-          ...base,
-          name: customName || combinedName,
-          _mergedFrom: communities.map((c, i) => ({ key: keys[i], data: c })),
-          sub: base.sub,
-          ov: { ...base.ov, contributorsYtd: sumOv('contributorsYtd'), contributorsAllTime: sumOv('contributorsAllTime'), companies: sumOv('companies'), commits: sumOv('commits'), commitsAllTime: sumOv('commitsAllTime'), pullRequests: sumOv('pullRequests'), stars: sumOv('stars'), quarters: base.ov?.quarters || [] },
-          kpis: mergedKpis,
-          status: bestStatus,
-          commits: mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
-          retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
-          prYearly: mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
-          issueYearly: mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
-          cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
-        };
-
-        keys.forEach((k) => delete newData[k]);
+        memberKeys.forEach((k) => delete newData[k]);
         newData[mergedKey] = merged;
-        const positions = keys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
+        const positions = memberKeys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
         const insertIdx = positions.length > 0 ? Math.min(...positions) : newOrder.length;
-        newOrder = newOrder.filter((k) => !keys.includes(k));
+        newOrder = newOrder.filter((k) => !memberKeys.includes(k));
         newOrder.splice(insertIdx, 0, mergedKey);
       }
       return { projectData: newData, projectOrder: newOrder };
@@ -414,119 +534,22 @@ export default function App() {
 
     // Flatten: if any selected entry is already a merged group, expand its
     // members so the new merged entry only ever contains atomic (non-merged) repos.
-    // This ensures the _mergedFrom list survives the saveMerges/applyPersistedMerges
-    // round-trip, where every memberKey must correspond to a real project in projects.json.
     const flatEntries = [];
     for (const k of selectedKeysList) {
       const d = data[k];
       if (d?._mergedFrom) {
-        // Expand the nested group into its atomic members
         d._mergedFrom.forEach((m) => flatEntries.push({ key: m.key, data: m.data }));
       } else {
         flatEntries.push({ key: k, data: d });
       }
     }
-    const keys = flatEntries.map((e) => e.key);
-    const communities = flatEntries.map((e) => e.data);
 
-    // Helper: parse a formatted number string like "1,234" or "1,234+" back to int
-    const parseNum = (v) => {
-      if (v == null) return 0;
-      return parseInt(String(v).replace(/[^0-9]/g, ''), 10) || 0;
-    };
-    const fmt = (n) => n.toLocaleString('en-US');
+    const merged = buildMergedEntry(flatEntries);
 
-    // Combine names with " + "
-    const combinedName = communities.map((c) => c.name).join(' + ');
-
-    // The first community is used as the base; the rest are merged into it.
-    const base = communities[0];
-
-    // Sum numeric ov fields
-    const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
-
-    // Merge yearly time-series arrays by matching on year label
-    function mergeYearly(arrays, yKey = 'y', vKey = 'v') {
-      const map = new Map();
-      arrays.flat().forEach((entry) => {
-        const label = entry[yKey];
-        const existing = map.get(label) || { ...entry, [vKey]: 0 };
-        map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
-      });
-      return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
-    }
-
-    function mergeYearlyRetention(arrays) {
-      const map = new Map();
-      arrays.flat().forEach((entry) => {
-        const label = entry.y;
-        const ex = map.get(label) || { y: label, returning: 0, newContributors: 0, active: 0, v: 0, c: entry.c };
-        map.set(label, {
-          ...ex,
-          returning: ex.returning + (entry.returning || 0),
-          newContributors: ex.newContributors + (entry.newContributors || 0),
-          active: ex.active + (entry.active || 0),
-          c: ex.c || entry.c,
-        });
-      });
-      const merged = [...map.values()].sort((a, b) => String(a.y).localeCompare(String(b.y)));
-      // Recalculate retention % from merged active/returning totals
-      return merged.map((e) => ({
-        ...e,
-        v: e.active ? Math.round((e.returning / e.active) * 100) : 0,
-      }));
-    }
-
-    // Merge kpis by summing numeric values, keeping label/help from base
-    const mergedKpis = (base.kpis || []).map((kpi) => {
-      const total = communities.reduce((acc, c) => {
-        const match = (c.kpis || []).find((k) => k.l === kpi.l);
-        return acc + parseNum(match?.v);
-      }, 0);
-      // Non-numeric KPIs like Language keep the base value
-      const isNumeric = !isNaN(parseNum(kpi.v)) && kpi.l !== 'Language';
-      return { ...kpi, v: isNumeric ? fmt(total) : kpi.v };
-    });
-
-    // Status: pick the most prominent (Healthy > Growing > Watch > N/A)
-    const statusPriority = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 };
-    const bestStatus = communities.reduce((best, c) => {
-      return (statusPriority[c.status?.label] ?? -1) > (statusPriority[best?.label] ?? -1)
-        ? c.status
-        : best;
-    }, base.status);
-
-    const merged = {
-      ...base,
-      name: combinedName,
-      _mergedFrom: flatEntries,
-      sub: base.sub, // keep foundation from the primary
-      ov: {
-        ...base.ov,
-        contributorsYtd: sumOv('contributorsYtd'),
-        contributorsAllTime: sumOv('contributorsAllTime'),
-        companies: sumOv('companies'),
-        commits: sumOv('commits'),
-        commitsAllTime: sumOv('commitsAllTime'),
-        pullRequests: sumOv('pullRequests'),
-        stars: sumOv('stars'),
-        quarters: base.ov?.quarters || [],
-      },
-      kpis: mergedKpis,
-      status: bestStatus,
-      commits: mergeYearly(communities.map((c) => c.commits || []), 'y', 'v'),
-      retentionYearly: mergeYearlyRetention(communities.map((c) => c.retentionYearly || [])),
-      prYearly: mergeYearly(communities.map((c) => c.prYearly || []), 'y', 'v'),
-      issueYearly: mergeYearly(communities.map((c) => c.issueYearly || []), 'y', 'v'),
-      cveYearly: mergeYearly(communities.map((c) => c.cveYearly || []), 'y', 'v'),
-    };
-
-    // The merged entry takes the key of the first selected item (which may have
-    // been a merged group itself — use its key too so it lands in the same slot).
+    // The merged entry takes the key of the first selected item
     const mergedKey = selectedKeysList[0];
-
-    // All keys to remove: the flat atomic keys + any selected merged-group keys
-    const allKeysToRemove = new Set([...selectedKeysList, ...keys]);
+    // All keys to remove: selected (including any group keys) + their flat members
+    const allKeysToRemove = new Set([...selectedKeysList, ...flatEntries.map((e) => e.key)]);
 
     setData((prev) => {
       const next = { ...prev };
@@ -536,7 +559,6 @@ export default function App() {
     });
     setOrder((prev) => {
       const next = prev.filter((k) => !allKeysToRemove.has(k));
-      // Insert the merged entry at the earliest position any of the selected keys occupied
       const insertIdx = Math.min(...[...selectedKeysList].map((k) => prev.indexOf(k)).filter((i) => i >= 0));
       next.splice(insertIdx < 0 ? next.length : insertIdx, 0, mergedKey);
       return next;

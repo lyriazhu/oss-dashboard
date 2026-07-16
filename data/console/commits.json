@@ -1,10 +1,10 @@
 {
-  "total_commits": 2354,
+  "total_commits": 2364,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 31,
+      "commit_count": 41,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 3383
+      "commit_count": 3397
     },
     {
       "login": "Michael Edgar",
@@ -100,7 +100,7 @@
       "location": null,
       "email": "jkalinic@redhat.com",
       "profile_url": null,
-      "commit_count": 498
+      "commit_count": 506
     },
     {
       "login": "Riccardo Forina",
@@ -127,7 +127,7 @@
       "location": null,
       "email": "41898282+github-actions[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 162
+      "commit_count": 164
     },
     {
       "login": "Hema HG",
@@ -190,7 +190,7 @@
       "location": null,
       "email": "alex@creasy.dev",
       "profile_url": null,
-      "commit_count": 10
+      "commit_count": 12
     },
     {
       "login": "Riccardo Forina",
@@ -343,7 +343,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-13T09:33:00.563264",
+  "extracted_at": "2026-07-16T09:29:35.277746",
   "years": [
     {
       "year": 2022,
@@ -367,7 +367,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 1261,
+      "commit_count": 1299,
       "is_current": true
     }
   ]

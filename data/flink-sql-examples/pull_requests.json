@@ -1,0 +1,110 @@
+{
+  "total_prs": 10,
+  "median_time_to_merge_days": 0.05,
+  "months": [
+    {
+      "start_date": "2025-08-01T00:00:00",
+      "end_date": "2025-08-31T23:59:59",
+      "pr_count": 2,
+      "merged_pr_count": 2,
+      "month": "2025-08",
+      "median_time_to_merge_days": 8.88
+    },
+    {
+      "start_date": "2025-09-01T00:00:00",
+      "end_date": "2025-09-30T23:59:59",
+      "pr_count": 8,
+      "merged_pr_count": 6,
+      "month": "2025-09",
+      "median_time_to_merge_days": 0.04
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2025-10-31T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2025-10"
+    },
+    {
+      "start_date": "2025-11-01T00:00:00",
+      "end_date": "2025-11-30T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2025-11"
+    },
+    {
+      "start_date": "2025-12-01T00:00:00",
+      "end_date": "2025-12-31T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2025-12"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-01-31T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-01"
+    },
+    {
+      "start_date": "2026-02-01T00:00:00",
+      "end_date": "2026-02-28T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-02"
+    },
+    {
+      "start_date": "2026-03-01T00:00:00",
+      "end_date": "2026-03-31T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-03"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-04-30T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-04"
+    },
+    {
+      "start_date": "2026-05-01T00:00:00",
+      "end_date": "2026-05-31T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-05"
+    },
+    {
+      "start_date": "2026-06-01T00:00:00",
+      "end_date": "2026-06-30T23:59:59",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-06"
+    },
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-07-16T09:33:59.424176",
+      "pr_count": 0,
+      "merged_pr_count": 0,
+      "month": "2026-07"
+    }
+  ],
+  "years": [
+    {
+      "year": 2024,
+      "pr_count": 40,
+      "merged_pr_count": 36
+    },
+    {
+      "year": 2025,
+      "pr_count": 30,
+      "merged_pr_count": 28
+    },
+    {
+      "year": 2026,
+      "pr_count": 0,
+      "merged_pr_count": 0
+    }
+  ],
+  "extracted_at": "2026-07-16T09:33:59.424249"
+}

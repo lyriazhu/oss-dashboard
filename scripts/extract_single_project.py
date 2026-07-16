@@ -194,6 +194,42 @@ def _register_repo_in_projects_json(extractor, owner, repo, org_project):
         json.dump(root, f, indent=2)
 
 
+def _register_org_merge(extractor, owner, project_name, repo_names):
+    """Write (or update) a merge record in data/merges.json for an org project.
+
+    The record groups all extracted repos under a single dashboard entry whose
+    key is the owner slug, display name is the project name, and repoUrl is
+    the org URL (https://github.com/<owner>).
+    """
+    merges_file = extractor.data_dir / "merges.json"
+    try:
+        with open(merges_file) as f:
+            root = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        root = {"merges": []}
+
+    # Each memberKey matches the project_id written by _register_repo_in_projects_json
+    member_keys = [r.lower().replace("_", "-") for r in repo_names]
+    merged_key = owner.lower().replace("_", "-")
+    org_url = f"https://github.com/{owner}"
+
+    # Replace any existing record for this org (identified by mergedKey)
+    merges = [m for m in root.get("merges", []) if m.get("mergedKey") != merged_key]
+    merges.append({
+        "mergedKey": merged_key,
+        "memberKeys": member_keys,
+        "name": project_name,
+        "orgUrl": org_url,
+    })
+    root["merges"] = merges
+    root["last_updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") + "Z"
+
+    with open(merges_file, "w") as f:
+        json.dump(root, f, indent=2)
+
+    print(f"✅ Registered org merge for '{owner}' ({len(member_keys)} repos) in merges.json")
+
+
 def extract_org_project(extractor, project):
     """Enumerate all public repos for an org/user and run extraction on each.
 
@@ -236,6 +272,7 @@ def extract_org_project(extractor, project):
 
     overall_success = 0
     overall_total = 0
+    extracted_repo_names = []
 
     for gh_repo in org_repos:
         repo_name = gh_repo.name
@@ -247,9 +284,15 @@ def extract_org_project(extractor, project):
         status = extract_one_repo(extractor, owner, repo_name, repo_name, project)
         overall_success += sum(status.values())
         overall_total += len(status)
+        extracted_repo_names.append(repo_name)
 
         # Small pause between repos to respect GitHub rate limits
         time.sleep(2)
+
+    # Write a merge record so the dashboard automatically groups all repos
+    # under a single entry named after the org, with the org URL as the link.
+    if extracted_repo_names:
+        _register_org_merge(extractor, owner, project_name, extracted_repo_names)
 
     print(f"\n{'='*60}")
     print(f"Org extraction complete for '{owner}'")

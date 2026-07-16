@@ -394,14 +394,23 @@ function CommunityRow({
         </td>
         <td>
           {isMerged ? (() => {
-            const repos = d._mergedFrom.map(e => e.data.repoUrl).filter(Boolean);
-            if (repos.length === 0) return '—';
-            // Extract org/owner from first URL, check if all share the same owner
-            const owners = repos.map(u => u.replace('https://github.com/', '').split('/')[0]);
-            const allSameOwner = owners.every(o => o === owners[0]);
-            return allSameOwner
-              ? `${owners[0]} (Multiple)`
-              : 'Multiple';
+            // Use the merged repoUrl directly — buildMergedEntry already resolves this
+            // to the org URL (e.g. https://github.com/streamshub) when all repos share
+            // the same owner, or to the orgUrl stored in the merge record.
+            const url = d.repoUrl;
+            if (!url) return '—';
+            const label = url.replace('https://github.com/', '');
+            return (
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: 'var(--link)', fontSize: '.8125rem' }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {label}
+              </a>
+            );
           })() : (
             d.repoUrl ? (
               <a

@@ -1,0 +1,20 @@
+{
+  "contributors": {
+    "known_logins": [
+      "robobario"
+    ],
+    "last_extracted_at": "2026-07-16T09:34:28.077482"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:34:34.533230"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:35:06.914418"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:34:50.935213"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:35:08.487460"
+  }
+}

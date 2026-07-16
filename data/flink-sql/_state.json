@@ -1,0 +1,29 @@
+{
+  "contributors": {
+    "known_logins": [
+      "MikeEdgar",
+      "SamBarker",
+      "dependabot[bot]",
+      "katheris",
+      "kornys",
+      "piotrpdev",
+      "robobario",
+      "tinaselenge",
+      "tombentley",
+      "tomncooper"
+    ],
+    "last_extracted_at": "2026-07-16T09:31:51.746881"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T09:31:58.943337"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T09:32:33.606548"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T09:32:16.594691"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T09:32:35.091972"
+  }
+}
