@@ -679,44 +679,45 @@ export default function App() {
 
   // Remove a single repo from a merged entry
   const handleRemoveFromMerge = useCallback((mergedKey, repoKey) => {
+    // Read the current merged entry once, synchronously, before any state updates.
+    const merged = data[mergedKey];
+    if (!merged?._mergedFrom) return;
+    const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
+    const removed   = merged._mergedFrom.find((e) => e.key === repoKey);
+    if (!removed) return;
+
     setData((prev) => {
-      const merged = prev[mergedKey];
-      if (!merged?._mergedFrom) return prev;
-      const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
-      const removed = merged._mergedFrom.find((e) => e.key === repoKey);
-      if (!removed) return prev;
       const next = { ...prev };
       // Restore the removed repo as its own entry
       next[repoKey] = removed.data;
       if (remaining.length < 2) {
-        // Only one left — unmerge entirely
+        // Only one left — dissolve the group entirely
         delete next[mergedKey];
         if (remaining.length === 1) {
           next[remaining[0].key] = remaining[0].data;
         }
       } else {
-        // Rebuild the merged entry from the remaining members so all
-        // chart data (commits, PRs, issues, etc.) is recomputed without
-        // the removed repo's contribution.
+        // Rebuild merged entry without the removed repo
         const customName = merged.name !== remaining.map((e) => e.data.name).join(' + ') ? merged.name : null;
-        next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl: merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/') ? merged.repoUrl : null });
+        const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
+          ? merged.repoUrl : null;
+        next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl });
       }
       return next;
     });
+
     setOrder((prev) => {
-      const merged = data[mergedKey];
-      if (!merged?._mergedFrom) return prev;
-      const remaining = merged._mergedFrom.filter((e) => e.key !== repoKey);
       const idx = prev.indexOf(mergedKey);
-      const next = prev.filter((k) => k !== mergedKey);
+      const next = prev.filter((k) => k !== mergedKey && k !== repoKey);
       if (remaining.length < 2) {
-        // Unmerge all remaining too — put all original keys at the same position
+        // Dissolve group — put all original keys at the same position
         const all = merged._mergedFrom.map((e) => e.key);
-        next.splice(idx, 0, ...all);
+        const insertAt = idx >= 0 ? idx : next.length;
+        next.splice(insertAt, 0, ...all);
       } else {
-        // Keep the merged group at its original position; append the removed repo right after
-        next.splice(idx, 0, mergedKey);
-        next.splice(idx + 1, 0, repoKey);
+        // Keep the merged group at its original position; insert the removed repo right after
+        const insertAt = idx >= 0 ? idx : next.length;
+        next.splice(insertAt, 0, mergedKey, repoKey);
       }
       return next;
     });
