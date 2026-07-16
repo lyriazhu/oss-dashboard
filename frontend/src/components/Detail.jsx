@@ -386,46 +386,23 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
           )}
         </div>
       </div>
-      {d._mergedFrom ? (
-        <div className="meta-line merged-meta">
-          <table className="merged-repos-table">
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Foundation</th>
-                <th>Repository</th>
-              </tr>
-            </thead>
-            <tbody>
-              {d._mergedFrom.map(({ data: repo }, i) => (
-                <tr key={i}>
-                  <td className="strong">{repo.name}</td>
-                  <td>{repo.ov?.foundation || '—'}</td>
-                  <td>
-                    {repo.repoUrl ? (
-                      <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)' }}>
-                        {repo.repoUrl.replace('https://github.com/', '')}
-                      </a>
-                    ) : '—'}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p className="meta-line">
-          <span>{d.foundation}</span>
-          <span>|</span>
-          <span>{d.founded}</span>
-          {d.releaseFrequency && (
-            <>
-              <span>|</span>
-              <span>{d.releaseFrequency}</span>
-            </>
-          )}
-        </p>
-      )}
+      <p className="meta-line">
+        {d._mergedFrom ? (
+          <span>{d._mergedFrom.length} repositories</span>
+        ) : (
+          <>
+            <span>{d.foundation}</span>
+            <span>|</span>
+            <span>{d.founded}</span>
+            {d.releaseFrequency && (
+              <>
+                <span>|</span>
+                <span>{d.releaseFrequency}</span>
+              </>
+            )}
+          </>
+        )}
+      </p>
 
       <div className="tile-grid det-tiles">
         {d.kpis.map((k, i) => (
@@ -755,6 +732,39 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
           </div>
         </div>
       </div>
+
+      {d._mergedFrom && (() => {
+        const cols = 3;
+        const repos = [...d._mergedFrom].sort((a, b) => a.data.name.localeCompare(b.data.name));
+        const rows = Math.ceil(repos.length / cols);
+        const grid = Array.from({ length: rows }, (_, r) =>
+          Array.from({ length: cols }, (_, c) => repos[r * cols + c] ?? null)
+        );
+        return (
+          <div className="section">
+            <h2 className="section-h">Repositories</h2>
+            <div className="table-wrap">
+              <table className="repos-grid-table">
+                <tbody>
+                  {grid.map((row, r) => (
+                    <tr key={r}>
+                      {row.map((entry, c) => (
+                        <td key={c} style={{ width: `${100 / cols}%` }}>
+                          {entry?.data.repoUrl ? (
+                            <a href={entry.data.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)' }}>
+                              {entry.data.repoUrl.replace('https://github.com/', '')}
+                            </a>
+                          ) : null}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        );
+      })()}
 
       {d.aiPolicySummary && d.aiPolicySummary.length > 0 && (
         <div className="section">

@@ -433,6 +433,7 @@
   .merged-repos-table tbody tr:last-child td{ border-bottom:0; }
   .merged-repos-table tbody tr:hover td{ background:transparent; }
   .merged-repos-table td.strong{ color:var(--text-primary); font-weight:600; }
+  .repos-grid-table td:not(:last-child){ border-right:1px solid var(--border-subtle); }
   .title-row .tag{margin:0 !important; align-self:center !important;}
 
   .det-tiles{margin-top:var(--sp-06);}
