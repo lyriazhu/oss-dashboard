@@ -520,9 +520,14 @@ public class DataService {
 
                 for (int i = 0; i < lines.size(); i++) {
                     String trimmed = lines.get(i).trim();
-                    // Match "- name: "projectName"" or "- name: projectName"
-                    if (trimmed.equals("- name: \"" + projectName + "\"")
-                            || trimmed.equals("- name: " + projectName)) {
+                    // Match quoted or unquoted name, case-insensitively, treating hyphens and spaces as equivalent
+                    String nameInLine = null;
+                    if (trimmed.startsWith("- name: \"") && trimmed.endsWith("\"")) {
+                        nameInLine = trimmed.substring(9, trimmed.length() - 1);
+                    } else if (trimmed.startsWith("- name: ")) {
+                        nameInLine = trimmed.substring(8);
+                    }
+                    if (nameInLine != null && normalise(nameInLine).equals(normalise(projectName))) {
                         blockStart = i;
                         // Find where the next list item or top-level key starts
                         for (int j = i + 1; j < lines.size(); j++) {
@@ -552,6 +557,11 @@ public class DataService {
         } catch (Exception e) {
             log.warn("Could not remove project from config.yaml: {}", e.getMessage());
         }
+    }
+
+    /** Normalise a project name for fuzzy matching: lowercase, collapse hyphens/spaces. */
+    private static String normalise(String s) {
+        return s.toLowerCase().replace('-', ' ').replaceAll("\\s+", " ").trim();
     }
 
     // -------------------------------------------------------------------------
