@@ -48,24 +48,23 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
   const mergedContributors = [...contributorMap.values()];
 
   // ── All-time contributor count ──
-  // The GitHub API only returns a partial contributor list (those who committed
-  // directly to the default branch), so _rawContributors can be significantly
-  // smaller than the real total stored in ov.contributorsAllTime.  When any
-  // member repo's raw list is truncated, summing the per-repo totals is more
-  // accurate than counting the de-duplicated union of the truncated lists.
+  // Use the git identity lists (_rawContributorsAllTimeLogins) when available —
+  // these are the complete sets from git history and support accurate cross-repo
+  // deduplication.  Falls back to summing per-repo totals when the identity lists
+  // are absent (data extracted before this feature was added).
   const allTimeContributorCount = (() => {
-    const allTruncated = communities.every((c) => {
-      const rawLen  = (c._rawContributors || []).length;
-      const reported = parseNum(c.ov?.contributorsAllTime);
-      // Truncated = the raw list is shorter than what the backend reports as total
-      return rawLen < reported;
-    });
-    if (allTruncated) {
-      // Fall back to summing per-repo totals (slight overcount for cross-repo
-      // contributors, but far closer to reality than the union of partial lists)
+    const hasIdentitySets = communities.some((c) => c._rawContributorsAllTimeLogins != null);
+    if (!hasIdentitySets) {
+      // No identity lists available: sum per-repo totals (may overcount cross-repo contributors)
       return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsAllTime), 0);
     }
-    return mergedContributors.length;
+    const allTimeSet = new Set();
+    for (const c of communities) {
+      for (const identity of (c._rawContributorsAllTimeLogins || [])) {
+        if (identity) allTimeSet.add(identity);
+      }
+    }
+    return allTimeSet.size;
   })();
 
   // ── YTD contributor count: union login sets from each repo's current year ──

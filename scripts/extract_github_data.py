@@ -882,6 +882,7 @@ class GitHubDataExtractor:
             contributors_data["yearly_contributors"] = yearly_contributors
             contributors_data["total_contributors"] = git_contributor_count
             contributors_data["total_contributors_git"] = git_contributor_count
+            contributors_data["all_time_contributor_logins"] = sorted(all_time_contributors)
             
             # Merge existing contributor profiles
             merged_data = self._merge_contributor_data(existing_data, new_or_updated_contributors)
@@ -907,6 +908,7 @@ class GitHubDataExtractor:
             contributors_data["time_scope"] = {
                 "yearly_contributors": "all_time_from_git_history",
                 "total_contributors": "all_time_from_git_history",
+                "all_time_contributor_logins": "all_time_from_git_history",
                 "contributors": "all_time_github_contributors",
                 "retention_by_quarter": f"last_{quarters}_quarters_from_git_history",
                 "retention_by_year": "all_time_from_git_history"

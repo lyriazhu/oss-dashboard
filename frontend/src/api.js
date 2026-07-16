@@ -807,6 +807,7 @@ export function transformProjectData(project, metrics) {
     // Raw contributor data kept for merge de-duplication in buildMergedEntry
     _rawContributors: contributors?.contributors || [],
     _rawContributorsYtdLogins: contributorsYtdLogins,
+    _rawContributorsAllTimeLogins: contributors?.all_time_contributor_logins || contributors?.allTimeContributorLogins || null,
     _rawLanguage: metadata?.language || null,
     founded: metadata?.created_at ? `Founded ${new Date(metadata.created_at).getFullYear()}` : 'Founded —',
     releaseFrequency: releaseFrequencyLabel,
