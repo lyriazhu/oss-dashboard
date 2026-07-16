@@ -135,7 +135,7 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
     arrays.flat().forEach((entry) => {
       const label = entry[yKey];
       const existing = map.get(label) || { ...entry, [vKey]: 0 };
-      map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
+      map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0), c: existing.c || entry.c });
     });
     return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
   }
