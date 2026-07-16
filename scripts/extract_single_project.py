@@ -302,13 +302,24 @@ def extract_org_project(extractor, project):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python3 extract_single_project.py <project_name_or_repo>")
-        print("Example: python3 extract_single_project.py Strimzi")
-        print("Example: python3 extract_single_project.py '3scale'")
-        sys.exit(1)
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Extract data for a single project from config.yaml."
+    )
+    parser.add_argument("project", help="Project name or owner/repo shorthand")
+    parser.add_argument(
+        "--repo",
+        metavar="REPO",
+        default=None,
+        help=(
+            "For org projects: refresh only this one repo instead of all repos. "
+            "Example: --repo console"
+        ),
+    )
+    args = parser.parse_args()
 
-    project_identifier = sys.argv[1].lower()
+    project_identifier = args.project.lower()
+    single_repo_override = args.repo  # None means "all repos" for org projects
 
     config_path = Path(__file__).parent / "config.yaml"
     extractor = GitHubDataExtractor(str(config_path))
@@ -342,7 +353,7 @@ def main():
                 break
 
     if not project:
-        print(f"❌ Project '{sys.argv[1]}' not found in config.yaml")
+        print(f"❌ Project '{args.project}' not found in config.yaml")
         print("\nAvailable projects:")
         for p in extractor.config['projects']:
             print(f"  - {p['name']}")
@@ -350,7 +361,17 @@ def main():
 
     # --- Org / entire-project path ---
     if project.get('is_org'):
-        extract_org_project(extractor, project)
+        if single_repo_override:
+            # Refresh only the one requested repo within the org.
+            owner = project['owner']
+            print(f"\n{'='*60}")
+            print(f"Org project: {project['name']}  (owner: {owner})")
+            print(f"Single-repo refresh: {single_repo_override}")
+            print(f"{'='*60}\n")
+            _register_repo_in_projects_json(extractor, owner, single_repo_override, project)
+            extract_one_repo(extractor, owner, single_repo_override, single_repo_override, project)
+        else:
+            extract_org_project(extractor, project)
         return
 
     # --- Single-repo (or explicit multi-repo) path ---

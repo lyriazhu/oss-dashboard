@@ -294,9 +294,17 @@ public class DataService {
         String idBase = isOrg ? owner : repo;
         String projectId = generateProjectId(idBase);
 
-        // Check if project already exists
+        // Check if project already exists.
+        // For org projects also check config.yaml — _sync_projects_json may have
+        // removed the sentinel entry from projects.json, making projectExists() lie.
         if (projectExists(projectId)) {
             throw new IllegalArgumentException("This project has already been added.");
+        }
+        if (isOrg) {
+            Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
+            if (Files.exists(configPath) && configContainsOrgEntry(configPath, owner)) {
+                throw new IllegalArgumentException("This project has already been added.");
+            }
         }
 
         // Create new project
@@ -488,46 +496,55 @@ public class DataService {
     }
 
     /**
-     * Remove a project's YAML block from config.yaml.
+     * Remove all blocks matching projectName from config.yaml.
      * Deletes every line from "  - name: ..." up to (not including) the next
-     * "  - " entry or a top-level key.
+     * "  - " entry or a top-level key.  Iterates until no more matches remain
+     * so that duplicate entries (e.g. from repeated "Add entire project" clicks
+     * before the fix) are also fully cleaned up on the first delete.
      */
     private void removeProjectFromConfig(String projectName) {
         try {
             Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
             if (!Files.exists(configPath)) return;
 
-            List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
-            int blockStart = -1;
-            int blockEnd   = lines.size();
+            boolean removedAny = false;
+            // Loop until no more matching blocks exist (handles duplicates).
+            while (true) {
+                List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
+                int blockStart = -1;
+                int blockEnd   = lines.size();
 
-            for (int i = 0; i < lines.size(); i++) {
-                String trimmed = lines.get(i).trim();
-                // Match "- name: "projectName"" or "- name: projectName"
-                if (trimmed.equals("- name: \"" + projectName + "\"")
-                        || trimmed.equals("- name: " + projectName)) {
-                    blockStart = i;
-                    // Find where the next list item or top-level key starts
-                    for (int j = i + 1; j < lines.size(); j++) {
-                        String l = lines.get(j);
-                        if ((l.startsWith("  - ") || (!l.startsWith(" ") && !l.isEmpty() && !l.startsWith("#")))) {
-                            blockEnd = j;
-                            break;
+                for (int i = 0; i < lines.size(); i++) {
+                    String trimmed = lines.get(i).trim();
+                    // Match "- name: "projectName"" or "- name: projectName"
+                    if (trimmed.equals("- name: \"" + projectName + "\"")
+                            || trimmed.equals("- name: " + projectName)) {
+                        blockStart = i;
+                        // Find where the next list item or top-level key starts
+                        for (int j = i + 1; j < lines.size(); j++) {
+                            String l = lines.get(j);
+                            if (l.startsWith("  - ") || (!l.startsWith(" ") && !l.isEmpty() && !l.startsWith("#"))) {
+                                blockEnd = j;
+                                break;
+                            }
                         }
+                        break;
                     }
-                    break;
                 }
+
+                if (blockStart == -1) break; // no more blocks found
+
+                List<String> result = new ArrayList<>(lines.subList(0, blockStart));
+                result.addAll(lines.subList(blockEnd, lines.size()));
+                Files.writeString(configPath, String.join("\n", result));
+                removedAny = true;
             }
 
-            if (blockStart == -1) {
-                log.warn("Could not find {} in config.yaml; skipping config removal", projectName);
-                return;
+            if (removedAny) {
+                log.info("Removed all blocks for '{}' from config.yaml", projectName);
+            } else {
+                log.warn("Could not find '{}' in config.yaml; skipping config removal", projectName);
             }
-
-            List<String> result = new ArrayList<>(lines.subList(0, blockStart));
-            result.addAll(lines.subList(blockEnd, lines.size()));
-            Files.writeString(configPath, String.join("\n", result));
-            log.info("Removed {} from config.yaml", projectName);
         } catch (Exception e) {
             log.warn("Could not remove project from config.yaml: {}", e.getMessage());
         }
@@ -591,14 +608,51 @@ public class DataService {
     }
 
     /**
-     * Append a new project entry to scripts/config.yaml so the Python
-     * extraction scripts can discover it by name or owner/repo.
+     * Returns true if config.yaml already contains an entry whose owner: matches
+     * the given owner and (for is_org entries) has is_org: true.
+     * Used to prevent duplicate entries from repeated "Add entire project" clicks.
      */
+    private boolean configContainsOrgEntry(Path configPath, String owner) {
+        try {
+            List<String> lines = Files.readAllLines(configPath);
+            boolean inBlock = false;
+            boolean blockIsOrg = false;
+            String blockOwner = null;
+            for (String line : lines) {
+                String t = line.trim();
+                if (t.startsWith("- name:")) {
+                    // Evaluate the previous block before starting a new one
+                    if (inBlock && blockIsOrg && owner.equalsIgnoreCase(blockOwner)) return true;
+                    inBlock = true;
+                    blockIsOrg = false;
+                    blockOwner = null;
+                } else if (inBlock && t.startsWith("owner:")) {
+                    blockOwner = t.replaceFirst("owner:\\s*\"?", "").replaceAll("\"$", "").trim();
+                } else if (inBlock && t.equals("is_org: true")) {
+                    blockIsOrg = true;
+                }
+            }
+            // Check the final block
+            if (inBlock && blockIsOrg && owner.equalsIgnoreCase(blockOwner)) return true;
+        } catch (Exception e) {
+            log.warn("Could not read config.yaml to check for duplicates: {}", e.getMessage());
+        }
+        return false;
+    }
+
     private void addProjectToConfig(String owner, String repo, Project project, AddProjectRequest request) {
         try {
             Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
             if (!Files.exists(configPath)) {
                 log.warn("config.yaml not found at {}; skipping config update", configPath);
+                return;
+            }
+
+            // For org projects, skip if config.yaml already has an entry for this owner.
+            // This prevents duplicate blocks when the user clicks "Add entire project"
+            // more than once (e.g. after deleting and re-adding).
+            if (Boolean.TRUE.equals(project.getIsOrg()) && configContainsOrgEntry(configPath, owner)) {
+                log.info("config.yaml already contains an org entry for '{}'; skipping duplicate", owner);
                 return;
             }
 
@@ -717,13 +771,21 @@ public class DataService {
         String python3 = resolvePython3();
 
         // Build the command to run the Python script for a single project.
-        // Pass the project's config name (matches p['name'] in config.yaml) rather
-        // than the project ID, which may differ for hyphenated repo names.
-        ProcessBuilder processBuilder = new ProcessBuilder(
+        // For per-repo entries that belong to an org (org_owner is set), pass the
+        // org name so config.yaml's is_org entry is found, then add --repo <repoName>
+        // so only that one repo is re-extracted instead of the entire org.
+        // For ordinary single-repo projects pass the config name as before.
+        boolean isOrgRepo = project.getOrgOwner() != null && !project.getOrgOwner().isBlank();
+        List<String> command = new java.util.ArrayList<>(java.util.Arrays.asList(
             python3,
             extractScript.toString(),
-            project.getName()
-        );
+            isOrgRepo ? project.getOrgOwner() : project.getName()
+        ));
+        if (isOrgRepo) {
+            command.add("--repo");
+            command.add(project.getRepo());
+        }
+        ProcessBuilder processBuilder = new ProcessBuilder(command);
         processBuilder.directory(scriptsDir.toFile());
         processBuilder.redirectErrorStream(true);
         // Forward GITHUB_TOKEN so the Python script can authenticate with the GitHub API

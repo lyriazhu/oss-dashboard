@@ -900,7 +900,17 @@ export default function App() {
           <Detail
             d={detailData || data[selectedKey] || null}
             onOverview={showOverview}
-            onRefreshProject={(id, name) => setExtracting({ id, name, mode: 'refresh' })}
+            onRefreshProject={(id, name) => {
+              const entry = data[id];
+              if (entry?._mergedFrom) {
+                // Merged entry — queue each member repo individually, same as Refresh All
+                const members = entry._mergedFrom.map((e) => ({ id: e.key, name: e.data.name }));
+                setRefreshQueue(members.slice(1));
+                setExtracting({ id: members[0].id, name: members[0].name, mode: 'refresh' });
+              } else {
+                setExtracting({ id, name, mode: 'refresh' });
+              }
+            }}
           />
         )}
       </div>

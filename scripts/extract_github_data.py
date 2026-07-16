@@ -2147,18 +2147,43 @@ class GitHubDataExtractor:
             except (json.JSONDecodeError, OSError):
                 pass
 
+        # Build a lookup from org owner -> list of per-repo project records.
+        # This is needed so that org entries in config.yaml can re-hydrate all
+        # the individual repos that were discovered during extraction, which are
+        # stored with IDs like "console" or ".github" rather than the org name.
+        existing_by_org: Dict[str, list] = {}
+        for p in existing.values():
+            org = p.get("org_owner", "")
+            if org:
+                existing_by_org.setdefault(org.lower(), []).append(p)
+
+        # Track which org owners have already been emitted so that duplicate
+        # is_org config entries (caused by repeated "Add entire project" clicks)
+        # only produce one set of repo entries in the output.
+        seen_org_owners: set = set()
+
         out = []
         for cfg in self.config.get("projects", []):
             # is_org entries are org-level sentinels: their repos are discovered
             # and registered individually at extraction time, not at sync time.
             # Skip them here so we don't create a broken entry with repo="".
             if cfg.get("is_org"):
-                # Preserve any existing org-sentinel record so the dashboard can
-                # still display it while extraction is in progress.
                 owner = cfg.get("owner", "")
-                project_id = owner.lower().replace("_", "-")
-                if project_id in existing:
-                    out.append(existing[project_id])
+                owner_key = owner.lower().replace("_", "-")
+
+                if owner_key in seen_org_owners:
+                    # Duplicate config entry — skip to avoid emitting repos twice.
+                    continue
+                seen_org_owners.add(owner_key)
+
+                # Preserve all per-repo records that were registered for this org
+                # (their IDs match the repo slug, not the org name).
+                org_repos = existing_by_org.get(owner.lower(), [])
+                if org_repos:
+                    out.extend(org_repos)
+                elif owner_key in existing:
+                    # Fall back to org-sentinel record if no per-repo entries yet
+                    out.append(existing[owner_key])
                 continue
 
             repo = cfg.get("repo", "")
