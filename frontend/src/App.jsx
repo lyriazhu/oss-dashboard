@@ -704,8 +704,13 @@ export default function App() {
         next[remaining[0].key] = remaining[0].data;
       }
     } else {
-      // Rebuild merged entry without the removed repo
-      const customName = merged.name !== remaining.map((e) => e.data.name).join(' + ') ? merged.name : null;
+      // Rebuild merged entry without the removed repo.
+      // A name is "custom" only if it differs from the auto-generated default of ALL
+      // original members (not just the remaining ones). If the name was auto-generated
+      // (e.g. "A + B + C"), removing a member should regenerate it from the remaining
+      // members. Truly custom names (e.g. "StreamsHub") are always preserved.
+      const oldDefaultName = merged._mergedFrom.map((e) => e.data.name).join(' + ');
+      const customName = merged.name !== oldDefaultName ? merged.name : null;
       const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
         ? merged.repoUrl : null;
       next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl });
