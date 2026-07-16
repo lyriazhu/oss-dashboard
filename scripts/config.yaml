@@ -1,0 +1,108 @@
+# GitHub API Configuration
+# Set GITHUB_TOKEN in your environment before running the extractor.
+# Example: export GITHUB_TOKEN="your-token"
+
+# Projects to track
+projects:
+  - name: "Strimzi"
+    github_url: "https://github.com/strimzi/strimzi-kafka-operator"
+    owner: "strimzi"
+    repo: "strimzi-kafka-operator"
+    foundation: "CNCF"
+    website: "https://strimzi.io"
+    
+  - name: "Apache Camel"
+    github_url: "https://github.com/apache/camel"
+    owner: "apache"
+    repo: "camel"
+    foundation: "Apache Software Foundation"
+    website: "https://camel.apache.org"
+    issue_source: jira
+    jira_project_key: CAMEL
+    jira_base_url: "https://issues.apache.org/jira"
+    adopters_url: "https://camel.apache.org/community/user-stories/"
+    
+  - name: "Keycloak"
+    github_url: "https://github.com/keycloak/keycloak"
+    owner: "keycloak"
+    repo: "keycloak"
+    foundation: "CNCF"
+    website: "https://www.keycloak.org"
+    
+  - name: "Apicurio Registry"
+    github_url: "https://github.com/Apicurio/apicurio-registry"
+    owner: "Apicurio"
+    repo: "apicurio-registry"
+    foundation: "Independent"
+    website: "https://www.apicur.io/registry/"
+    
+  - name: "Debezium"
+    github_url: "https://github.com/debezium/debezium"
+    owner: "debezium"
+    repo: "debezium"
+    foundation: "Commonhaus Foundation"
+    issue_owner: "debezium"
+    issue_repo: "dbz"
+
+  - name: "Quarkus"
+    github_url: "https://github.com/quarkusio/quarkus"
+    owner: "quarkusio"
+    repo: "quarkus"
+    foundation: "Independent"
+
+  - name: "Wildfly"
+    github_url: "https://github.com/wildfly/wildfly"
+    owner: "wildfly"
+    repo: "wildfly"
+    foundation: "Commonhaus Foundation"
+    issue_source: jira
+    jira_project_key: WFLY
+    jira_base_url: "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
+
+  - name: "3scale"
+    github_url: "https://github.com/3scale/3scale-operator"
+    owner: "3scale"
+    repo: "3scale-operator"
+    foundation: "Red Hat"
+
+  - name: "Apache Tomcat"
+    github_url: "https://github.com/apache/tomcat"
+    owner: "apache"
+    repo: "tomcat"
+    foundation: "Independent"
+
+  - name: "Apache Artemis"
+    github_url: "https://github.com/apache/artemis"
+    owner: "apache"
+    repo: "artemis"
+    foundation: "Independent"
+    issue_source: jira
+    jira_project_key: ARTEMIS
+    jira_base_url: "https://issues.apache.org/jira"
+
+  - name: "streamshub"
+    github_url: "https://github.com/streamshub"
+    owner: "streamshub"
+    is_org: true
+    foundation: "Independent"
+    issue_scope: all
+
+  - name: "kroxylicious"
+    github_url: "https://github.com/kroxylicious"
+    owner: "kroxylicious"
+    is_org: true
+    foundation: "Independent"
+    issue_scope: all
+
+extraction:
+  # How many quarters of historical data to fetch
+  quarters_back: 12
+  
+  # Rate limiting (requests per hour)
+  rate_limit: 5000
+  
+  # Retry settings
+  max_retries: 3
+  retry_delay: 5
+
+# Made with Bob

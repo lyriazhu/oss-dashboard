@@ -37,7 +37,6 @@ env/
 .DS_Store
 
 # Secrets - IMPORTANT!
-scripts/config.yaml
 *.env
 .env.local
 secrets/
