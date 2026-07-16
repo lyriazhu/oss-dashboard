@@ -60,10 +60,13 @@ class GitHubDataExtractor:
             return default
 
     def _save_json_file(self, path: Path, data: Any):
-        """Persist JSON file"""
+        """Persist JSON file atomically (write to tmp, then rename) to prevent
+        readers from seeing a partially-written file."""
         path.parent.mkdir(parents=True, exist_ok=True)
-        with open(path, 'w') as f:
+        tmp = path.with_suffix(path.suffix + ".tmp")
+        with open(tmp, 'w') as f:
             json.dump(data, f, indent=2)
+        tmp.replace(path)
 
     def _project_dir(self, project_name: str, repo: str = None, owner: str = None) -> Path:
         """Return normalized project data directory.
