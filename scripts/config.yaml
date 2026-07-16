@@ -88,13 +88,6 @@ projects:
     issue_scope: all
 
 
-  - name: "strimzi"
-    github_url: "https://github.com/strimzi"
-    owner: "strimzi"
-    is_org: true
-    foundation: "Independent"
-    issue_scope: all
-
 extraction:
   # How many quarters of historical data to fetch
   quarters_back: 12
