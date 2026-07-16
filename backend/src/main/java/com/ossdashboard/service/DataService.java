@@ -462,12 +462,14 @@ public class DataService {
      * Remove a project from projects.json, config.yaml, and its data directory.
      */
     public void removeProject(String projectId) throws IOException {
-        // Verify it exists first and capture the name BEFORE modifying projects.json
+        // Verify it exists first and capture name + data dir BEFORE modifying projects.json
         Project project = getProjectById(projectId);
         if (project == null) {
             throw new IllegalArgumentException("Project not found: " + projectId);
         }
         String projectName = project.getName();
+        // Resolve data directory now, while the project record still exists in projects.json
+        Path dataDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
 
         // 1. Remove from projects.json
         Path projectsFile = Paths.get(dataDirectory, "projects.json");
@@ -486,8 +488,7 @@ public class DataService {
         // 2. Remove from config.yaml (delete the project's block)
         removeProjectFromConfig(projectName);
 
-        // 3. Delete the data directory
-        Path dataDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
+        // 3. Delete the data directory (path resolved before projects.json was modified)
         if (Files.exists(dataDir)) {
             try (var stream = Files.walk(dataDir)) {
                 stream.sorted(java.util.Comparator.reverseOrder())
