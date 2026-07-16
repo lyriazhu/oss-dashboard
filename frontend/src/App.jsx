@@ -418,12 +418,17 @@ export default function App() {
       let newOrder = [...projectOrder];
 
       for (const entry of mergesFromBackend) {
-        const mergedKey  = entry.mergedKey;
         const memberKeys = entry.memberKeys;
         const customName = entry.name   || null;
         const orgUrl     = entry.orgUrl || null;
         // Skip if any member is not yet loaded (extraction may still be running)
         if (!memberKeys.every((k) => newData[k])) continue;
+
+        // Re-derive a synthetic key from the member list so it never collides with
+        // a real backend project ID. Old records stored mergedKey = first member's
+        // project ID, which caused the first member to be deleted from newData and
+        // never restored on unmerge. The synthetic key avoids that collision.
+        const mergedKey = '__merged__' + memberKeys.join('__');
 
         const flatEntries = memberKeys.map((k) => ({ key: k, data: newData[k] }));
         const merged = buildMergedEntry(flatEntries, { customName, orgUrl });
@@ -519,6 +524,7 @@ export default function App() {
   // Write the current merge state to the backend. Call this explicitly whenever
   // merges change — do NOT derive from a useEffect on `data` to avoid races where
   // an earlier render's effect fires after a later one and overwrites the correct state.
+  // Returns the promise from saveMerges so callers can await completion.
   const persistMerges = useCallback((newData) => {
     const mergeRecords = [];
     Object.entries(newData).forEach(([key, d]) => {
@@ -531,7 +537,7 @@ export default function App() {
         });
       }
     });
-    saveMerges(mergeRecords);
+    return saveMerges(mergeRecords);
   }, []);
 
   const handleUpdateProject = useCallback(async (projectId, fields) => {
@@ -656,7 +662,7 @@ export default function App() {
     }
   }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleUnmerge = useCallback((mergedKey) => {
+  const handleUnmerge = useCallback(async (mergedKey) => {
     const merged = data[mergedKey];
     if (!merged?._mergedFrom) return;
 
@@ -665,8 +671,10 @@ export default function App() {
     merged._mergedFrom.forEach(({ key, data: original }) => {
       next[key] = original;
     });
+    // Await the save so merges.json is cleared on disk before any concurrent
+    // loadProjects call can read and re-apply the old merge record.
+    await persistMerges(next);
     setData(next);
-    persistMerges(next);
 
     setOrder((prev) => {
       const idx = prev.indexOf(mergedKey);
@@ -738,8 +746,15 @@ export default function App() {
 
     const merged = buildMergedEntry(flatEntries);
 
-    // The merged entry takes the key of the first selected item
-    const mergedKey = selectedKeysList[0];
+    // Use a synthetic key that cannot collide with any real backend project ID.
+    // Previously this reused the first selected project's ID, which caused the
+    // merged group's key to also appear as a memberKey.  That created two bugs:
+    //   1. applyPersistedMerges would delete the raw ".github" project entry from
+    //      newData (as a member) making it vanish after an unmerge.
+    //   2. A race between the async saveMerges PUT and a concurrent loadProjects
+    //      call could re-apply the stale merge record against the already-unmerged
+    //      order, producing a duplicate row in the community table.
+    const mergedKey = '__merged__' + flatEntries.map((e) => e.key).join('__');
     // All keys to remove: selected (including any group keys) + their flat members
     const allKeysToRemove = new Set([...selectedKeysList, ...flatEntries.map((e) => e.key)]);
 
