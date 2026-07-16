@@ -516,25 +516,43 @@ export default function App() {
     setSelectedKey(key);
   }, []);
 
+  // Write the current merge state to the backend. Call this explicitly whenever
+  // merges change — do NOT derive from a useEffect on `data` to avoid races where
+  // an earlier render's effect fires after a later one and overwrites the correct state.
+  const persistMerges = useCallback((newData) => {
+    const mergeRecords = [];
+    Object.entries(newData).forEach(([key, d]) => {
+      if (d._mergedFrom) {
+        const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
+        mergeRecords.push({
+          mergedKey: key,
+          memberKeys: d._mergedFrom.map((e) => e.key),
+          name: d.name !== defaultName ? d.name : null,
+        });
+      }
+    });
+    saveMerges(mergeRecords);
+  }, []);
+
   const handleUpdateProject = useCallback(async (projectId, fields) => {
-    // For merged entries, only update in-memory — the rename is stored in
-    // localStorage as part of the merge record and is discarded on unmerge.
     const isMergedEntry = Boolean(data[projectId]?._mergedFrom);
 
     // 1. Patch in-memory immediately.
-    setData((prev) => {
-      if (!prev[projectId]) return prev;
-      const updated = { ...prev[projectId] };
-      if (fields.name)       updated.name = fields.name;
-      if (fields.foundation) {
-        updated.foundation = fields.foundation;
-        updated.sub        = fields.foundation;
-        updated.ov         = { ...updated.ov, foundation: fields.foundation };
-      }
-      return { ...prev, [projectId]: updated };
-    });
+    const updated = { ...data[projectId] };
+    if (fields.name)       updated.name = fields.name;
+    if (fields.foundation) {
+      updated.foundation = fields.foundation;
+      updated.sub        = fields.foundation;
+      updated.ov         = { ...updated.ov, foundation: fields.foundation };
+    }
+    const next = { ...data, [projectId]: updated };
+    setData(next);
 
-    if (isMergedEntry) return; // localStorage persistence is handled by the data effect
+    if (isMergedEntry) {
+      // For merged entries persist the rename directly — no backend project record to update.
+      persistMerges(next);
+      return;
+    }
 
     // 2. Persist to backend for non-merged projects.
     try {
@@ -554,7 +572,7 @@ export default function App() {
       console.error('Failed to save project update:', err);
       await loadProjects({ silent: true });
     }
-  }, [loadProjects, data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loadProjects, data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addProject = useCallback((key, name) => {
     // loadProjects has already refreshed data/order by the time this fires;
@@ -638,44 +656,26 @@ export default function App() {
     }
   }, [selectedKeys, selectedKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Persist merges to backend (data/merges.json) whenever data changes
-  useEffect(() => {
-    const mergeRecords = [];
-    Object.entries(data).forEach(([key, d]) => {
-      if (d._mergedFrom) {
-        const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
-        mergeRecords.push({
-          mergedKey: key,
-          memberKeys: d._mergedFrom.map((e) => e.key),
-          name: d.name !== defaultName ? d.name : null,
-        });
-      }
-    });
-    // Always write — empty array clears the file
-    saveMerges(mergeRecords);
-  }, [data]);
-
   const handleUnmerge = useCallback((mergedKey) => {
-    setData((prev) => {
-      const merged = prev[mergedKey];
-      if (!merged?._mergedFrom) return prev;
-      const next = { ...prev };
-      delete next[mergedKey];
-      merged._mergedFrom.forEach(({ key, data: original }) => {
-        next[key] = original;
-      });
-      return next;
+    const merged = data[mergedKey];
+    if (!merged?._mergedFrom) return;
+
+    const next = { ...data };
+    delete next[mergedKey];
+    merged._mergedFrom.forEach(({ key, data: original }) => {
+      next[key] = original;
     });
+    setData(next);
+    persistMerges(next);
+
     setOrder((prev) => {
-      const merged = data[mergedKey];
-      if (!merged?._mergedFrom) return prev;
       const idx = prev.indexOf(mergedKey);
-      const next = prev.filter((k) => k !== mergedKey);
+      const without = prev.filter((k) => k !== mergedKey);
       const originals = merged._mergedFrom.map((e) => e.key);
-      next.splice(idx, 0, ...originals);
-      return next;
+      without.splice(idx >= 0 ? idx : without.length, 0, ...originals);
+      return without;
     });
-  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Remove a single repo from a merged entry
   const handleRemoveFromMerge = useCallback((mergedKey, repoKey) => {
@@ -686,42 +686,39 @@ export default function App() {
     const removed   = merged._mergedFrom.find((e) => e.key === repoKey);
     if (!removed) return;
 
-    setData((prev) => {
-      const next = { ...prev };
-      // Restore the removed repo as its own entry
-      next[repoKey] = removed.data;
-      if (remaining.length < 2) {
-        // Only one left — dissolve the group entirely
-        delete next[mergedKey];
-        if (remaining.length === 1) {
-          next[remaining[0].key] = remaining[0].data;
-        }
-      } else {
-        // Rebuild merged entry without the removed repo
-        const customName = merged.name !== remaining.map((e) => e.data.name).join(' + ') ? merged.name : null;
-        const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
-          ? merged.repoUrl : null;
-        next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl });
+    const next = { ...data };
+    // Restore the removed repo as its own entry
+    next[repoKey] = removed.data;
+    if (remaining.length < 2) {
+      // Only one left — dissolve the group entirely
+      delete next[mergedKey];
+      if (remaining.length === 1) {
+        next[remaining[0].key] = remaining[0].data;
       }
-      return next;
-    });
+    } else {
+      // Rebuild merged entry without the removed repo
+      const customName = merged.name !== remaining.map((e) => e.data.name).join(' + ') ? merged.name : null;
+      const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
+        ? merged.repoUrl : null;
+      next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl });
+    }
+    setData(next);
+    persistMerges(next);
 
     setOrder((prev) => {
       const idx = prev.indexOf(mergedKey);
-      const next = prev.filter((k) => k !== mergedKey && k !== repoKey);
+      const without = prev.filter((k) => k !== mergedKey && k !== repoKey);
       if (remaining.length < 2) {
         // Dissolve group — put all original keys at the same position
         const all = merged._mergedFrom.map((e) => e.key);
-        const insertAt = idx >= 0 ? idx : next.length;
-        next.splice(insertAt, 0, ...all);
+        without.splice(idx >= 0 ? idx : without.length, 0, ...all);
       } else {
         // Keep the merged group at its original position; insert the removed repo right after
-        const insertAt = idx >= 0 ? idx : next.length;
-        next.splice(insertAt, 0, mergedKey, repoKey);
+        without.splice(idx >= 0 ? idx : without.length, 0, mergedKey, repoKey);
       }
-      return next;
+      return without;
     });
-  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleJoinSelected = useCallback(() => {
     if (selectedKeys.size < 2) return;
@@ -746,17 +743,17 @@ export default function App() {
     // All keys to remove: selected (including any group keys) + their flat members
     const allKeysToRemove = new Set([...selectedKeysList, ...flatEntries.map((e) => e.key)]);
 
-    setData((prev) => {
-      const next = { ...prev };
-      allKeysToRemove.forEach((k) => delete next[k]);
-      next[mergedKey] = merged;
-      return next;
-    });
+    const next = { ...data };
+    allKeysToRemove.forEach((k) => delete next[k]);
+    next[mergedKey] = merged;
+    setData(next);
+    persistMerges(next);
+
     setOrder((prev) => {
-      const next = prev.filter((k) => !allKeysToRemove.has(k));
+      const without = prev.filter((k) => !allKeysToRemove.has(k));
       const insertIdx = Math.min(...[...selectedKeysList].map((k) => prev.indexOf(k)).filter((i) => i >= 0));
-      next.splice(insertIdx < 0 ? next.length : insertIdx, 0, mergedKey);
-      return next;
+      without.splice(insertIdx < 0 ? without.length : insertIdx, 0, mergedKey);
+      return without;
     });
 
     // Exit select mode and clear selection
@@ -765,7 +762,7 @@ export default function App() {
     // Flash the merged row
     setFlashKey(mergedKey);
     setTimeout(() => setFlashKey(null), 1200);
-  }, [selectedKeys, data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selectedKeys, data, persistMerges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
