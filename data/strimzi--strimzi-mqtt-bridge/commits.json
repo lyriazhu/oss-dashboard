@@ -1,0 +1,270 @@
+{
+  "total_commits": 46,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 3,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 10,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 1,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 4,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 1,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 7,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 13,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "Antonio Pedro",
+      "name": "Antonio Pedro",
+      "company": "Unknown",
+      "location": null,
+      "email": "tonio.pedro99@gmail.com",
+      "profile_url": null,
+      "commit_count": 150
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "ppatierno@live.com",
+      "profile_url": null,
+      "commit_count": 131
+    },
+    {
+      "login": "Ant\u00f3nio Pedro",
+      "name": "Ant\u00f3nio Pedro",
+      "company": "Unknown",
+      "location": null,
+      "email": "42675180+antonio-pedro99@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 71
+    },
+    {
+      "login": "Jakub Stejskal",
+      "name": "Jakub Stejskal",
+      "company": "Unknown",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "profile_url": null,
+      "commit_count": 18
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 14
+    },
+    {
+      "login": "Maros Orsak",
+      "name": "Maros Orsak",
+      "company": "Unknown",
+      "location": null,
+      "email": "maros.orsak159@gmail.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Danny",
+      "name": "Danny",
+      "company": "Unknown",
+      "location": null,
+      "email": "51312422+dchenz@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Jan-Henrik Bruhn",
+      "name": "Jan-Henrik Bruhn",
+      "company": "Unknown",
+      "location": null,
+      "email": "jan-henrik.bruhn@offis.de",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Gy\u00f6rgy Dancsi",
+      "name": "Gy\u00f6rgy Dancsi",
+      "company": "Unknown",
+      "location": null,
+      "email": "dgyuri@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Jan-Henrik Bruhn",
+      "name": "Jan-Henrik Bruhn",
+      "company": "Unknown",
+      "location": null,
+      "email": "github@jhbruhn.de",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Matteo Piovanelli",
+      "name": "Matteo Piovanelli",
+      "company": "Unknown",
+      "location": null,
+      "email": "matteopiovanelli-laser@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Matteo Piovanelli",
+      "name": "Matteo Piovanelli",
+      "company": "Unknown",
+      "location": null,
+      "email": "matteo.piovanelli@laser-group.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Matteo Piovanelli",
+      "name": "Matteo Piovanelli",
+      "company": "Unknown",
+      "location": null,
+      "email": "thebovaz@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Gy\u00f6rgy Dancsi",
+      "name": "Gy\u00f6rgy Dancsi",
+      "company": "Unknown",
+      "location": null,
+      "email": "dgyuri@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Gy\u00f6rgy Dancsi",
+      "name": "Gy\u00f6rgy Dancsi",
+      "company": "Unknown",
+      "location": null,
+      "email": "dgyuri@gmai.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Mohammad Amin Mokhtari",
+      "name": "Mohammad Amin Mokhtari",
+      "company": "Unknown",
+      "location": null,
+      "email": "41728922+aminmokhtari94@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "paolo.patierno@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T15:22:01.916247",
+  "years": [
+    {
+      "year": 2023,
+      "commit_count": 318,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "commit_count": 29,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 16,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "commit_count": 43,
+      "is_current": true
+    }
+  ]
+}

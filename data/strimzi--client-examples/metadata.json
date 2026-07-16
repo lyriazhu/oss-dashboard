@@ -1,0 +1,35 @@
+{
+  "name": "client-examples",
+  "full_name": "strimzi/client-examples",
+  "description": "Example clients for use with Strimzi",
+  "created_at": "2018-07-30T08:56:37+00:00",
+  "updated_at": "2026-03-16T14:54:30+00:00",
+  "stars": 79,
+  "forks": 62,
+  "watchers": 79,
+  "open_issues": 0,
+  "language": "Java",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": "https://strimzi.io",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 52,
+      "percentage": 60.47
+    },
+    {
+      "company": "Red Hat",
+      "commits": 33,
+      "percentage": 38.37
+    },
+    {
+      "company": "Gepardec",
+      "commits": 1,
+      "percentage": 1.16
+    }
+  ],
+  "extracted_at": "2026-07-16T14:54:47.382045"
+}

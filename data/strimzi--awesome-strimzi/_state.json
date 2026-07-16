@@ -1,0 +1,27 @@
+{
+  "contributors": {
+    "known_logins": [
+      "cesaroangelo",
+      "clubanderson",
+      "fvaleri",
+      "jankalinic",
+      "kornys",
+      "ppatierno",
+      "scholzj",
+      "sebastiangaiser"
+    ],
+    "last_extracted_at": "2026-07-16T15:23:53.887641"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:24:00.361491"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:24:22.641198"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:24:11.295137"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:24:24.647171"
+  }
+}

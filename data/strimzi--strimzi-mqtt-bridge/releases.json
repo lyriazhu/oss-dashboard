@@ -1,0 +1,21 @@
+{
+  "total_releases": 2,
+  "recent_releases": [
+    {
+      "tag_name": "0.1.0-rc1",
+      "name": "0.1.0-rc1",
+      "published_at": "2023-12-24T14:41:00+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "0.1.0",
+      "name": "0.1.0",
+      "published_at": "2023-12-28T13:34:26+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "median_days_between_releases": 3,
+  "extracted_at": "2026-07-16T15:22:47.686976"
+}

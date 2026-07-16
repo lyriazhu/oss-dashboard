@@ -1,0 +1,74 @@
+{
+  "name": "drain-cleaner",
+  "full_name": "strimzi/drain-cleaner",
+  "description": "Utility to help with draining nodes running Strimzi-managed Apache Kafka\u00ae or ZooKeeper\u00ae pods",
+  "created_at": "2021-07-17T15:52:49+00:00",
+  "updated_at": "2026-07-07T19:59:29+00:00",
+  "stars": 63,
+  "forks": 39,
+  "watchers": 63,
+  "open_issues": 0,
+  "language": "Java",
+  "topics": [
+    "kubernetes",
+    "kafka",
+    "hacktoberfest"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 40,
+      "percentage": 68.97
+    },
+    {
+      "company": "Red Hat",
+      "commits": 4,
+      "percentage": 6.9
+    },
+    {
+      "company": "Hetznercloud",
+      "commits": 3,
+      "percentage": 5.17
+    },
+    {
+      "company": "Getmoss",
+      "commits": 2,
+      "percentage": 3.45
+    },
+    {
+      "company": "Contentsquare",
+      "commits": 2,
+      "percentage": 3.45
+    },
+    {
+      "company": "Dynatrace",
+      "commits": 1,
+      "percentage": 1.72
+    },
+    {
+      "company": "Corti",
+      "commits": 1,
+      "percentage": 1.72
+    },
+    {
+      "company": "Epo.Org",
+      "commits": 1,
+      "percentage": 1.72
+    },
+    {
+      "company": "Engineer At Red Hat",
+      "commits": 1,
+      "percentage": 1.72
+    },
+    {
+      "company": "Epam Systems",
+      "commits": 1,
+      "percentage": 1.72
+    }
+  ],
+  "extracted_at": "2026-07-16T15:14:22.521831"
+}

@@ -1,0 +1,49 @@
+{
+  "contributors": {
+    "known_logins": [
+      "FlorisFeddema",
+      "Frawless",
+      "LaikaN57",
+      "MikeEdgar",
+      "OwenCorrigan76",
+      "ShazaAldawamneh",
+      "ShubhamRwt",
+      "Vince-Chenal",
+      "acgtun",
+      "almightykid",
+      "aywengo",
+      "bsoenen",
+      "dependabot[bot]",
+      "devzizu",
+      "fvaleri",
+      "hileef",
+      "im-konge",
+      "jankalinic",
+      "jensloe-nhn",
+      "njohnstone2",
+      "padilo",
+      "ppatierno",
+      "raj-saxena",
+      "remilibon",
+      "scholzj",
+      "sebastiangaiser",
+      "see-quick",
+      "tombentley",
+      "vbusch",
+      "vutkin"
+    ],
+    "last_extracted_at": "2026-07-16T15:14:29.439899"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:14:37.295110"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:15:44.361830"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:15:10.363481"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:15:46.847756"
+  }
+}

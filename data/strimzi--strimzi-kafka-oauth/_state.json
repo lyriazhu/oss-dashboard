@@ -1,0 +1,44 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "Kartikey-Mishra1",
+      "PaulRMellor",
+      "akaczano",
+      "alexymantha",
+      "buuhsmead",
+      "cnnaik",
+      "dependabot[bot]",
+      "grdryn",
+      "hmadison",
+      "iMajna",
+      "im-konge",
+      "klalafaryan",
+      "krishvoor",
+      "litiliu",
+      "mimaison",
+      "mstruk",
+      "nalini-26",
+      "ppatierno",
+      "robbertvanwaveren",
+      "rposts",
+      "sangitanalkar",
+      "scholzj",
+      "tombentley",
+      "vsevel"
+    ],
+    "last_extracted_at": "2026-07-16T14:56:45.309059"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T14:56:52.534883"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T14:58:23.440532"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T14:57:40.566673"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T14:58:25.747485"
+  }
+}

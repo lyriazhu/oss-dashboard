@@ -1,0 +1,24 @@
+{
+  "contributors": {
+    "known_logins": [
+      "mimaison",
+      "ppatierno",
+      "scholzj",
+      "tombentley",
+      "yeikel"
+    ],
+    "last_extracted_at": "2026-07-16T15:15:56.286636"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:16:02.845299"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:17:05.425358"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:16:33.611157"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:17:07.208604"
+  }
+}

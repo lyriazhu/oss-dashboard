@@ -4,13 +4,6 @@
 
 # Projects to track
 projects:
-  - name: "Strimzi"
-    github_url: "https://github.com/strimzi/strimzi-kafka-operator"
-    owner: "strimzi"
-    repo: "strimzi-kafka-operator"
-    foundation: "CNCF"
-    website: "https://strimzi.io"
-    
   - name: "Apache Camel"
     github_url: "https://github.com/apache/camel"
     owner: "apache"
@@ -90,6 +83,14 @@ projects:
   - name: "kroxylicious"
     github_url: "https://github.com/kroxylicious"
     owner: "kroxylicious"
+    is_org: true
+    foundation: "Independent"
+    issue_scope: all
+
+
+  - name: "strimzi"
+    github_url: "https://github.com/strimzi"
+    owner: "strimzi"
     is_org: true
     foundation: "Independent"
     issue_scope: all

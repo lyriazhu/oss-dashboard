@@ -1,0 +1,20 @@
+{
+  "contributors": {
+    "known_logins": [
+      "see-quick"
+    ],
+    "last_extracted_at": "2026-07-16T15:25:16.250257"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:25:22.644944"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:25:37.394334"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:25:31.010408"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:25:39.305615"
+  }
+}

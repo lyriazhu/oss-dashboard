@@ -355,7 +355,7 @@
 
   /* mini commit cards */
   .mini-grid{
-    display:grid; grid-template-columns:repeat(4,1fr);
+    display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:1fr;
     gap:1px; background:var(--border-subtle);
     border:1px solid var(--border-subtle);
     overflow:visible;
@@ -484,14 +484,14 @@
   /* Delete button — grayed when nothing selected, dim pink when ready */
   .btn-danger{
     display:inline-flex; align-items:center; justify-content:space-between; gap:2.5rem;
-    background:#e8b4b8; color:#6b1c23; border:0; cursor:pointer;
+    background:transparent; color:var(--red-60); border:1px solid var(--red-60); cursor:pointer;
     font-family:inherit; font-size:.875rem; height:3rem; padding:0 1rem; min-width:11rem;
   }
-  .btn-danger:hover:not(:disabled){background:#dda0a6;}
-  .btn-danger:active:not(:disabled){background:#d08a91;}
-  .btn-danger:disabled{background:var(--gray-20); color:var(--gray-50); cursor:not-allowed;}
+  .btn-danger:hover:not(:disabled){background:rgba(218,30,40,.08);}
+  .btn-danger:active:not(:disabled){background:rgba(218,30,40,.16);}
+  .btn-danger:disabled{background:var(--gray-20); color:var(--gray-50); border-color:var(--gray-30); cursor:not-allowed;}
   .btn-danger svg{width:1rem; height:1rem; flex:0 0 auto;}
-  .btn-danger--dim{background:var(--gray-20); color:var(--gray-50);}
+  .btn-danger--dim{background:var(--gray-20); color:var(--gray-50); border-color:var(--gray-30);}
   .btn-danger--dim svg{opacity:.5;}
 
   /* Expand arrow button — left of community name for merged rows */

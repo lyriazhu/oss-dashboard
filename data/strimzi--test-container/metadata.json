@@ -1,0 +1,49 @@
+{
+  "name": "test-container",
+  "full_name": "strimzi/test-container",
+  "description": "Strimzi Test container for unit and integration tests",
+  "created_at": "2021-09-09T19:32:40+00:00",
+  "updated_at": "2026-07-08T08:01:05+00:00",
+  "stars": 17,
+  "forks": 23,
+  "watchers": 17,
+  "open_issues": 15,
+  "language": "Java",
+  "topics": [
+    "hacktoberfest",
+    "kafka",
+    "kafka-connect"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 21,
+      "percentage": 63.64
+    },
+    {
+      "company": "Red Hat",
+      "commits": 6,
+      "percentage": 18.18
+    },
+    {
+      "company": "Trend Micro",
+      "commits": 4,
+      "percentage": 12.12
+    },
+    {
+      "company": "Line",
+      "commits": 1,
+      "percentage": 3.03
+    },
+    {
+      "company": "Blablacar",
+      "commits": 1,
+      "percentage": 3.03
+    }
+  ],
+  "extracted_at": "2026-07-16T15:17:13.912679"
+}

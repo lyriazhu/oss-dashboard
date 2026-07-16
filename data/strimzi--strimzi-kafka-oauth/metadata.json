@@ -1,0 +1,45 @@
+{
+  "name": "strimzi-kafka-oauth",
+  "full_name": "strimzi/strimzi-kafka-oauth",
+  "description": "OAuth2 support for Apache Kafka\u00ae to work with many OAuth2 authorization servers",
+  "created_at": "2019-09-02T13:00:52+00:00",
+  "updated_at": "2026-07-09T07:17:25+00:00",
+  "stars": 172,
+  "forks": 108,
+  "watchers": 172,
+  "open_issues": 43,
+  "language": "Java",
+  "topics": [
+    "kafka",
+    "kubernetes",
+    "oauth",
+    "hacktoberfest"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 21,
+      "percentage": 84.0
+    },
+    {
+      "company": "Red Hat",
+      "commits": 2,
+      "percentage": 8.0
+    },
+    {
+      "company": "Infuze Consulting",
+      "commits": 1,
+      "percentage": 4.0
+    },
+    {
+      "company": "Goto",
+      "commits": 1,
+      "percentage": 4.0
+    }
+  ],
+  "extracted_at": "2026-07-16T14:56:38.533160"
+}

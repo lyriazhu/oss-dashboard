@@ -1,0 +1,177 @@
+{
+  "total_commits": 100,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 12,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 13,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 9,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 13,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 4,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 10,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 11,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 4,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 11,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 6,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 13
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "jkalinic",
+      "name": "jkalinic",
+      "company": "Unknown",
+      "location": null,
+      "email": "jkalinic@redhat.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "haifengc@twitter.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "David Kornel",
+      "name": "David Kornel",
+      "company": "Unknown",
+      "location": null,
+      "email": "kornys@outlook.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "hchen@x.ai",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T15:01:45.613416",
+  "years": [
+    {
+      "year": 2020,
+      "commit_count": 161,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "commit_count": 139,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "commit_count": 168,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "commit_count": 249,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "commit_count": 371,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 420,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "commit_count": 317,
+      "is_current": true
+    }
+  ]
+}

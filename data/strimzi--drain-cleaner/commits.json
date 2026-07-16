@@ -1,0 +1,577 @@
+{
+  "total_commits": 79,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 7,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 9,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 12,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 4,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 7,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 7,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 6,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 10,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 232
+    },
+    {
+      "login": "Lukas Kral",
+      "name": "Lukas Kral",
+      "company": "Unknown",
+      "location": null,
+      "email": "lukywill16@gmail.com",
+      "profile_url": null,
+      "commit_count": 58
+    },
+    {
+      "login": "Jakub Stejskal",
+      "name": "Jakub Stejskal",
+      "company": "Unknown",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "profile_url": null,
+      "commit_count": 43
+    },
+    {
+      "login": "Luk\u00e1\u0161 Kr\u00e1l",
+      "name": "Luk\u00e1\u0161 Kr\u00e1l",
+      "company": "Unknown",
+      "location": null,
+      "email": "53821852+im-konge@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 23
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 21
+    },
+    {
+      "login": "shazaaldawamneh",
+      "name": "shazaaldawamneh",
+      "company": "Unknown",
+      "location": null,
+      "email": "shaza.aldawamneh@hotmail.com",
+      "profile_url": null,
+      "commit_count": 17
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "ppatierno@live.com",
+      "profile_url": null,
+      "commit_count": 12
+    },
+    {
+      "login": "Roman Melnyk",
+      "name": "Roman Melnyk",
+      "company": "Unknown",
+      "location": null,
+      "email": "aywengo@gmail.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "njohnstone",
+      "name": "njohnstone",
+      "company": "Unknown",
+      "location": null,
+      "email": "nelson.johnstone1@gmail.com",
+      "profile_url": null,
+      "commit_count": 8
+    },
+    {
+      "login": "Federico Valeri",
+      "name": "Federico Valeri",
+      "company": "Unknown",
+      "location": null,
+      "email": "fedevaleri@gmail.com",
+      "profile_url": null,
+      "commit_count": 8
+    },
+    {
+      "login": "Sebastian Gaiser",
+      "name": "Sebastian Gaiser",
+      "company": "Unknown",
+      "location": null,
+      "email": "sebastiangaiser@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Federico Valeri",
+      "name": "Federico Valeri",
+      "company": "Unknown",
+      "location": null,
+      "email": "fvaleri@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "devzizu",
+      "name": "devzizu",
+      "company": "Unknown",
+      "location": null,
+      "email": "jazevedo960@gmail.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Beno\u00eet Soenen",
+      "name": "Beno\u00eet Soenen",
+      "company": "Unknown",
+      "location": null,
+      "email": "bsoenen@talend.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Jan Kalinic",
+      "name": "Jan Kalinic",
+      "company": "Unknown",
+      "location": null,
+      "email": "jkalinic@redhat.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Floris Feddema",
+      "name": "Floris Feddema",
+      "company": "Unknown",
+      "location": null,
+      "email": "floris1996@hotmail.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tombentley@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "haifengc@twitter.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Jens Loe",
+      "name": "Jens Loe",
+      "company": "Unknown",
+      "location": null,
+      "email": "jens.loe@nhn.no",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Michael Edgar",
+      "name": "Michael Edgar",
+      "company": "Unknown",
+      "location": null,
+      "email": "medgar@redhat.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Vanessa Busch",
+      "name": "Vanessa Busch",
+      "company": "Unknown",
+      "location": null,
+      "email": "vbusch@redhat.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Owen",
+      "name": "Owen",
+      "company": "Unknown",
+      "location": null,
+      "email": "owencorrigan76@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Raj Saxena",
+      "name": "Raj Saxena",
+      "company": "Unknown",
+      "location": null,
+      "email": "raj-saxena@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tbentley@redhat.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Haifeng Chen",
+      "name": "Haifeng Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "hchen@x.ai",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Pablo D\u00edaz-L\u00f3pez",
+      "name": "Pablo D\u00edaz-L\u00f3pez",
+      "company": "Unknown",
+      "location": null,
+      "email": "padilo@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Roman Melnyk",
+      "name": "Roman Melnyk",
+      "company": "Unknown",
+      "location": null,
+      "email": "aywengo@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Vince-Chenal",
+      "name": "Vince-Chenal",
+      "company": "Unknown",
+      "location": null,
+      "email": "vincent.chenal@protonmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "remi",
+      "name": "remi",
+      "company": "Unknown",
+      "location": null,
+      "email": "130450441+remilibon@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Pablo Redondo",
+      "name": "Pablo Redondo",
+      "company": "Unknown",
+      "location": null,
+      "email": "pre@corti.ai",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Raj",
+      "name": "Raj",
+      "company": "Unknown",
+      "location": null,
+      "email": "the.raj.saxena@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Eliot Hautefeuille",
+      "name": "Eliot Hautefeuille",
+      "company": "Unknown",
+      "location": null,
+      "email": "9357150+hileef@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "bsoenen",
+      "name": "bsoenen",
+      "company": "Unknown",
+      "location": null,
+      "email": "129837281+bsoenen@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Alex Kennedy",
+      "name": "Alex Kennedy",
+      "company": "Unknown",
+      "location": null,
+      "email": "alexzanderkennedy@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Viktor Utkin",
+      "name": "Viktor Utkin",
+      "company": "Unknown",
+      "location": null,
+      "email": "vutkin@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Mihkel Selgal",
+      "name": "Mihkel Selgal",
+      "company": "Unknown",
+      "location": null,
+      "email": "mihkel.selgal@dynatrace.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Jo\u00e3o Azevedo",
+      "name": "Jo\u00e3o Azevedo",
+      "company": "Unknown",
+      "location": null,
+      "email": "47277541+devzizu@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Michael Edgar",
+      "name": "Michael Edgar",
+      "company": "Unknown",
+      "location": null,
+      "email": "michael@xlate.io",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Fabien Thouny",
+      "name": "Fabien Thouny",
+      "company": "Unknown",
+      "location": null,
+      "email": "fthouny@libon.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Katherine Stanley",
+      "name": "Katherine Stanley",
+      "company": "Unknown",
+      "location": null,
+      "email": "11195226+katheris@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Pablo Redondo",
+      "name": "Pablo Redondo",
+      "company": "Unknown",
+      "location": null,
+      "email": "52634018+almightykid@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Owen Corrigan",
+      "name": "Owen Corrigan",
+      "company": "Unknown",
+      "location": null,
+      "email": "76431349+owencorrigan76@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Eliot Hautefeuille",
+      "name": "Eliot Hautefeuille",
+      "company": "Unknown",
+      "location": null,
+      "email": "eliot.hautefeuille@contentsquare.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "ShazaAldawamneh",
+      "name": "ShazaAldawamneh",
+      "company": "Unknown",
+      "location": null,
+      "email": "93832255+shazaaldawamneh@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Viktor Utkin",
+      "name": "Viktor Utkin",
+      "company": "Unknown",
+      "location": null,
+      "email": "viktor.utkin@ah.nl",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Nelson",
+      "name": "Nelson",
+      "company": "Unknown",
+      "location": null,
+      "email": "93178586+njohnstone2@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Ors\u00e1k Maro\u0161",
+      "name": "Ors\u00e1k Maro\u0161",
+      "company": "Unknown",
+      "location": null,
+      "email": "30839163+see-quick@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "morsak",
+      "name": "morsak",
+      "company": "Unknown",
+      "location": null,
+      "email": "xorsak02@stud.fit.vutbr.cz",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Shubham Rawat",
+      "name": "Shubham Rawat",
+      "company": "Unknown",
+      "location": null,
+      "email": "40595489+shubhamrwt@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "ShubhamRwt",
+      "name": "ShubhamRwt",
+      "company": "Unknown",
+      "location": null,
+      "email": "srawat@redhat.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Ales Justin",
+      "name": "Ales Justin",
+      "company": "Unknown",
+      "location": null,
+      "email": "ales.justin@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T15:14:37.295105",
+  "years": [
+    {
+      "year": 2021,
+      "commit_count": 122,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "commit_count": 49,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "commit_count": 116,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "commit_count": 82,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 87,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "commit_count": 76,
+      "is_current": true
+    }
+  ]
+}

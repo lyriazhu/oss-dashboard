@@ -1,0 +1,25 @@
+{
+  "name": "github-actions",
+  "full_name": "strimzi/github-actions",
+  "description": "GitHub Actions used within Strimzi project",
+  "created_at": "2026-02-01T18:34:00+00:00",
+  "updated_at": "2026-07-14T13:20:14+00:00",
+  "stars": 2,
+  "forks": 2,
+  "watchers": 2,
+  "open_issues": 2,
+  "language": null,
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 31,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T15:24:31.310272"
+}

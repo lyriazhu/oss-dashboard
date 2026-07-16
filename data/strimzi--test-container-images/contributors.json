@@ -1,0 +1,572 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2021,
+      "contributor_count": 4,
+      "is_current": false,
+      "contributor_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "kun.lu@ibm.com",
+        "www@scholzj.com",
+        "xorsak02@stud.fit.vutbr.cz"
+      ]
+    },
+    {
+      "year": 2022,
+      "contributor_count": 7,
+      "is_current": false,
+      "contributor_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "37098620+abhijit-mane@users.noreply.github.com",
+        "abhijman@in.ibm.com",
+        "kun.lu@ibm.com",
+        "tombentley@users.noreply.github.com",
+        "www@scholzj.com",
+        "xorsak02@stud.fit.vutbr.cz"
+      ]
+    },
+    {
+      "year": 2023,
+      "contributor_count": 2,
+      "is_current": false,
+      "contributor_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "year": 2024,
+      "contributor_count": 3,
+      "is_current": false,
+      "contributor_logins": [
+        "jondruse@redhat.com",
+        "maros.orsak159@gmail.com",
+        "ondrusek.jiri@gmail.com"
+      ]
+    },
+    {
+      "year": 2025,
+      "contributor_count": 1,
+      "is_current": false,
+      "contributor_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "year": 2026,
+      "contributor_count": 6,
+      "is_current": true,
+      "contributor_logins": [
+        "42037371+guancioul@users.noreply.github.com",
+        "bboyleonp@gmail.com",
+        "guancioul@gmail.com",
+        "maros.orsak159@gmail.com",
+        "s7133700@gmail.com",
+        "xstejs24@gmail.com"
+      ]
+    }
+  ],
+  "total_contributors": 15,
+  "total_contributors_git": 15,
+  "contributors": [
+    {
+      "login": "see-quick",
+      "name": "Maros Orsak",
+      "company": "Unknown",
+      "location": null,
+      "email": "maros.orsak159@gmail.com",
+      "contributions": 43,
+      "profile_url": "https://github.com/see-quick"
+    },
+    {
+      "login": "Frawless",
+      "name": "Jakub Stejskal",
+      "company": "Ibm",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "contributions": 4,
+      "profile_url": "https://github.com/Frawless"
+    },
+    {
+      "login": "bboyleonp666",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/bboyleonp666"
+    },
+    {
+      "login": "scholzj",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": "Prague, Czech Republic",
+      "email": "github@scholzj.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/scholzj"
+    },
+    {
+      "login": "Abhijit-Mane",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/Abhijit-Mane"
+    },
+    {
+      "login": "JiriOndrusek",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": "ondrusek.jiri@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/JiriOndrusek"
+    },
+    {
+      "login": "m1a2st",
+      "name": "Ken Huang",
+      "company": "Line",
+      "location": "Taipei",
+      "email": "s7133700@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/m1a2st"
+    },
+    {
+      "login": "guancioul",
+      "name": "Kuan-Hao (Michael) Lai",
+      "company": "Trend Micro",
+      "location": "Taipei, Taiwan",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/guancioul"
+    },
+    {
+      "login": "kun-lu20",
+      "name": "Kun Lu",
+      "company": "Ibm",
+      "location": "8200 Warden Ave, Unionville, ON L6G 1C7",
+      "email": "kun.lu@ibm.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/kun-lu20"
+    },
+    {
+      "login": "tombentley",
+      "name": "Tom Bentley",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/tombentley"
+    }
+  ],
+  "total_contributors_github_api": 10,
+  "companies": {
+    "Unknown": 5,
+    "Ibm": 3,
+    "Line": 1,
+    "Trend Micro": 1
+  },
+  "total_companies": 4,
+  "company_diversity": {
+    "known_company_contributors": 5,
+    "unknown_company_contributors": 5,
+    "top_companies": [
+      {
+        "company": "Unknown",
+        "contributor_count": 5
+      },
+      {
+        "company": "Ibm",
+        "contributor_count": 3
+      },
+      {
+        "company": "Line",
+        "contributor_count": 1
+      },
+      {
+        "company": "Trend Micro",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com",
+        "ondrusek.jiri@gmail.com"
+      ],
+      "new_logins": [
+        "ondrusek.jiri@gmail.com"
+      ],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "jondruse@redhat.com",
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [
+        "jondruse@redhat.com"
+      ],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 3,
+      "returning_contributors": 1,
+      "retention_rate": 25.0,
+      "active_logins": [
+        "42037371+guancioul@users.noreply.github.com",
+        "guancioul@gmail.com",
+        "maros.orsak159@gmail.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "42037371+guancioul@users.noreply.github.com",
+        "guancioul@gmail.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 2,
+      "returning_contributors": 1,
+      "retention_rate": 33.33,
+      "active_logins": [
+        "bboyleonp@gmail.com",
+        "maros.orsak159@gmail.com",
+        "s7133700@gmail.com"
+      ],
+      "new_logins": [
+        "bboyleonp@gmail.com",
+        "s7133700@gmail.com"
+      ],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 4,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false,
+      "active_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "kun.lu@ibm.com",
+        "www@scholzj.com",
+        "xorsak02@stud.fit.vutbr.cz"
+      ],
+      "new_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "kun.lu@ibm.com",
+        "www@scholzj.com",
+        "xorsak02@stud.fit.vutbr.cz"
+      ],
+      "returning_logins": []
+    },
+    {
+      "period": "2022",
+      "period_type": "year",
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2023-01-01T00:00:00",
+      "active_contributors": 7,
+      "new_contributors": 3,
+      "returning_contributors": 4,
+      "retention_rate": 57.14,
+      "is_current": false,
+      "active_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "37098620+abhijit-mane@users.noreply.github.com",
+        "abhijman@in.ibm.com",
+        "kun.lu@ibm.com",
+        "tombentley@users.noreply.github.com",
+        "www@scholzj.com",
+        "xorsak02@stud.fit.vutbr.cz"
+      ],
+      "new_logins": [
+        "37098620+abhijit-mane@users.noreply.github.com",
+        "abhijman@in.ibm.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "kun.lu@ibm.com",
+        "www@scholzj.com",
+        "xorsak02@stud.fit.vutbr.cz"
+      ]
+    },
+    {
+      "period": "2023",
+      "period_type": "year",
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0,
+      "is_current": false,
+      "active_logins": [
+        "30839163+see-quick@users.noreply.github.com",
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "returning_logins": [
+        "30839163+see-quick@users.noreply.github.com"
+      ]
+    },
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 2,
+      "returning_contributors": 1,
+      "retention_rate": 33.33,
+      "is_current": false,
+      "active_logins": [
+        "jondruse@redhat.com",
+        "maros.orsak159@gmail.com",
+        "ondrusek.jiri@gmail.com"
+      ],
+      "new_logins": [
+        "jondruse@redhat.com",
+        "ondrusek.jiri@gmail.com"
+      ],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "is_current": false,
+      "active_logins": [
+        "maros.orsak159@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 5,
+      "returning_contributors": 1,
+      "retention_rate": 16.67,
+      "is_current": true,
+      "active_logins": [
+        "42037371+guancioul@users.noreply.github.com",
+        "bboyleonp@gmail.com",
+        "guancioul@gmail.com",
+        "maros.orsak159@gmail.com",
+        "s7133700@gmail.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "42037371+guancioul@users.noreply.github.com",
+        "bboyleonp@gmail.com",
+        "guancioul@gmail.com",
+        "s7133700@gmail.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": [
+        "maros.orsak159@gmail.com"
+      ]
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}

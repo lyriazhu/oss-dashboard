@@ -1,0 +1,32 @@
+{
+  "name": "metrics-reporter",
+  "full_name": "strimzi/metrics-reporter",
+  "description": "Prometheus Metrics Reporter for Apache Kafka server and client components",
+  "created_at": "2024-01-30T13:42:36+00:00",
+  "updated_at": "2026-07-15T22:59:08+00:00",
+  "stars": 21,
+  "forks": 14,
+  "watchers": 21,
+  "open_issues": 7,
+  "language": "Java",
+  "topics": [
+    "hacktoberfest"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 48,
+      "percentage": 85.71
+    },
+    {
+      "company": "Red Hat",
+      "commits": 8,
+      "percentage": 14.29
+    }
+  ],
+  "extracted_at": "2026-07-16T15:22:54.296990"
+}
