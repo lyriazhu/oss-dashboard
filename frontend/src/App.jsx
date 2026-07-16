@@ -421,23 +421,34 @@ export default function App() {
         const memberKeys = entry.memberKeys;
         const customName = entry.name   || null;
         const orgUrl     = entry.orgUrl || null;
-        // Skip if any member is not yet loaded (extraction may still be running)
-        if (!memberKeys.every((k) => newData[k])) continue;
 
-        // Re-derive a synthetic key from the member list so it never collides with
-        // a real backend project ID. Old records stored mergedKey = first member's
-        // project ID, which caused the first member to be deleted from newData and
-        // never restored on unmerge. The synthetic key avoids that collision.
+        // Only include members that have already finished loading (extraction may
+        // still be running for newly-added repos).  As long as at least one member
+        // is ready we can render a partial merge; the rest will be folded in on the
+        // next loadProjects call once their extraction completes.
+        const availableKeys = memberKeys.filter((k) => newData[k]);
+        if (availableKeys.length === 0) continue;
+
+        // Re-derive a synthetic key from the FULL member list so it never collides
+        // with a real backend project ID and stays stable across partial/full loads.
+        // Old records stored mergedKey = first member's project ID, which caused the
+        // first member to be deleted from newData and never restored on unmerge.
         const mergedKey = '__merged__' + memberKeys.join('__');
 
-        const flatEntries = memberKeys.map((k) => ({ key: k, data: newData[k] }));
+        const flatEntries = availableKeys.map((k) => ({ key: k, data: newData[k] }));
         const merged = buildMergedEntry(flatEntries, { customName, orgUrl });
+        // When only a subset of members is available (others still extracting), store
+        // the full intended member key list so persistMerges can write the correct
+        // record to merges.json even before all repos have finished loading.
+        if (availableKeys.length < memberKeys.length) {
+          merged._allMemberKeys = memberKeys;
+        }
 
-        memberKeys.forEach((k) => delete newData[k]);
+        availableKeys.forEach((k) => delete newData[k]);
         newData[mergedKey] = merged;
-        const positions = memberKeys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
+        const positions = availableKeys.map((k) => newOrder.indexOf(k)).filter((i) => i >= 0);
         const insertIdx = positions.length > 0 ? Math.min(...positions) : newOrder.length;
-        newOrder = newOrder.filter((k) => !memberKeys.includes(k));
+        newOrder = newOrder.filter((k) => !availableKeys.includes(k));
         newOrder.splice(insertIdx, 0, mergedKey);
       }
       return { projectData: newData, projectOrder: newOrder };
@@ -529,10 +540,14 @@ export default function App() {
     const mergeRecords = [];
     Object.entries(newData).forEach(([key, d]) => {
       if (d._mergedFrom) {
+        // Use _allMemberKeys when present — this is set for partial merges where some
+        // repos haven't finished extracting yet.  It preserves the full intended member
+        // list in merges.json so the complete group is restored once all repos load.
+        const memberKeys = d._allMemberKeys || d._mergedFrom.map((e) => e.key);
         const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
         mergeRecords.push({
           mergedKey: key,
-          memberKeys: d._mergedFrom.map((e) => e.key),
+          memberKeys,
           name: d.name !== defaultName ? d.name : null,
         });
       }
