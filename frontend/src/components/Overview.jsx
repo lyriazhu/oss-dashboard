@@ -270,6 +270,7 @@ function InlineEdit({ value, field, projectId, onSave, active, onDeactivate, onC
 function CommunityRow({
   rowKey, d, o, isSelected, rowClass, selectMode,
   onSelect, onSelectToggle, onUpdateProject, onUnmerge, onRemoveFromMerge,
+  sortCol, sortDir,
 }) {
   const [activeEdit, setActiveEdit] = useState(null); // null | "name" | "foundation"
   const [expanded, setExpanded] = useState(false);
@@ -448,8 +449,25 @@ function CommunityRow({
         )}
       </tr>
 
-      {/* Expanded sub-rows for each repo in a merged entry */}
-      {isMerged && expanded && d._mergedFrom.map(({ key: repoKey, data: repo }) => (
+      {/* Expanded sub-rows for each repo in a merged entry — sorted by the active column */}
+      {isMerged && expanded && [...d._mergedFrom].sort((a, b) => {
+        const ra = a.data, rb = b.data;
+        const pn = (v) => parseInt(String(v ?? '').replace(/[^0-9]/g, ''), 10) || 0;
+        let cmp = 0;
+        switch (sortCol) {
+          case 'name':                cmp = ra.name.localeCompare(rb.name); break;
+          case 'foundation':          cmp = (ra.ov?.foundation || '').localeCompare(rb.ov?.foundation || ''); break;
+          case 'repo':                cmp = (ra.repoUrl || '').localeCompare(rb.repoUrl || ''); break;
+          case 'contributorsYtd':     cmp = pn(ra.ov?.contributorsYtd)     - pn(rb.ov?.contributorsYtd);     break;
+          case 'contributorsAllTime': cmp = pn(ra.ov?.contributorsAllTime) - pn(rb.ov?.contributorsAllTime); break;
+          case 'commits':             cmp = pn(ra.ov?.commits)             - pn(rb.ov?.commits);             break;
+          case 'commitsAllTime':      cmp = pn(ra.ov?.commitsAllTime)      - pn(rb.ov?.commitsAllTime);      break;
+          case 'stars':               cmp = pn(ra.ov?.stars)               - pn(rb.ov?.stars);               break;
+          case 'status':              cmp = (ra.status?.label || '').localeCompare(rb.status?.label || '');   break;
+          default: break;
+        }
+        return sortDir === 'asc' ? cmp : -cmp;
+      }).map(({ key: repoKey, data: repo }) => (
         <tr key={repoKey} className="merged-sub-row" style={{ cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); onSelect(repoKey, repo); }}>
           {selectMode && <td className="chk-cell" />}
           <td className="strong">
@@ -763,6 +781,8 @@ export default function Overview({
                     onUpdateProject={onUpdateProject}
                     onUnmerge={onUnmerge}
                     onRemoveFromMerge={onRemoveFromMerge}
+                    sortCol={sortCol}
+                    sortDir={sortDir}
                   />
                 );
               })}
