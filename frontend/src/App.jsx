@@ -137,7 +137,9 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
       const existing = map.get(label) || { ...entry, [vKey]: 0 };
       map.set(label, { ...existing, [vKey]: (existing[vKey] || 0) + (entry[vKey] || 0) });
     });
-    return [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+    const sorted = [...map.values()].sort((a, b) => String(a[yKey]).localeCompare(String(b[yKey])));
+    // Mark only the last (most recent) entry as current — never inherit from individual repos
+    return sorted.map((e, idx) => ({ ...e, c: idx === sorted.length - 1 }));
   }
   function mergeYearlyRetention(arrays) {
     const map = new Map();
