@@ -1,0 +1,25 @@
+{
+  "name": "kroxylicious-community-gallery",
+  "full_name": "kroxylicious/kroxylicious-community-gallery",
+  "description": "A gallery of community-built filters for Kroxylicious.",
+  "created_at": "2024-01-25T02:56:24+00:00",
+  "updated_at": "2026-02-26T22:28:47+00:00",
+  "stars": 1,
+  "forks": 3,
+  "watchers": 1,
+  "open_issues": 0,
+  "language": null,
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 20,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T12:42:55.897628"
+}

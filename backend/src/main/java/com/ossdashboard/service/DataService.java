@@ -149,23 +149,26 @@ public class DataService {
     }
 
     /**
-     * Return the data directory name for a project.
-     * Prefers the `data_dir` field stored in projects.json (set on add/rename).
-     * Falls back to the legacy hardcoded map so existing projects keep working
-     * before they are migrated (i.e. their data_dir field is populated).
-     */
-    /**
      * Derive a data directory name purely from a project ID, without reading projects.json.
-     * Handles legacy IDs whose directory name differs from the repo slug.
+     * Format: owner--repo, consistent with org-discovered repos.
      */
     private String deriveDataDir(String projectId) {
+        // For projects that already exist in projects.json with a data_dir field,
+        // getProjectDirectoryName() returns that value directly and never reaches here.
+        // This map covers the initial-add path for known projects so the directory
+        // name is predictable even before the first extraction run.
+        // Format: owner--repo  (consistent with org-discovered repos).
         switch (projectId) {
-            case "strimzi-kafka-operator": return "strimzi";
-            case "camel":                  return "apache-camel";
-            case "artemis":                return "apache-artemis";
+            case "strimzi-kafka-operator": return "strimzi--strimzi-kafka-operator";
+            case "camel":                  return "apache--camel";
+            case "artemis":                return "apache--artemis";
             case "apicurio-studio":
-            case "apicurio-registry":      return "apicurio";
-            case "console":                return "streamshub";
+            case "apicurio-registry":      return "apicurio--apicurio-registry";
+            case "keycloak":               return "keycloak--keycloak";
+            case "debezium":               return "debezium--debezium";
+            case "wildfly":                return "wildfly--wildfly";
+            case "quarkus":                return "quarkusio--quarkus";
+            case "tomcat":                 return "apache--tomcat";
             default: return projectId.toLowerCase().replace("_", "-");
         }
     }

@@ -1,0 +1,23 @@
+{
+  "contributors": {
+    "known_logins": [
+      "dependabot[bot]",
+      "franvila",
+      "k-wall",
+      "robobario"
+    ],
+    "last_extracted_at": "2026-07-16T12:43:47.873772"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T12:43:54.326447"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T12:44:17.350838"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T12:44:05.968759"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T12:44:19.131786"
+  }
+}

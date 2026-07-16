@@ -1,0 +1,329 @@
+{
+  "total_commits": 502,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 8,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 93,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 39,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 32,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 79,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 34,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 29,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 33,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 25,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 31,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 53,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 46,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "Sam Barker",
+      "name": "Sam Barker",
+      "company": "Unknown",
+      "location": null,
+      "email": "sam@quadrocket.co.uk",
+      "profile_url": null,
+      "commit_count": 193
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robertyoungnz@gmail.com",
+      "profile_url": null,
+      "commit_count": 120
+    },
+    {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@apache.org",
+      "profile_url": null,
+      "commit_count": 105
+    },
+    {
+      "login": "Grace Grimwood",
+      "name": "Grace Grimwood",
+      "company": "Unknown",
+      "location": null,
+      "email": "ggrimwoo@redhat.com",
+      "profile_url": null,
+      "commit_count": 98
+    },
+    {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@redhat.com",
+      "profile_url": null,
+      "commit_count": 79
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tbentley@redhat.com",
+      "profile_url": null,
+      "commit_count": 73
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robeyoun@redhat.com",
+      "profile_url": null,
+      "commit_count": 68
+    },
+    {
+      "login": "Sam Barker",
+      "name": "Sam Barker",
+      "company": "Unknown",
+      "location": null,
+      "email": "sbarker@redhat.com",
+      "profile_url": null,
+      "commit_count": 41
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 25
+    },
+    {
+      "login": "k-wall",
+      "name": "k-wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "18440250+k-wall@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 23
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tombentley@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 21
+    },
+    {
+      "login": "Grace Grimwood",
+      "name": "Grace Grimwood",
+      "company": "Unknown",
+      "location": null,
+      "email": "15976368+gracegrimwood@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 18
+    },
+    {
+      "login": "robobario",
+      "name": "robobario",
+      "company": "Unknown",
+      "location": null,
+      "email": "1667008+robobario@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 13
+    },
+    {
+      "login": "James Cobb",
+      "name": "James Cobb",
+      "company": "Unknown",
+      "location": null,
+      "email": "jcobb@redhat.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Piotr P\u0142aczek",
+      "name": "Piotr P\u0142aczek",
+      "company": "Unknown",
+      "location": null,
+      "email": "piotrpdev@gmail.com",
+      "profile_url": null,
+      "commit_count": 9
+    },
+    {
+      "login": "Kroxylicious Robot",
+      "name": "Kroxylicious Robot",
+      "company": "Unknown",
+      "location": null,
+      "email": "153509303+kroxylicious-robot@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "SamBarker",
+      "name": "SamBarker",
+      "company": "Unknown",
+      "location": null,
+      "email": "2833578+sambarker@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Gunnar Morling",
+      "name": "Gunnar Morling",
+      "company": "Unknown",
+      "location": null,
+      "email": "gunnar.morling@googlemail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Luke Chen",
+      "name": "Luke Chen",
+      "company": "Unknown",
+      "location": null,
+      "email": "showuon@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "ppatierno@live.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Rachel Ryan",
+      "name": "Rachel Ryan",
+      "company": "Unknown",
+      "location": null,
+      "email": "rachelryan.jpg@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Francisco Vila",
+      "name": "Francisco Vila",
+      "company": "Unknown",
+      "location": null,
+      "email": "57452611+franvila@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Jochen Schalanda",
+      "name": "Jochen Schalanda",
+      "company": "Unknown",
+      "location": null,
+      "email": "jochen@schalanda.name",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Rachel Ryan",
+      "name": "Rachel Ryan",
+      "company": "Unknown",
+      "location": null,
+      "email": "raryan@redhat.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T12:41:12.000904",
+  "years": [
+    {
+      "year": 2022,
+      "commit_count": 5,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "commit_count": 104,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "commit_count": 236,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 338,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "commit_count": 237,
+      "is_current": true
+    }
+  ]
+}

@@ -65,23 +65,29 @@ class GitHubDataExtractor:
         with open(path, 'w') as f:
             json.dump(data, f, indent=2)
 
-    def _project_dir(self, project_name: str, repo: str = None) -> Path:
+    def _project_dir(self, project_name: str, repo: str = None, owner: str = None) -> Path:
         """Return normalized project data directory.
 
         Priority:
         1. Existing data_dir from projects.json (stable across renames).
         2. Explicit name -> dir mapping (legacy overrides for non-obvious slugs).
-        3. repo slug lowercased.
+        3. repo slug lowercased (namespaced with owner for org repos).
         4. display name lowercased with spaces replaced by '-' (last resort).
         """
         # Check projects.json first — data_dir is frozen at project creation time
         # and must not change when the display name is updated.
-        # Match by repo-derived id when repo is known, otherwise fall back to name.
+        # For org repos, look up by the namespaced "owner--repo" ID first so that
+        # repos with the same name in different orgs resolve to the right directory.
         projects_file = self.data_dir / "projects.json"
         if projects_file.exists():
             try:
                 with open(projects_file) as f:
                     records = json.load(f).get("projects", [])
+                if repo and owner:
+                    namespaced_id = f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
+                    for p in records:
+                        if p.get("id") == namespaced_id and p.get("data_dir"):
+                            return self.data_dir / p["data_dir"]
                 if repo:
                     project_id = repo.lower().replace("_", "-")
                     for p in records:
@@ -96,19 +102,37 @@ class GitHubDataExtractor:
 
         # Explicit overrides for projects where display name != repo slug
         dir_name_map = {
-            "Strimzi":          "strimzi",
-            "Apache Camel":     "apache-camel",
-            "Apache Artemis":   "apache-artemis",
-            "Apicurio Registry":"apicurio",
-            # legacy repo-name keys kept for backward compatibility
-            "strimzi-kafka-operator": "strimzi",
-            "camel":            "apache-camel",
-            "artemis":          "apache-artemis",
-            "apicurio-registry":"apicurio",
+            # Keyed by display name or repo slug -> owner--repo directory name.
+            # Only needed for projects where _project_dir is called without owner=
+            # (e.g. single-repo extraction path).  All entries follow owner--repo format.
+            "Strimzi":                "strimzi--strimzi-kafka-operator",
+            "Apache Camel":           "apache--camel",
+            "Apache Artemis":         "apache--artemis",
+            "Apache Tomcat":          "apache--tomcat",
+            "Apicurio Registry":      "apicurio--apicurio-registry",
+            "Keycloak":               "keycloak--keycloak",
+            "Debezium":               "debezium--debezium",
+            "Quarkus":                "quarkusio--quarkus",
+            "Wildfly":                "wildfly--wildfly",
+            "3scale":                 "3scale--3scale-operator",
+            # repo-slug keys for callers that pass the repo name as project_name
+            "strimzi-kafka-operator": "strimzi--strimzi-kafka-operator",
+            "camel":                  "apache--camel",
+            "artemis":                "apache--artemis",
+            "tomcat":                 "apache--tomcat",
+            "apicurio-registry":      "apicurio--apicurio-registry",
+            "keycloak":               "keycloak--keycloak",
+            "debezium":               "debezium--debezium",
+            "quarkus":                "quarkusio--quarkus",
+            "wildfly":                "wildfly--wildfly",
+            "3scale-operator":        "3scale--3scale-operator",
         }
 
         if project_name in dir_name_map:
             return self.data_dir / dir_name_map[project_name]
+        if repo and owner:
+            # Namespaced fallback for org repos — avoids filesystem collisions
+            return self.data_dir / f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
         if repo:
             return self.data_dir / repo.lower().replace("_", "-")
         return self.data_dir / project_name.lower().replace(" ", "-")
@@ -708,10 +732,10 @@ class GitHubDataExtractor:
             "extracted_at": datetime.now().isoformat()
         }
     
-    def _compute_top_companies(self, project_name: str, repo: str = None) -> List[Dict[str, Any]]:
+    def _compute_top_companies(self, project_name: str, repo: str = None, owner: str = None) -> List[Dict[str, Any]]:
         """Compute top contributing companies from the saved contributors.json file."""
         contributors_data = self._load_json_file(
-            self._project_dir(project_name, repo=repo) / "contributors.json", {}
+            self._project_dir(project_name, repo=repo, owner=owner) / "contributors.json", {}
         )
         company_contribution_counts: Dict[str, int] = defaultdict(int)
         for contributor in contributors_data.get("contributors", []):
@@ -737,19 +761,19 @@ class GitHubDataExtractor:
             )[:10]
         ]
 
-    def refresh_metadata_companies(self, project_name: str, repo: str = None) -> bool:
+    def refresh_metadata_companies(self, project_name: str, repo: str = None, owner: str = None) -> bool:
         """Patch the saved metadata.json with fresh top_contributing_companies from contributors.json.
 
         Called after extract_contributors so the company data is always up to date.
         Returns True if metadata was updated, False otherwise.
         """
-        meta_path = self._project_dir(project_name, repo=repo) / "metadata.json"
+        meta_path = self._project_dir(project_name, repo=repo, owner=owner) / "metadata.json"
         if not meta_path.exists():
             return False
         metadata = self._load_json_file(meta_path, {})
         if not metadata:
             return False
-        top_companies = self._compute_top_companies(project_name, repo=repo)
+        top_companies = self._compute_top_companies(project_name, repo=repo, owner=owner)
         metadata["top_contributing_companies"] = top_companies
         self._save_json_file(meta_path, metadata)
         print(f"  ✓ Updated top_contributing_companies ({len(top_companies)} companies)")
@@ -2116,9 +2140,9 @@ class GitHubDataExtractor:
             result["source"] = adopters_file_url
         return result
 
-    def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str, repo: str = None):
+    def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str, repo: str = None, owner: str = None):
         """Save extracted data to JSON file"""
-        project_dir = self._project_dir(project_name, repo=repo)
+        project_dir = self._project_dir(project_name, repo=repo, owner=owner)
         project_dir.mkdir(exist_ok=True)
         
         output_file = project_dir / f"{data_type}.json"

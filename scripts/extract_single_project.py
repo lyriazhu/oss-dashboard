@@ -43,7 +43,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     try:
         metadata = extractor.extract_project_metadata(owner, repo, project_name=project_name)
         if metadata:
-            extractor.save_project_data(project_name, metadata, "metadata", repo=repo)
+            extractor.save_project_data(project_name, metadata, "metadata", repo=repo, owner=owner)
             extraction_status["metadata"] = True
             project_created_at = datetime.fromisoformat(metadata['created_at'].replace('+00:00', ''))
     except Exception as e:
@@ -53,9 +53,9 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     try:
         contributors = extractor.extract_contributors(owner, repo, project_name)
         if contributors:
-            extractor.save_project_data(project_name, contributors, "contributors", repo=repo)
+            extractor.save_project_data(project_name, contributors, "contributors", repo=repo, owner=owner)
             extraction_status["contributors"] = True
-            extractor.refresh_metadata_companies(project_name, repo=repo)
+            extractor.refresh_metadata_companies(project_name, repo=repo, owner=owner)
     except Exception as e:
         print(f"⚠️  Warning: Contributors extraction failed: {e}")
 
@@ -63,7 +63,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     try:
         commits = extractor.extract_commits(owner, repo, project_name)
         if commits:
-            extractor.save_project_data(project_name, commits, "commits", repo=repo)
+            extractor.save_project_data(project_name, commits, "commits", repo=repo, owner=owner)
             extraction_status["commits"] = True
     except Exception as e:
         print(f"⚠️  Warning: Commits extraction failed: {e}")
@@ -93,7 +93,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
             if project_created_at:
                 issues = extractor.extract_issues(issue_repos, project_created_at, project_name)
                 if issues:
-                    extractor.save_project_data(project_name, issues, "issues", repo=repo)
+                    extractor.save_project_data(project_name, issues, "issues", repo=repo, owner=owner)
                     extraction_status["issues"] = True
             else:
                 print(f"⚠️  Warning: Cannot extract issues - metadata not available")
@@ -105,7 +105,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
         if project_created_at:
             pull_requests = extractor.extract_pull_requests(repos, project_created_at, project_name)
             if pull_requests:
-                extractor.save_project_data(project_name, pull_requests, "pull_requests", repo=repo)
+                extractor.save_project_data(project_name, pull_requests, "pull_requests", repo=repo, owner=owner)
                 extraction_status["pull_requests"] = True
         else:
             print(f"⚠️  Warning: Cannot extract pull requests - metadata not available")
@@ -116,7 +116,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     try:
         releases = extractor.extract_releases(owner, repo, project_name)
         if releases:
-            extractor.save_project_data(project_name, releases, "releases", repo=repo)
+            extractor.save_project_data(project_name, releases, "releases", repo=repo, owner=owner)
             extraction_status["releases"] = True
     except Exception as e:
         print(f"⚠️  Warning: Releases extraction failed: {e}")
@@ -124,7 +124,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     # Adopters
     try:
         adopters = extractor.extract_adopters(owner, repo, project_name)
-        extractor.save_project_data(project_name, adopters, "adopters", repo=repo)
+        extractor.save_project_data(project_name, adopters, "adopters", repo=repo, owner=owner)
         extraction_status["adopters"] = True
     except Exception as e:
         print(f"⚠️  Warning: Adopters extraction failed: {e}")
@@ -150,6 +150,19 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     return extraction_status
 
 
+def _org_repo_project_id(owner: str, repo: str) -> str:
+    """Return the namespaced project ID for an org-discovered repo.
+
+    Format: "<owner>--<repo-slug>" — the double dash is an illegal GitHub
+    owner/repo separator so it can never collide with a real org or repo name.
+    Both parts are lowercased and underscores are replaced with hyphens to
+    match the convention used for single-repo project IDs.
+    """
+    owner_slug = owner.lower().replace("_", "-")
+    repo_slug  = repo.lower().replace("_", "-")
+    return f"{owner_slug}--{repo_slug}"
+
+
 def _register_repo_in_projects_json(extractor, owner, repo, org_project):
     """Add (or update) a per-repo entry in data/projects.json.
 
@@ -166,9 +179,12 @@ def _register_repo_in_projects_json(extractor, owner, repo, org_project):
 
     existing = {p["id"]: p for p in root.get("projects", [])}
 
-    project_id = repo.lower().replace("_", "-")
-    repo_dir = extractor._project_dir(repo, repo=repo)
-    data_dir_name = repo_dir.name
+    # Namespace the ID with the org owner so repos with the same name in
+    # different orgs (e.g. streamshub/.github and kroxylicious/.github) never
+    # collide.  Format: "owner--repo-slug".
+    project_id   = _org_repo_project_id(owner, repo)
+    # Data directory is also namespaced to avoid filesystem collisions.
+    data_dir_name = f"{owner.lower()}--{repo.lower().replace('_', '-')}"
 
     record = dict(existing.get(project_id, {}))
     record.update({
@@ -208,8 +224,9 @@ def _register_org_merge(extractor, owner, project_name, repo_names):
     except (OSError, json.JSONDecodeError):
         root = {"merges": []}
 
-    # Each memberKey matches the project_id written by _register_repo_in_projects_json
-    member_keys = [r.lower().replace("_", "-") for r in repo_names]
+    # Each memberKey must match the namespaced project_id written by
+    # _register_repo_in_projects_json — "owner--repo-slug".
+    member_keys = [_org_repo_project_id(owner, r) for r in repo_names]
     merged_key = owner.lower().replace("_", "-")
     org_url = f"https://github.com/{owner}"
 

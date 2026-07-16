@@ -1,0 +1,147 @@
+{
+  "total_releases": 28,
+  "recent_releases": [
+    {
+      "tag_name": "api-v0.1.0",
+      "name": "Kroxylicious API 0.1.0",
+      "published_at": "2023-03-27T02:31:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.1.0",
+      "name": "Kroxylicious Framework release v0.1.0",
+      "published_at": "2023-03-27T02:35:10+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.2.0",
+      "name": "Release 0.2.0",
+      "published_at": "2023-06-07T04:26:56+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.3.0",
+      "name": "Release 0.3.0",
+      "published_at": "2023-10-24T12:52:48+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.4.0",
+      "name": "v0.4.0",
+      "published_at": "2023-12-14T12:29:26+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.4.1",
+      "name": "v0.4.1",
+      "published_at": "2024-01-12T04:05:16+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.5.0",
+      "name": "v0.5.0",
+      "published_at": "2024-03-13T02:28:01+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.5.1",
+      "name": "v0.5.1",
+      "published_at": "2024-04-09T20:20:40+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.6.0",
+      "name": "v0.6.0",
+      "published_at": "2024-06-07T13:13:42+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.7.0",
+      "name": "v0.7.0",
+      "published_at": "2024-08-20T14:15:23+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.8.0",
+      "name": "v0.8.0",
+      "published_at": "2024-08-29T04:15:24+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.9.0",
+      "name": "v0.9.0",
+      "published_at": "2024-12-17T12:29:34+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.10.0",
+      "name": "v0.10.0",
+      "published_at": "2025-01-30T03:56:49+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.11.0",
+      "name": "v0.11.0",
+      "published_at": "2025-03-17T12:43:56+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.12.0",
+      "name": "v0.12.0",
+      "published_at": "2025-05-09T09:08:28+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.13.0",
+      "name": "v0.13.0",
+      "published_at": "2025-06-23T08:12:08+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.14.0",
+      "name": "v0.14.0",
+      "published_at": "2025-08-08T02:50:21+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.15.0",
+      "name": "v0.15.0",
+      "published_at": "2025-08-18T04:42:45+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.16.0",
+      "name": "v0.16.0",
+      "published_at": "2025-10-01T14:37:20+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.17.0",
+      "name": "v0.17.0",
+      "published_at": "2025-10-28T16:53:32+00:00",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "median_days_between_releases": 45,
+  "extracted_at": "2026-07-16T12:38:02.533217"
+}

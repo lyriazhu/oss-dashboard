@@ -1,0 +1,28 @@
+{
+  "total_adopters": 3,
+  "adopters": [
+    {
+      "name": "Confluent",
+      "type": "kroxylicious adopters",
+      "description": "",
+      "since": "",
+      "url": "https://www.confluent.io/"
+    },
+    {
+      "name": "Red Hat",
+      "type": "kroxylicious adopters",
+      "description": "",
+      "since": "",
+      "url": "https://access.redhat.com/products/streams-apache-kafka/"
+    },
+    {
+      "name": "Shopify",
+      "type": "kroxylicious adopters",
+      "description": "",
+      "since": "",
+      "url": "https://www.shopify.com/"
+    }
+  ],
+  "extracted_at": "2026-07-16T12:38:03.387143",
+  "source": "https://github.com/kroxylicious/kroxylicious/blob/main/ADOPTERS.md"
+}

@@ -1,0 +1,24 @@
+{
+  "contributors": {
+    "known_logins": [
+      "FrankYang0529",
+      "SamBarker",
+      "k-wall",
+      "robobario",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T12:42:09.160295"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T12:42:15.542077"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T12:42:47.609689"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T12:42:36.299466"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T12:42:49.572245"
+  }
+}
