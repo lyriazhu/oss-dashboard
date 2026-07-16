@@ -503,6 +503,7 @@
     border-radius:.125rem;
     opacity:0;
   }
+  .btn-expand-arrow{ opacity:.65; }
   .btn-expand-arrow--open{ opacity:1; transform:rotate(90deg); }
   tr:hover .btn-expand-arrow{ opacity:1; }
   .btn-expand-arrow:hover{ color:var(--blue-60); }
