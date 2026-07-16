@@ -4,5 +4,5 @@
     "memberKeys" : [ ".github", "alignment-reporter-plugin", "console", "console-datagen", "developer-quickstart", "flink-sql", "flink-sql-examples", "governance", "keycloak-auth-demo", "kmetadb", "proposals", "shade-enforcer", "streams-e2e", "streamshub-gitops", "streamshub-mcp", "streamshub-site" ],
     "name" : "StreamsHub"
   } ],
-  "last_updated" : "2026-07-16T14:35:11.171254Z"
+  "last_updated" : "2026-07-16T14:59:53.525592Z"
 }

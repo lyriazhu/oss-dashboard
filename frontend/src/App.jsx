@@ -695,7 +695,11 @@ export default function App() {
           next[remaining[0].key] = remaining[0].data;
         }
       } else {
-        next[mergedKey] = { ...merged, _mergedFrom: remaining };
+        // Rebuild the merged entry from the remaining members so all
+        // chart data (commits, PRs, issues, etc.) is recomputed without
+        // the removed repo's contribution.
+        const customName = merged.name !== remaining.map((e) => e.data.name).join(' + ') ? merged.name : null;
+        next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl: merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/') ? merged.repoUrl : null });
       }
       return next;
     });
@@ -706,11 +710,13 @@ export default function App() {
       const idx = prev.indexOf(mergedKey);
       const next = prev.filter((k) => k !== mergedKey);
       if (remaining.length < 2) {
-        // Unmerge all remaining too
+        // Unmerge all remaining too — put all original keys at the same position
         const all = merged._mergedFrom.map((e) => e.key);
         next.splice(idx, 0, ...all);
       } else {
-        next.splice(idx, 0, mergedKey, repoKey);
+        // Keep the merged group at its original position; append the removed repo right after
+        next.splice(idx, 0, mergedKey);
+        next.splice(idx + 1, 0, repoKey);
       }
       return next;
     });
