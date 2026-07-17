@@ -413,7 +413,7 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
               const idx = d.description.indexOf(lt);
               if (idx !== -1) {
                 return (
-                  <p style={{ margin: url ? '0 0 0.5rem' : '0', fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+                  <p style={{ margin: 0, fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
                     {d.description.slice(0, idx)}
                     <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>{lt}</a>
                     {d.description.slice(idx + lt.length)}
@@ -422,18 +422,11 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
               }
             }
             return (
-              <p style={{ margin: url ? '0 0 0.5rem' : '0', fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+              <p style={{ margin: 0, fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
                 {d.description}
               </p>
             );
           })()}
-          {d.websiteUrl && (
-            <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-              <a href={d.websiteUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>
-                {d.websiteUrl}
-              </a>
-            </p>
-          )}
         </div>
       )}
 
