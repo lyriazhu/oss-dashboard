@@ -45,7 +45,14 @@ def _slug(name: str) -> str:
 
 def _add_repo_to_projects_json(data_dir: Path, owner: str, repo: str,
                                 org_name: str, foundation: str):
-    """Upsert a single-repo project entry into data/projects.json."""
+    """Upsert a single-repo project entry into data/projects.json.
+
+    Also removes the bare org-sentinel entry (id == owner slug) that the
+    backend wrote when the user first clicked "Add entire project".  That
+    sentinel has no real data directory and must be gone before loadProjects
+    is called, otherwise the backend will log hundreds of "File not found"
+    warnings and the sentinel will show up as a broken project card.
+    """
     projects_file = data_dir / "projects.json"
     try:
         with open(projects_file) as f:
@@ -53,23 +60,34 @@ def _add_repo_to_projects_json(data_dir: Path, owner: str, repo: str,
     except (OSError, json.JSONDecodeError):
         payload = {"projects": []}
 
-    project_id = _slug(repo)
-    repo_dir   = repo.lower().replace("_", "-")
+    owner_slug = _slug(owner)
+    # Namespaced ID: "owner--repo" — matches the format used by the backend
+    # and by _sync_projects_json for all org-repo entries.
+    project_id = f"{owner_slug}--{_slug(repo)}"
+    data_dir_name = f"{owner_slug}--{repo.lower().replace('_', '-')}"
 
-    # Check if already present
+    # Remove the bare org-sentinel (id == owner slug, no real repo) if present
+    payload["projects"] = [
+        p for p in payload["projects"]
+        if not (p.get("id") == owner_slug and not p.get("repo"))
+    ]
+
+    # Check if this repo entry is already present
     for p in payload["projects"]:
         if p.get("id") == project_id:
             return  # already registered
 
     payload["projects"].append({
-        "id":         project_id,
-        "name":       repo,
+        "id":        project_id,
+        "name":      repo,
         "github_url": f"https://github.com/{owner}/{repo}",
-        "owner":      owner,
-        "repo":       repo,
+        "owner":     owner,
+        "repo":      repo,
         "foundation": foundation,
-        "data_dir":   repo_dir,
-        "enabled":    True,
+        "data_dir":  data_dir_name,
+        "enabled":   True,
+        "is_org":    True,
+        "org_owner": owner.lower(),
     })
     payload["last_updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") + "Z"
 
@@ -335,7 +353,7 @@ def main():
         except Exception as e:
             print(f"  ⚠️  Extraction failed for {repo_name}: {e}")
 
-        member_ids.append(_slug(repo_name))
+        member_ids.append(f"{_slug(org_name)}--{_slug(repo_name)}")
         print(f"ORG_REPO_DONE {idx} {total} {repo_name}")
 
     # Write merge record so dashboard auto-groups the repos

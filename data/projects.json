@@ -23,16 +23,6 @@
     "data_dir" : "keycloak--keycloak",
     "enabled" : true
   }, {
-    "id" : "apicurio-registry",
-    "name" : "Apicurio Registry",
-    "github_url" : "https://github.com/Apicurio/apicurio-registry",
-    "owner" : "Apicurio",
-    "repo" : "apicurio-registry",
-    "foundation" : "CNCF",
-    "website" : "https://www.apicur.io/registry/",
-    "data_dir" : "apicurio--apicurio-registry",
-    "enabled" : true
-  }, {
     "id" : "debezium",
     "name" : "Debezium",
     "owner" : "debezium",
@@ -684,5 +674,5 @@
     "is_org" : true,
     "org_owner" : "strimzi"
   } ],
-  "last_updated" : "2026-07-17T16:41:28.471881Z"
+  "last_updated" : "2026-07-17T17:00:41.050458Z"
 }

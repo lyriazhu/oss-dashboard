@@ -24,14 +24,6 @@ projects:
     website: "https://www.keycloak.org"
     
 
-  - name: "Apicurio Registry"
-    github_url: "https://github.com/Apicurio/apicurio-registry"
-    owner: "Apicurio"
-    repo: "apicurio-registry"
-    foundation: "CNCF"
-    website: "https://www.apicur.io/registry/"
-    
-
   - name: "Debezium"
     github_url: "https://github.com/debezium/debezium"
     owner: "debezium"
@@ -124,6 +116,7 @@ projects:
     owner: "3scale"
     repo: "3scale_toolbox"
     foundation: "Independent"
+
 
 extraction:
   # How many quarters of historical data to fetch

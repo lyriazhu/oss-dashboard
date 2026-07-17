@@ -2214,12 +2214,12 @@ class GitHubDataExtractor:
 
                 # Preserve all per-repo records that were registered for this org
                 # (their IDs match the repo slug, not the org name).
+                # If no per-repo entries exist yet (extraction hasn't run), emit
+                # nothing — a sentinel entry with no repo field only causes the
+                # backend to look in a non-existent directory.
                 org_repos = existing_by_org.get(owner.lower(), [])
                 if org_repos:
                     out.extend(org_repos)
-                elif owner_key in existing:
-                    # Fall back to org-sentinel record if no per-repo entries yet
-                    out.append(existing[owner_key])
                 continue
 
             repo = cfg.get("repo", "")
