@@ -3,11 +3,28 @@
 const API_BASE = '/api';
 
 // ---------------------------------------------------------------------------
-// Project descriptions and website URLs, keyed by project ID.
+// Project descriptions and website URLs.
+// Keys are either an exact project ID or an org-owner prefix (e.g. "streamshub--")
+// that matches any per-repo ID belonging to that org.
 // Used in the Detail view to show a short summary paragraph above the
 // contributing-companies table, and to link to the project's home page.
 // ---------------------------------------------------------------------------
 const PROJECT_INFO = {
+  '3scale-operator': {
+    description:
+      '3scale is Red Hat\'s API management platform. The 3scale Operator automates the deployment and lifecycle management of 3scale API Manager on OpenShift and Kubernetes, enabling teams to manage, secure, and monetize APIs using Kubernetes-native custom resources. It integrates with Red Hat SSO for authentication and supports multi-tenant API gateway configurations.',
+    websiteUrl: 'https://www.redhat.com/en/technologies/jboss-middleware/3scale',
+  },
+  'streamshub--': {
+    description:
+      'StreamsHub is a community-governed project that builds open-source tooling for Apache Kafka-based streaming platforms. Its flagship product is a web console that gives operators and developers real-time visibility into Kafka clusters, topics, consumer groups, and messages — with no proprietary agents required. StreamsHub also produces supporting libraries and operators designed to complement Strimzi in enterprise Kafka deployments.',
+    websiteUrl: 'https://github.com/streamshub',
+  },
+  'kroxylicious--': {
+    description:
+      'Kroxylicious is an open-source Apache Kafka proxy framework that sits transparently between Kafka clients and brokers. It provides a pluggable filter pipeline where teams can implement cross-cutting concerns — such as record encryption, schema validation, multi-tenancy, or traffic shaping — without modifying client or broker code. Kroxylicious is designed for platform teams who need to enforce policies consistently across all Kafka traffic.',
+    websiteUrl: 'https://kroxylicious.io/',
+  },
   camel: {
     description:
       'Apache Camel is an open-source integration framework based on the Enterprise Integration Patterns (EIPs). It provides a rule-based routing and mediation engine, along with 300+ pre-built connectors (components) that allow developers to integrate any two systems using a consistent, expressive DSL in Java, XML, or YAML. Camel runs embedded in Spring Boot, Quarkus, or standalone, and is widely used for microservice choreography, data transformation, and event-driven pipelines.',
@@ -851,7 +868,10 @@ export function transformProjectData(project, metrics) {
     return null;
   })();
 
-  const projectInfo = PROJECT_INFO[project.id] || {};
+  // Exact-ID match first; fall back to org-prefix match (e.g. "streamshub--" covers all streamshub repos)
+  const projectInfo = PROJECT_INFO[project.id]
+    || Object.entries(PROJECT_INFO).find(([k]) => k.endsWith('--') && project.id.startsWith(k))?.[1]
+    || {};
   // Use websiteUrl from PROJECT_INFO, falling back to the website field in projects.json
   const websiteUrl = projectInfo.websiteUrl || project.website || null;
 
