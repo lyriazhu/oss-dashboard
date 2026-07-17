@@ -79,6 +79,7 @@
     "owner" : "apache",
     "repo" : "tomcat",
     "foundation" : "Independent",
+    "website" : "https://tomcat.apache.org/",
     "enabled" : true,
     "github_url" : "https://github.com/apache/tomcat",
     "data_dir" : "apache--tomcat"
@@ -88,6 +89,7 @@
     "owner" : "apache",
     "repo" : "artemis",
     "foundation" : "Independent",
+    "website" : "https://activemq.apache.org/components/artemis/",
     "enabled" : true,
     "github_url" : "https://github.com/apache/artemis",
     "data_dir" : "apache--artemis",
@@ -366,6 +368,7 @@
     "owner" : "strimzi",
     "repo" : "strimzi-kafka-operator",
     "foundation" : "Independent",
+    "website" : "https://strimzi.io/",
     "data_dir" : "strimzi--strimzi-kafka-operator",
     "enabled" : true,
     "is_org" : true,

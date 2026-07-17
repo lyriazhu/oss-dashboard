@@ -404,6 +404,23 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         )}
       </p>
 
+      {(d.description || d.websiteUrl) && (
+        <div style={{ border: '1px solid var(--border-subtle)', background: 'var(--layer-02)', padding: '1rem 1.25rem', marginTop: '1rem' }}>
+          {d.description && (
+            <p style={{ margin: d.websiteUrl ? '0 0 0.5rem' : '0', fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+              {d.description}
+            </p>
+          )}
+          {d.websiteUrl && (
+            <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+              <a href={d.websiteUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>
+                {d.websiteUrl}
+              </a>
+            </p>
+          )}
+        </div>
+      )}
+
       <div className="tile-grid det-tiles">
         {d.kpis.map((k, i) => (
           <Tile key={i} label={k.l} value={k.v} help={k.h} />
