@@ -458,7 +458,7 @@ function CommunityRow({
           case 'commits':             cmp = pn(ra.ov?.commits)             - pn(rb.ov?.commits);             break;
           case 'commitsAllTime':      cmp = pn(ra.ov?.commitsAllTime)      - pn(rb.ov?.commitsAllTime);      break;
           case 'stars':               cmp = pn(ra.ov?.stars)               - pn(rb.ov?.stars);               break;
-          case 'status':              cmp = (ra.status?.label || '').localeCompare(rb.status?.label || '');   break;
+          case 'status':              { const sp = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 }; cmp = (sp[ra.status?.label] ?? -1) - (sp[rb.status?.label] ?? -1); break; }
           default: break;
         }
         return sortDir === 'asc' ? cmp : -cmp;
@@ -528,7 +528,7 @@ export default function Overview({
     } else {
       setSortCol(col);
       // numeric columns default to descending so biggest is first
-      setSortDir(['contributorsYtd', 'contributorsAllTime', 'commits', 'commitsAllTime', 'stars'].includes(col) ? 'desc' : 'asc');
+      setSortDir(['contributorsYtd', 'contributorsAllTime', 'commits', 'commitsAllTime', 'stars', 'status'].includes(col) ? 'desc' : 'asc');
     }
   }
 
@@ -750,7 +750,7 @@ export default function Overview({
                   case 'commits':             cmp = parseNum(da.ov.commits) - parseNum(db.ov.commits); break;
                   case 'commitsAllTime':      cmp = parseNum(da.ov.commitsAllTime) - parseNum(db.ov.commitsAllTime); break;
                   case 'stars':               cmp = parseNum(da.ov.stars) - parseNum(db.ov.stars); break;
-                  case 'status':              cmp = (da.status.label || '').localeCompare(db.status.label || ''); break;
+                  case 'status':              { const sp = { Healthy: 3, Growing: 2, Watch: 1, 'N/A': 0 }; cmp = (sp[da.status?.label] ?? -1) - (sp[db.status?.label] ?? -1); break; }
                   default: break;
                 }
                 return sortDir === 'asc' ? cmp : -cmp;

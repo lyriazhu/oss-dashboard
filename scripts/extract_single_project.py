@@ -230,14 +230,19 @@ def _register_org_merge(extractor, owner, project_name, repo_names):
     merged_key = owner.lower().replace("_", "-")
     org_url = f"https://github.com/{owner}"
 
-    # Replace any existing record for this org (identified by mergedKey)
+    # Replace any existing record for this org, but carry forward any user-set fields
+    existing = next((m for m in root.get("merges", []) if m.get("mergedKey") == merged_key), {})
     merges = [m for m in root.get("merges", []) if m.get("mergedKey") != merged_key]
-    merges.append({
+    new_record = {
         "mergedKey": merged_key,
         "memberKeys": member_keys,
         "name": project_name,
         "orgUrl": org_url,
-    })
+    }
+    # Preserve user-edited foundation (set via the dashboard UI)
+    if existing.get("foundation"):
+        new_record["foundation"] = existing["foundation"]
+    merges.append(new_record)
     root["merges"] = merges
     root["last_updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") + "Z"
 

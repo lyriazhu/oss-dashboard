@@ -125,13 +125,20 @@ def _write_merge_record(data_dir: Path, org_name: str, member_ids: list,
 
     org_key = _slug(org_name)
 
-    # Remove any stale record for this org
+    # Find and remove the stale record, but carry forward any user-set fields
+    existing = next((m for m in merges if m.get("mergedKey") == org_key), {})
     merges = [m for m in merges if m.get("mergedKey") != org_key]
-    merges.append({
-        "mergedKey":   org_key,
-        "memberKeys":  member_ids,
-        "name":        display_name,
-    })
+    new_record = {
+        "mergedKey":  org_key,
+        "memberKeys": member_ids,
+        "name":       display_name,
+    }
+    # Preserve user-edited fields that the extraction script doesn't own
+    if existing.get("orgUrl"):
+        new_record["orgUrl"] = existing["orgUrl"]
+    if existing.get("foundation"):
+        new_record["foundation"] = existing["foundation"]
+    merges.append(new_record)
 
     payload = {
         "merges":       merges,

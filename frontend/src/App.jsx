@@ -632,14 +632,16 @@ export default function App() {
         // list in merges.json so the complete group is restored once all repos load.
         const memberKeys = d._allMemberKeys || d._mergedFrom.map((e) => e.key);
         const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
-        // Compute what the default foundation would be so we know if it was overridden
-        const memberFoundations = [...new Set(d._mergedFrom.map((e) => e.data.ov?.foundation).filter(Boolean))];
-        const defaultFoundation = memberFoundations.length === 1 ? memberFoundations[0] : (memberFoundations[0] || 'Independent');
+        // Preserve orgUrl if it was stored on the merged entry (set by org extraction scripts)
+        const orgUrl = d.repoUrl?.startsWith('https://github.com/') && !d.repoUrl.slice(19).includes('/')
+          ? d.repoUrl : null;
         mergeRecords.push({
           mergedKey: key,
           memberKeys,
-          name: d.name !== defaultName ? d.name : null,
-          foundation: d.foundation !== defaultFoundation ? d.foundation : null,
+          name:       d.name       !== defaultName ? d.name       : null,
+          orgUrl,
+          // Always persist foundation so it survives reload; null means "use computed default"
+          foundation: d.foundation || null,
         });
       }
     });
@@ -819,11 +821,8 @@ export default function App() {
       const customName = merged.name !== oldDefaultName ? merged.name : null;
       const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
         ? merged.repoUrl : null;
-      // Carry forward a custom foundation if the user set one on the merged entry
-      const remainingFoundations = [...new Set(remaining.map((e) => e.data.ov?.foundation).filter(Boolean))];
-      const wouldDefaultFoundation = remainingFoundations.length === 1 ? remainingFoundations[0] : (remainingFoundations[0] || 'Independent');
-      const customFoundation = merged.foundation !== wouldDefaultFoundation ? merged.foundation : null;
-      next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl, foundation: customFoundation });
+      // Carry forward the current foundation — always preserve user edits
+      next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl, foundation: merged.foundation || null });
     }
     setData(next);
     persistMerges(next);

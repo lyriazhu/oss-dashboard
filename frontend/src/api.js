@@ -338,9 +338,9 @@ export function transformProjectData(project, metrics) {
   const prYtd = currentYearPrData?.prCount || currentYearPrData?.pr_count || 0;
   const mergedPrYtd = currentYearPrData?.mergedPrCount || currentYearPrData?.merged_pr_count || 0;
   
-  // Determine status - hardcode N/A for 3scale, otherwise use metadata or calculate
+  // Determine status - all 3scale repos are N/A (special exception), otherwise use metadata or calculate
   let status;
-  if (project.id === '3scale-operator') {
+  if (project.owner === '3scale') {
     status = { label: 'N/A', cls: 'gray' };
   } else if (metadata?.status) {
     // Use status from metadata if provided

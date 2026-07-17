@@ -15,6 +15,7 @@ projects:
     jira_base_url: "https://issues.apache.org/jira"
     adopters_url: "https://camel.apache.org/community/user-stories/"
     
+    
   - name: "Keycloak"
     github_url: "https://github.com/keycloak/keycloak"
     owner: "keycloak"
@@ -22,6 +23,7 @@ projects:
     foundation: "CNCF"
     website: "https://www.keycloak.org"
     
+
   - name: "Apicurio Registry"
     github_url: "https://github.com/Apicurio/apicurio-registry"
     owner: "Apicurio"
@@ -29,6 +31,7 @@ projects:
     foundation: "CNCF"
     website: "https://www.apicur.io/registry/"
     
+
   - name: "Debezium"
     github_url: "https://github.com/debezium/debezium"
     owner: "debezium"
@@ -37,11 +40,13 @@ projects:
     issue_owner: "debezium"
     issue_repo: "dbz"
 
+
   - name: "Quarkus"
     github_url: "https://github.com/quarkusio/quarkus"
     owner: "quarkusio"
     repo: "quarkus"
     foundation: "Commonhaus Foundation"
+
 
   - name: "Wildfly"
     github_url: "https://github.com/wildfly/wildfly"
@@ -52,17 +57,20 @@ projects:
     jira_project_key: WFLY
     jira_base_url: "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
 
+
   - name: "3scale-operator"
     github_url: "https://github.com/3scale/3scale-operator"
     owner: "3scale"
     repo: "3scale-operator"
     foundation: "Red Hat"
 
+
   - name: "Apache Tomcat"
     github_url: "https://github.com/apache/tomcat"
     owner: "apache"
     repo: "tomcat"
     foundation: "Apache Software Foundation"
+
 
   - name: "Apache Artemis"
     github_url: "https://github.com/apache/artemis"
@@ -73,6 +81,7 @@ projects:
     jira_project_key: ARTEMIS
     jira_base_url: "https://issues.apache.org/jira"
 
+
   - name: "streamshub"
     github_url: "https://github.com/streamshub"
     owner: "streamshub"
@@ -80,13 +89,13 @@ projects:
     foundation: "Independent"
     issue_scope: all
 
+
   - name: "kroxylicious"
     github_url: "https://github.com/kroxylicious"
     owner: "kroxylicious"
     is_org: true
     foundation: "Independent"
     issue_scope: all
-
 
 
   - name: "APIcast"
