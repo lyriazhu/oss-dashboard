@@ -391,8 +391,10 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
   }, null);
 
   // ── Description / website: inherit from the first member that has one ──
-  const mergedDescription = communities.find((c) => c.description)?.description || null;
-  const mergedWebsiteUrl  = communities.find((c) => c.websiteUrl)?.websiteUrl   || null;
+  const _descSource        = communities.find((c) => c.description);
+  const mergedDescription  = _descSource?.description        || null;
+  const mergedLinkText     = _descSource?.descriptionLinkText || null;
+  const mergedWebsiteUrl   = communities.find((c) => c.websiteUrl)?.websiteUrl || null;
 
   return {
     ...base,
@@ -402,6 +404,7 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
     founded:                   mergedFounded,
     repoUrl:                   mergedRepoUrl,
     description:               mergedDescription,
+    descriptionLinkText:       mergedLinkText,
     websiteUrl:                mergedWebsiteUrl,
     ov:                        mergedOv,
     kpis:                      mergedKpis,

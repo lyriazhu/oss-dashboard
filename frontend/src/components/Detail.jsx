@@ -406,11 +406,27 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
 
       {(d.description || d.websiteUrl) && (
         <div style={{ border: '1px solid var(--border-subtle)', background: 'var(--layer-02)', padding: '1rem 1.25rem', marginTop: '1rem' }}>
-          {d.description && (
-            <p style={{ margin: d.websiteUrl ? '0 0 0.5rem' : '0', fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
-              {d.description}
-            </p>
-          )}
+          {d.description && (() => {
+            const lt = d.descriptionLinkText;
+            const url = d.websiteUrl;
+            if (lt && url) {
+              const idx = d.description.indexOf(lt);
+              if (idx !== -1) {
+                return (
+                  <p style={{ margin: url ? '0 0 0.5rem' : '0', fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+                    {d.description.slice(0, idx)}
+                    <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>{lt}</a>
+                    {d.description.slice(idx + lt.length)}
+                  </p>
+                );
+              }
+            }
+            return (
+              <p style={{ margin: url ? '0 0 0.5rem' : '0', fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+                {d.description}
+              </p>
+            );
+          })()}
           {d.websiteUrl && (
             <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
               <a href={d.websiteUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>

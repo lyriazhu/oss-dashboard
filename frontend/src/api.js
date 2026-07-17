@@ -13,61 +13,73 @@ const PROJECT_INFO = {
   '3scale-operator': {
     description:
       '3scale is Red Hat\'s API management platform. The 3scale Operator automates the deployment and lifecycle management of 3scale API Manager on OpenShift and Kubernetes, enabling teams to manage, secure, and monetize APIs using Kubernetes-native custom resources. It integrates with Red Hat SSO for authentication and supports multi-tenant API gateway configurations.',
+    linkText: '3scale',
     websiteUrl: 'https://tech.3scale.net/',
   },
   'streamshub--': {
     description:
       'StreamsHub is a community-governed project that builds open-source tooling for Apache Kafka-based streaming platforms. Its flagship product is a web console that gives operators and developers real-time visibility into Kafka clusters, topics, consumer groups, and messages — with no proprietary agents required. StreamsHub also produces supporting libraries and operators designed to complement Strimzi in enterprise Kafka deployments.',
+    linkText: 'StreamsHub',
     websiteUrl: 'https://www.streamshub.io/',
   },
   'kroxylicious--': {
     description:
       'Kroxylicious is an open-source Apache Kafka proxy framework that sits transparently between Kafka clients and brokers. It provides a pluggable filter pipeline where teams can implement cross-cutting concerns — such as record encryption, schema validation, multi-tenancy, or traffic shaping — without modifying client or broker code. Kroxylicious is designed for platform teams who need to enforce policies consistently across all Kafka traffic.',
+    linkText: 'Kroxylicious',
     websiteUrl: 'https://kroxylicious.io/',
   },
   camel: {
     description:
       'Apache Camel is an open-source integration framework based on the Enterprise Integration Patterns (EIPs). It provides a rule-based routing and mediation engine, along with 300+ pre-built connectors (components) that allow developers to integrate any two systems using a consistent, expressive DSL in Java, XML, or YAML. Camel runs embedded in Spring Boot, Quarkus, or standalone, and is widely used for microservice choreography, data transformation, and event-driven pipelines.',
+    linkText: 'Apache Camel',
     websiteUrl: 'https://camel.apache.org/',
   },
   'strimzi--strimzi-kafka-operator': {
     description:
       'Strimzi simplifies running Apache Kafka on Kubernetes by providing a set of operators that manage the full lifecycle of Kafka clusters, topics, users, and connectors using Kubernetes-native custom resources. It handles TLS encryption, authentication, authorization, rolling updates, and scaling — letting platform teams deploy production-grade Kafka without manual cluster administration. Strimzi is a CNCF sandbox project.',
+    linkText: 'Strimzi',
     websiteUrl: 'https://strimzi.io/',
   },
   'apicurio-registry': {
     description:
       'Apicurio Registry is a high-performance, open-source runtime storage service for standard event schemas and API designs. It enables teams to publish, discover, and reuse Avro, JSON Schema, Protobuf, AsyncAPI, and OpenAPI artifacts from a central registry, and integrates with Apache Kafka via a SerDes library to enforce schema compatibility rules at the producer and consumer level.',
+    linkText: 'Apicurio Registry',
     websiteUrl: 'https://www.apicur.io/registry/',
   },
   artemis: {
     description:
       'Apache ActiveMQ Artemis is an asynchronous messaging broker that supports the AMQP, MQTT, STOMP, OpenWire, and core protocols in a single runtime. It offers high availability via live-backup pairs or replication, journal-based persistence, and a flexible addressing model that can emulate both point-to-point queues and publish-subscribe topics. Artemis serves as the message broker inside JBoss EAP and WildFly.',
+    linkText: 'Apache ActiveMQ Artemis',
     websiteUrl: 'https://activemq.apache.org/components/artemis/',
   },
   tomcat: {
     description:
       'Apache Tomcat is a widely-used, open-source web server and servlet container that implements the Jakarta Servlet, Jakarta Server Pages, Jakarta EL, Jakarta WebSocket, and Jakarta Authentication specifications. First released in 1999, it powers millions of Java web applications in production and serves as the embedded server in Spring Boot by default.',
+    linkText: 'Apache Tomcat',
     websiteUrl: 'https://tomcat.apache.org/',
   },
   debezium: {
     description:
       'Debezium is an open-source distributed platform for change data capture (CDC). It monitors database transaction logs — in PostgreSQL, MySQL, MongoDB, SQL Server, Oracle, and others — and streams every row-level insert, update, and delete as a structured event to Apache Kafka. Applications consume those events to build real-time data pipelines, keep caches in sync, or trigger workflows without polling the database.',
+    linkText: 'Debezium',
     websiteUrl: 'https://debezium.io/',
   },
   keycloak: {
     description:
       'Keycloak is an open-source Identity and Access Management (IAM) solution that provides single sign-on (SSO), social login, two-factor authentication, and fine-grained authorization for applications and services. It supports industry-standard protocols including OAuth 2.0, OpenID Connect, and SAML 2.0, and can federate identities from LDAP, Active Directory, or external identity providers.',
+    linkText: 'Keycloak',
     websiteUrl: 'https://www.keycloak.org/',
   },
   quarkus: {
     description:
       'Quarkus is a Kubernetes-native Java framework that compiles Java applications to ultra-fast native executables via GraalVM or runs them on a conventional JVM with dramatically reduced startup time and memory footprint. It provides a unified reactive and imperative programming model, hundreds of extensions for popular libraries, and is designed for cloud-native, serverless, and container-first deployments.',
+    linkText: 'Quarkus',
     websiteUrl: 'https://quarkus.io/',
   },
   wildfly: {
     description:
       'WildFly (formerly JBoss AS) is a flexible, lightweight, managed open-source application server built to implement the latest Jakarta EE and MicroProfile specifications. It features a modular architecture that only loads the subsystems your application requires, supports cloud-native deployments with its Galleon provisioning tool, and underpins Red Hat JBoss Enterprise Application Platform (EAP).',
+    linkText: 'WildFly',
     websiteUrl: 'https://www.wildfly.org/',
   },
 };
@@ -882,6 +894,7 @@ export function transformProjectData(project, metrics) {
     foundation: project.foundation || 'Independent',
     repoUrl: project.github_url || null,
     description: projectInfo.description || null,
+    descriptionLinkText: projectInfo.linkText || null,
     websiteUrl,
     // Raw contributor data kept for merge de-duplication in buildMergedEntry
     _rawContributors: contributors?.contributors || [],
