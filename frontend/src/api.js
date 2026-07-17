@@ -13,12 +13,12 @@ const PROJECT_INFO = {
   '3scale-operator': {
     description:
       '3scale is Red Hat\'s API management platform. The 3scale Operator automates the deployment and lifecycle management of 3scale API Manager on OpenShift and Kubernetes, enabling teams to manage, secure, and monetize APIs using Kubernetes-native custom resources. It integrates with Red Hat SSO for authentication and supports multi-tenant API gateway configurations.',
-    websiteUrl: 'https://www.redhat.com/en/technologies/jboss-middleware/3scale',
+    websiteUrl: 'https://tech.3scale.net/',
   },
   'streamshub--': {
     description:
       'StreamsHub is a community-governed project that builds open-source tooling for Apache Kafka-based streaming platforms. Its flagship product is a web console that gives operators and developers real-time visibility into Kafka clusters, topics, consumer groups, and messages — with no proprietary agents required. StreamsHub also produces supporting libraries and operators designed to complement Strimzi in enterprise Kafka deployments.',
-    websiteUrl: 'https://github.com/streamshub',
+    websiteUrl: 'https://www.streamshub.io/',
   },
   'kroxylicious--': {
     description:
