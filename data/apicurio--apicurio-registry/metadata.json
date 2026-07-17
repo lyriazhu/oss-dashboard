@@ -5,9 +5,9 @@
   "created_at": "2019-07-16T12:44:20+00:00",
   "updated_at": "2026-07-17T13:13:01+00:00",
   "stars": 837,
-  "forks": 385,
+  "forks": 386,
   "watchers": 837,
-  "open_issues": 409,
+  "open_issues": 410,
   "language": "Java",
   "topics": [],
   "license": "Apache License 2.0",
@@ -66,5 +66,5 @@
       "percentage": 0.1
     }
   ],
-  "extracted_at": "2026-07-17T13:13:47.530087"
+  "extracted_at": "2026-07-17T13:41:04.526893"
 }

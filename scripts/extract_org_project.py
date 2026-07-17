@@ -180,7 +180,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     try:
         metadata = extractor.extract_project_metadata(owner, repo, project_name=project_name)
         if metadata:
-            extractor.save_project_data(project_name, metadata, "metadata", repo=repo)
+            extractor.save_project_data(project_name, metadata, "metadata", repo=repo, owner=owner)
             extraction_status["metadata"] = True
             project_created_at = dt.fromisoformat(
                 metadata['created_at'].replace('+00:00', ''))
@@ -191,9 +191,9 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     try:
         contributors = extractor.extract_contributors(owner, repo, project_name)
         if contributors:
-            extractor.save_project_data(project_name, contributors, "contributors", repo=repo)
+            extractor.save_project_data(project_name, contributors, "contributors", repo=repo, owner=owner)
             extraction_status["contributors"] = True
-            extractor.refresh_metadata_companies(project_name, repo=repo)
+            extractor.refresh_metadata_companies(project_name, repo=repo, owner=owner)
     except Exception as e:
         print(f"  ⚠️  Contributors: {e}")
 
@@ -201,7 +201,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     try:
         commits = extractor.extract_commits(owner, repo, project_name)
         if commits:
-            extractor.save_project_data(project_name, commits, "commits", repo=repo)
+            extractor.save_project_data(project_name, commits, "commits", repo=repo, owner=owner)
             extraction_status["commits"] = True
     except Exception as e:
         print(f"  ⚠️  Commits: {e}")
@@ -218,7 +218,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
         try:
             issues = extractor.extract_issues(issue_repos, project_created_at, project_name)
             if issues:
-                extractor.save_project_data(project_name, issues, "issues", repo=repo)
+                extractor.save_project_data(project_name, issues, "issues", repo=repo, owner=owner)
                 extraction_status["issues"] = True
         except Exception as e:
             print(f"  ⚠️  Issues: {e}")
@@ -229,7 +229,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
             prs = extractor.extract_pull_requests(
                 [{"owner": owner, "repo": repo}], project_created_at, project_name)
             if prs:
-                extractor.save_project_data(project_name, prs, "pull_requests", repo=repo)
+                extractor.save_project_data(project_name, prs, "pull_requests", repo=repo, owner=owner)
                 extraction_status["pull_requests"] = True
         except Exception as e:
             print(f"  ⚠️  Pull requests: {e}")
@@ -238,7 +238,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     try:
         releases = extractor.extract_releases(owner, repo, project_name)
         if releases:
-            extractor.save_project_data(project_name, releases, "releases", repo=repo)
+            extractor.save_project_data(project_name, releases, "releases", repo=repo, owner=owner)
             extraction_status["releases"] = True
     except Exception as e:
         print(f"  ⚠️  Releases: {e}")
@@ -246,7 +246,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     # Adopters
     try:
         adopters = extractor.extract_adopters(owner, repo, project_name)
-        extractor.save_project_data(project_name, adopters, "adopters", repo=repo)
+        extractor.save_project_data(project_name, adopters, "adopters", repo=repo, owner=owner)
         extraction_status["adopters"] = True
     except Exception as e:
         print(f"  ⚠️  Adopters: {e}")

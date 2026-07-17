@@ -7,14 +7,16 @@
       "end_date": "2025-08-31T23:59:59",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2025-08"
+      "month": "2025-08",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2025-09-01T00:00:00",
       "end_date": "2025-09-30T23:59:59",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2025-09"
+      "month": "2025-09",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2025-10-01T00:00:00",
@@ -37,7 +39,8 @@
       "end_date": "2025-12-31T23:59:59",
       "pr_count": 1,
       "merged_pr_count": 0,
-      "month": "2025-12"
+      "month": "2025-12",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2026-01-01T00:00:00",
@@ -76,7 +79,8 @@
       "end_date": "2026-05-31T23:59:59",
       "pr_count": 1,
       "merged_pr_count": 0,
-      "month": "2026-05"
+      "month": "2026-05",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2026-06-01T00:00:00",
@@ -147,5 +151,5 @@
       "merged_pr_count": 19
     }
   ],
-  "extracted_at": "2026-07-17T13:12:48.387014"
+  "extracted_at": "2026-07-17T13:40:51.884853"
 }
