@@ -1,0 +1,25 @@
+{
+  "name": ".project",
+  "full_name": "Apicurio/.project",
+  "description": "Project metadata for Apicurio Registry - CNCF .project automation",
+  "created_at": "2026-07-04T13:03:19+00:00",
+  "updated_at": "2026-07-06T07:45:30+00:00",
+  "stars": 0,
+  "forks": 1,
+  "watchers": 0,
+  "open_issues": 2,
+  "language": null,
+  "topics": [],
+  "license": null,
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 5,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-17T13:29:31.556329"
+}

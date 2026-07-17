@@ -1,0 +1,30 @@
+{
+  "name": "apicurio-github-actions",
+  "full_name": "Apicurio/apicurio-github-actions",
+  "description": "A repository to hold custom GitHub Actions used for Apicurio projects.",
+  "created_at": "2020-03-27T01:32:00+00:00",
+  "updated_at": "2026-06-18T15:46:54+00:00",
+  "stars": 1,
+  "forks": 4,
+  "watchers": 1,
+  "open_issues": 1,
+  "language": null,
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 55,
+      "percentage": 87.3
+    },
+    {
+      "company": "Red Hat",
+      "commits": 8,
+      "percentage": 12.7
+    }
+  ],
+  "extracted_at": "2026-07-17T13:25:05.390916"
+}

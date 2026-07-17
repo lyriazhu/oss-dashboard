@@ -1,0 +1,1028 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2017,
+      "contributor_count": 1,
+      "is_current": false,
+      "contributor_logins": [
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "year": 2018,
+      "contributor_count": 2,
+      "is_current": false,
+      "contributor_logins": [
+        "eric.wittmann@gmail.com",
+        "marc@rhymewithgravy.com"
+      ]
+    },
+    {
+      "year": 2019,
+      "contributor_count": 3,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "eric.wittmann@gmail.com",
+        "karstengresch@users.noreply.github.com"
+      ]
+    },
+    {
+      "year": 2020,
+      "contributor_count": 5,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "73223705+surbhi27946@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com",
+        "s0m0bv9@macbook-pro-6.local"
+      ]
+    },
+    {
+      "year": 2021,
+      "contributor_count": 16,
+      "is_current": false,
+      "contributor_logins": [
+        "29098561+smccarthy-ie@users.noreply.github.com",
+        "46371672+famartinrh@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "61964599+riprasad@users.noreply.github.com",
+        "73223705+surbhi27946@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "famartin@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "jsenko@redhat.com",
+        "riprasad@redhat.com",
+        "senko.jak@gmail.com",
+        "stmccart@redhat.com",
+        "surbhi.mittal@walmart.com"
+      ]
+    },
+    {
+      "year": 2022,
+      "contributor_count": 4,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "year": 2023,
+      "contributor_count": 12,
+      "is_current": false,
+      "contributor_logins": [
+        "29098561+smccarthy-ie@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jason@jasonmadigan.com",
+        "jcobb@redhat.com",
+        "jmadigan@redhat.com",
+        "rkpattnaik780@gmail.com",
+        "stmccart@redhat.com"
+      ]
+    },
+    {
+      "year": 2024,
+      "contributor_count": 10,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jcobb@redhat.com",
+        "m@jsenko.net",
+        "pwright@redhat.com"
+      ]
+    },
+    {
+      "year": 2025,
+      "contributor_count": 9,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ]
+    },
+    {
+      "year": 2026,
+      "contributor_count": 9,
+      "is_current": true,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "badges@fossa.io",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "hemantchaudhary905@gmail.com",
+        "m@jsenko.net"
+      ]
+    }
+  ],
+  "total_contributors": 31,
+  "total_contributors_git": 31,
+  "all_time_contributor_logins": [
+    "29098561+smccarthy-ie@users.noreply.github.com",
+    "46371672+famartinrh@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "5154224+pwright@users.noreply.github.com",
+    "61964599+riprasad@users.noreply.github.com",
+    "73223705+surbhi27946@users.noreply.github.com",
+    "aboucham@redhat.com",
+    "actions@github.com",
+    "apicurio-ci@users.noreply.github.com",
+    "apicurio.ci@gmail.com",
+    "badges@fossa.io",
+    "carlesarnal92@gmail.com",
+    "carnalca@redhat.com",
+    "eric.wittmann@gmail.com",
+    "famartin@redhat.com",
+    "gunnar.morling@googlemail.com",
+    "hemantchaudhary905@gmail.com",
+    "jason@jasonmadigan.com",
+    "jcobb@redhat.com",
+    "jmadigan@redhat.com",
+    "jsenko@redhat.com",
+    "karstengresch@users.noreply.github.com",
+    "m@jsenko.net",
+    "marc@rhymewithgravy.com",
+    "pwright@redhat.com",
+    "riprasad@redhat.com",
+    "rkpattnaik780@gmail.com",
+    "s0m0bv9@macbook-pro-6.local",
+    "senko.jak@gmail.com",
+    "stmccart@redhat.com",
+    "surbhi.mittal@walmart.com"
+  ],
+  "contributors": [
+    {
+      "login": "apicurio-ci",
+      "name": "Apicurio CI",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 436,
+      "profile_url": "https://github.com/apicurio-ci"
+    },
+    {
+      "login": "EricWittmann",
+      "name": "Eric Wittmann",
+      "company": "Ibm",
+      "location": "Newtown, CT",
+      "email": "eric.wittmann@redhat.com",
+      "contributions": 228,
+      "profile_url": "https://github.com/EricWittmann"
+    },
+    {
+      "login": "carlesarnal",
+      "name": "Carles Arnal",
+      "company": "Ibm",
+      "location": "Barcelona",
+      "email": "carnalca@redhat.com",
+      "contributions": 37,
+      "profile_url": "https://github.com/carlesarnal"
+    },
+    {
+      "login": "insectengine",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 20,
+      "profile_url": "https://github.com/insectengine"
+    },
+    {
+      "login": "jsenko",
+      "name": "Jakub Senko",
+      "company": "Red Hat",
+      "location": "Brno",
+      "email": "m@jsenko.net",
+      "contributions": 10,
+      "profile_url": "https://github.com/jsenko"
+    },
+    {
+      "login": "actions-user",
+      "name": null,
+      "company": "Actions",
+      "location": null,
+      "email": null,
+      "contributions": 8,
+      "profile_url": "https://github.com/actions-user"
+    },
+    {
+      "login": "pwright",
+      "name": "Paul Wright",
+      "company": "Unknown",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 5,
+      "profile_url": "https://github.com/pwright"
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 5,
+      "profile_url": "https://github.com/apps/dependabot"
+    },
+    {
+      "login": "msavy",
+      "name": "Marc Savy",
+      "company": "Blackparrotlabs",
+      "location": "UK",
+      "email": "marc@rhymewithgravy.com",
+      "contributions": 4,
+      "profile_url": "https://github.com/msavy"
+    },
+    {
+      "login": "smccarthy-ie",
+      "name": "Stephen McCarthy",
+      "company": "Red Hat",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/smccarthy-ie"
+    },
+    {
+      "login": "famarting",
+      "name": "Fabian Martinez",
+      "company": "Diagrid",
+      "location": "Valencia",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/famarting"
+    },
+    {
+      "login": "rkpattnaik780",
+      "name": "Ramakrishna Pattnaik",
+      "company": "Unknown",
+      "location": "Bhubaneswar, India",
+      "email": "rkpattnaik780@gmail.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/rkpattnaik780"
+    },
+    {
+      "login": "aboucham",
+      "name": "Abel BOUCHAMA",
+      "company": "Red Hat",
+      "location": "France",
+      "email": "aboucham@redhat.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/aboucham"
+    },
+    {
+      "login": "gunnarmorling",
+      "name": "Gunnar Morling",
+      "company": "Confluent",
+      "location": "Hamburg, Germany",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/gunnarmorling"
+    },
+    {
+      "login": "jasonmadigan",
+      "name": "Jason Madigan",
+      "company": "Red Hat",
+      "location": "Waterford, Ireland",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/jasonmadigan"
+    },
+    {
+      "login": "karstengresch",
+      "name": "Karsten Gresch",
+      "company": "Unknown",
+      "location": "Europe, Berlin",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/karstengresch"
+    },
+    {
+      "login": "Surbhi27946",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/Surbhi27946"
+    },
+    {
+      "login": "riprasad",
+      "name": "Rishab Prasad",
+      "company": "Red Hat",
+      "location": "Bangalore, India",
+      "email": "riprasad@redhat.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/riprasad"
+    }
+  ],
+  "total_contributors_github_api": 18,
+  "companies": {
+    "Unknown": 7,
+    "Red Hat": 5,
+    "Ibm": 2,
+    "Actions": 1,
+    "Blackparrotlabs": 1,
+    "Diagrid": 1,
+    "Confluent": 1
+  },
+  "total_companies": 7,
+  "company_diversity": {
+    "known_company_contributors": 11,
+    "unknown_company_contributors": 7,
+    "top_companies": [
+      {
+        "company": "Unknown",
+        "contributor_count": 7
+      },
+      {
+        "company": "Red Hat",
+        "contributor_count": 5
+      },
+      {
+        "company": "Ibm",
+        "contributor_count": 2
+      },
+      {
+        "company": "Actions",
+        "contributor_count": 1
+      },
+      {
+        "company": "Blackparrotlabs",
+        "contributor_count": 1
+      },
+      {
+        "company": "Diagrid",
+        "contributor_count": 1
+      },
+      {
+        "company": "Confluent",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 2,
+      "returning_contributors": 2,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "jason@jasonmadigan.com",
+        "jmadigan@redhat.com"
+      ],
+      "new_logins": [
+        "jason@jasonmadigan.com",
+        "jmadigan@redhat.com"
+      ],
+      "returning_logins": [
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 2,
+      "returning_contributors": 3,
+      "retention_rate": 60.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "m@jsenko.net"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 9,
+      "new_contributors": 1,
+      "returning_contributors": 8,
+      "retention_rate": 88.89,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jcobb@redhat.com",
+        "m@jsenko.net",
+        "pwright@redhat.com"
+      ],
+      "new_logins": [
+        "pwright@redhat.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jcobb@redhat.com",
+        "m@jsenko.net"
+      ]
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 1,
+      "returning_contributors": 5,
+      "retention_rate": 83.33,
+      "active_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com"
+      ],
+      "new_logins": [
+        "aboucham@redhat.com"
+      ],
+      "returning_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 3,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 8,
+      "new_contributors": 0,
+      "returning_contributors": 8,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ]
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 0,
+      "returning_contributors": 6,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ]
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "apicurio.ci@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 1,
+      "returning_contributors": 4,
+      "retention_rate": 80.0,
+      "active_logins": [
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com"
+      ],
+      "new_logins": [
+        "actions@github.com"
+      ],
+      "returning_logins": [
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 0,
+      "returning_contributors": 6,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 0,
+      "returning_contributors": 6,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ]
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 2,
+      "returning_contributors": 3,
+      "retention_rate": 60.0,
+      "active_logins": [
+        "apicurio.ci@gmail.com",
+        "badges@fossa.io",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "hemantchaudhary905@gmail.com"
+      ],
+      "new_logins": [
+        "badges@fossa.io",
+        "hemantchaudhary905@gmail.com"
+      ],
+      "returning_logins": [
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com"
+      ]
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2017",
+      "period_type": "year",
+      "start_date": "2017-01-01T00:00:00",
+      "end_date": "2018-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 1,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false,
+      "active_logins": [
+        "eric.wittmann@gmail.com"
+      ],
+      "new_logins": [
+        "eric.wittmann@gmail.com"
+      ],
+      "returning_logins": []
+    },
+    {
+      "period": "2018",
+      "period_type": "year",
+      "start_date": "2018-01-01T00:00:00",
+      "end_date": "2019-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0,
+      "is_current": false,
+      "active_logins": [
+        "eric.wittmann@gmail.com",
+        "marc@rhymewithgravy.com"
+      ],
+      "new_logins": [
+        "marc@rhymewithgravy.com"
+      ],
+      "returning_logins": [
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "2019",
+      "period_type": "year",
+      "start_date": "2019-01-01T00:00:00",
+      "end_date": "2020-01-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 2,
+      "returning_contributors": 1,
+      "retention_rate": 33.33,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "eric.wittmann@gmail.com",
+        "karstengresch@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "karstengresch@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "2020",
+      "period_type": "year",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 3,
+      "returning_contributors": 2,
+      "retention_rate": 40.0,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "73223705+surbhi27946@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com",
+        "s0m0bv9@macbook-pro-6.local"
+      ],
+      "new_logins": [
+        "73223705+surbhi27946@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "s0m0bv9@macbook-pro-6.local"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 16,
+      "new_contributors": 12,
+      "returning_contributors": 4,
+      "retention_rate": 25.0,
+      "is_current": false,
+      "active_logins": [
+        "29098561+smccarthy-ie@users.noreply.github.com",
+        "46371672+famartinrh@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "61964599+riprasad@users.noreply.github.com",
+        "73223705+surbhi27946@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "famartin@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "jsenko@redhat.com",
+        "riprasad@redhat.com",
+        "senko.jak@gmail.com",
+        "stmccart@redhat.com",
+        "surbhi.mittal@walmart.com"
+      ],
+      "new_logins": [
+        "29098561+smccarthy-ie@users.noreply.github.com",
+        "46371672+famartinrh@users.noreply.github.com",
+        "61964599+riprasad@users.noreply.github.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "famartin@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "jsenko@redhat.com",
+        "riprasad@redhat.com",
+        "senko.jak@gmail.com",
+        "stmccart@redhat.com",
+        "surbhi.mittal@walmart.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "73223705+surbhi27946@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "2022",
+      "period_type": "year",
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2023-01-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 1,
+      "returning_contributors": 3,
+      "retention_rate": 75.0,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ],
+      "new_logins": [
+        "apicurio-ci@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "2023",
+      "period_type": "year",
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 12,
+      "new_contributors": 4,
+      "returning_contributors": 8,
+      "retention_rate": 66.67,
+      "is_current": false,
+      "active_logins": [
+        "29098561+smccarthy-ie@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jason@jasonmadigan.com",
+        "jcobb@redhat.com",
+        "jmadigan@redhat.com",
+        "rkpattnaik780@gmail.com",
+        "stmccart@redhat.com"
+      ],
+      "new_logins": [
+        "jason@jasonmadigan.com",
+        "jcobb@redhat.com",
+        "jmadigan@redhat.com",
+        "rkpattnaik780@gmail.com"
+      ],
+      "returning_logins": [
+        "29098561+smccarthy-ie@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio-ci@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "stmccart@redhat.com"
+      ]
+    },
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 10,
+      "new_contributors": 4,
+      "returning_contributors": 6,
+      "retention_rate": 60.0,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jcobb@redhat.com",
+        "m@jsenko.net",
+        "pwright@redhat.com"
+      ],
+      "new_logins": [
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "m@jsenko.net",
+        "pwright@redhat.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "jcobb@redhat.com"
+      ]
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 9,
+      "new_contributors": 1,
+      "returning_contributors": 8,
+      "retention_rate": 88.89,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [
+        "actions@github.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "5154224+pwright@users.noreply.github.com",
+        "aboucham@redhat.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ]
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 9,
+      "new_contributors": 2,
+      "returning_contributors": 7,
+      "retention_rate": 77.78,
+      "is_current": true,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "badges@fossa.io",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "hemantchaudhary905@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [
+        "badges@fossa.io",
+        "hemantchaudhary905@gmail.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "actions@github.com",
+        "apicurio.ci@gmail.com",
+        "carlesarnal92@gmail.com",
+        "carnalca@redhat.com",
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ]
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}

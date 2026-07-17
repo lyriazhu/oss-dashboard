@@ -1,16 +1,16 @@
 {
-  "total_commits": 3,
+  "total_commits": 13,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 0,
+      "commit_count": 1,
       "quarter": "Q3 2026"
     },
     {
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "commit_count": 2,
+      "commit_count": 12,
       "quarter": "Q2 2026"
     },
     {
@@ -22,7 +22,7 @@
     {
       "start_date": "2025-10-01T00:00:00",
       "end_date": "2026-01-01T00:00:00",
-      "commit_count": 1,
+      "commit_count": 0,
       "quarter": "Q4 2025"
     },
     {
@@ -76,31 +76,22 @@
   ],
   "committers": [
     {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
+      "login": "Jakub Senko",
+      "name": "Jakub Senko",
       "company": "Unknown",
       "location": null,
-      "email": "code@tomcooper.dev",
+      "email": "m@jsenko.net",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 17
     },
     {
-      "login": "Robert Young",
-      "name": "Robert Young",
+      "login": "fossabot",
+      "name": "fossabot",
       "company": "Unknown",
       "location": null,
-      "email": "robeyoun@redhat.com",
+      "email": "badges@fossa.io",
       "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "David Kornel",
-      "name": "David Kornel",
-      "company": "Unknown",
-      "location": null,
-      "email": "kornys@outlook.com",
-      "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     }
   ],
   "time_scope": {
@@ -109,21 +100,11 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-17T13:26:41.162151",
+  "extracted_at": "2026-07-17T13:28:38.174468",
   "years": [
     {
-      "year": 2022,
-      "commit_count": 8,
-      "is_current": false
-    },
-    {
-      "year": 2025,
-      "commit_count": 1,
-      "is_current": false
-    },
-    {
       "year": 2026,
-      "commit_count": 4,
+      "commit_count": 19,
       "is_current": true
     }
   ]

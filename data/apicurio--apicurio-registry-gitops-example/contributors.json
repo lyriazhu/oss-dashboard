@@ -1,97 +1,58 @@
 {
   "yearly_contributors": [
     {
-      "year": 2022,
-      "contributor_count": 1,
-      "is_current": false,
-      "contributor_logins": [
-        "eric.wittmann@gmail.com"
-      ]
-    },
-    {
-      "year": 2025,
-      "contributor_count": 1,
-      "is_current": false,
-      "contributor_logins": [
-        "eric.wittmann@gmail.com"
-      ]
-    },
-    {
       "year": 2026,
       "contributor_count": 2,
       "is_current": true,
       "contributor_logins": [
         "badges@fossa.io",
-        "carnalca@redhat.com"
+        "m@jsenko.net"
       ]
     }
   ],
-  "total_contributors": 3,
-  "total_contributors_git": 3,
+  "total_contributors": 2,
+  "total_contributors_git": 2,
   "all_time_contributor_logins": [
     "badges@fossa.io",
-    "carnalca@redhat.com",
-    "eric.wittmann@gmail.com"
+    "m@jsenko.net"
   ],
   "contributors": [
     {
-      "login": "EricWittmann",
-      "name": "Eric Wittmann",
-      "company": "Ibm",
-      "location": "Newtown, CT",
-      "email": "eric.wittmann@redhat.com",
-      "contributions": 9,
-      "profile_url": "https://github.com/EricWittmann"
-    },
-    {
-      "login": "tomncooper",
-      "name": "Thomas Cooper",
-      "company": "Ibm",
-      "location": "Newcastle upon Tyne, UK",
-      "email": "code@tomcooper.dev",
-      "contributions": 6,
-      "profile_url": "https://github.com/tomncooper"
-    },
-    {
-      "login": "carlesarnal",
-      "name": "Carles Arnal",
-      "company": "Ibm",
-      "location": "Barcelona",
-      "email": "carnalca@redhat.com",
-      "contributions": 2,
-      "profile_url": "https://github.com/carlesarnal"
-    },
-    {
-      "login": "kornys",
-      "name": "David Kornel",
-      "company": "Ibm",
+      "login": "jsenko",
+      "name": "Jakub Senko",
+      "company": "Red Hat",
       "location": "Brno",
-      "email": "kornys@outlook.com",
-      "contributions": 1,
-      "profile_url": "https://github.com/kornys"
+      "email": "m@jsenko.net",
+      "contributions": 12,
+      "profile_url": "https://github.com/jsenko"
     },
     {
-      "login": "robobario",
-      "name": "Robert Young",
-      "company": "Ibm",
-      "location": "New Zealand",
-      "email": null,
+      "login": "fossabot",
+      "name": "fossabot",
+      "company": "Fossas",
+      "location": "Dependency Heaven",
+      "email": "support@fossa.io",
       "contributions": 1,
-      "profile_url": "https://github.com/robobario"
+      "profile_url": "https://github.com/fossabot"
     }
   ],
-  "total_contributors_github_api": 5,
+  "total_contributors_github_api": 2,
   "companies": {
-    "Ibm": 5
+    "Red Hat": 1,
+    "Fossas": 1
   },
-  "total_companies": 1,
+  "total_companies": 2,
   "company_diversity": {
-    "known_company_contributors": 5,
+    "known_company_contributors": 2,
     "unknown_company_contributors": 0,
     "top_companies": [
       {
-        "company": "Ibm",
-        "contributor_count": 5
+        "company": "Red Hat",
+        "contributor_count": 1
+      },
+      {
+        "company": "Fossas",
+        "contributor_count": 1
       }
     ]
   },
@@ -205,17 +166,13 @@
       "period_type": "quarter",
       "start_date": "2025-10-01T00:00:00",
       "end_date": "2026-01-01T00:00:00",
-      "active_contributors": 1,
+      "active_contributors": 0,
       "new_contributors": 0,
-      "returning_contributors": 1,
-      "retention_rate": 100.0,
-      "active_logins": [
-        "eric.wittmann@gmail.com"
-      ],
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
       "new_logins": [],
-      "returning_logins": [
-        "eric.wittmann@gmail.com"
-      ]
+      "returning_logins": []
     },
     {
       "period": "Q1 2026",
@@ -240,10 +197,10 @@
       "returning_contributors": 0,
       "retention_rate": 0.0,
       "active_logins": [
-        "carnalca@redhat.com"
+        "m@jsenko.net"
       ],
       "new_logins": [
-        "carnalca@redhat.com"
+        "m@jsenko.net"
       ],
       "returning_logins": []
     },
@@ -267,42 +224,6 @@
   ],
   "retention_by_year": [
     {
-      "period": "2022",
-      "period_type": "year",
-      "start_date": "2022-01-01T00:00:00",
-      "end_date": "2023-01-01T00:00:00",
-      "active_contributors": 1,
-      "new_contributors": 1,
-      "returning_contributors": 0,
-      "retention_rate": 0.0,
-      "is_current": false,
-      "active_logins": [
-        "eric.wittmann@gmail.com"
-      ],
-      "new_logins": [
-        "eric.wittmann@gmail.com"
-      ],
-      "returning_logins": []
-    },
-    {
-      "period": "2025",
-      "period_type": "year",
-      "start_date": "2025-01-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "active_contributors": 1,
-      "new_contributors": 0,
-      "returning_contributors": 1,
-      "retention_rate": 100.0,
-      "is_current": false,
-      "active_logins": [
-        "eric.wittmann@gmail.com"
-      ],
-      "new_logins": [],
-      "returning_logins": [
-        "eric.wittmann@gmail.com"
-      ]
-    },
-    {
       "period": "2026",
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
@@ -314,11 +235,11 @@
       "is_current": true,
       "active_logins": [
         "badges@fossa.io",
-        "carnalca@redhat.com"
+        "m@jsenko.net"
       ],
       "new_logins": [
         "badges@fossa.io",
-        "carnalca@redhat.com"
+        "m@jsenko.net"
       ],
       "returning_logins": []
     }

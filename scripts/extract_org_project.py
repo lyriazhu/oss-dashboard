@@ -166,8 +166,8 @@ def _write_merge_record(data_dir: Path, org_name: str, member_ids: list,
         json.dump(payload, f, indent=2)
 
 
-def _extract_single_repo(extractor, owner: str, repo: str, project_name: str,
-                          issue_scope: str, issue_repo: str | None):
+def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issue_repo):
+    # type: (object, str, str, str, str, object) -> dict
     """Run the full single-repo extraction pipeline (mirrors extract_single_project logic)."""
     from datetime import datetime as dt
 

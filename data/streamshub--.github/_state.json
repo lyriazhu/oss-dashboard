@@ -1,23 +1,21 @@
 {
   "contributors": {
     "known_logins": [
-      "MeerBiene",
-      "UtkarshMishra12",
-      "ppatierno",
-      "scholzj"
+      "EricWittmann",
+      "carlesarnal"
     ],
-    "last_extracted_at": "2026-07-16T15:07:29.603371"
+    "last_extracted_at": "2026-07-17T13:26:34.844809"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T15:07:36.235789"
+    "last_git_sync_at": "2026-07-17T13:26:41.162163"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T15:08:37.670933"
+    "last_extracted_at": "2026-07-17T13:27:22.580143"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T15:08:11.728232"
+    "last_extracted_at": "2026-07-17T13:27:06.680803"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T15:08:39.880414"
+    "last_extracted_at": "2026-07-17T13:27:24.693533"
   }
 }

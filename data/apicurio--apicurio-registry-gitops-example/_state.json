@@ -1,0 +1,21 @@
+{
+  "contributors": {
+    "known_logins": [
+      "fossabot",
+      "jsenko"
+    ],
+    "last_extracted_at": "2026-07-17T13:28:32.023451"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-17T13:28:38.174474"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-17T13:28:50.603725"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-17T13:28:44.275091"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-17T13:28:52.760169"
+  }
+}

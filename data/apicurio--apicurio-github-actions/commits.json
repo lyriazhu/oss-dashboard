@@ -1,5 +1,5 @@
 {
-  "total_commits": 3,
+  "total_commits": 20,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -22,13 +22,13 @@
     {
       "start_date": "2025-10-01T00:00:00",
       "end_date": "2026-01-01T00:00:00",
-      "commit_count": 1,
+      "commit_count": 0,
       "quarter": "Q4 2025"
     },
     {
       "start_date": "2025-07-01T00:00:00",
       "end_date": "2025-10-01T00:00:00",
-      "commit_count": 0,
+      "commit_count": 18,
       "quarter": "Q3 2025"
     },
     {
@@ -76,31 +76,76 @@
   ],
   "committers": [
     {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
+      "login": "Eric Wittmann",
+      "name": "Eric Wittmann",
       "company": "Unknown",
       "location": null,
-      "email": "code@tomcooper.dev",
+      "email": "eric.wittmann@gmail.com",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 56
     },
     {
-      "login": "Robert Young",
-      "name": "Robert Young",
+      "login": "Prasad, Rishab",
+      "name": "Prasad, Rishab",
       "company": "Unknown",
       "location": null,
-      "email": "robeyoun@redhat.com",
+      "email": "riprasad@redhat.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Jakub Senko",
+      "name": "Jakub Senko",
+      "company": "Unknown",
+      "location": null,
+      "email": "m@jsenko.net",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "github-actions",
+      "name": "github-actions",
+      "company": "Unknown",
+      "location": null,
+      "email": "github-actions@github.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "apicurio-ci",
+      "name": "apicurio-ci",
+      "company": "Unknown",
+      "location": null,
+      "email": "eric.wittmann+apicurio-ci@gmail.com",
       "profile_url": null,
       "commit_count": 3
     },
     {
-      "login": "David Kornel",
-      "name": "David Kornel",
+      "login": "fossabot",
+      "name": "fossabot",
       "company": "Unknown",
       "location": null,
-      "email": "kornys@outlook.com",
+      "email": "badges@fossa.io",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
+    },
+    {
+      "login": "Nikisha Patil",
+      "name": "Nikisha Patil",
+      "company": "Unknown",
+      "location": null,
+      "email": "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Nikisha Patil",
+      "name": "Nikisha Patil",
+      "company": "Unknown",
+      "location": null,
+      "email": "nipatil@redhat.com",
+      "profile_url": null,
+      "commit_count": 2
     }
   ],
   "time_scope": {
@@ -109,21 +154,21 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-17T13:26:41.162151",
+  "extracted_at": "2026-07-17T13:25:14.169536",
   "years": [
     {
-      "year": 2022,
-      "commit_count": 8,
+      "year": 2020,
+      "commit_count": 51,
       "is_current": false
     },
     {
       "year": 2025,
-      "commit_count": 1,
+      "commit_count": 24,
       "is_current": false
     },
     {
       "year": 2026,
-      "commit_count": 4,
+      "commit_count": 5,
       "is_current": true
     }
   ]

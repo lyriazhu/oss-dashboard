@@ -1,0 +1,23 @@
+{
+  "contributors": {
+    "known_logins": [
+      "EricWittmann",
+      "apicurio-ci",
+      "jetmartin",
+      "jsenko"
+    ],
+    "last_extracted_at": "2026-07-17T13:27:33.932557"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-17T13:27:40.648958"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-17T13:28:22.026955"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-17T13:28:01.332469"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-17T13:28:24.175447"
+  }
+}

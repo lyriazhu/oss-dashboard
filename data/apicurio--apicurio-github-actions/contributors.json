@@ -1,19 +1,25 @@
 {
   "yearly_contributors": [
     {
-      "year": 2022,
-      "contributor_count": 1,
+      "year": 2020,
+      "contributor_count": 4,
       "is_current": false,
       "contributor_logins": [
-        "eric.wittmann@gmail.com"
+        "eric.wittmann+apicurio-ci@gmail.com",
+        "eric.wittmann@gmail.com",
+        "github-actions@github.com",
+        "riprasad@redhat.com"
       ]
     },
     {
       "year": 2025,
-      "contributor_count": 1,
+      "contributor_count": 4,
       "is_current": false,
       "contributor_logins": [
-        "eric.wittmann@gmail.com"
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net",
+        "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+        "nipatil@redhat.com"
       ]
     },
     {
@@ -22,16 +28,21 @@
       "is_current": true,
       "contributor_logins": [
         "badges@fossa.io",
-        "carnalca@redhat.com"
+        "eric.wittmann@gmail.com"
       ]
     }
   ],
-  "total_contributors": 3,
-  "total_contributors_git": 3,
+  "total_contributors": 8,
+  "total_contributors_git": 8,
   "all_time_contributor_logins": [
     "badges@fossa.io",
-    "carnalca@redhat.com",
-    "eric.wittmann@gmail.com"
+    "eric.wittmann+apicurio-ci@gmail.com",
+    "eric.wittmann@gmail.com",
+    "github-actions@github.com",
+    "m@jsenko.net",
+    "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+    "nipatil@redhat.com",
+    "riprasad@redhat.com"
   ],
   "contributors": [
     {
@@ -40,58 +51,45 @@
       "company": "Ibm",
       "location": "Newtown, CT",
       "email": "eric.wittmann@redhat.com",
-      "contributions": 9,
+      "contributions": 55,
       "profile_url": "https://github.com/EricWittmann"
     },
     {
-      "login": "tomncooper",
-      "name": "Thomas Cooper",
-      "company": "Ibm",
-      "location": "Newcastle upon Tyne, UK",
-      "email": "code@tomcooper.dev",
-      "contributions": 6,
-      "profile_url": "https://github.com/tomncooper"
+      "login": "riprasad",
+      "name": "Rishab Prasad",
+      "company": "Red Hat",
+      "location": "Bangalore, India",
+      "email": "riprasad@redhat.com",
+      "contributions": 5,
+      "profile_url": "https://github.com/riprasad"
     },
     {
-      "login": "carlesarnal",
-      "name": "Carles Arnal",
-      "company": "Ibm",
-      "location": "Barcelona",
-      "email": "carnalca@redhat.com",
-      "contributions": 2,
-      "profile_url": "https://github.com/carlesarnal"
-    },
-    {
-      "login": "kornys",
-      "name": "David Kornel",
-      "company": "Ibm",
+      "login": "jsenko",
+      "name": "Jakub Senko",
+      "company": "Red Hat",
       "location": "Brno",
-      "email": "kornys@outlook.com",
-      "contributions": 1,
-      "profile_url": "https://github.com/kornys"
-    },
-    {
-      "login": "robobario",
-      "name": "Robert Young",
-      "company": "Ibm",
-      "location": "New Zealand",
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/robobario"
+      "email": "m@jsenko.net",
+      "contributions": 3,
+      "profile_url": "https://github.com/jsenko"
     }
   ],
-  "total_contributors_github_api": 5,
+  "total_contributors_github_api": 3,
   "companies": {
-    "Ibm": 5
+    "Red Hat": 2,
+    "Ibm": 1
   },
-  "total_companies": 1,
+  "total_companies": 2,
   "company_diversity": {
-    "known_company_contributors": 5,
+    "known_company_contributors": 3,
     "unknown_company_contributors": 0,
     "top_companies": [
       {
+        "company": "Red Hat",
+        "contributor_count": 2
+      },
+      {
         "company": "Ibm",
-        "contributor_count": 5
+        "contributor_count": 1
       }
     ]
   },
@@ -179,12 +177,18 @@
       "period_type": "quarter",
       "start_date": "2025-04-01T00:00:00",
       "end_date": "2025-07-01T00:00:00",
-      "active_contributors": 0,
-      "new_contributors": 0,
+      "active_contributors": 2,
+      "new_contributors": 2,
       "returning_contributors": 0,
-      "retention_rate": null,
-      "active_logins": [],
-      "new_logins": [],
+      "retention_rate": 0.0,
+      "active_logins": [
+        "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+        "nipatil@redhat.com"
+      ],
+      "new_logins": [
+        "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+        "nipatil@redhat.com"
+      ],
       "returning_logins": []
     },
     {
@@ -192,6 +196,26 @@
       "period_type": "quarter",
       "start_date": "2025-07-01T00:00:00",
       "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net"
+      ],
+      "new_logins": [
+        "m@jsenko.net"
+      ],
+      "returning_logins": [
+        "eric.wittmann@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
@@ -199,23 +223,6 @@
       "active_logins": [],
       "new_logins": [],
       "returning_logins": []
-    },
-    {
-      "period": "Q4 2025",
-      "period_type": "quarter",
-      "start_date": "2025-10-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "active_contributors": 1,
-      "new_contributors": 0,
-      "returning_contributors": 1,
-      "retention_rate": 100.0,
-      "active_logins": [
-        "eric.wittmann@gmail.com"
-      ],
-      "new_logins": [],
-      "returning_logins": [
-        "eric.wittmann@gmail.com"
-      ]
     },
     {
       "period": "Q1 2026",
@@ -236,16 +243,16 @@
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
       "active_contributors": 1,
-      "new_contributors": 1,
-      "returning_contributors": 0,
-      "retention_rate": 0.0,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
       "active_logins": [
-        "carnalca@redhat.com"
+        "eric.wittmann@gmail.com"
       ],
-      "new_logins": [
-        "carnalca@redhat.com"
-      ],
-      "returning_logins": []
+      "new_logins": [],
+      "returning_logins": [
+        "eric.wittmann@gmail.com"
+      ]
     },
     {
       "period": "Q3 2026",
@@ -267,20 +274,26 @@
   ],
   "retention_by_year": [
     {
-      "period": "2022",
+      "period": "2020",
       "period_type": "year",
-      "start_date": "2022-01-01T00:00:00",
-      "end_date": "2023-01-01T00:00:00",
-      "active_contributors": 1,
-      "new_contributors": 1,
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 4,
       "returning_contributors": 0,
       "retention_rate": 0.0,
       "is_current": false,
       "active_logins": [
-        "eric.wittmann@gmail.com"
+        "eric.wittmann+apicurio-ci@gmail.com",
+        "eric.wittmann@gmail.com",
+        "github-actions@github.com",
+        "riprasad@redhat.com"
       ],
       "new_logins": [
-        "eric.wittmann@gmail.com"
+        "eric.wittmann+apicurio-ci@gmail.com",
+        "eric.wittmann@gmail.com",
+        "github-actions@github.com",
+        "riprasad@redhat.com"
       ],
       "returning_logins": []
     },
@@ -289,15 +302,22 @@
       "period_type": "year",
       "start_date": "2025-01-01T00:00:00",
       "end_date": "2026-01-01T00:00:00",
-      "active_contributors": 1,
-      "new_contributors": 0,
+      "active_contributors": 4,
+      "new_contributors": 3,
       "returning_contributors": 1,
-      "retention_rate": 100.0,
+      "retention_rate": 25.0,
       "is_current": false,
       "active_logins": [
-        "eric.wittmann@gmail.com"
+        "eric.wittmann@gmail.com",
+        "m@jsenko.net",
+        "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+        "nipatil@redhat.com"
       ],
-      "new_logins": [],
+      "new_logins": [
+        "m@jsenko.net",
+        "nipatil@nipatil-thinkpadp16vgen1.punetw6.csb",
+        "nipatil@redhat.com"
+      ],
       "returning_logins": [
         "eric.wittmann@gmail.com"
       ]
@@ -308,19 +328,20 @@
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
       "active_contributors": 2,
-      "new_contributors": 2,
-      "returning_contributors": 0,
-      "retention_rate": 0.0,
+      "new_contributors": 1,
+      "returning_contributors": 1,
+      "retention_rate": 50.0,
       "is_current": true,
       "active_logins": [
         "badges@fossa.io",
-        "carnalca@redhat.com"
+        "eric.wittmann@gmail.com"
       ],
       "new_logins": [
-        "badges@fossa.io",
-        "carnalca@redhat.com"
+        "badges@fossa.io"
       ],
-      "returning_logins": []
+      "returning_logins": [
+        "eric.wittmann@gmail.com"
+      ]
     }
   ],
   "time_scope": {

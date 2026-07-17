@@ -118,6 +118,62 @@ projects:
     foundation: "Independent"
 
 
+
+  - name: "Apicurio"
+    github_url: "https://github.com/Apicurio"
+    owner: "Apicurio"
+    is_org: true
+    foundation: "Independent"
+    issue_scope: all
+
+
+  - name: "apicurio.github.io"
+    github_url: "https://github.com/Apicurio/apicurio.github.io"
+    owner: "Apicurio"
+    repo: "apicurio.github.io"
+    foundation: "Independent"
+
+  - name: "apicurio-registry"
+    github_url: "https://github.com/Apicurio/apicurio-registry"
+    owner: "Apicurio"
+    repo: "apicurio-registry"
+    foundation: "Independent"
+
+  - name: "apicurio-github-actions"
+    github_url: "https://github.com/Apicurio/apicurio-github-actions"
+    owner: "Apicurio"
+    repo: "apicurio-github-actions"
+    foundation: "Independent"
+
+  - name: ".github"
+    github_url: "https://github.com/Apicurio/.github"
+    owner: "Apicurio"
+    repo: ".github"
+    foundation: "Independent"
+
+  - name: "apicurio-registry-vscode-plugin"
+    github_url: "https://github.com/Apicurio/apicurio-registry-vscode-plugin"
+    owner: "Apicurio"
+    repo: "apicurio-registry-vscode-plugin"
+    foundation: "Independent"
+
+  - name: "apicurio-registry-gitops-example"
+    github_url: "https://github.com/Apicurio/apicurio-registry-gitops-example"
+    owner: "Apicurio"
+    repo: "apicurio-registry-gitops-example"
+    foundation: "Independent"
+
+  - name: "apicurio-compatibility-harness"
+    github_url: "https://github.com/Apicurio/apicurio-compatibility-harness"
+    owner: "Apicurio"
+    repo: "apicurio-compatibility-harness"
+    foundation: "Independent"
+
+  - name: ".project"
+    github_url: "https://github.com/Apicurio/.project"
+    owner: "Apicurio"
+    repo: ".project"
+    foundation: "Independent"
 extraction:
   # How many quarters of historical data to fetch
   quarters_back: 12

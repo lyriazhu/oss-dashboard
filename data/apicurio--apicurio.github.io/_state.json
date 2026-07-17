@@ -1,0 +1,37 @@
+{
+  "contributors": {
+    "known_logins": [
+      "EricWittmann",
+      "Surbhi27946",
+      "aboucham",
+      "actions-user",
+      "apicurio-ci",
+      "carlesarnal",
+      "dependabot[bot]",
+      "famarting",
+      "gunnarmorling",
+      "insectengine",
+      "jasonmadigan",
+      "jsenko",
+      "karstengresch",
+      "msavy",
+      "pwright",
+      "riprasad",
+      "rkpattnaik780",
+      "smccarthy-ie"
+    ],
+    "last_extracted_at": "2026-07-17T13:11:48.415353"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-17T13:11:55.485195"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-17T13:13:40.949556"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-17T13:12:48.380880"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-17T13:13:42.910331"
+  }
+}

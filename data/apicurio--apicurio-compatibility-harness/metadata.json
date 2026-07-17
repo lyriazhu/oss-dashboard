@@ -1,0 +1,25 @@
+{
+  "name": "apicurio-compatibility-harness",
+  "full_name": "Apicurio/apicurio-compatibility-harness",
+  "description": "Apicurio Compatibility Harness",
+  "created_at": "2026-05-06T14:12:04+00:00",
+  "updated_at": "2026-05-18T18:29:40+00:00",
+  "stars": 0,
+  "forks": 1,
+  "watchers": 0,
+  "open_issues": 14,
+  "language": "Java",
+  "topics": [],
+  "license": null,
+  "homepage": null,
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Red Hat",
+      "commits": 38,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-17T13:28:57.481157"
+}

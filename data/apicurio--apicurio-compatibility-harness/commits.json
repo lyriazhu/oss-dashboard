@@ -1,5 +1,5 @@
 {
-  "total_commits": 3,
+  "total_commits": 38,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -10,7 +10,7 @@
     {
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "commit_count": 2,
+      "commit_count": 38,
       "quarter": "Q2 2026"
     },
     {
@@ -22,7 +22,7 @@
     {
       "start_date": "2025-10-01T00:00:00",
       "end_date": "2026-01-01T00:00:00",
-      "commit_count": 1,
+      "commit_count": 0,
       "quarter": "Q4 2025"
     },
     {
@@ -76,31 +76,22 @@
   ],
   "committers": [
     {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
+      "login": "Paolo Antinori",
+      "name": "Paolo Antinori",
       "company": "Unknown",
       "location": null,
-      "email": "code@tomcooper.dev",
+      "email": "pantinor@redhat.com",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 38
     },
     {
-      "login": "Robert Young",
-      "name": "Robert Young",
+      "login": "fossabot",
+      "name": "fossabot",
       "company": "Unknown",
       "location": null,
-      "email": "robeyoun@redhat.com",
+      "email": "badges@fossa.io",
       "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "David Kornel",
-      "name": "David Kornel",
-      "company": "Unknown",
-      "location": null,
-      "email": "kornys@outlook.com",
-      "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     }
   ],
   "time_scope": {
@@ -109,21 +100,11 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-17T13:26:41.162151",
+  "extracted_at": "2026-07-17T13:29:06.631141",
   "years": [
     {
-      "year": 2022,
-      "commit_count": 8,
-      "is_current": false
-    },
-    {
-      "year": 2025,
-      "commit_count": 1,
-      "is_current": false
-    },
-    {
       "year": 2026,
-      "commit_count": 4,
+      "commit_count": 40,
       "is_current": true
     }
   ]
