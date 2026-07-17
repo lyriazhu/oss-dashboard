@@ -410,7 +410,7 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         ))}
       </div>
 
-      {(d.description || d.websiteUrl) && (
+      {!d._isMergedSubRepo && (d.description || d.websiteUrl) && (
         <div className="section">
           <h2 className="section-h">About {d.name}</h2>
           <div style={{ border: '1px solid var(--border-subtle)', background: 'var(--layer-02)', padding: '1rem 1.25rem' }}>

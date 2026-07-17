@@ -1,0 +1,37 @@
+{
+  "contributors": {
+    "known_logins": [
+      "JillisTerHove-Rubix",
+      "PoojaChandak",
+      "abarrak",
+      "akostadinov",
+      "andrewdavidmackenzie",
+      "bobknob23987",
+      "dependabot[bot]",
+      "eguzki",
+      "jjkiely",
+      "kevprice83",
+      "leathersole",
+      "macejmic",
+      "mayorova",
+      "miguelsorianod",
+      "mikz",
+      "nmasse-itix",
+      "orimarti",
+      "y-tabata"
+    ],
+    "last_extracted_at": "2026-07-17T12:12:35.212074"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-17T12:12:42.342375"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-17T12:16:47.001946"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-17T12:15:15.258743"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-17T12:16:49.247289"
+  }
+}

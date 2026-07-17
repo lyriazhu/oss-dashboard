@@ -1,0 +1,1616 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2016,
+      "contributor_count": 17,
+      "is_current": false,
+      "contributor_logins": [
+        "alex@flawedcode.org",
+        "andrew@mackenzie-serres.net",
+        "build@localhost",
+        "d.mayorova@gmail.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "mark_cheshire@alum.mit.edu",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "mpguerra@users.noreply.github.com",
+        "orimarti@gmail.com",
+        "pili@3scale.net",
+        "tom@3scale.net",
+        "vanessa@3scale.net",
+        "vanessa@redhat.com",
+        "vinay@3scale.net",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "year": 2017,
+      "contributor_count": 20,
+      "is_current": false,
+      "contributor_logins": [
+        "crshman@gmail.com",
+        "d.mayorova@gmail.com",
+        "esteffens@rovecom.nl",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "kevprice83@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "mpguerra@users.noreply.github.com",
+        "niallburkley@gmail.com",
+        "nicolas.masse@itix.fr",
+        "officehoursonly@gmail.com",
+        "pili@3scale.net",
+        "rnavarro@stitchlabs.com",
+        "sebastian.spier@meltwater.com",
+        "tkonishi@redhat.com",
+        "tmogi001@users.noreply.github.com",
+        "tncorcoran@yahoo.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "year": 2018,
+      "contributor_count": 21,
+      "is_current": false,
+      "contributor_logins": [
+        "34849594+y-tabata@users.noreply.github.com",
+        "albin.gustavsson@entiros.se",
+        "amoran@redhat.com",
+        "amr@redhat.com",
+        "avilatus@redhat.com",
+        "d.mayorova@gmail.com",
+        "dcesario@redhat.com",
+        "eastizle@redhat.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "kevprice83@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "niallburkley@gmail.com",
+        "nicolas.masse@itix.fr",
+        "pgough@redhat.com",
+        "ssethu@encoress.com",
+        "tmogi001@users.noreply.github.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "year": 2019,
+      "contributor_count": 14,
+      "is_current": false,
+      "contributor_logins": [
+        "43811485+porueesq@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "avilatus@redhat.com",
+        "cpalmieri@redhat.com",
+        "cvajjhal@cvajjhal.bos.csb",
+        "eloy.coto@gmail.com",
+        "kev.price83@gmail.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "pimg@users.noreply.github.com",
+        "poth.john@gmail.com",
+        "rajput_vishwas@infosys.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "year": 2020,
+      "contributor_count": 15,
+      "is_current": false,
+      "contributor_logins": [
+        "34849594+y-tabata@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "cpalmieri@redhat.com",
+        "eloy.coto@acalustra.com",
+        "eloy.coto@gmail.com",
+        "pim.gaemers@gmail.com",
+        "pim@ip-192-168-1-68.eu-central-1.compute.internal",
+        "pimg@users.noreply.github.com",
+        "poojachandak002@gmail.com",
+        "rajput_vishwas@infosys.com",
+        "sillumin@sillumin.remote.csb",
+        "vvidovic@croz.net",
+        "vvidovic@gmail.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "year": 2021,
+      "contributor_count": 14,
+      "is_current": false,
+      "contributor_logins": [
+        "2420882+gsaslis@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "alex@flawedcode.org",
+        "amr@redhat.com",
+        "cpalmieri@redhat.com",
+        "djmarinb@gmail.com",
+        "drajnoha@redhat.com",
+        "eloy.coto@acalustra.com",
+        "eloy.coto@gmail.com",
+        "halapetr@selfnet.cz",
+        "jans@dracoblue.de",
+        "kev.price83@gmail.com",
+        "samuele8@gmail.com",
+        "stmccart@redhat.com"
+      ]
+    },
+    {
+      "year": 2022,
+      "contributor_count": 15,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "90649839+djmarinb@users.noreply.github.com",
+        "a@abarrak.com",
+        "alex@flawedcode.org",
+        "carlo.palmieri@aiven.io",
+        "djmarinb@gmail.com",
+        "eastizle@redhat.com",
+        "guicassolato@gmail.com",
+        "jkiely@redhat.com",
+        "jonathansimas@gmail.com",
+        "kev.price83@gmail.com",
+        "samuele8@gmail.com",
+        "sergioifg94@gmail.com",
+        "sfrancog@redhat.com",
+        "thomas@webtypes.com"
+      ]
+    },
+    {
+      "year": 2023,
+      "contributor_count": 14,
+      "is_current": false,
+      "contributor_logins": [
+        "100855559+lcavalle@users.noreply.github.com",
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "atra@redhat.com",
+        "caswilli@redhat.com",
+        "eastizle@redhat.com",
+        "ernaniaz@gmail.com",
+        "guicassolato@gmail.com",
+        "hector_vido@yahoo.com.br",
+        "kev.price83@gmail.com",
+        "pablo@odkq.com",
+        "pery.lemke@gmail.com",
+        "thomas@webtypes.com",
+        "tkan145@gmail.com",
+        "vbelchio@redhat.com"
+      ]
+    },
+    {
+      "year": 2024,
+      "contributor_count": 16,
+      "is_current": false,
+      "contributor_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "2420882+gsaslis@users.noreply.github.com",
+        "39673799+hector-vido@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "aucunnin@redhat.com",
+        "dagbay@redhat.com",
+        "eastizle@redhat.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "kwalsh@redhat.com",
+        "mstoklus@redhat.com",
+        "pcihalov@redhat.com",
+        "snyk-bot@snyk.io",
+        "tkan145@gmail.com",
+        "yorgos.saslis@redhat.com"
+      ]
+    },
+    {
+      "year": 2025,
+      "contributor_count": 10,
+      "is_current": false,
+      "contributor_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "evancasey2003@gmail.com",
+        "jlledo@redhat.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "year": 2026,
+      "contributor_count": 7,
+      "is_current": true,
+      "contributor_logins": [
+        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "bob@example.com",
+        "mayorova@users.noreply.github.com",
+        "mstoklus@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    }
+  ],
+  "total_contributors": 96,
+  "total_contributors_git": 96,
+  "all_time_contributor_logins": [
+    "100855559+lcavalle@users.noreply.github.com",
+    "101584191+dagbay-rh@users.noreply.github.com",
+    "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+    "2420882+gsaslis@users.noreply.github.com",
+    "296308834+akostadinov-bot[bot]@users.noreply.github.com",
+    "34849594+y-tabata@users.noreply.github.com",
+    "39673799+hector-vido@users.noreply.github.com",
+    "43811485+porueesq@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "89980168+petracihalova@users.noreply.github.com",
+    "90649839+djmarinb@users.noreply.github.com",
+    "a@abarrak.com",
+    "albin.gustavsson@entiros.se",
+    "alex@flawedcode.org",
+    "amoran@redhat.com",
+    "amr@redhat.com",
+    "andrew@mackenzie-serres.net",
+    "atra@redhat.com",
+    "aucunnin@redhat.com",
+    "avilatus@redhat.com",
+    "bob@example.com",
+    "build@localhost",
+    "carlo.palmieri@aiven.io",
+    "caswilli@redhat.com",
+    "cpalmieri@redhat.com",
+    "crshman@gmail.com",
+    "cvajjhal@cvajjhal.bos.csb",
+    "d.mayorova@gmail.com",
+    "dagbay@redhat.com",
+    "dcesario@redhat.com",
+    "djmarinb@gmail.com",
+    "drajnoha@redhat.com",
+    "eastizle@redhat.com",
+    "ellen.dong92@gmail.com",
+    "eloy.coto@acalustra.com",
+    "eloy.coto@gmail.com",
+    "ernaniaz@gmail.com",
+    "esteffens@rovecom.nl",
+    "evancasey2003@gmail.com",
+    "guicassolato@gmail.com",
+    "halapetr@selfnet.cz",
+    "hector_vido@yahoo.com.br",
+    "jans@dracoblue.de",
+    "jkiely@redhat.com",
+    "jlledo@redhat.com",
+    "jmprusi@keepalive.io",
+    "jonathansimas@gmail.com",
+    "kev.price83@gmail.com",
+    "kevprice83@users.noreply.github.com",
+    "konflux@no-reply.konflux-ci.dev",
+    "kwalsh@redhat.com",
+    "mark_cheshire@alum.mit.edu",
+    "mayorova@users.noreply.github.com",
+    "michal@cichra.cz",
+    "mikz@users.noreply.github.com",
+    "mpguerra@users.noreply.github.com",
+    "mstoklus@redhat.com",
+    "niallburkley@gmail.com",
+    "nicolas.masse@itix.fr",
+    "officehoursonly@gmail.com",
+    "orimarti@gmail.com",
+    "pablo@odkq.com",
+    "pcihalov@redhat.com",
+    "pery.lemke@gmail.com",
+    "pgough@redhat.com",
+    "pili@3scale.net",
+    "pim.gaemers@gmail.com",
+    "pim@ip-192-168-1-68.eu-central-1.compute.internal",
+    "pimg@users.noreply.github.com",
+    "poojachandak002@gmail.com",
+    "poth.john@gmail.com",
+    "rajput_vishwas@infosys.com",
+    "rnavarro@stitchlabs.com",
+    "samuele8@gmail.com",
+    "sebastian.spier@meltwater.com",
+    "sergioifg94@gmail.com",
+    "sfrancog@redhat.com",
+    "sillumin@sillumin.remote.csb",
+    "snyk-bot@snyk.io",
+    "ssethu@encoress.com",
+    "stmccart@redhat.com",
+    "thomas@webtypes.com",
+    "tkan145@gmail.com",
+    "tkonishi@redhat.com",
+    "tmogi001@users.noreply.github.com",
+    "tncorcoran@yahoo.com",
+    "tom@3scale.net",
+    "vanessa@3scale.net",
+    "vanessa@redhat.com",
+    "vbelchio@redhat.com",
+    "vinay@3scale.net",
+    "vvidovic@croz.net",
+    "vvidovic@gmail.com",
+    "yorgos.saslis@redhat.com",
+    "yoshiyuki.tabata.jy@hitachi.com",
+    "z.david.ortiz@gmail.com"
+  ],
+  "contributors": [
+    {
+      "login": "mikz",
+      "name": "Michal Cichra",
+      "company": "Unknown",
+      "location": "Prague, Czech Republic",
+      "email": null,
+      "contributions": 1466,
+      "profile_url": "https://github.com/mikz"
+    },
+    {
+      "login": "davidor",
+      "name": "David Ortiz",
+      "company": "Datadog",
+      "location": "Barcelona",
+      "email": null,
+      "contributions": 1132,
+      "profile_url": "https://github.com/davidor"
+    },
+    {
+      "login": "tkan145",
+      "name": "An Tran",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 329,
+      "profile_url": "https://github.com/tkan145"
+    },
+    {
+      "login": "eguzki",
+      "name": "Eguzki Astiz Lezaun",
+      "company": "Red Hat",
+      "location": null,
+      "email": "eastizle@redhat.com",
+      "contributions": 311,
+      "profile_url": "https://github.com/eguzki"
+    },
+    {
+      "login": "eloycoto",
+      "name": "Eloy Coto",
+      "company": "Red Hat",
+      "location": "Porri\u00f1o, Espa\u00f1a",
+      "email": "eloy.coto@acalustra.com",
+      "contributions": 280,
+      "profile_url": "https://github.com/eloycoto"
+    },
+    {
+      "login": "mayorova",
+      "name": "Daria Mayorova",
+      "company": "Red Hat",
+      "location": "Barcelona",
+      "email": null,
+      "contributions": 117,
+      "profile_url": "https://github.com/mayorova"
+    },
+    {
+      "login": "jmprusi",
+      "name": "Joaquim Moreno Prusi",
+      "company": "Unknown",
+      "location": "Barcelona",
+      "email": "jmprusi@keepalive.io",
+      "contributions": 87,
+      "profile_url": "https://github.com/jmprusi"
+    },
+    {
+      "login": "y-tabata",
+      "name": "Yoshiyuki Tabata",
+      "company": "Hitachi, Ltd.",
+      "location": "Yokohama, Japan",
+      "email": null,
+      "contributions": 66,
+      "profile_url": "https://github.com/y-tabata"
+    },
+    {
+      "login": "kevprice83",
+      "name": "Kevin",
+      "company": "Red Hat",
+      "location": "Barcelona",
+      "email": "kevprice@redhat.com",
+      "contributions": 41,
+      "profile_url": "https://github.com/kevprice83"
+    },
+    {
+      "login": "samugi",
+      "name": "Samuele",
+      "company": "Kong",
+      "location": "Treviso, Italy",
+      "email": "samuele8@gmail.com",
+      "contributions": 32,
+      "profile_url": "https://github.com/samugi"
+    },
+    {
+      "login": "tmogi001",
+      "name": "Takashi Mogi",
+      "company": "Hitachi",
+      "location": "Yokohama, Japan",
+      "email": null,
+      "contributions": 14,
+      "profile_url": "https://github.com/tmogi001"
+    },
+    {
+      "login": "PoojaChandak",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": "poojachandak002@gmail.com",
+      "contributions": 13,
+      "profile_url": "https://github.com/PoojaChandak"
+    },
+    {
+      "login": "guicassolato",
+      "name": "Guilherme Cassolato",
+      "company": "Red Hat",
+      "location": "Barcelona",
+      "email": "guicassolato@gmail.com",
+      "contributions": 10,
+      "profile_url": "https://github.com/guicassolato"
+    },
+    {
+      "login": "gsaslis",
+      "name": "Yorgos Saslis",
+      "company": "Radicle.Dev",
+      "location": "Crete, Greece",
+      "email": null,
+      "contributions": 10,
+      "profile_url": "https://github.com/gsaslis"
+    },
+    {
+      "login": "unleashed",
+      "name": "Alejandro Martinez Ruiz",
+      "company": "Unknown",
+      "location": "Barcelona",
+      "email": "alex@flawedcode.org",
+      "contributions": 7,
+      "profile_url": "https://github.com/unleashed"
+    },
+    {
+      "login": "avilatusell",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 7,
+      "profile_url": "https://github.com/avilatusell"
+    },
+    {
+      "login": "andrewdavidmackenzie",
+      "name": "Andrew Mackenzie",
+      "company": "Unknown",
+      "location": "Barcelona, Spain",
+      "email": "andrew@mackenzie-serres.net",
+      "contributions": 6,
+      "profile_url": "https://github.com/andrewdavidmackenzie"
+    },
+    {
+      "login": "MStokluska",
+      "name": "Michal Stokluska",
+      "company": "Red Hat",
+      "location": "Waterford - Ireland",
+      "email": "mstoklus@redhat.com",
+      "contributions": 5,
+      "profile_url": "https://github.com/MStokluska"
+    },
+    {
+      "login": "mpguerra",
+      "name": "Pili Guerra",
+      "company": "Unknown",
+      "location": "Barcelona, Spain",
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/mpguerra"
+    },
+    {
+      "login": "djmarinb",
+      "name": "djmarin",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/djmarinb"
+    },
+    {
+      "login": "pimg",
+      "name": "Pim Gaemers",
+      "company": "Apily",
+      "location": "Netherlands",
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/pimg"
+    },
+    {
+      "login": "MarkCheshire",
+      "name": "Mark Cheshire",
+      "company": "Red Hat",
+      "location": "Barcelona, Spain",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/MarkCheshire"
+    },
+    {
+      "login": "austincunningham",
+      "name": "Austin Cunningham",
+      "company": "Red Hat",
+      "location": "Waterford , Ireland",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/austincunningham"
+    },
+    {
+      "login": "ernaniaz",
+      "name": "Ernani Azevedo",
+      "company": "Unknown",
+      "location": "Brazil",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/ernaniaz"
+    },
+    {
+      "login": "coderbydesign",
+      "name": "Keith Walsh",
+      "company": "Red Hat",
+      "location": "Grand Rapids, MI",
+      "email": "kwalsh@redhat.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/coderbydesign"
+    },
+    {
+      "login": "philipgough",
+      "name": "Philip Gough",
+      "company": "Red Hat",
+      "location": "Waterford, Ireland",
+      "email": "pgough@redhat.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/philipgough"
+    },
+    {
+      "login": "rnavarro",
+      "name": "Robert Navarro",
+      "company": "Unknown",
+      "location": "Corona, CA",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/rnavarro"
+    },
+    {
+      "login": "sergioifg94",
+      "name": "Sergio Franco Garcia",
+      "company": "Unknown",
+      "location": "County Galway, Ireland",
+      "email": "sergioifg94@gmail.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/sergioifg94"
+    },
+    {
+      "login": "porueesq",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/porueesq"
+    },
+    {
+      "login": "lcavalle",
+      "name": "Lluis Cavalle",
+      "company": "Red Hat",
+      "location": null,
+      "email": "lcavalle@redhat.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/lcavalle"
+    },
+    {
+      "login": "jjkiely",
+      "name": "JJ Kiely",
+      "company": "Red Hat",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/jjkiely"
+    },
+    {
+      "login": "vvidovic",
+      "name": "Vedran Vidovic",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/vvidovic"
+    },
+    {
+      "login": "thomasmaas",
+      "name": "Thomas Maas",
+      "company": "Webtypes",
+      "location": "Barcelona, Spain",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/thomasmaas"
+    },
+    {
+      "login": "leathersole",
+      "name": "Takayuki Konishi",
+      "company": "Red Hat",
+      "location": "Fukuoka, Japan",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/leathersole"
+    },
+    {
+      "login": "smccarthy-ie",
+      "name": "Stephen McCarthy",
+      "company": "Red Hat",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/smccarthy-ie"
+    },
+    {
+      "login": "pehala",
+      "name": "Petr H\u00e1la",
+      "company": "Scylladb",
+      "location": "Czech Republic",
+      "email": "petr.hala@scylladb.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/pehala"
+    },
+    {
+      "login": "orimarti",
+      "name": "Oriol Mart\u00ed",
+      "company": "Unknown",
+      "location": "Andorra",
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/orimarti"
+    },
+    {
+      "login": "nmasse-itix",
+      "name": "Nicolas Mass\u00e9",
+      "company": "Red Hat",
+      "location": "France",
+      "email": "nicolas.masse@itix.fr",
+      "contributions": 1,
+      "profile_url": "https://github.com/nmasse-itix"
+    },
+    {
+      "login": "lucamaf",
+      "name": "Luca Ferrari",
+      "company": "Unknown",
+      "location": "Barcelona",
+      "email": "officehoursonly@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/lucamaf"
+    },
+    {
+      "login": "johnpoth",
+      "name": "John Poth",
+      "company": "Red Hat",
+      "location": "Paris, France",
+      "email": "poth.john@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/johnpoth"
+    },
+    {
+      "login": "DavidRajnoha",
+      "name": "David Rajnoha",
+      "company": "Red Hat",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/DavidRajnoha"
+    }
+  ],
+  "total_contributors_github_api": 41,
+  "companies": {
+    "Red Hat": 18,
+    "Unknown": 15,
+    "Datadog": 1,
+    "Hitachi, Ltd.": 1,
+    "Kong": 1,
+    "Hitachi": 1,
+    "Radicle.Dev": 1,
+    "Apily": 1,
+    "Webtypes": 1,
+    "Scylladb": 1
+  },
+  "total_companies": 10,
+  "company_diversity": {
+    "known_company_contributors": 26,
+    "unknown_company_contributors": 15,
+    "top_companies": [
+      {
+        "company": "Red Hat",
+        "contributor_count": 18
+      },
+      {
+        "company": "Unknown",
+        "contributor_count": 15
+      },
+      {
+        "company": "Datadog",
+        "contributor_count": 1
+      },
+      {
+        "company": "Hitachi, Ltd.",
+        "contributor_count": 1
+      },
+      {
+        "company": "Kong",
+        "contributor_count": 1
+      },
+      {
+        "company": "Hitachi",
+        "contributor_count": 1
+      },
+      {
+        "company": "Radicle.Dev",
+        "contributor_count": 1
+      },
+      {
+        "company": "Apily",
+        "contributor_count": 1
+      },
+      {
+        "company": "Webtypes",
+        "contributor_count": 1
+      },
+      {
+        "company": "Scylladb",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 3,
+      "returning_contributors": 3,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "atra@redhat.com",
+        "eastizle@redhat.com",
+        "hector_vido@yahoo.com.br",
+        "pablo@odkq.com",
+        "pery.lemke@gmail.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "hector_vido@yahoo.com.br",
+        "pablo@odkq.com",
+        "pery.lemke@gmail.com"
+      ],
+      "returning_logins": [
+        "atra@redhat.com",
+        "eastizle@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "eastizle@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "eastizle@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 3,
+      "returning_contributors": 3,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "dagbay@redhat.com",
+        "eastizle@redhat.com",
+        "kwalsh@redhat.com",
+        "snyk-bot@snyk.io",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "dagbay@redhat.com",
+        "kwalsh@redhat.com",
+        "snyk-bot@snyk.io"
+      ],
+      "returning_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "eastizle@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 8,
+      "new_contributors": 4,
+      "returning_contributors": 4,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "39673799+hector-vido@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "aucunnin@redhat.com",
+        "dagbay@redhat.com",
+        "eastizle@redhat.com",
+        "mstoklus@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "39673799+hector-vido@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "aucunnin@redhat.com",
+        "mstoklus@redhat.com"
+      ],
+      "returning_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "dagbay@redhat.com",
+        "eastizle@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 10,
+      "new_contributors": 5,
+      "returning_contributors": 5,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "2420882+gsaslis@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "dagbay@redhat.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "pcihalov@redhat.com",
+        "tkan145@gmail.com",
+        "yorgos.saslis@redhat.com"
+      ],
+      "new_logins": [
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "pcihalov@redhat.com",
+        "yorgos.saslis@redhat.com"
+      ],
+      "returning_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "2420882+gsaslis@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "dagbay@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 1,
+      "returning_contributors": 4,
+      "retention_rate": 80.0,
+      "active_logins": [
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "jlledo@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "jlledo@redhat.com"
+      ],
+      "returning_logins": [
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 8,
+      "new_contributors": 0,
+      "returning_contributors": 8,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 1,
+      "returning_contributors": 4,
+      "retention_rate": 80.0,
+      "active_logins": [
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "evancasey2003@gmail.com",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com"
+      ],
+      "new_logins": [
+        "evancasey2003@gmail.com"
+      ],
+      "returning_logins": [
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com"
+      ]
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "mayorova@users.noreply.github.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "mayorova@users.noreply.github.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 3,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 3,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 7,
+      "new_contributors": 2,
+      "returning_contributors": 5,
+      "retention_rate": 71.43,
+      "active_logins": [
+        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "bob@example.com",
+        "mayorova@users.noreply.github.com",
+        "mstoklus@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
+        "bob@example.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "mayorova@users.noreply.github.com",
+        "mstoklus@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2016",
+      "period_type": "year",
+      "start_date": "2016-01-01T00:00:00",
+      "end_date": "2017-01-01T00:00:00",
+      "active_contributors": 17,
+      "new_contributors": 17,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false,
+      "active_logins": [
+        "alex@flawedcode.org",
+        "andrew@mackenzie-serres.net",
+        "build@localhost",
+        "d.mayorova@gmail.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "mark_cheshire@alum.mit.edu",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "mpguerra@users.noreply.github.com",
+        "orimarti@gmail.com",
+        "pili@3scale.net",
+        "tom@3scale.net",
+        "vanessa@3scale.net",
+        "vanessa@redhat.com",
+        "vinay@3scale.net",
+        "z.david.ortiz@gmail.com"
+      ],
+      "new_logins": [
+        "alex@flawedcode.org",
+        "andrew@mackenzie-serres.net",
+        "build@localhost",
+        "d.mayorova@gmail.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "mark_cheshire@alum.mit.edu",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "mpguerra@users.noreply.github.com",
+        "orimarti@gmail.com",
+        "pili@3scale.net",
+        "tom@3scale.net",
+        "vanessa@3scale.net",
+        "vanessa@redhat.com",
+        "vinay@3scale.net",
+        "z.david.ortiz@gmail.com"
+      ],
+      "returning_logins": []
+    },
+    {
+      "period": "2017",
+      "period_type": "year",
+      "start_date": "2017-01-01T00:00:00",
+      "end_date": "2018-01-01T00:00:00",
+      "active_contributors": 20,
+      "new_contributors": 12,
+      "returning_contributors": 8,
+      "retention_rate": 40.0,
+      "is_current": false,
+      "active_logins": [
+        "crshman@gmail.com",
+        "d.mayorova@gmail.com",
+        "esteffens@rovecom.nl",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "kevprice83@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "mpguerra@users.noreply.github.com",
+        "niallburkley@gmail.com",
+        "nicolas.masse@itix.fr",
+        "officehoursonly@gmail.com",
+        "pili@3scale.net",
+        "rnavarro@stitchlabs.com",
+        "sebastian.spier@meltwater.com",
+        "tkonishi@redhat.com",
+        "tmogi001@users.noreply.github.com",
+        "tncorcoran@yahoo.com",
+        "z.david.ortiz@gmail.com"
+      ],
+      "new_logins": [
+        "crshman@gmail.com",
+        "esteffens@rovecom.nl",
+        "kevprice83@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "niallburkley@gmail.com",
+        "nicolas.masse@itix.fr",
+        "officehoursonly@gmail.com",
+        "rnavarro@stitchlabs.com",
+        "sebastian.spier@meltwater.com",
+        "tkonishi@redhat.com",
+        "tmogi001@users.noreply.github.com",
+        "tncorcoran@yahoo.com"
+      ],
+      "returning_logins": [
+        "d.mayorova@gmail.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "mpguerra@users.noreply.github.com",
+        "pili@3scale.net",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "period": "2018",
+      "period_type": "year",
+      "start_date": "2018-01-01T00:00:00",
+      "end_date": "2019-01-01T00:00:00",
+      "active_contributors": 21,
+      "new_contributors": 10,
+      "returning_contributors": 11,
+      "retention_rate": 52.38,
+      "is_current": false,
+      "active_logins": [
+        "34849594+y-tabata@users.noreply.github.com",
+        "albin.gustavsson@entiros.se",
+        "amoran@redhat.com",
+        "amr@redhat.com",
+        "avilatus@redhat.com",
+        "d.mayorova@gmail.com",
+        "dcesario@redhat.com",
+        "eastizle@redhat.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "kevprice83@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "niallburkley@gmail.com",
+        "nicolas.masse@itix.fr",
+        "pgough@redhat.com",
+        "ssethu@encoress.com",
+        "tmogi001@users.noreply.github.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ],
+      "new_logins": [
+        "34849594+y-tabata@users.noreply.github.com",
+        "albin.gustavsson@entiros.se",
+        "amoran@redhat.com",
+        "amr@redhat.com",
+        "avilatus@redhat.com",
+        "dcesario@redhat.com",
+        "eastizle@redhat.com",
+        "pgough@redhat.com",
+        "ssethu@encoress.com",
+        "yoshiyuki.tabata.jy@hitachi.com"
+      ],
+      "returning_logins": [
+        "d.mayorova@gmail.com",
+        "jmprusi@keepalive.io",
+        "kev.price83@gmail.com",
+        "kevprice83@users.noreply.github.com",
+        "mayorova@users.noreply.github.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "niallburkley@gmail.com",
+        "nicolas.masse@itix.fr",
+        "tmogi001@users.noreply.github.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "period": "2019",
+      "period_type": "year",
+      "start_date": "2019-01-01T00:00:00",
+      "end_date": "2020-01-01T00:00:00",
+      "active_contributors": 14,
+      "new_contributors": 8,
+      "returning_contributors": 6,
+      "retention_rate": 42.86,
+      "is_current": false,
+      "active_logins": [
+        "43811485+porueesq@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "avilatus@redhat.com",
+        "cpalmieri@redhat.com",
+        "cvajjhal@cvajjhal.bos.csb",
+        "eloy.coto@gmail.com",
+        "kev.price83@gmail.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "pimg@users.noreply.github.com",
+        "poth.john@gmail.com",
+        "rajput_vishwas@infosys.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ],
+      "new_logins": [
+        "43811485+porueesq@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "cpalmieri@redhat.com",
+        "cvajjhal@cvajjhal.bos.csb",
+        "eloy.coto@gmail.com",
+        "pimg@users.noreply.github.com",
+        "poth.john@gmail.com",
+        "rajput_vishwas@infosys.com"
+      ],
+      "returning_logins": [
+        "avilatus@redhat.com",
+        "kev.price83@gmail.com",
+        "michal@cichra.cz",
+        "mikz@users.noreply.github.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "period": "2020",
+      "period_type": "year",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 15,
+      "new_contributors": 7,
+      "returning_contributors": 8,
+      "retention_rate": 53.33,
+      "is_current": false,
+      "active_logins": [
+        "34849594+y-tabata@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "cpalmieri@redhat.com",
+        "eloy.coto@acalustra.com",
+        "eloy.coto@gmail.com",
+        "pim.gaemers@gmail.com",
+        "pim@ip-192-168-1-68.eu-central-1.compute.internal",
+        "pimg@users.noreply.github.com",
+        "poojachandak002@gmail.com",
+        "rajput_vishwas@infosys.com",
+        "sillumin@sillumin.remote.csb",
+        "vvidovic@croz.net",
+        "vvidovic@gmail.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ],
+      "new_logins": [
+        "eloy.coto@acalustra.com",
+        "pim.gaemers@gmail.com",
+        "pim@ip-192-168-1-68.eu-central-1.compute.internal",
+        "poojachandak002@gmail.com",
+        "sillumin@sillumin.remote.csb",
+        "vvidovic@croz.net",
+        "vvidovic@gmail.com"
+      ],
+      "returning_logins": [
+        "34849594+y-tabata@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "cpalmieri@redhat.com",
+        "eloy.coto@gmail.com",
+        "pimg@users.noreply.github.com",
+        "rajput_vishwas@infosys.com",
+        "yoshiyuki.tabata.jy@hitachi.com",
+        "z.david.ortiz@gmail.com"
+      ]
+    },
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 14,
+      "new_contributors": 7,
+      "returning_contributors": 7,
+      "retention_rate": 50.0,
+      "is_current": false,
+      "active_logins": [
+        "2420882+gsaslis@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "alex@flawedcode.org",
+        "amr@redhat.com",
+        "cpalmieri@redhat.com",
+        "djmarinb@gmail.com",
+        "drajnoha@redhat.com",
+        "eloy.coto@acalustra.com",
+        "eloy.coto@gmail.com",
+        "halapetr@selfnet.cz",
+        "jans@dracoblue.de",
+        "kev.price83@gmail.com",
+        "samuele8@gmail.com",
+        "stmccart@redhat.com"
+      ],
+      "new_logins": [
+        "2420882+gsaslis@users.noreply.github.com",
+        "djmarinb@gmail.com",
+        "drajnoha@redhat.com",
+        "halapetr@selfnet.cz",
+        "jans@dracoblue.de",
+        "samuele8@gmail.com",
+        "stmccart@redhat.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "alex@flawedcode.org",
+        "amr@redhat.com",
+        "cpalmieri@redhat.com",
+        "eloy.coto@acalustra.com",
+        "eloy.coto@gmail.com",
+        "kev.price83@gmail.com"
+      ]
+    },
+    {
+      "period": "2022",
+      "period_type": "year",
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2023-01-01T00:00:00",
+      "active_contributors": 15,
+      "new_contributors": 9,
+      "returning_contributors": 6,
+      "retention_rate": 40.0,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "90649839+djmarinb@users.noreply.github.com",
+        "a@abarrak.com",
+        "alex@flawedcode.org",
+        "carlo.palmieri@aiven.io",
+        "djmarinb@gmail.com",
+        "eastizle@redhat.com",
+        "guicassolato@gmail.com",
+        "jkiely@redhat.com",
+        "jonathansimas@gmail.com",
+        "kev.price83@gmail.com",
+        "samuele8@gmail.com",
+        "sergioifg94@gmail.com",
+        "sfrancog@redhat.com",
+        "thomas@webtypes.com"
+      ],
+      "new_logins": [
+        "90649839+djmarinb@users.noreply.github.com",
+        "a@abarrak.com",
+        "carlo.palmieri@aiven.io",
+        "guicassolato@gmail.com",
+        "jkiely@redhat.com",
+        "jonathansimas@gmail.com",
+        "sergioifg94@gmail.com",
+        "sfrancog@redhat.com",
+        "thomas@webtypes.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "alex@flawedcode.org",
+        "djmarinb@gmail.com",
+        "eastizle@redhat.com",
+        "kev.price83@gmail.com",
+        "samuele8@gmail.com"
+      ]
+    },
+    {
+      "period": "2023",
+      "period_type": "year",
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 14,
+      "new_contributors": 10,
+      "returning_contributors": 4,
+      "retention_rate": 28.57,
+      "is_current": false,
+      "active_logins": [
+        "100855559+lcavalle@users.noreply.github.com",
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "atra@redhat.com",
+        "caswilli@redhat.com",
+        "eastizle@redhat.com",
+        "ernaniaz@gmail.com",
+        "guicassolato@gmail.com",
+        "hector_vido@yahoo.com.br",
+        "kev.price83@gmail.com",
+        "pablo@odkq.com",
+        "pery.lemke@gmail.com",
+        "thomas@webtypes.com",
+        "tkan145@gmail.com",
+        "vbelchio@redhat.com"
+      ],
+      "new_logins": [
+        "100855559+lcavalle@users.noreply.github.com",
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "atra@redhat.com",
+        "caswilli@redhat.com",
+        "ernaniaz@gmail.com",
+        "hector_vido@yahoo.com.br",
+        "pablo@odkq.com",
+        "pery.lemke@gmail.com",
+        "tkan145@gmail.com",
+        "vbelchio@redhat.com"
+      ],
+      "returning_logins": [
+        "eastizle@redhat.com",
+        "guicassolato@gmail.com",
+        "kev.price83@gmail.com",
+        "thomas@webtypes.com"
+      ]
+    },
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 16,
+      "new_contributors": 12,
+      "returning_contributors": 4,
+      "retention_rate": 25.0,
+      "is_current": false,
+      "active_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "2420882+gsaslis@users.noreply.github.com",
+        "39673799+hector-vido@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "aucunnin@redhat.com",
+        "dagbay@redhat.com",
+        "eastizle@redhat.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "kwalsh@redhat.com",
+        "mstoklus@redhat.com",
+        "pcihalov@redhat.com",
+        "snyk-bot@snyk.io",
+        "tkan145@gmail.com",
+        "yorgos.saslis@redhat.com"
+      ],
+      "new_logins": [
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "39673799+hector-vido@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "aucunnin@redhat.com",
+        "dagbay@redhat.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "kwalsh@redhat.com",
+        "mstoklus@redhat.com",
+        "pcihalov@redhat.com",
+        "snyk-bot@snyk.io",
+        "yorgos.saslis@redhat.com"
+      ],
+      "returning_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "2420882+gsaslis@users.noreply.github.com",
+        "eastizle@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 10,
+      "new_contributors": 2,
+      "returning_contributors": 8,
+      "retention_rate": 80.0,
+      "is_current": false,
+      "active_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "evancasey2003@gmail.com",
+        "jlledo@redhat.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "evancasey2003@gmail.com",
+        "jlledo@redhat.com"
+      ],
+      "returning_logins": [
+        "101584191+dagbay-rh@users.noreply.github.com",
+        "126015336+red-hat-konflux[bot]@users.noreply.github.com",
+        "89980168+petracihalova@users.noreply.github.com",
+        "ellen.dong92@gmail.com",
+        "konflux@no-reply.konflux-ci.dev",
+        "mayorova@users.noreply.github.com",
+        "pcihalov@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 7,
+      "new_contributors": 2,
+      "returning_contributors": 5,
+      "retention_rate": 71.43,
+      "is_current": true,
+      "active_logins": [
+        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "bob@example.com",
+        "mayorova@users.noreply.github.com",
+        "mstoklus@redhat.com",
+        "tkan145@gmail.com"
+      ],
+      "new_logins": [
+        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
+        "bob@example.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "atra@redhat.com",
+        "mayorova@users.noreply.github.com",
+        "mstoklus@redhat.com",
+        "tkan145@gmail.com"
+      ]
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}

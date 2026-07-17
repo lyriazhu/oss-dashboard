@@ -26,7 +26,7 @@ projects:
     github_url: "https://github.com/Apicurio/apicurio-registry"
     owner: "Apicurio"
     repo: "apicurio-registry"
-    foundation: "Independent"
+    foundation: "CNCF"
     website: "https://www.apicur.io/registry/"
     
   - name: "Debezium"
@@ -52,7 +52,7 @@ projects:
     jira_project_key: WFLY
     jira_base_url: "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
 
-  - name: "3scale"
+  - name: "3scale-operator"
     github_url: "https://github.com/3scale/3scale-operator"
     owner: "3scale"
     repo: "3scale-operator"
@@ -87,6 +87,34 @@ projects:
     foundation: "Independent"
     issue_scope: all
 
+
+
+  - name: "APIcast"
+    github_url: "https://github.com/3scale/APIcast"
+    owner: "3scale"
+    repo: "APIcast"
+    foundation: "Independent"
+
+
+  - name: "porta"
+    github_url: "https://github.com/3scale/porta"
+    owner: "3scale"
+    repo: "porta"
+    foundation: "Independent"
+
+
+  - name: "apisonator"
+    github_url: "https://github.com/3scale/apisonator"
+    owner: "3scale"
+    repo: "apisonator"
+    foundation: "Independent"
+
+
+  - name: "3scale_toolbox"
+    github_url: "https://github.com/3scale/3scale_toolbox"
+    owner: "3scale"
+    repo: "3scale_toolbox"
+    foundation: "Independent"
 
 extraction:
   # How many quarters of historical data to fetch

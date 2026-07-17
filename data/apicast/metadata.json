@@ -1,0 +1,69 @@
+{
+  "name": "APIcast",
+  "full_name": "3scale/APIcast",
+  "description": "3scale API Gateway",
+  "created_at": "2016-03-15T17:41:51+00:00",
+  "updated_at": "2026-07-09T10:25:36+00:00",
+  "stars": 323,
+  "forks": 170,
+  "watchers": 323,
+  "open_issues": 61,
+  "language": "Lua",
+  "topics": [
+    "3scale",
+    "api-gateway",
+    "openresty"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Datadog",
+      "commits": 1132,
+      "percentage": 47.76
+    },
+    {
+      "company": "Red Hat",
+      "commits": 1110,
+      "percentage": 46.84
+    },
+    {
+      "company": "Hitachi, Ltd.",
+      "commits": 66,
+      "percentage": 2.78
+    },
+    {
+      "company": "Kong",
+      "commits": 32,
+      "percentage": 1.35
+    },
+    {
+      "company": "Hitachi",
+      "commits": 14,
+      "percentage": 0.59
+    },
+    {
+      "company": "Radicle.Dev",
+      "commits": 10,
+      "percentage": 0.42
+    },
+    {
+      "company": "Apily",
+      "commits": 4,
+      "percentage": 0.17
+    },
+    {
+      "company": "Webtypes",
+      "commits": 1,
+      "percentage": 0.04
+    },
+    {
+      "company": "Scylladb",
+      "commits": 1,
+      "percentage": 0.04
+    }
+  ],
+  "extracted_at": "2026-07-17T12:10:30.357305"
+}

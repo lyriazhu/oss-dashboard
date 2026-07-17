@@ -1,0 +1,46 @@
+{
+  "name": "3scale_toolbox",
+  "full_name": "3scale/3scale_toolbox",
+  "description": "3scale toolbox",
+  "created_at": "2016-03-11T13:42:25+00:00",
+  "updated_at": "2026-07-16T22:33:15+00:00",
+  "stars": 38,
+  "forks": 73,
+  "watchers": 38,
+  "open_issues": 23,
+  "language": "Ruby",
+  "topics": [
+    "openapi",
+    "toolbox",
+    "rubygems",
+    "3scale",
+    "cli"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Red Hat",
+      "commits": 851,
+      "percentage": 99.18
+    },
+    {
+      "company": "Ibm",
+      "commits": 3,
+      "percentage": 0.35
+    },
+    {
+      "company": "Hitachi, Ltd.",
+      "commits": 2,
+      "percentage": 0.23
+    },
+    {
+      "company": "Rubix",
+      "commits": 2,
+      "percentage": 0.23
+    }
+  ],
+  "extracted_at": "2026-07-17T12:12:31.399475"
+}

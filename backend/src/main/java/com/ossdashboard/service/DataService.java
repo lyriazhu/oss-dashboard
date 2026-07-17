@@ -589,6 +589,8 @@ public class DataService {
                 for (JsonNode k : item.path("memberKeys")) memberKeys.add(k.asText());
                 entry.put("memberKeys", memberKeys);
                 if (item.has("name")) entry.put("name", item.path("name").asText());
+                if (item.has("orgUrl")) entry.put("orgUrl", item.path("orgUrl").asText());
+                if (item.has("foundation")) entry.put("foundation", item.path("foundation").asText());
                 result.add(entry);
             }
         }
@@ -613,6 +615,10 @@ public class DataService {
             item.set("memberKeys", keys);
             Object name = m.get("name");
             if (name != null && !name.toString().isBlank()) item.put("name", name.toString());
+            Object orgUrl = m.get("orgUrl");
+            if (orgUrl != null && !orgUrl.toString().isBlank()) item.put("orgUrl", orgUrl.toString());
+            Object foundation = m.get("foundation");
+            if (foundation != null && !foundation.toString().isBlank()) item.put("foundation", foundation.toString());
             arr.add(item);
         }
         root.set("merges", arr);

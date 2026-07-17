@@ -1,0 +1,46 @@
+{
+  "contributors": {
+    "known_logins": [
+      "DaniilRomanov",
+      "HakubJozak",
+      "KoeSystems",
+      "PoojaChandak",
+      "akostadinov",
+      "areina",
+      "bobknob23987",
+      "bors[bot]",
+      "ceritium",
+      "davidor",
+      "dependabot[bot]",
+      "eguzki",
+      "gsaslis",
+      "hallelujah",
+      "jerzyn",
+      "jjkiely",
+      "jlledom",
+      "jmprusi",
+      "kidd",
+      "lvillen",
+      "madadam",
+      "mayorova",
+      "miguelsorianod",
+      "sekharvajjhala",
+      "sharnik",
+      "tmacedo",
+      "unleashed"
+    ],
+    "last_extracted_at": "2026-07-17T12:12:21.198936"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-17T12:12:29.277361"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-17T12:16:15.159369"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-17T12:14:17.775711"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-17T12:16:16.828872"
+  }
+}

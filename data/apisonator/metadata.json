@@ -1,0 +1,65 @@
+{
+  "name": "apisonator",
+  "full_name": "3scale/apisonator",
+  "description": "Red Hat 3scale API Management Apisonator backend",
+  "created_at": "2018-01-29T15:37:15+00:00",
+  "updated_at": "2026-07-16T21:06:51+00:00",
+  "stars": 38,
+  "forks": 26,
+  "watchers": 38,
+  "open_issues": 21,
+  "language": "Ruby",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": "https://3scale.net",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Datadog",
+      "commits": 1374,
+      "percentage": 71.71
+    },
+    {
+      "company": "Red Hat",
+      "commits": 267,
+      "percentage": 13.94
+    },
+    {
+      "company": "Brains-And-Beards",
+      "commits": 196,
+      "percentage": 10.23
+    },
+    {
+      "company": "Ibm",
+      "commits": 41,
+      "percentage": 2.14
+    },
+    {
+      "company": "Metabase",
+      "commits": 31,
+      "percentage": 1.62
+    },
+    {
+      "company": "Radicle.Dev",
+      "commits": 3,
+      "percentage": 0.16
+    },
+    {
+      "company": "Pzu",
+      "commits": 2,
+      "percentage": 0.1
+    },
+    {
+      "company": "Propitech",
+      "commits": 1,
+      "percentage": 0.05
+    },
+    {
+      "company": "Devengoapp",
+      "commits": 1,
+      "percentage": 0.05
+    }
+  ],
+  "extracted_at": "2026-07-17T12:12:09.652041"
+}

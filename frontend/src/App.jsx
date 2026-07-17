@@ -22,7 +22,7 @@ const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
  *   opts.customName  {string|null}  Override the combined "A + B" auto-name
  *   opts.orgUrl      {string|null}  GitHub org URL to use as repoUrl (e.g. "https://github.com/streamshub")
  */
-function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}) {
+function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, foundation = null } = {}) {
   const keys        = flatEntries.map((e) => e.key);
   const communities = flatEntries.map((e) => e.data);
   const base        = communities[0];
@@ -138,8 +138,13 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
   // ── Numeric ov fields: sum everything except contributors/companies (de-duped above) ──
   const sumOv = (field) => fmt(communities.reduce((acc, c) => acc + parseNum(c.ov?.[field]), 0));
 
+  // Derive a default foundation: shared value if all members agree, otherwise first member's
+  const allFoundations = [...new Set(communities.map((c) => c.ov?.foundation).filter(Boolean))];
+  const defaultFoundation = allFoundations.length === 1 ? allFoundations[0] : (allFoundations[0] || 'Independent');
+
   const mergedOv = {
     ...base.ov,
+    foundation:         foundation || defaultFoundation,
     contributorsYtd:    fmt(mergedContributorsYtd),
     contributorsAllTime: fmt(allTimeContributorCount),
     companies:          fmt(mergedCompanyCount ?? 0),
@@ -399,8 +404,9 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null } = {}
   return {
     ...base,
     name:                      customName || combinedName,
-    _mergedFrom:               flatEntries,
-    sub:                       base.sub,
+    _mergedFrom:               flatEntries.map((e) => ({ ...e, data: { ...e.data, _isMergedSubRepo: true } })),
+    sub:                       mergedOv.foundation,
+    foundation:                mergedOv.foundation,
     founded:                   mergedFounded,
     repoUrl:                   mergedRepoUrl,
     description:               mergedDescription,
@@ -499,8 +505,9 @@ export default function App() {
 
       for (const entry of mergesFromBackend) {
         const memberKeys = entry.memberKeys;
-        const customName = entry.name   || null;
-        const orgUrl     = entry.orgUrl || null;
+        const customName  = entry.name       || null;
+        const orgUrl      = entry.orgUrl     || null;
+        const foundation  = entry.foundation || null;
 
         // Only include members that have already finished loading (extraction may
         // still be running for newly-added repos).  As long as at least one member
@@ -516,7 +523,7 @@ export default function App() {
         const mergedKey = '__merged__' + memberKeys.join('__');
 
         const flatEntries = availableKeys.map((k) => ({ key: k, data: newData[k] }));
-        const merged = buildMergedEntry(flatEntries, { customName, orgUrl });
+        const merged = buildMergedEntry(flatEntries, { customName, orgUrl, foundation });
         // When only a subset of members is available (others still extracting), store
         // the full intended member key list so persistMerges can write the correct
         // record to merges.json even before all repos have finished loading.
@@ -625,10 +632,14 @@ export default function App() {
         // list in merges.json so the complete group is restored once all repos load.
         const memberKeys = d._allMemberKeys || d._mergedFrom.map((e) => e.key);
         const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
+        // Compute what the default foundation would be so we know if it was overridden
+        const memberFoundations = [...new Set(d._mergedFrom.map((e) => e.data.ov?.foundation).filter(Boolean))];
+        const defaultFoundation = memberFoundations.length === 1 ? memberFoundations[0] : (memberFoundations[0] || 'Independent');
         mergeRecords.push({
           mergedKey: key,
           memberKeys,
           name: d.name !== defaultName ? d.name : null,
+          foundation: d.foundation !== defaultFoundation ? d.foundation : null,
         });
       }
     });
@@ -808,7 +819,11 @@ export default function App() {
       const customName = merged.name !== oldDefaultName ? merged.name : null;
       const orgUrl = merged.repoUrl?.startsWith('https://github.com/') && !merged.repoUrl?.slice(19).includes('/')
         ? merged.repoUrl : null;
-      next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl });
+      // Carry forward a custom foundation if the user set one on the merged entry
+      const remainingFoundations = [...new Set(remaining.map((e) => e.data.ov?.foundation).filter(Boolean))];
+      const wouldDefaultFoundation = remainingFoundations.length === 1 ? remainingFoundations[0] : (remainingFoundations[0] || 'Independent');
+      const customFoundation = merged.foundation !== wouldDefaultFoundation ? merged.foundation : null;
+      next[mergedKey] = buildMergedEntry(remaining, { customName, orgUrl, foundation: customFoundation });
     }
     setData(next);
     persistMerges(next);

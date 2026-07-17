@@ -378,20 +378,15 @@ function CommunityRow({
           </span>
         </td>
         <td data-field="foundation">
-          {isMerged ? (() => {
-            const foundations = [...new Set(d._mergedFrom.map(e => e.data.ov?.foundation).filter(Boolean))];
-            return foundations.length > 1 ? 'Multiple' : (foundations[0] || '—');
-          })() : (
-            <InlineEdit
-              value={o.foundation}
-              field="foundation"
-              projectId={rowKey}
-              onSave={onUpdateProject}
-              active={activeEdit === "foundation"}
-              onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
-              onCancelNav={cancelNav}
-            />
-          )}
+          <InlineEdit
+            value={o.foundation}
+            field="foundation"
+            projectId={rowKey}
+            onSave={onUpdateProject}
+            active={activeEdit === "foundation"}
+            onDeactivate={() => { activeEditRef.current = null; setActiveEdit(null); }}
+            onCancelNav={cancelNav}
+          />
         </td>
         <td>
           {isMerged ? (() => {
@@ -476,7 +471,7 @@ function CommunityRow({
               {repo.name}
             </span>
           </td>
-          <td>{repo.ov?.foundation || '—'}</td>
+          <td>{o.foundation || '—'}</td>
           <td>
             {repo.repoUrl ? (
               <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>

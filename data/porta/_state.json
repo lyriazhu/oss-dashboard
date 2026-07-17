@@ -1,0 +1,68 @@
+{
+  "contributors": {
+    "known_logins": [
+      "3scale-ninjabot",
+      "Martouta",
+      "PoojaChandak",
+      "RobGri001",
+      "akostadinov",
+      "akostadinov-bot[bot]",
+      "avilatusell",
+      "bobknob23987",
+      "briangallagher",
+      "christiemolloy",
+      "cntlsn",
+      "damianpm",
+      "deernano",
+      "dependabot-preview[bot]",
+      "dependabot-support",
+      "dependabot[bot]",
+      "dfennessy",
+      "didierofrivia",
+      "dlabaj",
+      "duduribeiro",
+      "eguzki",
+      "es02",
+      "gsaslis",
+      "guicassolato",
+      "hallelujah",
+      "hemahg",
+      "jjkiely",
+      "jlledom",
+      "josemigallas",
+      "jsmadis",
+      "kevprice83",
+      "lvillen",
+      "macejmic",
+      "madnialihussain",
+      "manaswinidas",
+      "mayorova",
+      "mikz",
+      "nidhi-soni1104",
+      "pestanko",
+      "porueesq",
+      "rhgpereira",
+      "samugi",
+      "secretsurf",
+      "sergioifg94",
+      "snyk-bot",
+      "srambach",
+      "thalesmiguel",
+      "thomasmaas",
+      "varsharma-12"
+    ],
+    "last_extracted_at": "2026-07-17T12:12:07.262941"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-17T12:12:17.297645"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-17T12:16:36.769657"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-17T12:13:30.789806"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-17T12:16:39.010903"
+  }
+}
