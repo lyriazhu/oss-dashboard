@@ -41,7 +41,7 @@ projects:
     github_url: "https://github.com/quarkusio/quarkus"
     owner: "quarkusio"
     repo: "quarkus"
-    foundation: "Independent"
+    foundation: "Commonhaus Foundation"
 
   - name: "Wildfly"
     github_url: "https://github.com/wildfly/wildfly"
@@ -62,13 +62,13 @@ projects:
     github_url: "https://github.com/apache/tomcat"
     owner: "apache"
     repo: "tomcat"
-    foundation: "Independent"
+    foundation: "Apache Software Foundation"
 
   - name: "Apache Artemis"
     github_url: "https://github.com/apache/artemis"
     owner: "apache"
     repo: "artemis"
-    foundation: "Independent"
+    foundation: "Apache Software Foundation"
     issue_source: jira
     jira_project_key: ARTEMIS
     jira_base_url: "https://issues.apache.org/jira"

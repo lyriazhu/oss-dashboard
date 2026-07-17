@@ -47,7 +47,7 @@
     "name" : "Quarkus",
     "owner" : "quarkusio",
     "repo" : "quarkus",
-    "foundation" : "Independent",
+    "foundation" : "Commonhaus Foundation",
     "website" : null,
     "data_dir" : "quarkusio--quarkus",
     "enabled" : true,
@@ -78,7 +78,7 @@
     "name" : "Apache Tomcat",
     "owner" : "apache",
     "repo" : "tomcat",
-    "foundation" : "Independent",
+    "foundation" : "Apache Software Foundation",
     "website" : "https://tomcat.apache.org/",
     "enabled" : true,
     "github_url" : "https://github.com/apache/tomcat",
@@ -88,7 +88,7 @@
     "name" : "Apache Artemis",
     "owner" : "apache",
     "repo" : "artemis",
-    "foundation" : "Independent",
+    "foundation" : "Apache Software Foundation",
     "website" : "https://activemq.apache.org/components/artemis/",
     "enabled" : true,
     "github_url" : "https://github.com/apache/artemis",
@@ -649,5 +649,5 @@
     "is_org" : true,
     "org_owner" : "strimzi"
   } ],
-  "last_updated" : "2026-07-16T19:27:19.512531Z"
+  "last_updated" : "2026-07-17T15:46:59.059290Z"
 }
