@@ -1,0 +1,295 @@
+{
+  "total_commits": 19,
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 6,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 1,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 1,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 0,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 1,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 5,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 1,
+      "quarter": "Q4 2023"
+    }
+  ],
+  "committers": [
+    {
+      "login": "OwenCorrigan76",
+      "name": "OwenCorrigan76",
+      "company": "Unknown",
+      "location": null,
+      "email": "owencorrigan76@gmail.com",
+      "profile_url": null,
+      "commit_count": 152
+    },
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 88
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "ppatierno@live.com",
+      "profile_url": null,
+      "commit_count": 76
+    },
+    {
+      "login": "Owen Corrigan",
+      "name": "Owen Corrigan",
+      "company": "Unknown",
+      "location": null,
+      "email": "76431349+owencorrigan76@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 59
+    },
+    {
+      "login": "Jakub Stejskal",
+      "name": "Jakub Stejskal",
+      "company": "Unknown",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "profile_url": null,
+      "commit_count": 36
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 35
+    },
+    {
+      "login": "Stanislav Knot",
+      "name": "Stanislav Knot",
+      "company": "Unknown",
+      "location": null,
+      "email": "sknot@redhat.com",
+      "profile_url": null,
+      "commit_count": 14
+    },
+    {
+      "login": "Lukas Kral",
+      "name": "Lukas Kral",
+      "company": "Unknown",
+      "location": null,
+      "email": "lukywill16@gmail.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tbentley@redhat.com",
+      "profile_url": null,
+      "commit_count": 8
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tombentley@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
+      "login": "Matt Baldwin",
+      "name": "Matt Baldwin",
+      "company": "Unknown",
+      "location": null,
+      "email": "baldwin@floatplane.io",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Michal T",
+      "name": "Michal T",
+      "company": "Unknown",
+      "location": null,
+      "email": "mtoth@redhat.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "Michal T",
+      "name": "Michal T",
+      "company": "Unknown",
+      "location": null,
+      "email": "michalxo@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Luk\u00e1\u0161 Kr\u00e1l",
+      "name": "Luk\u00e1\u0161 Kr\u00e1l",
+      "company": "Unknown",
+      "location": null,
+      "email": "53821852+im-konge@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "morsak",
+      "name": "morsak",
+      "company": "Unknown",
+      "location": null,
+      "email": "xorsak02@stud.fit.vutbr.cz",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "csalmhof",
+      "name": "csalmhof",
+      "company": "Unknown",
+      "location": null,
+      "email": "38063612+csalmhof@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Ors\u00e1k Maro\u0161",
+      "name": "Ors\u00e1k Maro\u0161",
+      "company": "Unknown",
+      "location": null,
+      "email": "30839163+see-quick@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Jakub Stejskal",
+      "name": "Jakub Stejskal",
+      "company": "Unknown",
+      "location": null,
+      "email": "stejskinek@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-16T14:54:57.603976",
+  "years": [
+    {
+      "year": 2018,
+      "commit_count": 32,
+      "is_current": false
+    },
+    {
+      "year": 2019,
+      "commit_count": 29,
+      "is_current": false
+    },
+    {
+      "year": 2020,
+      "commit_count": 74,
+      "is_current": false
+    },
+    {
+      "year": 2021,
+      "commit_count": 52,
+      "is_current": false
+    },
+    {
+      "year": 2022,
+      "commit_count": 52,
+      "is_current": false
+    },
+    {
+      "year": 2023,
+      "commit_count": 207,
+      "is_current": false
+    },
+    {
+      "year": 2024,
+      "commit_count": 33,
+      "is_current": false
+    },
+    {
+      "year": 2025,
+      "commit_count": 6,
+      "is_current": false
+    },
+    {
+      "year": 2026,
+      "commit_count": 21,
+      "is_current": true
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Abhijit-Mane",
+      "Anthuang",
+      "Frawless",
+      "Joel-hanson",
+      "MandarJKulkarni",
+      "MikeEdgar",
+      "PaulRMellor",
+      "SamBarker",
+      "ShubhamRwt",
+      "TanmaySrivastav",
+      "ajborley",
+      "alesj",
+      "antonio-pedro99",
+      "asagarshinde",
+      "avinashupadhya99",
+      "dandotimujahid",
+      "danlenar",
+      "dependabot[bot]",
+      "echernous",
+      "elakito",
+      "examin",
+      "fvaleri",
+      "granzoto",
+      "guancioul",
+      "haijun2022",
+      "hifly81",
+      "ilkerkocatepe",
+      "im-konge",
+      "joschi",
+      "k-wall",
+      "kamaci",
+      "krishvoor",
+      "kun-lu20",
+      "mimaison",
+      "mlallaouret",
+      "ndealmeida",
+      "nirmannarang",
+      "noamichael",
+      "pinkyrathore",
+      "ppatierno",
+      "pushpithaDilhan",
+      "robobario",
+      "sangitanalkar",
+      "scholzj",
+      "see-quick",
+      "serrss",
+      "shubhamvashisht",
+      "sknot-rh",
+      "srajmane",
+      "svsaiabitha",
+      "taikulawo",
+      "tinaselenge",
+      "tombentley",
+      "vbusch",
+      "yanxuehe",
+      "zoidyzoidzoid"
+    ],
+    "last_extracted_at": "2026-07-16T14:40:20.937615"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T14:40:28.854986"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T14:42:42.433363"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T14:41:42.498955"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T14:42:45.708546"
+  }
+}

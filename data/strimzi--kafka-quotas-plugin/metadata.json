@@ -1,0 +1,39 @@
+{
+  "name": "kafka-quotas-plugin",
+  "full_name": "strimzi/kafka-quotas-plugin",
+  "description": "A broker quota plugin for Apache Kafka\u00ae to allow setting a per-broker limits statically in the broker configuration",
+  "created_at": "2021-05-19T20:33:38+00:00",
+  "updated_at": "2026-07-16T11:48:43+00:00",
+  "stars": 17,
+  "forks": 21,
+  "watchers": 17,
+  "open_issues": 4,
+  "language": "Java",
+  "topics": [
+    "kafka",
+    "quotas",
+    "strimzi"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 33,
+      "percentage": 56.9
+    },
+    {
+      "company": "Akiles",
+      "commits": 21,
+      "percentage": 36.21
+    },
+    {
+      "company": "Red Hat",
+      "commits": 4,
+      "percentage": 6.9
+    }
+  ],
+  "extracted_at": "2026-07-16T15:11:36.569907"
+}

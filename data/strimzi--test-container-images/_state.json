@@ -1,0 +1,29 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Abhijit-Mane",
+      "Frawless",
+      "JiriOndrusek",
+      "bboyleonp666",
+      "guancioul",
+      "kun-lu20",
+      "m1a2st",
+      "scholzj",
+      "see-quick",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T15:19:01.648668"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:19:09.256085"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:20:17.432732"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:19:45.647800"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:20:20.128314"
+  }
+}

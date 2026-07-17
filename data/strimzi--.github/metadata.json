@@ -1,0 +1,25 @@
+{
+  "name": ".github",
+  "full_name": "strimzi/.github",
+  "description": "Community health files for the Strimzi project",
+  "created_at": "2020-12-19T17:40:15+00:00",
+  "updated_at": "2026-06-07T16:00:44+00:00",
+  "stars": 2,
+  "forks": 4,
+  "watchers": 2,
+  "open_issues": 0,
+  "language": null,
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 9,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T15:07:26.707077"
+}

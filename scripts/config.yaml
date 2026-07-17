@@ -4,13 +4,6 @@
 
 # Projects to track
 projects:
-  - name: "Strimzi"
-    github_url: "https://github.com/strimzi/strimzi-kafka-operator"
-    owner: "strimzi"
-    repo: "strimzi-kafka-operator"
-    foundation: "CNCF"
-    website: "https://strimzi.io"
-    
   - name: "Apache Camel"
     github_url: "https://github.com/apache/camel"
     owner: "apache"
@@ -93,6 +86,7 @@ projects:
     is_org: true
     foundation: "Independent"
     issue_scope: all
+
 
 extraction:
   # How many quarters of historical data to fetch

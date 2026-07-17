@@ -1,0 +1,25 @@
+{
+  "name": "mirror-maker-2-extensions",
+  "full_name": "strimzi/mirror-maker-2-extensions",
+  "description": "Extensions for Apache Kafka\u00ae Mirror Maker 2 which improve its usability in Strimzi and elsewhere",
+  "created_at": "2020-08-08T14:55:33+00:00",
+  "updated_at": "2025-12-19T16:28:45+00:00",
+  "stars": 13,
+  "forks": 10,
+  "watchers": 13,
+  "open_issues": 0,
+  "language": "Shell",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": "",
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 1,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-16T15:04:26.884898"
+}

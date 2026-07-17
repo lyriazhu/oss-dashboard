@@ -7,6 +7,10 @@
     "mergedKey" : "__merged__kroxylicious--kroxylicious__kroxylicious--design__kroxylicious--kroxylicious-junit5-extension__kroxylicious--kroxylicious.github.io__kroxylicious--.github__kroxylicious--kroxylicious-community-gallery__kroxylicious--python-kafka-test-client",
     "memberKeys" : [ "kroxylicious--kroxylicious", "kroxylicious--design", "kroxylicious--kroxylicious-junit5-extension", "kroxylicious--kroxylicious.github.io", "kroxylicious--.github", "kroxylicious--kroxylicious-community-gallery", "kroxylicious--python-kafka-test-client" ],
     "name" : "Kroxylicious"
+  }, {
+    "mergedKey" : "__merged__strimzi--strimzi-kafka-bridge__strimzi--strimzi-kafka-operator__strimzi--strimzi.github.io__strimzi--strimzi-lab__strimzi--client-examples__strimzi--strimzi-kafka-oauth__strimzi--strimzi-admin__strimzi--governance__strimzi--proposals__strimzi--strimzi-ui__strimzi--mirror-maker-2-extensions__strimzi--strimzi-canary__strimzi--.github__strimzi--topic-encryption__strimzi--test-clients__strimzi--kafka-quotas-plugin__strimzi--kafka-kubernetes-config-provider__strimzi--drain-cleaner__strimzi--kafka-env-var-config-provider__strimzi--test-container__strimzi--test-container-images__strimzi--kafka-access-operator__strimzi--strimzi-mqtt-bridge__strimzi--metrics-reporter__strimzi--awesome-strimzi__strimzi--github-actions__strimzi--test-connectors",
+    "memberKeys" : [ "strimzi--strimzi-kafka-bridge", "strimzi--strimzi-kafka-operator", "strimzi--strimzi.github.io", "strimzi--strimzi-lab", "strimzi--client-examples", "strimzi--strimzi-kafka-oauth", "strimzi--strimzi-admin", "strimzi--governance", "strimzi--proposals", "strimzi--strimzi-ui", "strimzi--mirror-maker-2-extensions", "strimzi--strimzi-canary", "strimzi--.github", "strimzi--topic-encryption", "strimzi--test-clients", "strimzi--kafka-quotas-plugin", "strimzi--kafka-kubernetes-config-provider", "strimzi--drain-cleaner", "strimzi--kafka-env-var-config-provider", "strimzi--test-container", "strimzi--test-container-images", "strimzi--kafka-access-operator", "strimzi--strimzi-mqtt-bridge", "strimzi--metrics-reporter", "strimzi--awesome-strimzi", "strimzi--github-actions", "strimzi--test-connectors" ],
+    "name" : "Strimzi"
   } ],
-  "last_updated" : "2026-07-16T17:01:18.373965Z"
+  "last_updated" : "2026-07-16T19:27:28.131771Z"
 }

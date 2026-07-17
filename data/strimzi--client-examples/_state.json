@@ -1,0 +1,30 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "OwenCorrigan76",
+      "csalmhof",
+      "dependabot[bot]",
+      "im-konge",
+      "michalxo",
+      "ppatierno",
+      "scholzj",
+      "see-quick",
+      "sknot-rh",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T14:54:50.685006"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T14:54:57.603981"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T14:56:29.830436"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T14:55:43.512552"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T14:56:31.950836"
+  }
+}

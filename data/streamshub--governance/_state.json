@@ -2,20 +2,26 @@
   "contributors": {
     "known_logins": [
       "Frawless",
-      "tomncooper"
+      "PaulRMellor",
+      "katheris",
+      "mimaison",
+      "ppatierno",
+      "scholzj",
+      "sknot-rh",
+      "tombentley"
     ],
-    "last_extracted_at": "2026-07-16T09:38:21.336584"
+    "last_extracted_at": "2026-07-16T15:00:12.863157"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T09:38:27.696137"
+    "last_git_sync_at": "2026-07-16T15:00:19.864978"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T09:38:40.785952"
+    "last_extracted_at": "2026-07-16T15:01:21.486298"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T09:38:34.839698"
+    "last_extracted_at": "2026-07-16T15:00:49.841974"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T09:38:42.691857"
+    "last_extracted_at": "2026-07-16T15:01:23.492010"
   }
 }

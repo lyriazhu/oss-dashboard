@@ -1,0 +1,22 @@
+{
+  "contributors": {
+    "known_logins": [
+      "gmcrobert",
+      "ppatierno",
+      "scholzj"
+    ],
+    "last_extracted_at": "2026-07-16T14:58:35.131864"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T14:58:41.681439"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:00:01.605798"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T14:59:21.593858"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:00:03.570609"
+  }
+}

@@ -1,22 +1,23 @@
 {
   "contributors": {
     "known_logins": [
-      "kornys",
-      "robobario",
-      "tomncooper"
+      "MeerBiene",
+      "UtkarshMishra12",
+      "ppatierno",
+      "scholzj"
     ],
-    "last_extracted_at": "2026-07-16T13:23:00.808653"
+    "last_extracted_at": "2026-07-16T15:07:29.603371"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T13:23:07.089459"
+    "last_git_sync_at": "2026-07-16T15:07:36.235789"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T13:23:28.987424"
+    "last_extracted_at": "2026-07-16T15:08:37.670933"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T13:23:22.999771"
+    "last_extracted_at": "2026-07-16T15:08:11.728232"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T13:23:30.888526"
+    "last_extracted_at": "2026-07-16T15:08:39.880414"
   }
 }

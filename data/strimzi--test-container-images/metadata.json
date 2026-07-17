@@ -1,0 +1,37 @@
+{
+  "name": "test-container-images",
+  "full_name": "strimzi/test-container-images",
+  "description": "Container images for Strimzi test Container",
+  "created_at": "2021-09-09T19:33:12+00:00",
+  "updated_at": "2026-06-24T18:33:27+00:00",
+  "stars": 4,
+  "forks": 13,
+  "watchers": 4,
+  "open_issues": 2,
+  "language": "Shell",
+  "topics": [
+    "hacktoberfest"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 6,
+      "percentage": 75.0
+    },
+    {
+      "company": "Line",
+      "commits": 1,
+      "percentage": 12.5
+    },
+    {
+      "company": "Trend Micro",
+      "commits": 1,
+      "percentage": 12.5
+    }
+  ],
+  "extracted_at": "2026-07-16T15:18:59.040121"
+}

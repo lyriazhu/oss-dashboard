@@ -1,0 +1,22 @@
+{
+  "contributors": {
+    "known_logins": [
+      "scholzj",
+      "thpham",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T15:04:29.189199"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:04:35.524499"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:05:46.354165"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:05:10.715596"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:05:47.934828"
+  }
+}

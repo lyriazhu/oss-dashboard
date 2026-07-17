@@ -1,0 +1,24 @@
+{
+  "contributors": {
+    "known_logins": [
+      "chris-giblin",
+      "prestona",
+      "robobario",
+      "scholzj",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T15:08:49.799136"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:08:56.471015"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:09:58.594449"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:09:27.665935"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:10:00.620855"
+  }
+}

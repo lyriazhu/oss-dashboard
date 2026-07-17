@@ -1,0 +1,40 @@
+{
+  "name": "awesome-strimzi",
+  "full_name": "strimzi/awesome-strimzi",
+  "description": "A curated list of resources about the Strimzi project",
+  "created_at": "2025-08-25T12:50:44+00:00",
+  "updated_at": "2026-06-26T22:41:47+00:00",
+  "stars": 22,
+  "forks": 11,
+  "watchers": 22,
+  "open_issues": 0,
+  "language": null,
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 3,
+      "percentage": 50.0
+    },
+    {
+      "company": "Ibm.Com",
+      "commits": 1,
+      "percentage": 16.67
+    },
+    {
+      "company": "Red Hat",
+      "commits": 1,
+      "percentage": 16.67
+    },
+    {
+      "company": "Hetznercloud",
+      "commits": 1,
+      "percentage": 16.67
+    }
+  ],
+  "extracted_at": "2026-07-16T15:23:51.612854"
+}

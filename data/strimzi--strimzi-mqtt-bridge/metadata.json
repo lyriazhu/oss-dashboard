@@ -1,0 +1,30 @@
+{
+  "name": "strimzi-mqtt-bridge",
+  "full_name": "strimzi/strimzi-mqtt-bridge",
+  "description": "An MQTT bridge for Apache Kafka\u00ae",
+  "created_at": "2023-06-01T16:04:14+00:00",
+  "updated_at": "2026-06-15T13:15:48+00:00",
+  "stars": 50,
+  "forks": 16,
+  "watchers": 50,
+  "open_issues": 3,
+  "language": "Java",
+  "topics": [],
+  "license": "Apache License 2.0",
+  "homepage": null,
+  "has_wiki": false,
+  "has_discussions": null,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 62,
+      "percentage": 78.48
+    },
+    {
+      "company": "Devexperts",
+      "commits": 17,
+      "percentage": 21.52
+    }
+  ],
+  "extracted_at": "2026-07-16T15:21:51.011650"
+}

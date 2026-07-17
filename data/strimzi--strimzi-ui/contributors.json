@@ -1,0 +1,364 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2020,
+      "contributor_count": 13,
+      "is_current": false,
+      "contributor_logins": [
+        "43138971+matthew-chirgwin@users.noreply.github.com",
+        "848217+ajborley@users.noreply.github.com",
+        "borley@uk.ibm.com",
+        "chirmatt@uk.ibm.com",
+        "dbizzarr@redhat.com",
+        "dlabaj@redhat.com",
+        "hello@ghbot.com",
+        "jordan.tucker1@ibm.com",
+        "nictownsend@uk.ibm.com",
+        "pmuir@bleepbleep.org.uk",
+        "rkpattnaik780@gmail.com",
+        "sanjeevkumar201418@gmail.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "year": 2021,
+      "contributor_count": 2,
+      "is_current": false,
+      "contributor_logins": [
+        "dlabaj@redhat.com",
+        "nictownsend@uk.ibm.com"
+      ]
+    }
+  ],
+  "total_contributors": 13,
+  "total_contributors_git": 13,
+  "contributors": [
+    {
+      "login": "matthew-chirgwin",
+      "name": "Matthew Chirgwin",
+      "company": "Ibm",
+      "location": "UK",
+      "email": null,
+      "contributions": 13,
+      "profile_url": "https://github.com/matthew-chirgwin"
+    },
+    {
+      "login": "nictownsend",
+      "name": "Nic Townsend",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 7,
+      "profile_url": "https://github.com/nictownsend"
+    },
+    {
+      "login": "ajborley",
+      "name": "Andrew Borley",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/ajborley"
+    },
+    {
+      "login": "pmuir",
+      "name": "Pete Muir",
+      "company": "Solo-Io",
+      "location": "United Kingdom",
+      "email": "pete.muir@solo.io",
+      "contributions": 4,
+      "profile_url": "https://github.com/pmuir"
+    },
+    {
+      "login": "drcoolsanjeev",
+      "name": "sanjeev kumar",
+      "company": "Tesco Technology",
+      "location": "Bengaluru, India",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/drcoolsanjeev"
+    },
+    {
+      "login": "dlabaj",
+      "name": "Donald Labaj",
+      "company": "Red Hat",
+      "location": "MA",
+      "email": "dlabaj@redhat.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/dlabaj"
+    },
+    {
+      "login": "scholzj",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": "Prague, Czech Republic",
+      "email": "github@scholzj.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/scholzj"
+    }
+  ],
+  "total_contributors_github_api": 7,
+  "companies": {
+    "Ibm": 2,
+    "Unknown": 2,
+    "Solo-Io": 1,
+    "Tesco Technology": 1,
+    "Red Hat": 1
+  },
+  "total_companies": 5,
+  "company_diversity": {
+    "known_company_contributors": 5,
+    "unknown_company_contributors": 2,
+    "top_companies": [
+      {
+        "company": "Ibm",
+        "contributor_count": 2
+      },
+      {
+        "company": "Unknown",
+        "contributor_count": 2
+      },
+      {
+        "company": "Solo-Io",
+        "contributor_count": 1
+      },
+      {
+        "company": "Tesco Technology",
+        "contributor_count": 1
+      },
+      {
+        "company": "Red Hat",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2020",
+      "period_type": "year",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 13,
+      "new_contributors": 13,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false,
+      "active_logins": [
+        "43138971+matthew-chirgwin@users.noreply.github.com",
+        "848217+ajborley@users.noreply.github.com",
+        "borley@uk.ibm.com",
+        "chirmatt@uk.ibm.com",
+        "dbizzarr@redhat.com",
+        "dlabaj@redhat.com",
+        "hello@ghbot.com",
+        "jordan.tucker1@ibm.com",
+        "nictownsend@uk.ibm.com",
+        "pmuir@bleepbleep.org.uk",
+        "rkpattnaik780@gmail.com",
+        "sanjeevkumar201418@gmail.com",
+        "www@scholzj.com"
+      ],
+      "new_logins": [
+        "43138971+matthew-chirgwin@users.noreply.github.com",
+        "848217+ajborley@users.noreply.github.com",
+        "borley@uk.ibm.com",
+        "chirmatt@uk.ibm.com",
+        "dbizzarr@redhat.com",
+        "dlabaj@redhat.com",
+        "hello@ghbot.com",
+        "jordan.tucker1@ibm.com",
+        "nictownsend@uk.ibm.com",
+        "pmuir@bleepbleep.org.uk",
+        "rkpattnaik780@gmail.com",
+        "sanjeevkumar201418@gmail.com",
+        "www@scholzj.com"
+      ],
+      "returning_logins": []
+    },
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "is_current": false,
+      "active_logins": [
+        "dlabaj@redhat.com",
+        "nictownsend@uk.ibm.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "dlabaj@redhat.com",
+        "nictownsend@uk.ibm.com"
+      ]
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}

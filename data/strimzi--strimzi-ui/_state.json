@@ -1,0 +1,26 @@
+{
+  "contributors": {
+    "known_logins": [
+      "ajborley",
+      "dlabaj",
+      "drcoolsanjeev",
+      "matthew-chirgwin",
+      "nictownsend",
+      "pmuir",
+      "scholzj"
+    ],
+    "last_extracted_at": "2026-07-16T15:03:00.646930"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:03:07.346913"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:04:18.322424"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:03:42.697226"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:04:20.225237"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "im-konge",
+      "jchipmunk",
+      "ppatierno",
+      "scholzj",
+      "see-quick",
+      "tombentley"
+    ],
+    "last_extracted_at": "2026-07-16T15:13:02.305105"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T15:13:10.671446"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T15:14:13.375473"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T15:13:41.770689"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T15:14:15.693510"
+  }
+}

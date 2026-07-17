@@ -1,6 +1,6 @@
 {
-  "total_prs": 746,
-  "median_time_to_merge_days": 0.22,
+  "total_prs": 752,
+  "median_time_to_merge_days": 0.95,
   "months": [
     {
       "start_date": "2025-08-01T00:00:00",
@@ -86,17 +86,17 @@
       "start_date": "2026-06-01T00:00:00",
       "end_date": "2026-06-30T23:59:59",
       "pr_count": 64,
-      "merged_pr_count": 55,
+      "merged_pr_count": 58,
       "month": "2026-06",
-      "median_time_to_merge_days": 0.64
+      "median_time_to_merge_days": 0.71
     },
     {
       "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-07-01T16:14:31.221305",
-      "pr_count": 34,
-      "merged_pr_count": 19,
+      "end_date": "2026-07-16T14:47:52.178518",
+      "pr_count": 40,
+      "merged_pr_count": 33,
       "month": "2026-07",
-      "median_time_to_merge_days": 0.22
+      "median_time_to_merge_days": 0.61
     }
   ],
   "years": [
@@ -112,13 +112,13 @@
     },
     {
       "year": 2018,
-      "pr_count": 738,
-      "merged_pr_count": 689
+      "pr_count": 733,
+      "merged_pr_count": 684
     },
     {
       "year": 2019,
-      "pr_count": 845,
-      "merged_pr_count": 786
+      "pr_count": 839,
+      "merged_pr_count": 780
     },
     {
       "year": 2020,
@@ -152,9 +152,9 @@
     },
     {
       "year": 2026,
-      "pr_count": 391,
-      "merged_pr_count": 328
+      "pr_count": 427,
+      "merged_pr_count": 363
     }
   ],
-  "extracted_at": "2026-07-14T10:39:04.333248"
+  "extracted_at": "2026-07-16T14:47:52.178559"
 }

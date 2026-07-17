@@ -1,0 +1,25 @@
+{
+  "contributors": {
+    "known_logins": [
+      "gunnarmorling",
+      "jpechane",
+      "matzew",
+      "mbogoevici",
+      "ppatierno",
+      "scholzj"
+    ],
+    "last_extracted_at": "2026-07-16T14:53:02.473861"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-16T14:53:09.162110"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-16T14:54:39.037308"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-16T14:53:53.958583"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-16T14:54:40.859245"
+  }
+}

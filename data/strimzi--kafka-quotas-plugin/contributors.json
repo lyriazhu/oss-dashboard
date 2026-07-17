@@ -1,0 +1,731 @@
+{
+  "yearly_contributors": [
+    {
+      "year": 2020,
+      "contributor_count": 4,
+      "is_current": false,
+      "contributor_logins": [
+        "gerard@ryan.lt",
+        "kwall@apache.org",
+        "tom.n.cooper@gmail.com",
+        "ulf.lilleengen@gmail.com"
+      ]
+    },
+    {
+      "year": 2021,
+      "contributor_count": 9,
+      "is_current": false,
+      "contributor_logins": [
+        "ales.justin@gmail.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "npecka@iastate.edu",
+        "sknot@redhat.com",
+        "stejskinek@gmail.com",
+        "www@scholzj.com",
+        "xstejs24@gmail.com",
+        "zangoose107@gmail.com"
+      ]
+    },
+    {
+      "year": 2022,
+      "contributor_count": 7,
+      "is_current": false,
+      "contributor_logins": [
+        "eachernous@gmail.com",
+        "kwall@apache.org",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tombentley@users.noreply.github.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "year": 2023,
+      "contributor_count": 6,
+      "is_current": false,
+      "contributor_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
+    },
+    {
+      "year": 2024,
+      "contributor_count": 10,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "fedevaleri@gmail.com",
+        "lukywill16@gmail.com",
+        "marko.strukelj@gmail.com",
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "year": 2025,
+      "contributor_count": 6,
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com",
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "year": 2026,
+      "contributor_count": 2,
+      "is_current": true,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ]
+    }
+  ],
+  "total_contributors": 26,
+  "total_contributors_git": 26,
+  "contributors": [
+    {
+      "login": "lulf",
+      "name": "Ulf Lilleengen",
+      "company": "Akiles",
+      "location": "Norway",
+      "email": "ulf@digili.no",
+      "contributions": 21,
+      "profile_url": "https://github.com/lulf"
+    },
+    {
+      "login": "scholzj",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": "Prague, Czech Republic",
+      "email": "github@scholzj.com",
+      "contributions": 11,
+      "profile_url": "https://github.com/scholzj"
+    },
+    {
+      "login": "im-konge",
+      "name": "Luk\u00e1\u0161 Kr\u00e1l",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "contributions": 6,
+      "profile_url": "https://github.com/im-konge"
+    },
+    {
+      "login": "k-wall",
+      "name": "Keith Wall",
+      "company": "Ibm",
+      "location": "Stirling, Scotland, UK",
+      "email": "kwall@redhat.com",
+      "contributions": 6,
+      "profile_url": "https://github.com/k-wall"
+    },
+    {
+      "login": "SamBarker",
+      "name": "Sam Barker",
+      "company": "Ibm",
+      "location": "Christchurch, NZ",
+      "email": "sbarker@redhat.com",
+      "contributions": 5,
+      "profile_url": "https://github.com/SamBarker"
+    },
+    {
+      "login": "Frawless",
+      "name": "Jakub Stejskal",
+      "company": "Ibm",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "contributions": 5,
+      "profile_url": "https://github.com/Frawless"
+    },
+    {
+      "login": "robobario",
+      "name": "Robert Young",
+      "company": "Ibm",
+      "location": "New Zealand",
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/robobario"
+    },
+    {
+      "login": "ppatierno",
+      "name": "Paolo Patierno",
+      "company": "Ibm",
+      "location": "Italy",
+      "email": null,
+      "contributions": 3,
+      "profile_url": "https://github.com/ppatierno"
+    },
+    {
+      "login": "npecka",
+      "name": "Nicholas Pecka",
+      "company": "Red Hat",
+      "location": null,
+      "email": "npecka@redhat.com",
+      "contributions": 2,
+      "profile_url": "https://github.com/npecka"
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/apps/dependabot"
+    },
+    {
+      "login": "tomncooper",
+      "name": "Thomas Cooper",
+      "company": "Ibm",
+      "location": "Newcastle upon Tyne, UK",
+      "email": "code@tomcooper.dev",
+      "contributions": 2,
+      "profile_url": "https://github.com/tomncooper"
+    },
+    {
+      "login": "grdryn",
+      "name": "Gerard Ryan",
+      "company": "Red Hat",
+      "location": "Ireland",
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/grdryn"
+    },
+    {
+      "login": "fvaleri",
+      "name": "Federico Valeri",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/fvaleri"
+    },
+    {
+      "login": "mstruk",
+      "name": "Marko Strukelj",
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/mstruk"
+    },
+    {
+      "login": "MikeEdgar",
+      "name": "Michael Edgar",
+      "company": "Ibm",
+      "location": "Cleveland, Ohio",
+      "email": "michael@xlate.io",
+      "contributions": 1,
+      "profile_url": "https://github.com/MikeEdgar"
+    },
+    {
+      "login": "sknot-rh",
+      "name": "Stanislav Knot",
+      "company": "Unknown",
+      "location": "Czech Republic",
+      "email": "knot.stanislav@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/sknot-rh"
+    },
+    {
+      "login": "tombentley",
+      "name": "Tom Bentley",
+      "company": "Ibm",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/tombentley"
+    }
+  ],
+  "total_contributors_github_api": 17,
+  "companies": {
+    "Ibm": 9,
+    "Unknown": 5,
+    "Red Hat": 2,
+    "Akiles": 1
+  },
+  "total_companies": 4,
+  "company_diversity": {
+    "known_company_contributors": 12,
+    "unknown_company_contributors": 5,
+    "top_companies": [
+      {
+        "company": "Ibm",
+        "contributor_count": 9
+      },
+      {
+        "company": "Unknown",
+        "contributor_count": 5
+      },
+      {
+        "company": "Red Hat",
+        "contributor_count": 2
+      },
+      {
+        "company": "Akiles",
+        "contributor_count": 1
+      }
+    ]
+  },
+  "retention_by_quarter": [
+    {
+      "period": "Q4 2023",
+      "period_type": "quarter",
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
+    },
+    {
+      "period": "Q1 2024",
+      "period_type": "quarter",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "active_contributors": 5,
+      "new_contributors": 2,
+      "returning_contributors": 3,
+      "retention_rate": 60.0,
+      "active_logins": [
+        "fedevaleri@gmail.com",
+        "lukywill16@gmail.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "www@scholzj.com"
+      ],
+      "new_logins": [
+        "fedevaleri@gmail.com",
+        "lukywill16@gmail.com"
+      ],
+      "returning_logins": [
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "Q2 2024",
+      "period_type": "quarter",
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 1,
+      "returning_contributors": 2,
+      "retention_rate": 66.67,
+      "active_logins": [
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com",
+        "www@scholzj.com"
+      ],
+      "new_logins": [
+        "53821852+im-konge@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "lukywill16@gmail.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "Q3 2024",
+      "period_type": "quarter",
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "www@scholzj.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "Q4 2024",
+      "period_type": "quarter",
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 2,
+      "returning_contributors": 2,
+      "retention_rate": 50.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "marko.strukelj@gmail.com",
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "marko.strukelj@gmail.com"
+      ],
+      "returning_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com"
+      ]
+    },
+    {
+      "period": "Q1 2025",
+      "period_type": "quarter",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com"
+      ]
+    },
+    {
+      "period": "Q2 2025",
+      "period_type": "quarter",
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "active_contributors": 3,
+      "new_contributors": 0,
+      "returning_contributors": 3,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com"
+      ]
+    },
+    {
+      "period": "Q3 2025",
+      "period_type": "quarter",
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com"
+      ]
+    },
+    {
+      "period": "Q4 2025",
+      "period_type": "quarter",
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "www@scholzj.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "Q1 2026",
+      "period_type": "quarter",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ]
+    },
+    {
+      "period": "Q2 2026",
+      "period_type": "quarter",
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "active_contributors": 1,
+      "new_contributors": 0,
+      "returning_contributors": 1,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ]
+    },
+    {
+      "period": "Q3 2026",
+      "period_type": "quarter",
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "active_contributors": 0,
+      "new_contributors": 0,
+      "returning_contributors": 0,
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
+    }
+  ],
+  "retention_by_year": [
+    {
+      "period": "2020",
+      "period_type": "year",
+      "start_date": "2020-01-01T00:00:00",
+      "end_date": "2021-01-01T00:00:00",
+      "active_contributors": 4,
+      "new_contributors": 4,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false,
+      "active_logins": [
+        "gerard@ryan.lt",
+        "kwall@apache.org",
+        "tom.n.cooper@gmail.com",
+        "ulf.lilleengen@gmail.com"
+      ],
+      "new_logins": [
+        "gerard@ryan.lt",
+        "kwall@apache.org",
+        "tom.n.cooper@gmail.com",
+        "ulf.lilleengen@gmail.com"
+      ],
+      "returning_logins": []
+    },
+    {
+      "period": "2021",
+      "period_type": "year",
+      "start_date": "2021-01-01T00:00:00",
+      "end_date": "2022-01-01T00:00:00",
+      "active_contributors": 9,
+      "new_contributors": 9,
+      "returning_contributors": 0,
+      "retention_rate": 0.0,
+      "is_current": false,
+      "active_logins": [
+        "ales.justin@gmail.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "npecka@iastate.edu",
+        "sknot@redhat.com",
+        "stejskinek@gmail.com",
+        "www@scholzj.com",
+        "xstejs24@gmail.com",
+        "zangoose107@gmail.com"
+      ],
+      "new_logins": [
+        "ales.justin@gmail.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "npecka@iastate.edu",
+        "sknot@redhat.com",
+        "stejskinek@gmail.com",
+        "www@scholzj.com",
+        "xstejs24@gmail.com",
+        "zangoose107@gmail.com"
+      ],
+      "returning_logins": []
+    },
+    {
+      "period": "2022",
+      "period_type": "year",
+      "start_date": "2022-01-01T00:00:00",
+      "end_date": "2023-01-01T00:00:00",
+      "active_contributors": 7,
+      "new_contributors": 5,
+      "returning_contributors": 2,
+      "retention_rate": 28.57,
+      "is_current": false,
+      "active_logins": [
+        "eachernous@gmail.com",
+        "kwall@apache.org",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tombentley@users.noreply.github.com",
+        "www@scholzj.com"
+      ],
+      "new_logins": [
+        "eachernous@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "2023",
+      "period_type": "year",
+      "start_date": "2023-01-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 3,
+      "returning_contributors": 3,
+      "retention_rate": 50.0,
+      "is_current": false,
+      "active_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com"
+      ],
+      "returning_logins": [
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
+    },
+    {
+      "period": "2024",
+      "period_type": "year",
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "active_contributors": 10,
+      "new_contributors": 5,
+      "returning_contributors": 5,
+      "retention_rate": 50.0,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "fedevaleri@gmail.com",
+        "lukywill16@gmail.com",
+        "marko.strukelj@gmail.com",
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "www@scholzj.com"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "fedevaleri@gmail.com",
+        "lukywill16@gmail.com",
+        "marko.strukelj@gmail.com"
+      ],
+      "returning_logins": [
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "2025",
+      "period_type": "year",
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "active_contributors": 6,
+      "new_contributors": 0,
+      "returning_contributors": 6,
+      "retention_rate": 100.0,
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com",
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "www@scholzj.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
+        "lukywill16@gmail.com",
+        "paolo.patierno@gmail.com",
+        "ppatierno@live.com",
+        "www@scholzj.com"
+      ]
+    },
+    {
+      "period": "2026",
+      "period_type": "year",
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2027-01-01T00:00:00",
+      "active_contributors": 2,
+      "new_contributors": 0,
+      "returning_contributors": 2,
+      "retention_rate": 100.0,
+      "is_current": true,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ]
+    }
+  ],
+  "time_scope": {
+    "yearly_contributors": "all_time_from_git_history",
+    "total_contributors": "all_time_from_git_history",
+    "contributors": "all_time_github_contributors",
+    "retention_by_quarter": "last_12_quarters_from_git_history",
+    "retention_by_year": "all_time_from_git_history"
+  }
+}
