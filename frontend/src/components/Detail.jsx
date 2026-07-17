@@ -404,37 +404,40 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
         )}
       </p>
 
-      {(d.description || d.websiteUrl) && (
-        <div style={{ border: '1px solid var(--border-subtle)', background: 'var(--layer-02)', padding: '1rem 1.25rem', marginTop: '1rem' }}>
-          {d.description && (() => {
-            const lt = d.descriptionLinkText;
-            const url = d.websiteUrl;
-            if (lt && url) {
-              const idx = d.description.indexOf(lt);
-              if (idx !== -1) {
-                return (
-                  <p style={{ margin: 0, fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
-                    {d.description.slice(0, idx)}
-                    <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>{lt}</a>
-                    {d.description.slice(idx + lt.length)}
-                  </p>
-                );
-              }
-            }
-            return (
-              <p style={{ margin: 0, fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
-                {d.description}
-              </p>
-            );
-          })()}
-        </div>
-      )}
-
       <div className="tile-grid det-tiles">
         {d.kpis.map((k, i) => (
           <Tile key={i} label={k.l} value={k.v} help={k.h} />
         ))}
       </div>
+
+      {(d.description || d.websiteUrl) && (
+        <div className="section">
+          <h2 className="section-h">About {d.name}</h2>
+          <div style={{ border: '1px solid var(--border-subtle)', background: 'var(--layer-02)', padding: '1rem 1.25rem' }}>
+            {d.description && (() => {
+              const lt = d.descriptionLinkText;
+              const url = d.websiteUrl;
+              if (lt && url) {
+                const idx = d.description.indexOf(lt);
+                if (idx !== -1) {
+                  return (
+                    <p style={{ margin: 0, fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+                      {d.description.slice(0, idx)}
+                      <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--link)' }}>{lt}</a>
+                      {d.description.slice(idx + lt.length)}
+                    </p>
+                  );
+                }
+              }
+              return (
+                <p style={{ margin: 0, fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-primary)' }}>
+                  {d.description}
+                </p>
+              );
+            })()}
+          </div>
+        </div>
+      )}
 
       <div className="section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
