@@ -18,8 +18,8 @@
     "orgUrl" : "https://github.com/strimzi",
     "foundation" : "CNCF"
   }, {
-    "mergedKey" : "__merged__3scale--apicast__3scale--apisonator__3scale--porta__3scale-operator__3scale--3scale-toolbox",
-    "memberKeys" : [ "3scale--apicast", "3scale--apisonator", "3scale--porta", "3scale-operator", "3scale--3scale-toolbox" ],
+    "mergedKey" : "__merged__apicast__apisonator__porta__3scale-operator__3scale-toolbox",
+    "memberKeys" : [ "apicast", "apisonator", "porta", "3scale-operator", "3scale-toolbox" ],
     "name" : "3scale",
     "orgUrl" : "https://github.com/3scale",
     "foundation" : "Red Hat"

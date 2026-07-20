@@ -87,11 +87,17 @@ class GitHubDataExtractor:
                 with open(projects_file) as f:
                     records = json.load(f).get("projects", [])
                 if repo and owner:
+                    # Primary lookup: namespaced "owner--repo" ID — unambiguous.
                     namespaced_id = f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
                     for p in records:
                         if p.get("id") == namespaced_id and p.get("data_dir"):
                             return self.data_dir / p["data_dir"]
-                if repo:
+                if repo and not owner:
+                    # Bare-slug lookup only when owner is unknown (legacy callers).
+                    # When owner IS known we already tried the namespaced form above;
+                    # falling back to the bare slug here could resolve to the wrong
+                    # project when two repos share the same name in different orgs
+                    # (e.g. keycloak/keycloak vs a hypothetical foo/keycloak).
                     project_id = repo.lower().replace("_", "-")
                     for p in records:
                         if p.get("id") == project_id and p.get("data_dir"):
@@ -2220,12 +2226,54 @@ class GitHubDataExtractor:
                 org_repos = existing_by_org.get(owner.lower(), [])
                 if org_repos:
                     out.extend(org_repos)
+                else:
+                    print(f"ℹ️  No extracted repos found for org '{owner}' — "
+                          f"run extraction for this org to populate its repos.")
+                continue
+
+        # Warn about org data that exists on disk but has no config entry —
+        # this is exactly the failure mode that silently dropped Strimzi: the
+        # config entry was removed, so existing_by_org had repos that were never
+        # emitted to out, and they vanished from projects.json on the next sync.
+        config_org_owners = {
+            cfg["owner"].lower()
+            for cfg in self.config.get("projects", [])
+            if cfg.get("is_org")
+        }
+        for orphan_owner, orphan_repos in existing_by_org.items():
+            if orphan_owner not in config_org_owners:
+                print(f"⚠️  Org '{orphan_owner}' has {len(orphan_repos)} extracted repo(s) in "
+                      f"projects.json but NO entry in config.yaml — they will be DROPPED "
+                      f"from projects.json on this sync. Add an is_org entry to config.yaml "
+                      f"to keep them.")
+
+        for cfg in self.config.get("projects", []):
+            if cfg.get("is_org"):
                 continue
 
             repo = cfg.get("repo", "")
             owner = cfg.get("owner", "")
             name = cfg.get("name", repo)
-            project_id = repo.lower().replace("_", "-")
+            owner_slug = owner.lower().replace("_", "-")
+            repo_slug  = repo.lower().replace("_", "-")
+            namespaced_id = f"{owner_slug}--{repo_slug}"
+
+            # Determine the project ID to use.  The canonical format is
+            # "owner--repo" but many existing projects use the bare repo slug.
+            # Preserve whichever form is already present in projects.json so
+            # that IDs (and therefore merge records, data_dir links, etc.) are
+            # never silently changed on re-sync.
+            if namespaced_id in existing:
+                # Already stored under the namespaced form — keep it.
+                project_id = namespaced_id
+            elif repo_slug in existing:
+                # Legacy bare-slug form — keep it to avoid breaking existing state.
+                project_id = repo_slug
+            else:
+                # New project: use the namespaced form from the start to avoid
+                # future collisions (e.g. quarkiverse/quarkiverse → "quarkiverse"
+                # would collide with a hypothetical org "quarkiverse").
+                project_id = namespaced_id
 
             # Start from any previously persisted record so extra fields survive
             record = dict(existing.get(project_id, {}))
@@ -2257,6 +2305,16 @@ class GitHubDataExtractor:
                     # remove null-valued optional keys to keep the file tidy
                     if record[key] is None:
                         del record[key]
+            # Guard: never emit the same project ID twice.  This can happen when
+            # config.yaml has both an is_org entry and individual single-repo
+            # entries for repos that belong to the same org.  The org path already
+            # emitted the namespaced record; skip the redundant single-repo entry.
+            if any(r["id"] == project_id for r in out):
+                print(f"⚠️  Skipping duplicate project_id '{project_id}' "
+                      f"(already emitted via org path) — remove the single-repo "
+                      f"entry for {owner}/{repo} from config.yaml")
+                continue
+
             out.append(record)
 
         payload = {
