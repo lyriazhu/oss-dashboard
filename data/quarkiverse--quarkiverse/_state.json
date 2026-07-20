@@ -1,0 +1,34 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Postremus",
+      "aloubyansky",
+      "cmoulliard",
+      "dependabot[bot]",
+      "gastaldi",
+      "glefloch",
+      "gsmet",
+      "holly-cummins",
+      "ia3andy",
+      "majguo",
+      "maxandersen",
+      "metacosm",
+      "mkouba",
+      "quarkusbot",
+      "shivarm"
+    ],
+    "last_extracted_at": "2026-07-20T13:56:34.675241"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-20T13:56:41.262211"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-20T13:58:52.477026"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-20T13:58:15.417998"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-20T13:58:54.307855"
+  }
+}

@@ -136,6 +136,13 @@ projects:
 
 
 
+
+  - name: "Quarkiverse"
+    github_url: "https://github.com/quarkiverse/quarkiverse"
+    owner: "quarkiverse"
+    repo: "quarkiverse"
+    foundation: "Independent"
+
 extraction:
   # How many quarters of historical data to fetch
   quarters_back: 12

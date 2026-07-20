@@ -293,14 +293,31 @@ public class DataService {
             }
         }
 
-        // Project ID: use repo name for single-repo, org name for entire-project
+        // Project ID: owner--repo for single-repo, bare owner slug for org-level.
+        // Using owner--repo avoids collisions when two orgs have a repo with the
+        // same name (e.g. keycloak/keycloak vs a hypothetical foo/keycloak).
+        String projectId;
+        String dataDir;
         String idBase = isOrg ? owner : repo;
-        String projectId = generateProjectId(idBase);
+        if (isOrg) {
+            projectId = generateProjectId(owner);
+            dataDir   = projectId; // org projects: bare owner slug
+        } else {
+            String ownerSlug = owner.toLowerCase().replaceAll("[^a-z0-9-]", "-");
+            String repoSlug  = repo.toLowerCase().replaceAll("[^a-z0-9-]", "-");
+            projectId = ownerSlug + "--" + repoSlug;
+            dataDir   = projectId; // always owner--repo for single-repo projects
+        }
 
         // Check if project already exists.
         // For org projects also check config.yaml — _sync_projects_json may have
         // removed the sentinel entry from projects.json, making projectExists() lie.
         if (projectExists(projectId)) {
+            throw new IllegalArgumentException("This project has already been added.");
+        }
+        // Also check legacy bare-slug ID so re-adding a project that was created
+        // before this change is correctly detected as a duplicate.
+        if (!isOrg && projectExists(generateProjectId(repo))) {
             throw new IllegalArgumentException("This project has already been added.");
         }
         if (isOrg) {
@@ -321,11 +338,9 @@ public class DataService {
         newProject.setFoundation(request.getFoundation() != null ? request.getFoundation() : "Independent");
         newProject.setWebsite(request.getWebsite());
         newProject.setEnabled(true);
-        // Derive and persist the data directory name so that future renames only
-        // need to update this single field.  Uses the same mapping as
-        // getProjectDirectoryName so legacy repos (e.g. console → streamshub)
-        // are handled correctly on first add.
-        newProject.setDataDir(deriveDataDir(projectId));
+        // data_dir is frozen at creation time; owner--repo format avoids collisions
+        // and is consistent with what the Python sync script assigns to new projects.
+        newProject.setDataDir(dataDir);
 
         // Persist issue-tracker configuration so it survives backend restarts
         if ("jira".equalsIgnoreCase(request.getIssueSource())) {
