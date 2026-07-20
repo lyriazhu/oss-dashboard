@@ -1,106 +1,34 @@
 {
-  "merges": [
-    {
-      "mergedKey": "__merged__streamshub--.github__streamshub--console__streamshub--alignment-reporter-plugin__streamshub--console-datagen__streamshub--developer-quickstart__streamshub--flink-sql__streamshub--flink-sql-examples__streamshub--governance__streamshub--keycloak-auth-demo__streamshub--kmetadb__streamshub--proposals__streamshub--shade-enforcer__streamshub--streams-e2e__streamshub--streamshub-gitops__streamshub--streamshub-mcp__streamshub--streamshub-site",
-      "memberKeys": [
-        "streamshub--.github",
-        "streamshub--console",
-        "streamshub--alignment-reporter-plugin",
-        "streamshub--console-datagen",
-        "streamshub--developer-quickstart",
-        "streamshub--flink-sql",
-        "streamshub--flink-sql-examples",
-        "streamshub--governance",
-        "streamshub--keycloak-auth-demo",
-        "streamshub--kmetadb",
-        "streamshub--proposals",
-        "streamshub--shade-enforcer",
-        "streamshub--streams-e2e",
-        "streamshub--streamshub-gitops",
-        "streamshub--streamshub-mcp",
-        "streamshub--streamshub-site"
-      ],
-      "name": "StreamsHub",
-      "orgUrl": "https://github.com/streamshub",
-      "foundation": "Independent"
-    },
-    {
-      "mergedKey": "__merged__kroxylicious--kroxylicious__kroxylicious--design__kroxylicious--kroxylicious-junit5-extension__kroxylicious--kroxylicious.github.io__kroxylicious--.github__kroxylicious--kroxylicious-community-gallery__kroxylicious--python-kafka-test-client",
-      "memberKeys": [
-        "kroxylicious--kroxylicious",
-        "kroxylicious--design",
-        "kroxylicious--kroxylicious-junit5-extension",
-        "kroxylicious--kroxylicious.github.io",
-        "kroxylicious--.github",
-        "kroxylicious--kroxylicious-community-gallery",
-        "kroxylicious--python-kafka-test-client"
-      ],
-      "name": "Kroxylicious",
-      "orgUrl": "https://github.com/kroxylicious",
-      "foundation": "Commonhaus Foundation"
-    },
-    {
-      "mergedKey": "__merged__strimzi--.github__strimzi--awesome-strimzi__strimzi--client-examples__strimzi--drain-cleaner__strimzi--github-actions__strimzi--governance__strimzi--kafka-access-operator__strimzi--kafka-env-var-config-provider__strimzi--kafka-kubernetes-config-provider__strimzi--kafka-quotas-plugin__strimzi--metrics-reporter__strimzi--mirror-maker-2-extensions__strimzi--proposals__strimzi--strimzi-admin__strimzi--strimzi-canary__strimzi--strimzi-kafka-bridge__strimzi--strimzi-kafka-oauth__strimzi--strimzi-kafka-operator__strimzi--strimzi-lab__strimzi--strimzi-mqtt-bridge__strimzi--strimzi-ui__strimzi--strimzi.github.io__strimzi--test-clients__strimzi--test-connectors__strimzi--test-container__strimzi--test-container-images__strimzi--topic-encryption",
-      "memberKeys": [
-        "strimzi--.github",
-        "strimzi--awesome-strimzi",
-        "strimzi--client-examples",
-        "strimzi--drain-cleaner",
-        "strimzi--github-actions",
-        "strimzi--governance",
-        "strimzi--kafka-access-operator",
-        "strimzi--kafka-env-var-config-provider",
-        "strimzi--kafka-kubernetes-config-provider",
-        "strimzi--kafka-quotas-plugin",
-        "strimzi--metrics-reporter",
-        "strimzi--mirror-maker-2-extensions",
-        "strimzi--proposals",
-        "strimzi--strimzi-admin",
-        "strimzi--strimzi-canary",
-        "strimzi--strimzi-kafka-bridge",
-        "strimzi--strimzi-kafka-oauth",
-        "strimzi--strimzi-kafka-operator",
-        "strimzi--strimzi-lab",
-        "strimzi--strimzi-mqtt-bridge",
-        "strimzi--strimzi-ui",
-        "strimzi--strimzi.github.io",
-        "strimzi--test-clients",
-        "strimzi--test-connectors",
-        "strimzi--test-container",
-        "strimzi--test-container-images",
-        "strimzi--topic-encryption"
-      ],
-      "name": "Strimzi",
-      "orgUrl": "https://github.com/strimzi",
-      "foundation": "CNCF"
-    },
-    {
-      "mergedKey": "__merged__3scale--apicast__3scale--apisonator__3scale--porta__3scale-operator__3scale--3scale-toolbox",
-      "memberKeys": [
-        "3scale--apicast",
-        "3scale--apisonator",
-        "3scale--porta",
-        "3scale-operator",
-        "3scale--3scale-toolbox"
-      ],
-      "name": "3scale",
-      "orgUrl": "https://github.com/3scale",
-      "foundation": "Red Hat"
-    },
-    {
-      "mergedKey": "apicurio",
-      "memberKeys": [
-        "apicurio--apicurio-github-io",
-        "apicurio--apicurio-registry",
-        "apicurio--apicurio-github-actions",
-        "apicurio---github",
-        "apicurio--apicurio-registry-vscode-plugin",
-        "apicurio--apicurio-registry-gitops-example",
-        "apicurio--apicurio-compatibility-harness",
-        "apicurio---project"
-      ],
-      "name": "Apicurio"
-    }
-  ],
-  "last_updated": "2026-07-17T17:29:59.265852Z"
+  "merges" : [ {
+    "mergedKey" : "__merged__streamshub--.github__streamshub--console__streamshub--alignment-reporter-plugin__streamshub--console-datagen__streamshub--developer-quickstart__streamshub--flink-sql__streamshub--flink-sql-examples__streamshub--governance__streamshub--keycloak-auth-demo__streamshub--kmetadb__streamshub--proposals__streamshub--shade-enforcer__streamshub--streams-e2e__streamshub--streamshub-gitops__streamshub--streamshub-mcp__streamshub--streamshub-site",
+    "memberKeys" : [ "streamshub--.github", "streamshub--console", "streamshub--alignment-reporter-plugin", "streamshub--console-datagen", "streamshub--developer-quickstart", "streamshub--flink-sql", "streamshub--flink-sql-examples", "streamshub--governance", "streamshub--keycloak-auth-demo", "streamshub--kmetadb", "streamshub--proposals", "streamshub--shade-enforcer", "streamshub--streams-e2e", "streamshub--streamshub-gitops", "streamshub--streamshub-mcp", "streamshub--streamshub-site" ],
+    "name" : "StreamsHub",
+    "orgUrl" : "https://github.com/streamshub",
+    "foundation" : "Independent"
+  }, {
+    "mergedKey" : "__merged__kroxylicious--kroxylicious__kroxylicious--design__kroxylicious--kroxylicious-junit5-extension__kroxylicious--kroxylicious.github.io__kroxylicious--.github__kroxylicious--kroxylicious-community-gallery__kroxylicious--python-kafka-test-client",
+    "memberKeys" : [ "kroxylicious--kroxylicious", "kroxylicious--design", "kroxylicious--kroxylicious-junit5-extension", "kroxylicious--kroxylicious.github.io", "kroxylicious--.github", "kroxylicious--kroxylicious-community-gallery", "kroxylicious--python-kafka-test-client" ],
+    "name" : "Kroxylicious",
+    "orgUrl" : "https://github.com/kroxylicious",
+    "foundation" : "Commonhaus Foundation"
+  }, {
+    "mergedKey" : "__merged__strimzi--.github__strimzi--awesome-strimzi__strimzi--client-examples__strimzi--drain-cleaner__strimzi--github-actions__strimzi--governance__strimzi--kafka-access-operator__strimzi--kafka-env-var-config-provider__strimzi--kafka-kubernetes-config-provider__strimzi--kafka-quotas-plugin__strimzi--metrics-reporter__strimzi--mirror-maker-2-extensions__strimzi--proposals__strimzi--strimzi-admin__strimzi--strimzi-canary__strimzi--strimzi-kafka-bridge__strimzi--strimzi-kafka-oauth__strimzi--strimzi-kafka-operator__strimzi--strimzi-lab__strimzi--strimzi-mqtt-bridge__strimzi--strimzi-ui__strimzi--strimzi.github.io__strimzi--test-clients__strimzi--test-connectors__strimzi--test-container__strimzi--test-container-images__strimzi--topic-encryption",
+    "memberKeys" : [ "strimzi--.github", "strimzi--awesome-strimzi", "strimzi--client-examples", "strimzi--drain-cleaner", "strimzi--github-actions", "strimzi--governance", "strimzi--kafka-access-operator", "strimzi--kafka-env-var-config-provider", "strimzi--kafka-kubernetes-config-provider", "strimzi--kafka-quotas-plugin", "strimzi--metrics-reporter", "strimzi--mirror-maker-2-extensions", "strimzi--proposals", "strimzi--strimzi-admin", "strimzi--strimzi-canary", "strimzi--strimzi-kafka-bridge", "strimzi--strimzi-kafka-oauth", "strimzi--strimzi-kafka-operator", "strimzi--strimzi-lab", "strimzi--strimzi-mqtt-bridge", "strimzi--strimzi-ui", "strimzi--strimzi.github.io", "strimzi--test-clients", "strimzi--test-connectors", "strimzi--test-container", "strimzi--test-container-images", "strimzi--topic-encryption" ],
+    "name" : "Strimzi",
+    "orgUrl" : "https://github.com/strimzi",
+    "foundation" : "CNCF"
+  }, {
+    "mergedKey" : "__merged__3scale--apicast__3scale--apisonator__3scale--porta__3scale-operator__3scale--3scale-toolbox",
+    "memberKeys" : [ "3scale--apicast", "3scale--apisonator", "3scale--porta", "3scale-operator", "3scale--3scale-toolbox" ],
+    "name" : "3scale",
+    "orgUrl" : "https://github.com/3scale",
+    "foundation" : "Red Hat"
+  }, {
+    "mergedKey" : "__merged__apicurio--apicurio-github-io__apicurio--apicurio-registry__apicurio--apicurio-github-actions__apicurio---github__apicurio--apicurio-registry-vscode-plugin__apicurio--apicurio-registry-gitops-example__apicurio--apicurio-compatibility-harness__apicurio---project",
+    "memberKeys" : [ "apicurio--apicurio-github-io", "apicurio--apicurio-registry", "apicurio--apicurio-github-actions", "apicurio---github", "apicurio--apicurio-registry-vscode-plugin", "apicurio--apicurio-registry-gitops-example", "apicurio--apicurio-compatibility-harness", "apicurio---project" ],
+    "name" : "Apicurio Registry",
+    "orgUrl" : "https://github.com/Apicurio",
+    "foundation" : "Independent"
+  } ],
+  "last_updated" : "2026-07-20T14:12:48.069830Z"
 }
