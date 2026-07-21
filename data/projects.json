@@ -1,5 +1,60 @@
 {
   "projects" : [ {
+    "id" : "3scale--3scale-operator",
+    "name" : "3scale-operator",
+    "owner" : "3scale",
+    "repo" : "3scale-operator",
+    "foundation" : "Red Hat",
+    "data_dir" : "3scale--3scale-operator",
+    "enabled" : true,
+    "is_org" : true,
+    "org_owner" : "3scale",
+    "github_url" : "https://github.com/3scale/3scale-operator"
+  }, {
+    "id" : "3scale--apicast",
+    "name" : "APIcast",
+    "github_url" : "https://github.com/3scale/APIcast",
+    "owner" : "3scale",
+    "repo" : "APIcast",
+    "foundation" : "Red Hat",
+    "data_dir" : "3scale--apicast",
+    "enabled" : true,
+    "is_org" : true,
+    "org_owner" : "3scale"
+  }, {
+    "id" : "3scale--porta",
+    "name" : "porta",
+    "github_url" : "https://github.com/3scale/porta",
+    "owner" : "3scale",
+    "repo" : "porta",
+    "foundation" : "Red Hat",
+    "data_dir" : "3scale--porta",
+    "enabled" : true,
+    "is_org" : true,
+    "org_owner" : "3scale"
+  }, {
+    "id" : "3scale--apisonator",
+    "name" : "apisonator",
+    "github_url" : "https://github.com/3scale/apisonator",
+    "owner" : "3scale",
+    "repo" : "apisonator",
+    "foundation" : "Red Hat",
+    "data_dir" : "3scale--apisonator",
+    "enabled" : true,
+    "is_org" : true,
+    "org_owner" : "3scale"
+  }, {
+    "id" : "3scale--3scale-toolbox",
+    "name" : "3scale_toolbox",
+    "github_url" : "https://github.com/3scale/3scale_toolbox",
+    "owner" : "3scale",
+    "repo" : "3scale_toolbox",
+    "foundation" : "Red Hat",
+    "data_dir" : "3scale--3scale-toolbox",
+    "enabled" : true,
+    "is_org" : true,
+    "org_owner" : "3scale"
+  }, {
     "id" : "strimzi--.github",
     "name" : ".github",
     "github_url" : "https://github.com/strimzi/.github",
@@ -694,17 +749,6 @@
     "jira_project_key" : "WFLY",
     "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
   }, {
-    "id" : "3scale--3scale-operator",
-    "name" : "3scale-operator",
-    "owner" : "3scale",
-    "repo" : "3scale-operator",
-    "foundation" : "Red Hat",
-    "data_dir" : "3scale--3scale-operator",
-    "enabled" : true,
-    "is_org" : true,
-    "org_owner" : "3scale",
-    "github_url" : "https://github.com/3scale/3scale-operator"
-  }, {
     "id" : "tomcat",
     "name" : "Apache Tomcat",
     "owner" : "apache",
@@ -728,58 +772,14 @@
     "jira_project_key" : "ARTEMIS",
     "jira_base_url" : "https://issues.apache.org/jira"
   }, {
-    "id" : "3scale--apicast",
-    "name" : "APIcast",
-    "github_url" : "https://github.com/3scale/APIcast",
-    "owner" : "3scale",
-    "repo" : "APIcast",
-    "foundation" : "Red Hat",
-    "data_dir" : "3scale--apicast",
-    "enabled" : true,
-    "is_org" : true,
-    "org_owner" : "3scale"
-  }, {
-    "id" : "3scale--porta",
-    "name" : "porta",
-    "github_url" : "https://github.com/3scale/porta",
-    "owner" : "3scale",
-    "repo" : "porta",
-    "foundation" : "Red Hat",
-    "data_dir" : "3scale--porta",
-    "enabled" : true,
-    "is_org" : true,
-    "org_owner" : "3scale"
-  }, {
-    "id" : "3scale--apisonator",
-    "name" : "apisonator",
-    "github_url" : "https://github.com/3scale/apisonator",
-    "owner" : "3scale",
-    "repo" : "apisonator",
-    "foundation" : "Red Hat",
-    "data_dir" : "3scale--apisonator",
-    "enabled" : true,
-    "is_org" : true,
-    "org_owner" : "3scale"
-  }, {
-    "id" : "3scale--3scale-toolbox",
-    "name" : "3scale_toolbox",
-    "github_url" : "https://github.com/3scale/3scale_toolbox",
-    "owner" : "3scale",
-    "repo" : "3scale_toolbox",
-    "foundation" : "Red Hat",
-    "data_dir" : "3scale--3scale-toolbox",
-    "enabled" : true,
-    "is_org" : true,
-    "org_owner" : "3scale"
-  }, {
     "id" : "quarkiverse--quarkiverse",
     "name" : "Quarkiverse",
     "owner" : "quarkiverse",
     "repo" : "quarkiverse",
-    "foundation" : "Independent",
+    "foundation" : "Commonhaus Foundation",
     "enabled" : true,
     "github_url" : "https://github.com/quarkiverse/quarkiverse",
     "data_dir" : "quarkiverse--quarkiverse"
   } ],
-  "last_updated" : "2026-07-21T14:17:34.669025Z"
+  "last_updated" : "2026-07-21T14:41:26.351522Z"
 }

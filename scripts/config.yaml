@@ -98,7 +98,8 @@ projects:
     github_url: "https://github.com/quarkiverse/quarkiverse"
     owner: "quarkiverse"
     repo: "quarkiverse"
-    foundation: "Independent"
+    foundation: "Commonhaus Foundation"
+
 
 extraction:
   # How many quarters of historical data to fetch

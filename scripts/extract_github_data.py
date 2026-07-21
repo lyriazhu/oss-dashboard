@@ -2259,24 +2259,26 @@ class GitHubDataExtractor:
             namespaced_id = f"{owner_slug}--{repo_slug}"
 
             # Determine the project ID to use.  The canonical format is
-            # "owner--repo" but many existing projects use the bare repo slug.
-            # Preserve whichever form is already present in projects.json so
-            # that IDs (and therefore merge records, data_dir links, etc.) are
-            # never silently changed on re-sync.
-            if namespaced_id in existing:
-                # Already stored under the namespaced form — keep it.
+            # "owner--repo". When owner is known, always use the namespaced form
+            # so newly-added projects get the right ID immediately.
+            # The bare-slug fallback is kept only for projects that genuinely
+            # lack an owner (legacy entries added before the convention), to
+            # avoid silently renaming them.
+            if owner:
+                # Owner is known — always namespaced, regardless of what's in
+                # projects.json.  If a stale bare-slug record exists, migrate
+                # its extra fields forward so nothing is lost.
                 project_id = namespaced_id
             elif repo_slug in existing:
-                # Legacy bare-slug form — keep it to avoid breaking existing state.
+                # No owner available and bare-slug already present — keep it.
                 project_id = repo_slug
             else:
-                # New project: use the namespaced form from the start to avoid
-                # future collisions (e.g. quarkiverse/quarkiverse → "quarkiverse"
-                # would collide with a hypothetical org "quarkiverse").
                 project_id = namespaced_id
 
-            # Start from any previously persisted record so extra fields survive
-            record = dict(existing.get(project_id, {}))
+            # Seed the record from whatever is already stored (either form).
+            # This preserves any extra fields (website, issue_source, …) whether
+            # the entry was previously under the namespaced or bare-slug key.
+            record = dict(existing.get(namespaced_id) or existing.get(repo_slug) or {})
 
             # data_dir is frozen at project creation; preserve it if it already
             # exists so that renaming the project never moves the data folder.
