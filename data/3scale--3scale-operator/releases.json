@@ -1,6 +1,13 @@
 {
-  "total_releases": 31,
+  "total_releases": 32,
   "recent_releases": [
+    {
+      "tag_name": "3scale-2.16.4-GA",
+      "name": "3scale-2.16.4-GA",
+      "published_at": "2026-07-15T11:09:53+00:00",
+      "prerelease": false,
+      "draft": false
+    },
     {
       "tag_name": "v0.0.1",
       "name": "Initial release of the 3scale-operator",
@@ -133,15 +140,8 @@
       "published_at": "2021-10-15T11:11:47+00:00",
       "prerelease": false,
       "draft": false
-    },
-    {
-      "tag_name": "3scale-2.11.1-GA",
-      "name": "3scale-2.11.1.GA",
-      "published_at": "2022-01-25T13:46:57+00:00",
-      "prerelease": false,
-      "draft": false
     }
   ],
   "median_days_between_releases": 20,
-  "extracted_at": "2026-07-14T10:48:35.248692"
+  "extracted_at": "2026-07-21T12:21:51.206055"
 }

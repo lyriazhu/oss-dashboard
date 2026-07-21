@@ -3,11 +3,11 @@
   "full_name": "apache/camel",
   "description": "Apache Camel is an open source integration framework with 350+ connectors. Write routes in Java, YAML, or XML. Run on Spring Boot, Quarkus, or standalone. Apache License 2.0.",
   "created_at": "2009-05-21T00:25:36+00:00",
-  "updated_at": "2026-07-14T13:23:19+00:00",
-  "stars": 6262,
-  "forks": 5130,
-  "watchers": 6262,
-  "open_issues": 21,
+  "updated_at": "2026-07-21T16:21:57+00:00",
+  "stars": 6269,
+  "forks": 5137,
+  "watchers": 6269,
+  "open_issues": 26,
   "language": "Java",
   "topics": [
     "camel",
@@ -30,22 +30,22 @@
   "license": "Apache License 2.0",
   "homepage": "https://camel.apache.org",
   "has_wiki": false,
-  "has_discussions": null,
+  "has_discussions": false,
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 53968,
-      "percentage": 84.49
+      "commits": 54170,
+      "percentage": 84.52
     },
     {
       "company": "Red Hat",
-      "commits": 3649,
-      "percentage": 5.71
+      "commits": 3652,
+      "percentage": 5.7
     },
     {
       "company": "Apple",
       "commits": 1385,
-      "percentage": 2.17
+      "percentage": 2.16
     },
     {
       "company": "Cyberlogic Consulting Gmbh",
@@ -55,7 +55,7 @@
     {
       "company": "Asf",
       "commits": 757,
-      "percentage": 1.19
+      "percentage": 1.18
     },
     {
       "company": "Qlik",
@@ -75,7 +75,7 @@
     {
       "company": "Dremio",
       "commits": 221,
-      "percentage": 0.35
+      "percentage": 0.34
     },
     {
       "company": "Adobe",
@@ -83,5 +83,5 @@
       "percentage": 0.28
     }
   ],
-  "extracted_at": "2026-07-14T10:39:16.605711"
+  "extracted_at": "2026-07-21T12:27:07.210634"
 }

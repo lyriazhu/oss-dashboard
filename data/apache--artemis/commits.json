@@ -1,10 +1,10 @@
 {
-  "total_commits": 2130,
+  "total_commits": 2134,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 13,
+      "commit_count": 17,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "clebertsuconic@apache.org",
       "profile_url": null,
-      "commit_count": 8270
+      "commit_count": 8275
     },
     {
       "login": "Justin Bertram",
@@ -91,7 +91,7 @@
       "location": null,
       "email": "jbertram@apache.org",
       "profile_url": null,
-      "commit_count": 5149
+      "commit_count": 5152
     },
     {
       "login": "Martyn Taylor",
@@ -136,7 +136,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 689
+      "commit_count": 697
     },
     {
       "login": "Andy Taylor",
@@ -163,7 +163,7 @@
       "location": null,
       "email": "gary.tully@gmail.com",
       "profile_url": null,
-      "commit_count": 525
+      "commit_count": 529
     },
     {
       "login": "Domenico Francesco Bruscino",
@@ -172,7 +172,7 @@
       "location": null,
       "email": "brusdev@apache.org",
       "profile_url": null,
-      "commit_count": 520
+      "commit_count": 521
     },
     {
       "login": "Howard Gao",
@@ -271,7 +271,7 @@
       "location": null,
       "email": "clebert.suconic@gmail.com",
       "profile_url": null,
-      "commit_count": 133
+      "commit_count": 134
     },
     {
       "login": "AntonRoskvist",
@@ -715,6 +715,15 @@
       "commit_count": 16
     },
     {
+      "login": "Ga\u0161per \u010cefarin",
+      "name": "Ga\u0161per \u010cefarin",
+      "company": "Unknown",
+      "location": null,
+      "email": "42591821+gchuf@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 16
+    },
+    {
       "login": "Yesenkov",
       "name": "Yesenkov",
       "company": "Unknown",
@@ -802,7 +811,7 @@
       "location": null,
       "email": "r.neubauer@seeburger.de",
       "profile_url": null,
-      "commit_count": 13
+      "commit_count": 14
     },
     {
       "login": "Jean-Luc Graphalo",
@@ -857,15 +866,6 @@
       "email": "mchen@redhat.com",
       "profile_url": null,
       "commit_count": 13
-    },
-    {
-      "login": "Ga\u0161per \u010cefarin",
-      "name": "Ga\u0161per \u010cefarin",
-      "company": "Unknown",
-      "location": null,
-      "email": "42591821+gchuf@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 12
     },
     {
       "login": "Guillaume Nodet",
@@ -1549,7 +1549,7 @@
       "location": null,
       "email": "christian.ortlepp@hypergene.com",
       "profile_url": null,
-      "commit_count": 5
+      "commit_count": 6
     },
     {
       "login": "fogninid",
@@ -1684,7 +1684,16 @@
       "location": null,
       "email": "57659102+antonroskvist@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 5
+    },
+    {
+      "login": "Michael Lukyanov",
+      "name": "Michael Lukyanov",
+      "company": "Unknown",
+      "location": null,
+      "email": "lukyanovmiv@gmail.com",
+      "profile_url": null,
+      "commit_count": 5
     },
     {
       "login": "Chris Schwarzfischer",
@@ -2134,7 +2143,7 @@
       "location": null,
       "email": "david@publicstaticvoit.de",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "AlexejTimonin",
@@ -2143,7 +2152,7 @@
       "location": null,
       "email": "alexejtimonin@gmail.com",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Tristan Stenner",
@@ -2746,7 +2755,7 @@
       "location": null,
       "email": "mail@marcusbengtsson.se",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "Aur\u00e9lien Pupier",
@@ -3559,22 +3568,13 @@
       "commit_count": 2
     },
     {
-      "login": "Rico Neubauer",
-      "name": "Rico Neubauer",
-      "company": "Unknown",
-      "location": null,
-      "email": "r.neubauer@seeburger.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
       "login": "Mayank Kunwar",
       "name": "Mayank Kunwar",
       "company": "Unknown",
       "location": null,
       "email": "55212670+mayankkunwar@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
     },
     {
       "login": "Chris Schwarzfischer",
@@ -3582,6 +3582,15 @@
       "company": "Unknown",
       "location": null,
       "email": "contact@nwt.ac",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Rico Neubauer",
+      "name": "Rico Neubauer",
+      "company": "Unknown",
+      "location": null,
+      "email": "r.neubauer@seeburger.com",
       "profile_url": null,
       "commit_count": 1
     },
@@ -4222,7 +4231,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-14T10:51:41.947805",
+  "extracted_at": "2026-07-21T12:32:45.818021",
   "years": [
     {
       "year": 2014,
@@ -4286,7 +4295,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 915,
+      "commit_count": 933,
       "is_current": true
     }
   ]

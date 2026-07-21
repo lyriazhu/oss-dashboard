@@ -1,10 +1,10 @@
 {
-  "total_commits": 15283,
+  "total_commits": 15546,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 420,
+      "commit_count": 683,
       "quarter": "Q3 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "ancosen@gmail.com",
       "profile_url": null,
-      "commit_count": 33587
+      "commit_count": 33694
     },
     {
       "login": "Claus Ibsen",
@@ -91,7 +91,7 @@
       "location": null,
       "email": "claus.ibsen@gmail.com",
       "profile_url": null,
-      "commit_count": 26811
+      "commit_count": 27185
     },
     {
       "login": "Claus Ibsen",
@@ -109,7 +109,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 11220
+      "commit_count": 11295
     },
     {
       "login": "Otavio Rodolfo Piske",
@@ -136,7 +136,7 @@
       "location": null,
       "email": "gnodet@gmail.com",
       "profile_url": null,
-      "commit_count": 3793
+      "commit_count": 3869
     },
     {
       "login": "James Strachan",
@@ -226,7 +226,7 @@
       "location": null,
       "email": "jamesnetherton@gmail.com",
       "profile_url": null,
-      "commit_count": 1170
+      "commit_count": 1171
     },
     {
       "login": "oscerd",
@@ -235,7 +235,7 @@
       "location": null,
       "email": "oscerd@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 1127
+      "commit_count": 1128
     },
     {
       "login": "PascalSchumacher",
@@ -253,7 +253,7 @@
       "location": null,
       "email": "federico.mariani.1990@gmail.com",
       "profile_url": null,
-      "commit_count": 1003
+      "commit_count": 1028
     },
     {
       "login": "Zoran Regvart",
@@ -310,20 +310,20 @@
       "commit_count": 779
     },
     {
-      "login": "Omar Al-Safi",
-      "name": "Omar Al-Safi",
-      "company": "Unknown",
-      "location": null,
-      "email": "omarsmak@gmail.com",
-      "profile_url": null,
-      "commit_count": 754
-    },
-    {
       "login": "github-actions[bot]",
       "name": "github-actions[bot]",
       "company": "Unknown",
       "location": null,
       "email": "41898282+github-actions[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 755
+    },
+    {
+      "login": "Omar Al-Safi",
+      "name": "Omar Al-Safi",
+      "company": "Unknown",
+      "location": null,
+      "email": "omarsmak@gmail.com",
       "profile_url": null,
       "commit_count": 754
     },
@@ -391,6 +391,15 @@
       "commit_count": 616
     },
     {
+      "login": "Aur\u00e9lien Pupier",
+      "name": "Aur\u00e9lien Pupier",
+      "company": "Unknown",
+      "location": null,
+      "email": "apupier@ibm.com",
+      "profile_url": null,
+      "commit_count": 587
+    },
+    {
       "login": "Freeman Fang",
       "name": "Freeman Fang",
       "company": "Unknown",
@@ -400,22 +409,13 @@
       "commit_count": 575
     },
     {
-      "login": "Aur\u00e9lien Pupier",
-      "name": "Aur\u00e9lien Pupier",
-      "company": "Unknown",
-      "location": null,
-      "email": "apupier@ibm.com",
-      "profile_url": null,
-      "commit_count": 566
-    },
-    {
       "login": "Adriano Machado",
       "name": "Adriano Machado",
       "company": "Unknown",
       "location": null,
       "email": "60320+ammachado@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 518
+      "commit_count": 564
     },
     {
       "login": "Tadayoshi Sato",
@@ -496,7 +496,7 @@
       "location": null,
       "email": "ondrusek.jiri@gmail.com",
       "profile_url": null,
-      "commit_count": 356
+      "commit_count": 357
     },
     {
       "login": "Andrea Tarocchi",
@@ -595,7 +595,7 @@
       "location": null,
       "email": "bendhiba.zineb@gmail.com",
       "profile_url": null,
-      "commit_count": 217
+      "commit_count": 222
     },
     {
       "login": "Hokutor",
@@ -667,7 +667,7 @@
       "location": null,
       "email": "jamesnetherton@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 195
+      "commit_count": 196
     },
     {
       "login": "Thomas Diesler",
@@ -688,6 +688,15 @@
       "commit_count": 184
     },
     {
+      "login": "Federico Mariani",
+      "name": "Federico Mariani",
+      "company": "Unknown",
+      "location": null,
+      "email": "34543311+croway@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 181
+    },
+    {
       "login": "Jan Bednar",
       "name": "Jan Bednar",
       "company": "Unknown",
@@ -704,15 +713,6 @@
       "email": "jeremy.g.ross@gmail.com",
       "profile_url": null,
       "commit_count": 174
-    },
-    {
-      "login": "Federico Mariani",
-      "name": "Federico Mariani",
-      "company": "Unknown",
-      "location": null,
-      "email": "34543311+croway@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 170
     },
     {
       "login": "Luca Burgazzoli",
@@ -1388,6 +1388,15 @@
       "email": "franz.forsthofer@sap.com",
       "profile_url": null,
       "commit_count": 61
+    },
+    {
+      "login": "Omar Atie",
+      "name": "Omar Atie",
+      "company": "Unknown",
+      "location": null,
+      "email": "atiaomar1978@gmail.com",
+      "profile_url": null,
+      "commit_count": 60
     },
     {
       "login": "Dylan Piergies",
@@ -2164,6 +2173,15 @@
       "commit_count": 30
     },
     {
+      "login": "Ravi",
+      "name": "Ravi",
+      "company": "Unknown",
+      "location": null,
+      "email": "13908473+rkdfx@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 30
+    },
+    {
       "login": "Jesse Sightler",
       "name": "Jesse Sightler",
       "company": "Unknown",
@@ -2317,6 +2335,15 @@
       "commit_count": 28
     },
     {
+      "login": "Prasanth Rao",
+      "name": "Prasanth Rao",
+      "company": "Unknown",
+      "location": null,
+      "email": "uvce.prasanth@gmail.com",
+      "profile_url": null,
+      "commit_count": 28
+    },
+    {
       "login": "Bruno Gon\u00e7alves",
       "name": "Bruno Gon\u00e7alves",
       "company": "Unknown",
@@ -2394,24 +2421,6 @@
       "company": "Unknown",
       "location": null,
       "email": "askannon@flexarc.com",
-      "profile_url": null,
-      "commit_count": 27
-    },
-    {
-      "login": "Ravi",
-      "name": "Ravi",
-      "company": "Unknown",
-      "location": null,
-      "email": "13908473+rkdfx@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 27
-    },
-    {
-      "login": "Prasanth Rao",
-      "name": "Prasanth Rao",
-      "company": "Unknown",
-      "location": null,
-      "email": "uvce.prasanth@gmail.com",
       "profile_url": null,
       "commit_count": 27
     },
@@ -2704,6 +2713,15 @@
       "commit_count": 24
     },
     {
+      "login": "JinyuChen97",
+      "name": "JinyuChen97",
+      "company": "Unknown",
+      "location": null,
+      "email": "as0830428946@gmail.com",
+      "profile_url": null,
+      "commit_count": 24
+    },
+    {
       "login": "Anirudh Prakash",
       "name": "Anirudh Prakash",
       "company": "Unknown",
@@ -2763,15 +2781,6 @@
       "company": "Unknown",
       "location": null,
       "email": "rtfm.rtfm.rtfm@gmail.com",
-      "profile_url": null,
-      "commit_count": 23
-    },
-    {
-      "login": "JinyuChen97",
-      "name": "JinyuChen97",
-      "company": "Unknown",
-      "location": null,
-      "email": "as0830428946@gmail.com",
       "profile_url": null,
       "commit_count": 23
     },
@@ -4441,6 +4450,15 @@
       "commit_count": 13
     },
     {
+      "login": "Renjith Narayanan",
+      "name": "Renjith Narayanan",
+      "company": "Unknown",
+      "location": null,
+      "email": "renjith.narayanan@bp.com",
+      "profile_url": null,
+      "commit_count": 13
+    },
+    {
       "login": "thomas-gantenbein-tga",
       "name": "thomas-gantenbein-tga",
       "company": "Unknown",
@@ -5562,15 +5580,6 @@
       "company": "Unknown",
       "location": null,
       "email": "ammulder@apache.org",
-      "profile_url": null,
-      "commit_count": 10
-    },
-    {
-      "login": "Renjith Narayanan",
-      "name": "Renjith Narayanan",
-      "company": "Unknown",
-      "location": null,
-      "email": "renjith.narayanan@bp.com",
       "profile_url": null,
       "commit_count": 10
     },
@@ -13801,6 +13810,15 @@
       "commit_count": 3
     },
     {
+      "login": "Omar Atie",
+      "name": "Omar Atie",
+      "company": "Unknown",
+      "location": null,
+      "email": "atiaomar1978-hub@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "Shashi Kumar Reddy",
       "name": "Shashi Kumar Reddy",
       "company": "Unknown",
@@ -17338,6 +17356,15 @@
       "commit_count": 2
     },
     {
+      "login": "Carles Arnal",
+      "name": "Carles Arnal",
+      "company": "Unknown",
+      "location": null,
+      "email": "carlesarnal92@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
       "login": "michwo",
       "name": "michwo",
       "company": "Unknown",
@@ -20720,6 +20747,15 @@
       "email": "bhavanibadepally@ibm.com",
       "profile_url": null,
       "commit_count": 1
+    },
+    {
+      "login": "Carles Arnal",
+      "name": "Carles Arnal",
+      "company": "Unknown",
+      "location": null,
+      "email": "carnalca@redhat.com",
+      "profile_url": null,
+      "commit_count": 1
     }
   ],
   "time_scope": {
@@ -20728,7 +20764,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-14T10:40:00.324668",
+  "extracted_at": "2026-07-21T12:27:43.414654",
   "years": [
     {
       "year": 2007,
@@ -20827,7 +20863,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 11382,
+      "commit_count": 12086,
       "is_current": true
     }
   ]

@@ -7,7 +7,7 @@
   "stars": 54,
   "forks": 27,
   "watchers": 54,
-  "open_issues": 43,
+  "open_issues": 46,
   "language": "JavaScript",
   "topics": [
     "quarkus",
@@ -16,7 +16,7 @@
   "license": "Apache License 2.0",
   "homepage": "http://hub.quarkiverse.io/",
   "has_wiki": true,
-  "has_discussions": null,
+  "has_discussions": true,
   "top_contributing_companies": [
     {
       "company": "Ibm",
@@ -54,5 +54,5 @@
       "percentage": 0.55
     }
   ],
-  "extracted_at": "2026-07-20T13:56:32.070014"
+  "extracted_at": "2026-07-21T13:25:21.683532"
 }

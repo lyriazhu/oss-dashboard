@@ -270,7 +270,7 @@
     },
     {
       "year": 2026,
-      "contributor_count": 13,
+      "contributor_count": 12,
       "is_current": true,
       "contributor_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
@@ -282,7 +282,6 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
-        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "madnialihussain@outlook.com",
         "mayorova@users.noreply.github.com"
@@ -428,7 +427,7 @@
       "company": "Red Hat",
       "location": "Barcelona",
       "email": null,
-      "contributions": 840,
+      "contributions": 854,
       "profile_url": "https://github.com/mayorova"
     },
     {
@@ -437,7 +436,7 @@
       "company": "Ibm",
       "location": "Bulgaria",
       "email": null,
-      "contributions": 689,
+      "contributions": 690,
       "profile_url": "https://github.com/akostadinov"
     },
     {
@@ -450,6 +449,15 @@
       "profile_url": "https://github.com/guicassolato"
     },
     {
+      "login": "jlledom",
+      "name": "Joan Lled\u00f3",
+      "company": "Unknown",
+      "location": "Crevillent, Valencian Country",
+      "email": "jlledom@member.fsf.org",
+      "contributions": 426,
+      "profile_url": "https://github.com/jlledom"
+    },
+    {
       "login": "damianpm",
       "name": "Dami\u00e1n Peralta",
       "company": "Nearform",
@@ -457,15 +465,6 @@
       "email": null,
       "contributions": 413,
       "profile_url": "https://github.com/damianpm"
-    },
-    {
-      "login": "jlledom",
-      "name": "Joan Lled\u00f3",
-      "company": "Unknown",
-      "location": "Crevillent, Valencian Country",
-      "email": "jlledom@member.fsf.org",
-      "contributions": 408,
-      "profile_url": "https://github.com/jlledom"
     },
     {
       "login": "thomasmaas",
@@ -518,7 +517,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 144,
+      "contributions": 147,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -693,6 +692,15 @@
       "profile_url": "https://github.com/porueesq"
     },
     {
+      "login": "akostadinov-bot[bot]",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 4,
+      "profile_url": "https://github.com/apps/akostadinov-bot"
+    },
+    {
       "login": "secretsurf",
       "name": "C Bartlett",
       "company": "Unknown",
@@ -718,15 +726,6 @@
       "email": null,
       "contributions": 3,
       "profile_url": "https://github.com/snyk-bot"
-    },
-    {
-      "login": "akostadinov-bot[bot]",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 3,
-      "profile_url": "https://github.com/apps/akostadinov-bot"
     },
     {
       "login": "jjkiely",
@@ -1267,10 +1266,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 11,
+      "active_contributors": 9,
       "new_contributors": 3,
-      "returning_contributors": 8,
-      "retention_rate": 72.73,
+      "returning_contributors": 6,
+      "retention_rate": 66.67,
       "active_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "49699333+dependabot[bot]@users.noreply.github.com",
@@ -1279,10 +1278,8 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
-        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
-        "madnialihussain@outlook.com",
-        "mayorova@users.noreply.github.com"
+        "madnialihussain@outlook.com"
       ],
       "new_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
@@ -1294,10 +1291,8 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
-        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
-        "madnialihussain@outlook.com",
-        "mayorova@users.noreply.github.com"
+        "madnialihussain@outlook.com"
       ]
     }
   ],
@@ -1869,10 +1864,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 13,
+      "active_contributors": 12,
       "new_contributors": 7,
-      "returning_contributors": 6,
-      "retention_rate": 46.15,
+      "returning_contributors": 5,
+      "retention_rate": 41.67,
       "is_current": true,
       "active_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
@@ -1884,7 +1879,6 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
-        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "madnialihussain@outlook.com",
         "mayorova@users.noreply.github.com"
@@ -1902,7 +1896,6 @@
         "49699333+dependabot[bot]@users.noreply.github.com",
         "akostadinov@gmail.com",
         "jlledo@redhat.com",
-        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "mayorova@users.noreply.github.com"
       ]

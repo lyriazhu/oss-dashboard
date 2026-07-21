@@ -13,7 +13,7 @@
   "license": "Apache License 2.0",
   "homepage": "",
   "has_wiki": false,
-  "has_discussions": null,
+  "has_discussions": false,
   "top_contributing_companies": [
     {
       "company": "Red Hat",
@@ -56,5 +56,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-14T10:48:20.346766"
+  "extracted_at": "2026-07-21T12:21:35.637505"
 }

@@ -3,11 +3,11 @@
   "full_name": "3scale/APIcast",
   "description": "3scale API Gateway",
   "created_at": "2016-03-15T17:41:51+00:00",
-  "updated_at": "2026-07-09T10:25:36+00:00",
+  "updated_at": "2026-07-20T01:50:22+00:00",
   "stars": 323,
   "forks": 170,
   "watchers": 323,
-  "open_issues": 61,
+  "open_issues": 60,
   "language": "Lua",
   "topics": [
     "3scale",
@@ -17,17 +17,17 @@
   "license": "Apache License 2.0",
   "homepage": "",
   "has_wiki": false,
-  "has_discussions": null,
+  "has_discussions": false,
   "top_contributing_companies": [
     {
       "company": "Datadog",
       "commits": 1132,
-      "percentage": 47.76
+      "percentage": 47.74
     },
     {
       "company": "Red Hat",
-      "commits": 1110,
-      "percentage": 46.84
+      "commits": 1111,
+      "percentage": 46.86
     },
     {
       "company": "Hitachi, Ltd.",
@@ -65,5 +65,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-17T12:10:30.357305"
+  "extracted_at": "2026-07-21T12:19:09.716023"
 }

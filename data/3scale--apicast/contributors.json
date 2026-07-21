@@ -228,10 +228,9 @@
     },
     {
       "year": 2026,
-      "contributor_count": 7,
+      "contributor_count": 6,
       "is_current": true,
       "contributor_logins": [
-        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "49699333+dependabot[bot]@users.noreply.github.com",
         "atra@redhat.com",
         "bob@example.com",
@@ -241,14 +240,13 @@
       ]
     }
   ],
-  "total_contributors": 96,
-  "total_contributors_git": 96,
+  "total_contributors": 95,
+  "total_contributors_git": 95,
   "all_time_contributor_logins": [
     "100855559+lcavalle@users.noreply.github.com",
     "101584191+dagbay-rh@users.noreply.github.com",
     "126015336+red-hat-konflux[bot]@users.noreply.github.com",
     "2420882+gsaslis@users.noreply.github.com",
-    "296308834+akostadinov-bot[bot]@users.noreply.github.com",
     "34849594+y-tabata@users.noreply.github.com",
     "39673799+hector-vido@users.noreply.github.com",
     "43811485+porueesq@users.noreply.github.com",
@@ -366,7 +364,7 @@
       "company": "Red Hat",
       "location": null,
       "email": null,
-      "contributions": 329,
+      "contributions": 330,
       "profile_url": "https://github.com/tkan145"
     },
     {
@@ -710,12 +708,21 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/DavidRajnoha"
+    },
+    {
+      "login": "bobknob23987",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 1,
+      "profile_url": "https://github.com/bobknob23987"
     }
   ],
-  "total_contributors_github_api": 41,
+  "total_contributors_github_api": 42,
   "companies": {
     "Red Hat": 18,
-    "Unknown": 15,
+    "Unknown": 16,
     "Datadog": 1,
     "Hitachi, Ltd.": 1,
     "Kong": 1,
@@ -728,7 +735,7 @@
   "total_companies": 10,
   "company_diversity": {
     "known_company_contributors": 26,
-    "unknown_company_contributors": 15,
+    "unknown_company_contributors": 16,
     "top_companies": [
       {
         "company": "Red Hat",
@@ -736,7 +743,7 @@
       },
       {
         "company": "Unknown",
-        "contributor_count": 15
+        "contributor_count": 16
       },
       {
         "company": "Datadog",
@@ -1065,12 +1072,11 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 7,
-      "new_contributors": 2,
+      "active_contributors": 6,
+      "new_contributors": 1,
       "returning_contributors": 5,
-      "retention_rate": 71.43,
+      "retention_rate": 83.33,
       "active_logins": [
-        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "49699333+dependabot[bot]@users.noreply.github.com",
         "atra@redhat.com",
         "bob@example.com",
@@ -1079,7 +1085,6 @@
         "tkan145@gmail.com"
       ],
       "new_logins": [
-        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "bob@example.com"
       ],
       "returning_logins": [
@@ -1578,13 +1583,12 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 7,
-      "new_contributors": 2,
+      "active_contributors": 6,
+      "new_contributors": 1,
       "returning_contributors": 5,
-      "retention_rate": 71.43,
+      "retention_rate": 83.33,
       "is_current": true,
       "active_logins": [
-        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "49699333+dependabot[bot]@users.noreply.github.com",
         "atra@redhat.com",
         "bob@example.com",
@@ -1593,7 +1597,6 @@
         "tkan145@gmail.com"
       ],
       "new_logins": [
-        "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "bob@example.com"
       ],
       "returning_logins": [

@@ -3,11 +3,11 @@
   "full_name": "3scale/porta",
   "description": "Red Hat 3scale API Management, Porta",
   "created_at": "2018-09-18T16:03:13+00:00",
-  "updated_at": "2026-07-15T18:42:47+00:00",
+  "updated_at": "2026-07-21T13:23:44+00:00",
   "stars": 78,
   "forks": 73,
   "watchers": 78,
-  "open_issues": 28,
+  "open_issues": 23,
   "language": "Ruby",
   "topics": [
     "api",
@@ -20,37 +20,37 @@
   "license": "Apache License 2.0",
   "homepage": "",
   "has_wiki": false,
-  "has_discussions": null,
+  "has_discussions": false,
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 2874,
-      "percentage": 41.15
+      "commits": 2875,
+      "percentage": 41.07
     },
     {
       "company": "Red Hat",
-      "commits": 1949,
-      "percentage": 27.9
+      "commits": 1963,
+      "percentage": 28.04
     },
     {
       "company": "Propitech",
       "commits": 1045,
-      "percentage": 14.96
+      "percentage": 14.93
     },
     {
       "company": "Nearform",
       "commits": 413,
-      "percentage": 5.91
+      "percentage": 5.9
     },
     {
       "company": "Webtypes",
       "commits": 383,
-      "percentage": 5.48
+      "percentage": 5.47
     },
     {
       "company": "Kaleris",
       "commits": 175,
-      "percentage": 2.51
+      "percentage": 2.5
     },
     {
       "company": "Radicle.Dev",
@@ -73,5 +73,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-17T12:11:23.197684"
+  "extracted_at": "2026-07-21T12:20:12.968138"
 }

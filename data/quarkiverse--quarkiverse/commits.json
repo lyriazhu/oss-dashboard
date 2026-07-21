@@ -91,7 +91,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 213
+      "commit_count": 219
     },
     {
       "login": "Holly Cummins",
@@ -280,7 +280,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-20T13:56:41.262208",
+  "extracted_at": "2026-07-21T13:25:30.892808",
   "years": [
     {
       "year": 2020,
@@ -314,7 +314,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 37,
+      "commit_count": 42,
       "is_current": true
     }
   ]

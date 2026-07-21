@@ -1,10 +1,10 @@
 {
-  "total_commits": 438,
+  "total_commits": 440,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 11,
+      "commit_count": 13,
       "quarter": "Q3 2026"
     },
     {
@@ -118,7 +118,7 @@
       "location": null,
       "email": "tkan145@gmail.com",
       "profile_url": null,
-      "commit_count": 409
+      "commit_count": 410
     },
     {
       "login": "Eguzki Astiz Lezaun",
@@ -343,7 +343,7 @@
       "location": null,
       "email": "atra@redhat.com",
       "profile_url": null,
-      "commit_count": 12
+      "commit_count": 13
     },
     {
       "login": "Andrew Mackenzie",
@@ -946,7 +946,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-17T12:10:59.036681",
+  "extracted_at": "2026-07-21T12:19:19.263965",
   "years": [
     {
       "year": 2016,

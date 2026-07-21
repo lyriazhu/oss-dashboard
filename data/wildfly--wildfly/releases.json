@@ -1,6 +1,13 @@
 {
-  "total_releases": 78,
+  "total_releases": 79,
   "recent_releases": [
+    {
+      "tag_name": "41.0.0.Final",
+      "name": "41.0.0.Final",
+      "published_at": "2026-07-16T12:50:59+00:00",
+      "prerelease": false,
+      "draft": false
+    },
     {
       "tag_name": "16.0.0.Final",
       "name": "WildFly 16.0.0.Final",
@@ -133,15 +140,8 @@
       "published_at": "2021-09-20T16:52:12+00:00",
       "prerelease": true,
       "draft": false
-    },
-    {
-      "tag_name": "25.0.0.Final",
-      "name": "25.0.0.Final",
-      "published_at": "2021-10-06T02:32:18+00:00",
-      "prerelease": false,
-      "draft": false
     }
   ],
-  "median_days_between_releases": 37,
-  "extracted_at": "2026-07-14T10:48:12.864729"
+  "median_days_between_releases": 40,
+  "extracted_at": "2026-07-21T13:20:52.418474"
 }

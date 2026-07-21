@@ -112,6 +112,16 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
     return () => clearTimeout(t);
   }, [failed, tokenExpired, onDone]);
 
+  // Auto-dismiss on success when refreshing so the page reload fires automatically
+  useEffect(() => {
+    if (!(done && mode === 'refresh')) return;
+    const t = setTimeout(() => {
+      setDismissed(true);
+      onDone?.();
+    }, 1500);
+    return () => clearTimeout(t);
+  }, [done, mode, onDone]);
+
   const dismiss = () => {
     esRef.current?.close();
     setDismissed(true);

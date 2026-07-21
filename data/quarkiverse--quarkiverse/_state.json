@@ -17,18 +17,18 @@
       "quarkusbot",
       "shivarm"
     ],
-    "last_extracted_at": "2026-07-20T13:56:34.675241"
+    "last_extracted_at": "2026-07-21T13:25:24.293301"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-20T13:56:41.262211"
+    "last_git_sync_at": "2026-07-21T13:25:30.892813"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-20T13:58:52.477026"
+    "last_extracted_at": "2026-07-21T13:26:18.932407"
   },
   "issues": {
-    "last_extracted_at": "2026-07-20T13:58:15.417998"
+    "last_extracted_at": "2026-07-21T13:26:17.777694"
   },
   "releases": {
-    "last_extracted_at": "2026-07-20T13:58:54.307855"
+    "last_extracted_at": "2026-07-21T13:26:20.340028"
   }
 }

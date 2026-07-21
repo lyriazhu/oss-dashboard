@@ -226,7 +226,7 @@
       "location": null,
       "email": "boris.urbanik.dev@gmail.com",
       "profile_url": null,
-      "commit_count": 16
+      "commit_count": 17
     },
     {
       "login": "Daria Mayorova",
@@ -305,6 +305,15 @@
       "name": "Boris Urbanik",
       "company": "Unknown",
       "location": null,
+      "email": "115566047+borisurbanik@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Boris Urbanik",
+      "name": "Boris Urbanik",
+      "company": "Unknown",
+      "location": null,
       "email": "115566047+urbanikb@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 9
@@ -315,15 +324,6 @@
       "company": "Unknown",
       "location": null,
       "email": "bmozaffa@redhat.com",
-      "profile_url": null,
-      "commit_count": 9
-    },
-    {
-      "login": "Boris Urbanik",
-      "name": "Boris Urbanik",
-      "company": "Unknown",
-      "location": null,
-      "email": "115566047+borisurbanik@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 9
     },
@@ -667,7 +667,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-14T10:48:31.045299",
+  "extracted_at": "2026-07-21T12:21:46.638444",
   "years": [
     {
       "year": 2018,

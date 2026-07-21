@@ -715,8 +715,8 @@ export default function App() {
       setExtracting({ id: next.id, name: next.name, mode: 'refresh' });
     } else {
       setExtracting(null);
-      // All done — reload project data to pick up updated timestamps
-      loadProjects({ silent: true });
+      // All done — reload the page so updated data is fully reflected
+      window.location.reload();
     }
   }, [refreshQueue, loadProjects]);
 

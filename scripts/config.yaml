@@ -4,17 +4,6 @@
 
 # Projects to track
 projects:
-  - name: "Apache Camel"
-    github_url: "https://github.com/apache/camel"
-    owner: "apache"
-    repo: "camel"
-    foundation: "Apache Software Foundation"
-    website: "https://camel.apache.org"
-    issue_source: jira
-    jira_project_key: CAMEL
-    jira_base_url: "https://issues.apache.org/jira"
-    adopters_url: "https://camel.apache.org/community/user-stories/"
-
   - name: "Keycloak"
     github_url: "https://github.com/keycloak/keycloak"
     owner: "keycloak"
@@ -57,15 +46,6 @@ projects:
     repo: "tomcat"
     foundation: "Apache Software Foundation"
 
-  - name: "Apache Artemis"
-    github_url: "https://github.com/apache/artemis"
-    owner: "apache"
-    repo: "artemis"
-    foundation: "Apache Software Foundation"
-    issue_source: jira
-    jira_project_key: ARTEMIS
-    jira_base_url: "https://issues.apache.org/jira"
-
   - name: "strimzi"
     github_url: "https://github.com/strimzi"
     owner: "strimzi"
@@ -102,6 +82,13 @@ projects:
 
 
 
+
+
+  - name: "apache"
+    github_url: "https://github.com/apache"
+    owner: "apache"
+    is_org: true
+    foundation: "Apache Software Foundation"
 
 extraction:
   # How many quarters of historical data to fetch

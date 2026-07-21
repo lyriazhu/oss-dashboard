@@ -3,10 +3,10 @@
   "full_name": "wildfly/wildfly",
   "description": "WildFly Application Server",
   "created_at": "2010-07-08T20:46:07+00:00",
-  "updated_at": "2026-07-14T13:24:11+00:00",
-  "stars": 3178,
+  "updated_at": "2026-07-21T16:08:38+00:00",
+  "stars": 3180,
   "forks": 2262,
-  "watchers": 3178,
+  "watchers": 3180,
   "open_issues": 100,
   "language": "Java",
   "topics": [
@@ -15,32 +15,32 @@
   "license": "Apache License 2.0",
   "homepage": "https://wildfly.org",
   "has_wiki": true,
-  "has_discussions": null,
+  "has_discussions": false,
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 19732,
-      "percentage": 57.91
+      "commits": 19743,
+      "percentage": 57.9
     },
     {
       "company": "Jboss By Red Hat",
       "commits": 3995,
-      "percentage": 11.73
+      "percentage": 11.72
     },
     {
       "company": "Red Hat",
       "commits": 3935,
-      "percentage": 11.55
+      "percentage": 11.54
     },
     {
       "company": "Block",
       "commits": 3154,
-      "percentage": 9.26
+      "percentage": 9.25
     },
     {
       "company": "Ibm, Ex-@Redhatofficial, Ex-Elemental Media",
-      "commits": 1354,
-      "percentage": 3.97
+      "commits": 1373,
+      "percentage": 4.03
     },
     {
       "company": "Redhat, Inc",
@@ -68,5 +68,5 @@
       "percentage": 0.49
     }
   ],
-  "extracted_at": "2026-07-14T10:47:38.274184"
+  "extracted_at": "2026-07-21T13:18:39.536495"
 }

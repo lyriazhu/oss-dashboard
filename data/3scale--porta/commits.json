@@ -1,16 +1,16 @@
 {
-  "total_commits": 2058,
+  "total_commits": 2095,
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "commit_count": 17,
+      "commit_count": 40,
       "quarter": "Q3 2026"
     },
     {
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-07-01T00:00:00",
-      "commit_count": 208,
+      "commit_count": 222,
       "quarter": "Q2 2026"
     },
     {
@@ -82,7 +82,7 @@
       "location": null,
       "email": "josemigallas@gmail.com",
       "profile_url": null,
-      "commit_count": 5477
+      "commit_count": 5482
     },
     {
       "login": "Marta Noya",
@@ -127,7 +127,7 @@
       "location": null,
       "email": "jlledo@redhat.com",
       "profile_url": null,
-      "commit_count": 1240
+      "commit_count": 1250
     },
     {
       "login": "Marta",
@@ -208,7 +208,7 @@
       "location": null,
       "email": "akostadinov@gmail.com",
       "profile_url": null,
-      "commit_count": 430
+      "commit_count": 431
     },
     {
       "login": "Cadu Ribeiro",
@@ -271,7 +271,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 263
+      "commit_count": 264
     },
     {
       "login": "Yorgos Saslis",
@@ -388,7 +388,7 @@
       "location": null,
       "email": "madnialihussain@outlook.com",
       "profile_url": null,
-      "commit_count": 53
+      "commit_count": 55
     },
     {
       "login": "Darren Fennessy",
@@ -721,7 +721,7 @@
       "location": null,
       "email": "akostadinov-bot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 4
+      "commit_count": 5
     },
     {
       "login": "Madni Ali",
@@ -991,7 +991,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-17T12:12:17.297639",
+  "extracted_at": "2026-07-21T12:20:42.955942",
   "years": [
     {
       "year": 2017,
@@ -1040,7 +1040,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 705,
+      "commit_count": 713,
       "is_current": true
     }
   ]
