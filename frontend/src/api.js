@@ -10,7 +10,9 @@ const API_BASE = '/api';
 // contributing-companies table, and to link to the project's home page.
 // ---------------------------------------------------------------------------
 const PROJECT_INFO = {
-  '3scale-operator': {
+  // ── Org-prefix entries (match any repo belonging to that org) ─────────────
+  // Key ends with '--' so the lookup falls through to the prefix check.
+  '3scale--': {
     description:
       '3scale is Red Hat\'s API management platform. The 3scale Operator automates the deployment and lifecycle management of 3scale API Manager on OpenShift and Kubernetes, enabling teams to manage, secure, and monetize APIs using Kubernetes-native custom resources. It integrates with Red Hat SSO for authentication and supports multi-tenant API gateway configurations.',
     linkText: '3scale',
@@ -28,59 +30,66 @@ const PROJECT_INFO = {
     linkText: 'Kroxylicious',
     websiteUrl: 'https://kroxylicious.io/',
   },
-  camel: {
-    description:
-      'Apache Camel is an open-source integration framework based on the Enterprise Integration Patterns (EIPs). It provides a rule-based routing and mediation engine, along with 300+ pre-built connectors (components) that allow developers to integrate any two systems using a consistent, expressive DSL in Java, XML, or YAML. Camel runs embedded in Spring Boot, Quarkus, or standalone, and is widely used for microservice choreography, data transformation, and event-driven pipelines.',
-    linkText: 'Apache Camel',
-    websiteUrl: 'https://camel.apache.org/',
-  },
-  'strimzi--strimzi-kafka-operator': {
+  'strimzi--': {
     description:
       'Strimzi simplifies running Apache Kafka on Kubernetes by providing a set of operators that manage the full lifecycle of Kafka clusters, topics, users, and connectors using Kubernetes-native custom resources. It handles TLS encryption, authentication, authorization, rolling updates, and scaling — letting platform teams deploy production-grade Kafka without manual cluster administration. Strimzi is a CNCF sandbox project.',
     linkText: 'Strimzi',
     websiteUrl: 'https://strimzi.io/',
   },
-  'apicurio-registry': {
+  'apicurio--': {
     description:
-      'Apicurio Registry is a high-performance, open-source runtime storage service for standard event schemas and API designs. It enables teams to publish, discover, and reuse Avro, JSON Schema, Protobuf, AsyncAPI, and OpenAPI artifacts from a central registry, and integrates with Apache Kafka via a SerDes library to enforce schema compatibility rules at the producer and consumer level.',
-    linkText: 'Apicurio Registry',
-    websiteUrl: 'https://www.apicur.io/registry/',
+      'Apicurio is an open-source project building tooling for API and schema design, registration, and governance. Its flagship product, Apicurio Registry, is a high-performance runtime storage service for event schemas and API designs — supporting Avro, JSON Schema, Protobuf, AsyncAPI, and OpenAPI — and integrates with Apache Kafka via a SerDes library to enforce schema compatibility rules at the producer and consumer level.',
+    linkText: 'Apicurio',
+    websiteUrl: 'https://www.apicur.io/',
   },
-  artemis: {
+  // ── Single-repo entries keyed by namespaced owner--repo ID ────────────────
+  'apache--camel': {
+    description:
+      'Apache Camel is an open-source integration framework based on the Enterprise Integration Patterns (EIPs). It provides a rule-based routing and mediation engine, along with 300+ pre-built connectors (components) that allow developers to integrate any two systems using a consistent, expressive DSL in Java, XML, or YAML. Camel runs embedded in Spring Boot, Quarkus, or standalone, and is widely used for microservice choreography, data transformation, and event-driven pipelines.',
+    linkText: 'Apache Camel',
+    websiteUrl: 'https://camel.apache.org/',
+  },
+  'apache--artemis': {
     description:
       'Apache ActiveMQ Artemis is an asynchronous messaging broker that supports the AMQP, MQTT, STOMP, OpenWire, and core protocols in a single runtime. It offers high availability via live-backup pairs or replication, journal-based persistence, and a flexible addressing model that can emulate both point-to-point queues and publish-subscribe topics. Artemis serves as the message broker inside JBoss EAP and WildFly.',
     linkText: 'Apache ActiveMQ Artemis',
     websiteUrl: 'https://activemq.apache.org/components/artemis/',
   },
-  tomcat: {
+  'apache--tomcat': {
     description:
       'Apache Tomcat is a widely-used, open-source web server and servlet container that implements the Jakarta Servlet, Jakarta Server Pages, Jakarta EL, Jakarta WebSocket, and Jakarta Authentication specifications. First released in 1999, it powers millions of Java web applications in production and serves as the embedded server in Spring Boot by default.',
     linkText: 'Apache Tomcat',
     websiteUrl: 'https://tomcat.apache.org/',
   },
-  debezium: {
+  'debezium--debezium': {
     description:
       'Debezium is an open-source distributed platform for change data capture (CDC). It monitors database transaction logs — in PostgreSQL, MySQL, MongoDB, SQL Server, Oracle, and others — and streams every row-level insert, update, and delete as a structured event to Apache Kafka. Applications consume those events to build real-time data pipelines, keep caches in sync, or trigger workflows without polling the database.',
     linkText: 'Debezium',
     websiteUrl: 'https://debezium.io/',
   },
-  keycloak: {
+  'keycloak--keycloak': {
     description:
       'Keycloak is an open-source Identity and Access Management (IAM) solution that provides single sign-on (SSO), social login, two-factor authentication, and fine-grained authorization for applications and services. It supports industry-standard protocols including OAuth 2.0, OpenID Connect, and SAML 2.0, and can federate identities from LDAP, Active Directory, or external identity providers.',
     linkText: 'Keycloak',
     websiteUrl: 'https://www.keycloak.org/',
   },
-  quarkus: {
+  'quarkusio--quarkus': {
     description:
       'Quarkus is a Kubernetes-native Java framework that compiles Java applications to ultra-fast native executables via GraalVM or runs them on a conventional JVM with dramatically reduced startup time and memory footprint. It provides a unified reactive and imperative programming model, hundreds of extensions for popular libraries, and is designed for cloud-native, serverless, and container-first deployments.',
     linkText: 'Quarkus',
     websiteUrl: 'https://quarkus.io/',
   },
-  wildfly: {
+  'wildfly--wildfly': {
     description:
       'WildFly (formerly JBoss AS) is a flexible, lightweight, managed open-source application server built to implement the latest Jakarta EE and MicroProfile specifications. It features a modular architecture that only loads the subsystems your application requires, supports cloud-native deployments with its Galleon provisioning tool, and underpins Red Hat JBoss Enterprise Application Platform (EAP).',
     linkText: 'WildFly',
     websiteUrl: 'https://www.wildfly.org/',
+  },
+  'quarkiverse--quarkiverse': {
+    description:
+      'Quarkiverse is the official GitHub organization for the Quarkus extension ecosystem. It hosts community-maintained Quarkus extensions that follow shared release, testing, and documentation conventions, making it easy for extension authors to publish and for users to discover integrations with popular libraries and services — from AWS SDKs and AI clients to database drivers and observability tools.',
+    linkText: 'Quarkiverse',
+    websiteUrl: 'https://quarkiverse.io/',
   },
 };
 
@@ -587,7 +596,7 @@ export function transformProjectData(project, metrics) {
   const adoptersSource = adopters?.source || null;
 
   const aiPolicySummaries = {
-    'strimzi-kafka-operator': {
+    'strimzi--strimzi-kafka-operator': {
       points: [
         'Strimzi allows AI-assisted contributions, but contributors remain fully responsible for every submitted change and must understand, review, test, and defend their work without acting as a proxy for an AI tool.',
         'AI use must be disclosed in the PR description, but AI tools must not appear in commit trailers such as Signed-off-by or Co-authored-by.',
@@ -595,7 +604,7 @@ export function transformProjectData(project, metrics) {
       ],
       source: 'https://github.com/strimzi/strimzi-kafka-operator/blob/main/CONTRIBUTING.md',
     },
-    camel: {
+    'apache--camel': {
       points: [
         'Apache Camel supports AI-assisted contributions and provides repository-specific guidance for AI tools through `.oss-ai-helper-rules/` and `CLAUDE.md` so generated work follows project build, style, branching, and contribution conventions.',
         'When a pull request includes AI-generated code, contributors must provide proper attribution, including clear PR-level disclosure of the AI tool used.',
@@ -603,7 +612,7 @@ export function transformProjectData(project, metrics) {
       ],
       source: 'https://github.com/apache/camel/blob/main/docs/main/modules/contributing/pages/index.adoc',
     },
-    artemis: {
+    'apache--artemis': {
       points: [
         'Apache Artemis defines detailed AI agent rules covering attribution, branch and fork usage, JIRA ownership, PR description upkeep, reviewer selection, merge requirements, code quality, and investigation steps before implementation.',
         'AI-generated content must identify itself and the human operator, agents should limit PR volume, work only on their own branches and forks, and avoid force-pushing shared branches or merging without human approval.',
@@ -611,7 +620,7 @@ export function transformProjectData(project, metrics) {
       ],
       source: 'https://github.com/apache/activemq-artemis/blob/main/CONTRIBUTING.md',
     },
-    keycloak: {
+    'keycloak--keycloak': {
       points: [
         'Keycloak allows generative AI to help write code, tests, or documentation, but contributors must fully understand every submitted change and be able to explain and revise it themselves.',
         'Contributors are expected to engage directly with reviewer feedback, even if they use AI to help draft responses, and they must edit and verify those responses before posting them.',
@@ -622,7 +631,7 @@ export function transformProjectData(project, metrics) {
   };
 
   const controlsAssessments = {
-    'strimzi-kafka-operator': [
+    'strimzi--strimzi-kafka-operator': [
       {
         id: 'legal',
         label: 'Legal',
