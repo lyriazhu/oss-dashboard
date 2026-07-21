@@ -14,15 +14,13 @@ projects:
     jira_project_key: CAMEL
     jira_base_url: "https://issues.apache.org/jira"
     adopters_url: "https://camel.apache.org/community/user-stories/"
-    
-    
+
   - name: "Keycloak"
     github_url: "https://github.com/keycloak/keycloak"
     owner: "keycloak"
     repo: "keycloak"
     foundation: "CNCF"
     website: "https://www.keycloak.org"
-    
 
   - name: "Debezium"
     github_url: "https://github.com/debezium/debezium"
@@ -32,13 +30,11 @@ projects:
     issue_owner: "debezium"
     issue_repo: "dbz"
 
-
   - name: "Quarkus"
     github_url: "https://github.com/quarkusio/quarkus"
     owner: "quarkusio"
     repo: "quarkus"
     foundation: "Commonhaus Foundation"
-
 
   - name: "Wildfly"
     github_url: "https://github.com/wildfly/wildfly"
@@ -49,20 +45,17 @@ projects:
     jira_project_key: WFLY
     jira_base_url: "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
 
-
-  - name: "3scale-operator"
-    github_url: "https://github.com/3scale/3scale-operator"
+  - name: "3scale"
+    github_url: "https://github.com/3scale"
     owner: "3scale"
-    repo: "3scale-operator"
+    is_org: true
     foundation: "Red Hat"
-
 
   - name: "Apache Tomcat"
     github_url: "https://github.com/apache/tomcat"
     owner: "apache"
     repo: "tomcat"
     foundation: "Apache Software Foundation"
-
 
   - name: "Apache Artemis"
     github_url: "https://github.com/apache/artemis"
@@ -73,14 +66,12 @@ projects:
     jira_project_key: ARTEMIS
     jira_base_url: "https://issues.apache.org/jira"
 
-
   - name: "strimzi"
     github_url: "https://github.com/strimzi"
     owner: "strimzi"
     is_org: true
     foundation: "CNCF"
     issue_scope: all
-
 
   - name: "streamshub"
     github_url: "https://github.com/streamshub"
@@ -89,7 +80,6 @@ projects:
     foundation: "Independent"
     issue_scope: all
 
-
   - name: "kroxylicious"
     github_url: "https://github.com/kroxylicious"
     owner: "kroxylicious"
@@ -97,45 +87,12 @@ projects:
     foundation: "Independent"
     issue_scope: all
 
-
-  - name: "APIcast"
-    github_url: "https://github.com/3scale/APIcast"
-    owner: "3scale"
-    repo: "APIcast"
-    foundation: "Independent"
-
-
-  - name: "porta"
-    github_url: "https://github.com/3scale/porta"
-    owner: "3scale"
-    repo: "porta"
-    foundation: "Independent"
-
-
-  - name: "apisonator"
-    github_url: "https://github.com/3scale/apisonator"
-    owner: "3scale"
-    repo: "apisonator"
-    foundation: "Independent"
-
-
-  - name: "3scale_toolbox"
-    github_url: "https://github.com/3scale/3scale_toolbox"
-    owner: "3scale"
-    repo: "3scale_toolbox"
-    foundation: "Independent"
-
-
-
   - name: "Apicurio"
     github_url: "https://github.com/Apicurio"
     owner: "Apicurio"
     is_org: true
     foundation: "Independent"
     issue_scope: all
-
-
-
 
   - name: "Quarkiverse"
     github_url: "https://github.com/quarkiverse/quarkiverse"
@@ -146,10 +103,10 @@ projects:
 extraction:
   # How many quarters of historical data to fetch
   quarters_back: 12
-  
+
   # Rate limiting (requests per hour)
   rate_limit: 5000
-  
+
   # Retry settings
   max_retries: 3
   retry_delay: 5

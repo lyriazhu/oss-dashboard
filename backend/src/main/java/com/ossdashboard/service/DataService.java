@@ -635,11 +635,119 @@ public class DataService {
             Object foundation = m.get("foundation");
             if (foundation != null && !foundation.toString().isBlank()) item.put("foundation", foundation.toString());
             arr.add(item);
+
+            // When all members share the same owner, consolidate their individual
+            // config.yaml blocks into a single is_org: true entry.
+            if (memberKeys != null && !memberKeys.isEmpty()) {
+                consolidateOrgInConfig(memberKeys);
+            }
         }
         root.set("merges", arr);
         root.put("last_updated", Instant.now().toString());
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(mergesFile.toFile(), root);
         log.info("Saved {} merge(s) to merges.json", merges.size());
+    }
+
+    /**
+     * If all memberKeys share the same owner slug (i.e. they all look like
+     * "owner--repo"), replace their individual config.yaml blocks with a single
+     * is_org: true entry for that owner — mirroring what would have happened had
+     * the user added the whole org at once rather than repo-by-repo.
+     *
+     * No-op when:
+     *  - fewer than 2 members
+     *  - members span different owners
+     *  - config.yaml already has an is_org entry for this owner
+     *  - any member key does not follow the "owner--repo" format
+     */
+    private void consolidateOrgInConfig(List<String> memberKeys) {
+        try {
+            Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
+            if (!Files.exists(configPath)) return;
+
+            // All keys must be "owner--repo" and share the same owner prefix.
+            String commonOwner = null;
+            for (String key : memberKeys) {
+                int sep = key.indexOf("--");
+                if (sep <= 0) return; // key doesn't follow the convention — bail out
+                String ownerSlug = key.substring(0, sep);
+                if (commonOwner == null) {
+                    commonOwner = ownerSlug;
+                } else if (!commonOwner.equals(ownerSlug)) {
+                    return; // members span different owners — not an org consolidation
+                }
+            }
+            if (commonOwner == null) return;
+
+            // Already have an is_org entry — nothing to do.
+            if (configContainsOrgEntry(configPath, commonOwner)) return;
+
+            // Look up the owner display value and foundation from projects.json
+            // (the stored owner field preserves original casing, e.g. "3scale").
+            String ownerDisplay = commonOwner; // fallback: use the slug
+            String foundation = "Independent";
+            Path projectsFile = Paths.get(dataDirectory, "projects.json");
+            if (Files.exists(projectsFile)) {
+                JsonNode pRoot = objectMapper.readTree(projectsFile.toFile());
+                for (JsonNode p : pRoot.path("projects")) {
+                    String pid = p.path("id").asText("");
+                    if (memberKeys.contains(pid)) {
+                        String pOwner = p.path("owner").asText("");
+                        if (!pOwner.isBlank()) ownerDisplay = pOwner;
+                        String pFoundation = p.path("foundation").asText("");
+                        if (!pFoundation.isBlank()) foundation = pFoundation;
+                        break; // all members share the same owner/foundation
+                    }
+                }
+            }
+
+            // Remove each member's individual config block by its project name,
+            // then add a single is_org entry for the owner.
+            if (Files.exists(projectsFile)) {
+                JsonNode pRoot = objectMapper.readTree(projectsFile.toFile());
+                for (JsonNode p : pRoot.path("projects")) {
+                    if (memberKeys.contains(p.path("id").asText(""))) {
+                        String projectName = p.path("name").asText("");
+                        if (!projectName.isBlank()) {
+                            removeProjectFromConfig(projectName);
+                        }
+                    }
+                }
+            }
+
+            // Append the is_org: true block for this owner
+            final String orgFoundation = foundation;
+            final String orgOwner = ownerDisplay;
+            Project orgProject = new Project();
+            orgProject.setName(orgOwner);
+            orgProject.setGithubUrl("https://github.com/" + orgOwner);
+            orgProject.setOwner(orgOwner);
+            orgProject.setFoundation(orgFoundation);
+            orgProject.setIsOrg(true);
+            addProjectToConfig(orgOwner, null, orgProject, new com.ossdashboard.model.AddProjectRequest());
+
+            // Update projects.json: mark each member with is_org/org_owner so
+            // _sync_projects_json keeps them correctly grouped.
+            ObjectNode pRootNode = (ObjectNode) objectMapper.readTree(projectsFile.toFile());
+            ArrayNode updatedArr = objectMapper.createArrayNode();
+            for (JsonNode p : pRootNode.path("projects")) {
+                if (memberKeys.contains(p.path("id").asText(""))) {
+                    ObjectNode updated = (ObjectNode) p.deepCopy();
+                    updated.put("is_org", true);
+                    updated.put("org_owner", orgOwner.toLowerCase());
+                    updatedArr.add(updated);
+                } else {
+                    updatedArr.add(p);
+                }
+            }
+            pRootNode.set("projects", updatedArr);
+            pRootNode.put("last_updated", Instant.now().toString());
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(projectsFile.toFile(), pRootNode);
+
+            log.info("Consolidated {} repos under org '{}' in config.yaml", memberKeys.size(), orgOwner);
+        } catch (Exception e) {
+            log.warn("Could not consolidate org entry in config.yaml: {}", e.getMessage());
+        }
     }
 
     /**

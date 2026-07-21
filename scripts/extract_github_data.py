@@ -2283,7 +2283,7 @@ class GitHubDataExtractor:
             if record.get("data_dir"):
                 data_dir_name = record["data_dir"]
             else:
-                data_dir_path = self._project_dir(name, repo=repo)
+                data_dir_path = self._project_dir(name, repo=repo, owner=owner)
                 data_dir_name = data_dir_path.name
 
             record.update({
