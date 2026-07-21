@@ -69,13 +69,16 @@ export function BarChart({ values, labels, currentIndex, variant, tooltipLabel =
             ? tooltipFormatter({ value: v, label: labels[i], index: i })
             : `${labels[i]}: ${formatNumber(v)} ${tooltipLabel}`;
           return (
-            <div className="bar-col" key={i}>
+            <div
+              className="bar-col"
+              key={i}
+              onMouseEnter={(e) => showTooltip(e, tooltipText)}
+              onMouseMove={moveTooltip}
+              onMouseLeave={hideTooltip}
+            >
               <div
                 className={"bar" + (i === cur ? " current" : "")}
                 style={{ height: h + "%" }}
-                onMouseEnter={(e) => showTooltip(e, tooltipText)}
-                onMouseMove={moveTooltip}
-                onMouseLeave={hideTooltip}
               />
             </div>
           );
@@ -133,13 +136,16 @@ export function StackedBarChart({ values, labels, currentIndex, variant, tooltip
             : `${labels[i]}: ${formatNumber(total)} issues (${formatNumber(v.open || 0)} open, ${formatNumber(v.closed || 0)} closed)`;
 
           return (
-            <div className="bar-col" key={i}>
+            <div
+              className="bar-col"
+              key={i}
+              onMouseEnter={(e) => showTooltip(e, tooltipText)}
+              onMouseMove={moveTooltip}
+              onMouseLeave={hideTooltip}
+            >
               <div
                 className={"bar stacked" + (i === cur ? " current" : "")}
                 style={{ height: h + "%" }}
-                onMouseEnter={(e) => showTooltip(e, tooltipText)}
-                onMouseMove={moveTooltip}
-                onMouseLeave={hideTooltip}
               >
                 {segmentOrder.map((key) => {
                   const segmentPercent = total > 0 ? ((v[key] || 0) / total) * 100 : 0;
