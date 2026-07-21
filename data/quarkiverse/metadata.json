@@ -1,0 +1,58 @@
+{
+  "name": "quarkiverse",
+  "full_name": "quarkiverse/quarkiverse",
+  "description": "hub.quarkiverse.io - Repository for contributing to quarkiverse wiki",
+  "created_at": "2020-09-24T09:49:54+00:00",
+  "updated_at": "2026-06-30T18:49:34+00:00",
+  "stars": 54,
+  "forks": 27,
+  "watchers": 54,
+  "open_issues": 43,
+  "language": "JavaScript",
+  "topics": [
+    "quarkus",
+    "extensions"
+  ],
+  "license": "Apache License 2.0",
+  "homepage": "http://hub.quarkiverse.io/",
+  "has_wiki": true,
+  "has_discussions": true,
+  "top_contributing_companies": [
+    {
+      "company": "Ibm",
+      "commits": 159,
+      "percentage": 87.36
+    },
+    {
+      "company": "Red Hat",
+      "commits": 11,
+      "percentage": 6.04
+    },
+    {
+      "company": "Codepillars-Developers",
+      "commits": 4,
+      "percentage": 2.2
+    },
+    {
+      "company": "Prologistik Holding Gmbh",
+      "commits": 3,
+      "percentage": 1.65
+    },
+    {
+      "company": "Red Hat -> Ibm",
+      "commits": 3,
+      "percentage": 1.65
+    },
+    {
+      "company": "Zenika",
+      "commits": 1,
+      "percentage": 0.55
+    },
+    {
+      "company": "Microsoft",
+      "commits": 1,
+      "percentage": 0.55
+    }
+  ],
+  "extracted_at": "2026-07-20T13:35:06.927440"
+}

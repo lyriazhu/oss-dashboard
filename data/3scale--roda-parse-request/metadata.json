@@ -1,0 +1,25 @@
+{
+  "name": "roda-parse-request",
+  "full_name": "3scale/roda-parse-request",
+  "description": "roda plugin which automatically parses JSON and url-encoded requests",
+  "created_at": "2015-03-03T12:43:24+00:00",
+  "updated_at": "2015-03-03T16:49:03+00:00",
+  "stars": 0,
+  "forks": 0,
+  "watchers": 0,
+  "open_issues": 1,
+  "language": "Ruby",
+  "topics": [],
+  "license": "MIT License",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": false,
+  "top_contributing_companies": [
+    {
+      "company": "Kong",
+      "commits": 6,
+      "percentage": 100.0
+    }
+  ],
+  "extracted_at": "2026-07-21T11:52:58.234020"
+}

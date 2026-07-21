@@ -1,0 +1,28 @@
+{
+  "contributors": {
+    "known_logins": [
+      "andrewdavidmackenzie",
+      "brendenowens",
+      "eguzki",
+      "macejmic",
+      "mayorova",
+      "miguelsorianod",
+      "mikz",
+      "pimg",
+      "unleashed"
+    ],
+    "last_extracted_at": "2026-07-21T12:02:55.218220"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-21T12:03:01.305463"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-21T12:04:51.744614"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-21T12:03:56.042277"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-21T12:04:53.470594"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "contributors": {
+    "known_logins": [
+      "hallelujah",
+      "mikz",
+      "zorbash"
+    ],
+    "last_extracted_at": "2026-07-21T11:48:15.246474"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-21T11:48:21.109330"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-21T11:50:28.892510"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-21T11:49:24.553288"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-21T11:50:31.019353"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "config_for",
+  "full_name": "3scale/config_for",
+  "description": "Framework for generating, uploading and loading yaml configurations in Ruby apps.",
+  "created_at": "2014-10-02T10:32:36+00:00",
+  "updated_at": "2024-12-28T03:56:58+00:00",
+  "stars": 5,
+  "forks": 4,
+  "watchers": 5,
+  "open_issues": 2,
+  "language": "Ruby",
+  "topics": [],
+  "license": "MIT License",
+  "homepage": null,
+  "has_wiki": true,
+  "has_discussions": false,
+  "top_contributing_companies": [
+    {
+      "company": "Propitech",
+      "commits": 2,
+      "percentage": 66.67
+    },
+    {
+      "company": "Principal Engineer @Stordco",
+      "commits": 1,
+      "percentage": 33.33
+    }
+  ],
+  "extracted_at": "2026-07-21T11:48:12.452637"
+}

@@ -258,6 +258,24 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
 # Main
 # ---------------------------------------------------------------------------
 
+def _load_registered_repo_ids(data_dir: Path, org_name: str) -> set:
+    """Return the set of repo IDs already registered in projects.json for this org.
+
+    Returns an empty set when no repos are registered yet (first-time add).
+    """
+    registered = set()
+    try:
+        with open(data_dir / "projects.json") as f:
+            for p in json.load(f).get("projects", []):
+                if p.get("org_owner", "").lower() == org_name.lower():
+                    repo = p.get("repo")
+                    if repo:
+                        registered.add(repo.lower())
+    except (OSError, json.JSONDecodeError):
+        pass
+    return registered
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 extract_org_project.py <org_name> "
@@ -318,9 +336,6 @@ def main():
         print(f"No public non-fork repos found for org '{org_name}'", file=sys.stderr)
         sys.exit(1)
 
-    total = len(repos)
-    print(f"ORG_REPOS_FOUND {total}")
-
     # Use the org entry's existing foundation value from projects.json if available
     foundation = "Independent"
     try:
@@ -335,16 +350,39 @@ def main():
     # Determine display name for the merged group
     display_name = org_name
 
+    # Check which repos are already registered for this org.
+    # On a refresh (any repos already exist), restrict processing to only those
+    # repos — do not add new ones discovered from GitHub.
+    registered_repos = _load_registered_repo_ids(data_dir, org_name)
+    is_refresh = len(registered_repos) > 0
+
+    if is_refresh:
+        # Keep only repos that are already registered; ignore any new GitHub repos.
+        repos = [r for r in repos if r.name.lower() in registered_repos]
+        if not repos:
+            print(f"__FAILED__")
+            print(
+                f"No previously registered repos found for org '{org_name}'. "
+                f"This should not happen — check projects.json.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        print(f"ORG_REPOS_FOUND {len(repos)}")
+    else:
+        print(f"ORG_REPOS_FOUND {len(repos)}")
+
     member_ids = []
 
     for idx, gh_repo in enumerate(repos, start=1):
         repo_name = gh_repo.name
-        print(f"ORG_REPO_START {idx} {total} {repo_name}")
-        print(f"  Processing repo {idx}/{total}: {org_name}/{repo_name}")
+        print(f"ORG_REPO_START {idx} {len(repos)} {repo_name}")
+        print(f"  Processing repo {idx}/{len(repos)}: {org_name}/{repo_name}")
 
-        # Register in projects.json and config.yaml
-        _add_repo_to_projects_json(data_dir, org_name, repo_name, org_name, foundation)
-        _add_repo_to_config_yaml(scripts_dir, org_name, repo_name, org_name, foundation)
+        # On a first-time add register each repo; on a refresh the repos are already
+        # registered so skip registration to prevent adding new communities.
+        if not is_refresh:
+            _add_repo_to_projects_json(data_dir, org_name, repo_name, org_name, foundation)
+            _add_repo_to_config_yaml(scripts_dir, org_name, repo_name, org_name, foundation)
 
         # Run extraction
         try:
@@ -354,7 +392,7 @@ def main():
             print(f"  ⚠️  Extraction failed for {repo_name}: {e}")
 
         member_ids.append(f"{_slug(org_name)}--{_slug(repo_name)}")
-        print(f"ORG_REPO_DONE {idx} {total} {repo_name}")
+        print(f"ORG_REPO_DONE {idx} {len(repos)} {repo_name}")
 
     # Write merge record so dashboard auto-groups the repos
     print("ORG_MERGING")
@@ -364,7 +402,7 @@ def main():
     else:
         print(f"  ℹ️  Only 1 repo found — no merge needed")
 
-    print(f"✅ Org extraction complete for {org_name} ({total} repos)")
+    print(f"✅ Org extraction complete for {org_name} ({len(member_ids)} repos)")
 
 
 if __name__ == "__main__":
