@@ -115,7 +115,12 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
   const dismiss = () => {
     esRef.current?.close();
     setDismissed(true);
-    setTimeout(() => onDone?.(), 200);
+    // If extraction is still in progress, leave the persisted state in
+    // localStorage so a page reload will restore the progress bar.
+    // Only call onDone (which clears localStorage) when the job is finished.
+    if (done || failed) {
+      setTimeout(() => onDone?.(), 200);
+    }
   };
 
   if (dismissed) return null;
