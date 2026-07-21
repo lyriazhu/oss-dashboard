@@ -159,17 +159,26 @@ public class DataService {
         // name is predictable even before the first extraction run.
         // Format: owner--repo  (consistent with org-discovered repos).
         switch (projectId) {
-            case "strimzi-kafka-operator": return "strimzi--strimzi-kafka-operator";
-            case "camel":                  return "apache--camel";
-            case "artemis":                return "apache--artemis";
+            case "strimzi-kafka-operator":  return "strimzi--strimzi-kafka-operator";
+            case "camel":                   return "apache--camel";
+            case "artemis":                 return "apache--artemis";
             case "apicurio-studio":
-            case "apicurio-registry":      return "apicurio--apicurio-registry";
-            case "keycloak":               return "keycloak--keycloak";
-            case "debezium":               return "debezium--debezium";
-            case "wildfly":                return "wildfly--wildfly";
-            case "quarkus":                return "quarkusio--quarkus";
-            case "tomcat":                 return "apache--tomcat";
-            default: return projectId.toLowerCase().replace("_", "-");
+            case "apicurio-registry":       return "apicurio--apicurio-registry";
+            case "keycloak":                return "keycloak--keycloak";
+            case "debezium":                return "debezium--debezium";
+            case "wildfly":                 return "wildfly--wildfly";
+            case "quarkus":                 return "quarkusio--quarkus";
+            case "tomcat":                  return "apache--tomcat";
+            case "apache--cassandra-analytics": return "apache--cassandra-analytics";
+            // Generic fallback: if the project ID already contains "--" it IS already in
+            // owner--repo format (set by addProject at creation time); return as-is.
+            default:
+                if (projectId.contains("--")) return projectId.toLowerCase().replace("_", "-");
+                // Bare legacy IDs that have no mapping above fall through here.
+                // They are already stored with data_dir in projects.json for all
+                // projects added after the owner--repo convention was introduced,
+                // so reaching this branch is only possible for truly ancient entries.
+                return projectId.toLowerCase().replace("_", "-");
         }
     }
 

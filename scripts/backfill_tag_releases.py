@@ -25,11 +25,12 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent.parent / "data"
 
 # Projects to backfill: (owner, repo, data_dir, stable_tag_pattern)
+# data_dir must match the frozen data_dir value in data/projects.json (owner--repo format).
 PROJECTS = [
-    ("apache",   "camel",            "apache-camel",   r"^camel-\d+\.\d+\.\d+$"),
-    ("apache",   "activemq-artemis", "apache-artemis", r"^\d+\.\d+\.\d+$"),
-    ("debezium", "debezium",         "debezium",       r"^v\d+\.\d+\.\d+\.Final$"),
-    ("apache",   "tomcat",           "tomcat",         r"^\d+\.\d+\.\d+$"),
+    ("apache",   "camel",            "apache--camel",            r"^camel-\d+\.\d+\.\d+$"),
+    ("apache",   "activemq-artemis", "apache--artemis",          r"^\d+\.\d+\.\d+$"),
+    ("debezium", "debezium",         "debezium--debezium",       r"^v\d+\.\d+\.\d+\.Final$"),
+    ("apache",   "tomcat",           "apache--tomcat",           r"^\d+\.\d+\.\d+$"),
 ]
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")

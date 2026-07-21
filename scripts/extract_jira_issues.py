@@ -34,27 +34,35 @@ class YearBucket(TypedDict):
     closed_issue_count: int
 
 
-# Keys are config 'name' values — must match extract_github_data.py _project_dir()
-DIR_NAME_MAP = {
-    "Strimzi": "strimzi",
-    "Apache Camel": "apache-camel",
-    "Apache Artemis": "apache-artemis",
-    "Apicurio Registry": "apicurio",
-    "3scale": "3scale",
-    "Keycloak": "keycloak",
-    "StreamsHub": "streamshub",
-    # legacy repo-name keys for backward compatibility
-    "strimzi-kafka-operator": "strimzi",
-    "camel": "apache-camel",
-    "artemis": "apache-artemis",
-    "apicurio-registry": "apicurio",
-    "3scale-operator": "3scale",
-    "console": "streamshub",
-}
+def _resolve_project_data_dir(project: Dict[str, Any], data_dir: Path) -> Path:
+    """Resolve the data directory for a project using the same owner--repo convention
+    as extract_github_data.py _project_dir().
 
+    Priority:
+    1. data_dir field recorded in data/projects.json (stable across renames).
+    2. owner--repo slug derived from the project's config fields.
+    3. Last resort: display name lowercased with spaces replaced by hyphens.
+    """
+    projects_file = data_dir / "projects.json"
+    owner = project.get("owner", "")
+    repo = project.get("repo", "")
 
-def project_dir_name(project_name: str) -> str:
-    return DIR_NAME_MAP.get(project_name, project_name.lower().replace(" ", "-"))
+    if projects_file.exists():
+        try:
+            with open(projects_file) as f:
+                records = json.load(f).get("projects", [])
+            if owner and repo:
+                namespaced_id = f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
+                for p in records:
+                    if p.get("id") == namespaced_id and p.get("data_dir"):
+                        return data_dir / p["data_dir"]
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    if owner and repo:
+        return data_dir / f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
+
+    return data_dir / project.get("name", "unknown").lower().replace(" ", "-")
 
 
 def load_config() -> Dict[str, Any]:
@@ -317,9 +325,9 @@ def normalize_jira_issues(raw_issues: List[Dict[str, Any]]) -> List[Dict[str, An
     return normalized
 
 
-def save_issue_data(project_name: str, issue_data: Dict[str, Any]) -> Path:
+def save_issue_data(project: Dict[str, Any], issue_data: Dict[str, Any]) -> Path:
     data_dir = Path(__file__).parent.parent / "data"
-    project_dir = data_dir / project_dir_name(project_name)
+    project_dir = _resolve_project_data_dir(project, data_dir)
     project_dir.mkdir(parents=True, exist_ok=True)
     output_file = project_dir / "issues.json"
 
@@ -361,7 +369,7 @@ def main():
     raw_issues = fetch_jira_issues(jira_base_url, jira_project_key)
     normalized_issues = normalize_jira_issues(raw_issues)
     issue_data = aggregate_issue_metrics(normalized_issues)
-    output_file = save_issue_data(project["name"], issue_data)
+    output_file = save_issue_data(project, issue_data)
 
     print(f"\n✅ Saved Jira issue data to {output_file}")
     print(

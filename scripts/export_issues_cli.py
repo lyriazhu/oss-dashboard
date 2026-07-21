@@ -201,20 +201,14 @@ def main():
         print("❌ No issues found or error occurred")
         sys.exit(1)
     
-    # Get project created date from metadata
-    project_dir_name = project_id.lower().replace('_', '-')
-    if project_id == 'strimzi-kafka-operator':
-        project_dir_name = 'strimzi'
-    elif project_id == 'camel':
-        project_dir_name = 'apache-camel'
-    elif project_id == 'artemis':
-        project_dir_name = 'apache-artemis'
-    elif project_id == 'apicurio-registry':
-        project_dir_name = 'apicurio'
-    elif project_id == '3scale-operator':
-        project_dir_name = '3scale'
-    
-    project_dir = data_dir / project_dir_name
+    # Resolve data directory: prefer the frozen data_dir field in projects.json,
+    # then fall back to the canonical owner--repo slug.
+    if project.get('data_dir'):
+        project_dir = data_dir / project['data_dir']
+    else:
+        owner_slug = owner.lower().replace('_', '-')
+        repo_slug  = repo.lower().replace('_', '-')
+        project_dir = data_dir / f"{owner_slug}--{repo_slug}"
     metadata_file = project_dir / "metadata.json"
     
     project_created_at = None

@@ -694,7 +694,7 @@
     "is_org" : true,
     "org_owner" : "apicurio"
   }, {
-    "id" : "camel",
+    "id" : "apache--camel",
     "name" : "Apache Camel",
     "github_url" : "https://github.com/apache/camel",
     "owner" : "apache",
@@ -707,7 +707,7 @@
     "jira_base_url" : "https://issues.apache.org/jira",
     "enabled" : true
   }, {
-    "id" : "keycloak",
+    "id" : "keycloak--keycloak",
     "name" : "Keycloak",
     "github_url" : "https://github.com/keycloak/keycloak",
     "owner" : "keycloak",
@@ -717,7 +717,7 @@
     "data_dir" : "keycloak--keycloak",
     "enabled" : true
   }, {
-    "id" : "debezium",
+    "id" : "debezium--debezium",
     "name" : "Debezium",
     "owner" : "debezium",
     "repo" : "debezium",
@@ -727,7 +727,7 @@
     "enabled" : true,
     "github_url" : "https://github.com/debezium/debezium"
   }, {
-    "id" : "quarkus",
+    "id" : "quarkusio--quarkus",
     "name" : "Quarkus",
     "owner" : "quarkusio",
     "repo" : "quarkus",
@@ -737,7 +737,7 @@
     "enabled" : true,
     "github_url" : "https://github.com/quarkusio/quarkus"
   }, {
-    "id" : "wildfly",
+    "id" : "wildfly--wildfly",
     "name" : "Wildfly",
     "owner" : "wildfly",
     "repo" : "wildfly",
@@ -749,7 +749,7 @@
     "jira_project_key" : "WFLY",
     "jira_base_url" : "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
   }, {
-    "id" : "tomcat",
+    "id" : "apache--tomcat",
     "name" : "Apache Tomcat",
     "owner" : "apache",
     "repo" : "tomcat",
@@ -759,7 +759,7 @@
     "github_url" : "https://github.com/apache/tomcat",
     "data_dir" : "apache--tomcat"
   }, {
-    "id" : "artemis",
+    "id" : "apache--artemis",
     "name" : "Apache Artemis",
     "owner" : "apache",
     "repo" : "artemis",
@@ -781,5 +781,5 @@
     "github_url" : "https://github.com/quarkiverse/quarkiverse",
     "data_dir" : "quarkiverse--quarkiverse"
   } ],
-  "last_updated" : "2026-07-21T14:41:26.351522Z"
+  "last_updated" : "2026-07-21T14:56:50.917213Z"
 }

@@ -146,14 +146,14 @@ class GitHubDataExtractor:
             return self.data_dir / repo.lower().replace("_", "-")
         return self.data_dir / project_name.lower().replace(" ", "-")
 
-    def _project_state_path(self, project_name: str) -> Path:
+    def _project_state_path(self, project_name: str, repo: str = None, owner: str = None) -> Path:
         """Return project state file path"""
-        return self._project_dir(project_name) / "_state.json"
+        return self._project_dir(project_name, repo=repo, owner=owner) / "_state.json"
 
-    def _load_project_state(self, project_name: str) -> Dict[str, Any]:
+    def _load_project_state(self, project_name: str, repo: str = None, owner: str = None) -> Dict[str, Any]:
         """Load per-project extraction state"""
         return self._load_json_file(
-            self._project_state_path(project_name),
+            self._project_state_path(project_name, repo=repo, owner=owner),
             {
                 "contributors": {
                     "known_logins": [],
@@ -174,9 +174,9 @@ class GitHubDataExtractor:
             }
         )
 
-    def _save_project_state(self, project_name: str, state: Dict[str, Any]):
+    def _save_project_state(self, project_name: str, state: Dict[str, Any], repo: str = None, owner: str = None):
         """Save per-project extraction state"""
-        self._save_json_file(self._project_state_path(project_name), state)
+        self._save_json_file(self._project_state_path(project_name, repo=repo, owner=owner), state)
     
     def _get_quarter_dates(self, quarters_back: int = 12) -> List[tuple]:
         """Generate list of calendar quarter start/end dates ending at the current quarter."""
@@ -837,8 +837,8 @@ class GitHubDataExtractor:
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
-            project_state = self._load_project_state(project_name)
-            existing_data = self._load_json_file(self._project_dir(project_name) / "contributors.json", {})
+            project_state = self._load_project_state(project_name, repo=repo, owner=owner)
+            existing_data = self._load_json_file(self._project_dir(project_name, repo=repo, owner=owner) / "contributors.json", {})
             known_logins = set(project_state.get("contributors", {}).get("known_logins", []))
 
             # Get contributors from GitHub API (limited by pagination)
@@ -924,7 +924,7 @@ class GitHubDataExtractor:
                 "known_logins": sorted(current_logins),
                 "last_extracted_at": datetime.now().isoformat()
             }
-            self._save_project_state(project_name, project_state)
+            self._save_project_state(project_name, project_state, repo=repo, owner=owner)
             
             return contributors_data
             
@@ -938,8 +938,8 @@ class GitHubDataExtractor:
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
-            project_state = self._load_project_state(project_name)
-            existing_data = self._load_json_file(self._project_dir(project_name) / "commits.json", {})
+            project_state = self._load_project_state(project_name, repo=repo, owner=owner)
+            existing_data = self._load_json_file(self._project_dir(project_name, repo=repo, owner=owner) / "commits.json", {})
             last_git_sync_at = project_state.get("commits", {}).get("last_git_sync_at")
             quarter_dates = self._get_quarter_dates(quarters)
 
@@ -994,7 +994,7 @@ class GitHubDataExtractor:
             project_state["commits"] = {
                 "last_git_sync_at": datetime.now().isoformat()
             }
-            self._save_project_state(project_name, project_state)
+            self._save_project_state(project_name, project_state, repo=repo, owner=owner)
             
             return commits_data
             
@@ -1063,7 +1063,8 @@ class GitHubDataExtractor:
         print(f"🐛 Extracting issues for {len(repos)} repo(s)...")
 
         try:
-            project_state = self._load_project_state(project_name)
+            _first = repos[0] if repos else {}
+            project_state = self._load_project_state(project_name, repo=_first.get("repo"), owner=_first.get("owner"))
             last_extracted_at = project_state.get("issues", {}).get("last_extracted_at")
 
             month_dates = self._get_last_n_months(12)  # last 12 calendar months
@@ -1080,8 +1081,14 @@ class GitHubDataExtractor:
 
             # For incremental runs load existing data; for initial runs start fresh.
             if last_extracted_at:
+                _first = repos[0] if repos else {}
                 existing_data = self._load_json_file(
-                    self._project_dir(project_name) / "issues.json", {}
+                    self._project_dir(
+                        project_name,
+                        repo=_first.get("repo"),
+                        owner=_first.get("owner"),
+                    ) / "issues.json",
+                    {},
                 )
                 issue_data = {
                     "total_open": 0,
@@ -1285,7 +1292,7 @@ class GitHubDataExtractor:
             print(f"  📈 Total issues: {issue_data['total_issues']} (Open: {issue_data['total_open']}, Closed: {issue_data['total_closed']})")
             
             project_state["issues"] = {"last_extracted_at": datetime.now().isoformat()}
-            self._save_project_state(project_name, project_state)
+            self._save_project_state(project_name, project_state, repo=_first.get("repo"), owner=_first.get("owner"))
             
             return issue_data
             
@@ -1433,8 +1440,16 @@ class GitHubDataExtractor:
         print(f"🔀 Extracting pull requests for {len(repos)} repo(s)...")
 
         try:
-            project_state = self._load_project_state(project_name)
-            existing_data = self._load_json_file(self._project_dir(project_name) / "pull_requests.json", {})
+            _first = repos[0] if repos else {}
+            project_state = self._load_project_state(project_name, repo=_first.get("repo"), owner=_first.get("owner"))
+            existing_data = self._load_json_file(
+                self._project_dir(
+                    project_name,
+                    repo=_first.get("repo"),
+                    owner=_first.get("owner"),
+                ) / "pull_requests.json",
+                {},
+            )
             last_extracted_at = project_state.get("pull_requests", {}).get("last_extracted_at")
 
             month_dates = self._get_last_n_months(12)  # last 12 calendar months
@@ -1607,7 +1622,7 @@ class GitHubDataExtractor:
                 )
             
             project_state["pull_requests"] = {"last_extracted_at": datetime.now().isoformat()}
-            self._save_project_state(project_name, project_state)
+            self._save_project_state(project_name, project_state, repo=_first.get("repo"), owner=_first.get("owner"))
             
             return pr_data
             
@@ -1689,8 +1704,8 @@ class GitHubDataExtractor:
         
         try:
             repository = self.github.get_repo(f"{owner}/{repo}")
-            project_state = self._load_project_state(project_name)
-            existing_data = self._load_json_file(self._project_dir(project_name) / "releases.json", {})
+            project_state = self._load_project_state(project_name, repo=repo, owner=owner)
+            existing_data = self._load_json_file(self._project_dir(project_name, repo=repo, owner=owner) / "releases.json", {})
             last_extracted_at = project_state.get("releases", {}).get("last_extracted_at")
             
             releases = repository.get_releases()
@@ -1775,7 +1790,7 @@ class GitHubDataExtractor:
                 print(f"  ✓ Found {new_releases_count} new release(s)")
             
             project_state["releases"] = {"last_extracted_at": datetime.now().isoformat()}
-            self._save_project_state(project_name, project_state)
+            self._save_project_state(project_name, project_state, repo=repo, owner=owner)
             
             return releases_data
             

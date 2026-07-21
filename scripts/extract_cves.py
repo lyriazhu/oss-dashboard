@@ -84,8 +84,15 @@ def _load_projects_from_json() -> List[Dict]:
         if not owner or not repo:
             continue
 
-        # Directory name: derive the same way DataService.getProjectDirectoryName does
-        dir_name = _project_dir(project_id, name)
+        # Resolve data directory: prefer the frozen data_dir field in projects.json,
+        # then fall back to the canonical owner--repo slug.
+        data_dir_field = p.get("data_dir")
+        if data_dir_field:
+            dir_name = data_dir_field
+        else:
+            owner_slug = owner.lower().replace("_", "-")
+            repo_slug  = repo.lower().replace("_", "-")
+            dir_name   = f"{owner_slug}--{repo_slug}"
 
         osv_packages = OSV_OVERRIDES.get(name.lower())
         result.append({
@@ -98,19 +105,6 @@ def _load_projects_from_json() -> List[Dict]:
         })
 
     return result
-
-
-def _project_dir(project_id: str, name: str) -> str:
-    """Mirror DataService.deriveDataDir logic."""
-    mapping = {
-        "strimzi-kafka-operator": "strimzi",
-        "camel":                  "apache-camel",
-        "artemis":                "apache-artemis",
-        "apicurio-studio":        "apicurio",
-        "apicurio-registry":      "apicurio",
-        "console":                "streamshub",
-    }
-    return mapping.get(project_id, project_id.lower().replace("_", "-"))
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
