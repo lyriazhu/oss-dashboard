@@ -177,6 +177,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     project_created_at = None
 
     # Metadata
+    print("Extracting metadata...")
     try:
         metadata = extractor.extract_project_metadata(owner, repo, project_name=project_name)
         if metadata:
@@ -188,6 +189,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
         print(f"  ⚠️  Metadata: {e}")
 
     # Contributors
+    print("Extracting contributors...")
     try:
         contributors = extractor.extract_contributors(owner, repo, project_name)
         if contributors:
@@ -198,6 +200,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
         print(f"  ⚠️  Contributors: {e}")
 
     # Commits
+    print("Extracting commits...")
     try:
         commits = extractor.extract_commits(owner, repo, project_name)
         if commits:
@@ -207,6 +210,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
         print(f"  ⚠️  Commits: {e}")
 
     # Issues
+    print("Extracting issues...")
     if project_created_at:
         if issue_scope == "all":
             issue_repos = [{"owner": owner, "repo": repo}]
@@ -224,6 +228,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
             print(f"  ⚠️  Issues: {e}")
 
     # Pull requests
+    print("Extracting pull requests...")
     if project_created_at:
         try:
             prs = extractor.extract_pull_requests(
@@ -235,6 +240,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
             print(f"  ⚠️  Pull requests: {e}")
 
     # Releases
+    print("Extracting releases...")
     try:
         releases = extractor.extract_releases(owner, repo, project_name)
         if releases:
@@ -244,6 +250,7 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
         print(f"  ⚠️  Releases: {e}")
 
     # Adopters
+    print("Extracting adopters...")
     try:
         adopters = extractor.extract_adopters(owner, repo, project_name)
         extractor.save_project_data(project_name, adopters, "adopters", repo=repo, owner=owner)

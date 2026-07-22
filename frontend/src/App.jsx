@@ -8,6 +8,7 @@ import AddProjectModal from "./components/AddProjectModal.jsx";
 import ExtractionToast from "./components/ExtractionToast.jsx";
 
 const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
+const QUEUE_STORAGE_KEY      = 'oss_dashboard_refresh_queue';
 
 // ---------------------------------------------------------------------------
 // Shared merge helper — used by both handleJoinSelected and applyPersistedMerges
@@ -475,7 +476,18 @@ export default function App() {
   const [selectedKeys, setSelectedKeys] = useState(new Set());
   const [deleting, setDeleting] = useState(false);
   // refreshQueue: ordered list of {id, name} objects waiting to be extracted
-  const [refreshQueue, setRefreshQueue] = useState([]);
+  const [refreshQueue, setRefreshQueue] = useState(() => {
+    try {
+      const saved = localStorage.getItem(QUEUE_STORAGE_KEY);
+      return saved ? JSON.parse(saved).queue || [] : [];
+    } catch { return []; }
+  });
+  const [refreshQueueTotal, setRefreshQueueTotal] = useState(() => {
+    try {
+      const saved = localStorage.getItem(QUEUE_STORAGE_KEY);
+      return saved ? JSON.parse(saved).total || 0 : 0;
+    } catch { return 0; }
+  });
   const [extracting, setExtracting] = useState(() => {
     // Restore extraction state that survived a page reload
     try {
@@ -495,6 +507,15 @@ export default function App() {
       localStorage.removeItem(EXTRACTION_STORAGE_KEY);
     }
   }, [extracting]);
+
+  // Persist queue state to localStorage whenever it changes
+  useEffect(() => {
+    if (refreshQueueTotal > 0) {
+      localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify({ queue: refreshQueue, total: refreshQueueTotal }));
+    } else {
+      localStorage.removeItem(QUEUE_STORAGE_KEY);
+    }
+  }, [refreshQueue, refreshQueueTotal]);
 
   // Restore merged state using merge records loaded from data/merges.json via the backend.
   const applyPersistedMerges = useCallback((projectData, projectOrder, mergesFromBackend) => {
@@ -702,6 +723,7 @@ export default function App() {
     if (!ids || ids.length === 0) return;
     // Build queue entries using display names from current data
     const queue = ids.map((id) => ({ id, name: data[id]?.name || id }));
+    setRefreshQueueTotal(queue.length);
     setRefreshQueue(queue.slice(1));          // tail — will advance after each toast
     setExtracting({ id: queue[0].id, name: queue[0].name, mode: 'refresh' }); // head starts immediately
   }, [data]);
@@ -715,6 +737,7 @@ export default function App() {
       setExtracting({ id: next.id, name: next.name, mode: 'refresh' });
     } else {
       setExtracting(null);
+      setRefreshQueueTotal(0);
       // All done — reload the page so updated data is fully reflected
       window.location.reload();
     }
@@ -953,9 +976,12 @@ export default function App() {
         navOpen={!navCollapsed}
         extracting={extracting}
         onExtractionDone={handleExtractionDone}
+        queueIdx={refreshQueueTotal > 0 ? refreshQueueTotal - refreshQueue.length : 0}
+        queueTotal={refreshQueueTotal}
         onTokenExpired={() => {
           setExtracting(null);
           setRefreshQueue([]);
+          setRefreshQueueTotal(0);
           setTokenConfigured(false); // force token field to show in modal
           setModalOpen(true);
         }}
@@ -999,6 +1025,7 @@ export default function App() {
               if (entry?._mergedFrom) {
                 // Merged entry — queue each member repo individually, same as Refresh All
                 const members = entry._mergedFrom.map((e) => ({ id: e.key, name: e.data.name }));
+                setRefreshQueueTotal(members.length);
                 setRefreshQueue(members.slice(1));
                 setExtracting({ id: members[0].id, name: members[0].name, mode: 'refresh' });
               } else {

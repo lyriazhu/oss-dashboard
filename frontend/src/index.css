@@ -86,7 +86,7 @@
   /* ============ Extraction toast ============ */
   .extraction-toast{
     position:absolute; top:calc(3rem + .5rem); right:1rem;
-    z-index:100; min-width:260px; max-width:320px;
+    z-index:100; min-width:280px; max-width:380px;
   }
   .extraction-toast-inner{
     background:var(--gray-90); border:1px solid var(--gray-70);
@@ -105,6 +105,10 @@
     padding:0; display:flex; align-items:center;
   }
   .extraction-toast-close:hover{color:var(--header-text);}
+  .extraction-toast-queue{
+    font-size:.6875rem; color:var(--blue-30);
+    margin-bottom:.25rem; letter-spacing:.01em;
+  }
   .extraction-toast-step{
     font-size:.8125rem; margin-bottom:.375rem;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;

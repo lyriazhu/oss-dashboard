@@ -40,6 +40,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
 
     # Metadata
     project_created_at = None
+    print("Extracting metadata...")
     try:
         metadata = extractor.extract_project_metadata(owner, repo, project_name=project_name)
         if metadata:
@@ -50,6 +51,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
         print(f"⚠️  Warning: Metadata extraction failed: {e}")
 
     # Contributors (includes quarterly + yearly retention)
+    print("Extracting contributors...")
     try:
         contributors = extractor.extract_contributors(owner, repo, project_name)
         if contributors:
@@ -60,6 +62,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
         print(f"⚠️  Warning: Contributors extraction failed: {e}")
 
     # Commits
+    print("Extracting commits...")
     try:
         commits = extractor.extract_commits(owner, repo, project_name)
         if commits:
@@ -74,6 +77,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
     if project.get('issue_owner') and project.get('issue_repo'):
         issue_repos = [{'owner': project['issue_owner'], 'repo': project['issue_repo']}]
 
+    print("Extracting issues...")
     if issue_source == 'jira':
         try:
             jira_script = Path(__file__).parent / "extract_jira_issues.py"
@@ -101,6 +105,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
             print(f"⚠️  Warning: Issues extraction failed: {e}")
 
     # Pull Requests
+    print("Extracting pull requests...")
     try:
         if project_created_at:
             pull_requests = extractor.extract_pull_requests(repos, project_created_at, project_name)
@@ -113,6 +118,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
         print(f"⚠️  Warning: Pull requests extraction failed: {e}")
 
     # Releases
+    print("Extracting releases...")
     try:
         releases = extractor.extract_releases(owner, repo, project_name)
         if releases:
@@ -122,6 +128,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
         print(f"⚠️  Warning: Releases extraction failed: {e}")
 
     # Adopters
+    print("Extracting adopters...")
     try:
         adopters = extractor.extract_adopters(owner, repo, project_name)
         extractor.save_project_data(project_name, adopters, "adopters", repo=repo, owner=owner)

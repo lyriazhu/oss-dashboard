@@ -80,10 +80,6 @@ projects:
     repo: "quarkiverse"
     foundation: "Commonhaus Foundation"
 
-
-
-
-
   - name: "apache"
     github_url: "https://github.com/apache"
     owner: "apache"

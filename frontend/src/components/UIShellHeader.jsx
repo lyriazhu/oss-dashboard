@@ -1,6 +1,6 @@
 import ExtractionToast from './ExtractionToast.jsx';
 
-export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtractionDone, onTokenExpired }) {
+export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtractionDone, queueIdx, queueTotal, onTokenExpired }) {
   return (
     <header className="ui-shell">
       <button
@@ -22,6 +22,8 @@ export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtr
           projectId={extracting.id}
           projectName={extracting.name}
           mode={extracting.mode}
+          queueIdx={queueIdx}
+          queueTotal={queueTotal}
           onDone={onExtractionDone}
           onTokenExpired={onTokenExpired}
         />

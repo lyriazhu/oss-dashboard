@@ -50,7 +50,7 @@ function parseLine(line) {
   return null;
 }
 
-export default function ExtractionToast({ projectId, projectName, mode, onDone, onTokenExpired }) {
+export default function ExtractionToast({ projectId, projectName, mode, queueIdx, queueTotal, onDone, onTokenExpired }) {
   const [step, setStep]                   = useState('Starting extraction…');
   const [failed, setFailed]               = useState(false);
   const [done, setDone]                   = useState(false);
@@ -59,6 +59,7 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
   // Org-extraction progress state
   const [orgTotal, setOrgTotal]           = useState(null);   // null = not an org extraction
   const [orgIdx, setOrgIdx]               = useState(0);
+  const [orgRepo, setOrgRepo]             = useState(null);   // current repo name within the org
   const esRef = useRef(null);
 
   useEffect(() => {
@@ -76,6 +77,7 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
         // Org progress tracking
         if (parsed.orgTotal != null) setOrgTotal(parsed.orgTotal);
         if (parsed.orgIdx   != null) setOrgIdx(parsed.orgIdx);
+        if (parsed.orgRepo  != null) setOrgRepo(parsed.orgRepo);
 
         if (parsed.step) setStep(parsed.step);
 
@@ -135,9 +137,14 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
 
   if (dismissed) return null;
 
-  const isOrg       = orgTotal !== null;
-  const pct         = isOrg && orgTotal > 0 ? Math.round((orgIdx / orgTotal) * 100) : 0;
-  const stepColor   = failed ? 'var(--red-40)' : done ? 'var(--green-40)' : 'var(--header-text-dim)';
+  const isOrg        = orgTotal !== null;
+  const pct          = isOrg && orgTotal > 0 ? Math.round((orgIdx / orgTotal) * 100) : 0;
+  const stepColor    = failed ? 'var(--red-40)' : done ? 'var(--green-40)' : 'var(--header-text-dim)';
+  const isQueuedRun  = queueTotal > 1;
+  // When a specific repo is active within an org extraction, prefix the step with it
+  const displayStep  = (isOrg && orgRepo && !done && !failed)
+    ? `${orgRepo} → ${step}`
+    : step;
 
   return (
     <div className="extraction-toast">
@@ -159,7 +166,14 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
           </button>
         </div>
 
-        <div className="extraction-toast-step" style={{ color: stepColor }}>{step}</div>
+        {/* Overall queue position — only shown during refresh-all with >1 project */}
+        {isQueuedRun && !done && !failed && (
+          <div className="extraction-toast-queue">
+            Project {queueIdx} of {queueTotal}
+          </div>
+        )}
+
+        <div className="extraction-toast-step" style={{ color: stepColor }}>{displayStep}</div>
 
         {/* Progress bar — shown for org extractions while in flight */}
         {isOrg && !done && !failed && (
@@ -171,10 +185,6 @@ export default function ExtractionToast({ projectId, projectName, mode, onDone, 
               {orgIdx} / {orgTotal} repos
             </span>
           </div>
-        )}
-
-        {!done && !failed && !isOrg && (
-          <div className="extraction-toast-notice">Extraction is in progress.</div>
         )}
 
         {/* Carbon-style inline success notification */}
