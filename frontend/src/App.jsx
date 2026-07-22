@@ -169,6 +169,13 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, found
     if (kpi.l === 'Contributors (YTD)') {
       return { ...kpi, v: fmt(mergedContributorsYtd) };
     }
+    if (kpi.l === 'Open Issues') {
+      const total = communities.reduce((acc, c) => {
+        const match = (c.kpis || []).find((k) => k.l === 'Open Issues');
+        return acc + parseNum(match?.v);
+      }, 0);
+      return { ...kpi, v: fmt(total), h: 'Currently open' };
+    }
     const total = communities.reduce((acc, c) => {
       const match = (c.kpis || []).find((k) => k.l === kpi.l);
       return acc + parseNum(match?.v);
@@ -313,7 +320,7 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, found
   // ── CVE total all-time: sum across all repos ──
   const mergedCveTotalAllTime = communities.reduce((s, c) => s + (c.cveTotalAllTime || 0), 0);
 
-  // ── Median merge/resolution days: weighted mean (by pr/issue count) where available ──
+  // ── Median PR merge days: weighted mean by total PR count across repos ──
   const computeWeightedMedian = (communities, valueFn, weightFn) => {
     let totalWeight = 0;
     let weightedSum = 0;
@@ -333,11 +340,14 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, found
     (c) => c.prMedianMergeDays,
     (c) => (c.prYearly || []).reduce((s, y) => s + (y.v || 0), 0),
   );
-  const mergedIssueMedianResolutionDays = computeWeightedMedian(
-    communities,
-    (c) => c.issueMedianResolutionDays,
-    (c) => (c.issueYearly || []).reduce((s, y) => s + ((y.open || 0) + (y.closed || 0)), 0),
-  );
+  // ── Median issue resolution days: median of per-repo medians (ignoring nulls) ──
+  const mergedIssueMedianResolutionDays = (() => {
+    const vals = communities.map((c) => c.issueMedianResolutionDays).filter((v) => v != null).sort((a, b) => a - b);
+    if (vals.length === 0) return null;
+    const mid = Math.floor(vals.length / 2);
+    const raw = vals.length % 2 === 0 ? (vals[mid - 1] + vals[mid]) / 2 : vals[mid];
+    return Math.round(raw * 10) / 10;
+  })();
 
   // ── Meta table: sum releases; pick earliest founded year; join languages ──
   const totalReleasesNum = communities.reduce((s, c) => {

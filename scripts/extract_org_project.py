@@ -96,16 +96,31 @@ def _add_repo_to_projects_json(data_dir: Path, owner: str, repo: str,
 
 
 def _add_repo_to_config_yaml(scripts_dir: Path, owner: str, repo: str,
-                              org_name: str, foundation: str):
-    """Append a project block to config.yaml if not already present."""
+                               org_name: str, foundation: str):
+    """Append a project block to config.yaml if not already present.
+
+    Uses structured YAML parsing to check for an exact owner+repo match so that
+    two orgs sharing the same repo name (e.g. both having 'governance') do not
+    produce a false "already present" result (BUG-21).
+    """
+    import yaml as _yaml
+
     config_path = scripts_dir / "config.yaml"
     if not config_path.exists():
         return
 
-    content = config_path.read_text()
-    # Skip if already in config
-    if f'owner: "{owner}"' in content and f'repo: "{repo}"' in content:
-        return
+    # Use structured parsing: skip only when an entry with *both* this exact
+    # owner AND this exact repo already exists — never rely on substring search.
+    try:
+        with open(config_path) as f:
+            cfg = _yaml.safe_load(f) or {}
+        for p in cfg.get("projects", []):
+            if p.get("owner", "").lower() == owner.lower() and p.get("repo", "").lower() == repo.lower():
+                return  # exact match — already present
+    except Exception:
+        # If parsing fails fall through and let the append happen;
+        # the worst outcome is a duplicate entry which the duplicate guard catches.
+        pass
 
     entry = (
         f'\n  - name: "{repo}"\n'
@@ -414,7 +429,21 @@ def main():
     else:
         print(f"ORG_REPOS_FOUND {len(repos)}")
 
-    member_ids = []
+    # On a refresh, seed member_ids with ALL previously registered repo IDs so
+    # that repos which were archived/deleted on GitHub since the last run are not
+    # silently dropped from the merge record (BUG-22).
+    if is_refresh:
+        try:
+            with open(data_dir / "projects.json") as f:
+                _existing_pjs = json.load(f).get("projects", [])
+            member_ids = [
+                p["id"] for p in _existing_pjs
+                if p.get("org_owner", "").lower() == org_name.lower() and p.get("id")
+            ]
+        except (OSError, json.JSONDecodeError):
+            member_ids = []
+    else:
+        member_ids = []
 
     for idx, gh_repo in enumerate(repos, start=1):
         repo_name = gh_repo.name
@@ -449,7 +478,9 @@ def main():
         except Exception as e:
             print(f"  ⚠️  Extraction failed for {repo_name}: {e}")
 
-        member_ids.append(f"{_slug(org_name)}--{_slug(repo_name)}")
+        new_id = f"{_slug(org_name)}--{_slug(repo_name)}"
+        if new_id not in member_ids:
+            member_ids.append(new_id)
         print(f"ORG_REPO_DONE {idx} {len(repos)} {repo_name}")
 
     # Write merge record so dashboard auto-groups the repos

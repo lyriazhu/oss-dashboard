@@ -32,7 +32,9 @@ projects:
     foundation: "Commonhaus Foundation"
     issue_source: jira
     jira_project_key: WFLY
-    jira_base_url: "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
+    # Use the API root URL — not the browser URL — to avoid the v2 probe returning
+    # 404 before the v3 fallback is reached (BUG-20).
+    jira_base_url: "https://issues.redhat.com"
 
   - name: "3scale"
     github_url: "https://github.com/3scale"
@@ -40,11 +42,13 @@ projects:
     is_org: true
     foundation: "Red Hat"
 
-  - name: "Apache Tomcat"
-    github_url: "https://github.com/apache/tomcat"
-    owner: "apache"
-    repo: "tomcat"
-    foundation: "Apache Software Foundation"
+  # NOTE: individual apache/* single-repo entries are intentionally removed here.
+  # The "apache" is_org entry below discovers tomcat, camel, artemis, etc. from
+  # the org automatically — having both caused duplicate project ID collisions
+  # on every _sync_projects_json run (BUG-31).
+  #
+  # Apache Artemis uses Jira for issue tracking; add a per-repo override block
+  # below the is_org entry so extract_org_project.py picks it up (BUG-34).
 
   - name: "strimzi"
     github_url: "https://github.com/strimzi"
@@ -85,6 +89,17 @@ projects:
     owner: "apache"
     is_org: true
     foundation: "Apache Software Foundation"
+
+  # Per-repo Jira override for Apache Artemis — picked up by extract_org_project.py
+  # which prefers per-repo config blocks over the org-level block (BUG-34).
+  - name: "artemis"
+    github_url: "https://github.com/apache/artemis"
+    owner: "apache"
+    repo: "artemis"
+    foundation: "Apache Software Foundation"
+    issue_source: jira
+    jira_project_key: ARTEMIS
+    jira_base_url: "https://issues.apache.org/jira"
 
 extraction:
   # How many quarters of historical data to fetch

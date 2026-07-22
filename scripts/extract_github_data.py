@@ -205,9 +205,15 @@ class GitHubDataExtractor:
         return quarters
 
     def _quarter_label(self, dt: datetime) -> str:
-        """Return quarter label for a datetime (uses the quarter containing the date)."""
-        # For a quarter start/end boundary, label by the quarter that ends at dt
-        # dt is a quarter-start date; label the quarter that precedes it
+        """Return quarter label for the calendar quarter whose LAST day precedes dt.
+
+        dt is always the exclusive upper-boundary of a quarter, i.e. the first day
+        of the next quarter.  Verified boundary cases (BUG-28):
+          datetime(2026, 4, 1)  → "Q1 2026"  (Q1 ends Mar 31)
+          datetime(2026, 7, 1)  → "Q2 2026"  (Q2 ends Jun 30)
+          datetime(2026, 10, 1) → "Q3 2026"  (Q3 ends Sep 30)
+          datetime(2027, 1, 1)  → "Q4 2026"  (Q4 ends Dec 31)
+        """
         label_month = dt.month - 1 if dt.month > 1 else 12
         label_year = dt.year if dt.month > 1 else dt.year - 1
         return f"Q{((label_month - 1) // 3) + 1} {label_year}"
@@ -628,7 +634,9 @@ class GitHubDataExtractor:
 
         merged_contributors = sorted(
             existing_by_login.values(),
-            key=lambda item: item.get("contributions", 0),
+            # contributors from the GitHub API have "contributions"; those sourced
+            # from git history use "commit_count" — fall back gracefully (BUG-27)
+            key=lambda item: item.get("contributions") or item.get("commit_count") or 0,
             reverse=True
         )
 
@@ -666,44 +674,24 @@ class GitHubDataExtractor:
         new_history_rows: List[Dict[str, str]],
         owner: str,
         repo: str,
-        quarters: int = 12
+        quarters: int = 12  # kept for signature compatibility; quarter counts are now computed by extract_commits
     ) -> Dict[str, Any]:
-        """Merge new git-history commits into aggregated commit data (all-time for committers)"""
+        """Merge new git-history commits into existing committer data (all-time).
+
+        Quarter/total_commits fields are intentionally NOT computed here — they
+        are fetched directly from the GitHub API in extract_commits() and injected
+        there, avoiding double-counting (BUG-26).
+        """
         existing_committers = {
             (committer.get("email") or committer.get("login")): dict(committer)
             for committer in existing_data.get("committers", [])
         }
 
-        quarter_dates = self._get_quarter_dates(quarters)
-        quarter_buckets = {
-            self._quarter_label(end_date): {
-                "start_date": start_date.isoformat(),
-                "end_date": end_date.isoformat(),
-                "commit_count": 0,
-                "quarter": self._quarter_label(end_date)
-            }
-            for start_date, end_date in quarter_dates
-        }
-
-        for existing_quarter in existing_data.get("quarters", []):
-            quarter_label = existing_quarter.get("quarter")
-            if quarter_label in quarter_buckets:
-                quarter_buckets[quarter_label]["commit_count"] = existing_quarter.get("commit_count", 0)
-
-        # Process all commits for committers (all-time)
+        # Process new git history rows for committer accumulation only.
+        # Quarter counts come from the GitHub API in extract_commits() and are
+        # assigned there after this function returns — computing them here too
+        # was redundant (BUG-26).
         for row in new_history_rows:
-            try:
-                authored_dt = datetime.fromisoformat(row["authored_at"].replace("Z", "+00:00")).replace(tzinfo=None)
-            except ValueError:
-                continue
-
-            # Update quarter buckets (still quarterly for visualization)
-            for start_date, end_date in quarter_dates:
-                quarter_label = self._quarter_label(end_date)
-                if start_date <= authored_dt <= end_date:
-                    quarter_buckets[quarter_label]["commit_count"] += 1
-                    break
-
             # Update committers (all-time)
             identity = row["identity"]
             profile = self.user_profile_cache.get(identity)
@@ -737,8 +725,6 @@ class GitHubDataExtractor:
         )
 
         return {
-            "total_commits": sum(bucket["commit_count"] for bucket in quarter_buckets.values()),
-            "quarters": list(quarter_buckets.values()),
             "committers": merged_committers,
             "time_scope": {
                 "total_commits": f"last_{quarters}_quarters",
@@ -957,8 +943,10 @@ class GitHubDataExtractor:
                 new_history_rows,
                 owner,
                 repo,
-                quarters
+                quarters,
             )
+            # _merge_commit_data now returns only committer data; inject the
+            # authoritative quarter/total counts from the GitHub API below.
 
             refreshed_quarters = []
             total_commits = 0
@@ -1052,8 +1040,13 @@ class GitHubDataExtractor:
         """Extract issue metrics including monthly and yearly aggregations with incremental updates.
 
         Month-level data: iterates only issues created in the last 12 months (bounded by `since`).
-        Year-level data: uses _count_issues_in_year() which falls back to quarterly sub-queries
+        Year-level data: uses _count_issues_in_year() which falls back to monthly sub-queries
         to work around the GitHub Search API's 1000-result cap.
+
+        Totals:
+          total_open   — live open-issue count from the GitHub API (not the search index).
+          total_closed — derived by summing closed_issue_count across all year buckets.
+          total_issues — total_open + total_closed (always coherent).
 
         Args:
             repos: List of repo dicts with 'owner' and 'repo' keys
@@ -1079,21 +1072,25 @@ class GitHubDataExtractor:
 
             years = self._get_years_since_creation(project_created_at)
 
+            # Always load any existing issues.json so we can preserve the
+            # previously-computed median_resolution_time_days even on a full
+            # re-extraction — the 12-month window may have no newly-closed
+            # issues, which must not erase a valid historical median.
+            existing_data = self._load_json_file(
+                self._project_dir(
+                    project_name,
+                    repo=_first.get("repo"),
+                    owner=_first.get("owner"),
+                ) / "issues.json",
+                {},
+            )
+
             # For incremental runs load existing data; for initial runs start fresh.
             if last_extracted_at:
-                _first = repos[0] if repos else {}
-                existing_data = self._load_json_file(
-                    self._project_dir(
-                        project_name,
-                        repo=_first.get("repo"),
-                        owner=_first.get("owner"),
-                    ) / "issues.json",
-                    {},
-                )
                 issue_data = {
                     "total_open": 0,
-                    "total_closed": existing_data.get("total_closed", 0),
-                    "total_issues": existing_data.get("total_issues", 0),
+                    "total_closed": 0,  # recomputed from year buckets at the end
+                    "total_issues": 0,  # recomputed as total_open + total_closed
                     "median_resolution_time_days": existing_data.get("median_resolution_time_days"),
                     "months": existing_data.get("months", []),
                     "years": existing_data.get("years", []),
@@ -1104,7 +1101,10 @@ class GitHubDataExtractor:
                     "total_open": 0,
                     "total_closed": 0,
                     "total_issues": 0,
-                    "median_resolution_time_days": None,
+                    # Preserve any previously-computed median from disk; a fresh
+                    # extraction only sees the last-12-months window and may find
+                    # no closed issues even for active projects (BUG-14 parity).
+                    "median_resolution_time_days": existing_data.get("median_resolution_time_days"),
                     "months": [],
                     "years": [],
                     "extracted_at": datetime.now().isoformat(),
@@ -1190,11 +1190,22 @@ class GitHubDataExtractor:
                     total_open_count += repo_open_count
                     print(f"    ✓ Open issues: {repo_open_count}")
 
-                    # ── Year counts (quarterly fallback avoids the 1000-cap) ──
+                    # ── Year counts (monthly fallback avoids the 1000-cap) ──
+                    # Always re-count the current year and any year >= last extraction
+                    # year so that newly-filed issues are captured on incremental runs.
+                    # Only skip years that are strictly before the last-extraction year
+                    # and already have a non-zero count.
                     print(f"    📊 Counting issues per year...")
+                    current_year = datetime.now().year
+                    last_extraction_year = since_date.year if since_date else None
                     for year in years:
-                        # Skip years already populated in an incremental run
-                        if since_date and year_data_map[year]["issue_count"] > 0:
+                        # Skip completed past years that were already counted
+                        if (
+                            since_date
+                            and last_extraction_year is not None
+                            and year < last_extraction_year
+                            and year_data_map[year]["issue_count"] > 0
+                        ):
                             continue
                         try:
                             total_q, closed_q = self._count_issues_in_year(owner, repo, year)
@@ -1204,8 +1215,9 @@ class GitHubDataExtractor:
                             print(f"    ⚠️  Count error for {year}: {e}")
 
                     # ── Month-level iteration (bounded: last 12 months only) ──
-                    # `since` limits GitHub to return only issues updated on or
-                    # after that date, keeping the result set small.
+                    # NOTE: GitHub's `since` parameter filters by updated_at, not
+                    # created_at. We additionally filter below by issue_created <
+                    # since_date to avoid double-counting already-counted issues.
                     issues = repository.get_issues(
                         state="all",
                         sort="created",
@@ -1257,38 +1269,47 @@ class GitHubDataExtractor:
                     print(f"  ⚠️  Error processing {owner}/{repo}: {e}")
                     continue
 
-            # Convert month data map to list and calculate medians
+            # Convert month data map to list and calculate medians.
+            # Preserve the existing median when no new resolution times were
+            # added (incremental run with no newly-closed issues in that month).
             issue_data["months"] = []
-            total_issues_from_months = 0
-            total_closed_from_months = 0
             for month_label in sorted(month_data_map.keys()):
                 month_info = month_data_map[month_label]
                 resolution_times = month_info.pop("resolution_times")
-                
-                # Calculate median if we have resolution times
+
                 if resolution_times:
-                    month_info["median_resolution_time_days"] = round(statistics.median(resolution_times), 2)
-                
+                    # New resolution data: recompute the month median
+                    month_info["median_resolution_time_days"] = round(
+                        statistics.median(resolution_times), 2
+                    )
+                elif "median_resolution_time_days" not in month_info:
+                    # No existing median and no new data: write null for schema consistency
+                    month_info["median_resolution_time_days"] = None
+
                 issue_data["months"].append(month_info)
-                total_issues_from_months += month_info["issue_count"]
-                total_closed_from_months += month_info["closed_issue_count"]
-            
+
             # Convert year data map to list
             issue_data["years"] = []
             for year in sorted(year_data_map.keys()):
-                year_info = year_data_map[year]
-                issue_data["years"].append(year_info)
+                issue_data["years"].append(year_data_map[year])
 
-            # Update totals
+            # ── Coherent totals ───────────────────────────────────────────────
+            # total_closed is the authoritative all-time sum from year buckets
+            # (which use the GitHub Search API and survive across incremental runs).
+            # total_open comes from the live API count.
+            # total_issues is always total_open + total_closed.
+            total_closed_all_time = sum(
+                y["closed_issue_count"] for y in issue_data["years"]
+            )
             issue_data["total_open"] = total_open_count
-            issue_data["total_closed"] = total_closed_from_months
-            issue_data["total_issues"] = total_issues_from_months
-            
+            issue_data["total_closed"] = total_closed_all_time
+            issue_data["total_issues"] = total_open_count + total_closed_all_time
+
             if overall_resolution_times:
                 issue_data["median_resolution_time_days"] = round(
                     statistics.median(overall_resolution_times), 2
                 )
-            
+
             print(f"  📈 Total issues: {issue_data['total_issues']} (Open: {issue_data['total_open']}, Closed: {issue_data['total_closed']})")
             
             project_state["issues"] = {"last_extracted_at": datetime.now().isoformat()}
@@ -1383,34 +1404,31 @@ class GitHubDataExtractor:
         return months
     
     def _get_last_n_months(self, n: int = 12) -> List[tuple]:
-        """Generate list of the last N months (default 12) from now going backwards"""
+        """Generate list of the last N calendar months (default 12) going backwards.
+
+        Each tuple is (month_start, month_end) where month_end is always the last
+        second of that calendar month — never datetime.now() — so the boundary is
+        stable and reproducible across re-extractions (BUG-04).
+        """
         months = []
-        now = datetime.now()
-        
-        # Start from the beginning of the current month
-        current_start = datetime(now.year, now.month, 1)
-        
-        # Generate N months going backwards
+        current_start = datetime(datetime.now().year, datetime.now().month, 1)
+
         for _ in range(n):
-            # Calculate end of month (last day of month)
+            # Always use the true end-of-month boundary, not datetime.now()
             if current_start.month == 12:
                 month_end = datetime(current_start.year, 12, 31, 23, 59, 59)
             else:
                 next_month = datetime(current_start.year, current_start.month + 1, 1)
                 month_end = next_month - timedelta(seconds=1)
-            
-            # For current month, don't go beyond now
-            if month_end > now:
-                month_end = now
-            
-            months.insert(0, (current_start, month_end))  # Insert at beginning to maintain chronological order
-            
+
+            months.insert(0, (current_start, month_end))
+
             # Move to previous month
             if current_start.month == 1:
                 current_start = datetime(current_start.year - 1, 12, 1)
             else:
                 current_start = datetime(current_start.year, current_start.month - 1, 1)
-        
+
         return months
     
     def _get_years_since_creation(self, created_at: datetime) -> List[int]:
@@ -1531,11 +1549,18 @@ class GitHubDataExtractor:
                 try:
                     repository = self.github.get_repo(f"{owner}/{repo}")
 
-                    # ── Year counts (quarterly fallback avoids the 1000-cap) ──
+                    # ── Year counts (monthly fallback avoids the 1000-cap) ──
+                    # Apply the same logic as for issues: always re-count the
+                    # current year and any year >= last extraction year (BUG-17).
                     print(f"    📊 Counting PRs per year...")
+                    pr_last_extraction_year = since_date.year if since_date else None
                     for year in years:
-                        # Skip years already populated in an incremental run
-                        if since_date and year_data_map[year]["pr_count"] > 0:
+                        if (
+                            since_date
+                            and pr_last_extraction_year is not None
+                            and year < pr_last_extraction_year
+                            and year_data_map[year]["pr_count"] > 0
+                        ):
                             continue
                         try:
                             total_q, merged_q = self._count_prs_in_year(owner, repo, year)
@@ -1580,8 +1605,15 @@ class GitHubDataExtractor:
                                 month_data_map[month_label]["pr_count"] += 1
 
                                 if pr.merged_at:
+                                    # Use timezone-naive forms for both ends to
+                                    # avoid TypeError when one is tz-aware (BUG-15)
+                                    merged_at_naive = (
+                                        pr.merged_at.replace(tzinfo=None)
+                                        if pr.merged_at.tzinfo
+                                        else pr.merged_at
+                                    )
                                     merge_days = (
-                                        pr.merged_at - pr.created_at
+                                        merged_at_naive - pr_created
                                     ).total_seconds() / 86400
                                     month_data_map[month_label]["merged_pr_count"] += 1
                                     month_data_map[month_label]["merge_times"].append(
@@ -1744,10 +1776,12 @@ class GitHubDataExtractor:
                         release_count += 1
                         continue
                     
-                    # For incremental updates, stop when we reach old releases
+                    # For incremental updates, stop when we reach old releases.
+                    # Compare by date (not datetime) so releases published on the
+                    # same day as the last extraction are not skipped (BUG-30).
                     if last_extracted_date and release.published_at:
                         release_published = release.published_at.replace(tzinfo=None) if release.published_at.tzinfo else release.published_at
-                        if release_published < last_extracted_date:
+                        if release_published.date() < last_extracted_date.date():
                             break
                         
                     published_at = self._safe_isoformat(release.published_at)
@@ -1763,15 +1797,25 @@ class GitHubDataExtractor:
                     new_releases_count += 1
                     release_count += 1
 
-            # Keep only the most recent 20 releases
+            # Sort by published_at descending then keep the 20 most recent.
+            # This ensures cadence computation is always chronologically correct
+            # regardless of insertion order (BUG-29).
+            def _release_sort_key(r: Dict[str, Any]):
+                pa = r.get("published_at") or ""
+                try:
+                    return datetime.fromisoformat(pa.replace("+00:00", "").replace("Z", ""))
+                except (ValueError, AttributeError):
+                    return datetime.min
+
+            release_list.sort(key=_release_sort_key, reverse=True)
             release_list = release_list[:20]
-            
+
             # Recalculate cadence from the release list
             published_dates = []
             for release_info in release_list:
                 if release_info["published_at"]:
                     published_dates.append(datetime.fromisoformat(release_info["published_at"].replace('+00:00', '').replace('Z', '')))
-            
+
             cadence_days = []
             sorted_dates = sorted([dt for dt in published_dates if dt], reverse=True)
             for i in range(len(sorted_dates) - 1):
@@ -2174,14 +2218,17 @@ class GitHubDataExtractor:
         return result
 
     def save_project_data(self, project_name: str, data: Dict[str, Any], data_type: str, repo: str = None, owner: str = None):
-        """Save extracted data to JSON file"""
+        """Save extracted data to JSON file atomically (write-to-tmp + rename).
+
+        Uses _save_json_file so a crash mid-write never leaves a partial file on
+        disk (BUG-32).
+        """
         project_dir = self._project_dir(project_name, repo=repo, owner=owner)
         project_dir.mkdir(exist_ok=True)
-        
+
         output_file = project_dir / f"{data_type}.json"
-        with open(output_file, 'w') as f:
-            json.dump(data, f, indent=2)
-        
+        self._save_json_file(output_file, data)
+
         print(f"✅ Saved {data_type} data to {output_file}")
     
     def _sync_projects_json(self):
@@ -2225,6 +2272,14 @@ class GitHubDataExtractor:
             # and registered individually at extraction time, not at sync time.
             # Skip them here so we don't create a broken entry with repo="".
             if cfg.get("is_org"):
+                # Warn if someone accidentally set both is_org and repo — the
+                # single-repo record will never be emitted (BUG-12).
+                if cfg.get("repo"):
+                    print(
+                        f"⚠️  Config entry '{cfg.get('name', cfg.get('owner', '?'))}' has "
+                        f"both is_org: true and repo: '{cfg['repo']}'. The single-repo "
+                        f"record will NOT be emitted — remove the repo field or remove is_org."
+                    )
                 owner = cfg.get("owner", "")
                 owner_key = owner.lower().replace("_", "-")
 
@@ -2370,14 +2425,15 @@ class GitHubDataExtractor:
             owner = primary_repo['owner']
             repo = primary_repo['repo']
             
-            # Extract all data types
+            # Extract all data types — pass repo= and owner= on every save call
+            # so _project_dir resolves the correct directory (BUG-24).
             metadata = self.extract_project_metadata(owner, repo, project_name=project_name)
             project_created_at = None
             if metadata:
-                self.save_project_data(project_name, metadata, "metadata")
+                self.save_project_data(project_name, metadata, "metadata", repo=repo, owner=owner)
                 # Parse created_at for PR extraction
                 project_created_at = datetime.fromisoformat(metadata['created_at'].replace('+00:00', ''))
-            
+
             # For multi-repo projects, find the earliest creation date
             if len(repos) > 1 and project_created_at:
                 for repo_info in repos[1:]:
@@ -2388,15 +2444,15 @@ class GitHubDataExtractor:
                             project_created_at = repo_created
                     except GithubException as e:
                         print(f"⚠️  Could not get creation date for {repo_info['owner']}/{repo_info['repo']}: {e}")
-            
+
             contributors = self.extract_contributors(owner, repo, project_name)
             if contributors:
-                self.save_project_data(project_name, contributors, "contributors")
-                self.refresh_metadata_companies(project_name)
+                self.save_project_data(project_name, contributors, "contributors", repo=repo, owner=owner)
+                self.refresh_metadata_companies(project_name, repo=repo, owner=owner)
 
             commits = self.extract_commits(owner, repo, project_name)
             if commits:
-                self.save_project_data(project_name, commits, "commits")
+                self.save_project_data(project_name, commits, "commits", repo=repo, owner=owner)
 
             # Route issue extraction: jira, github, or skip
             issue_source = project.get('issue_source', 'github')
@@ -2413,24 +2469,24 @@ class GitHubDataExtractor:
             elif not project.get('skip_issues', False):
                 issues = self.extract_issues(repos, project_created_at, project_name)
                 if issues:
-                    self.save_project_data(project_name, issues, "issues")
+                    self.save_project_data(project_name, issues, "issues", repo=repo, owner=owner)
             else:
                 print(f"⏭️  Skipping issue extraction (project uses external issue tracker)")
-            
+
             # Extract pull requests with new method supporting multiple repos
             if project_created_at:
                 pull_requests = self.extract_pull_requests(repos, project_created_at, project_name)
                 if pull_requests:
-                    self.save_project_data(project_name, pull_requests, "pull_requests")
+                    self.save_project_data(project_name, pull_requests, "pull_requests", repo=repo, owner=owner)
             else:
                 print("⚠️  Skipping pull request extraction - no creation date available")
-            
+
             releases = self.extract_releases(owner, repo, project_name)
             if releases:
-                self.save_project_data(project_name, releases, "releases")
+                self.save_project_data(project_name, releases, "releases", repo=repo, owner=owner)
 
             adopters = self.extract_adopters(owner, repo, project_name)
-            self.save_project_data(project_name, adopters, "adopters")
+            self.save_project_data(project_name, adopters, "adopters", repo=repo, owner=owner)
 
             print(f"\n✅ Completed extraction for {project_name}\n")
             

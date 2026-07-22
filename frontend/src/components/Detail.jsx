@@ -607,7 +607,7 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
                   />
                 )}
                 <p className="chart-cap">
-                  Darker bar = current period · Red = open issues, Blue = closed issues · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
+                  Darker bar = current period · Red = opened, Blue = closed · {showIssueMonthly ? `Last ${d.issueMonthly?.length || 0} months` : 'Total issues per year'}
                   {d.issueMedianResolutionDays != null && (
                     <> · Median resolution time: <strong>{d.issueMedianResolutionDays < 1
                       ? `${Math.round(d.issueMedianResolutionDays * 24)} hrs`

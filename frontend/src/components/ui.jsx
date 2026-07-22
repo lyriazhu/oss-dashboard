@@ -133,7 +133,7 @@ export function StackedBarChart({ values, labels, currentIndex, variant, tooltip
           const h = total === 0 ? 1 : Math.round((total / m) * 100);
           const tooltipText = tooltipFormatter
             ? tooltipFormatter({ value: v, label: labels[i], index: i, total })
-            : `${labels[i]}: ${formatNumber(total)} issues (${formatNumber(v.open || 0)} open, ${formatNumber(v.closed || 0)} closed)`;
+            : `${labels[i]}: ${formatNumber(v.open || 0)} opened, ${formatNumber(v.closed || 0)} closed`;
 
           return (
             <div

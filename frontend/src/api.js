@@ -405,7 +405,7 @@ export function transformProjectData(project, metrics) {
     { l: 'Contributors (YTD)', v: formatNumber(contributorsYtd), h: 'Unique contributors this year' },
     { l: 'Commits (YTD)', v: formatNumber(commitsYtd), h: 'Total commits this year' },
     { l: 'GitHub Stars', v: formatNumber(metadata?.stars), h: `${formatNumber(metadata?.forks)} forks` },
-    { l: 'Open Issues', v: formatNumber(issues?.total_open), h: `Median resolution: ${issues?.median_resolution_time_days != null ? (issues.median_resolution_time_days < 1 ? `${Math.round(issues.median_resolution_time_days * 24)} hrs` : `${issues.median_resolution_time_days.toFixed(1)} days`) : '—'}` },
+    { l: 'Open Issues', v: formatNumber(issues?.total_open), h: 'Currently open' },
     { l: 'Pull Requests (YTD)', v: formatNumber(prYtd), h: `${formatNumber(mergedPrYtd)} merged` },
     { l: 'Releases', v: formatNumber(releases?.total_releases), h: 'Total releases' },
     { l: 'Language', v: metadata?.language || '—', h: metadata?.license || 'No license' },
@@ -568,9 +568,9 @@ export function transformProjectData(project, metrics) {
   const issueYearlyData = issueYears.length > 0
     ? issueYears.map((y, idx, arr) => ({
         y: y.year.toString(),
-        v: y.issue_count || 0,
-        open: (y.issue_count || 0) - (y.closed_issue_count || 0), // Calculate open issues
-        closed: y.closed_issue_count || 0,
+        v: (y.issue_count || 0) + (y.closed_issue_count || 0),
+        open: y.issue_count || 0,   // issues opened that year
+        closed: y.closed_issue_count || 0, // issues closed that year
         c: idx === arr.length - 1, // Mark current year (last in array)
       }))
     : [];
@@ -584,9 +584,9 @@ export function transformProjectData(project, metrics) {
   const issueMonthlyData = sortedIssueMonths.length > 0
     ? sortedIssueMonths.map((m, idx, arr) => ({
         m: m.month, // Keep full format "2026-05"
-        v: m.issue_count || 0,
-        open: (m.issue_count || 0) - (m.closed_issue_count || 0), // Calculate open issues
-        closed: m.closed_issue_count || 0,
+        v: (m.issue_count || 0) + (m.closed_issue_count || 0),
+        open: m.issue_count || 0,   // issues opened that month
+        closed: m.closed_issue_count || 0, // issues closed that month
         c: idx === arr.length - 1, // Mark current month (rightmost)
       }))
     : [];

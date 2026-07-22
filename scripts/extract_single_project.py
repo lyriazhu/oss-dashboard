@@ -285,7 +285,8 @@ def extract_org_project(extractor, project):
             sys.exit(1)
 
     try:
-        org_repos = list(gh_entity.get_repos(type="public"))
+        # Filter forks and archived repos — consistent with extract_org_project.py (BUG-23)
+        org_repos = [r for r in gh_entity.get_repos(type="public") if not r.fork and not r.archived]
     except GithubException as e:
         print(f"❌ Cannot list repos for '{owner}': {e}")
         sys.exit(1)
@@ -417,14 +418,17 @@ def main():
 
     extraction_status = extract_one_repo(extractor, owner, repo, project_name, project)
 
-    # For explicit multi-repo projects handle the extra repos after the primary
+    # For explicit multi-repo projects handle the extra repos after the primary.
+    # Pass a per-repo project_name so each sub-repo has its own _state.json and
+    # incremental extraction timestamps don't bleed across repos (BUG-25).
     if len(repos) > 1:
         for repo_info in repos[1:]:
+            sub_name = f"{project_name}::{repo_info['repo']}"
             extract_one_repo(
                 extractor,
                 repo_info['owner'],
                 repo_info['repo'],
-                project_name,
+                sub_name,
                 project,
             )
 

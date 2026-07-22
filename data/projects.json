@@ -698,7 +698,7 @@
       "org_owner": "apicurio"
     },
     {
-      "id": "apicurio---github",
+      "id": "apicurio--.github",
       "name": ".github",
       "github_url": "https://github.com/Apicurio/.github",
       "owner": "Apicurio",
@@ -746,7 +746,7 @@
       "org_owner": "apicurio"
     },
     {
-      "id": "apicurio---project",
+      "id": "apicurio--.project",
       "name": ".project",
       "github_url": "https://github.com/Apicurio/.project",
       "owner": "Apicurio",

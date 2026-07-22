@@ -42,6 +42,11 @@ def _resolve_project_data_dir(project: Dict[str, Any], data_dir: Path) -> Path:
     1. data_dir field recorded in data/projects.json (stable across renames).
     2. owner--repo slug derived from the project's config fields.
     3. Last resort: display name lowercased with spaces replaced by hyphens.
+
+    Mixed-case owner values (e.g. "Apicurio") are normalised to lowercase when
+    building the slug fallback, matching the convention used everywhere else (BUG-33).
+    When projects.json lookup succeeds the frozen data_dir is used instead so
+    casing differences in config.yaml never matter at runtime.
     """
     projects_file = data_dir / "projects.json"
     owner = project.get("owner", "")
@@ -56,11 +61,26 @@ def _resolve_project_data_dir(project: Dict[str, Any], data_dir: Path) -> Path:
                 for p in records:
                     if p.get("id") == namespaced_id and p.get("data_dir"):
                         return data_dir / p["data_dir"]
+                # Fallback: case-insensitive search through all records (BUG-33)
+                for p in records:
+                    pdir = p.get("data_dir", "")
+                    if pdir and pdir.lower() == f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}":
+                        return data_dir / p["data_dir"]
         except (json.JSONDecodeError, OSError):
             pass
 
     if owner and repo:
-        return data_dir / f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
+        slug = f"{owner.lower().replace('_', '-')}--{repo.lower().replace('_', '-')}"
+        resolved = data_dir / slug
+        if not resolved.exists():
+            # Try a case-insensitive match against existing directories (BUG-33)
+            try:
+                for d in data_dir.iterdir():
+                    if d.is_dir() and d.name.lower() == slug.lower():
+                        return d
+            except OSError:
+                pass
+        return resolved
 
     return data_dir / project.get("name", "unknown").lower().replace(" ", "-")
 
@@ -155,10 +175,14 @@ def aggregate_issue_metrics(normalized_issues: List[Dict[str, Any]]) -> Dict[str
 
         if closed_at:
             total_closed += 1
-            month_data[created_month]["closed_issue_count"] += 1
-            year_data[created_year]["closed_issue_count"] += 1
+            # Bucket closed_issue_count by the month the issue was *resolved*,
+            # not by the month it was created (BUG-05).
+            closed_month = closed_at.strftime("%Y-%m")
+            closed_year = closed_at.year
+            month_data[closed_month]["closed_issue_count"] += 1
+            year_data[closed_year]["closed_issue_count"] += 1
             resolution_days = round((closed_at - created_at).total_seconds() / 86400, 2)
-            month_data[created_month]["resolution_times"].append(resolution_days)
+            month_data[closed_month]["resolution_times"].append(resolution_days)
             all_resolution_times.append(resolution_days)
         else:
             total_open += 1
@@ -174,9 +198,13 @@ def aggregate_issue_metrics(normalized_issues: List[Dict[str, Any]]) -> Dict[str
             "issue_count": bucket["issue_count"],
             "closed_issue_count": bucket["closed_issue_count"],
             "month": month_label,
+            # Always include the key for schema consistency with GitHub path (BUG-03)
+            "median_resolution_time_days": (
+                round(statistics.median(bucket["resolution_times"]), 2)
+                if bucket["resolution_times"]
+                else None
+            ),
         }
-        if bucket["resolution_times"]:
-            month_info["median_resolution_time_days"] = round(statistics.median(bucket["resolution_times"]), 2)
         months.append(month_info)
 
     years = []
@@ -295,14 +323,15 @@ def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
 
     print(f"📥 Fetching Jira issues for project {project_key} from {base}...")
 
-    # Probe v2 first; if it returns 410 (removed) fall back to v3.
+    # Probe v2 first; fall back to v3 on 404 or 410.
+    # Atlassian Cloud instances return 404 (not always 410) when v2 is removed (BUG-19).
     probe = session.get(
         f"{base}/rest/api/2/search",
         params={"jql": jql, "maxResults": 1, "fields": "created"},
         timeout=30,
     )
-    if probe.status_code == 410:
-        print("  ℹ️  REST API v2 has been removed on this instance; switching to v3...")
+    if probe.status_code in (404, 410):
+        print("  ℹ️  REST API v2 unavailable on this instance; switching to v3...")
         return _fetch_jira_issues_v3(session, base, project_key)
 
     probe.raise_for_status()
@@ -332,13 +361,17 @@ def normalize_jira_issues(raw_issues: List[Dict[str, Any]]) -> List[Dict[str, An
 
 
 def save_issue_data(project: Dict[str, Any], issue_data: Dict[str, Any]) -> Path:
+    """Save issues.json atomically to avoid partial writes on crash."""
     data_dir = Path(__file__).parent.parent / "data"
     project_dir = _resolve_project_data_dir(project, data_dir)
     project_dir.mkdir(parents=True, exist_ok=True)
     output_file = project_dir / "issues.json"
 
-    with open(output_file, "w") as f:
+    # Atomic write: write to a tmp file then rename (BUG-32 parity with GitHub path)
+    tmp = output_file.with_suffix(".json.tmp")
+    with open(tmp, "w") as f:
         json.dump(issue_data, f, indent=2)
+    tmp.replace(output_file)
 
     return output_file
 
