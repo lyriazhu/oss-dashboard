@@ -679,7 +679,7 @@
 
   /* Inline edit — name and foundation cells in the communities table */
   .inline-edit-text{
-    display:block; min-width:2rem;
+    display:inline; min-width:2rem;
   }
   .inline-edit-text--editable{
     cursor:text;

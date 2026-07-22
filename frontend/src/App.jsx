@@ -952,20 +952,7 @@ export default function App() {
       return d._allMemberKeys || d._mergedFrom.map((m) => m.key);
     });
 
-    // Carry forward a custom name only when exactly one existing named group is
-    // being expanded — i.e. the user is adding more repos to an already-named
-    // group.  If two named groups are merged together, or if everything comes
-    // from individual repos, fall back to the default "A + B + C" name so the
-    // name is not silently inherited from an arbitrary group.
-    const existingMergedGroups = selectedKeysList.map((k) => data[k]).filter((d) => d?._mergedFrom);
-    const inheritedName = (() => {
-      if (existingMergedGroups.length !== 1) return null;
-      const group = existingMergedGroups[0];
-      const defaultName = group._mergedFrom.map((e) => e.data.name).join(' + ');
-      return group.name !== defaultName ? group.name : null;
-    })();
-
-    const merged = buildMergedEntry(flatEntries, { customName: inheritedName });
+    const merged = buildMergedEntry(flatEntries);
 
     // Store all underlying atomic keys so persistMerges writes real backend IDs
     // to merges.json even when some members are themselves merged groups.
