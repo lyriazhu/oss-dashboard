@@ -82,7 +82,7 @@
       "location": null,
       "email": "josemigallas@gmail.com",
       "profile_url": null,
-      "commit_count": 5482
+      "commit_count": 5483
     },
     {
       "login": "Marta Noya",
@@ -991,7 +991,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-21T12:20:42.955942",
+  "extracted_at": "2026-07-22T12:34:26.180597",
   "years": [
     {
       "year": 2017,
