@@ -257,18 +257,18 @@
       "zregvart",
       "zschwarz"
     ],
-    "last_extracted_at": "2026-07-21T12:32:38.846921"
+    "last_extracted_at": "2026-07-22T14:16:13.808649"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-21T12:32:45.818025"
+    "last_git_sync_at": "2026-07-22T14:16:22.425427"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-21T12:34:07.068534"
+    "last_extracted_at": "2026-07-22T14:18:10.077529"
   },
   "issues": {
-    "last_extracted_at": "2026-07-21T12:34:05.366761"
+    "last_extracted_at": null
   },
   "releases": {
-    "last_extracted_at": "2026-07-21T13:10:04.301130"
+    "last_extracted_at": "2026-07-22T14:18:24.729050"
   }
 }

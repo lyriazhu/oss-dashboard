@@ -3,10 +3,10 @@
   "full_name": "apache/tomcat",
   "description": "Apache Tomcat",
   "created_at": "2011-10-01T07:00:19+00:00",
-  "updated_at": "2026-07-14T05:06:08+00:00",
-  "stars": 8200,
-  "forks": 5378,
-  "watchers": 8200,
+  "updated_at": "2026-07-22T15:49:19+00:00",
+  "stars": 8212,
+  "forks": 5383,
+  "watchers": 8212,
   "open_issues": 31,
   "language": "Java",
   "topics": [
@@ -23,33 +23,33 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 2987,
-      "percentage": 58.31
+      "commits": 2995,
+      "percentage": 58.37
     },
     {
       "company": "Broadcom - Tanzu",
       "commits": 1115,
-      "percentage": 21.76
+      "percentage": 21.73
     },
     {
       "company": "Vmware",
       "commits": 391,
-      "percentage": 7.63
+      "percentage": 7.62
     },
     {
       "company": "Red Hat, Inc.",
       "commits": 129,
-      "percentage": 2.52
+      "percentage": 2.51
     },
     {
       "company": "Chadis, Inc.",
       "commits": 128,
-      "percentage": 2.5
+      "percentage": 2.49
     },
     {
       "company": "Ibm / Red Hat",
       "commits": 114,
-      "percentage": 2.23
+      "percentage": 2.22
     },
     {
       "company": "Apache",
@@ -72,5 +72,5 @@
       "percentage": 0.31
     }
   ],
-  "extracted_at": "2026-07-14T10:48:41.887869"
+  "extracted_at": "2026-07-22T14:17:06.849173"
 }

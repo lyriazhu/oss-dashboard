@@ -2,128 +2,9 @@
   "total_releases": 20,
   "recent_releases": [
     {
-      "tag_name": "2.31.2",
-      "name": "2.31.2",
-      "published_at": "2023-10-27T10:14:19+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.32.0",
-      "name": "2.32.0",
-      "published_at": "2024-01-24T19:21:07+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.33.0",
-      "name": "2.33.0",
-      "published_at": "2024-03-19T20:21:32+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.34.0",
-      "name": "2.34.0",
-      "published_at": "2024-05-29T16:13:16+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.35.0",
-      "name": "2.35.0",
-      "published_at": "2024-06-12T15:58:52+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.36.0",
-      "name": "2.36.0",
-      "published_at": "2024-07-25T17:47:09+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.37.0",
-      "name": "2.37.0",
-      "published_at": "2024-08-16T14:23:17+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.38.0",
-      "name": "2.38.0",
-      "published_at": "2024-10-16T15:08:10+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.39.0",
-      "name": "2.39.0",
-      "published_at": "2024-12-16T15:19:43+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.40.0",
-      "name": "2.40.0",
-      "published_at": "2025-03-13T19:13:00+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.41.0",
-      "name": "2.41.0",
-      "published_at": "2025-04-23T20:58:23+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.42.0",
-      "name": "2.42.0",
-      "published_at": "2025-07-14T19:03:02+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.43.0",
-      "name": "2.43.0",
-      "published_at": "2025-10-13T15:12:34+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.44.0",
-      "name": "2.44.0",
-      "published_at": "2025-10-29T11:13:53+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.50.0",
-      "name": "2.50.0",
-      "published_at": "2026-01-15T17:47:29+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.51.0",
-      "name": "2.51.0",
-      "published_at": "2026-02-06T18:02:23+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.52.0",
-      "name": "2.52.0",
-      "published_at": "2026-03-02T15:46:16+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.53.0",
-      "name": "2.53.0",
-      "published_at": "2026-03-16T23:36:04+00:00",
+      "tag_name": "2.55.0",
+      "name": "2.55.0",
+      "published_at": "2026-06-23T17:57:33+00:00",
       "prerelease": false,
       "draft": false
     },
@@ -135,13 +16,132 @@
       "draft": false
     },
     {
-      "tag_name": "2.55.0",
-      "name": "2.55.0",
-      "published_at": "2026-06-23T17:57:33+00:00",
+      "tag_name": "2.53.0",
+      "name": "2.53.0",
+      "published_at": "2026-03-16T23:36:04+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.52.0",
+      "name": "2.52.0",
+      "published_at": "2026-03-02T15:46:16+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.51.0",
+      "name": "2.51.0",
+      "published_at": "2026-02-06T18:02:23+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.50.0",
+      "name": "2.50.0",
+      "published_at": "2026-01-15T17:47:29+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.44.0",
+      "name": "2.44.0",
+      "published_at": "2025-10-29T11:13:53+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.43.0",
+      "name": "2.43.0",
+      "published_at": "2025-10-13T15:12:34+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.42.0",
+      "name": "2.42.0",
+      "published_at": "2025-07-14T19:03:02+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.41.0",
+      "name": "2.41.0",
+      "published_at": "2025-04-23T20:58:23+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.40.0",
+      "name": "2.40.0",
+      "published_at": "2025-03-13T19:13:00+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.39.0",
+      "name": "2.39.0",
+      "published_at": "2024-12-16T15:19:43+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.38.0",
+      "name": "2.38.0",
+      "published_at": "2024-10-16T15:08:10+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.37.0",
+      "name": "2.37.0",
+      "published_at": "2024-08-16T14:23:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.36.0",
+      "name": "2.36.0",
+      "published_at": "2024-07-25T17:47:09+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.35.0",
+      "name": "2.35.0",
+      "published_at": "2024-06-12T15:58:52+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.34.0",
+      "name": "2.34.0",
+      "published_at": "2024-05-29T16:13:16+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.33.0",
+      "name": "2.33.0",
+      "published_at": "2024-03-19T20:21:32+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.32.0",
+      "name": "2.32.0",
+      "published_at": "2024-01-24T19:21:07+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.31.2",
+      "name": "2.31.2",
+      "published_at": "2023-10-27T10:14:19+00:00",
       "prerelease": false,
       "draft": false
     }
   ],
   "median_days_between_releases": 55,
-  "extracted_at": "2026-07-21T13:10:04.301087"
+  "extracted_at": "2026-07-22T14:18:24.729023"
 }

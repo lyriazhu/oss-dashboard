@@ -160,18 +160,18 @@
       "zsrv",
       "zzk0"
     ],
-    "last_extracted_at": "2026-07-14T10:48:52.139900"
+    "last_extracted_at": "2026-07-22T14:17:18.187450"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-14T10:49:00.498871"
+    "last_git_sync_at": "2026-07-22T14:17:27.697745"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-14T10:50:30.319364"
+    "last_extracted_at": "2026-07-22T14:20:17.712396"
   },
   "issues": {
-    "last_extracted_at": "2026-07-14T10:50:19.147719"
+    "last_extracted_at": "2026-07-22T14:18:53.083052"
   },
   "releases": {
-    "last_extracted_at": "2026-07-14T10:50:41.864102"
+    "last_extracted_at": "2026-07-22T14:20:29.493561"
   }
 }

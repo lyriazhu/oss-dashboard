@@ -3,11 +3,11 @@
   "full_name": "apache/artemis",
   "description": "Apache Artemis",
   "created_at": "2015-05-22T07:00:05+00:00",
-  "updated_at": "2026-07-21T05:32:30+00:00",
+  "updated_at": "2026-07-22T02:14:08+00:00",
   "stars": 1033,
   "forks": 954,
   "watchers": 1033,
-  "open_issues": 32,
+  "open_issues": 33,
   "language": "Java",
   "topics": [
     "java",
@@ -27,7 +27,7 @@
   "license": "Apache License 2.0",
   "homepage": "https://artemis.apache.org",
   "has_wiki": false,
-  "has_discussions": false,
+  "has_discussions": null,
   "top_contributing_companies": [
     {
       "company": "Ibm",
@@ -80,5 +80,5 @@
       "percentage": 0.38
     }
   ],
-  "extracted_at": "2026-07-21T12:32:31.207321"
+  "extracted_at": "2026-07-22T14:16:04.724365"
 }

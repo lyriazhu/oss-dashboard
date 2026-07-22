@@ -758,38 +758,6 @@
       "org_owner": "apicurio"
     },
     {
-      "id": "apache--camel",
-      "name": "Apache Camel",
-      "github_url": "https://github.com/apache/camel",
-      "owner": "apache",
-      "repo": "camel",
-      "foundation": "Apache Software Foundation",
-      "website": "https://camel.apache.org",
-      "data_dir": "apache--camel",
-      "issue_source": "jira",
-      "jira_project_key": "CAMEL",
-      "jira_base_url": "https://issues.apache.org/jira",
-      "enabled": true,
-      "is_org": true,
-      "org_owner": "apache"
-    },
-    {
-      "id": "apache--artemis",
-      "name": "Apache Artemis",
-      "owner": "apache",
-      "repo": "artemis",
-      "foundation": "Apache Software Foundation",
-      "website": "https://activemq.apache.org/components/artemis/",
-      "enabled": true,
-      "github_url": "https://github.com/apache/artemis",
-      "data_dir": "apache--artemis",
-      "issue_source": "jira",
-      "jira_project_key": "ARTEMIS",
-      "jira_base_url": "https://issues.apache.org/jira",
-      "is_org": true,
-      "org_owner": "apache"
-    },
-    {
       "id": "keycloak--keycloak",
       "name": "Keycloak",
       "github_url": "https://github.com/keycloak/keycloak",
@@ -833,18 +801,7 @@
       "github_url": "https://github.com/wildfly/wildfly",
       "issue_source": "jira",
       "jira_project_key": "WFLY",
-      "jira_base_url": "https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=project%20%3D%20WFLY%20ORDER%20BY%20cf%5B10019%5D%20ASC"
-    },
-    {
-      "id": "apache--tomcat",
-      "name": "Apache Tomcat",
-      "owner": "apache",
-      "repo": "tomcat",
-      "foundation": "Apache Software Foundation",
-      "website": "https://tomcat.apache.org/",
-      "enabled": true,
-      "github_url": "https://github.com/apache/tomcat",
-      "data_dir": "apache--tomcat"
+      "jira_base_url": "https://issues.redhat.com"
     },
     {
       "id": "quarkiverse--quarkiverse",
@@ -855,7 +812,43 @@
       "enabled": true,
       "github_url": "https://github.com/quarkiverse/quarkiverse",
       "data_dir": "quarkiverse--quarkiverse"
+    },
+    {
+      "id": "apache--artemis",
+      "name": "Apache Artemis",
+      "owner": "apache",
+      "repo": "artemis",
+      "foundation": "Independent",
+      "enabled": true,
+      "github_url": "https://github.com/apache/artemis",
+      "data_dir": "apache--artemis",
+      "issue_source": "jira",
+      "jira_project_key": "ARTEMIS",
+      "jira_base_url": "https://issues.apache.org/jira"
+    },
+    {
+      "id": "apache--tomcat",
+      "name": "Apache Tomcat",
+      "owner": "apache",
+      "repo": "tomcat",
+      "foundation": "Independent",
+      "enabled": true,
+      "github_url": "https://github.com/apache/tomcat",
+      "data_dir": "apache--tomcat"
+    },
+    {
+      "id": "apache--camel",
+      "name": "Apache Camel",
+      "owner": "apache",
+      "repo": "camel",
+      "foundation": "Independent",
+      "enabled": true,
+      "github_url": "https://github.com/apache/camel",
+      "data_dir": "apache--camel",
+      "issue_source": "jira",
+      "jira_project_key": "CAMEL",
+      "jira_base_url": "https://issues.apache.org/jira"
     }
   ],
-  "last_updated": "2026-07-21T17:25:20.711125Z"
+  "last_updated": "2026-07-22T18:26:42.799885Z"
 }

@@ -1,79 +1,4 @@
 {
-  "total_commits": 3262,
-  "quarters": [
-    {
-      "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-10-01T00:00:00",
-      "commit_count": 43,
-      "quarter": "Q3 2026"
-    },
-    {
-      "start_date": "2026-04-01T00:00:00",
-      "end_date": "2026-07-01T00:00:00",
-      "commit_count": 599,
-      "quarter": "Q2 2026"
-    },
-    {
-      "start_date": "2026-01-01T00:00:00",
-      "end_date": "2026-04-01T00:00:00",
-      "commit_count": 232,
-      "quarter": "Q1 2026"
-    },
-    {
-      "start_date": "2025-10-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "commit_count": 261,
-      "quarter": "Q4 2025"
-    },
-    {
-      "start_date": "2025-07-01T00:00:00",
-      "end_date": "2025-10-01T00:00:00",
-      "commit_count": 272,
-      "quarter": "Q3 2025"
-    },
-    {
-      "start_date": "2025-04-01T00:00:00",
-      "end_date": "2025-07-01T00:00:00",
-      "commit_count": 180,
-      "quarter": "Q2 2025"
-    },
-    {
-      "start_date": "2025-01-01T00:00:00",
-      "end_date": "2025-04-01T00:00:00",
-      "commit_count": 299,
-      "quarter": "Q1 2025"
-    },
-    {
-      "start_date": "2024-10-01T00:00:00",
-      "end_date": "2025-01-01T00:00:00",
-      "commit_count": 325,
-      "quarter": "Q4 2024"
-    },
-    {
-      "start_date": "2024-07-01T00:00:00",
-      "end_date": "2024-10-01T00:00:00",
-      "commit_count": 244,
-      "quarter": "Q3 2024"
-    },
-    {
-      "start_date": "2024-04-01T00:00:00",
-      "end_date": "2024-07-01T00:00:00",
-      "commit_count": 280,
-      "quarter": "Q2 2024"
-    },
-    {
-      "start_date": "2024-01-01T00:00:00",
-      "end_date": "2024-04-01T00:00:00",
-      "commit_count": 251,
-      "quarter": "Q1 2024"
-    },
-    {
-      "start_date": "2023-10-01T00:00:00",
-      "end_date": "2024-01-01T00:00:00",
-      "commit_count": 276,
-      "quarter": "Q4 2023"
-    }
-  ],
   "committers": [
     {
       "login": "Mark Thomas",
@@ -82,7 +7,7 @@
       "location": null,
       "email": "markt@apache.org",
       "profile_url": null,
-      "commit_count": 60352
+      "commit_count": 60409
     },
     {
       "login": "remm",
@@ -91,7 +16,7 @@
       "location": null,
       "email": "remm@apache.org",
       "profile_url": null,
-      "commit_count": 6800
+      "commit_count": 6832
     },
     {
       "login": "Konstantin Kolinko",
@@ -1279,7 +1204,7 @@
       "location": null,
       "email": "claude@renegat.net",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 6
     },
     {
       "login": "chenjipeng",
@@ -2209,6 +2134,15 @@
       "commit_count": 4
     },
     {
+      "login": "Y charan",
+      "name": "Y charan",
+      "company": "Unknown",
+      "location": null,
+      "email": "ycharan.mvjce@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
       "login": "CloudWise-Lukemiao",
       "name": "CloudWise-Lukemiao",
       "company": "Unknown",
@@ -2223,15 +2157,6 @@
       "company": "Unknown",
       "location": null,
       "email": "sutherland.coty@gmail.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Y charan",
-      "name": "Y charan",
-      "company": "Unknown",
-      "location": null,
-      "email": "ycharan.mvjce@gmail.com",
       "profile_url": null,
       "commit_count": 3
     },
@@ -3622,6 +3547,15 @@
       "commit_count": 2
     },
     {
+      "login": "HwangRock",
+      "name": "HwangRock",
+      "company": "Unknown",
+      "location": null,
+      "email": "157935545+hwangrock@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
       "login": "Kim Jun Woo",
       "name": "Kim Jun Woo",
       "company": "Unknown",
@@ -3636,15 +3570,6 @@
       "company": "Unknown",
       "location": null,
       "email": "yukitidev@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "HwangRock",
-      "name": "HwangRock",
-      "company": "Unknown",
-      "location": null,
-      "email": "157935545+hwangrock@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 1
     },
@@ -5527,7 +5452,81 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-14T10:49:00.498863",
+  "extracted_at": "2026-07-22T14:17:27.697735",
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 65,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 599,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 232,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 261,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 272,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 180,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 299,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 325,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 244,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 280,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 251,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 276,
+      "quarter": "Q4 2023"
+    }
+  ],
   "years": [
     {
       "year": 2005,
@@ -5636,8 +5635,9 @@
     },
     {
       "year": 2026,
-      "commit_count": 3518,
+      "commit_count": 3607,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 3284
 }
