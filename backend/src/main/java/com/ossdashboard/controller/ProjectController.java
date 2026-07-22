@@ -35,7 +35,7 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<List<Project>> getAllProjects() {
         try {
-            log.info("Fetching all projects");
+            log.debug("Fetching all projects");
             List<Project> projects = dataService.getAllProjects();
             return ResponseEntity.ok(projects);
         } catch (IOException e) {
@@ -51,7 +51,7 @@ public class ProjectController {
     @GetMapping("/{projectId}")
     public ResponseEntity<Project> getProject(@PathVariable String projectId) {
         try {
-            log.info("Fetching project: {}", projectId);
+            log.debug("Fetching project: {}", projectId);
             Project project = dataService.getProjectById(projectId);
             
             if (project == null) {
@@ -72,7 +72,7 @@ public class ProjectController {
     @GetMapping("/{projectId}/metrics")
     public ResponseEntity<ProjectMetrics> getProjectMetrics(@PathVariable String projectId) {
         try {
-            log.info("Fetching metrics for project: {}", projectId);
+            log.debug("Fetching metrics for project: {}", projectId);
             ProjectMetrics metrics = dataService.getProjectMetrics(projectId);
             
             if (metrics == null) {
@@ -93,7 +93,7 @@ public class ProjectController {
     @GetMapping("/{projectId}/metadata")
     public ResponseEntity<ProjectMetadata> getProjectMetadata(@PathVariable String projectId) {
         try {
-            log.info("Fetching metadata for project: {}", projectId);
+            log.debug("Fetching metadata for project: {}", projectId);
             ProjectMetadata metadata = dataService.getProjectMetadata(projectId);
             
             if (metadata == null) {
@@ -114,7 +114,7 @@ public class ProjectController {
     @GetMapping("/{projectId}/contributors")
     public ResponseEntity<ContributorData> getProjectContributors(@PathVariable String projectId) {
         try {
-            log.info("Fetching contributors for project: {}", projectId);
+            log.debug("Fetching contributors for project: {}", projectId);
             ContributorData contributors = dataService.getProjectContributors(projectId);
             
             if (contributors == null) {

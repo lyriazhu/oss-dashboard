@@ -82,7 +82,7 @@ def extract_one_repo(extractor, owner, repo, project_name, project):
         try:
             jira_script = Path(__file__).parent / "extract_jira_issues.py"
             jira_result = subprocess.run(
-                [sys.executable, str(jira_script), project_name],
+                [sys.executable, "-u", str(jira_script), project_name],
                 cwd=str(Path(__file__).parent),
                 check=False,
             )

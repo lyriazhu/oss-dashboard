@@ -765,6 +765,18 @@
     "enabled" : true,
     "github_url" : "https://github.com/apache/tomcat",
     "data_dir" : "apache--tomcat"
+  }, {
+    "id" : "apache--camel",
+    "name" : "Apache Camel",
+    "owner" : "apache",
+    "repo" : "camel",
+    "foundation" : "Independent",
+    "enabled" : true,
+    "github_url" : "https://github.com/apache/camel",
+    "data_dir" : "apache--camel",
+    "issue_source" : "jira",
+    "jira_project_key" : "CAMEL",
+    "jira_base_url" : "https://issues.apache.org/jira"
   } ],
-  "last_updated" : "2026-07-22T18:42:23.847278Z"
+  "last_updated" : "2026-07-22T20:05:27.195368Z"
 }

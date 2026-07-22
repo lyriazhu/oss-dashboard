@@ -17,7 +17,6 @@ from typing import Dict, List, Any, Optional, Set
 from collections import defaultdict
 
 from github import Github, GithubException
-from tqdm import tqdm
 import time
 
 
@@ -266,19 +265,25 @@ class GitHubDataExtractor:
 
         try:
             if repo_path.exists():
+                print(f"  ⬇️  Updating local git cache for {owner}/{repo} (git fetch)…")
+                sys.stdout.flush()
                 subprocess.run(
                     ["git", "-C", str(repo_path), "fetch", "--all", "--prune"],
                     check=True,
                     capture_output=True,
                     text=True
                 )
+                print(f"  ✓ Git cache updated for {owner}/{repo}")
             else:
+                print(f"  ⬇️  Cloning {owner}/{repo} to local cache (this may take several minutes for large repos)…")
+                sys.stdout.flush()
                 subprocess.run(
                     ["git", "clone", "--mirror", repo_url, str(repo_path)],
                     check=True,
                     capture_output=True,
                     text=True
                 )
+                print(f"  ✓ Git clone complete for {owner}/{repo}")
             return repo_path
         except (subprocess.CalledProcessError, FileNotFoundError) as e:
             print(f"⚠️  Unable to prepare local git cache for {owner}/{repo}: {e}")
@@ -832,7 +837,8 @@ class GitHubDataExtractor:
             new_or_updated_contributors = []
             current_logins = set()
             
-            for contributor in tqdm(contributors, desc="Processing GitHub contributors"):
+            print(f"  ℹ️  Fetching contributor profiles from GitHub API…")
+            for contributor in contributors:
                 try:
                     current_logins.add(contributor.login)
 
@@ -950,7 +956,9 @@ class GitHubDataExtractor:
 
             refreshed_quarters = []
             total_commits = 0
-            for start_date, end_date in tqdm(quarter_dates, desc="Processing quarters"):
+            for i, (start_date, end_date) in enumerate(quarter_dates, 1):
+                quarter_label = self._quarter_label(end_date)
+                print(f"  📅 Commit counts: {quarter_label} ({i}/{len(quarter_dates)})…")
                 try:
                     commits = repository.get_commits(since=start_date, until=end_date)
                     commit_count = commits.totalCount
@@ -958,7 +966,7 @@ class GitHubDataExtractor:
                         "start_date": start_date.isoformat(),
                         "end_date": end_date.isoformat(),
                         "commit_count": commit_count,
-                        "quarter": self._quarter_label(end_date)
+                        "quarter": quarter_label,
                     })
                     total_commits += commit_count
                 except (GithubException, IndexError) as e:
@@ -1225,12 +1233,9 @@ class GitHubDataExtractor:
                         since=month_since,
                     )
 
+                    print(f"    ℹ️  Iterating recent issues for {owner}/{repo}…")
                     issue_count = 0
-                    for issue in tqdm(
-                        issues,
-                        desc=f"    Processing recent issues from {owner}/{repo}",
-                        leave=False,
-                    ):
+                    for issue in issues:
                         # Skip pull requests
                         if issue.pull_request is not None:
                             continue
@@ -1457,6 +1462,7 @@ class GitHubDataExtractor:
         """
         print(f"🔀 Extracting pull requests for {len(repos)} repo(s)...")
 
+        pr_data: Dict[str, Any] = {}
         try:
             _first = repos[0] if repos else {}
             project_state = self._load_project_state(project_name, repo=_first.get("repo"), owner=_first.get("owner"))
@@ -1570,7 +1576,7 @@ class GitHubDataExtractor:
                             year_data_map[year]["pr_count"] = total_q
                             year_data_map[year]["merged_pr_count"] = merged_q
                             print(f"    ✓ {year}: {total_q} PRs ({merged_q} merged)")
-                        except GithubException as e:
+                        except Exception as e:
                             print(f"    ⚠️  Count error for {year}: {e}")
 
                     # Flush year counts to disk immediately so the backend shows
@@ -1595,12 +1601,9 @@ class GitHubDataExtractor:
                         direction="desc",
                     )
 
+                    print(f"    ℹ️  Iterating recent PRs for {owner}/{repo}…")
                     pr_count = 0
-                    for pr in tqdm(
-                        pulls,
-                        desc=f"    Processing recent PRs from {owner}/{repo}",
-                        leave=False,
-                    ):
+                    for pr in pulls:
                         pr_created = (
                             pr.created_at.replace(tzinfo=None)
                             if pr.created_at.tzinfo
@@ -1677,7 +1680,10 @@ class GitHubDataExtractor:
             
         except Exception as e:
             print(f"❌ Error extracting pull requests: {e}")
-            return {}
+            # Return whatever partial data was accumulated so the caller can still
+            # persist it and mark the extraction as partially successful, rather
+            # than discarding everything on a single failure (e.g. rate-limit mid-run).
+            return pr_data if pr_data.get("years") or pr_data.get("months") else {}
     
     # Regex patterns that identify a stable (non-prerelease) git tag.
     # Each pattern is tried in order; the first match wins.
@@ -2477,7 +2483,7 @@ class GitHubDataExtractor:
                 print(f"  ℹ️  Running Jira issue extraction for {project_name}...")
                 jira_script = Path(__file__).parent / "extract_jira_issues.py"
                 jira_result = subprocess.run(
-                    [sys.executable, str(jira_script), project_name],
+                    [sys.executable, "-u", str(jira_script), project_name],
                     cwd=str(Path(__file__).parent),
                     check=False,
                 )

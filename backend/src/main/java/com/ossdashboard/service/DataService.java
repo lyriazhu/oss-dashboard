@@ -66,7 +66,7 @@ public class DataService {
      */
     public List<Project> getAllProjects() throws IOException {
         Path projectsFile = Paths.get(dataDirectory, "projects.json");
-        log.info("Reading projects from: {}", projectsFile.toAbsolutePath());
+        log.debug("Reading projects from: {}", projectsFile.toAbsolutePath());
         
         JsonNode root = objectMapper.readTree(projectsFile.toFile());
         JsonNode projectsNode = root.get("projects");
@@ -103,7 +103,7 @@ public class DataService {
         }
 
         Path projectDir = Paths.get(dataDirectory, getProjectDirectoryName(projectId));
-        log.info("Looking for project data in directory: {}", projectDir.toAbsolutePath());
+        log.debug("Looking for project data in directory: {}", projectDir.toAbsolutePath());
         
         ProjectMetrics metrics = new ProjectMetrics();
         metrics.setProjectId(projectId);
@@ -198,7 +198,7 @@ public class DataService {
         try {
             File file = directory.resolve(filename).toFile();
             if (!file.exists()) {
-                log.warn("File not found: {}", file.getAbsolutePath());
+                log.debug("File not found: {}", file.getAbsolutePath());
                 return null;
             }
             return objectMapper.readValue(file, valueType);
@@ -1204,6 +1204,7 @@ public class DataService {
         boolean isOrgRepo = project.getOrgOwner() != null && !project.getOrgOwner().isBlank();
         List<String> command = new java.util.ArrayList<>(java.util.Arrays.asList(
             python3,
+            "-u",
             extractScript.toString(),
             isOrgRepo ? project.getOrgOwner() : project.getName()
         ));
@@ -1234,7 +1235,7 @@ public class DataService {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         logLines.add(line);
-                        log.debug("[extraction {}] {}", projectId, line);
+                        log.info("[extraction {}] {}", projectId, line);
                     }
                 }
                 int exitCode = process.waitFor();
@@ -1278,7 +1279,7 @@ public class DataService {
 
         // Build command — pass issue scope flag if relevant
         java.util.List<String> cmd = new java.util.ArrayList<>(java.util.Arrays.asList(
-            python3, orgScript.toString(), orgName
+            python3, "-u", orgScript.toString(), orgName
         ));
         String issueGithubUrl = project.getIssueGithubUrl();
         if ("__all__".equals(issueGithubUrl)) {
@@ -1310,7 +1311,7 @@ public class DataService {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         logLines.add(line);
-                        log.debug("[org-extraction {}] {}", projectId, line);
+                        log.info("[org-extraction {}] {}", projectId, line);
                     }
                 }
                 int exitCode = process.waitFor();
@@ -1345,7 +1346,7 @@ public class DataService {
             return;
         }
         String python3 = resolvePython3();
-        ProcessBuilder pb = new ProcessBuilder(python3, cveScript.toString(), projectName);
+        ProcessBuilder pb = new ProcessBuilder(python3, "-u", cveScript.toString(), projectName);
         pb.directory(scriptsDir.toFile());
         pb.redirectErrorStream(true);
         try {
