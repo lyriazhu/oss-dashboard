@@ -64,20 +64,6 @@ projects:
     foundation: "Independent"
     issue_scope: all
 
-  - name: "kroxylicious"
-    github_url: "https://github.com/kroxylicious"
-    owner: "kroxylicious"
-    is_org: true
-    foundation: "Independent"
-    issue_scope: all
-
-  - name: "Apicurio"
-    github_url: "https://github.com/Apicurio"
-    owner: "Apicurio"
-    is_org: true
-    foundation: "Independent"
-    issue_scope: all
-
   - name: "Quarkiverse"
     github_url: "https://github.com/quarkiverse/quarkiverse"
     owner: "quarkiverse"
@@ -112,15 +98,16 @@ projects:
     jira_project_key: CAMEL
     jira_base_url: "https://issues.apache.org/jira"
 
-extraction:
-  # How many quarters of historical data to fetch
-  quarters_back: 12
 
-  # Rate limiting (requests per hour)
-  rate_limit: 5000
 
-  # Retry settings
-  max_retries: 3
-  retry_delay: 5
+  - name: "kroxylicious"
+    github_url: "https://github.com/kroxylicious"
+    owner: "kroxylicious"
+    is_org: true
+    foundation: "Independent"
 
-# Made with Bob
+  - name: "Apicurio"
+    github_url: "https://github.com/Apicurio"
+    owner: "Apicurio"
+    is_org: true
+    foundation: "Independent"

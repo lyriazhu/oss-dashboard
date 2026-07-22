@@ -54,39 +54,42 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, found
   // these are the complete sets from git history and support accurate cross-repo
   // deduplication.  Falls back to summing per-repo totals when the identity lists
   // are absent (data extracted before this feature was added).
-  const allTimeContributorCount = (() => {
-    const hasIdentitySets = communities.some((c) => c._rawContributorsAllTimeLogins != null);
-    if (!hasIdentitySets) {
-      // No identity lists available: sum per-repo totals (may overcount cross-repo contributors)
-      return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsAllTime), 0);
-    }
-    const allTimeSet = new Set();
-    for (const c of communities) {
-      for (const identity of (c._rawContributorsAllTimeLogins || [])) {
+  // NOTE: a community entry may itself be a merged group whose _rawContributorsAllTimeLogins
+  // is only the first member's list.  We treat a non-null list as a signal that identity
+  // data is available but always union ALL entries' lists to get the correct full set.
+  const allTimeSet = new Set();
+  let hasAllTimeIdentitySets = false;
+  for (const c of communities) {
+    if (c._rawContributorsAllTimeLogins != null) {
+      hasAllTimeIdentitySets = true;
+      for (const identity of c._rawContributorsAllTimeLogins) {
         if (identity) allTimeSet.add(identity);
       }
     }
-    return allTimeSet.size;
-  })();
+  }
+  const allTimeContributorCount = hasAllTimeIdentitySets
+    ? allTimeSet.size
+    // No identity lists available: sum per-entry totals (may overcount cross-repo contributors)
+    : communities.reduce((s, c) => s + parseNum(c.ov?.contributorsAllTime), 0);
 
   // ── YTD contributor count: union login sets from each repo's current year ──
   // Each repo now carries _rawContributorsYtdLogins (a list of git identities
   // active this year) which we union across repos to get a deduplicated count.
   // Falls back to summing ov.contributorsYtd when login lists are unavailable
   // (e.g. data extracted before this feature was added).
-  const mergedContributorsYtd = (() => {
-    const hasLoginSets = communities.some((c) => c._rawContributorsYtdLogins != null);
-    if (!hasLoginSets) {
-      return communities.reduce((s, c) => s + parseNum(c.ov?.contributorsYtd), 0);
-    }
-    const ytdSet = new Set();
-    for (const c of communities) {
-      for (const login of (c._rawContributorsYtdLogins || [])) {
+  const ytdSet = new Set();
+  let hasYtdLoginSets = false;
+  for (const c of communities) {
+    if (c._rawContributorsYtdLogins != null) {
+      hasYtdLoginSets = true;
+      for (const login of c._rawContributorsYtdLogins) {
         if (login) ytdSet.add(login);
       }
     }
-    return ytdSet.size;
-  })();
+  }
+  const mergedContributorsYtd = hasYtdLoginSets
+    ? ytdSet.size
+    : communities.reduce((s, c) => s + parseNum(c.ov?.contributorsYtd), 0);
 
   // ── Contributing Companies: count distinct companies from the unioned list ──
   const companySet = new Set();
@@ -417,6 +420,11 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, found
     ...base,
     name:                      customName || combinedName,
     _mergedFrom:               flatEntries.map((e) => ({ ...e, data: { ...e.data, _isMergedSubRepo: true } })),
+    // Persist the unioned identity sets so that if this merged entry is later used
+    // as a member of a higher-level merge, contributor deduplication remains correct.
+    _rawContributorsAllTimeLogins: hasAllTimeIdentitySets ? [...allTimeSet] : null,
+    _rawContributorsYtdLogins:     hasYtdLoginSets        ? [...ytdSet]     : null,
+    _rawContributors:              mergedContributors,
     sub:                       mergedOv.foundation,
     foundation:                mergedOv.foundation,
     founded:                   mergedFounded,
@@ -927,25 +935,29 @@ export default function App() {
     if (selectedKeys.size < 2) return;
     const selectedKeysList = [...selectedKeys];
 
-    // Flatten: if any selected entry is already a merged group, expand its
-    // members so the new merged entry only ever contains atomic (non-merged) repos.
-    const flatEntries = [];
-    const existingMergedGroups = [];
-    for (const k of selectedKeysList) {
+    // Each selected entry (whether plain or already-merged) becomes a peer member
+    // of the new merged group at the same level.  We do NOT flatten merged groups
+    // into their sub-repos — that would make a plain community appear as a child
+    // of an existing merged group's internals rather than as an equal sibling.
+    const flatEntries = selectedKeysList.map((k) => ({ key: k, data: data[k] }));
+
+    // Collect the underlying atomic project keys from every selected entry so
+    // that merges.json always stores real backend IDs (needed for applyPersistedMerges
+    // to reconstruct the group after a page reload).
+    // Use _allMemberKeys when present (it already holds the flat atomic list for
+    // groups that were themselves created from merged entries).
+    const atomicKeys = selectedKeysList.flatMap((k) => {
       const d = data[k];
-      if (d?._mergedFrom) {
-        existingMergedGroups.push(d);
-        d._mergedFrom.forEach((m) => flatEntries.push({ key: m.key, data: m.data }));
-      } else {
-        flatEntries.push({ key: k, data: d });
-      }
-    }
+      if (!d?._mergedFrom) return [k];
+      return d._allMemberKeys || d._mergedFrom.map((m) => m.key);
+    });
 
     // Carry forward a custom name only when exactly one existing named group is
     // being expanded — i.e. the user is adding more repos to an already-named
     // group.  If two named groups are merged together, or if everything comes
     // from individual repos, fall back to the default "A + B + C" name so the
     // name is not silently inherited from an arbitrary group.
+    const existingMergedGroups = selectedKeysList.map((k) => data[k]).filter((d) => d?._mergedFrom);
     const inheritedName = (() => {
       if (existingMergedGroups.length !== 1) return null;
       const group = existingMergedGroups[0];
@@ -955,17 +967,17 @@ export default function App() {
 
     const merged = buildMergedEntry(flatEntries, { customName: inheritedName });
 
-    // Use a synthetic key that cannot collide with any real backend project ID.
-    // Previously this reused the first selected project's ID, which caused the
-    // merged group's key to also appear as a memberKey.  That created two bugs:
-    //   1. applyPersistedMerges would delete the raw ".github" project entry from
-    //      newData (as a member) making it vanish after an unmerge.
-    //   2. A race between the async saveMerges PUT and a concurrent loadProjects
-    //      call could re-apply the stale merge record against the already-unmerged
-    //      order, producing a duplicate row in the community table.
-    const mergedKey = '__merged__' + flatEntries.map((e) => e.key).join('__');
-    // All keys to remove: selected (including any group keys) + their flat members
-    const allKeysToRemove = new Set([...selectedKeysList, ...flatEntries.map((e) => e.key)]);
+    // Store all underlying atomic keys so persistMerges writes real backend IDs
+    // to merges.json even when some members are themselves merged groups.
+    if (atomicKeys.length !== flatEntries.length) {
+      merged._allMemberKeys = atomicKeys;
+    }
+
+    // Use a synthetic key derived from the atomic member keys so it is stable
+    // across reloads and cannot collide with any real backend project ID.
+    const mergedKey = '__merged__' + atomicKeys.join('__');
+    // Only the top-level selected keys need to be removed from data/order.
+    const allKeysToRemove = new Set(selectedKeysList);
 
     const next = { ...data };
     allKeysToRemove.forEach((k) => delete next[k]);

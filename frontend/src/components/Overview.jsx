@@ -267,6 +267,103 @@ function InlineEdit({ value, field, projectId, onSave, active, onDeactivate, onC
   );
 }
 
+// Sub-row rendered for each member of an expanded merged group.
+// If the member is itself a merged group (repo._mergedFrom exists) it shows
+// an expand arrow and, when open, indented grandchild rows below it.
+function MergedSubRow({ repoKey, repo, parentKey, selectMode, onSelect, onRemoveFromMerge }) {
+  const [subExpanded, setSubExpanded] = useState(false);
+  const isMergedMember = Boolean(repo._mergedFrom);
+
+  return (
+    <>
+      <tr
+        className="merged-sub-row"
+        style={{ cursor: 'pointer' }}
+        onClick={(e) => { e.stopPropagation(); onSelect(repoKey, repo); }}
+      >
+        {selectMode && <td className="chk-cell" />}
+        <td className="strong" style={{ paddingLeft: '2.5rem' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.375rem' }}>
+            {isMergedMember ? (
+              <button
+                className={"btn-expand-arrow" + (subExpanded ? " btn-expand-arrow--open" : "")}
+                aria-label={subExpanded ? `Collapse ${repo.name}` : `Expand ${repo.name}`}
+                aria-expanded={subExpanded}
+                onClick={(e) => { e.stopPropagation(); setSubExpanded((v) => !v); }}
+              >
+                <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12" aria-hidden="true">
+                  <path d="M6 4l4 4-4 4-.7-.7L8.6 8 5.3 4.7z" />
+                </svg>
+              </button>
+            ) : (
+              <span className="btn-expand-arrow-spacer" aria-hidden="true" />
+            )}
+            {repo.name}
+          </span>
+        </td>
+        <td>{repo.ov?.foundation || '—'}</td>
+        <td>
+          {repo.repoUrl ? (
+            <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
+              {repo.repoUrl.replace('https://github.com/', '')}
+            </a>
+          ) : '—'}
+        </td>
+        <td className="num">{repo.ov?.contributorsYtd || '—'}</td>
+        <td className="num">{repo.ov?.contributorsAllTime || '—'}</td>
+        <td className="num">{repo.ov?.commits || '—'}</td>
+        <td className="num">{repo.ov?.commitsAllTime || '—'}</td>
+        <td className="num">{repo.ov?.stars || '—'}</td>
+        <td>{repo.status ? <Tag cls={repo.status.cls} label={repo.status.label} /> : '—'}</td>
+        {!selectMode && (
+          <td className="chev-cell">
+            <button
+              className="btn-unmerge-single"
+              title={`Unmerge ${repo.name} from this group`}
+              onClick={(e) => { e.stopPropagation(); onRemoveFromMerge?.(parentKey, repoKey); }}
+            >
+              Unmerge
+            </button>
+          </td>
+        )}
+      </tr>
+
+      {/* Grandchild rows when this sub-entry is itself a merged group */}
+      {isMergedMember && subExpanded && repo._mergedFrom.map(({ key: childKey, data: child }) => (
+        <tr
+          key={childKey}
+          className="merged-sub-row"
+          style={{ cursor: 'pointer' }}
+          onClick={(e) => { e.stopPropagation(); onSelect(childKey, child); }}
+        >
+          {selectMode && <td className="chk-cell" />}
+          <td className="strong" style={{ paddingLeft: '4rem' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.375rem' }}>
+              <span style={{ color: 'var(--gray-40)', fontSize: '.75rem', flexShrink: 0 }}>↳</span>
+              {child.name}
+            </span>
+          </td>
+          <td>{child.ov?.foundation || '—'}</td>
+          <td>
+            {child.repoUrl ? (
+              <a href={child.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
+                {child.repoUrl.replace('https://github.com/', '')}
+              </a>
+            ) : '—'}
+          </td>
+          <td className="num">{child.ov?.contributorsYtd || '—'}</td>
+          <td className="num">{child.ov?.contributorsAllTime || '—'}</td>
+          <td className="num">{child.ov?.commits || '—'}</td>
+          <td className="num">{child.ov?.commitsAllTime || '—'}</td>
+          <td className="num">{child.ov?.stars || '—'}</td>
+          <td>{child.status ? <Tag cls={child.status.cls} label={child.status.label} /> : '—'}</td>
+          {!selectMode && <td className="chev-cell" />}
+        </tr>
+      ))}
+    </>
+  );
+}
+
 function CommunityRow({
   rowKey, d, o, isSelected, rowClass, selectMode,
   onSelect, onSelectToggle, onUpdateProject, onUnmerge, onRemoveFromMerge,
@@ -444,7 +541,7 @@ function CommunityRow({
         )}
       </tr>
 
-      {/* Expanded sub-rows for each repo in a merged entry — sorted by the active column */}
+      {/* Expanded sub-rows for each member of a merged entry — sorted by the active column */}
       {isMerged && expanded && [...d._mergedFrom].sort((a, b) => {
         const ra = a.data, rb = b.data;
         const pn = (v) => parseInt(String(v ?? '').replace(/[^0-9]/g, ''), 10) || 0;
@@ -463,40 +560,15 @@ function CommunityRow({
         }
         return sortDir === 'asc' ? cmp : -cmp;
       }).map(({ key: repoKey, data: repo }) => (
-        <tr key={repoKey} className="merged-sub-row" style={{ cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); onSelect(repoKey, repo); }}>
-          {selectMode && <td className="chk-cell" />}
-          <td className="strong">
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', paddingLeft: '1.5rem' }}>
-              <span style={{ color: 'var(--gray-40)', fontSize: '.75rem', flexShrink: 0 }}>↳</span>
-              {repo.name}
-            </span>
-          </td>
-          <td>{o.foundation || '—'}</td>
-          <td>
-            {repo.repoUrl ? (
-              <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
-                {repo.repoUrl.replace('https://github.com/', '')}
-              </a>
-            ) : '—'}
-          </td>
-          <td className="num">{repo.ov?.contributorsYtd || '—'}</td>
-          <td className="num">{repo.ov?.contributorsAllTime || '—'}</td>
-          <td className="num">{repo.ov?.commits || '—'}</td>
-          <td className="num">{repo.ov?.commitsAllTime || '—'}</td>
-          <td className="num">{repo.ov?.stars || '—'}</td>
-          <td>{repo.status ? <Tag cls={repo.status.cls} label={repo.status.label} /> : '—'}</td>
-          {!selectMode && (
-            <td className="chev-cell">
-              <button
-                className="btn-unmerge-single"
-                title={`Unmerge ${repo.name} from this group`}
-                onClick={(e) => { e.stopPropagation(); onRemoveFromMerge?.(rowKey, repoKey); }}
-              >
-                Unmerge
-              </button>
-            </td>
-          )}
-        </tr>
+        <MergedSubRow
+          key={repoKey}
+          repoKey={repoKey}
+          repo={repo}
+          parentKey={rowKey}
+          selectMode={selectMode}
+          onSelect={onSelect}
+          onRemoveFromMerge={onRemoveFromMerge}
+        />
       ))}
 
       {/* Confirmation modal for full unmerge */}

@@ -547,8 +547,8 @@
     "github_url" : "https://github.com/kroxylicious/kroxylicious",
     "data_dir" : "kroxylicious--kroxylicious",
     "issue_github_url" : "__all__",
-    "is_org" : true,
     "repo" : "kroxylicious",
+    "is_org" : true,
     "org_owner" : "kroxylicious"
   }, {
     "id" : "kroxylicious--design",
@@ -626,7 +626,7 @@
     "data_dir" : "apicurio--apicurio-registry",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--apicurio-github-actions",
     "name" : "apicurio-github-actions",
@@ -637,7 +637,7 @@
     "data_dir" : "apicurio--apicurio-github-actions",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--.github",
     "name" : ".github",
@@ -648,7 +648,7 @@
     "data_dir" : "apicurio--.github",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--apicurio-registry-vscode-plugin",
     "name" : "apicurio-registry-vscode-plugin",
@@ -659,7 +659,7 @@
     "data_dir" : "apicurio--apicurio-registry-vscode-plugin",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--apicurio-registry-gitops-example",
     "name" : "apicurio-registry-gitops-example",
@@ -670,7 +670,7 @@
     "data_dir" : "apicurio--apicurio-registry-gitops-example",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--apicurio-compatibility-harness",
     "name" : "apicurio-compatibility-harness",
@@ -681,7 +681,7 @@
     "data_dir" : "apicurio--apicurio-compatibility-harness",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--.project",
     "name" : ".project",
@@ -692,7 +692,7 @@
     "data_dir" : "apicurio--.project",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "apicurio--apicurio.github.io",
     "name" : "apicurio.github.io",
@@ -703,7 +703,7 @@
     "data_dir" : "apicurio--apicurio.github.io",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "Apicurio"
+    "org_owner" : "apicurio"
   }, {
     "id" : "keycloak--keycloak",
     "name" : "Keycloak",
@@ -789,5 +789,5 @@
     "jira_project_key" : "CAMEL",
     "jira_base_url" : "https://issues.apache.org/jira"
   } ],
-  "last_updated" : "2026-07-22T21:28:38.014440Z"
+  "last_updated" : "2026-07-22T22:01:05.280681Z"
 }

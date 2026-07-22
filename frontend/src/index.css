@@ -537,7 +537,7 @@
 
   /* Same-width invisible spacer for non-merged rows */
   .btn-expand-arrow-spacer{
-    display:inline-block; width:1.125rem; height:1.125rem; flex-shrink:0;
+    display:inline-flex; width:1.125rem; height:1.125rem; flex-shrink:0;
   }
 
   /* Unmerge button — inline in table row chevron cell, hover-only on the merged row */
