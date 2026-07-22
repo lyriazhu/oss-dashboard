@@ -1552,22 +1552,39 @@ class GitHubDataExtractor:
                     # ── Year counts (monthly fallback avoids the 1000-cap) ──
                     # Apply the same logic as for issues: always re-count the
                     # current year and any year >= last extraction year (BUG-17).
-                    print(f"    📊 Counting PRs per year...")
+                    print(f"    📊 Counting PRs per year (this may take several minutes for large repos)...")
                     pr_last_extraction_year = since_date.year if since_date else None
-                    for year in years:
-                        if (
+                    years_to_count = [
+                        year for year in years
+                        if not (
                             since_date
                             and pr_last_extraction_year is not None
                             and year < pr_last_extraction_year
                             and year_data_map[year]["pr_count"] > 0
-                        ):
-                            continue
+                        )
+                    ]
+                    for i, year in enumerate(years_to_count, 1):
+                        print(f"    📅 PR year counts: {year} ({i}/{len(years_to_count)})...")
                         try:
                             total_q, merged_q = self._count_prs_in_year(owner, repo, year)
                             year_data_map[year]["pr_count"] = total_q
                             year_data_map[year]["merged_pr_count"] = merged_q
+                            print(f"    ✓ {year}: {total_q} PRs ({merged_q} merged)")
                         except GithubException as e:
                             print(f"    ⚠️  Count error for {year}: {e}")
+
+                    # Flush year counts to disk immediately so the backend shows
+                    # partial data while the month-level loop runs.
+                    _partial_pr_data = dict(pr_data)
+                    _partial_pr_data["years"] = [
+                        year_data_map[y] for y in sorted(year_data_map.keys())
+                    ]
+                    self._save_json_file(
+                        self._project_dir(project_name, repo=_first.get("repo"), owner=_first.get("owner"))
+                        / "pull_requests.json",
+                        _partial_pr_data,
+                    )
+                    print(f"    ✓ Year counts flushed to pull_requests.json — starting month-level PR fetch...")
 
                     # ── Month-level iteration (bounded: last 12 months only) ──
                     # Sort newest-first so we can break as soon as we fall outside

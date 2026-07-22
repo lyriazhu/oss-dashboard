@@ -102,15 +102,6 @@ projects:
     foundation: "Independent"
 
 
-  - name: "Apache Camel"
-    github_url: "https://github.com/apache/camel"
-    owner: "apache"
-    repo: "camel"
-    foundation: "Independent"
-    issue_source: jira
-    jira_project_key: CAMEL
-    jira_base_url: "https://issues.apache.org/jira"
-
 extraction:
   # How many quarters of historical data to fetch
   quarters_back: 12
