@@ -624,9 +624,56 @@ public class DataService {
     /**
      * Overwrite data/merges.json with the supplied list of merge records.
      * Each record must have: mergedKey (String), memberKeys (List<String>), name (String, optional).
+     *
+     * Config.yaml is kept in sync:
+     *  - Same-owner groups with ≥2 members get consolidated into a single is_org: true block.
+     *  - When a same-owner group is removed (unmerge), individual per-repo blocks are restored
+     *    and the is_org block is removed.
+     *  - Single-repo entries are never consolidated — they stay as individual blocks.
      */
     public void saveMerges(List<java.util.Map<String, Object>> merges) throws IOException {
         Path mergesFile = Paths.get(dataDirectory, "merges.json");
+
+        // Read the existing same-owner group member sets before overwriting, so we can detect
+        // groups that have been removed (unmerge) and deconsolidate them.
+        java.util.Set<String> previousSameOwnerGroups = new java.util.HashSet<>();
+        java.util.Map<String, List<String>> previousGroupMembers = new java.util.LinkedHashMap<>();
+        if (Files.exists(mergesFile)) {
+            try {
+                JsonNode oldRoot = objectMapper.readTree(mergesFile.toFile());
+                for (JsonNode item : oldRoot.path("merges")) {
+                    List<String> oldKeys = new ArrayList<>();
+                    for (JsonNode k : item.path("memberKeys")) oldKeys.add(k.asText());
+                    if (isSameOwnerGroup(oldKeys)) {
+                        String commonOwner = oldKeys.get(0).substring(0, oldKeys.get(0).indexOf("--"));
+                        previousSameOwnerGroups.add(commonOwner);
+                        previousGroupMembers.put(commonOwner, oldKeys);
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+
+        // Build the set of same-owner groups still present in the new merges list.
+        java.util.Set<String> newSameOwnerGroups = new java.util.HashSet<>();
+        for (java.util.Map<String, Object> m : merges) {
+            @SuppressWarnings("unchecked")
+            List<String> memberKeys = (List<String>) m.get("memberKeys");
+            if (memberKeys != null && isSameOwnerGroup(memberKeys)) {
+                String commonOwner = memberKeys.get(0).substring(0, memberKeys.get(0).indexOf("--"));
+                newSameOwnerGroups.add(commonOwner);
+            }
+        }
+
+        // Deconsolidate any same-owner group that was removed (unmerge).
+        for (String owner : previousSameOwnerGroups) {
+            if (!newSameOwnerGroups.contains(owner)) {
+                List<String> oldMembers = previousGroupMembers.get(owner);
+                if (oldMembers != null) {
+                    deconsolidateOrgInConfig(owner, oldMembers);
+                }
+            }
+        }
+
         ObjectNode root = objectMapper.createObjectNode();
         ArrayNode arr = objectMapper.createArrayNode();
         for (java.util.Map<String, Object> m : merges) {
@@ -645,9 +692,10 @@ public class DataService {
             if (foundation != null && !foundation.toString().isBlank()) item.put("foundation", foundation.toString());
             arr.add(item);
 
-            // When all members share the same owner, consolidate their individual
+            // When ≥2 members share the same owner, consolidate their individual
             // config.yaml blocks into a single is_org: true entry.
-            if (memberKeys != null && !memberKeys.isEmpty()) {
+            // Single-repo entries are intentionally excluded (size < 2).
+            if (memberKeys != null && memberKeys.size() >= 2) {
                 consolidateOrgInConfig(memberKeys);
             }
         }
@@ -655,6 +703,203 @@ public class DataService {
         root.put("last_updated", Instant.now().toString());
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(mergesFile.toFile(), root);
         log.info("Saved {} merge(s) to merges.json", merges.size());
+    }
+
+    /**
+     * Returns true when all keys in the list follow the "owner--repo" format
+     * and share the same owner prefix.
+     */
+    private boolean isSameOwnerGroup(List<String> memberKeys) {
+        if (memberKeys == null || memberKeys.size() < 2) return false;
+        String commonOwner = null;
+        for (String key : memberKeys) {
+            int sep = key.indexOf("--");
+            if (sep <= 0) return false;
+            String owner = key.substring(0, sep);
+            if (commonOwner == null) commonOwner = owner;
+            else if (!commonOwner.equals(owner)) return false;
+        }
+        return true;
+    }
+
+    /**
+     * Reverse of consolidateOrgInConfig: called when a same-owner merged group is unmerged.
+     *
+     * Steps:
+     * 1. Remove the is_org: true block for the owner from config.yaml.
+     * 2. Re-add individual per-repo blocks for each member key.
+     * 3. Clear is_org and org_owner fields from each member's projects.json record.
+     */
+    private void deconsolidateOrgInConfig(String commonOwner, List<String> memberKeys) {
+        try {
+            Path configPath = Paths.get(dataDirectory).getParent().resolve("scripts/config.yaml");
+            Path projectsFile = Paths.get(dataDirectory, "projects.json");
+            if (!Files.exists(configPath) || !Files.exists(projectsFile)) return;
+
+            // Load per-repo data from projects.json before modifying anything.
+            // Also capture Jira issue-source fields so they can be restored in config.yaml.
+            JsonNode pRoot = objectMapper.readTree(projectsFile.toFile());
+            List<java.util.Map<String, String>> repoInfos = new ArrayList<>();
+            for (JsonNode p : pRoot.path("projects")) {
+                if (memberKeys.contains(p.path("id").asText(""))) {
+                    java.util.Map<String, String> info = new java.util.LinkedHashMap<>();
+                    info.put("owner",           p.path("owner").asText(commonOwner));
+                    info.put("repo",            p.path("repo").asText(""));
+                    info.put("name",            p.path("name").asText(""));
+                    info.put("foundation",      p.path("foundation").asText("Independent"));
+                    info.put("github_url",      p.path("github_url").asText(""));
+                    info.put("website",         p.path("website").asText(""));
+                    // Jira issue-source fields — may be empty for GitHub-issues projects
+                    info.put("issue_source",    p.path("issue_source").asText(""));
+                    info.put("jira_project_key", p.path("jira_project_key").asText(""));
+                    info.put("jira_base_url",   p.path("jira_base_url").asText(""));
+                    repoInfos.add(info);
+                }
+            }
+
+            // 1. Remove the is_org block for this owner from config.yaml.
+            //    The block's "name:" line matches the owner (display) value.
+            //    We search by owner field to be safe.
+            removeOrgBlockFromConfig(configPath, commonOwner);
+
+            // 2. Re-add individual per-repo blocks.
+            for (java.util.Map<String, String> info : repoInfos) {
+                String repoName  = info.get("repo");
+                String owner     = info.get("owner");
+                String entryName = info.get("name");
+                String foundation = info.get("foundation");
+                String githubUrl  = info.get("github_url");
+                String website    = info.get("website");
+                if (repoName == null || repoName.isBlank()) continue;
+
+                // Skip if this repo already has a block in config.yaml
+                List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
+                boolean alreadyPresent = lines.stream().anyMatch(l -> {
+                    String t = l.trim();
+                    return (t.equals("repo: \"" + repoName + "\"") || t.equals("repo: " + repoName));
+                });
+                if (alreadyPresent) continue;
+
+                String issueSource    = info.get("issue_source");
+                String jiraProjectKey = info.get("jira_project_key");
+                String jiraBaseUrl    = info.get("jira_base_url");
+
+                StringBuilder entry = new StringBuilder("\n");
+                entry.append("  - name: \"").append(entryName.isEmpty() ? repoName : entryName).append("\"\n");
+                entry.append("    github_url: \"")
+                     .append(githubUrl.isEmpty() ? ("https://github.com/" + owner + "/" + repoName) : githubUrl)
+                     .append("\"\n");
+                entry.append("    owner: \"").append(owner).append("\"\n");
+                entry.append("    repo: \"").append(repoName).append("\"\n");
+                entry.append("    foundation: \"").append(foundation).append("\"\n");
+                if (website != null && !website.isBlank()) {
+                    entry.append("    website: \"").append(website).append("\"\n");
+                }
+                // Restore Jira issue-source fields if this project used Jira
+                if ("jira".equalsIgnoreCase(issueSource)) {
+                    entry.append("    issue_source: jira\n");
+                    if (jiraProjectKey != null && !jiraProjectKey.isBlank()) {
+                        entry.append("    jira_project_key: ").append(jiraProjectKey).append("\n");
+                    }
+                    if (jiraBaseUrl != null && !jiraBaseUrl.isBlank()) {
+                        entry.append("    jira_base_url: \"").append(jiraBaseUrl).append("\"\n");
+                    }
+                }
+
+                // Insert inside the projects: list (before the first top-level non-indented key)
+                lines = new ArrayList<>(Files.readAllLines(configPath));
+                int insertAt = lines.size();
+                boolean inProjects = false;
+                for (int i = 0; i < lines.size(); i++) {
+                    String l = lines.get(i);
+                    if (l.startsWith("projects:")) { inProjects = true; continue; }
+                    if (inProjects && !l.startsWith(" ") && !l.startsWith("\t") && !l.isEmpty()) {
+                        insertAt = i;
+                        break;
+                    }
+                }
+                List<String> result = new ArrayList<>(lines.subList(0, insertAt));
+                for (String el : entry.toString().split("\n", -1)) result.add(el);
+                result.addAll(lines.subList(insertAt, lines.size()));
+                Files.writeString(configPath, String.join("\n", result));
+            }
+
+            // 3. Clear is_org and org_owner from each member record in projects.json.
+            ObjectNode pRootNode = (ObjectNode) objectMapper.readTree(projectsFile.toFile());
+            ArrayNode updatedArr = objectMapper.createArrayNode();
+            for (JsonNode p : pRootNode.path("projects")) {
+                if (memberKeys.contains(p.path("id").asText(""))) {
+                    ObjectNode updated = (ObjectNode) p.deepCopy();
+                    updated.remove("is_org");
+                    updated.remove("org_owner");
+                    updatedArr.add(updated);
+                } else {
+                    updatedArr.add(p);
+                }
+            }
+            pRootNode.set("projects", updatedArr);
+            pRootNode.put("last_updated", Instant.now().toString());
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(projectsFile.toFile(), pRootNode);
+
+            log.info("Deconsolidated org '{}' in config.yaml — restored {} individual repo entries",
+                    commonOwner, repoInfos.size());
+        } catch (Exception e) {
+            log.warn("Could not deconsolidate org '{}' in config.yaml: {}", commonOwner, e.getMessage());
+        }
+    }
+
+    /**
+     * Remove the is_org: true block whose owner: field matches commonOwner from config.yaml.
+     * Walks the file and deletes any project block that has both owner == commonOwner and is_org: true.
+     */
+    private void removeOrgBlockFromConfig(Path configPath, String commonOwner) {
+        try {
+            boolean removedAny;
+            do {
+                removedAny = false;
+                List<String> lines = new ArrayList<>(Files.readAllLines(configPath));
+                int blockStart = -1;
+                int blockEnd   = lines.size();
+                boolean inBlock = false;
+                boolean blockIsOrg = false;
+                String blockOwner = null;
+                int blockStartIdx = -1;
+
+                for (int i = 0; i < lines.size(); i++) {
+                    String t = lines.get(i).trim();
+                    if (t.startsWith("- name:")) {
+                        // Evaluate previous block
+                        if (inBlock && blockIsOrg && commonOwner.equalsIgnoreCase(blockOwner)) {
+                            blockStart = blockStartIdx;
+                            blockEnd   = i;
+                            break;
+                        }
+                        inBlock = true;
+                        blockIsOrg = false;
+                        blockOwner = null;
+                        blockStartIdx = i;
+                    } else if (inBlock && t.startsWith("owner:")) {
+                        blockOwner = t.replaceFirst("owner:\\s*\"?", "").replaceAll("\"$", "").trim();
+                    } else if (inBlock && t.equals("is_org: true")) {
+                        blockIsOrg = true;
+                    }
+                }
+                // Check the final block
+                if (blockStart == -1 && inBlock && blockIsOrg && commonOwner.equalsIgnoreCase(blockOwner)) {
+                    blockStart = blockStartIdx;
+                    blockEnd   = lines.size();
+                }
+
+                if (blockStart == -1) break;
+
+                List<String> result = new ArrayList<>(lines.subList(0, blockStart));
+                result.addAll(lines.subList(blockEnd, lines.size()));
+                Files.writeString(configPath, String.join("\n", result));
+                removedAny = true;
+            } while (removedAny);
+        } catch (Exception e) {
+            log.warn("Could not remove org block for '{}' from config.yaml: {}", commonOwner, e.getMessage());
+        }
     }
 
     /**
@@ -691,11 +936,30 @@ public class DataService {
             // Already have an is_org entry — nothing to do.
             if (configContainsOrgEntry(configPath, commonOwner)) return;
 
+            // Refuse to consolidate when any member uses a non-GitHub issue source.
+            // Consolidation replaces individual per-repo config blocks with a single
+            // is_org: true block that carries no Jira fields — doing so would silently
+            // destroy jira_project_key / jira_base_url for every affected project.
+            Path projectsFile = Paths.get(dataDirectory, "projects.json");
+            if (Files.exists(projectsFile)) {
+                JsonNode pRootCheck = objectMapper.readTree(projectsFile.toFile());
+                for (JsonNode p : pRootCheck.path("projects")) {
+                    if (memberKeys.contains(p.path("id").asText(""))) {
+                        String src = p.path("issue_source").asText("");
+                        if ("jira".equalsIgnoreCase(src)) {
+                            log.info(
+                                "Skipping config.yaml consolidation for owner '{}': member '{}' uses issue_source=jira",
+                                commonOwner, p.path("id").asText(""));
+                            return;
+                        }
+                    }
+                }
+            }
+
             // Look up the owner display value and foundation from projects.json
             // (the stored owner field preserves original casing, e.g. "3scale").
             String ownerDisplay = commonOwner; // fallback: use the slug
             String foundation = "Independent";
-            Path projectsFile = Paths.get(dataDirectory, "projects.json");
             if (Files.exists(projectsFile)) {
                 JsonNode pRoot = objectMapper.readTree(projectsFile.toFile());
                 for (JsonNode p : pRoot.path("projects")) {

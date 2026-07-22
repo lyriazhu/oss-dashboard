@@ -166,7 +166,7 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
           </button>
         </div>
 
-        {/* Overall queue position — only shown during refresh-all with >1 project */}
+        {/* Overall queue position — shown when multiple projects are queued (add or refresh) */}
         {isQueuedRun && !done && !failed && (
           <div className="extraction-toast-queue">
             Project {queueIdx} of {queueTotal}

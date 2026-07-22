@@ -9,6 +9,7 @@ import ExtractionToast from "./components/ExtractionToast.jsx";
 
 const EXTRACTION_STORAGE_KEY = 'oss_dashboard_extracting';
 const QUEUE_STORAGE_KEY      = 'oss_dashboard_refresh_queue';
+const ADD_QUEUE_STORAGE_KEY  = 'oss_dashboard_add_queue';
 
 // ---------------------------------------------------------------------------
 // Shared merge helper — used by both handleJoinSelected and applyPersistedMerges
@@ -475,7 +476,7 @@ export default function App() {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState(new Set());
   const [deleting, setDeleting] = useState(false);
-  // refreshQueue: ordered list of {id, name} objects waiting to be extracted
+  // refreshQueue: ordered list of {id, name} objects waiting to be extracted (Refresh All)
   const [refreshQueue, setRefreshQueue] = useState(() => {
     try {
       const saved = localStorage.getItem(QUEUE_STORAGE_KEY);
@@ -486,6 +487,22 @@ export default function App() {
     try {
       const saved = localStorage.getItem(QUEUE_STORAGE_KEY);
       return saved ? JSON.parse(saved).total || 0 : 0;
+    } catch { return 0; }
+  });
+  // addQueue: ordered list of {id, name} objects queued by successive "Add project" submissions
+  const [addQueue, setAddQueue] = useState(() => {
+    try {
+      const saved = localStorage.getItem(ADD_QUEUE_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
+  const [addQueueTotal, setAddQueueTotal] = useState(() => {
+    try {
+      const savedQueue      = localStorage.getItem(ADD_QUEUE_STORAGE_KEY);
+      const savedExtracting = localStorage.getItem(EXTRACTION_STORAGE_KEY);
+      const queueLen  = savedQueue      ? JSON.parse(savedQueue).length              : 0;
+      const hasActive = savedExtracting ? JSON.parse(savedExtracting)?.mode === 'add' : false;
+      return queueLen + (hasActive ? 1 : 0);
     } catch { return 0; }
   });
   const [extracting, setExtracting] = useState(() => {
@@ -508,7 +525,16 @@ export default function App() {
     }
   }, [extracting]);
 
-  // Persist queue state to localStorage whenever it changes
+  // Persist add-queue state to localStorage whenever it changes
+  useEffect(() => {
+    if (addQueue.length > 0) {
+      localStorage.setItem(ADD_QUEUE_STORAGE_KEY, JSON.stringify(addQueue));
+    } else {
+      localStorage.removeItem(ADD_QUEUE_STORAGE_KEY);
+    }
+  }, [addQueue]);
+
+  // Persist refresh-queue state to localStorage whenever it changes
   useEffect(() => {
     if (refreshQueueTotal > 0) {
       localStorage.setItem(QUEUE_STORAGE_KEY, JSON.stringify({ queue: refreshQueue, total: refreshQueueTotal }));
@@ -714,7 +740,21 @@ export default function App() {
     // we only need to trigger the flash animation on the new row.
     setFlashKey(key);
     setTimeout(() => setFlashKey(null), 1200);
-    if (key) setExtracting({ id: key, name: name || key, mode: 'add' });
+    if (!key) return;
+    setExtracting((current) => {
+      if (!current) {
+        // Nothing running — start immediately; total resets to 1 (will grow with each enqueue)
+        setAddQueueTotal(1);
+        return { id: key, name: name || key, mode: 'add' };
+      }
+      // Something is already running — enqueue and grow the total
+      setAddQueue((q) => {
+        const next = [...q, { id: key, name: name || key }];
+        setAddQueueTotal((t) => t + 1);
+        return next;
+      });
+      return current; // keep current extraction running
+    });
   }, []);
 
   // Called when the Refresh All button completes the token modal.
@@ -728,20 +768,28 @@ export default function App() {
     setExtracting({ id: queue[0].id, name: queue[0].name, mode: 'refresh' }); // head starts immediately
   }, [data]);
 
-  // Advance to the next project in the refresh queue once a toast reports done.
+  // Advance to the next item in either queue once a toast reports done.
   const handleExtractionDone = useCallback(() => {
-    if (refreshQueue.length > 0) {
+    // Drain the add queue first (these were user-initiated adds), then refresh queue
+    if (addQueue.length > 0) {
+      const [next, ...rest] = addQueue;
+      setAddQueue(rest);
+      setExtracting({ id: next.id, name: next.name, mode: 'add' });
+      // Reload so the newly-added project appears in the sidebar while the next one extracts
+      loadProjects({ silent: true });
+    } else if (refreshQueue.length > 0) {
       const [next, ...rest] = refreshQueue;
       setRefreshQueue(rest);
       // Start the next project immediately — no gap between toasts
       setExtracting({ id: next.id, name: next.name, mode: 'refresh' });
     } else {
       setExtracting(null);
+      setAddQueueTotal(0);
       setRefreshQueueTotal(0);
       // All done — reload the page so updated data is fully reflected
       window.location.reload();
     }
-  }, [refreshQueue, loadProjects]);
+  }, [addQueue, refreshQueue, loadProjects]);
 
   const handleRemove = useCallback(async (key) => {
     try {
@@ -976,10 +1024,18 @@ export default function App() {
         navOpen={!navCollapsed}
         extracting={extracting}
         onExtractionDone={handleExtractionDone}
-        queueIdx={refreshQueueTotal > 0 ? refreshQueueTotal - refreshQueue.length : 0}
-        queueTotal={refreshQueueTotal}
+        queueIdx={
+          extracting?.mode === 'add'
+            ? addQueueTotal - addQueue.length          // current position in add queue
+            : refreshQueueTotal > 0
+              ? refreshQueueTotal - refreshQueue.length // current position in refresh queue
+              : 0
+        }
+        queueTotal={extracting?.mode === 'add' ? addQueueTotal : refreshQueueTotal}
         onTokenExpired={() => {
           setExtracting(null);
+          setAddQueue([]);
+          setAddQueueTotal(0);
           setRefreshQueue([]);
           setRefreshQueueTotal(0);
           setTokenConfigured(false); // force token field to show in modal

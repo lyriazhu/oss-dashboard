@@ -166,9 +166,15 @@ def _write_merge_record(data_dir: Path, org_name: str, member_ids: list,
         json.dump(payload, f, indent=2)
 
 
-def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issue_repo):
-    # type: (object, str, str, str, str, object) -> dict
-    """Run the full single-repo extraction pipeline (mirrors extract_single_project logic)."""
+def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issue_repo,
+                          project_config=None):
+    # type: (object, str, str, str, str, object, object) -> dict
+    """Run the full single-repo extraction pipeline (mirrors extract_single_project logic).
+
+    project_config: optional dict from config.yaml for this project; used to detect
+                    issue_source: jira and run Jira extraction instead of GitHub issues.
+    """
+    import subprocess
     from datetime import datetime as dt
 
     extraction_status = {k: False for k in
@@ -209,9 +215,24 @@ def _extract_single_repo(extractor, owner, repo, project_name, issue_scope, issu
     except Exception as e:
         print(f"  ⚠️  Commits: {e}")
 
-    # Issues
+    # Issues — route to Jira or GitHub depending on issue_source in the project config.
     print("Extracting issues...")
-    if project_created_at:
+    issue_source = (project_config or {}).get("issue_source", "github")
+    if issue_source == "jira":
+        try:
+            jira_script = Path(__file__).parent / "extract_jira_issues.py"
+            result = subprocess.run(
+                [sys.executable, str(jira_script), project_name],
+                cwd=str(Path(__file__).parent),
+                check=False,
+            )
+            if result.returncode == 0:
+                extraction_status["issues"] = True
+            else:
+                print(f"  ⚠️  Jira issues extraction failed with exit code {result.returncode}")
+        except Exception as e:
+            print(f"  ⚠️  Jira issues: {e}")
+    elif project_created_at:
         if issue_scope == "all":
             issue_repos = [{"owner": owner, "repo": repo}]
         elif issue_repo:
@@ -354,6 +375,21 @@ def main():
     except (OSError, json.JSONDecodeError):
         pass
 
+    # Load config.yaml once so per-repo lookups can be done cheaply.
+    import yaml as _yaml
+    _cfg_projects = []
+    org_project_config = {}
+    try:
+        with open(config_path) as f:
+            _cfg = _yaml.safe_load(f)
+        _cfg_projects = _cfg.get("projects", [])
+        for p in _cfg_projects:
+            if p.get("owner", "").lower() == org_name.lower() and p.get("is_org"):
+                org_project_config = p
+                break
+    except Exception:
+        pass
+
     # Determine display name for the merged group
     display_name = org_name
 
@@ -391,10 +427,25 @@ def main():
             _add_repo_to_projects_json(data_dir, org_name, repo_name, org_name, foundation)
             _add_repo_to_config_yaml(scripts_dir, org_name, repo_name, org_name, foundation)
 
-        # Run extraction
+        # Build the effective config for this repo: prefer a per-repo config block
+        # (owner == org_name AND repo == repo_name) over the org-level block so that
+        # individual repos can override issue_source (e.g. one repo uses Jira while
+        # the rest use GitHub).  Fall back to the org-level block when no per-repo
+        # entry exists.
+        per_repo_config = next(
+            (p for p in _cfg_projects
+             if p.get("owner", "").lower() == org_name.lower()
+             and not p.get("is_org")
+             and p.get("repo", "").lower() == repo_name.lower()),
+            None,
+        )
+        effective_config = per_repo_config if per_repo_config is not None else org_project_config
+
+        # Run extraction — pass effective_config so per-repo issue_source is honoured
         try:
             _extract_single_repo(extractor, org_name, repo_name, repo_name,
-                                  issue_scope, issue_repo)
+                                  issue_scope, issue_repo,
+                                  project_config=effective_config)
         except Exception as e:
             print(f"  ⚠️  Extraction failed for {repo_name}: {e}")
 

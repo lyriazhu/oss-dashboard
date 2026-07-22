@@ -278,12 +278,18 @@ def _fetch_jira_issues_v3(session: requests.Session, base: str, project_key: str
 
 
 def fetch_jira_issues(base_url: str, project_key: str) -> List[Dict[str, Any]]:
-    # Normalise the URL: keep scheme + host + path, but drop query/fragment that
-    # a user may have copied from their browser.  The path matters for instances
-    # like Apache Jira which lives at /jira (e.g. https://issues.apache.org/jira),
-    # unlike Atlassian Cloud where Jira is at the domain root.
+    # Normalise the URL: keep only scheme + host (drop path, query, fragment).
+    # Users often paste a browser URL like
+    #   https://redhat.atlassian.net/jira/software/c/projects/WFLY/issues?jql=...
+    # The REST API lives at the root of the host, not under that browser path.
+    # Exception: Apache-hosted instances live at /jira (e.g. issues.apache.org/jira);
+    # for those we keep only the leading /jira segment, not the full browser path.
     _parsed = urlparse(base_url)
-    base = f"{_parsed.scheme}://{_parsed.netloc}{_parsed.path}".rstrip("/")
+    host = f"{_parsed.scheme}://{_parsed.netloc}"
+    path_parts = [p for p in _parsed.path.split("/") if p]
+    # Retain /jira prefix only — common for self-hosted Apache Jira installations.
+    jira_prefix = "/jira" if path_parts and path_parts[0].lower() == "jira" else ""
+    base = (host + jira_prefix).rstrip("/")
     session = requests.Session()
     jql = f"project = {project_key} ORDER BY created ASC"
 
