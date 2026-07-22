@@ -912,8 +912,14 @@ public class DataService {
 
         Path scriptsDir = Paths.get(dataDirectory).getParent().resolve("scripts");
 
-        // Org-level projects use a dedicated extraction script
-        if (Boolean.TRUE.equals(project.getIsOrg())) {
+        // Org-level sentinel entries (is_org=true, no org_owner) use the org extraction script
+        // which discovers and re-extracts every repo under the org.
+        // Member repos of an org (is_org=true AND org_owner is set) must NOT go through
+        // triggerOrgExtraction — they should use extract_single_project.py with --repo so
+        // only that one repo is refreshed.
+        boolean isOrgSentinel = Boolean.TRUE.equals(project.getIsOrg())
+                && (project.getOrgOwner() == null || project.getOrgOwner().isBlank());
+        if (isOrgSentinel) {
             triggerOrgExtraction(project, projectId, scriptsDir);
             return;
         }
