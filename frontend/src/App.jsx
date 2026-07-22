@@ -313,7 +313,7 @@ function buildMergedEntry(flatEntries, { customName = null, orgUrl = null, found
     }
   }
 
-  const combinedName = communities.map((c) => c.name).join(' + ');
+  const combinedName = communities.map((c) => c.name).sort((a, b) => a.localeCompare(b)).join(' + ');
 
   // ── CVE entries: concatenate and re-sort newest first ──
   const mergedCveEntries = communities

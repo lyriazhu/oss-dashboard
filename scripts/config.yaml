@@ -36,20 +36,6 @@ projects:
     # 404 before the v3 fallback is reached (BUG-20).
     jira_base_url: "https://issues.redhat.com"
 
-  - name: "3scale"
-    github_url: "https://github.com/3scale"
-    owner: "3scale"
-    is_org: true
-    foundation: "Red Hat"
-
-  # NOTE: individual apache/* single-repo entries are intentionally removed here.
-  # The "apache" is_org entry below discovers tomcat, camel, artemis, etc. from
-  # the org automatically — having both caused duplicate project ID collisions
-  # on every _sync_projects_json run (BUG-31).
-  #
-  # Apache Artemis uses Jira for issue tracking; add a per-repo override block
-  # below the is_org entry so extract_org_project.py picks it up (BUG-34).
-
   - name: "strimzi"
     github_url: "https://github.com/strimzi"
     owner: "strimzi"
@@ -105,6 +91,12 @@ projects:
     owner: "kroxylicious"
     is_org: true
     foundation: "Independent"
+
+  - name: "3scale"
+    github_url: "https://github.com/3scale"
+    owner: "3scale"
+    is_org: true
+    foundation: "Red Hat"
 
   - name: "Apicurio"
     github_url: "https://github.com/Apicurio"

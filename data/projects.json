@@ -7,9 +7,9 @@
     "foundation" : "Red Hat",
     "data_dir" : "3scale--3scale-operator",
     "enabled" : true,
+    "github_url" : "https://github.com/3scale/3scale-operator",
     "is_org" : true,
-    "org_owner" : "3scale",
-    "github_url" : "https://github.com/3scale/3scale-operator"
+    "org_owner" : "3scale"
   }, {
     "id" : "3scale--apicast",
     "name" : "APIcast",
@@ -789,5 +789,5 @@
     "jira_project_key" : "CAMEL",
     "jira_base_url" : "https://issues.apache.org/jira"
   } ],
-  "last_updated" : "2026-07-22T22:18:15.773580Z"
+  "last_updated" : "2026-07-22T22:22:45.620313Z"
 }
