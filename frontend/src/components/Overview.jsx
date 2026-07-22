@@ -270,7 +270,7 @@ function InlineEdit({ value, field, projectId, onSave, active, onDeactivate, onC
 // Sub-row rendered for each member of an expanded merged group.
 // If the member is itself a merged group (repo._mergedFrom exists) it shows
 // an expand arrow and, when open, indented grandchild rows below it.
-function MergedSubRow({ repoKey, repo, parentKey, selectMode, onSelect, onRemoveFromMerge }) {
+function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, onSelect, onRemoveFromMerge }) {
   const [subExpanded, setSubExpanded] = useState(false);
   const isMergedMember = Boolean(repo._mergedFrom);
 
@@ -301,7 +301,7 @@ function MergedSubRow({ repoKey, repo, parentKey, selectMode, onSelect, onRemove
             {repo.name}
           </span>
         </td>
-        <td>{repo.ov?.foundation || '—'}</td>
+        <td>{parentFoundation || '—'}</td>
         <td>
           {repo.repoUrl ? (
             <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
@@ -343,7 +343,7 @@ function MergedSubRow({ repoKey, repo, parentKey, selectMode, onSelect, onRemove
               {child.name}
             </span>
           </td>
-          <td>{child.ov?.foundation || '—'}</td>
+          <td>{parentFoundation || '—'}</td>
           <td>
             {child.repoUrl ? (
               <a href={child.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
@@ -565,6 +565,7 @@ function CommunityRow({
           repoKey={repoKey}
           repo={repo}
           parentKey={rowKey}
+          parentFoundation={o.foundation}
           selectMode={selectMode}
           onSelect={onSelect}
           onRemoveFromMerge={onRemoveFromMerge}
