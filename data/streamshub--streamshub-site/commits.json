@@ -1,5 +1,40 @@
 {
-  "total_commits": 38,
+  "committers": [
+    {
+      "login": "Piotr P\u0142aczek",
+      "name": "Piotr P\u0142aczek",
+      "company": "Unknown",
+      "location": null,
+      "email": "piotrpdev@gmail.com",
+      "profile_url": null,
+      "commit_count": 53
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 27
+    },
+    {
+      "login": "Jan Kalinic",
+      "name": "Jan Kalinic",
+      "company": "Unknown",
+      "location": null,
+      "email": "jkalinic@redhat.com",
+      "profile_url": null,
+      "commit_count": 15
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:44:48.452252",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,42 +109,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Piotr P\u0142aczek",
-      "name": "Piotr P\u0142aczek",
-      "company": "Unknown",
-      "location": null,
-      "email": "piotrpdev@gmail.com",
-      "profile_url": null,
-      "commit_count": 53
-    },
-    {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
-      "company": "Unknown",
-      "location": null,
-      "email": "code@tomcooper.dev",
-      "profile_url": null,
-      "commit_count": 27
-    },
-    {
-      "login": "Jan Kalinic",
-      "name": "Jan Kalinic",
-      "company": "Unknown",
-      "location": null,
-      "email": "jkalinic@redhat.com",
-      "profile_url": null,
-      "commit_count": 12
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T09:36:14.889296",
   "years": [
     {
       "year": 2025,
@@ -118,8 +117,9 @@
     },
     {
       "year": 2026,
-      "commit_count": 16,
+      "commit_count": 18,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 38
 }

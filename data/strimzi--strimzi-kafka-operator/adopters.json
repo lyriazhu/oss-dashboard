@@ -1,6 +1,13 @@
 {
-  "total_adopters": 32,
+  "total_adopters": 33,
   "adopters": [
+    {
+      "name": "[smaXtec] (https://www.smaxtec.com/en/)",
+      "type": "users",
+      "description": "",
+      "since": "",
+      "url": null
+    },
     {
       "name": "Alauda",
       "type": "users",
@@ -226,6 +233,6 @@
       "url": "https://aenix.io"
     }
   ],
-  "extracted_at": "2026-07-16T14:50:17.113601",
+  "extracted_at": "2026-07-22T16:30:46.727484",
   "source": "https://github.com/strimzi/strimzi-kafka-operator/blob/main/ADOPTERS.md"
 }

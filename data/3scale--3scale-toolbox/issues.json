@@ -1,7 +1,7 @@
 {
   "total_open": 23,
-  "total_closed": 0,
-  "total_issues": 0,
+  "total_closed": 90,
+  "total_issues": 113,
   "median_resolution_time_days": null,
   "months": [
     {
@@ -158,5 +158,5 @@
       "closed_issue_count": 0
     }
   ],
-  "extracted_at": "2026-07-22T12:32:56.456778"
+  "extracted_at": "2026-07-22T16:14:33.170730"
 }

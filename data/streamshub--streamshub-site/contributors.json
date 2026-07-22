@@ -3,16 +3,29 @@
     {
       "year": 2025,
       "contributor_count": 2,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "code@tomcooper.dev",
+        "piotrpdev@gmail.com"
+      ]
     },
     {
       "year": 2026,
       "contributor_count": 2,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "code@tomcooper.dev",
+        "jkalinic@redhat.com"
+      ]
     }
   ],
   "total_contributors": 3,
   "total_contributors_git": 3,
+  "all_time_contributor_logins": [
+    "code@tomcooper.dev",
+    "jkalinic@redhat.com",
+    "piotrpdev@gmail.com"
+  ],
   "contributors": [
     {
       "login": "tomncooper",
@@ -62,7 +75,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2024",
@@ -72,7 +88,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2024",
@@ -82,7 +101,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2024",
@@ -92,7 +114,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q4 2024",
@@ -102,7 +127,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2025",
@@ -112,7 +140,14 @@
       "active_contributors": 1,
       "new_contributors": 1,
       "returning_contributors": 0,
-      "retention_rate": 0.0
+      "retention_rate": 0.0,
+      "active_logins": [
+        "code@tomcooper.dev"
+      ],
+      "new_logins": [
+        "code@tomcooper.dev"
+      ],
+      "returning_logins": []
     },
     {
       "period": "Q2 2025",
@@ -122,7 +157,17 @@
       "active_contributors": 2,
       "new_contributors": 1,
       "returning_contributors": 1,
-      "retention_rate": 50.0
+      "retention_rate": 50.0,
+      "active_logins": [
+        "code@tomcooper.dev",
+        "piotrpdev@gmail.com"
+      ],
+      "new_logins": [
+        "piotrpdev@gmail.com"
+      ],
+      "returning_logins": [
+        "code@tomcooper.dev"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -132,7 +177,16 @@
       "active_contributors": 2,
       "new_contributors": 0,
       "returning_contributors": 2,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "code@tomcooper.dev",
+        "piotrpdev@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "code@tomcooper.dev",
+        "piotrpdev@gmail.com"
+      ]
     },
     {
       "period": "Q4 2025",
@@ -142,7 +196,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "piotrpdev@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "piotrpdev@gmail.com"
+      ]
     },
     {
       "period": "Q1 2026",
@@ -152,7 +213,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "code@tomcooper.dev"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "code@tomcooper.dev"
+      ]
     },
     {
       "period": "Q2 2026",
@@ -162,7 +230,17 @@
       "active_contributors": 2,
       "new_contributors": 1,
       "returning_contributors": 1,
-      "retention_rate": 50.0
+      "retention_rate": 50.0,
+      "active_logins": [
+        "code@tomcooper.dev",
+        "jkalinic@redhat.com"
+      ],
+      "new_logins": [
+        "jkalinic@redhat.com"
+      ],
+      "returning_logins": [
+        "code@tomcooper.dev"
+      ]
     },
     {
       "period": "Q3 2026",
@@ -172,7 +250,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "jkalinic@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "jkalinic@redhat.com"
+      ]
     }
   ],
   "retention_by_year": [
@@ -185,7 +270,16 @@
       "new_contributors": 2,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "code@tomcooper.dev",
+        "piotrpdev@gmail.com"
+      ],
+      "new_logins": [
+        "code@tomcooper.dev",
+        "piotrpdev@gmail.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2026",
@@ -196,12 +290,23 @@
       "new_contributors": 1,
       "returning_contributors": 1,
       "retention_rate": 50.0,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "code@tomcooper.dev",
+        "jkalinic@redhat.com"
+      ],
+      "new_logins": [
+        "jkalinic@redhat.com"
+      ],
+      "returning_logins": [
+        "code@tomcooper.dev"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

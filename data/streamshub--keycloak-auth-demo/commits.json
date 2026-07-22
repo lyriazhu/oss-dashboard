@@ -1,5 +1,22 @@
 {
-  "total_commits": 26,
+  "committers": [
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 26
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:47:55.882450",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,29 +91,12 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
-      "company": "Unknown",
-      "location": null,
-      "email": "code@tomcooper.dev",
-      "profile_url": null,
-      "commit_count": 26
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T09:40:01.273169",
   "years": [
     {
       "year": 2026,
       "commit_count": 26,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 26
 }

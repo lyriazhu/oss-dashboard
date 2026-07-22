@@ -3,26 +3,84 @@
     {
       "year": 2022,
       "contributor_count": 2,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "gunnar.morling@googlemail.com"
+      ]
     },
     {
       "year": 2023,
       "contributor_count": 3,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "year": 2025,
       "contributor_count": 9,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "year": 2026,
       "contributor_count": 15,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "40595489+shubhamrwt@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "hgupta@confluent.io",
+        "hrishabhg@gmail.com",
+        "iamejaskhan@gmail.com",
+        "kwall@apache.org",
+        "oleksiy.pylypenko@gmail.com",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com",
+        "upatel@confluent.io"
+      ]
     }
   ],
   "total_contributors": 19,
   "total_contributors_git": 19,
+  "all_time_contributor_logins": [
+    "105218041+uzziee@users.noreply.github.com",
+    "11195226+katheris@users.noreply.github.com",
+    "40595489+shubhamrwt@users.noreply.github.com",
+    "code@tomcooper.dev",
+    "gunnar.morling@googlemail.com",
+    "hgupta@confluent.io",
+    "hrishabhg@gmail.com",
+    "iamejaskhan@gmail.com",
+    "kwall@apache.org",
+    "kwall@redhat.com",
+    "oleksiy.pylypenko@gmail.com",
+    "piotrpdev@gmail.com",
+    "robertyoungnz@gmail.com",
+    "robeyoun@redhat.com",
+    "sam@quadrocket.co.uk",
+    "shubhamrwt02@gmail.com",
+    "tbentley@redhat.com",
+    "tombentley@users.noreply.github.com",
+    "upatel@confluent.io"
+  ],
   "contributors": [
     {
       "login": "SamBarker",
@@ -48,7 +106,7 @@
       "company": "Ibm",
       "location": null,
       "email": null,
-      "contributions": 33,
+      "contributions": 34,
       "profile_url": "https://github.com/tombentley"
     },
     {
@@ -164,7 +222,18 @@
       "active_contributors": 3,
       "new_contributors": 0,
       "returning_contributors": 3,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q1 2024",
@@ -174,7 +243,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2024",
@@ -184,7 +256,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2024",
@@ -194,7 +269,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q4 2024",
@@ -204,7 +282,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2025",
@@ -214,7 +295,23 @@
       "active_contributors": 5,
       "new_contributors": 2,
       "returning_contributors": 3,
-      "retention_rate": 60.0
+      "retention_rate": 60.0,
+      "active_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q2 2025",
@@ -224,7 +321,21 @@
       "active_contributors": 4,
       "new_contributors": 2,
       "returning_contributors": 2,
-      "retention_rate": 50.0
+      "retention_rate": 50.0,
+      "active_logins": [
+        "kwall@apache.org",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -234,7 +345,20 @@
       "active_contributors": 4,
       "new_contributors": 0,
       "returning_contributors": 4,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q4 2025",
@@ -244,7 +368,25 @@
       "active_contributors": 6,
       "new_contributors": 2,
       "returning_contributors": 4,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "shubhamrwt02@gmail.com"
+      ],
+      "returning_logins": [
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q1 2026",
@@ -254,7 +396,33 @@
       "active_contributors": 10,
       "new_contributors": 3,
       "returning_contributors": 7,
-      "retention_rate": 70.0
+      "retention_rate": 70.0,
+      "active_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "40595489+shubhamrwt@users.noreply.github.com",
+        "hgupta@confluent.io",
+        "kwall@apache.org",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "40595489+shubhamrwt@users.noreply.github.com",
+        "hgupta@confluent.io",
+        "piotrpdev@gmail.com"
+      ],
+      "returning_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q2 2026",
@@ -264,17 +432,73 @@
       "active_contributors": 12,
       "new_contributors": 4,
       "returning_contributors": 8,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "hgupta@confluent.io",
+        "hrishabhg@gmail.com",
+        "kwall@apache.org",
+        "oleksiy.pylypenko@gmail.com",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com",
+        "upatel@confluent.io"
+      ],
+      "new_logins": [
+        "code@tomcooper.dev",
+        "hrishabhg@gmail.com",
+        "oleksiy.pylypenko@gmail.com",
+        "upatel@confluent.io"
+      ],
+      "returning_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "hgupta@confluent.io",
+        "kwall@apache.org",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 9,
+      "active_contributors": 10,
       "new_contributors": 1,
-      "returning_contributors": 8,
-      "retention_rate": 88.89
+      "returning_contributors": 9,
+      "retention_rate": 90.0,
+      "active_logins": [
+        "code@tomcooper.dev",
+        "hgupta@confluent.io",
+        "hrishabhg@gmail.com",
+        "iamejaskhan@gmail.com",
+        "kwall@apache.org",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "iamejaskhan@gmail.com"
+      ],
+      "returning_logins": [
+        "code@tomcooper.dev",
+        "hgupta@confluent.io",
+        "hrishabhg@gmail.com",
+        "kwall@apache.org",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     }
   ],
   "retention_by_year": [
@@ -287,7 +511,16 @@
       "new_contributors": 2,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "gunnar.morling@googlemail.com"
+      ],
+      "new_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "gunnar.morling@googlemail.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2023",
@@ -298,7 +531,18 @@
       "new_contributors": 3,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2025",
@@ -309,7 +553,31 @@
       "new_contributors": 6,
       "returning_contributors": 3,
       "retention_rate": 33.33,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "2026",
@@ -320,12 +588,49 @@
       "new_contributors": 8,
       "returning_contributors": 7,
       "retention_rate": 46.67,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "40595489+shubhamrwt@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "hgupta@confluent.io",
+        "hrishabhg@gmail.com",
+        "iamejaskhan@gmail.com",
+        "kwall@apache.org",
+        "oleksiy.pylypenko@gmail.com",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com",
+        "upatel@confluent.io"
+      ],
+      "new_logins": [
+        "40595489+shubhamrwt@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "hgupta@confluent.io",
+        "hrishabhg@gmail.com",
+        "iamejaskhan@gmail.com",
+        "oleksiy.pylypenko@gmail.com",
+        "piotrpdev@gmail.com",
+        "upatel@confluent.io"
+      ],
+      "returning_logins": [
+        "105218041+uzziee@users.noreply.github.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "shubhamrwt02@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

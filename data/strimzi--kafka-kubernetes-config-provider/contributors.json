@@ -66,6 +66,20 @@
   ],
   "total_contributors": 12,
   "total_contributors_git": 12,
+  "all_time_contributor_logins": [
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "53821852+im-konge@users.noreply.github.com",
+    "andrey.pustovetov@gmail.com",
+    "hchen@x.ai",
+    "lukywill16@gmail.com",
+    "marko.strukelj@gmail.com",
+    "maros.orsak159@gmail.com",
+    "paolo.patierno@gmail.com",
+    "ppatierno@live.com",
+    "tombentley@users.noreply.github.com",
+    "www@scholzj.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "scholzj",
@@ -495,6 +509,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

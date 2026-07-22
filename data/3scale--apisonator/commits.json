@@ -1,79 +1,4 @@
 {
-  "total_commits": 283,
-  "quarters": [
-    {
-      "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-10-01T00:00:00",
-      "commit_count": 12,
-      "quarter": "Q3 2026"
-    },
-    {
-      "start_date": "2026-04-01T00:00:00",
-      "end_date": "2026-07-01T00:00:00",
-      "commit_count": 23,
-      "quarter": "Q2 2026"
-    },
-    {
-      "start_date": "2026-01-01T00:00:00",
-      "end_date": "2026-04-01T00:00:00",
-      "commit_count": 8,
-      "quarter": "Q1 2026"
-    },
-    {
-      "start_date": "2025-10-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "commit_count": 41,
-      "quarter": "Q4 2025"
-    },
-    {
-      "start_date": "2025-07-01T00:00:00",
-      "end_date": "2025-10-01T00:00:00",
-      "commit_count": 29,
-      "quarter": "Q3 2025"
-    },
-    {
-      "start_date": "2025-04-01T00:00:00",
-      "end_date": "2025-07-01T00:00:00",
-      "commit_count": 14,
-      "quarter": "Q2 2025"
-    },
-    {
-      "start_date": "2025-01-01T00:00:00",
-      "end_date": "2025-04-01T00:00:00",
-      "commit_count": 25,
-      "quarter": "Q1 2025"
-    },
-    {
-      "start_date": "2024-10-01T00:00:00",
-      "end_date": "2025-01-01T00:00:00",
-      "commit_count": 20,
-      "quarter": "Q4 2024"
-    },
-    {
-      "start_date": "2024-07-01T00:00:00",
-      "end_date": "2024-10-01T00:00:00",
-      "commit_count": 25,
-      "quarter": "Q3 2024"
-    },
-    {
-      "start_date": "2024-04-01T00:00:00",
-      "end_date": "2024-07-01T00:00:00",
-      "commit_count": 36,
-      "quarter": "Q2 2024"
-    },
-    {
-      "start_date": "2024-01-01T00:00:00",
-      "end_date": "2024-04-01T00:00:00",
-      "commit_count": 48,
-      "quarter": "Q1 2024"
-    },
-    {
-      "start_date": "2023-10-01T00:00:00",
-      "end_date": "2024-01-01T00:00:00",
-      "commit_count": 2,
-      "quarter": "Q4 2023"
-    }
-  ],
   "committers": [
     {
       "login": "David Ortiz",
@@ -559,7 +484,81 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-22T12:33:51.041070",
+  "extracted_at": "2026-07-22T16:13:52.686673",
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 12,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 23,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 8,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 41,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 29,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 14,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 25,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 20,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 25,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 36,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 48,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 2,
+      "quarter": "Q4 2023"
+    }
+  ],
   "years": [
     {
       "year": 2010,
@@ -646,5 +645,6 @@
       "commit_count": 61,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 283
 }

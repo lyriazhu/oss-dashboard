@@ -7,7 +7,8 @@
       "end_date": "2025-08-31T23:59:59",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2025-08"
+      "month": "2025-08",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2025-09-01T00:00:00",
@@ -54,7 +55,8 @@
       "end_date": "2026-02-28T23:59:59",
       "pr_count": 2,
       "merged_pr_count": 0,
-      "month": "2026-02"
+      "month": "2026-02",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2026-03-01T00:00:00",
@@ -139,5 +141,5 @@
       "merged_pr_count": 12
     }
   ],
-  "extracted_at": "2026-07-16T14:57:40.574448"
+  "extracted_at": "2026-07-22T16:29:36.958213"
 }

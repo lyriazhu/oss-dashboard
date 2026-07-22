@@ -3,21 +3,66 @@
     {
       "year": 2024,
       "contributor_count": 13,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tina.selenge@gmail.com",
+        "tom.cooper@reddit.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "year": 2025,
       "contributor_count": 7,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "4671291+tomncooper@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "99439005+piotrpdev@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "piotrpdev@gmail.com"
+      ]
     },
     {
       "year": 2026,
       "contributor_count": 1,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ]
     }
   ],
   "total_contributors": 16,
   "total_contributors_git": 16,
+  "all_time_contributor_logins": [
+    "11195226+katheris@users.noreply.github.com",
+    "39860586+tinaselenge@users.noreply.github.com",
+    "4671291+tomncooper@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "99439005+piotrpdev@users.noreply.github.com",
+    "code@tomcooper.dev",
+    "kornys@outlook.com",
+    "michael@xlate.io",
+    "piotrpdev@gmail.com",
+    "robertyoungnz@gmail.com",
+    "robeyoun@redhat.com",
+    "sam@quadrocket.co.uk",
+    "sbarker@redhat.com",
+    "tina.selenge@gmail.com",
+    "tom.cooper@reddit.com",
+    "tombentley@users.noreply.github.com"
+  ],
   "contributors": [
     {
       "login": "kornys",
@@ -149,7 +194,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2024",
@@ -159,7 +207,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2024",
@@ -169,7 +220,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2024",
@@ -179,7 +233,30 @@
       "active_contributors": 9,
       "new_contributors": 9,
       "returning_contributors": 0,
-      "retention_rate": 0.0
+      "retention_rate": 0.0,
+      "active_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tina.selenge@gmail.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tina.selenge@gmail.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "Q4 2024",
@@ -189,7 +266,33 @@
       "active_contributors": 10,
       "new_contributors": 4,
       "returning_contributors": 6,
-      "retention_rate": 60.0
+      "retention_rate": 60.0,
+      "active_logins": [
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "tina.selenge@gmail.com",
+        "tom.cooper@reddit.com"
+      ],
+      "new_logins": [
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "tom.cooper@reddit.com"
+      ],
+      "returning_logins": [
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "tina.selenge@gmail.com"
+      ]
     },
     {
       "period": "Q1 2025",
@@ -199,7 +302,16 @@
       "active_contributors": 2,
       "new_contributors": 0,
       "returning_contributors": 2,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev"
+      ]
     },
     {
       "period": "Q2 2025",
@@ -209,7 +321,23 @@
       "active_contributors": 5,
       "new_contributors": 1,
       "returning_contributors": 4,
-      "retention_rate": 80.0
+      "retention_rate": 80.0,
+      "active_logins": [
+        "4671291+tomncooper@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io"
+      ],
+      "new_logins": [
+        "4671291+tomncooper@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -219,7 +347,25 @@
       "active_contributors": 6,
       "new_contributors": 2,
       "returning_contributors": 4,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "99439005+piotrpdev@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "piotrpdev@gmail.com"
+      ],
+      "new_logins": [
+        "99439005+piotrpdev@users.noreply.github.com",
+        "piotrpdev@gmail.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io"
+      ]
     },
     {
       "period": "Q4 2025",
@@ -229,7 +375,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q1 2026",
@@ -239,7 +392,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q2 2026",
@@ -249,7 +409,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2026",
@@ -259,7 +422,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     }
   ],
   "retention_by_year": [
@@ -272,7 +438,38 @@
       "new_contributors": 13,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tina.selenge@gmail.com",
+        "tom.cooper@reddit.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "39860586+tinaselenge@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tina.selenge@gmail.com",
+        "tom.cooper@reddit.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2025",
@@ -283,7 +480,27 @@
       "new_contributors": 3,
       "returning_contributors": 4,
       "retention_rate": 57.14,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "4671291+tomncooper@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "99439005+piotrpdev@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io",
+        "piotrpdev@gmail.com"
+      ],
+      "new_logins": [
+        "4671291+tomncooper@users.noreply.github.com",
+        "99439005+piotrpdev@users.noreply.github.com",
+        "piotrpdev@gmail.com"
+      ],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "kornys@outlook.com",
+        "michael@xlate.io"
+      ]
     },
     {
       "period": "2026",
@@ -294,12 +511,20 @@
       "new_contributors": 0,
       "returning_contributors": 1,
       "retention_rate": 100.0,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

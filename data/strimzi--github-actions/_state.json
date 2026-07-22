@@ -5,18 +5,18 @@
       "dependabot[bot]",
       "im-konge"
     ],
-    "last_extracted_at": "2026-07-16T15:24:33.449572"
+    "last_extracted_at": "2026-07-22T16:18:34.697148"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T15:24:40.047782"
+    "last_git_sync_at": "2026-07-22T16:18:41.493068"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T15:25:05.464858"
+    "last_extracted_at": "2026-07-22T16:18:54.668137"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T15:24:58.509937"
+    "last_extracted_at": "2026-07-22T16:18:47.961673"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T15:25:07.257820"
+    "last_extracted_at": "2026-07-22T16:18:56.553526"
   }
 }

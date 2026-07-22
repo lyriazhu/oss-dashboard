@@ -7,7 +7,8 @@
       "end_date": "2025-08-31T23:59:59",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2025-08"
+      "month": "2025-08",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2025-09-01T00:00:00",
@@ -30,7 +31,8 @@
       "end_date": "2025-11-30T23:59:59",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2025-11"
+      "month": "2025-11",
+      "median_time_to_merge_days": null
     },
     {
       "start_date": "2025-12-01T00:00:00",
@@ -93,7 +95,8 @@
       "end_date": "2026-07-16T15:23:26.704530",
       "pr_count": 0,
       "merged_pr_count": 0,
-      "month": "2026-07"
+      "month": "2026-07",
+      "median_time_to_merge_days": null
     }
   ],
   "years": [
@@ -113,5 +116,5 @@
       "merged_pr_count": 22
     }
   ],
-  "extracted_at": "2026-07-16T15:23:26.704590"
+  "extracted_at": "2026-07-22T16:23:32.422930"
 }

@@ -3,21 +3,49 @@
     {
       "year": 2024,
       "contributor_count": 6,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "andrea.peruffo1982@gmail.com",
+        "ggrimwoo@redhat.com",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "year": 2025,
       "contributor_count": 5,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "andrea.peruffo1982@gmail.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "year": 2026,
       "contributor_count": 1,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "robertyoungnz@gmail.com"
+      ]
     }
   ],
   "total_contributors": 8,
   "total_contributors_git": 8,
+  "all_time_contributor_logins": [
+    "11195226+katheris@users.noreply.github.com",
+    "15976368+gracegrimwood@users.noreply.github.com",
+    "andrea.peruffo1982@gmail.com",
+    "ggrimwoo@redhat.com",
+    "kwall@apache.org",
+    "kwall@redhat.com",
+    "robertyoungnz@gmail.com",
+    "sam@quadrocket.co.uk"
+  ],
   "contributors": [
     {
       "login": "k-wall",
@@ -103,7 +131,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2024",
@@ -113,7 +144,22 @@
       "active_contributors": 5,
       "new_contributors": 5,
       "returning_contributors": 0,
-      "retention_rate": 0.0
+      "retention_rate": 0.0,
+      "active_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "andrea.peruffo1982@gmail.com",
+        "ggrimwoo@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "andrea.peruffo1982@gmail.com",
+        "ggrimwoo@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "returning_logins": []
     },
     {
       "period": "Q2 2024",
@@ -123,7 +169,14 @@
       "active_contributors": 1,
       "new_contributors": 1,
       "returning_contributors": 0,
-      "retention_rate": 0.0
+      "retention_rate": 0.0,
+      "active_logins": [
+        "kwall@redhat.com"
+      ],
+      "new_logins": [
+        "kwall@redhat.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "Q3 2024",
@@ -133,7 +186,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q4 2024",
@@ -143,7 +199,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2025",
@@ -153,7 +212,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "kwall@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "kwall@redhat.com"
+      ]
     },
     {
       "period": "Q2 2025",
@@ -163,7 +229,19 @@
       "active_contributors": 3,
       "new_contributors": 1,
       "returning_contributors": 2,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "kwall@apache.org"
+      ],
+      "returning_logins": [
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -173,7 +251,17 @@
       "active_contributors": 2,
       "new_contributors": 1,
       "returning_contributors": 1,
-      "retention_rate": 50.0
+      "retention_rate": 50.0,
+      "active_logins": [
+        "andrea.peruffo1982@gmail.com",
+        "robertyoungnz@gmail.com"
+      ],
+      "new_logins": [
+        "robertyoungnz@gmail.com"
+      ],
+      "returning_logins": [
+        "andrea.peruffo1982@gmail.com"
+      ]
     },
     {
       "period": "Q4 2025",
@@ -183,7 +271,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2026",
@@ -193,7 +284,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "robertyoungnz@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "robertyoungnz@gmail.com"
+      ]
     },
     {
       "period": "Q2 2026",
@@ -203,7 +301,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2026",
@@ -213,7 +314,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     }
   ],
   "retention_by_year": [
@@ -226,7 +330,24 @@
       "new_contributors": 6,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "andrea.peruffo1982@gmail.com",
+        "ggrimwoo@redhat.com",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "11195226+katheris@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "andrea.peruffo1982@gmail.com",
+        "ggrimwoo@redhat.com",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2025",
@@ -237,7 +358,23 @@
       "new_contributors": 2,
       "returning_contributors": 3,
       "retention_rate": 60.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "andrea.peruffo1982@gmail.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com"
+      ],
+      "returning_logins": [
+        "andrea.peruffo1982@gmail.com",
+        "kwall@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "2026",
@@ -248,12 +385,20 @@
       "new_contributors": 0,
       "returning_contributors": 1,
       "retention_rate": 100.0,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "robertyoungnz@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "robertyoungnz@gmail.com"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

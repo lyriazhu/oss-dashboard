@@ -3,11 +3,21 @@
     {
       "year": 2026,
       "contributor_count": 3,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ]
     }
   ],
   "total_contributors": 3,
   "total_contributors_git": 3,
+  "all_time_contributor_logins": [
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "kornys@outlook.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "kornys",
@@ -15,7 +25,7 @@
       "company": "Ibm",
       "location": "Brno",
       "email": "kornys@outlook.com",
-      "contributions": 100,
+      "contributions": 101,
       "profile_url": "https://github.com/kornys"
     },
     {
@@ -24,7 +34,7 @@
       "company": "Ibm",
       "location": null,
       "email": "xstejs24@gmail.com",
-      "contributions": 24,
+      "contributions": 26,
       "profile_url": "https://github.com/Frawless"
     },
     {
@@ -33,7 +43,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 22,
+      "contributions": 24,
       "profile_url": "https://github.com/apps/dependabot"
     }
   ],
@@ -66,7 +76,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2024",
@@ -76,7 +89,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2024",
@@ -86,7 +102,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2024",
@@ -96,7 +115,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q4 2024",
@@ -106,7 +128,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2025",
@@ -116,7 +141,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2025",
@@ -126,7 +154,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2025",
@@ -136,7 +167,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q4 2025",
@@ -146,7 +180,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2026",
@@ -156,7 +193,18 @@
       "active_contributors": 3,
       "new_contributors": 3,
       "returning_contributors": 0,
-      "retention_rate": 0.0
+      "retention_rate": 0.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "Q2 2026",
@@ -166,7 +214,18 @@
       "active_contributors": 3,
       "new_contributors": 0,
       "returning_contributors": 3,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ]
     },
     {
       "period": "Q3 2026",
@@ -176,7 +235,18 @@
       "active_contributors": 3,
       "new_contributors": 0,
       "returning_contributors": 3,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ]
     }
   ],
   "retention_by_year": [
@@ -189,12 +259,24 @@
       "new_contributors": 3,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kornys@outlook.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": []
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

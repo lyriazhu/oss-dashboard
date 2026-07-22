@@ -1,16 +1,16 @@
 {
   "name": ".github",
-  "full_name": "Apicurio/.github",
+  "full_name": "streamshub/.github",
   "description": null,
-  "created_at": "2022-06-28T17:14:28+00:00",
-  "updated_at": "2026-06-15T07:56:16+00:00",
+  "created_at": "2024-11-19T03:01:06+00:00",
+  "updated_at": "2026-06-02T08:00:26+00:00",
   "stars": 0,
   "forks": 1,
   "watchers": 0,
-  "open_issues": 1,
+  "open_issues": 0,
   "language": null,
   "topics": [],
-  "license": "Apache License 2.0",
+  "license": null,
   "homepage": null,
   "has_wiki": true,
   "has_discussions": null,
@@ -21,5 +21,5 @@
       "percentage": 100.0
     }
   ],
-  "extracted_at": "2026-07-17T13:42:36.913239"
+  "extracted_at": "2026-07-22T16:48:16.791566"
 }

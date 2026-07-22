@@ -55,6 +55,28 @@
   ],
   "total_contributors": 20,
   "total_contributors_git": 20,
+  "all_time_contributor_logins": [
+    "137479805+leisma@users.noreply.github.com",
+    "42037371+guancioul@users.noreply.github.com",
+    "42675180+antonio-pedro99@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "53821852+im-konge@users.noreply.github.com",
+    "76431349+owencorrigan76@users.noreply.github.com",
+    "fedevaleri@gmail.com",
+    "guancioul@gmail.com",
+    "leisma@example.com",
+    "lukywill16@gmail.com",
+    "maros.orsak159@gmail.com",
+    "mickael.maison@gmail.com",
+    "mimaison@users.noreply.github.com",
+    "ocorriga@redhat.com",
+    "owencorrigan76@gmail.com",
+    "paolo.patierno@gmail.com",
+    "ppatierno@live.com",
+    "tonio.pedro99@gmail.com",
+    "www@scholzj.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "mimaison",
@@ -578,6 +600,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

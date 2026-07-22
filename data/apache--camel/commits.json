@@ -7,7 +7,7 @@
       "location": null,
       "email": "ancosen@gmail.com",
       "profile_url": null,
-      "commit_count": 33710
+      "commit_count": 33712
     },
     {
       "login": "Claus Ibsen",
@@ -16,7 +16,7 @@
       "location": null,
       "email": "claus.ibsen@gmail.com",
       "profile_url": null,
-      "commit_count": 27210
+      "commit_count": 27215
     },
     {
       "login": "Claus Ibsen",
@@ -61,7 +61,7 @@
       "location": null,
       "email": "gnodet@gmail.com",
       "profile_url": null,
-      "commit_count": 3800
+      "commit_count": 3802
     },
     {
       "login": "James Strachan",
@@ -457,7 +457,7 @@
       "location": null,
       "email": "tdiesler@redhat.com",
       "profile_url": null,
-      "commit_count": 330
+      "commit_count": 331
     },
     {
       "login": "Antonin Stefanutti",
@@ -6424,7 +6424,7 @@
       "location": null,
       "email": "tdiesler@proton.me",
       "profile_url": null,
-      "commit_count": 7
+      "commit_count": 8
     },
     {
       "login": "Renjith Narayanan",
@@ -20698,7 +20698,7 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-22T15:51:50.667406",
+  "extracted_at": "2026-07-22T17:22:38.521744",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -20871,7 +20871,7 @@
     },
     {
       "year": 2026,
-      "commit_count": 12217,
+      "commit_count": 12223,
       "is_current": true
     }
   ],

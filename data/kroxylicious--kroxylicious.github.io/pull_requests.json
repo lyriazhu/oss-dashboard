@@ -1,6 +1,6 @@
 {
-  "total_prs": 93,
-  "median_time_to_merge_days": 0.31,
+  "total_prs": 97,
+  "median_time_to_merge_days": 0.38,
   "months": [
     {
       "start_date": "2025-08-01T00:00:00",
@@ -93,10 +93,10 @@
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-07-16T12:41:34.538494",
-      "pr_count": 7,
-      "merged_pr_count": 5,
+      "pr_count": 11,
+      "merged_pr_count": 9,
       "month": "2026-07",
-      "median_time_to_merge_days": 0.18
+      "median_time_to_merge_days": 0.38
     }
   ],
   "years": [
@@ -117,9 +117,9 @@
     },
     {
       "year": 2026,
-      "pr_count": 60,
-      "merged_pr_count": 46
+      "pr_count": 63,
+      "merged_pr_count": 50
     }
   ],
-  "extracted_at": "2026-07-16T12:41:34.538528"
+  "extracted_at": "2026-07-22T16:52:48.905004"
 }

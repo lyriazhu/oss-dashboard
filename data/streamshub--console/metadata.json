@@ -3,11 +3,11 @@
   "full_name": "streamshub/console",
   "description": "Web console to interact with Apache Kafka\u00ae instances running in a Kubernetes cluster managed by Strimzi Cluster Operator",
   "created_at": "2023-05-23T13:34:34+00:00",
-  "updated_at": "2026-07-16T12:37:44+00:00",
+  "updated_at": "2026-07-22T14:14:42+00:00",
   "stars": 30,
   "forks": 31,
   "watchers": 30,
-  "open_issues": 59,
+  "open_issues": 48,
   "language": "Java",
   "topics": [],
   "license": "Apache License 2.0",
@@ -17,18 +17,18 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 450,
-      "percentage": 67.77
+      "commits": 454,
+      "percentage": 67.86
     },
     {
       "company": "Red Hat",
-      "commits": 191,
-      "percentage": 28.77
+      "commits": 192,
+      "percentage": 28.7
     },
     {
       "company": "Immuta",
       "commits": 20,
-      "percentage": 3.01
+      "percentage": 2.99
     },
     {
       "company": "Hetznercloud",
@@ -41,5 +41,5 @@
       "percentage": 0.15
     }
   ],
-  "extracted_at": "2026-07-16T09:29:23.743414"
+  "extracted_at": "2026-07-22T16:40:07.683527"
 }

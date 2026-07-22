@@ -1,79 +1,4 @@
 {
-  "total_commits": 5327,
-  "quarters": [
-    {
-      "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-10-01T00:00:00",
-      "commit_count": 84,
-      "quarter": "Q3 2026"
-    },
-    {
-      "start_date": "2026-04-01T00:00:00",
-      "end_date": "2026-07-01T00:00:00",
-      "commit_count": 702,
-      "quarter": "Q2 2026"
-    },
-    {
-      "start_date": "2026-01-01T00:00:00",
-      "end_date": "2026-04-01T00:00:00",
-      "commit_count": 472,
-      "quarter": "Q1 2026"
-    },
-    {
-      "start_date": "2025-10-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "commit_count": 472,
-      "quarter": "Q4 2025"
-    },
-    {
-      "start_date": "2025-07-01T00:00:00",
-      "end_date": "2025-10-01T00:00:00",
-      "commit_count": 307,
-      "quarter": "Q3 2025"
-    },
-    {
-      "start_date": "2025-04-01T00:00:00",
-      "end_date": "2025-07-01T00:00:00",
-      "commit_count": 338,
-      "quarter": "Q2 2025"
-    },
-    {
-      "start_date": "2025-01-01T00:00:00",
-      "end_date": "2025-04-01T00:00:00",
-      "commit_count": 455,
-      "quarter": "Q1 2025"
-    },
-    {
-      "start_date": "2024-10-01T00:00:00",
-      "end_date": "2025-01-01T00:00:00",
-      "commit_count": 639,
-      "quarter": "Q4 2024"
-    },
-    {
-      "start_date": "2024-07-01T00:00:00",
-      "end_date": "2024-10-01T00:00:00",
-      "commit_count": 490,
-      "quarter": "Q3 2024"
-    },
-    {
-      "start_date": "2024-04-01T00:00:00",
-      "end_date": "2024-07-01T00:00:00",
-      "commit_count": 392,
-      "quarter": "Q2 2024"
-    },
-    {
-      "start_date": "2024-01-01T00:00:00",
-      "end_date": "2024-04-01T00:00:00",
-      "commit_count": 452,
-      "quarter": "Q1 2024"
-    },
-    {
-      "start_date": "2023-10-01T00:00:00",
-      "end_date": "2024-01-01T00:00:00",
-      "commit_count": 524,
-      "quarter": "Q4 2023"
-    }
-  ],
   "committers": [
     {
       "login": "Brian Stansberry",
@@ -82,7 +7,7 @@
       "location": null,
       "email": "brian.stansberry@redhat.com",
       "profile_url": null,
-      "commit_count": 11356
+      "commit_count": 11357
     },
     {
       "login": "Kabir Khan",
@@ -226,7 +151,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 783
+      "commit_count": 785
     },
     {
       "login": "Alexey Loubyansky",
@@ -415,7 +340,7 @@
       "location": null,
       "email": "jason@steeplesoft.com",
       "profile_url": null,
-      "commit_count": 307
+      "commit_count": 311
     },
     {
       "login": "Ondrej Zizka",
@@ -460,7 +385,7 @@
       "location": null,
       "email": "baranowb@gmail.com",
       "profile_url": null,
-      "commit_count": 277
+      "commit_count": 278
     },
     {
       "login": "Ale\u0161 Justin",
@@ -688,6 +613,15 @@
       "commit_count": 142
     },
     {
+      "login": "Radoslav Husar",
+      "name": "Radoslav Husar",
+      "company": "Unknown",
+      "location": null,
+      "email": "rhusar@ibm.com",
+      "profile_url": null,
+      "commit_count": 140
+    },
+    {
       "login": "Ladislav Thon",
       "name": "Ladislav Thon",
       "company": "Unknown",
@@ -697,13 +631,13 @@
       "commit_count": 138
     },
     {
-      "login": "Radoslav Husar",
-      "name": "Radoslav Husar",
+      "login": "Richard Achmatowicz",
+      "name": "Richard Achmatowicz",
       "company": "Unknown",
       "location": null,
-      "email": "rhusar@ibm.com",
+      "email": "rachmato@redhat.com",
       "profile_url": null,
-      "commit_count": 136
+      "commit_count": 134
     },
     {
       "login": "Tomas Hofman",
@@ -720,15 +654,6 @@
       "company": "Unknown",
       "location": null,
       "email": "rsvoboda@redhat.com",
-      "profile_url": null,
-      "commit_count": 130
-    },
-    {
-      "login": "Richard Achmatowicz",
-      "name": "Richard Achmatowicz",
-      "company": "Unknown",
-      "location": null,
-      "email": "rachmato@redhat.com",
       "profile_url": null,
       "commit_count": 130
     },
@@ -976,20 +901,20 @@
       "commit_count": 64
     },
     {
-      "login": "Rafael Benevides",
-      "name": "Rafael Benevides",
-      "company": "Unknown",
-      "location": null,
-      "email": "rafabene@gmail.com",
-      "profile_url": null,
-      "commit_count": 62
-    },
-    {
       "login": "Paul Ferraro",
       "name": "Paul Ferraro",
       "company": "Unknown",
       "location": null,
       "email": "paulferraro@ibm.com",
+      "profile_url": null,
+      "commit_count": 64
+    },
+    {
+      "login": "Rafael Benevides",
+      "name": "Rafael Benevides",
+      "company": "Unknown",
+      "location": null,
+      "email": "rafabene@gmail.com",
       "profile_url": null,
       "commit_count": 62
     },
@@ -1459,7 +1384,7 @@
       "location": null,
       "email": "jfinelli@redhat.com",
       "profile_url": null,
-      "commit_count": 34
+      "commit_count": 35
     },
     {
       "login": "Bernd",
@@ -1705,6 +1630,15 @@
       "commit_count": 26
     },
     {
+      "login": "Enrique",
+      "name": "Enrique",
+      "company": "Unknown",
+      "location": null,
+      "email": "enrique.gonzalez.martinez1@ibm.com",
+      "profile_url": null,
+      "commit_count": 26
+    },
+    {
       "login": "amoscatelli",
       "name": "amoscatelli",
       "company": "Unknown",
@@ -1737,15 +1671,6 @@
       "company": "Unknown",
       "location": null,
       "email": "nsurtani@redhat.com",
-      "profile_url": null,
-      "commit_count": 25
-    },
-    {
-      "login": "Enrique",
-      "name": "Enrique",
-      "company": "Unknown",
-      "location": null,
-      "email": "enrique.gonzalez.martinez1@ibm.com",
       "profile_url": null,
       "commit_count": 25
     },
@@ -1948,6 +1873,15 @@
       "commit_count": 21
     },
     {
+      "login": "lvydra",
+      "name": "lvydra",
+      "company": "Unknown",
+      "location": null,
+      "email": "lvydra@proton.me",
+      "profile_url": null,
+      "commit_count": 21
+    },
+    {
       "login": "xjusko",
       "name": "xjusko",
       "company": "Unknown",
@@ -2025,15 +1959,6 @@
       "company": "Unknown",
       "location": null,
       "email": "tkimura@redhat.com",
-      "profile_url": null,
-      "commit_count": 19
-    },
-    {
-      "login": "lvydra",
-      "name": "lvydra",
-      "company": "Unknown",
-      "location": null,
-      "email": "lvydra@proton.me",
       "profile_url": null,
       "commit_count": 19
     },
@@ -2614,6 +2539,24 @@
       "commit_count": 11
     },
     {
+      "login": "Marco Sapp\u00e9 Griot",
+      "name": "Marco Sapp\u00e9 Griot",
+      "company": "Unknown",
+      "location": null,
+      "email": "105230883+marcosgopen@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 11
+    },
+    {
+      "login": "Charlie Zhang",
+      "name": "Charlie Zhang",
+      "company": "Unknown",
+      "location": null,
+      "email": "charliezhangbusiness@gmail.com",
+      "profile_url": null,
+      "commit_count": 11
+    },
+    {
       "login": "Ron Sigal",
       "name": "Ron Sigal",
       "company": "Unknown",
@@ -2785,15 +2728,6 @@
       "commit_count": 10
     },
     {
-      "login": "Marco Sapp\u00e9 Griot",
-      "name": "Marco Sapp\u00e9 Griot",
-      "company": "Unknown",
-      "location": null,
-      "email": "105230883+marcosgopen@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 10
-    },
-    {
       "login": "Filip Biedrzycki",
       "name": "Filip Biedrzycki",
       "company": "Unknown",
@@ -2880,15 +2814,6 @@
       "company": "Unknown",
       "location": null,
       "email": "pedro-hos@outlook.com",
-      "profile_url": null,
-      "commit_count": 9
-    },
-    {
-      "login": "Charlie Zhang",
-      "name": "Charlie Zhang",
-      "company": "Unknown",
-      "location": null,
-      "email": "charliezhangbusiness@gmail.com",
       "profile_url": null,
       "commit_count": 9
     },
@@ -3730,6 +3655,24 @@
       "commit_count": 5
     },
     {
+      "login": "jmfinelli",
+      "name": "jmfinelli",
+      "company": "Unknown",
+      "location": null,
+      "email": "61553861+jmfinelli@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Angelo",
+      "name": "Angelo",
+      "company": "Unknown",
+      "location": null,
+      "email": "angelos-gn@tutamail.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
       "login": "Matej Novotny",
       "name": "Matej Novotny",
       "company": "Unknown",
@@ -4180,20 +4123,20 @@
       "commit_count": 4
     },
     {
-      "login": "jmfinelli",
-      "name": "jmfinelli",
+      "login": "Rafael Rosa",
+      "name": "Rafael Rosa",
       "company": "Unknown",
       "location": null,
-      "email": "61553861+jmfinelli@users.noreply.github.com",
+      "email": "rafael_unis@hotmail.com",
       "profile_url": null,
       "commit_count": 4
     },
     {
-      "login": "Angelo",
-      "name": "Angelo",
+      "login": "Ilias Bourdakos",
+      "name": "Ilias Bourdakos",
       "company": "Unknown",
       "location": null,
-      "email": "angelos-gn@tutamail.com",
+      "email": "115589434+hliasmpgh@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 4
     },
@@ -4824,24 +4767,6 @@
       "company": "Unknown",
       "location": null,
       "email": "73242687+xjusko@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Rafael Rosa",
-      "name": "Rafael Rosa",
-      "company": "Unknown",
-      "location": null,
-      "email": "rafael_unis@hotmail.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Ilias Bourdakos",
-      "name": "Ilias Bourdakos",
-      "company": "Unknown",
-      "location": null,
-      "email": "115589434+hliasmpgh@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 3
     },
@@ -5679,6 +5604,15 @@
       "company": "Unknown",
       "location": null,
       "email": "remm@ws.remm.hd.free.fr",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Ankit Kumar",
+      "name": "Ankit Kumar",
+      "company": "Unknown",
+      "location": null,
+      "email": "74421995+ankitkumar-05@users.noreply.github.com",
       "profile_url": null,
       "commit_count": 2
     },
@@ -7528,15 +7462,6 @@
       "commit_count": 1
     },
     {
-      "login": "Ankit Kumar",
-      "name": "Ankit Kumar",
-      "company": "Unknown",
-      "location": null,
-      "email": "74421995+ankitkumar-05@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
       "login": "AnkitKumar-05",
       "name": "AnkitKumar-05",
       "company": "Unknown",
@@ -7552,7 +7477,81 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-21T13:20:48.629566",
+  "extracted_at": "2026-07-22T17:14:45.678481",
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 86,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 702,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 472,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 472,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 307,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 338,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 455,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 639,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 490,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 392,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 452,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 524,
+      "quarter": "Q4 2023"
+    }
+  ],
   "years": [
     {
       "year": 2010,
@@ -7621,7 +7620,7 @@
     },
     {
       "year": 2023,
-      "commit_count": 2897,
+      "commit_count": 2898,
       "is_current": false
     },
     {
@@ -7631,13 +7630,14 @@
     },
     {
       "year": 2025,
-      "commit_count": 1990,
+      "commit_count": 1991,
       "is_current": false
     },
     {
       "year": 2026,
-      "commit_count": 1751,
+      "commit_count": 1755,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 5329
 }

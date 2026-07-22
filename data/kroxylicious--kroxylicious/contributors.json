@@ -232,6 +232,117 @@
   ],
   "total_contributors": 109,
   "total_contributors_git": 109,
+  "all_time_contributor_logins": [
+    "105218041+uzziee@users.noreply.github.com",
+    "116117013+msalinas-se@users.noreply.github.com",
+    "136987759+roshr2211@users.noreply.github.com",
+    "153509303+kroxylicious-robot@users.noreply.github.com",
+    "159600204+majialoong@users.noreply.github.com",
+    "15976368+gracegrimwood@users.noreply.github.com",
+    "164325611+dahyvuun@users.noreply.github.com",
+    "1667008+robobario@users.noreply.github.com",
+    "168529422+sinmir@users.noreply.github.com",
+    "18440250+k-wall@users.noreply.github.com",
+    "2833578+sambarker@users.noreply.github.com",
+    "38503900+dragonfsky@users.noreply.github.com",
+    "38832156+aaditya9899@users.noreply.github.com",
+    "40595489+shubhamrwt@users.noreply.github.com",
+    "41898282+github-actions[bot]@users.noreply.github.com",
+    "47596553+paulrmellor@users.noreply.github.com",
+    "485918776@qq.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "50317852+deepika1214@users.noreply.github.com",
+    "57452611+franvila@users.noreply.github.com",
+    "5976368+gracegrimwood@users.noreply.github.com",
+    "694522458@qq.com",
+    "76994627+cecildario@users.noreply.github.com",
+    "76994627+decluttered@users.noreply.github.com",
+    "86178027+polachandu@users.noreply.github.com",
+    "96194994+tibisabau@users.noreply.github.com",
+    "aabdelre@redhat.com",
+    "aadityaprasad9899@gmail.com",
+    "adthakur@redhat.com",
+    "agent@thsort.dev",
+    "alan.robinson3@engineering.digital.dwp.gov.uk",
+    "andrea.peruffo1982@gmail.com",
+    "artturi.sipila@aiven.io",
+    "benjamin.kaminski@decathlon.com",
+    "callaertanthony@gmail.com",
+    "calumramurray@gmail.com",
+    "carlesarnal92@gmail.com",
+    "carnalca@redhat.com",
+    "cuubix.dk@gmail.com",
+    "dahyvuun@gmail.com",
+    "deepikav201818@gmail.com",
+    "doralagem@macbook-pro-sl-dor.local",
+    "dragonfsky@gmail.com",
+    "dvulpe@gmail.com",
+    "dvulpe@users.noreply.github.com",
+    "fvila@redhat.com",
+    "geon1120@gmail.com",
+    "ggrimwoo@redhat.com",
+    "github@seansullivan.com",
+    "gracegrimwood@gmail.com",
+    "griffonbyte@proton.me",
+    "gunnar.morling@googlemail.com",
+    "hariatul1998@gmail.com",
+    "henrich.zrnco@gmail.com",
+    "hgupta@confluent.io",
+    "hrishabhg@gmail.com",
+    "hzrncik@redhat.com",
+    "kidpollo@gmail.com",
+    "kidpollo@users.noreply.github.com",
+    "kwall@apache.org",
+    "kwall@redhat.com",
+    "lukman_uki@yahoo.co.id",
+    "lukywill16@gmail.com",
+    "luozhenyu@bytedance.com",
+    "lzy@luozy.cn",
+    "m.clavo.conesa@gmail.com",
+    "majialoong@gmail.com",
+    "mapan1984@outlook.com",
+    "mauro.clavoconesa@alum.uca.es",
+    "may.aboalrejal@shopify.com",
+    "medhhaviprakhar@gmail.com",
+    "meshivam81@gmail.com",
+    "muralidhar.basani@aiven.io",
+    "mvanhorn@gmail.com",
+    "mvanhorn@users.noreply.github.com",
+    "nigro.fra@gmail.com",
+    "oleksiy.pylypenko@gmail.com",
+    "opan.mustopah@gojek.com",
+    "opan.neutron@gmail.com",
+    "paco.viramontes@shopify.com",
+    "piotrpdev@gmail.com",
+    "pmellor@redhat.com",
+    "polachandrahas@gmail.com",
+    "ppatierno@live.com",
+    "rachelryan.jpg@gmail.com",
+    "rafael.reia@gmail.com",
+    "raryan@redhat.com",
+    "raymond.julie86@gmail.com",
+    "reverb256@users.noreply.github.com",
+    "rjsgus20@naver.com",
+    "robertyoungnz@gmail.com",
+    "robeyoun@redhat.com",
+    "roshniraju700@gmail.com",
+    "s7133700@gmail.com",
+    "sam@quadrocket.co.uk",
+    "sbarker@redhat.com",
+    "send2devareddy@gmail.com",
+    "showuon@gmail.com",
+    "shubhamrwt02@gmail.com",
+    "tbentley@redhat.com",
+    "tibssabau@yahoo.com",
+    "tomas.faal.petersson@irori.se",
+    "tombentley@users.noreply.github.com",
+    "trevin@trevinchow.com",
+    "ukalia@confluent.io",
+    "upatel@confluent.io",
+    "volothamp@gmail.com",
+    "volothamp_957683@icloud.com",
+    "yangpoan@gmail.com"
+  ],
   "contributors": [
     {
       "login": "SamBarker",
@@ -239,7 +350,7 @@
       "company": "Ibm",
       "location": "Christchurch, NZ",
       "email": "sbarker@redhat.com",
-      "contributions": 1374,
+      "contributions": 1376,
       "profile_url": "https://github.com/SamBarker"
     },
     {
@@ -248,7 +359,7 @@
       "company": "Ibm",
       "location": "New Zealand",
       "email": null,
-      "contributions": 1185,
+      "contributions": 1186,
       "profile_url": "https://github.com/robobario"
     },
     {
@@ -257,7 +368,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 1087,
+      "contributions": 1095,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -266,7 +377,7 @@
       "company": "Ibm",
       "location": "Stirling, Scotland, UK",
       "email": "kwall@redhat.com",
-      "contributions": 733,
+      "contributions": 735,
       "profile_url": "https://github.com/k-wall"
     },
     {
@@ -275,7 +386,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 242,
+      "contributions": 245,
       "profile_url": "https://github.com/kroxylicious-robot"
     },
     {
@@ -284,7 +395,7 @@
       "company": "Ibm",
       "location": null,
       "email": null,
-      "contributions": 226,
+      "contributions": 227,
       "profile_url": "https://github.com/tombentley"
     },
     {
@@ -302,7 +413,7 @@
       "company": "Ibm / @Redhatofficial",
       "location": "Waterford, Ireland",
       "email": "piotrpdev@gmail.com",
-      "contributions": 72,
+      "contributions": 73,
       "profile_url": "https://github.com/piotrpdev"
     },
     {
@@ -423,6 +534,15 @@
       "profile_url": "https://github.com/aaditya9899"
     },
     {
+      "login": "AdityaThakur1998",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 9,
+      "profile_url": "https://github.com/AdityaThakur1998"
+    },
+    {
       "login": "dahyvuun",
       "name": "Dahyun Woo",
       "company": "Unknown",
@@ -448,15 +568,6 @@
       "email": "hgupta@confluent.io",
       "contributions": 7,
       "profile_url": "https://github.com/hrishabhg"
-    },
-    {
-      "login": "AdityaThakur1998",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 5,
-      "profile_url": "https://github.com/AdityaThakur1998"
     },
     {
       "login": "callaertanthony",
@@ -565,6 +676,15 @@
       "email": "cmurray@redhat.com",
       "contributions": 2,
       "profile_url": "https://github.com/Cali0707"
+    },
+    {
+      "login": "DragonFSKY",
+      "name": null,
+      "company": "Unknown",
+      "location": null,
+      "email": null,
+      "contributions": 2,
+      "profile_url": "https://github.com/DragonFSKY"
     },
     {
       "login": "polachandu",
@@ -711,15 +831,6 @@
       "profile_url": "https://github.com/gggeon96"
     },
     {
-      "login": "DragonFSKY",
-      "name": null,
-      "company": "Unknown",
-      "location": null,
-      "email": null,
-      "contributions": 1,
-      "profile_url": "https://github.com/DragonFSKY"
-    },
-    {
       "login": "deepika1214",
       "name": "Deepika Vaddevalli",
       "company": "Unknown",
@@ -736,11 +847,20 @@
       "email": null,
       "contributions": 1,
       "profile_url": "https://github.com/dvulpe"
+    },
+    {
+      "login": "lukman48",
+      "name": "Lukman Hakim",
+      "company": "Unknown",
+      "location": null,
+      "email": "lukman_uki@yahoo.co.id",
+      "contributions": 1,
+      "profile_url": "https://github.com/lukman48"
     }
   ],
-  "total_contributors_github_api": 56,
+  "total_contributors_github_api": 57,
   "companies": {
-    "Unknown": 30,
+    "Unknown": 31,
     "Ibm": 8,
     "Red Hat": 4,
     "Confluent": 3,
@@ -759,11 +879,11 @@
   "total_companies": 15,
   "company_diversity": {
     "known_company_contributors": 26,
-    "unknown_company_contributors": 30,
+    "unknown_company_contributors": 31,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 30
+        "contributor_count": 31
       },
       {
         "company": "Ibm",
@@ -2059,6 +2179,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

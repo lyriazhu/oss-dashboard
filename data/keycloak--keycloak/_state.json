@@ -32,7 +32,6 @@
       "Ogenbertrand",
       "Oluwatobi-Mustapha",
       "Pepo48",
-      "PinPinIre",
       "PoojaChandak",
       "ReneZeidler",
       "SebastEnn",
@@ -318,18 +317,18 @@
       "zhutaoredhat",
       "zschwarz"
     ],
-    "last_extracted_at": "2026-07-14T10:41:45.032458"
+    "last_extracted_at": "2026-07-22T17:02:39.842603"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-14T10:41:56.610747"
+    "last_git_sync_at": "2026-07-22T17:02:51.293377"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-14T10:43:31.834849"
+    "last_extracted_at": "2026-07-22T17:08:09.107726"
   },
   "issues": {
-    "last_extracted_at": "2026-07-14T10:43:30.242293"
+    "last_extracted_at": "2026-07-22T17:06:59.848808"
   },
   "releases": {
-    "last_extracted_at": "2026-07-14T10:43:34.453555"
+    "last_extracted_at": "2026-07-22T17:08:11.508334"
   }
 }

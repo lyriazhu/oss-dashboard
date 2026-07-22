@@ -2,10 +2,10 @@
   "total_releases": 3,
   "recent_releases": [
     {
-      "tag_name": "0.1.0-rc1",
-      "name": "0.1.0-rc1",
-      "published_at": "2026-06-02T12:38:14+00:00",
-      "prerelease": true,
+      "tag_name": "0.1.0",
+      "name": "0.1.0",
+      "published_at": "2026-06-03T10:51:59+00:00",
+      "prerelease": false,
       "draft": false
     },
     {
@@ -16,13 +16,13 @@
       "draft": false
     },
     {
-      "tag_name": "0.1.0",
-      "name": "0.1.0",
-      "published_at": "2026-06-03T10:51:59+00:00",
-      "prerelease": false,
+      "tag_name": "0.1.0-rc1",
+      "name": "0.1.0-rc1",
+      "published_at": "2026-06-02T12:38:14+00:00",
+      "prerelease": true,
       "draft": false
     }
   ],
   "median_days_between_releases": 0.0,
-  "extracted_at": "2026-07-16T15:25:39.305597"
+  "extracted_at": "2026-07-22T16:35:55.347246"
 }

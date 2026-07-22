@@ -3,11 +3,11 @@
   "full_name": "kroxylicious/kroxylicious-junit5-extension",
   "description": "JUnit5 extension and helpers for writing tests parameterised over Kafka clusters",
   "created_at": "2022-11-30T13:40:44+00:00",
-  "updated_at": "2026-07-15T05:14:50+00:00",
+  "updated_at": "2026-07-22T02:37:53+00:00",
   "stars": 16,
   "forks": 12,
   "watchers": 16,
-  "open_issues": 33,
+  "open_issues": 24,
   "language": "Java",
   "topics": [
     "java",
@@ -21,13 +21,13 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 463,
-      "percentage": 98.72
+      "commits": 470,
+      "percentage": 98.74
     },
     {
       "company": "Red Hat",
       "commits": 5,
-      "percentage": 1.07
+      "percentage": 1.05
     },
     {
       "company": "Ibm / @Redhatofficial",
@@ -35,5 +35,5 @@
       "percentage": 0.21
     }
   ],
-  "extracted_at": "2026-07-16T12:39:20.930263"
+  "extracted_at": "2026-07-22T16:51:42.824192"
 }

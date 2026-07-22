@@ -122,9 +122,9 @@
     },
     {
       "year": 2026,
-      "pr_count": 2,
-      "merged_pr_count": 2
+      "pr_count": 1,
+      "merged_pr_count": 0
     }
   ],
-  "extracted_at": "2026-07-17T13:43:10.599631"
+  "extracted_at": "2026-07-22T16:59:13.017356"
 }

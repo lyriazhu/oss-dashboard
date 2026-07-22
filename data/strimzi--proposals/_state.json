@@ -1,0 +1,61 @@
+{
+  "contributors": {
+    "known_logins": [
+      "Frawless",
+      "MichaelMorrisEst",
+      "Sam-Kramer",
+      "ShubhamRwt",
+      "Staniel",
+      "YeonghyeonKO",
+      "ajborley",
+      "antonio-pedro99",
+      "aywengo",
+      "chris-giblin",
+      "cthtrifork",
+      "davidjlynn",
+      "dlabaj",
+      "egyedt",
+      "fvaleri",
+      "gertschouten",
+      "gmcrobert",
+      "griffindvs",
+      "guancioul",
+      "im-konge",
+      "jfuller95",
+      "joschi",
+      "katheris",
+      "kyguy",
+      "m-yosefpor",
+      "matthew-chirgwin",
+      "mimaison",
+      "neeraj-laad",
+      "nikita-kibitkin",
+      "pkotak",
+      "pmuir",
+      "ppatierno",
+      "rlanhellas",
+      "robobario",
+      "robshelly",
+      "samuel-hawker",
+      "scholzj",
+      "sebastiangaiser",
+      "see-quick",
+      "tinaselenge",
+      "tombentley",
+      "venkatesh2090"
+    ],
+    "last_extracted_at": "2026-07-22T16:25:04.763191"
+  },
+  "commits": {
+    "last_git_sync_at": "2026-07-22T16:25:12.707565"
+  },
+  "pull_requests": {
+    "last_extracted_at": "2026-07-22T16:26:28.660312"
+  },
+  "issues": {
+    "last_extracted_at": "2026-07-22T16:25:49.736126"
+  },
+  "releases": {
+    "last_extracted_at": "2026-07-22T16:26:30.786166"
+  }
+}

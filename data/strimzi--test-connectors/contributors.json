@@ -11,6 +11,9 @@
   ],
   "total_contributors": 1,
   "total_contributors_git": 1,
+  "all_time_contributor_logins": [
+    "maros.orsak159@gmail.com"
+  ],
   "contributors": [
     {
       "login": "see-quick",
@@ -222,6 +225,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

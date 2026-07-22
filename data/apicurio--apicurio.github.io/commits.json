@@ -1,79 +1,4 @@
 {
-  "total_commits": 439,
-  "quarters": [
-    {
-      "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-10-01T00:00:00",
-      "commit_count": 11,
-      "quarter": "Q3 2026"
-    },
-    {
-      "start_date": "2026-04-01T00:00:00",
-      "end_date": "2026-07-01T00:00:00",
-      "commit_count": 71,
-      "quarter": "Q2 2026"
-    },
-    {
-      "start_date": "2026-01-01T00:00:00",
-      "end_date": "2026-04-01T00:00:00",
-      "commit_count": 95,
-      "quarter": "Q1 2026"
-    },
-    {
-      "start_date": "2025-10-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "commit_count": 55,
-      "quarter": "Q4 2025"
-    },
-    {
-      "start_date": "2025-07-01T00:00:00",
-      "end_date": "2025-10-01T00:00:00",
-      "commit_count": 26,
-      "quarter": "Q3 2025"
-    },
-    {
-      "start_date": "2025-04-01T00:00:00",
-      "end_date": "2025-07-01T00:00:00",
-      "commit_count": 26,
-      "quarter": "Q2 2025"
-    },
-    {
-      "start_date": "2025-01-01T00:00:00",
-      "end_date": "2025-04-01T00:00:00",
-      "commit_count": 17,
-      "quarter": "Q1 2025"
-    },
-    {
-      "start_date": "2024-10-01T00:00:00",
-      "end_date": "2025-01-01T00:00:00",
-      "commit_count": 38,
-      "quarter": "Q4 2024"
-    },
-    {
-      "start_date": "2024-07-01T00:00:00",
-      "end_date": "2024-10-01T00:00:00",
-      "commit_count": 41,
-      "quarter": "Q3 2024"
-    },
-    {
-      "start_date": "2024-04-01T00:00:00",
-      "end_date": "2024-07-01T00:00:00",
-      "commit_count": 29,
-      "quarter": "Q2 2024"
-    },
-    {
-      "start_date": "2024-01-01T00:00:00",
-      "end_date": "2024-04-01T00:00:00",
-      "commit_count": 13,
-      "quarter": "Q1 2024"
-    },
-    {
-      "start_date": "2023-10-01T00:00:00",
-      "end_date": "2024-01-01T00:00:00",
-      "commit_count": 17,
-      "quarter": "Q4 2023"
-    }
-  ],
   "committers": [
     {
       "login": "apicurio-ci",
@@ -82,7 +7,7 @@
       "location": null,
       "email": "apicurio.ci@gmail.com",
       "profile_url": null,
-      "commit_count": 427
+      "commit_count": 429
     },
     {
       "login": "Eric Wittmann",
@@ -244,7 +169,7 @@
       "location": null,
       "email": "hemantchaudhary905@gmail.com",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "fossabot",
@@ -253,7 +178,7 @@
       "location": null,
       "email": "badges@fossa.io",
       "profile_url": null,
-      "commit_count": 2
+      "commit_count": 3
     },
     {
       "login": "Paul Wright",
@@ -297,6 +222,15 @@
       "company": "Unknown",
       "location": null,
       "email": "gunnar.morling@googlemail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Vandana Yadav",
+      "name": "Vandana Yadav",
+      "company": "Unknown",
+      "location": null,
+      "email": "vandana.yadav.vs@gmail.com",
       "profile_url": null,
       "commit_count": 2
     },
@@ -361,7 +295,81 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-17T13:40:31.259046",
+  "extracted_at": "2026-07-22T16:54:27.182497",
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 15,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 71,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 95,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 55,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 26,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 26,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 17,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 38,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 41,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 29,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 13,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 17,
+      "quarter": "Q4 2023"
+    }
+  ],
   "years": [
     {
       "year": 2017,
@@ -410,8 +418,9 @@
     },
     {
       "year": 2026,
-      "commit_count": 225,
+      "commit_count": 229,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 443
 }

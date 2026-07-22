@@ -6,18 +6,18 @@
       "dependabot[bot]",
       "k-wall"
     ],
-    "last_extracted_at": "2026-07-16T09:27:46.165775"
+    "last_extracted_at": "2026-07-22T16:38:40.238615"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T09:27:52.917308"
+    "last_git_sync_at": "2026-07-22T16:38:47.365435"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T09:29:15.592588"
+    "last_extracted_at": "2026-07-22T16:39:58.557582"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T09:28:34.273258"
+    "last_extracted_at": "2026-07-22T16:39:27.249457"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T09:29:17.432178"
+    "last_extracted_at": "2026-07-22T16:40:00.932547"
   }
 }

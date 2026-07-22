@@ -1,5 +1,49 @@
 {
-  "total_commits": 6,
+  "committers": [
+    {
+      "login": "Carles Arnal",
+      "name": "Carles Arnal",
+      "company": "Unknown",
+      "location": null,
+      "email": "carlesarnal92@gmail.com",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "fossabot",
+      "name": "fossabot",
+      "company": "Unknown",
+      "location": null,
+      "email": "badges@fossa.io",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Carles Arnal",
+      "name": "Carles Arnal",
+      "company": "Unknown",
+      "location": null,
+      "email": "carnalca@redhat.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "cncf-automation[bot]",
+      "name": "cncf-automation[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "projects@cncf.io",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T17:01:56.953987",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,56 +118,12 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Carles Arnal",
-      "name": "Carles Arnal",
-      "company": "Unknown",
-      "location": null,
-      "email": "carlesarnal92@gmail.com",
-      "profile_url": null,
-      "commit_count": 4
-    },
-    {
-      "login": "fossabot",
-      "name": "fossabot",
-      "company": "Unknown",
-      "location": null,
-      "email": "badges@fossa.io",
-      "profile_url": null,
-      "commit_count": 2
-    },
-    {
-      "login": "Carles Arnal",
-      "name": "Carles Arnal",
-      "company": "Unknown",
-      "location": null,
-      "email": "carnalca@redhat.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "cncf-automation[bot]",
-      "name": "cncf-automation[bot]",
-      "company": "Unknown",
-      "location": null,
-      "email": "projects@cncf.io",
-      "profile_url": null,
-      "commit_count": 1
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-17T13:29:40.571264",
   "years": [
     {
       "year": 2026,
       "commit_count": 8,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 6
 }

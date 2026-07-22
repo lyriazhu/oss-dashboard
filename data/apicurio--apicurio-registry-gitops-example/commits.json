@@ -1,5 +1,31 @@
 {
-  "total_commits": 13,
+  "committers": [
+    {
+      "login": "Jakub Senko",
+      "name": "Jakub Senko",
+      "company": "Unknown",
+      "location": null,
+      "email": "m@jsenko.net",
+      "profile_url": null,
+      "commit_count": 17
+    },
+    {
+      "login": "fossabot",
+      "name": "fossabot",
+      "company": "Unknown",
+      "location": null,
+      "email": "badges@fossa.io",
+      "profile_url": null,
+      "commit_count": 2
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T17:00:53.912805",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,38 +100,12 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Jakub Senko",
-      "name": "Jakub Senko",
-      "company": "Unknown",
-      "location": null,
-      "email": "m@jsenko.net",
-      "profile_url": null,
-      "commit_count": 17
-    },
-    {
-      "login": "fossabot",
-      "name": "fossabot",
-      "company": "Unknown",
-      "location": null,
-      "email": "badges@fossa.io",
-      "profile_url": null,
-      "commit_count": 2
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-17T13:28:38.174468",
   "years": [
     {
       "year": 2026,
       "commit_count": 19,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 13
 }

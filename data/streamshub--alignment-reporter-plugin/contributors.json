@@ -3,21 +3,39 @@
     {
       "year": 2019,
       "contributor_count": 1,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "kwall@apache.org"
+      ]
     },
     {
       "year": 2023,
       "contributor_count": 2,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kwall@apache.org"
+      ]
     },
     {
       "year": 2025,
       "contributor_count": 3,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "kwall@apache.org",
+        "medgar@redhat.com",
+        "xstejs24@gmail.com"
+      ]
     }
   ],
   "total_contributors": 4,
   "total_contributors_git": 4,
+  "all_time_contributor_logins": [
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "kwall@apache.org",
+    "medgar@redhat.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "k-wall",
@@ -85,7 +103,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2024",
@@ -95,7 +116,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2024",
@@ -105,7 +129,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2024",
@@ -115,7 +142,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q4 2024",
@@ -125,7 +155,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q1 2025",
@@ -135,7 +168,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2025",
@@ -145,7 +181,17 @@
       "active_contributors": 2,
       "new_contributors": 1,
       "returning_contributors": 1,
-      "retention_rate": 50.0
+      "retention_rate": 50.0,
+      "active_logins": [
+        "kwall@apache.org",
+        "medgar@redhat.com"
+      ],
+      "new_logins": [
+        "medgar@redhat.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -155,7 +201,14 @@
       "active_contributors": 1,
       "new_contributors": 1,
       "returning_contributors": 0,
-      "retention_rate": 0.0
+      "retention_rate": 0.0,
+      "active_logins": [
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "Q4 2025",
@@ -165,7 +218,14 @@
       "active_contributors": 1,
       "new_contributors": 0,
       "returning_contributors": 1,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "xstejs24@gmail.com"
+      ]
     },
     {
       "period": "Q1 2026",
@@ -175,7 +235,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q2 2026",
@@ -185,7 +248,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     },
     {
       "period": "Q3 2026",
@@ -195,7 +261,10 @@
       "active_contributors": 0,
       "new_contributors": 0,
       "returning_contributors": 0,
-      "retention_rate": null
+      "retention_rate": null,
+      "active_logins": [],
+      "new_logins": [],
+      "returning_logins": []
     }
   ],
   "retention_by_year": [
@@ -208,7 +277,14 @@
       "new_contributors": 1,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "kwall@apache.org"
+      ],
+      "new_logins": [
+        "kwall@apache.org"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2023",
@@ -219,7 +295,17 @@
       "new_contributors": 1,
       "returning_contributors": 1,
       "retention_rate": 50.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kwall@apache.org"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org"
+      ]
     },
     {
       "period": "2025",
@@ -230,12 +316,25 @@
       "new_contributors": 2,
       "returning_contributors": 1,
       "retention_rate": 33.33,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "kwall@apache.org",
+        "medgar@redhat.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "medgar@redhat.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": [
+        "kwall@apache.org"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

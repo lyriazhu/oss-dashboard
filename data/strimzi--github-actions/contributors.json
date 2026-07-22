@@ -14,6 +14,12 @@
   ],
   "total_contributors": 4,
   "total_contributors_git": 4,
+  "all_time_contributor_logins": [
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "53821852+im-konge@users.noreply.github.com",
+    "lukywill16@gmail.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "Frawless",
@@ -21,7 +27,7 @@
       "company": "Ibm",
       "location": null,
       "email": "xstejs24@gmail.com",
-      "contributions": 28,
+      "contributions": 29,
       "profile_url": "https://github.com/Frawless"
     },
     {
@@ -30,7 +36,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 5,
+      "contributions": 7,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -231,17 +237,19 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 2,
+      "active_contributors": 3,
       "new_contributors": 0,
-      "returning_contributors": 2,
+      "returning_contributors": 3,
       "retention_rate": 100.0,
       "active_logins": [
         "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
         "xstejs24@gmail.com"
       ],
       "new_logins": [],
       "returning_logins": [
         "49699333+dependabot[bot]@users.noreply.github.com",
+        "53821852+im-konge@users.noreply.github.com",
         "xstejs24@gmail.com"
       ]
     }
@@ -275,6 +283,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

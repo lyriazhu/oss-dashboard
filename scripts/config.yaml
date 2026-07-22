@@ -89,7 +89,7 @@ projects:
     github_url: "https://github.com/apache/artemis"
     owner: "apache"
     repo: "artemis"
-    foundation: "Independent"
+    foundation: "Apache Software Foundation"
     issue_source: jira
     jira_project_key: ARTEMIS
     jira_base_url: "https://issues.apache.org/jira"
@@ -99,7 +99,7 @@ projects:
     github_url: "https://github.com/apache/tomcat"
     owner: "apache"
     repo: "tomcat"
-    foundation: "Independent"
+    foundation: "Apache Software Foundation"
 
 
 
@@ -107,7 +107,7 @@ projects:
     github_url: "https://github.com/apache/camel"
     owner: "apache"
     repo: "camel"
-    foundation: "Independent"
+    foundation: "Apache Software Foundation"
     issue_source: jira
     jira_project_key: CAMEL
     jira_base_url: "https://issues.apache.org/jira"

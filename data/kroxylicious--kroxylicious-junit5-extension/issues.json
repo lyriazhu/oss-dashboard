@@ -1,8 +1,8 @@
 {
   "total_open": 22,
-  "total_closed": 8,
-  "total_issues": 13,
-  "median_resolution_time_days": 15.22,
+  "total_closed": 59,
+  "total_issues": 81,
+  "median_resolution_time_days": 1.3,
   "months": [
     {
       "start_date": "2025-08-01T00:00:00",
@@ -25,21 +25,24 @@
       "end_date": "2025-10-31T23:59:59",
       "issue_count": 0,
       "closed_issue_count": 0,
-      "month": "2025-10"
+      "month": "2025-10",
+      "median_resolution_time_days": null
     },
     {
       "start_date": "2025-11-01T00:00:00",
       "end_date": "2025-11-30T23:59:59",
       "issue_count": 0,
       "closed_issue_count": 0,
-      "month": "2025-11"
+      "month": "2025-11",
+      "median_resolution_time_days": null
     },
     {
       "start_date": "2025-12-01T00:00:00",
       "end_date": "2025-12-31T23:59:59",
       "issue_count": 0,
       "closed_issue_count": 0,
-      "month": "2025-12"
+      "month": "2025-12",
+      "median_resolution_time_days": null
     },
     {
       "start_date": "2026-01-01T00:00:00",
@@ -62,14 +65,16 @@
       "end_date": "2026-03-31T23:59:59",
       "issue_count": 0,
       "closed_issue_count": 0,
-      "month": "2026-03"
+      "month": "2026-03",
+      "median_resolution_time_days": null
     },
     {
       "start_date": "2026-04-01T00:00:00",
       "end_date": "2026-04-30T23:59:59",
       "issue_count": 0,
       "closed_issue_count": 0,
-      "month": "2026-04"
+      "month": "2026-04",
+      "median_resolution_time_days": null
     },
     {
       "start_date": "2026-05-01T00:00:00",
@@ -84,14 +89,16 @@
       "end_date": "2026-06-30T23:59:59",
       "issue_count": 1,
       "closed_issue_count": 0,
-      "month": "2026-06"
+      "month": "2026-06",
+      "median_resolution_time_days": null
     },
     {
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-07-16T12:39:33.797267",
-      "issue_count": 1,
-      "closed_issue_count": 0,
-      "month": "2026-07"
+      "issue_count": 2,
+      "closed_issue_count": 1,
+      "month": "2026-07",
+      "median_resolution_time_days": 1.3
     }
   ],
   "years": [
@@ -117,9 +124,9 @@
     },
     {
       "year": 2026,
-      "issue_count": 7,
-      "closed_issue_count": 4
+      "issue_count": 8,
+      "closed_issue_count": 5
     }
   ],
-  "extracted_at": "2026-07-16T12:39:33.797290"
+  "extracted_at": "2026-07-22T16:51:55.000185"
 }

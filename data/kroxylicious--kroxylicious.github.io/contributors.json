@@ -3,31 +3,124 @@
     {
       "year": 2022,
       "contributor_count": 3,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "rachelryan.jpg@gmail.com",
+        "raryan@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "year": 2023,
       "contributor_count": 9,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
     },
     {
       "year": 2024,
       "contributor_count": 13,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "jcobb@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "showuon@gmail.com"
+      ]
     },
     {
       "year": 2025,
       "contributor_count": 18,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "jochen@schalanda.name",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "year": 2026,
       "contributor_count": 14,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "57452611+franvila@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "showuon@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     }
   ],
   "total_contributors": 24,
   "total_contributors_git": 24,
+  "all_time_contributor_logins": [
+    "153509303+kroxylicious-robot@users.noreply.github.com",
+    "15976368+gracegrimwood@users.noreply.github.com",
+    "1667008+robobario@users.noreply.github.com",
+    "18440250+k-wall@users.noreply.github.com",
+    "2833578+sambarker@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "57452611+franvila@users.noreply.github.com",
+    "ggrimwoo@redhat.com",
+    "gunnar.morling@googlemail.com",
+    "jcobb@redhat.com",
+    "jochen@schalanda.name",
+    "kwall@apache.org",
+    "kwall@redhat.com",
+    "piotrpdev@gmail.com",
+    "ppatierno@live.com",
+    "rachelryan.jpg@gmail.com",
+    "raryan@redhat.com",
+    "robertyoungnz@gmail.com",
+    "robeyoun@redhat.com",
+    "sam@quadrocket.co.uk",
+    "sbarker@redhat.com",
+    "showuon@gmail.com",
+    "tbentley@redhat.com",
+    "tombentley@users.noreply.github.com"
+  ],
   "contributors": [
     {
       "login": "SamBarker",
@@ -44,7 +137,7 @@
       "company": "Ibm",
       "location": "New Zealand",
       "email": null,
-      "contributions": 106,
+      "contributions": 108,
       "profile_url": "https://github.com/robobario"
     },
     {
@@ -53,7 +146,7 @@
       "company": "Ibm",
       "location": "Stirling, Scotland, UK",
       "email": "kwall@redhat.com",
-      "contributions": 76,
+      "contributions": 78,
       "profile_url": "https://github.com/k-wall"
     },
     {
@@ -214,7 +307,29 @@
       "active_contributors": 8,
       "new_contributors": 5,
       "returning_contributors": 3,
-      "retention_rate": 37.5
+      "retention_rate": 37.5,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "ppatierno@live.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "ppatierno@live.com",
+        "sbarker@redhat.com"
+      ],
+      "returning_logins": [
+        "ggrimwoo@redhat.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q1 2024",
@@ -224,7 +339,33 @@
       "active_contributors": 10,
       "new_contributors": 2,
       "returning_contributors": 8,
-      "retention_rate": 80.0
+      "retention_rate": 80.0,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "jcobb@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "jcobb@redhat.com"
+      ],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
     },
     {
       "period": "Q2 2024",
@@ -234,7 +375,28 @@
       "active_contributors": 8,
       "new_contributors": 0,
       "returning_contributors": 8,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
     },
     {
       "period": "Q3 2024",
@@ -244,7 +406,33 @@
       "active_contributors": 10,
       "new_contributors": 2,
       "returning_contributors": 8,
-      "retention_rate": 80.0
+      "retention_rate": 80.0,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "showuon@gmail.com"
+      ],
+      "new_logins": [
+        "18440250+k-wall@users.noreply.github.com",
+        "showuon@gmail.com"
+      ],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q4 2024",
@@ -254,7 +442,29 @@
       "active_contributors": 8,
       "new_contributors": 1,
       "returning_contributors": 7,
-      "retention_rate": 87.5
+      "retention_rate": 87.5,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [
+        "2833578+sambarker@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
     },
     {
       "period": "Q1 2025",
@@ -264,7 +474,26 @@
       "active_contributors": 7,
       "new_contributors": 0,
       "returning_contributors": 7,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
     },
     {
       "period": "Q2 2025",
@@ -274,7 +503,37 @@
       "active_contributors": 12,
       "new_contributors": 2,
       "returning_contributors": 10,
-      "retention_rate": 83.33
+      "retention_rate": 83.33,
+      "active_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "tbentley@redhat.com"
+      ],
+      "returning_logins": [
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -284,7 +543,33 @@
       "active_contributors": 10,
       "new_contributors": 2,
       "returning_contributors": 8,
-      "retention_rate": 80.0
+      "retention_rate": 80.0,
+      "active_logins": [
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "gunnar.morling@googlemail.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "1667008+robobario@users.noreply.github.com",
+        "gunnar.morling@googlemail.com"
+      ],
+      "returning_logins": [
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q4 2025",
@@ -294,7 +579,31 @@
       "active_contributors": 9,
       "new_contributors": 2,
       "returning_contributors": 7,
-      "retention_rate": 77.78
+      "retention_rate": 77.78,
+      "active_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "jochen@schalanda.name",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [
+        "jochen@schalanda.name",
+        "piotrpdev@gmail.com"
+      ],
+      "returning_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk"
+      ]
     },
     {
       "period": "Q1 2026",
@@ -304,7 +613,37 @@
       "active_contributors": 12,
       "new_contributors": 1,
       "returning_contributors": 11,
-      "retention_rate": 91.67
+      "retention_rate": 91.67,
+      "active_logins": [
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "57452611+franvila@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "showuon@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "57452611+franvila@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "showuon@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q2 2026",
@@ -314,17 +653,55 @@
       "active_contributors": 8,
       "new_contributors": 0,
       "returning_contributors": 8,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "1667008+robobario@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "gunnar.morling@googlemail.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "1667008+robobario@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "gunnar.morling@googlemail.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "Q3 2026",
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 7,
+      "active_contributors": 6,
       "new_contributors": 0,
-      "returning_contributors": 7,
-      "retention_rate": 100.0
+      "returning_contributors": 6,
+      "retention_rate": 100.0,
+      "active_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "kwall@apache.org",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk"
+      ]
     }
   ],
   "retention_by_year": [
@@ -337,7 +714,18 @@
       "new_contributors": 3,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "rachelryan.jpg@gmail.com",
+        "raryan@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "rachelryan.jpg@gmail.com",
+        "raryan@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2023",
@@ -348,7 +736,30 @@
       "new_contributors": 9,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "new_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "ppatierno@live.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2024",
@@ -359,7 +770,39 @@
       "new_contributors": 5,
       "returning_contributors": 8,
       "retention_rate": 61.54,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "jcobb@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "showuon@gmail.com"
+      ],
+      "new_logins": [
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "jcobb@redhat.com",
+        "showuon@gmail.com"
+      ],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com"
+      ]
     },
     {
       "period": "2025",
@@ -370,7 +813,49 @@
       "new_contributors": 6,
       "returning_contributors": 12,
       "retention_rate": 66.67,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "jochen@schalanda.name",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "piotrpdev@gmail.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "gunnar.morling@googlemail.com",
+        "jochen@schalanda.name",
+        "piotrpdev@gmail.com",
+        "tbentley@redhat.com"
+      ],
+      "returning_logins": [
+        "15976368+gracegrimwood@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "2833578+sambarker@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "robeyoun@redhat.com",
+        "sam@quadrocket.co.uk",
+        "sbarker@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     },
     {
       "period": "2026",
@@ -381,12 +866,47 @@
       "new_contributors": 1,
       "returning_contributors": 13,
       "retention_rate": 92.86,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "57452611+franvila@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "showuon@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "57452611+franvila@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "153509303+kroxylicious-robot@users.noreply.github.com",
+        "1667008+robobario@users.noreply.github.com",
+        "18440250+k-wall@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "ggrimwoo@redhat.com",
+        "gunnar.morling@googlemail.com",
+        "kwall@apache.org",
+        "kwall@redhat.com",
+        "robertyoungnz@gmail.com",
+        "sam@quadrocket.co.uk",
+        "showuon@gmail.com",
+        "tbentley@redhat.com",
+        "tombentley@users.noreply.github.com"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

@@ -5,18 +5,18 @@
       "dependabot[bot]",
       "github-actions[bot]"
     ],
-    "last_extracted_at": "2026-07-16T09:29:50.174808"
+    "last_extracted_at": "2026-07-22T16:40:50.502341"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T09:29:57.908941"
+    "last_git_sync_at": "2026-07-22T16:40:57.850906"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T09:30:45.652665"
+    "last_extracted_at": "2026-07-22T16:41:24.991497"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T09:30:21.238334"
+    "last_extracted_at": "2026-07-22T16:41:18.712364"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T09:30:47.197318"
+    "last_extracted_at": "2026-07-22T16:41:26.705878"
   }
 }

@@ -3,11 +3,11 @@
   "full_name": "strimzi/proposals",
   "description": "Strimzi proposals",
   "created_at": "2020-06-03T19:45:17+00:00",
-  "updated_at": "2026-07-15T19:08:17+00:00",
+  "updated_at": "2026-07-22T18:42:40+00:00",
   "stars": 68,
   "forks": 85,
   "watchers": 68,
-  "open_issues": 13,
+  "open_issues": 10,
   "language": null,
   "topics": [],
   "license": "Apache License 2.0",
@@ -18,53 +18,53 @@
     {
       "company": "Ibm",
       "commits": 51,
-      "percentage": 68.0
+      "percentage": 67.11
     },
     {
       "company": "Red Hat",
       "commits": 7,
-      "percentage": 9.33
+      "percentage": 9.21
     },
     {
       "company": "Ibm, Ex-Red Hat",
       "commits": 3,
-      "percentage": 4.0
+      "percentage": 3.95
     },
     {
       "company": "Engineer At Red Hat",
-      "commits": 2,
-      "percentage": 2.67
+      "commits": 3,
+      "percentage": 3.95
     },
     {
       "company": "Hetznercloud",
       "commits": 2,
-      "percentage": 2.67
+      "percentage": 2.63
     },
     {
       "company": "Oracle",
       "commits": 1,
-      "percentage": 1.33
+      "percentage": 1.32
     },
     {
       "company": "Solo-Io",
       "commits": 1,
-      "percentage": 1.33
+      "percentage": 1.32
     },
     {
       "company": "Epo.Org",
       "commits": 1,
-      "percentage": 1.33
+      "percentage": 1.32
     },
     {
       "company": "Bitvavo",
       "commits": 1,
-      "percentage": 1.33
+      "percentage": 1.32
     },
     {
       "company": "Ericsson Software Technology",
       "commits": 1,
-      "percentage": 1.33
+      "percentage": 1.32
     }
   ],
-  "extracted_at": "2026-07-16T15:01:30.237562"
+  "extracted_at": "2026-07-22T16:25:01.452321"
 }

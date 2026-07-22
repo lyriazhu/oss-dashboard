@@ -3,7 +3,7 @@
   "full_name": "strimzi/strimzi-kafka-bridge",
   "description": "An HTTP bridge for Apache Kafka\u00ae",
   "created_at": "2016-03-21T13:03:50+00:00",
-  "updated_at": "2026-07-13T20:12:45+00:00",
+  "updated_at": "2026-07-18T12:35:27+00:00",
   "stars": 335,
   "forks": 136,
   "watchers": 335,
@@ -27,8 +27,8 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 701,
-      "percentage": 93.22
+      "commits": 702,
+      "percentage": 93.23
     },
     {
       "company": "Engineer At Red Hat",
@@ -76,5 +76,5 @@
       "percentage": 0.13
     }
   ],
-  "extracted_at": "2026-07-16T14:40:07.608645"
+  "extracted_at": "2026-07-22T16:28:43.461868"
 }

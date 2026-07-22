@@ -16,7 +16,7 @@
   "license": "Apache License 2.0",
   "homepage": "http://hub.quarkiverse.io/",
   "has_wiki": true,
-  "has_discussions": true,
+  "has_discussions": null,
   "top_contributing_companies": [
     {
       "company": "Ibm",
@@ -54,5 +54,5 @@
       "percentage": 0.55
     }
   ],
-  "extracted_at": "2026-07-21T13:25:21.683532"
+  "extracted_at": "2026-07-22T17:16:30.234883"
 }

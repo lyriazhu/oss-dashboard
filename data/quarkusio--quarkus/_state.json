@@ -102,6 +102,7 @@
       "chrischiedo",
       "cknoblauch",
       "clara0",
+      "claude",
       "cmoulliard",
       "cristhiank",
       "cristianonicolai",
@@ -144,6 +145,7 @@
       "fwippe",
       "gaetancollaud",
       "galderz",
+      "gansheer",
       "garyttierney",
       "gastaldi",
       "gcw-it",
@@ -169,7 +171,6 @@
       "hmanwani-rh",
       "holly-cummins",
       "humcqc",
-      "i-m-addycoder",
       "ia3andy",
       "iam-ssrivastav",
       "imperatorx",
@@ -356,7 +357,6 @@
       "triceo",
       "tsegismont",
       "turing85",
-      "vemilyus",
       "vietk",
       "viniciusfcf",
       "viniciusvasti",
@@ -378,18 +378,18 @@
       "zedbeit",
       "zhfeng"
     ],
-    "last_extracted_at": "2026-07-14T10:46:55.726576"
+    "last_extracted_at": "2026-07-22T17:11:19.542588"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-14T10:47:08.927796"
+    "last_git_sync_at": "2026-07-22T17:11:36.227505"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-14T10:47:32.901556"
+    "last_extracted_at": "2026-07-22T17:14:07.600312"
   },
   "issues": {
-    "last_extracted_at": "2026-07-14T10:47:31.523787"
+    "last_extracted_at": "2026-07-22T17:12:56.823928"
   },
   "releases": {
-    "last_extracted_at": "2026-07-14T10:47:34.699143"
+    "last_extracted_at": "2026-07-22T17:14:09.369891"
   }
 }

@@ -1,5 +1,130 @@
 {
-  "total_commits": 14,
+  "committers": [
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 33
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "ppatierno@live.com",
+      "profile_url": null,
+      "commit_count": 19
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 14
+    },
+    {
+      "login": "Jakub Stejskal",
+      "name": "Jakub Stejskal",
+      "company": "Unknown",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "profile_url": null,
+      "commit_count": 10
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tombentley@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 6
+    },
+    {
+      "login": "Kate Stanley",
+      "name": "Kate Stanley",
+      "company": "Unknown",
+      "location": null,
+      "email": "11195226+katheris@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tbentley@redhat.com",
+      "profile_url": null,
+      "commit_count": 5
+    },
+    {
+      "login": "Stanislav Knot",
+      "name": "Stanislav Knot",
+      "company": "Unknown",
+      "location": null,
+      "email": "knot@cngroup.dk",
+      "profile_url": null,
+      "commit_count": 4
+    },
+    {
+      "login": "PaulRMellor",
+      "name": "PaulRMellor",
+      "company": "Unknown",
+      "location": null,
+      "email": "47596553+paulrmellor@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "prmellor",
+      "name": "prmellor",
+      "company": "Unknown",
+      "location": null,
+      "email": "pmellor@redhat.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Mickael Maison",
+      "name": "Mickael Maison",
+      "company": "Unknown",
+      "location": null,
+      "email": "mimaison@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Mickael Maison",
+      "name": "Mickael Maison",
+      "company": "Unknown",
+      "location": null,
+      "email": "mickael.maison@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "paolo.patierno@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:19:15.725776",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,33 +199,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
-      "company": "Unknown",
-      "location": null,
-      "email": "code@tomcooper.dev",
-      "profile_url": null,
-      "commit_count": 14
-    },
-    {
-      "login": "Jakub Stejskal",
-      "name": "Jakub Stejskal",
-      "company": "Unknown",
-      "location": null,
-      "email": "xstejs24@gmail.com",
-      "profile_url": null,
-      "commit_count": 4
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T15:00:19.864974",
   "years": [
     {
       "year": 2020,
@@ -137,5 +235,6 @@
       "commit_count": 19,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 14
 }

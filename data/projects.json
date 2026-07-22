@@ -626,7 +626,7 @@
     "data_dir" : "apicurio--apicurio-registry",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
   }, {
     "id" : "apicurio--apicurio-github-actions",
     "name" : "apicurio-github-actions",
@@ -637,7 +637,7 @@
     "data_dir" : "apicurio--apicurio-github-actions",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
   }, {
     "id" : "apicurio--.github",
     "name" : ".github",
@@ -648,7 +648,7 @@
     "data_dir" : "apicurio--.github",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
   }, {
     "id" : "apicurio--apicurio-registry-vscode-plugin",
     "name" : "apicurio-registry-vscode-plugin",
@@ -659,7 +659,7 @@
     "data_dir" : "apicurio--apicurio-registry-vscode-plugin",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
   }, {
     "id" : "apicurio--apicurio-registry-gitops-example",
     "name" : "apicurio-registry-gitops-example",
@@ -670,7 +670,7 @@
     "data_dir" : "apicurio--apicurio-registry-gitops-example",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
   }, {
     "id" : "apicurio--apicurio-compatibility-harness",
     "name" : "apicurio-compatibility-harness",
@@ -681,7 +681,7 @@
     "data_dir" : "apicurio--apicurio-compatibility-harness",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
   }, {
     "id" : "apicurio--.project",
     "name" : ".project",
@@ -692,7 +692,18 @@
     "data_dir" : "apicurio--.project",
     "enabled" : true,
     "is_org" : true,
-    "org_owner" : "apicurio"
+    "org_owner" : "Apicurio"
+  }, {
+    "id" : "apicurio--apicurio.github.io",
+    "name" : "apicurio.github.io",
+    "github_url" : "https://github.com/Apicurio/apicurio.github.io",
+    "owner" : "Apicurio",
+    "repo" : "apicurio.github.io",
+    "foundation" : "Independent",
+    "data_dir" : "apicurio--apicurio.github.io",
+    "enabled" : true,
+    "is_org" : true,
+    "org_owner" : "Apicurio"
   }, {
     "id" : "keycloak--keycloak",
     "name" : "Keycloak",
@@ -749,7 +760,7 @@
     "name" : "Apache Artemis",
     "owner" : "apache",
     "repo" : "artemis",
-    "foundation" : "Independent",
+    "foundation" : "Apache Software Foundation",
     "enabled" : true,
     "github_url" : "https://github.com/apache/artemis",
     "data_dir" : "apache--artemis",
@@ -761,7 +772,7 @@
     "name" : "Apache Tomcat",
     "owner" : "apache",
     "repo" : "tomcat",
-    "foundation" : "Independent",
+    "foundation" : "Apache Software Foundation",
     "enabled" : true,
     "github_url" : "https://github.com/apache/tomcat",
     "data_dir" : "apache--tomcat"
@@ -770,7 +781,7 @@
     "name" : "Apache Camel",
     "owner" : "apache",
     "repo" : "camel",
-    "foundation" : "Independent",
+    "foundation" : "Apache Software Foundation",
     "enabled" : true,
     "github_url" : "https://github.com/apache/camel",
     "data_dir" : "apache--camel",
@@ -778,5 +789,5 @@
     "jira_project_key" : "CAMEL",
     "jira_base_url" : "https://issues.apache.org/jira"
   } ],
-  "last_updated" : "2026-07-22T20:05:27.195368Z"
+  "last_updated" : "2026-07-22T21:28:38.014440Z"
 }

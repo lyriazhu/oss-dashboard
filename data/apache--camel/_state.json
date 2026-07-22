@@ -331,18 +331,18 @@
       "zhfeng",
       "zregvart"
     ],
-    "last_extracted_at": "2026-07-22T15:51:37.601427"
+    "last_extracted_at": "2026-07-22T17:22:22.411858"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-22T15:51:50.667413"
+    "last_git_sync_at": "2026-07-22T17:22:38.521751"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-22T16:04:49.464873"
+    "last_extracted_at": "2026-07-22T17:24:49.677702"
   },
   "issues": {
     "last_extracted_at": null
   },
   "releases": {
-    "last_extracted_at": "2026-07-22T16:05:06.549660"
+    "last_extracted_at": "2026-07-22T17:25:08.035792"
   }
 }

@@ -2,6 +2,7 @@
   "contributors": {
     "known_logins": [
       "AdityaTeltia",
+      "Adityakumar37",
       "AleStranieri",
       "Amoncy",
       "AndreaScarselli",
@@ -20,12 +21,18 @@
       "Me-Priyank",
       "MikeEdgar",
       "MrDiba",
+      "Myself-Praveen",
       "NikishaPatil",
+      "Priyanshubhartistm",
+      "SAY-5",
       "SafarMirek",
+      "Shubb07",
+      "Shubh2-0",
       "Sigoloh",
       "YangSan0622",
       "Yoni-Weisberg",
       "abhimoondra",
+      "aclfe",
       "adiohana",
       "ajaypratap003",
       "ajborley",
@@ -81,8 +88,11 @@
       "jpechane",
       "jsenko",
       "kamolhasan",
+      "karanthengane23",
+      "kartikangiras",
       "knutejohKLP",
       "krickert",
+      "krish-kedia",
       "krystofrezac",
       "magnusp",
       "malladinagarjuna2",
@@ -134,18 +144,18 @@
       "yxshwanth",
       "zoni"
     ],
-    "last_extracted_at": "2026-07-17T13:41:12.386561"
+    "last_extracted_at": "2026-07-22T16:55:34.068087"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-17T13:41:20.873762"
+    "last_git_sync_at": "2026-07-22T16:55:43.813597"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-17T13:41:26.904108"
+    "last_extracted_at": "2026-07-22T16:57:14.532998"
   },
   "issues": {
-    "last_extracted_at": "2026-07-17T13:41:25.570343"
+    "last_extracted_at": "2026-07-22T16:56:35.792512"
   },
   "releases": {
-    "last_extracted_at": "2026-07-17T13:41:28.664552"
+    "last_extracted_at": "2026-07-22T16:57:16.439372"
   }
 }

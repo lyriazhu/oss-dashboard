@@ -2,114 +2,16 @@
   "total_releases": 101,
   "recent_releases": [
     {
-      "tag_name": "1.0.4.Final",
-      "name": "Registry 1.0.4",
-      "published_at": "2020-02-03T17:45:16+00:00",
+      "tag_name": "2.1.3.Final",
+      "name": "2.1.3.Final",
+      "published_at": "2021-11-17T20:07:00+00:00",
       "prerelease": false,
       "draft": false
     },
     {
-      "tag_name": "1.1.0.Final",
-      "name": "Registry 1.1.0",
-      "published_at": "2020-02-03T17:48:40+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.1.1.Final",
-      "name": "Registry 1.1.1",
-      "published_at": "2020-02-11T15:26:03+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.1.2.Final",
-      "name": "Registry 1.1.2",
-      "published_at": "2020-03-24T19:33:03+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.2.0.Final",
-      "name": "v1.2.0.Final",
-      "published_at": "2020-05-19T11:41:57+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.2.1.Final",
-      "name": "v1.2.1.Final",
-      "published_at": "2020-05-28T20:15:10+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.2.2.Final",
-      "name": "1.2.2.Final",
-      "published_at": "2020-06-03T21:11:46+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.2.3.Final",
-      "name": "1.2.3.Final",
-      "published_at": "2020-07-09T02:29:42+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.3.0.Final",
-      "name": "1.3.0.Final",
-      "published_at": "2020-08-27T19:23:02+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.3.1.Final",
-      "name": "1.3.1.Final",
-      "published_at": "2020-09-20T01:28:50+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "1.3.2.Final",
-      "name": "1.3.2.Final",
-      "published_at": "2020-11-19T17:07:08+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.0.0.RC1",
-      "name": "2.0.0.RC1",
-      "published_at": "2021-03-04T18:27:17+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.0.0.Final",
-      "name": "2.0.0.Final",
-      "published_at": "2021-04-16T15:13:54+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.0.1.Final",
-      "name": "2.0.1.Final",
-      "published_at": "2021-06-15T18:15:02+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "2.1.0.RC1",
-      "name": "2.1.0.RC1",
-      "published_at": "2021-08-24T17:06:48+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "2.1.0.Final",
-      "name": "2.1.0.Final",
-      "published_at": "2021-09-22T22:35:58+00:00",
+      "tag_name": "2.1.2.Final",
+      "name": "2.1.2.Final",
+      "published_at": "2021-10-29T18:28:14+00:00",
       "prerelease": false,
       "draft": false
     },
@@ -128,20 +30,118 @@
       "draft": false
     },
     {
-      "tag_name": "2.1.2.Final",
-      "name": "2.1.2.Final",
-      "published_at": "2021-10-29T18:28:14+00:00",
+      "tag_name": "2.1.0.Final",
+      "name": "2.1.0.Final",
+      "published_at": "2021-09-22T22:35:58+00:00",
       "prerelease": false,
       "draft": false
     },
     {
-      "tag_name": "2.1.3.Final",
-      "name": "2.1.3.Final",
-      "published_at": "2021-11-17T20:07:00+00:00",
+      "tag_name": "2.1.0.RC1",
+      "name": "2.1.0.RC1",
+      "published_at": "2021-08-24T17:06:48+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "2.0.1.Final",
+      "name": "2.0.1.Final",
+      "published_at": "2021-06-15T18:15:02+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.0.0.Final",
+      "name": "2.0.0.Final",
+      "published_at": "2021-04-16T15:13:54+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "2.0.0.RC1",
+      "name": "2.0.0.RC1",
+      "published_at": "2021-03-04T18:27:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.3.2.Final",
+      "name": "1.3.2.Final",
+      "published_at": "2020-11-19T17:07:08+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.3.1.Final",
+      "name": "1.3.1.Final",
+      "published_at": "2020-09-20T01:28:50+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.3.0.Final",
+      "name": "1.3.0.Final",
+      "published_at": "2020-08-27T19:23:02+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.2.3.Final",
+      "name": "1.2.3.Final",
+      "published_at": "2020-07-09T02:29:42+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.2.2.Final",
+      "name": "1.2.2.Final",
+      "published_at": "2020-06-03T21:11:46+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.2.1.Final",
+      "name": "v1.2.1.Final",
+      "published_at": "2020-05-28T20:15:10+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.2.0.Final",
+      "name": "v1.2.0.Final",
+      "published_at": "2020-05-19T11:41:57+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.1.2.Final",
+      "name": "Registry 1.1.2",
+      "published_at": "2020-03-24T19:33:03+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.1.1.Final",
+      "name": "Registry 1.1.1",
+      "published_at": "2020-02-11T15:26:03+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.1.0.Final",
+      "name": "Registry 1.1.0",
+      "published_at": "2020-02-03T17:48:40+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "1.0.4.Final",
+      "name": "Registry 1.0.4",
+      "published_at": "2020-02-03T17:45:16+00:00",
       "prerelease": false,
       "draft": false
     }
   ],
   "median_days_between_releases": 29,
-  "extracted_at": "2026-07-17T13:41:28.664543"
+  "extracted_at": "2026-07-22T16:57:16.439368"
 }

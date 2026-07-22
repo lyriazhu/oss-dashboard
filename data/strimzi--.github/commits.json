@@ -1,5 +1,112 @@
 {
-  "total_commits": 4,
+  "committers": [
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 13
+    },
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robeyoun@redhat.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Utkarsh Mishra",
+      "name": "Utkarsh Mishra",
+      "company": "Unknown",
+      "location": null,
+      "email": "nasautkarsh@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Benedikt Buhles",
+      "name": "Benedikt Buhles",
+      "company": "Unknown",
+      "location": null,
+      "email": "60227302+meerbiene@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "ppatierno@live.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Masoud Shokohi",
+      "name": "Masoud Shokohi",
+      "company": "Unknown",
+      "location": null,
+      "email": "mass.shock57@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "David Kornel",
+      "name": "David Kornel",
+      "company": "Unknown",
+      "location": null,
+      "email": "kornys@outlook.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "UTKARSH MISHRA",
+      "name": "UTKARSH MISHRA",
+      "company": "Unknown",
+      "location": null,
+      "email": "67385503+utkarshmishra12@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Paolo Patierno",
+      "name": "Paolo Patierno",
+      "company": "Unknown",
+      "location": null,
+      "email": "paolo.patierno@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Buhles, Benedikt",
+      "name": "Buhles, Benedikt",
+      "company": "Unknown",
+      "location": null,
+      "email": "benedikt.buhles@aareon.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:15:12.761847",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,42 +181,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
-      "company": "Unknown",
-      "location": null,
-      "email": "code@tomcooper.dev",
-      "profile_url": null,
-      "commit_count": 7
-    },
-    {
-      "login": "Robert Young",
-      "name": "Robert Young",
-      "company": "Unknown",
-      "location": null,
-      "email": "robeyoun@redhat.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "David Kornel",
-      "name": "David Kornel",
-      "company": "Unknown",
-      "location": null,
-      "email": "kornys@outlook.com",
-      "profile_url": null,
-      "commit_count": 1
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T15:07:36.235785",
   "years": [
     {
       "year": 2020,
@@ -136,5 +207,6 @@
       "commit_count": 8,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 4
 }

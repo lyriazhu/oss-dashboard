@@ -9,7 +9,9 @@
       "carlesarnal",
       "dependabot[bot]",
       "famarting",
+      "fossabot",
       "gunnarmorling",
+      "hemantch01",
       "insectengine",
       "jasonmadigan",
       "jsenko",
@@ -20,18 +22,18 @@
       "rkpattnaik780",
       "smccarthy-ie"
     ],
-    "last_extracted_at": "2026-07-17T13:40:24.786448"
+    "last_extracted_at": "2026-07-22T16:54:20.038093"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-17T13:40:31.259051"
+    "last_git_sync_at": "2026-07-22T16:54:27.182500"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-17T13:40:57.986071"
+    "last_extracted_at": "2026-07-22T16:55:05.419541"
   },
   "issues": {
-    "last_extracted_at": "2026-07-17T13:40:51.879157"
+    "last_extracted_at": "2026-07-22T16:54:53.887077"
   },
   "releases": {
-    "last_extracted_at": "2026-07-17T13:40:59.936406"
+    "last_extracted_at": "2026-07-22T16:55:07.493500"
   }
 }

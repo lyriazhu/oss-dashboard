@@ -5,18 +5,18 @@
       "dependabot[bot]",
       "kornys"
     ],
-    "last_extracted_at": "2026-07-16T09:36:49.778732"
+    "last_extracted_at": "2026-07-22T16:45:14.561423"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T09:36:56.035459"
+    "last_git_sync_at": "2026-07-22T16:45:21.321941"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T09:37:35.758677"
+    "last_extracted_at": "2026-07-22T16:45:35.006039"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T09:37:26.083755"
+    "last_extracted_at": "2026-07-22T16:45:28.734714"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T09:37:37.410258"
+    "last_extracted_at": "2026-07-22T16:45:36.666256"
   }
 }

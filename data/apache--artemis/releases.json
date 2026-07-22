@@ -1,5 +1,5 @@
 {
-  "total_releases": 20,
+  "total_releases": 41,
   "recent_releases": [
     {
       "tag_name": "2.55.0",
@@ -143,5 +143,5 @@
     }
   ],
   "median_days_between_releases": 55,
-  "extracted_at": "2026-07-22T14:18:24.729023"
+  "extracted_at": "2026-07-22T17:19:17.659458"
 }

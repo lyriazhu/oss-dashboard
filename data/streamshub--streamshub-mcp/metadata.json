@@ -3,11 +3,11 @@
   "full_name": "streamshub/streamshub-mcp",
   "description": "MCP servers for Kubernetes-based streaming platforms \u2014 read-only, structured access to infrastructure for LLM-driven diagnostics",
   "created_at": "2026-01-28T12:57:13+00:00",
-  "updated_at": "2026-07-13T20:28:42+00:00",
+  "updated_at": "2026-07-21T10:40:46+00:00",
   "stars": 3,
   "forks": 1,
   "watchers": 3,
-  "open_issues": 11,
+  "open_issues": 9,
   "language": "Java",
   "topics": [
     "devops",
@@ -25,9 +25,9 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 124,
+      "commits": 127,
       "percentage": 100.0
     }
   ],
-  "extracted_at": "2026-07-16T09:36:47.276783"
+  "extracted_at": "2026-07-22T16:45:11.446059"
 }

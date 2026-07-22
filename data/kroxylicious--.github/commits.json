@@ -1,5 +1,40 @@
 {
-  "total_commits": 80,
+  "committers": [
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robeyoun@redhat.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "David Kornel",
+      "name": "David Kornel",
+      "company": "Unknown",
+      "location": null,
+      "email": "kornys@outlook.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:49:16.085859",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,42 +109,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
-      "company": "Unknown",
-      "location": null,
-      "email": "code@tomcooper.dev",
-      "profile_url": null,
-      "commit_count": 7
-    },
-    {
-      "login": "Robert Young",
-      "name": "Robert Young",
-      "company": "Unknown",
-      "location": null,
-      "email": "robeyoun@redhat.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "David Kornel",
-      "name": "David Kornel",
-      "company": "Unknown",
-      "location": null,
-      "email": "kornys@outlook.com",
-      "profile_url": null,
-      "commit_count": 1
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T12:42:15.542074",
   "years": [
     {
       "year": 2023,
@@ -126,5 +125,6 @@
       "commit_count": 55,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 80
 }

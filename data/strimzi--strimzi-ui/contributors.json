@@ -32,6 +32,21 @@
   ],
   "total_contributors": 13,
   "total_contributors_git": 13,
+  "all_time_contributor_logins": [
+    "43138971+matthew-chirgwin@users.noreply.github.com",
+    "848217+ajborley@users.noreply.github.com",
+    "borley@uk.ibm.com",
+    "chirmatt@uk.ibm.com",
+    "dbizzarr@redhat.com",
+    "dlabaj@redhat.com",
+    "hello@ghbot.com",
+    "jordan.tucker1@ibm.com",
+    "nictownsend@uk.ibm.com",
+    "pmuir@bleepbleep.org.uk",
+    "rkpattnaik780@gmail.com",
+    "sanjeevkumar201418@gmail.com",
+    "www@scholzj.com"
+  ],
   "contributors": [
     {
       "login": "matthew-chirgwin",
@@ -357,6 +372,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

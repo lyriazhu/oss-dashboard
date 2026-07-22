@@ -49,6 +49,16 @@
   ],
   "total_contributors": 8,
   "total_contributors_git": 8,
+  "all_time_contributor_logins": [
+    "60227302+meerbiene@users.noreply.github.com",
+    "67385503+utkarshmishra12@users.noreply.github.com",
+    "benedikt.buhles@aareon.com",
+    "mass.shock57@gmail.com",
+    "nasautkarsh@gmail.com",
+    "paolo.patierno@gmail.com",
+    "ppatierno@live.com",
+    "www@scholzj.com"
+  ],
   "contributors": [
     {
       "login": "scholzj",
@@ -405,6 +415,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

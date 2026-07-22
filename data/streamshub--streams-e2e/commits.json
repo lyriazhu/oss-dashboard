@@ -1,5 +1,49 @@
 {
-  "total_commits": 188,
+  "committers": [
+    {
+      "login": "David Kornel",
+      "name": "David Kornel",
+      "company": "Unknown",
+      "location": null,
+      "email": "kornys@outlook.com",
+      "profile_url": null,
+      "commit_count": 345
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 118
+    },
+    {
+      "login": "Jakub Stejskal",
+      "name": "Jakub Stejskal",
+      "company": "Unknown",
+      "location": null,
+      "email": "xstejs24@gmail.com",
+      "profile_url": null,
+      "commit_count": 44
+    },
+    {
+      "login": "Piotr P\u0142aczek",
+      "name": "Piotr P\u0142aczek",
+      "company": "Unknown",
+      "location": null,
+      "email": "piotrpdev@gmail.com",
+      "profile_url": null,
+      "commit_count": 3
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:42:56.234838",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,51 +118,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "David Kornel",
-      "name": "David Kornel",
-      "company": "Unknown",
-      "location": null,
-      "email": "kornys@outlook.com",
-      "profile_url": null,
-      "commit_count": 345
-    },
-    {
-      "login": "dependabot[bot]",
-      "name": "dependabot[bot]",
-      "company": "Unknown",
-      "location": null,
-      "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 118
-    },
-    {
-      "login": "Jakub Stejskal",
-      "name": "Jakub Stejskal",
-      "company": "Unknown",
-      "location": null,
-      "email": "xstejs24@gmail.com",
-      "profile_url": null,
-      "commit_count": 44
-    },
-    {
-      "login": "Piotr P\u0142aczek",
-      "name": "Piotr P\u0142aczek",
-      "company": "Unknown",
-      "location": null,
-      "email": "piotrpdev@gmail.com",
-      "profile_url": null,
-      "commit_count": 3
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T09:32:51.328099",
   "years": [
     {
       "year": 2024,
@@ -135,5 +134,6 @@
       "commit_count": 29,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 188
 }

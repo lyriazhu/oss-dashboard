@@ -68,6 +68,23 @@
   ],
   "total_contributors": 15,
   "total_contributors_git": 15,
+  "all_time_contributor_logins": [
+    "30839163+see-quick@users.noreply.github.com",
+    "37098620+abhijit-mane@users.noreply.github.com",
+    "42037371+guancioul@users.noreply.github.com",
+    "abhijman@in.ibm.com",
+    "bboyleonp@gmail.com",
+    "guancioul@gmail.com",
+    "jondruse@redhat.com",
+    "kun.lu@ibm.com",
+    "maros.orsak159@gmail.com",
+    "ondrusek.jiri@gmail.com",
+    "s7133700@gmail.com",
+    "tombentley@users.noreply.github.com",
+    "www@scholzj.com",
+    "xorsak02@stud.fit.vutbr.cz",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "see-quick",
@@ -565,6 +582,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

@@ -1,5 +1,31 @@
 {
-  "total_commits": 15,
+  "committers": [
+    {
+      "login": "Thomas Cooper",
+      "name": "Thomas Cooper",
+      "company": "Unknown",
+      "location": null,
+      "email": "code@tomcooper.dev",
+      "profile_url": null,
+      "commit_count": 30
+    },
+    {
+      "login": "David Kornel",
+      "name": "David Kornel",
+      "company": "Unknown",
+      "location": null,
+      "email": "kornys@outlook.com",
+      "profile_url": null,
+      "commit_count": 8
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:47:25.357703",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,38 +100,12 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Thomas Cooper",
-      "name": "Thomas Cooper",
-      "company": "Unknown",
-      "location": null,
-      "email": "code@tomcooper.dev",
-      "profile_url": null,
-      "commit_count": 30
-    },
-    {
-      "login": "David Kornel",
-      "name": "David Kornel",
-      "company": "Unknown",
-      "location": null,
-      "email": "kornys@outlook.com",
-      "profile_url": null,
-      "commit_count": 8
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T09:39:28.521842",
   "years": [
     {
       "year": 2026,
       "commit_count": 38,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 15
 }

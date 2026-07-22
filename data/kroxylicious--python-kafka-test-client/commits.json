@@ -1,5 +1,58 @@
 {
-  "total_commits": 19,
+  "committers": [
+    {
+      "login": "Francisco Vila",
+      "name": "Francisco Vila",
+      "company": "Unknown",
+      "location": null,
+      "email": "fvila@redhat.com",
+      "profile_url": null,
+      "commit_count": 38
+    },
+    {
+      "login": "Francisco Vila",
+      "name": "Francisco Vila",
+      "company": "Unknown",
+      "location": null,
+      "email": "57452611+franvila@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 14
+    },
+    {
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]",
+      "company": "Unknown",
+      "location": null,
+      "email": "49699333+dependabot[bot]@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 12
+    },
+    {
+      "login": "Keith Wall",
+      "name": "Keith Wall",
+      "company": "Unknown",
+      "location": null,
+      "email": "kwall@redhat.com",
+      "profile_url": null,
+      "commit_count": 2
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robertyoungnz@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:53:55.326157",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,60 +127,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Francisco Vila",
-      "name": "Francisco Vila",
-      "company": "Unknown",
-      "location": null,
-      "email": "fvila@redhat.com",
-      "profile_url": null,
-      "commit_count": 38
-    },
-    {
-      "login": "Francisco Vila",
-      "name": "Francisco Vila",
-      "company": "Unknown",
-      "location": null,
-      "email": "57452611+franvila@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 14
-    },
-    {
-      "login": "dependabot[bot]",
-      "name": "dependabot[bot]",
-      "company": "Unknown",
-      "location": null,
-      "email": "49699333+dependabot[bot]@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 12
-    },
-    {
-      "login": "Keith Wall",
-      "name": "Keith Wall",
-      "company": "Unknown",
-      "location": null,
-      "email": "kwall@redhat.com",
-      "profile_url": null,
-      "commit_count": 2
-    },
-    {
-      "login": "Robert Young",
-      "name": "Robert Young",
-      "company": "Unknown",
-      "location": null,
-      "email": "robertyoungnz@gmail.com",
-      "profile_url": null,
-      "commit_count": 2
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T12:43:54.326443",
   "years": [
     {
       "year": 2025,
@@ -139,5 +138,6 @@
       "commit_count": 14,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 19
 }

@@ -14,7 +14,6 @@
       "AndreasBergmeier6176",
       "AndreyIg",
       "Arkoprabho",
-      "BigGillyStyle",
       "Binayak490-cyber",
       "Bue-von-hon",
       "ChingTsai",
@@ -44,6 +43,7 @@
       "LarsWerkman",
       "MarkusKull",
       "Matei-Gatin",
+      "MrIvv",
       "Naros",
       "PSanetra",
       "PlugaruT",
@@ -83,7 +83,6 @@
       "andreas-ibm",
       "ani-sha",
       "ant0nk",
-      "aofisherzg",
       "aozmen121",
       "aqhil07",
       "archiedx",
@@ -91,14 +90,13 @@
       "aryadharmadhikari",
       "ashishbinu",
       "ateijelo",
-      "atongen",
       "atorik",
       "b-goyal",
       "bakjos",
       "barbaralocsi",
+      "battmush",
       "benesch",
       "bhardesty",
-      "big-andy-coates",
       "bpaquet",
       "bradengroom",
       "brbrown25",
@@ -122,6 +120,7 @@
       "coreillylocus",
       "criccomini",
       "cscetbon",
+      "cuong-dang",
       "cwholmes",
       "d1vyanshu-kumar",
       "dasl-",
@@ -285,6 +284,7 @@
       "ramanenka",
       "rareddy",
       "rcoup",
+      "regi-c",
       "renatomefi",
       "rgannu",
       "rhauch",
@@ -348,7 +348,7 @@
       "vsantonastaso",
       "willome",
       "wukachn",
-      "wuzhenhua01",
+      "wzh2dev",
       "xenji",
       "xinbinhuang",
       "xmzhou00",
@@ -363,18 +363,18 @@
       "zrlurb",
       "zxpzlp"
     ],
-    "last_extracted_at": "2026-07-14T10:44:56.148961"
+    "last_extracted_at": "2026-07-22T17:08:33.738890"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-14T10:45:04.048250"
+    "last_git_sync_at": "2026-07-22T17:08:41.795968"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-14T10:45:58.535845"
+    "last_extracted_at": "2026-07-22T17:10:28.908765"
   },
   "issues": {
-    "last_extracted_at": "2026-07-14T10:45:57.247082"
+    "last_extracted_at": "2026-07-22T17:10:21.522756"
   },
   "releases": {
-    "last_extracted_at": "2026-07-14T10:46:13.214531"
+    "last_extracted_at": "2026-07-22T17:10:43.907820"
   }
 }

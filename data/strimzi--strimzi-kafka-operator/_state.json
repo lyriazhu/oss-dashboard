@@ -10,6 +10,7 @@
       "Chandranana",
       "CodeReaper",
       "Copilot",
+      "DavidMachacek",
       "Delorien84",
       "EmilMichalczewski",
       "Eric84626",
@@ -31,6 +32,7 @@
       "MarkintoshZ",
       "MichaelMorrisEst",
       "MikeEdgar",
+      "Mopsgeschwindigkeit",
       "Moulick",
       "MrFishFinger",
       "OchiengEd",
@@ -321,18 +323,18 @@
       "zivi-dodis",
       "zzhu2"
     ],
-    "last_extracted_at": "2026-07-16T14:43:03.996280"
+    "last_extracted_at": "2026-07-22T16:30:05.458096"
   },
   "commits": {
-    "last_git_sync_at": "2026-07-16T14:43:13.151717"
+    "last_git_sync_at": "2026-07-22T16:30:15.070174"
   },
   "pull_requests": {
-    "last_extracted_at": "2026-07-16T14:50:10.629200"
+    "last_extracted_at": "2026-07-22T16:30:43.618434"
   },
   "issues": {
-    "last_extracted_at": "2026-07-16T14:47:52.144260"
+    "last_extracted_at": "2026-07-22T16:30:32.170598"
   },
   "releases": {
-    "last_extracted_at": "2026-07-16T14:50:16.210969"
+    "last_extracted_at": "2026-07-22T16:30:45.752241"
   }
 }

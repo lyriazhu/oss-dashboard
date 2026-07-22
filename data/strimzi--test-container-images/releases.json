@@ -2,128 +2,9 @@
   "total_releases": 42,
   "recent_releases": [
     {
-      "tag_name": "0.100.0-rc1",
-      "name": "0.100.0-rc1",
-      "published_at": "2022-01-20T17:31:54+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "0.100.0-rc2",
-      "name": "0.100.0-rc2",
-      "published_at": "2022-01-26T00:25:17+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "0.100.0",
-      "name": "0.100.0",
-      "published_at": "2022-01-28T19:55:52+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.101.0-rc1",
-      "name": "0.101.0-rc1",
-      "published_at": "2022-03-01T15:45:37+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "0.101.0",
-      "name": "0.101.0",
-      "published_at": "2022-03-04T08:57:58+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.102.0-rc1",
-      "name": "0.102.0-rc1",
-      "published_at": "2022-06-22T11:32:25+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "0.102.0",
-      "name": "0.102.0",
-      "published_at": "2022-06-28T09:01:15+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.103.0-rc1",
-      "name": "0.103.0-rc1",
-      "published_at": "2023-02-28T12:53:39+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.103.0",
-      "name": "0.103.0",
-      "published_at": "2023-03-07T09:38:23+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.104.0-rc1",
-      "name": "0.104.0-rc1",
-      "published_at": "2023-06-27T08:54:52+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.104.0",
-      "name": "0.104.0",
-      "published_at": "2023-06-30T11:42:46+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.105.0-rc1",
-      "name": "0.105.0-rc1",
-      "published_at": "2023-10-09T11:02:04+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.105.0",
-      "name": "0.105.0",
-      "published_at": "2023-10-11T12:51:39+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.106.0-rc1",
-      "name": "0.106.0-rc1",
-      "published_at": "2024-03-02T23:47:42+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.106.0",
-      "name": "0.106.0",
-      "published_at": "2024-03-05T19:42:29+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.107.0-rc1",
-      "name": "0.107.0-rc1",
-      "published_at": "2024-07-16T10:23:18+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "0.107.0",
-      "name": "0.107.0",
-      "published_at": "2024-07-24T08:50:33+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "0.108.0-rc1",
-      "name": "0.108.0-rc1",
-      "published_at": "2024-10-17T15:53:33+00:00",
+      "tag_name": "0.109.0-rc1",
+      "name": "0.109.0-rc1",
+      "published_at": "2024-11-19T21:00:05+00:00",
       "prerelease": true,
       "draft": false
     },
@@ -135,13 +16,132 @@
       "draft": false
     },
     {
-      "tag_name": "0.109.0-rc1",
-      "name": "0.109.0-rc1",
-      "published_at": "2024-11-19T21:00:05+00:00",
+      "tag_name": "0.108.0-rc1",
+      "name": "0.108.0-rc1",
+      "published_at": "2024-10-17T15:53:33+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "0.107.0",
+      "name": "0.107.0",
+      "published_at": "2024-07-24T08:50:33+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.107.0-rc1",
+      "name": "0.107.0-rc1",
+      "published_at": "2024-07-16T10:23:18+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "0.106.0",
+      "name": "0.106.0",
+      "published_at": "2024-03-05T19:42:29+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.106.0-rc1",
+      "name": "0.106.0-rc1",
+      "published_at": "2024-03-02T23:47:42+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.105.0",
+      "name": "0.105.0",
+      "published_at": "2023-10-11T12:51:39+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.105.0-rc1",
+      "name": "0.105.0-rc1",
+      "published_at": "2023-10-09T11:02:04+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.104.0",
+      "name": "0.104.0",
+      "published_at": "2023-06-30T11:42:46+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.104.0-rc1",
+      "name": "0.104.0-rc1",
+      "published_at": "2023-06-27T08:54:52+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.103.0",
+      "name": "0.103.0",
+      "published_at": "2023-03-07T09:38:23+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.103.0-rc1",
+      "name": "0.103.0-rc1",
+      "published_at": "2023-02-28T12:53:39+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.102.0",
+      "name": "0.102.0",
+      "published_at": "2022-06-28T09:01:15+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.102.0-rc1",
+      "name": "0.102.0-rc1",
+      "published_at": "2022-06-22T11:32:25+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "0.101.0",
+      "name": "0.101.0",
+      "published_at": "2022-03-04T08:57:58+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.101.0-rc1",
+      "name": "0.101.0-rc1",
+      "published_at": "2022-03-01T15:45:37+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "0.100.0",
+      "name": "0.100.0",
+      "published_at": "2022-01-28T19:55:52+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "0.100.0-rc2",
+      "name": "0.100.0-rc2",
+      "published_at": "2022-01-26T00:25:17+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "0.100.0-rc1",
+      "name": "0.100.0-rc1",
+      "published_at": "2022-01-20T17:31:54+00:00",
       "prerelease": true,
       "draft": false
     }
   ],
   "median_days_between_releases": 7,
-  "extracted_at": "2026-07-16T15:20:20.128297"
+  "extracted_at": "2026-07-22T16:37:27.698595"
 }

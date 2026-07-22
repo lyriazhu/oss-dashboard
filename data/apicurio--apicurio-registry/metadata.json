@@ -3,11 +3,11 @@
   "full_name": "Apicurio/apicurio-registry",
   "description": "An API/Schema registry - stores APIs and Schemas.",
   "created_at": "2019-07-16T12:44:20+00:00",
-  "updated_at": "2026-07-17T13:13:01+00:00",
-  "stars": 837,
-  "forks": 386,
-  "watchers": 837,
-  "open_issues": 410,
+  "updated_at": "2026-07-22T18:24:59+00:00",
+  "stars": 846,
+  "forks": 415,
+  "watchers": 846,
+  "open_issues": 447,
   "language": "Java",
   "topics": [],
   "license": "Apache License 2.0",
@@ -17,23 +17,23 @@
   "top_contributing_companies": [
     {
       "company": "Ibm",
-      "commits": 2145,
+      "commits": 2151,
       "percentage": 68.57
     },
     {
       "company": "Red Hat",
-      "commits": 742,
-      "percentage": 23.72
+      "commits": 743,
+      "percentage": 23.69
     },
     {
       "company": "Diagrid",
       "commits": 141,
-      "percentage": 4.51
+      "percentage": 4.49
     },
     {
       "company": "Senior Software Engineer @ Netsearch",
       "commits": 18,
-      "percentage": 0.58
+      "percentage": 0.57
     },
     {
       "company": "Aws",
@@ -61,10 +61,10 @@
       "percentage": 0.13
     },
     {
-      "company": "Jboss By Red Hat By Ibm",
-      "commits": 3,
-      "percentage": 0.1
+      "company": "Rumi",
+      "commits": 4,
+      "percentage": 0.13
     }
   ],
-  "extracted_at": "2026-07-17T13:41:04.526893"
+  "extracted_at": "2026-07-22T16:55:15.930932"
 }

@@ -1,5 +1,67 @@
 {
-  "total_commits": 1,
+  "committers": [
+    {
+      "login": "Chris Giblin",
+      "name": "Chris Giblin",
+      "company": "Unknown",
+      "location": null,
+      "email": "cgi@zurich.ibm.com",
+      "profile_url": null,
+      "commit_count": 251
+    },
+    {
+      "login": "Adrian Preston",
+      "name": "Adrian Preston",
+      "company": "Unknown",
+      "location": null,
+      "email": "prestona@uk.ibm.com",
+      "profile_url": null,
+      "commit_count": 7
+    },
+    {
+      "login": "Tom Bentley",
+      "name": "Tom Bentley",
+      "company": "Unknown",
+      "location": null,
+      "email": "tombentley@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Jakub Scholz",
+      "name": "Jakub Scholz",
+      "company": "Unknown",
+      "location": null,
+      "email": "www@scholzj.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robertyoungnz@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Robert Young",
+      "name": "Robert Young",
+      "company": "Unknown",
+      "location": null,
+      "email": "robeyoun@redhat.com",
+      "profile_url": null,
+      "commit_count": 1
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T16:37:44.739856",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,69 +136,6 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Chris Giblin",
-      "name": "Chris Giblin",
-      "company": "Unknown",
-      "location": null,
-      "email": "cgi@zurich.ibm.com",
-      "profile_url": null,
-      "commit_count": 251
-    },
-    {
-      "login": "Adrian Preston",
-      "name": "Adrian Preston",
-      "company": "Unknown",
-      "location": null,
-      "email": "prestona@uk.ibm.com",
-      "profile_url": null,
-      "commit_count": 7
-    },
-    {
-      "login": "Tom Bentley",
-      "name": "Tom Bentley",
-      "company": "Unknown",
-      "location": null,
-      "email": "tombentley@users.noreply.github.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Jakub Scholz",
-      "name": "Jakub Scholz",
-      "company": "Unknown",
-      "location": null,
-      "email": "www@scholzj.com",
-      "profile_url": null,
-      "commit_count": 3
-    },
-    {
-      "login": "Robert Young",
-      "name": "Robert Young",
-      "company": "Unknown",
-      "location": null,
-      "email": "robertyoungnz@gmail.com",
-      "profile_url": null,
-      "commit_count": 1
-    },
-    {
-      "login": "Robert Young",
-      "name": "Robert Young",
-      "company": "Unknown",
-      "location": null,
-      "email": "robeyoun@redhat.com",
-      "profile_url": null,
-      "commit_count": 1
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-16T15:08:56.471010",
   "years": [
     {
       "year": 2021,
@@ -158,5 +157,6 @@
       "commit_count": 1,
       "is_current": false
     }
-  ]
+  ],
+  "total_commits": 1
 }

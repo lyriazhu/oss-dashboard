@@ -1,5 +1,31 @@
 {
-  "total_commits": 38,
+  "committers": [
+    {
+      "login": "Paolo Antinori",
+      "name": "Paolo Antinori",
+      "company": "Unknown",
+      "location": null,
+      "email": "pantinor@redhat.com",
+      "profile_url": null,
+      "commit_count": 38
+    },
+    {
+      "login": "fossabot",
+      "name": "fossabot",
+      "company": "Unknown",
+      "location": null,
+      "email": "badges@fossa.io",
+      "profile_url": null,
+      "commit_count": 2
+    }
+  ],
+  "time_scope": {
+    "total_commits": "last_12_quarters",
+    "quarters": "last_12_quarters",
+    "years": "all_time_from_git_history",
+    "committers": "all_time_from_git_history"
+  },
+  "extracted_at": "2026-07-22T17:01:26.228571",
   "quarters": [
     {
       "start_date": "2026-07-01T00:00:00",
@@ -74,38 +100,12 @@
       "quarter": "Q4 2023"
     }
   ],
-  "committers": [
-    {
-      "login": "Paolo Antinori",
-      "name": "Paolo Antinori",
-      "company": "Unknown",
-      "location": null,
-      "email": "pantinor@redhat.com",
-      "profile_url": null,
-      "commit_count": 38
-    },
-    {
-      "login": "fossabot",
-      "name": "fossabot",
-      "company": "Unknown",
-      "location": null,
-      "email": "badges@fossa.io",
-      "profile_url": null,
-      "commit_count": 2
-    }
-  ],
-  "time_scope": {
-    "total_commits": "last_12_quarters",
-    "quarters": "last_12_quarters",
-    "years": "all_time_from_git_history",
-    "committers": "all_time_from_git_history"
-  },
-  "extracted_at": "2026-07-17T13:29:06.631141",
   "years": [
     {
       "year": 2026,
       "commit_count": 40,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 38
 }

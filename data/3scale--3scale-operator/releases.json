@@ -9,121 +9,9 @@
       "draft": false
     },
     {
-      "tag_name": "v0.0.1",
-      "name": "Initial release of the 3scale-operator",
-      "published_at": "2019-02-28T17:07:19+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.5.0-ER1",
-      "name": "3scale-2.5.0-ER1",
-      "published_at": "2019-03-14T12:35:32+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.5.0-CR1",
-      "name": "3scale-2.5.0-CR1",
-      "published_at": "2019-03-29T11:43:55+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.6.0-ER1",
-      "name": "3scale-2.6.0-ER1",
-      "published_at": "2019-06-21T14:32:43+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.6.0-ER2",
-      "name": "3scale-2.6.0-ER2",
-      "published_at": "2019-07-09T13:56:04+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.6.0-CR1",
-      "name": "3scale-2.6.0-CR1",
-      "published_at": "2019-07-24T09:39:44+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.6.0-CR2",
-      "name": "3scale-2.6.0-CR2",
-      "published_at": "2019-08-14T09:17:30+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "v0.3.0",
-      "name": "v0.3.0",
-      "published_at": "2019-11-06T16:51:42+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.7.0-ER1",
-      "name": "3scale-2.7.0-ER1",
-      "published_at": "2019-10-03T14:15:02+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.7.0-ER2",
-      "name": "3scale-2.7.0-ER2",
-      "published_at": "2019-10-18T14:52:20+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.7.0-CR1",
-      "name": "3scale-2.7.0-CR1",
-      "published_at": "2019-11-04T14:31:40+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.7.0-CR2",
-      "name": "3scale-2.7.0-CR2",
-      "published_at": "2019-11-06T13:59:59+00:00",
-      "prerelease": true,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.7.1",
-      "name": "3scale-2.7.1",
-      "published_at": "2019-12-19T13:42:17+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.8.0-CR1",
-      "name": "3scale-2.8.0-CR1",
-      "published_at": "2020-03-27T12:31:17+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.8.1-CR1",
-      "name": "3scale-2.8.1-CR1",
-      "published_at": "2020-03-31T09:43:24+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.9.0-GA",
-      "name": "3scale-2.9.0-GA",
-      "published_at": "2020-08-28T14:11:38+00:00",
-      "prerelease": false,
-      "draft": false
-    },
-    {
-      "tag_name": "3scale-2.9.1-GA",
-      "name": "3scale-2.9.1-GA",
-      "published_at": "2020-10-27T14:34:40+00:00",
+      "tag_name": "3scale-2.11.0-GA",
+      "name": "3scale-2.11.0-GA",
+      "published_at": "2021-10-15T11:11:47+00:00",
       "prerelease": false,
       "draft": false
     },
@@ -135,13 +23,125 @@
       "draft": false
     },
     {
-      "tag_name": "3scale-2.11.0-GA",
-      "name": "3scale-2.11.0-GA",
-      "published_at": "2021-10-15T11:11:47+00:00",
+      "tag_name": "3scale-2.9.1-GA",
+      "name": "3scale-2.9.1-GA",
+      "published_at": "2020-10-27T14:34:40+00:00",
       "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.9.0-GA",
+      "name": "3scale-2.9.0-GA",
+      "published_at": "2020-08-28T14:11:38+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.8.1-CR1",
+      "name": "3scale-2.8.1-CR1",
+      "published_at": "2020-03-31T09:43:24+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.8.0-CR1",
+      "name": "3scale-2.8.0-CR1",
+      "published_at": "2020-03-27T12:31:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.1",
+      "name": "3scale-2.7.1",
+      "published_at": "2019-12-19T13:42:17+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.3.0",
+      "name": "v0.3.0",
+      "published_at": "2019-11-06T16:51:42+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.0-CR2",
+      "name": "3scale-2.7.0-CR2",
+      "published_at": "2019-11-06T13:59:59+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.0-CR1",
+      "name": "3scale-2.7.0-CR1",
+      "published_at": "2019-11-04T14:31:40+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.0-ER2",
+      "name": "3scale-2.7.0-ER2",
+      "published_at": "2019-10-18T14:52:20+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.7.0-ER1",
+      "name": "3scale-2.7.0-ER1",
+      "published_at": "2019-10-03T14:15:02+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.6.0-CR2",
+      "name": "3scale-2.6.0-CR2",
+      "published_at": "2019-08-14T09:17:30+00:00",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.6.0-CR1",
+      "name": "3scale-2.6.0-CR1",
+      "published_at": "2019-07-24T09:39:44+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.6.0-ER2",
+      "name": "3scale-2.6.0-ER2",
+      "published_at": "2019-07-09T13:56:04+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.6.0-ER1",
+      "name": "3scale-2.6.0-ER1",
+      "published_at": "2019-06-21T14:32:43+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.5.0-CR1",
+      "name": "3scale-2.5.0-CR1",
+      "published_at": "2019-03-29T11:43:55+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "3scale-2.5.0-ER1",
+      "name": "3scale-2.5.0-ER1",
+      "published_at": "2019-03-14T12:35:32+00:00",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "tag_name": "v0.0.1",
+      "name": "Initial release of the 3scale-operator",
+      "published_at": "2019-02-28T17:07:19+00:00",
+      "prerelease": true,
       "draft": false
     }
   ],
   "median_days_between_releases": 20,
-  "extracted_at": "2026-07-22T12:35:33.056472"
+  "extracted_at": "2026-07-22T16:11:47.695793"
 }

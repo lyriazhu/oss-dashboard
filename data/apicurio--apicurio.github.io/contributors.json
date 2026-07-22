@@ -127,7 +127,7 @@
     },
     {
       "year": 2026,
-      "contributor_count": 9,
+      "contributor_count": 10,
       "is_current": true,
       "contributor_logins": [
         "49699333+dependabot[bot]@users.noreply.github.com",
@@ -138,12 +138,13 @@
         "carnalca@redhat.com",
         "eric.wittmann@gmail.com",
         "hemantchaudhary905@gmail.com",
-        "m@jsenko.net"
+        "m@jsenko.net",
+        "vandana.yadav.vs@gmail.com"
       ]
     }
   ],
-  "total_contributors": 31,
-  "total_contributors_git": 31,
+  "total_contributors": 32,
+  "total_contributors_git": 32,
   "all_time_contributor_logins": [
     "29098561+smccarthy-ie@users.noreply.github.com",
     "46371672+famartinrh@users.noreply.github.com",
@@ -175,7 +176,8 @@
     "s0m0bv9@macbook-pro-6.local",
     "senko.jak@gmail.com",
     "stmccart@redhat.com",
-    "surbhi.mittal@walmart.com"
+    "surbhi.mittal@walmart.com",
+    "vandana.yadav.vs@gmail.com"
   ],
   "contributors": [
     {
@@ -184,7 +186,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 436,
+      "contributions": 438,
       "profile_url": "https://github.com/apicurio-ci"
     },
     {
@@ -339,26 +341,45 @@
       "email": "riprasad@redhat.com",
       "contributions": 1,
       "profile_url": "https://github.com/riprasad"
+    },
+    {
+      "login": "hemantch01",
+      "name": "Hemant kumar",
+      "company": "Unknown",
+      "location": "I am under the water....  woohouuu....",
+      "email": "hemantchaudhary905@gmail.com",
+      "contributions": 1,
+      "profile_url": "https://github.com/hemantch01"
+    },
+    {
+      "login": "fossabot",
+      "name": "fossabot",
+      "company": "Fossas",
+      "location": "Dependency Heaven",
+      "email": "support@fossa.io",
+      "contributions": 1,
+      "profile_url": "https://github.com/fossabot"
     }
   ],
-  "total_contributors_github_api": 18,
+  "total_contributors_github_api": 20,
   "companies": {
-    "Unknown": 7,
+    "Unknown": 8,
     "Red Hat": 5,
     "Ibm": 2,
     "Actions": 1,
     "Blackparrotlabs": 1,
     "Diagrid": 1,
-    "Confluent": 1
+    "Confluent": 1,
+    "Fossas": 1
   },
-  "total_companies": 7,
+  "total_companies": 8,
   "company_diversity": {
-    "known_company_contributors": 11,
-    "unknown_company_contributors": 7,
+    "known_company_contributors": 12,
+    "unknown_company_contributors": 8,
     "top_companies": [
       {
         "company": "Unknown",
-        "contributor_count": 7
+        "contributor_count": 8
       },
       {
         "company": "Red Hat",
@@ -382,6 +403,10 @@
       },
       {
         "company": "Confluent",
+        "contributor_count": 1
+      },
+      {
+        "company": "Fossas",
         "contributor_count": 1
       }
     ]
@@ -682,20 +707,22 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 5,
-      "new_contributors": 2,
+      "active_contributors": 6,
+      "new_contributors": 3,
       "returning_contributors": 3,
-      "retention_rate": 60.0,
+      "retention_rate": 50.0,
       "active_logins": [
         "apicurio.ci@gmail.com",
         "badges@fossa.io",
         "carlesarnal92@gmail.com",
         "carnalca@redhat.com",
-        "hemantchaudhary905@gmail.com"
+        "hemantchaudhary905@gmail.com",
+        "vandana.yadav.vs@gmail.com"
       ],
       "new_logins": [
         "badges@fossa.io",
-        "hemantchaudhary905@gmail.com"
+        "hemantchaudhary905@gmail.com",
+        "vandana.yadav.vs@gmail.com"
       ],
       "returning_logins": [
         "apicurio.ci@gmail.com",
@@ -986,10 +1013,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 9,
-      "new_contributors": 2,
+      "active_contributors": 10,
+      "new_contributors": 3,
       "returning_contributors": 7,
-      "retention_rate": 77.78,
+      "retention_rate": 70.0,
       "is_current": true,
       "active_logins": [
         "49699333+dependabot[bot]@users.noreply.github.com",
@@ -1000,11 +1027,13 @@
         "carnalca@redhat.com",
         "eric.wittmann@gmail.com",
         "hemantchaudhary905@gmail.com",
-        "m@jsenko.net"
+        "m@jsenko.net",
+        "vandana.yadav.vs@gmail.com"
       ],
       "new_logins": [
         "badges@fossa.io",
-        "hemantchaudhary905@gmail.com"
+        "hemantchaudhary905@gmail.com",
+        "vandana.yadav.vs@gmail.com"
       ],
       "returning_logins": [
         "49699333+dependabot[bot]@users.noreply.github.com",

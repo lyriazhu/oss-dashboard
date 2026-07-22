@@ -85,6 +85,31 @@
   ],
   "total_contributors": 23,
   "total_contributors_git": 23,
+  "all_time_contributor_logins": [
+    "39860586+tinaselenge@users.noreply.github.com",
+    "40673682+henryzrncik@users.noreply.github.com",
+    "53821852+im-konge@users.noreply.github.com",
+    "57452611+franvila@users.noreply.github.com",
+    "ales.justin@gmail.com",
+    "fvila@redhat.com",
+    "hzrncik@redhat.com",
+    "jkalinic@redhat.com",
+    "kun.lu@ibm.com",
+    "lukywill16@gmail.com",
+    "maros.orsak159@gmail.com",
+    "michalxo@gmail.com",
+    "mickael.maison@gmail.com",
+    "mimaison@users.noreply.github.com",
+    "mtoth@redhat.com",
+    "paolo.patierno@gmail.com",
+    "ppatierno@live.com",
+    "robertyoungnz@gmail.com",
+    "stejskinek@gmail.com",
+    "tina.selenge@gmail.com",
+    "tombentley@users.noreply.github.com",
+    "www@scholzj.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "im-konge",
@@ -704,6 +729,7 @@
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

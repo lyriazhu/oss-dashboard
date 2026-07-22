@@ -3,11 +3,11 @@
   "full_name": "Apicurio/apicurio.github.io",
   "description": "Web site for the Apicurio project.",
   "created_at": "2017-04-28T14:34:29+00:00",
-  "updated_at": "2026-07-16T11:33:34+00:00",
+  "updated_at": "2026-07-21T17:00:04+00:00",
   "stars": 4,
   "forks": 20,
   "watchers": 4,
-  "open_issues": 11,
+  "open_issues": 9,
   "language": "HTML",
   "topics": [],
   "license": "Apache License 2.0",
@@ -18,17 +18,17 @@
     {
       "company": "Ibm",
       "commits": 265,
-      "percentage": 89.53
+      "percentage": 89.23
     },
     {
       "company": "Red Hat",
       "commits": 16,
-      "percentage": 5.41
+      "percentage": 5.39
     },
     {
       "company": "Actions",
       "commits": 8,
-      "percentage": 2.7
+      "percentage": 2.69
     },
     {
       "company": "Blackparrotlabs",
@@ -38,13 +38,18 @@
     {
       "company": "Diagrid",
       "commits": 2,
-      "percentage": 0.68
+      "percentage": 0.67
     },
     {
       "company": "Confluent",
       "commits": 1,
       "percentage": 0.34
+    },
+    {
+      "company": "Fossas",
+      "commits": 1,
+      "percentage": 0.34
     }
   ],
-  "extracted_at": "2026-07-17T13:40:21.714565"
+  "extracted_at": "2026-07-22T16:54:16.047834"
 }

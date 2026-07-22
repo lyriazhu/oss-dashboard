@@ -3,9 +3,9 @@
   "full_name": "strimzi/strimzi.github.io",
   "description": "Strimzi web site project",
   "created_at": "2017-12-22T13:53:41+00:00",
-  "updated_at": "2026-07-16T18:27:50+00:00",
+  "updated_at": "2026-07-22T19:16:34+00:00",
   "stars": 36,
-  "forks": 89,
+  "forks": 90,
   "watchers": 36,
   "open_issues": 0,
   "language": "HTML",
@@ -24,12 +24,12 @@
     {
       "company": "Ibm",
       "commits": 206,
-      "percentage": 75.74
+      "percentage": 75.46
     },
     {
       "company": "Red Hat",
       "commits": 25,
-      "percentage": 9.19
+      "percentage": 9.16
     },
     {
       "company": "Hopper",
@@ -49,28 +49,28 @@
     {
       "company": "Ibm, Ex-Red Hat",
       "commits": 2,
-      "percentage": 0.74
+      "percentage": 0.73
     },
     {
       "company": "Hetznercloud",
       "commits": 2,
-      "percentage": 0.74
+      "percentage": 0.73
     },
     {
       "company": "Archer Aviation | Www.Archer.Com",
       "commits": 2,
-      "percentage": 0.74
+      "percentage": 0.73
     },
     {
       "company": "Confluent",
       "commits": 2,
-      "percentage": 0.74
+      "percentage": 0.73
     },
     {
       "company": "Littlehorse Enterprises",
       "commits": 2,
-      "percentage": 0.74
+      "percentage": 0.73
     }
   ],
-  "extracted_at": "2026-07-16T14:50:19.995288"
+  "extracted_at": "2026-07-22T16:34:04.859190"
 }

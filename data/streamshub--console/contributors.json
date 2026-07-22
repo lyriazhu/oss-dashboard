@@ -3,31 +3,128 @@
     {
       "year": 2022,
       "contributor_count": 1,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "medgar@redhat.com"
+      ]
     },
     {
       "year": 2023,
       "contributor_count": 12,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "david@conde.ie",
+        "dconde@redhat.com",
+        "hhg@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "suyash.naithani@gmail.com"
+      ]
     },
     {
       "year": 2024,
       "contributor_count": 14,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "87978158+vaibhav-nazare@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "snyk-bot@snyk.io",
+        "sonicaaaa@gmail.com",
+        "suyash.naithani@gmail.com",
+        "vaibhav.nazare@ibm.com"
+      ]
     },
     {
       "year": 2025,
       "contributor_count": 17,
-      "is_current": false
+      "is_current": false,
+      "contributor_logins": [
+        "104433967+flo-kn@users.noreply.github.com",
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "52658021+paramesh324@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "bernard.tison@gmail.com",
+        "code@tomcooper.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "parameshkrkp@gmail.com",
+        "pmellor@redhat.com",
+        "sebastiangaiser@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ]
     },
     {
       "year": 2026,
       "contributor_count": 12,
-      "is_current": true
+      "is_current": true,
+      "contributor_logins": [
+        "130607246+gabrielbbaldez@users.noreply.github.com",
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "63744049+wipheg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "pmellor@redhat.com"
+      ]
     }
   ],
   "total_contributors": 29,
   "total_contributors_git": 29,
+  "all_time_contributor_logins": [
+    "104433967+flo-kn@users.noreply.github.com",
+    "130607246+gabrielbbaldez@users.noreply.github.com",
+    "41898282+github-actions[bot]@users.noreply.github.com",
+    "47596553+paulrmellor@users.noreply.github.com",
+    "49699333+dependabot[bot]@users.noreply.github.com",
+    "52658021+paramesh324@users.noreply.github.com",
+    "53568062+hemahg@users.noreply.github.com",
+    "63744049+wipheg@users.noreply.github.com",
+    "66817941+suyash-naithani@users.noreply.github.com",
+    "87978158+vaibhav-nazare@users.noreply.github.com",
+    "alex@creasy.dev",
+    "bernard.tison@gmail.com",
+    "code@tomcooper.dev",
+    "david@conde.ie",
+    "dconde@redhat.com",
+    "hhg@redhat.com",
+    "jkalinic@redhat.com",
+    "medgar@redhat.com",
+    "michael@xlate.io",
+    "parameshkrkp@gmail.com",
+    "pmellor@redhat.com",
+    "rforina@redhat.com",
+    "riccardo@forina.eu",
+    "sebastiangaiser@users.noreply.github.com",
+    "snyk-bot@snyk.io",
+    "sonicaaaa@gmail.com",
+    "suyash.naithani@gmail.com",
+    "vaibhav.nazare@ibm.com",
+    "xstejs24@gmail.com"
+  ],
   "contributors": [
     {
       "login": "dependabot[bot]",
@@ -35,7 +132,7 @@
       "company": "Unknown",
       "location": null,
       "email": null,
-      "contributions": 1581,
+      "contributions": 1596,
       "profile_url": "https://github.com/apps/dependabot"
     },
     {
@@ -44,7 +141,7 @@
       "company": "Ibm",
       "location": "Cleveland, Ohio",
       "email": "michael@xlate.io",
-      "contributions": 447,
+      "contributions": 451,
       "profile_url": "https://github.com/MikeEdgar"
     },
     {
@@ -80,7 +177,7 @@
       "company": "Red Hat",
       "location": null,
       "email": null,
-      "contributions": 63,
+      "contributions": 64,
       "profile_url": "https://github.com/jankalinic"
     },
     {
@@ -259,7 +356,26 @@
       "active_contributors": 7,
       "new_contributors": 0,
       "returning_contributors": 7,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "rforina@redhat.com",
+        "suyash.naithani@gmail.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "rforina@redhat.com",
+        "suyash.naithani@gmail.com"
+      ]
     },
     {
       "period": "Q1 2024",
@@ -269,7 +385,31 @@
       "active_contributors": 9,
       "new_contributors": 2,
       "returning_contributors": 7,
-      "retention_rate": 77.78
+      "retention_rate": 77.78,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "snyk-bot@snyk.io",
+        "suyash.naithani@gmail.com"
+      ],
+      "new_logins": [
+        "jkalinic@redhat.com",
+        "snyk-bot@snyk.io"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "suyash.naithani@gmail.com"
+      ]
     },
     {
       "period": "Q2 2024",
@@ -279,7 +419,31 @@
       "active_contributors": 9,
       "new_contributors": 1,
       "returning_contributors": 8,
-      "retention_rate": 88.89
+      "retention_rate": 88.89,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "snyk-bot@snyk.io",
+        "sonicaaaa@gmail.com"
+      ],
+      "new_logins": [
+        "sonicaaaa@gmail.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "snyk-bot@snyk.io"
+      ]
     },
     {
       "period": "Q3 2024",
@@ -289,7 +453,28 @@
       "active_contributors": 8,
       "new_contributors": 0,
       "returning_contributors": 8,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu"
+      ]
     },
     {
       "period": "Q4 2024",
@@ -299,7 +484,29 @@
       "active_contributors": 8,
       "new_contributors": 2,
       "returning_contributors": 6,
-      "retention_rate": 75.0
+      "retention_rate": 75.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "87978158+vaibhav-nazare@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "vaibhav.nazare@ibm.com"
+      ],
+      "new_logins": [
+        "87978158+vaibhav-nazare@users.noreply.github.com",
+        "vaibhav.nazare@ibm.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com"
+      ]
     },
     {
       "period": "Q1 2025",
@@ -309,7 +516,33 @@
       "active_contributors": 10,
       "new_contributors": 3,
       "returning_contributors": 7,
-      "retention_rate": 70.0
+      "retention_rate": 70.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "52658021+paramesh324@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "parameshkrkp@gmail.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "52658021+paramesh324@users.noreply.github.com",
+        "parameshkrkp@gmail.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io"
+      ]
     },
     {
       "period": "Q2 2025",
@@ -319,7 +552,31 @@
       "active_contributors": 9,
       "new_contributors": 3,
       "returning_contributors": 6,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "pmellor@redhat.com"
+      ],
+      "new_logins": [
+        "47596553+paulrmellor@users.noreply.github.com",
+        "code@tomcooper.dev",
+        "pmellor@redhat.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com"
+      ]
     },
     {
       "period": "Q3 2025",
@@ -329,7 +586,37 @@
       "active_contributors": 12,
       "new_contributors": 4,
       "returning_contributors": 8,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "104433967+flo-kn@users.noreply.github.com",
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "bernard.tison@gmail.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "pmellor@redhat.com",
+        "sebastiangaiser@users.noreply.github.com"
+      ],
+      "new_logins": [
+        "104433967+flo-kn@users.noreply.github.com",
+        "alex@creasy.dev",
+        "bernard.tison@gmail.com",
+        "sebastiangaiser@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "pmellor@redhat.com"
+      ]
     },
     {
       "period": "Q4 2025",
@@ -339,7 +626,30 @@
       "active_contributors": 9,
       "new_contributors": 0,
       "returning_contributors": 9,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "pmellor@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "pmellor@redhat.com"
+      ]
     },
     {
       "period": "Q1 2026",
@@ -349,7 +659,30 @@
       "active_contributors": 9,
       "new_contributors": 0,
       "returning_contributors": 9,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "pmellor@redhat.com"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "pmellor@redhat.com"
+      ]
     },
     {
       "period": "Q2 2026",
@@ -359,7 +692,25 @@
       "active_contributors": 6,
       "new_contributors": 2,
       "returning_contributors": 4,
-      "retention_rate": 66.67
+      "retention_rate": 66.67,
+      "active_logins": [
+        "130607246+gabrielbbaldez@users.noreply.github.com",
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "63744049+wipheg@users.noreply.github.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com"
+      ],
+      "new_logins": [
+        "130607246+gabrielbbaldez@users.noreply.github.com",
+        "63744049+wipheg@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com"
+      ]
     },
     {
       "period": "Q3 2026",
@@ -369,7 +720,24 @@
       "active_contributors": 6,
       "new_contributors": 0,
       "returning_contributors": 6,
-      "retention_rate": 100.0
+      "retention_rate": 100.0,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "alex@creasy.dev",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io"
+      ],
+      "new_logins": [],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "alex@creasy.dev",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io"
+      ]
     }
   ],
   "retention_by_year": [
@@ -382,7 +750,14 @@
       "new_contributors": 1,
       "returning_contributors": 0,
       "retention_rate": 0.0,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "medgar@redhat.com"
+      ],
+      "new_logins": [
+        "medgar@redhat.com"
+      ],
+      "returning_logins": []
     },
     {
       "period": "2023",
@@ -393,7 +768,37 @@
       "new_contributors": 11,
       "returning_contributors": 1,
       "retention_rate": 8.33,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "david@conde.ie",
+        "dconde@redhat.com",
+        "hhg@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "suyash.naithani@gmail.com"
+      ],
+      "new_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "david@conde.ie",
+        "dconde@redhat.com",
+        "hhg@redhat.com",
+        "michael@xlate.io",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "suyash.naithani@gmail.com"
+      ],
+      "returning_logins": [
+        "medgar@redhat.com"
+      ]
     },
     {
       "period": "2024",
@@ -404,7 +809,41 @@
       "new_contributors": 5,
       "returning_contributors": 9,
       "retention_rate": 64.29,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "87978158+vaibhav-nazare@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "snyk-bot@snyk.io",
+        "sonicaaaa@gmail.com",
+        "suyash.naithani@gmail.com",
+        "vaibhav.nazare@ibm.com"
+      ],
+      "new_logins": [
+        "87978158+vaibhav-nazare@users.noreply.github.com",
+        "jkalinic@redhat.com",
+        "snyk-bot@snyk.io",
+        "sonicaaaa@gmail.com",
+        "vaibhav.nazare@ibm.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "66817941+suyash-naithani@users.noreply.github.com",
+        "hhg@redhat.com",
+        "medgar@redhat.com",
+        "rforina@redhat.com",
+        "riccardo@forina.eu",
+        "suyash.naithani@gmail.com"
+      ]
     },
     {
       "period": "2025",
@@ -415,7 +854,47 @@
       "new_contributors": 10,
       "returning_contributors": 7,
       "retention_rate": 41.18,
-      "is_current": false
+      "is_current": false,
+      "active_logins": [
+        "104433967+flo-kn@users.noreply.github.com",
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "52658021+paramesh324@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "bernard.tison@gmail.com",
+        "code@tomcooper.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "parameshkrkp@gmail.com",
+        "pmellor@redhat.com",
+        "sebastiangaiser@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ],
+      "new_logins": [
+        "104433967+flo-kn@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "52658021+paramesh324@users.noreply.github.com",
+        "alex@creasy.dev",
+        "bernard.tison@gmail.com",
+        "code@tomcooper.dev",
+        "parameshkrkp@gmail.com",
+        "pmellor@redhat.com",
+        "sebastiangaiser@users.noreply.github.com",
+        "xstejs24@gmail.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io"
+      ]
     },
     {
       "period": "2026",
@@ -426,12 +905,43 @@
       "new_contributors": 2,
       "returning_contributors": 10,
       "retention_rate": 83.33,
-      "is_current": true
+      "is_current": true,
+      "active_logins": [
+        "130607246+gabrielbbaldez@users.noreply.github.com",
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "63744049+wipheg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "pmellor@redhat.com"
+      ],
+      "new_logins": [
+        "130607246+gabrielbbaldez@users.noreply.github.com",
+        "63744049+wipheg@users.noreply.github.com"
+      ],
+      "returning_logins": [
+        "41898282+github-actions[bot]@users.noreply.github.com",
+        "47596553+paulrmellor@users.noreply.github.com",
+        "49699333+dependabot[bot]@users.noreply.github.com",
+        "53568062+hemahg@users.noreply.github.com",
+        "alex@creasy.dev",
+        "hhg@redhat.com",
+        "jkalinic@redhat.com",
+        "medgar@redhat.com",
+        "michael@xlate.io",
+        "pmellor@redhat.com"
+      ]
     }
   ],
   "time_scope": {
     "yearly_contributors": "all_time_from_git_history",
     "total_contributors": "all_time_from_git_history",
+    "all_time_contributor_logins": "all_time_from_git_history",
     "contributors": "all_time_github_contributors",
     "retention_by_quarter": "last_12_quarters_from_git_history",
     "retention_by_year": "all_time_from_git_history"

@@ -1,79 +1,4 @@
 {
-  "total_commits": 1828,
-  "quarters": [
-    {
-      "start_date": "2026-07-01T00:00:00",
-      "end_date": "2026-10-01T00:00:00",
-      "commit_count": 39,
-      "quarter": "Q3 2026"
-    },
-    {
-      "start_date": "2026-04-01T00:00:00",
-      "end_date": "2026-07-01T00:00:00",
-      "commit_count": 165,
-      "quarter": "Q2 2026"
-    },
-    {
-      "start_date": "2026-01-01T00:00:00",
-      "end_date": "2026-04-01T00:00:00",
-      "commit_count": 158,
-      "quarter": "Q1 2026"
-    },
-    {
-      "start_date": "2025-10-01T00:00:00",
-      "end_date": "2026-01-01T00:00:00",
-      "commit_count": 175,
-      "quarter": "Q4 2025"
-    },
-    {
-      "start_date": "2025-07-01T00:00:00",
-      "end_date": "2025-10-01T00:00:00",
-      "commit_count": 166,
-      "quarter": "Q3 2025"
-    },
-    {
-      "start_date": "2025-04-01T00:00:00",
-      "end_date": "2025-07-01T00:00:00",
-      "commit_count": 106,
-      "quarter": "Q2 2025"
-    },
-    {
-      "start_date": "2025-01-01T00:00:00",
-      "end_date": "2025-04-01T00:00:00",
-      "commit_count": 117,
-      "quarter": "Q1 2025"
-    },
-    {
-      "start_date": "2024-10-01T00:00:00",
-      "end_date": "2025-01-01T00:00:00",
-      "commit_count": 161,
-      "quarter": "Q4 2024"
-    },
-    {
-      "start_date": "2024-07-01T00:00:00",
-      "end_date": "2024-10-01T00:00:00",
-      "commit_count": 221,
-      "quarter": "Q3 2024"
-    },
-    {
-      "start_date": "2024-04-01T00:00:00",
-      "end_date": "2024-07-01T00:00:00",
-      "commit_count": 182,
-      "quarter": "Q2 2024"
-    },
-    {
-      "start_date": "2024-01-01T00:00:00",
-      "end_date": "2024-04-01T00:00:00",
-      "commit_count": 185,
-      "quarter": "Q1 2024"
-    },
-    {
-      "start_date": "2023-10-01T00:00:00",
-      "end_date": "2024-01-01T00:00:00",
-      "commit_count": 153,
-      "quarter": "Q4 2023"
-    }
-  ],
   "committers": [
     {
       "login": "Jakub Scholz",
@@ -82,7 +7,7 @@
       "location": null,
       "email": "www@scholzj.com",
       "profile_url": null,
-      "commit_count": 7160
+      "commit_count": 7185
     },
     {
       "login": "Paolo Patierno",
@@ -109,7 +34,7 @@
       "location": null,
       "email": "xstejs24@gmail.com",
       "profile_url": null,
-      "commit_count": 1851
+      "commit_count": 1856
     },
     {
       "login": "prmellor",
@@ -154,7 +79,7 @@
       "location": null,
       "email": "maros.orsak159@gmail.com",
       "profile_url": null,
-      "commit_count": 973
+      "commit_count": 975
     },
     {
       "login": "PaulRMellor",
@@ -172,7 +97,7 @@
       "location": null,
       "email": "53821852+im-konge@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 695
+      "commit_count": 696
     },
     {
       "login": "Daniel Laing",
@@ -271,7 +196,7 @@
       "location": null,
       "email": "11195226+katheris@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 252
+      "commit_count": 253
     },
     {
       "login": "ShubhamRwt",
@@ -424,7 +349,7 @@
       "location": null,
       "email": "49699333+dependabot[bot]@users.noreply.github.com",
       "profile_url": null,
-      "commit_count": 74
+      "commit_count": 75
     },
     {
       "login": "Luke Chen",
@@ -496,7 +421,7 @@
       "location": null,
       "email": "venkatesprasad512@gmail.com",
       "profile_url": null,
-      "commit_count": 58
+      "commit_count": 59
     },
     {
       "login": "henryZrncik",
@@ -2458,7 +2383,7 @@
       "location": null,
       "email": "hchen@x.ai",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Venkatesh Prasad Kannan",
@@ -2467,7 +2392,7 @@
       "location": null,
       "email": "personal@venkateshkannan.me",
       "profile_url": null,
-      "commit_count": 3
+      "commit_count": 4
     },
     {
       "login": "Bill Kim (\uae40\ube4c)",
@@ -3015,6 +2940,15 @@
       "company": "Unknown",
       "location": null,
       "email": "goern@redhat.com",
+      "profile_url": null,
+      "commit_count": 3
+    },
+    {
+      "login": "Kaspar Metsa",
+      "name": "Kaspar Metsa",
+      "company": "Unknown",
+      "location": null,
+      "email": "kasparme@gmail.com",
       "profile_url": null,
       "commit_count": 3
     },
@@ -4177,7 +4111,16 @@
       "location": null,
       "email": "davido.machacek@gmail.com",
       "profile_url": null,
-      "commit_count": 1
+      "commit_count": 2
+    },
+    {
+      "login": "satyam mishra",
+      "name": "satyam mishra",
+      "company": "Unknown",
+      "location": null,
+      "email": "mishrasatyam3456@gmail.com",
+      "profile_url": null,
+      "commit_count": 2
     },
     {
       "login": "Geonhyeon Kim",
@@ -5834,6 +5777,42 @@
       "email": "kunallimaye@gmail.com",
       "profile_url": null,
       "commit_count": 1
+    },
+    {
+      "login": "Kaspar",
+      "name": "Kaspar",
+      "company": "Unknown",
+      "location": null,
+      "email": "115068027+kasparmetsa@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Marco Moser",
+      "name": "Marco Moser",
+      "company": "Unknown",
+      "location": null,
+      "email": "63156265+mopsgeschwindigkeit@users.noreply.github.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "Marco Moser",
+      "name": "Marco Moser",
+      "company": "Unknown",
+      "location": null,
+      "email": "marco.moser@smaxtec.com",
+      "profile_url": null,
+      "commit_count": 1
+    },
+    {
+      "login": "markocevrljakovic",
+      "name": "markocevrljakovic",
+      "company": "Unknown",
+      "location": null,
+      "email": "marecevrljakovic@gmail.com",
+      "profile_url": null,
+      "commit_count": 1
     }
   ],
   "time_scope": {
@@ -5842,7 +5821,81 @@
     "years": "all_time_from_git_history",
     "committers": "all_time_from_git_history"
   },
-  "extracted_at": "2026-07-16T14:43:13.151710",
+  "extracted_at": "2026-07-22T16:30:15.070169",
+  "quarters": [
+    {
+      "start_date": "2026-07-01T00:00:00",
+      "end_date": "2026-10-01T00:00:00",
+      "commit_count": 53,
+      "quarter": "Q3 2026"
+    },
+    {
+      "start_date": "2026-04-01T00:00:00",
+      "end_date": "2026-07-01T00:00:00",
+      "commit_count": 165,
+      "quarter": "Q2 2026"
+    },
+    {
+      "start_date": "2026-01-01T00:00:00",
+      "end_date": "2026-04-01T00:00:00",
+      "commit_count": 158,
+      "quarter": "Q1 2026"
+    },
+    {
+      "start_date": "2025-10-01T00:00:00",
+      "end_date": "2026-01-01T00:00:00",
+      "commit_count": 175,
+      "quarter": "Q4 2025"
+    },
+    {
+      "start_date": "2025-07-01T00:00:00",
+      "end_date": "2025-10-01T00:00:00",
+      "commit_count": 166,
+      "quarter": "Q3 2025"
+    },
+    {
+      "start_date": "2025-04-01T00:00:00",
+      "end_date": "2025-07-01T00:00:00",
+      "commit_count": 106,
+      "quarter": "Q2 2025"
+    },
+    {
+      "start_date": "2025-01-01T00:00:00",
+      "end_date": "2025-04-01T00:00:00",
+      "commit_count": 117,
+      "quarter": "Q1 2025"
+    },
+    {
+      "start_date": "2024-10-01T00:00:00",
+      "end_date": "2025-01-01T00:00:00",
+      "commit_count": 161,
+      "quarter": "Q4 2024"
+    },
+    {
+      "start_date": "2024-07-01T00:00:00",
+      "end_date": "2024-10-01T00:00:00",
+      "commit_count": 221,
+      "quarter": "Q3 2024"
+    },
+    {
+      "start_date": "2024-04-01T00:00:00",
+      "end_date": "2024-07-01T00:00:00",
+      "commit_count": 182,
+      "quarter": "Q2 2024"
+    },
+    {
+      "start_date": "2024-01-01T00:00:00",
+      "end_date": "2024-04-01T00:00:00",
+      "commit_count": 185,
+      "quarter": "Q1 2024"
+    },
+    {
+      "start_date": "2023-10-01T00:00:00",
+      "end_date": "2024-01-01T00:00:00",
+      "commit_count": 153,
+      "quarter": "Q4 2023"
+    }
+  ],
   "years": [
     {
       "year": 2016,
@@ -5896,8 +5949,9 @@
     },
     {
       "year": 2026,
-      "commit_count": 1307,
+      "commit_count": 1351,
       "is_current": true
     }
-  ]
+  ],
+  "total_commits": 1842
 }
