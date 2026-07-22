@@ -692,18 +692,24 @@ export default function App() {
     const mergeRecords = [];
     Object.entries(newData).forEach(([key, d]) => {
       if (d._mergedFrom) {
-        // Use _allMemberKeys when present — this is set for partial merges where some
-        // repos haven't finished extracting yet.  It preserves the full intended member
-        // list in merges.json so the complete group is restored once all repos load.
+        // Use _allMemberKeys when present — this is set when some _mergedFrom members are
+        // themselves merged groups.  memberKeys holds flat atomic IDs for applyPersistedMerges,
+        // while _mergedFrom holds the peer-level entries whose names form the display name.
         const memberKeys = d._allMemberKeys || d._mergedFrom.map((e) => e.key);
         const defaultName = d._mergedFrom.map((e) => e.data.name).join(' + ');
         // Preserve orgUrl if it was stored on the merged entry (set by org extraction scripts)
         const orgUrl = d.repoUrl?.startsWith('https://github.com/') && !d.repoUrl.slice(19).includes('/')
           ? d.repoUrl : null;
+        // When _allMemberKeys is set, reloading from atomic keys produces a different
+        // auto-name (individual sub-repo names instead of group names), so always
+        // save the display name explicitly so it survives reload and unmerge cycles.
+        const nameToSave = d._allMemberKeys
+          ? d.name
+          : (d.name !== defaultName ? d.name : null);
         mergeRecords.push({
           mergedKey: key,
           memberKeys,
-          name:       d.name       !== defaultName ? d.name       : null,
+          name:       nameToSave,
           orgUrl,
           // Always persist foundation so it survives reload; null means "use computed default"
           foundation: d.foundation || null,
