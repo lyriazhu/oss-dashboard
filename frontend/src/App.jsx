@@ -12,8 +12,62 @@ const QUEUE_STORAGE_KEY      = 'oss_dashboard_refresh_queue';
 const ADD_QUEUE_STORAGE_KEY  = 'oss_dashboard_add_queue';
 
 // ---------------------------------------------------------------------------
-// Shared merge helper — used by both handleJoinSelected and applyPersistedMerges
+// Shared merge helpers — used by both handleJoinSelected and applyPersistedMerges
 // ---------------------------------------------------------------------------
+
+/**
+ * Extract the GitHub owner from a URL, e.g. "https://github.com/3scale" → "3scale".
+ * Returns null if the URL is not a recognised GitHub URL.
+ */
+function getGithubOwner(repoUrl) {
+  if (!repoUrl) return null;
+  const m = repoUrl.match(/^https:\/\/github\.com\/([^/]+)/);
+  return m ? m[1].toLowerCase() : null;
+}
+
+/**
+ * Returns true when the URL is an org/user-level GitHub URL (no /repo path).
+ * e.g. "https://github.com/3scale" → true
+ *      "https://github.com/3scale/toolbox" → false
+ */
+function isOrgUrl(repoUrl) {
+  if (!repoUrl) return false;
+  const path = repoUrl.replace(/^https:\/\/github\.com\//, '');
+  return Boolean(path) && !path.includes('/');
+}
+
+/**
+ * When merging communities that share the same GitHub owner and exactly one of
+ * them is an org-level entry (URL has no /repo segment), return that entry;
+ * otherwise return null (fall back to flat peer merge).
+ *
+ * @param {Array<{key: string, data: object}>} entries
+ */
+function findOrgParent(entries) {
+  const owners = entries.map((e) => getGithubOwner(e.data.repoUrl));
+  if (!owners[0] || owners.some((o) => o !== owners[0])) return null; // different owners
+  const orgEntries = entries.filter((e) => isOrgUrl(e.data.repoUrl));
+  return orgEntries.length === 1 ? orgEntries[0] : null;
+}
+
+/**
+ * Build a parent-child merged entry: the parent entry's data is preserved as
+ * the top-level row and the child entries are attached as _mergedFrom children.
+ * Any existing _mergedFrom children on the parent are preserved; new entries
+ * are appended (deduped by key) so existing children are never replaced.
+ * No stat aggregation occurs — the parent's existing stats are shown as-is.
+ */
+function buildParentChildEntry(parentEntry, childEntries) {
+  const existing = parentEntry.data._mergedFrom || [];
+  const existingKeys = new Set(existing.map((e) => e.key));
+  const newChildren = childEntries
+    .filter((e) => !existingKeys.has(e.key))
+    .map((e) => ({ ...e, data: { ...e.data, _isMergedSubRepo: true } }));
+  return {
+    ...parentEntry.data,
+    _mergedFrom: [...existing, ...newChildren],
+  };
+}
 
 /**
  * Given a flat list of { key, data } atomic repo entries, build the merged
@@ -612,12 +666,25 @@ export default function App() {
         const mergedKey = '__merged__' + memberKeys.join('__');
 
         const flatEntries = availableKeys.map((k) => ({ key: k, data: newData[k] }));
-        const merged = buildMergedEntry(flatEntries, { customName, orgUrl, foundation });
-        // When only a subset of members is available (others still extracting), store
-        // the full intended member key list so persistMerges can write the correct
-        // record to merges.json even before all repos have finished loading.
-        if (availableKeys.length < memberKeys.length) {
+        // Apply the same parent-child promotion as handleJoinSelected: when all
+        // available members share the same owner and exactly one is org-level,
+        // use that org entry as the parent rather than building a flat peer group.
+        const orgParent = findOrgParent(flatEntries);
+        let merged;
+        if (orgParent) {
+          const childEntries = flatEntries.filter((e) => e.key !== orgParent.key);
+          merged = buildParentChildEntry(orgParent, childEntries);
+          // _mergedFrom holds only children; always store the full member key list
+          // so persistMerges can reconstruct the complete group after reload.
           merged._allMemberKeys = memberKeys;
+        } else {
+          merged = buildMergedEntry(flatEntries, { customName, orgUrl, foundation });
+          // When only a subset of members is available (others still extracting), store
+          // the full intended member key list so persistMerges can write the correct
+          // record to merges.json even before all repos have finished loading.
+          if (availableKeys.length < memberKeys.length) {
+            merged._allMemberKeys = memberKeys;
+          }
         }
 
         availableKeys.forEach((k) => delete newData[k]);
@@ -993,12 +1060,24 @@ export default function App() {
       return d._allMemberKeys || d._mergedFrom.map((m) => m.key);
     });
 
-    const merged = buildMergedEntry(flatEntries);
-
-    // Store all underlying atomic keys so persistMerges writes real backend IDs
-    // to merges.json even when some members are themselves merged groups.
-    if (atomicKeys.length !== flatEntries.length) {
+    // If all selected communities share the same GitHub owner and exactly one is
+    // org-level (URL has no /repo path), promote that org entry as the parent and
+    // nest the others as children rather than creating a flat peer group.
+    const orgParent = findOrgParent(flatEntries);
+    let merged;
+    if (orgParent) {
+      const childEntries = flatEntries.filter((e) => e.key !== orgParent.key);
+      merged = buildParentChildEntry(orgParent, childEntries);
+      // _mergedFrom only holds children — always store the full atomic key list
+      // so persistMerges can write all members (including the org parent) to merges.json.
       merged._allMemberKeys = atomicKeys;
+    } else {
+      merged = buildMergedEntry(flatEntries);
+      // Store all underlying atomic keys so persistMerges writes real backend IDs
+      // to merges.json even when some members are themselves merged groups.
+      if (atomicKeys.length !== flatEntries.length) {
+        merged._allMemberKeys = atomicKeys;
+      }
     }
 
     // Use a synthetic key derived from the atomic member keys so it is stable

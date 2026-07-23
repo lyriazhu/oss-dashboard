@@ -18,17 +18,17 @@
     "orgUrl" : "https://github.com/kroxylicious",
     "foundation" : "Commonhaus Foundation"
   }, {
-    "mergedKey" : "__merged__3scale--3scale-operator__3scale--apicast__3scale--apisonator__3scale--porta__3scale--3scale-toolbox",
-    "memberKeys" : [ "3scale--3scale-operator", "3scale--apicast", "3scale--apisonator", "3scale--porta", "3scale--3scale-toolbox" ],
-    "name" : "3scale",
-    "orgUrl" : "https://github.com/3scale",
-    "foundation" : "Red Hat"
-  }, {
     "mergedKey" : "__merged__apicurio--apicurio-github-io__apicurio--apicurio-registry__apicurio--apicurio-github-actions__apicurio--.github__apicurio--apicurio-registry-vscode-plugin__apicurio--apicurio-registry-gitops-example__apicurio--apicurio-compatibility-harness__apicurio--.project__apicurio--apicurio.github.io",
     "memberKeys" : [ "apicurio--apicurio-github-io", "apicurio--apicurio-registry", "apicurio--apicurio-github-actions", "apicurio--.github", "apicurio--apicurio-registry-vscode-plugin", "apicurio--apicurio-registry-gitops-example", "apicurio--apicurio-compatibility-harness", "apicurio--.project", "apicurio--apicurio.github.io" ],
     "name" : "Apicurio Registry",
     "orgUrl" : "https://github.com/Apicurio",
     "foundation" : "CNCF"
+  }, {
+    "mergedKey" : "__merged__3scale--zync__3scale--3scale-operator__3scale--apicast__3scale--apisonator__3scale--porta__3scale--3scale-toolbox",
+    "memberKeys" : [ "3scale--3scale-operator", "3scale--apicast", "3scale--apisonator", "3scale--porta", "3scale--3scale-toolbox" ],
+    "name" : "3scale",
+    "orgUrl" : "https://github.com/3scale",
+    "foundation" : "Red Hat"
   } ],
-  "last_updated" : "2026-07-23T13:47:20.506095Z"
+  "last_updated" : "2026-07-23T14:43:39.238309Z"
 }

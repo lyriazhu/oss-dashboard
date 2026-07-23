@@ -789,7 +789,7 @@ export default function Overview({
                 {[
                   { key: 'name',                label: 'Community',              cls: undefined, extraStyle: { paddingLeft: '2.5rem' } },
                   { key: 'foundation',          label: 'Foundation',             cls: undefined },
-                  { key: 'repo',                label: 'Repository',             cls: undefined },
+                  { key: 'repo',                label: 'GitHub',             cls: undefined },
                   { key: 'contributorsYtd',     label: 'Contributors (YTD)',     cls: 'num'     },
                   { key: 'contributorsAllTime', label: 'Contributors (All-Time)', cls: 'num'    },
                   { key: 'commits',             label: 'Commits (YTD)',          cls: 'num'     },
