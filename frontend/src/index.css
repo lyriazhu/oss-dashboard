@@ -376,6 +376,9 @@
   #commTable tbody tr{cursor:pointer;}
   td.chev-cell{text-align:right; padding-right:1rem;}
 
+  /* Status cell doubles as the unmerge button overlay target */
+  td.status-cell{position:relative;}
+
   .legend{font-size:.75rem; color:var(--text-helper); font-style:italic; margin-top:.75rem;}
 
   /* mini commit cards */
@@ -540,12 +543,13 @@
     display:inline-flex; width:1.125rem; height:1.125rem; flex-shrink:0;
   }
 
-  /* Unmerge button — inline in table row chevron cell, hover-only on the merged row */
+  /* Unmerge button — overlaid on the status cell, shown on row hover */
   .btn-unmerge{
-    display:inline-flex; align-items:center;
-    background:transparent; color:var(--red-60);
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--layer-01); color:var(--red-60);
     border:1px solid var(--red-60); cursor:pointer;
-    font-family:inherit; font-size:.75rem; height:1.75rem; padding:0 .625rem;
+    font-family:inherit; font-size:.75rem;
     white-space:nowrap;
     /* hidden by default; shown via .btn-unmerge--visible when row is hovered */
     opacity:0; pointer-events:none; transition:opacity .15s;
@@ -554,12 +558,13 @@
   .btn-unmerge:hover{background:rgba(218,30,40,.08);}
   .btn-unmerge:active{background:rgba(218,30,40,.16);}
 
-  /* Per-repo unmerge button in expanded sub-rows — hover-only, same size as .btn-unmerge */
+  /* Per-repo unmerge button in expanded sub-rows — overlaid on the status cell */
   .btn-unmerge-single{
-    display:inline-flex; align-items:center;
-    background:transparent; color:var(--red-60);
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--layer-01); color:var(--red-60);
     border:1px solid var(--red-60); cursor:pointer;
-    font-family:inherit; font-size:.75rem; height:1.75rem; padding:0 .625rem;
+    font-family:inherit; font-size:.75rem;
     white-space:nowrap;
     opacity:0; pointer-events:none; transition:opacity .15s;
   }

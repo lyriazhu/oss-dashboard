@@ -314,9 +314,9 @@ function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, 
         <td className="num">{repo.ov?.commits || '—'}</td>
         <td className="num">{repo.ov?.commitsAllTime || '—'}</td>
         <td className="num">{repo.ov?.stars || '—'}</td>
-        <td>{repo.status ? <Tag cls={repo.status.cls} label={repo.status.label} /> : '—'}</td>
-        {!selectMode && (
-          <td className="chev-cell">
+        <td className="status-cell">
+          {repo.status ? <Tag cls={repo.status.cls} label={repo.status.label} /> : '—'}
+          {!selectMode && (
             <button
               className="btn-unmerge-single"
               title={`Unmerge ${repo.name} from this group`}
@@ -324,8 +324,8 @@ function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, 
             >
               Unmerge
             </button>
-          </td>
-        )}
+          )}
+        </td>
       </tr>
 
       {/* Grandchild rows when this sub-entry is itself a merged group */}
@@ -356,8 +356,9 @@ function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, 
           <td className="num">{child.ov?.commits || '—'}</td>
           <td className="num">{child.ov?.commitsAllTime || '—'}</td>
           <td className="num">{child.ov?.stars || '—'}</td>
-          <td>{child.status ? <Tag cls={child.status.cls} label={child.status.label} /> : '—'}</td>
-          {!selectMode && <td className="chev-cell" />}
+          <td className="status-cell">
+            {child.status ? <Tag cls={child.status.cls} label={child.status.label} /> : '—'}
+          </td>
         </tr>
       ))}
     </>
@@ -379,7 +380,7 @@ function CommunityRow({
   const activeEditRef = useRef(null);
 
   const isMerged = Boolean(d._mergedFrom);
-  const colSpan = selectMode ? 11 : 10;
+  const colSpan = selectMode ? 10 : 9;
 
   function setEdit(field) {
     activeEditRef.current = field;
@@ -523,22 +524,18 @@ function CommunityRow({
         <td className="num">{o.commits}</td>
         <td className="num">{o.commitsAllTime}</td>
         <td className="num">{o.stars}</td>
-        <td>
+        <td className="status-cell">
           <Tag cls={d.status.cls} label={d.status.label} />
+          {!selectMode && isMerged && (
+            <button
+              className={"btn-unmerge" + (hovered ? " btn-unmerge--visible" : "")}
+              title={`Unmerge all: ${d._mergedFrom.map((e) => e.data.name).join(', ')}`}
+              onClick={(e) => { e.stopPropagation(); setUnmergeConfirm(true); }}
+            >
+              Unmerge all
+            </button>
+          )}
         </td>
-        {!selectMode && (
-          <td className="chev-cell">
-            {isMerged && (
-              <button
-                className={"btn-unmerge" + (hovered ? " btn-unmerge--visible" : "")}
-                title={`Unmerge all: ${d._mergedFrom.map((e) => e.data.name).join(', ')}`}
-                onClick={(e) => { e.stopPropagation(); setUnmergeConfirm(true); }}
-              >
-                Unmerge all
-              </button>
-            )}
-          </td>
-        )}
       </tr>
 
       {/* Expanded sub-rows for each member of a merged entry — sorted by the active column */}
@@ -807,7 +804,6 @@ export default function Overview({
                     <SortArrow dir={sortCol === key ? sortDir : null} />
                   </th>
                 ))}
-                {!selectMode && <th aria-label="Open" />}
               </tr>
             </thead>
             <tbody>
