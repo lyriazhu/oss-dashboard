@@ -387,11 +387,11 @@
   #commTable td.col-name .inline-edit-text{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
   /* Foundation column — also uses InlineEdit, can be long */
-  #commTable td[data-field="foundation"]{max-width:10rem; text-overflow:ellipsis;}
+  #commTable td[data-field="foundation"]{max-width:14rem; text-overflow:ellipsis;}
   #commTable td[data-field="foundation"] .inline-edit-text{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
   /* GitHub URL column */
-  #commTable td.col-repo{max-width:11rem; text-overflow:ellipsis;}
+  #commTable td.col-repo{max-width:8rem; text-overflow:ellipsis;}
   #commTable td.col-repo a{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
   /* Status cell doubles as the unmerge button overlay target */
@@ -521,7 +521,7 @@
   .btn-join{
     display:inline-flex; align-items:center; justify-content:space-between; gap:2.5rem;
     background:var(--blue-60); color:#fff; border:0; cursor:pointer;
-    font-family:inherit; font-size:.875rem; height:3rem; padding:0 1rem; min-width:8rem;
+    font-family:inherit; font-size:.875rem; height:3rem; padding:0 1rem; min-width:11rem;
   }
   .btn-join:hover:not(:disabled){background:var(--blue-70);}
   .btn-join:active:not(:disabled){background:#002d9c;}
