@@ -348,6 +348,13 @@ public class ProjectController {
         Executors.newSingleThreadExecutor().submit(() -> {
             int sent = 0;
             try {
+                // If the backend was restarted, it has no record of this extraction.
+                // Close the stream immediately without emitting __DONE__ — the frontend
+                // SSE error handler will detect the repeated failures and abort the queue.
+                if (!dataService.wasExtractionRegistered(projectId)) {
+                    emitter.complete();
+                    return;
+                }
                 while (true) {
                     List<String> lines = dataService.getExtractionLogs(projectId);
                     while (sent < lines.size()) {

@@ -98,7 +98,9 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
   const failedRef     = useRef(false);
   // Track consecutive SSE errors to detect a terminated backend (Issue 3)
   const errorCountRef  = useRef(0);
-  const lastMsgRef     = useRef(Date.now());
+  // null = no message ever received in this session (fresh page load or backend restart).
+  // A number = timestamp of the last successful message.
+  const lastMsgRef     = useRef(null);
   // Set to true once we've called onDone({aborted:true}) so the 3s auto-dismiss
   // doesn't fire a second onDone() call after the queue is already wiped.
   const abortedRef     = useRef(false);
@@ -112,7 +114,7 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
       esRef.current = es;
 
       es.onmessage = (e) => {
-        lastMsgRef.current  = Date.now();
+        lastMsgRef.current    = Date.now();
         errorCountRef.current = 0; // reset on any successful message
         const parsed = parseLine(e.data);
         if (!parsed) return;
@@ -158,8 +160,13 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
         // Count consecutive errors.  If we accumulate several without receiving
         // any new message the backend has likely been killed — clear the toast.
         errorCountRef.current += 1;
-        const secsSinceMsg = (Date.now() - lastMsgRef.current) / 1000;
-        if (errorCountRef.current >= 3 && secsSinceMsg > 5) {
+        // If we've never received a message (lastMsgRef is null), the backend has no
+        // record of this extraction — abort immediately after 3 errors.
+        // If we have received messages before, wait at least 5 s to distinguish a
+        // transient blip from a genuine backend termination.
+        const neverReceivedMsg = lastMsgRef.current === null;
+        const secsSinceMsg = neverReceivedMsg ? Infinity : (Date.now() - lastMsgRef.current) / 1000;
+        if (errorCountRef.current >= 3 && (neverReceivedMsg || secsSinceMsg > 5)) {
           // Backend is gone — clear persisted state and signal abort to parent
           es.close();
           localStorage.removeItem(EXTRACTION_STORAGE_KEY);

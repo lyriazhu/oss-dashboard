@@ -62,6 +62,15 @@ public class DataService {
     }
 
     /**
+     * Returns true only if an extraction for this project was started (and registered)
+     * in the current backend session.  Returns false after a backend restart, when the
+     * in-memory maps are empty.
+     */
+    public boolean wasExtractionRegistered(String projectId) {
+        return extractionLogs.containsKey(projectId);
+    }
+
+    /**
      * Get all projects from projects.json
      */
     public List<Project> getAllProjects() throws IOException {

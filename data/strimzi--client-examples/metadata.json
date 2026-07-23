@@ -14,22 +14,6 @@
   "homepage": "https://strimzi.io",
   "has_wiki": true,
   "has_discussions": null,
-  "top_contributing_companies": [
-    {
-      "company": "Ibm",
-      "commits": 52,
-      "percentage": 60.47
-    },
-    {
-      "company": "Red Hat",
-      "commits": 33,
-      "percentage": 38.37
-    },
-    {
-      "company": "Gepardec",
-      "commits": 1,
-      "percentage": 1.16
-    }
-  ],
-  "extracted_at": "2026-07-22T16:17:15.860796"
+  "top_contributing_companies": [],
+  "extracted_at": "2026-07-23T09:57:39.373975"
 }
