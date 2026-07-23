@@ -337,6 +337,19 @@ public class ProjectController {
     }
 
     /**
+     * GET /api/projects/{projectId}/extraction-status
+     * Returns whether an extraction is currently registered/running for this project
+     * in the current backend session.  Returns { registered: false } after a backend
+     * restart (in-memory maps are empty) so the frontend can clear stale localStorage.
+     */
+    @GetMapping("/{projectId}/extraction-status")
+    public ResponseEntity<java.util.Map<String, Object>> extractionStatus(@PathVariable String projectId) {
+        boolean registered = dataService.wasExtractionRegistered(projectId);
+        boolean running    = dataService.isExtractionRunning(projectId);
+        return ResponseEntity.ok(java.util.Map.of("registered", registered, "running", running));
+    }
+
+    /**
      * GET /api/projects/{projectId}/extraction-progress
      * Server-Sent Events stream of extraction log lines.
      * Polls the in-memory log buffer and sends new lines until __DONE__ or __FAILED__.

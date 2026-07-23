@@ -216,6 +216,21 @@ export async function removeProject(projectId) {
  * which avoids "token not found" errors caused by backend restarts clearing in-memory state.
  * Returns { started: projectId }.
  */
+/**
+ * Check whether the backend has a live extraction record for this project.
+ * Returns { registered: boolean, running: boolean }.
+ * Throws (or returns { registered: false }) if the backend is unreachable.
+ */
+export async function fetchExtractionStatus(projectId) {
+  try {
+    const response = await fetch(`${API_BASE}/projects/${projectId}/extraction-status`);
+    if (!response.ok) return { registered: false, running: false };
+    return response.json();
+  } catch {
+    return { registered: false, running: false };
+  }
+}
+
 export async function triggerProjectExtraction(projectId, token) {
   const response = await fetch(`${API_BASE}/projects/${projectId}/extract`, {
     method: 'POST',

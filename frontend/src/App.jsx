@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, triggerProjectExtraction, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, triggerProjectExtraction, fetchExtractionStatus, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -524,7 +524,11 @@ export default function App() {
     } catch { return 0; }
   });
   const [extracting, setExtracting] = useState(() => {
-    // Restore extraction state that survived a page reload
+    // Restore extraction state that survived a page reload.
+    // We intentionally do NOT validate against the backend here (no async in useState).
+    // The mount useEffect below does the async check and calls setExtracting(null) if
+    // the backend was restarted.  The 800ms SSE delay in ExtractionToast gives enough
+    // time for that check to complete before the SSE connection is opened.
     try {
       const saved = localStorage.getItem(EXTRACTION_STORAGE_KEY);
       return saved ? JSON.parse(saved) : null;
@@ -681,10 +685,34 @@ export default function App() {
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Load projects and check token status on mount
+  // Load projects and check token status on mount.
+  // Also verify any persisted extraction state against the backend — if the backend
+  // was restarted it has no record of the extraction, so we clear stale localStorage
+  // immediately before the toast mounts and tries to reconnect.
   useEffect(() => {
     loadProjects();
     fetchTokenStatus().then((s) => setTokenConfigured(s.configured));
+
+    const savedExtracting = (() => {
+      try { return JSON.parse(localStorage.getItem(EXTRACTION_STORAGE_KEY)); } catch { return null; }
+    })();
+
+    if (savedExtracting?.id) {
+      fetchExtractionStatus(savedExtracting.id).then((status) => {
+        if (!status.registered) {
+          // Backend has no record of this extraction — it was restarted.
+          // Wipe all persisted extraction state so the toast never appears.
+          localStorage.removeItem(EXTRACTION_STORAGE_KEY);
+          localStorage.removeItem(QUEUE_STORAGE_KEY);
+          localStorage.removeItem(ADD_QUEUE_STORAGE_KEY);
+          setExtracting(null);
+          setRefreshQueue([]);
+          setRefreshQueueTotal(0);
+          setAddQueue([]);
+          setAddQueueTotal(0);
+        }
+      });
+    }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const showOverview = useCallback(() => {
