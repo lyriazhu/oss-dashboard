@@ -7,7 +7,7 @@
   "stars": 78,
   "forks": 73,
   "watchers": 78,
-  "open_issues": 24,
+  "open_issues": 26,
   "language": "Ruby",
   "topics": [
     "api",
@@ -73,5 +73,5 @@
       "percentage": 0.04
     }
   ],
-  "extracted_at": "2026-07-22T16:12:27.633922"
+  "extracted_at": "2026-07-23T09:41:58.884897"
 }

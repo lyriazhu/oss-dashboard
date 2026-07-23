@@ -270,7 +270,7 @@
     },
     {
       "year": 2026,
-      "contributor_count": 12,
+      "contributor_count": 13,
       "is_current": true,
       "contributor_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
@@ -282,6 +282,7 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
+        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "madnialihussain@outlook.com",
         "mayorova@users.noreply.github.com"
@@ -1266,10 +1267,10 @@
       "period_type": "quarter",
       "start_date": "2026-07-01T00:00:00",
       "end_date": "2026-10-01T00:00:00",
-      "active_contributors": 9,
+      "active_contributors": 10,
       "new_contributors": 3,
-      "returning_contributors": 6,
-      "retention_rate": 66.67,
+      "returning_contributors": 7,
+      "retention_rate": 70.0,
       "active_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
         "49699333+dependabot[bot]@users.noreply.github.com",
@@ -1278,6 +1279,7 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
+        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "madnialihussain@outlook.com"
       ],
@@ -1291,6 +1293,7 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
+        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "madnialihussain@outlook.com"
       ]
@@ -1864,10 +1867,10 @@
       "period_type": "year",
       "start_date": "2026-01-01T00:00:00",
       "end_date": "2027-01-01T00:00:00",
-      "active_contributors": 12,
+      "active_contributors": 13,
       "new_contributors": 7,
-      "returning_contributors": 5,
-      "retention_rate": 41.67,
+      "returning_contributors": 6,
+      "retention_rate": 46.15,
       "is_current": true,
       "active_logins": [
         "296308834+akostadinov-bot[bot]@users.noreply.github.com",
@@ -1879,6 +1882,7 @@
         "akostadinov@gmail.com",
         "bob@example.com",
         "jlledo@redhat.com",
+        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "madnialihussain@outlook.com",
         "mayorova@users.noreply.github.com"
@@ -1896,6 +1900,7 @@
         "49699333+dependabot[bot]@users.noreply.github.com",
         "akostadinov@gmail.com",
         "jlledo@redhat.com",
+        "jlledom@member.fsf.org",
         "josemigallas@gmail.com",
         "mayorova@users.noreply.github.com"
       ]
