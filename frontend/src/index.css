@@ -378,6 +378,8 @@
 
   /* All cells: never wrap, never grow the row beyond 4rem */
   #commTable tbody td{white-space:nowrap; overflow:hidden; max-height:4rem;}
+  /* Status cell must not clip the absolutely-positioned button */
+  #commTable tbody td.status-cell{overflow:visible;}
 
   /* Name column — truncate with ellipsis; inner flex span must also clip */
   #commTable td.col-name{max-width:13rem; text-overflow:ellipsis;}
@@ -393,7 +395,7 @@
   #commTable td.col-repo a{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
   /* Status cell doubles as the unmerge button overlay target */
-  td.status-cell{position:relative;}
+  td.status-cell{position:relative; text-align:center;}
 
   .legend{font-size:.75rem; color:var(--text-helper); font-style:italic; margin-top:.75rem;}
 
@@ -559,34 +561,29 @@
     display:inline-flex; width:1.125rem; height:1.125rem; flex-shrink:0;
   }
 
-  /* Unmerge button — overlaid on the status cell, shown on row hover */
-  .btn-unmerge{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
+  /* Unmerge buttons — fixed equal width, centred over the status cell */
+  .btn-unmerge,
+  .btn-unmerge-single{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    display:inline-flex; align-items:center; justify-content:center;
+    width:5.25rem; height:1.75rem;
     background:var(--layer-01); color:var(--red-60);
     border:1px solid var(--red-60); cursor:pointer;
-    font-family:inherit; font-size:.75rem;
+    font-family:inherit; font-size:.6875rem;
     white-space:nowrap;
-    /* hidden by default; shown via .btn-unmerge--visible when row is hovered */
     opacity:0; pointer-events:none; transition:opacity .15s;
   }
   .btn-unmerge--visible{opacity:1; pointer-events:auto;}
-  .btn-unmerge:hover{background:rgba(218,30,40,.08);}
-  .btn-unmerge:active{background:rgba(218,30,40,.16);}
-
-  /* Per-repo unmerge button in expanded sub-rows — overlaid on the status cell */
-  .btn-unmerge-single{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    background:var(--layer-01); color:var(--red-60);
-    border:1px solid var(--red-60); cursor:pointer;
-    font-family:inherit; font-size:.75rem;
-    white-space:nowrap;
-    opacity:0; pointer-events:none; transition:opacity .15s;
-  }
   .btn-unmerge-single--visible{opacity:1; pointer-events:auto;}
-  .btn-unmerge-single:hover{background:rgba(218,30,40,.08);}
-  .btn-unmerge-single:active{background:rgba(218,30,40,.16);}
+  .btn-unmerge:hover,
+  .btn-unmerge-single:hover{background:#ffd7d9;}
+  .btn-unmerge:active,
+  .btn-unmerge-single:active{background:#ffb3b8;}
+  /* Hide the status tag when hovering over the unmerge button */
+  .btn-unmerge:hover ~ .tag,
+  .btn-unmerge-single:hover ~ .tag,
+  .status-cell:has(.btn-unmerge:hover) .tag,
+  .status-cell:has(.btn-unmerge-single:hover) .tag{opacity:0;}
 
   /* Merged sub-rows — slightly inset background */
   .merged-sub-row td{
