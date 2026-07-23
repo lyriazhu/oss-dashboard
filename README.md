@@ -10,16 +10,14 @@ A scalable, low-maintenance, replicable dashboard to track contributors and othe
 2. [Install Prerequisites](#2-install-prerequisites)
 3. [Clone the Repository](#3-clone-the-repository)
 4. [Create a GitHub Token](#4-create-a-github-token)
-5. [Configure the Extraction Script](#5-configure-the-extraction-script)
-6. [Install Python Dependencies](#6-install-python-dependencies)
-7. [Run Data Extraction](#7-run-data-extraction)
-8. [Start the Backend API](#8-start-the-backend-api)
-9. [Start the Frontend](#9-start-the-frontend)
-10. [Adding a New Project](#10-adding-a-new-project)
-11. [Refreshing Data](#11-refreshing-data)
-12. [Project Structure](#12-project-structure)
-13. [Tracked Projects](#13-tracked-projects)
-14. [Troubleshooting](#14-troubleshooting)
+5. [Start the Backend API](#5-start-the-backend-api)
+6. [Start the Frontend](#6-start-the-frontend)
+7. [Run Initial Data Extraction](#7-run-initial-data-extraction)
+8. [Adding a New Project](#8-adding-a-new-project)
+9. [Refreshing Data](#9-refreshing-data)
+10. [Project Structure](#10-project-structure)
+11. [Tracked Projects](#11-tracked-projects)
+12. [Troubleshooting](#12-troubleshooting)
 
 ---
 
@@ -31,10 +29,11 @@ You need the following tools installed before running the dashboard. If you alre
 |------|-----------------|----------|
 | Homebrew | latest | macOS package manager |
 | Git | any | cloning the repo |
-| Python | 3.8 or higher | data extraction script |
 | Java (JDK) | 17 or higher | Spring Boot backend |
 | Maven | 3.6 or higher | building/running the backend |
 | Node.js | 18 or higher | React frontend |
+
+> **No Python setup required.** Data extraction is triggered directly from the dashboard UI using the buttons described in steps 7–9.
 
 ---
 
@@ -87,28 +86,7 @@ brew install git
 
 ---
 
-### 2c. Python 3
-
-```bash
-python3 --version
-```
-
-If you see `Python 3.8` or higher, you are good. If not:
-
-```bash
-brew install python3
-```
-
-Verify:
-
-```bash
-python3 --version   # should show 3.8 or higher
-pip3 --version      # should show a pip version
-```
-
----
-
-### 2d. Java 17 (JDK)
+### 2c. Java 17 (JDK)
 
 ```bash
 java -version
@@ -147,7 +125,7 @@ java -version   # should show openjdk 17.x.x
 
 ---
 
-### 2e. Maven
+### 2d. Maven
 
 ```bash
 mvn -version
@@ -167,7 +145,7 @@ mvn -version   # should show Apache Maven 3.x.x
 
 ---
 
-### 2f. Node.js
+### 2e. Node.js
 
 ```bash
 node --version
@@ -201,7 +179,7 @@ cd oss-dashboard
 
 ## 4. Create a GitHub Token
 
-The extraction script calls the GitHub API to fetch contributor, commit, issue, and PR data. Without a token, GitHub limits you to 60 requests per hour — far too few. A token raises this to **5,000 requests per hour**.
+The dashboard calls the GitHub API to fetch contributor, commit, issue, and PR data. Without a token, GitHub limits you to 60 requests per hour — far too few. A token raises this to **5,000 requests per hour**.
 
 ### Step-by-step
 
@@ -233,97 +211,11 @@ The extraction script calls the GitHub API to fetch contributor, commit, issue, 
 
 ---
 
-## 5. Configure the Extraction Script
-
-1. Open `scripts/config.yaml` in a text editor.
-2. Find the line:
-   ```yaml
-   token: "YOUR_GITHUB_TOKEN_HERE"
-   ```
-3. Replace `YOUR_GITHUB_TOKEN_HERE` with your token:
-   ```yaml
-   token: "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-   ```
-4. Save the file.
-
-> **Security**: `config.yaml` is listed in `.gitignore` so it will never be accidentally committed to Git. Never paste your token into any other file that might be committed.
-
----
-
-## 6. Install Python Dependencies
-
-The extraction script requires several Python libraries. Install them into an isolated virtual environment to avoid conflicts with other Python projects on your machine.
-
-```bash
-cd scripts
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-You should see output ending with `Successfully installed ...`.
-
-**What gets installed:**
-
-| Library | Purpose |
-|---------|---------|
-| `PyGithub` | GitHub REST API client |
-| `requests` | HTTP requests |
-| `PyYAML` | Reading `config.yaml` |
-| `pandas` | Data processing |
-| `python-dateutil` | Date/time parsing |
-| `playwright` | Scraping adopter lists |
-| `beautifulsoup4` | HTML parsing for adopter lists |
-| `tqdm` | Progress bars in the terminal |
-| `tenacity` | Automatic retry on failures |
-
-> **Playwright browser install** (needed once for adopter scraping):
-> ```bash
-> python3 -m playwright install chromium
-> ```
-
----
-
-## 7. Run Data Extraction
-
-With the virtual environment still active (`source .venv/bin/activate` if you opened a new terminal), run:
-
-```bash
-cd scripts   # if not already there
-python3 extract_github_data.py
-```
-
-**What happens:**
-
-1. The script authenticates with your GitHub token and shows remaining rate limit.
-2. For each project it clones or updates a local git mirror (stored in `.cache/repos/`) — this is the slowest part on the first run.
-3. It extracts the following for every project and writes JSON files to `data/<project-name>/`:
-
-   | File | Contents |
-   |------|----------|
-   | `metadata.json` | Stars, forks, language, licence, creation date |
-   | `contributors.json` | All-time contributor list, company affiliations, retention by year and quarter |
-   | `commits.json` | Yearly and quarterly commit counts, committer details |
-   | `issues.json` | Open/closed counts, monthly and yearly breakdowns, median resolution time |
-   | `pull_requests.json` | Monthly and yearly PR counts, merge time metrics |
-   | `releases.json` | Full release history, cadence metrics |
-   | `cve.json` | CVE counts by month and year from GitHub Advisory Database or Security Advisories |
-   | `adopters.json` | Known project adopters scraped from the project's adopters file |
-
-4. Per-project checkpoint state is saved to `data/<project-name>/_state.json` so subsequent runs only re-fetch changed data.
-
-**How long does it take?**
-
-- **First run**: 15–40 minutes depending on project age and size (git history cloning is the bottleneck).
-- **Subsequent runs**: 2–5 minutes (git mirrors and user profile cache are reused).
-
----
-
-## 8. Start the Backend API
+## 5. Start the Backend API
 
 The backend is a Java Spring Boot application that reads the JSON files in `data/` and exposes them as a REST API.
 
-Open a **new terminal** (keep the extraction terminal open if it is still running) and run:
+Open a terminal and run:
 
 ```bash
 cd backend
@@ -348,9 +240,9 @@ You should see a JSON array of all tracked projects.
 
 ---
 
-## 9. Start the Frontend
+## 6. Start the Frontend
 
-Open a **third terminal** and run:
+Open a **second terminal** and run:
 
 ```bash
 cd frontend
@@ -366,42 +258,53 @@ Once you see:
 
 open **http://localhost:5173** in your browser. The dashboard loads automatically.
 
-> The frontend proxies API requests to `http://localhost:8080`, so both the backend (step 8) and the frontend (this step) must be running at the same time.
+> The frontend proxies API requests to `http://localhost:8080`, so both the backend (step 5) and the frontend (this step) must be running at the same time.
 
 ---
 
-## 10. Adding a New Project
+## 7. Run Initial Data Extraction *(optional)*
 
-You can add a project directly from the dashboard UI:
+> **You can skip this step for now.** The dashboard will open and function without any extraction having been run — it will simply show no data, or show previously cached data if any exists. You can trigger an extraction at any time from the UI.
+
+> ⚠️ **This step can take a long time.** The first extraction clones full git histories for every tracked project and may take **15–40 minutes**. You do not need to wait for it to finish before using the rest of the dashboard.
+
+When you are ready to populate the dashboard with fresh data, use the **"Refresh all"** button:
+
+1. In the top-right area of the overview page, click **"Refresh all"**.
+2. A modal will appear asking for your GitHub personal access token. Paste the token you created in step 4 and click **"Refresh all"**.
+3. The backend will extract data for every project in the background. A progress indicator is shown for each project.
+
+**How long does it take?**
+
+- **First run**: 15–40 minutes depending on project age and size (git history cloning is the bottleneck).
+- **Subsequent runs**: 2–5 minutes (git mirrors and user profile cache are reused).
+
+> Your token is saved in your browser's local storage and restored automatically on future visits — you will not need to re-enter it each time.
+
+---
+
+## 8. Adding a New Project
+
+You can add any public GitHub repository or organisation directly from the dashboard:
 
 1. On the overview page, click **"Add project"**.
-2. Paste the GitHub URL (e.g. `https://github.com/owner/repo`).
-3. Fill in the foundation name and any optional fields.
-4. Click **Save**. The backend registers the project and triggers a data extraction automatically using the GitHub token stored in the dashboard settings.
+2. Paste your GitHub token (pre-filled if you have used the dashboard before).
+3. Choose whether to add a **Single repository** or an **Entire project** (org / user).
+4. Paste the GitHub URL (e.g. `https://github.com/owner/repo`).
+5. Select the issue tracker — **GitHub Issues** or **Jira** — and fill in any required fields.
+6. Click **Add**. The backend registers the project and triggers data extraction automatically.
 
-Alternatively, to add a project manually:
-
-1. Add an entry to `data/projects.json`.
-2. Re-run `python3 extract_github_data.py` from the `scripts/` directory.
-3. Restart the backend.
+A progress toast will appear while the extraction runs. Once it completes, the project row appears in the Communities table.
 
 ---
 
-## 11. Refreshing Data
+## 9. Refreshing Data
 
-To pull fresh data for all projects:
-
-```bash
-cd scripts
-source .venv/bin/activate
-python3 extract_github_data.py
-```
-
-Or use the **"Refresh all"** button on the overview page of the dashboard (requires the GitHub token to be saved in the dashboard settings).
+To pull fresh data for all projects, click the **"Refresh all"** button on the overview page. The modal will ask for your GitHub token (pre-filled if already saved). Click **"Refresh all"** to start a background extraction for every project.
 
 ---
 
-## 12. Project Structure
+## 10. Project Structure
 
 ```
 oss-dashboard/
@@ -418,7 +321,7 @@ oss-dashboard/
 │       ├── adopters.json
 │       └── _state.json            # Incremental extraction checkpoint
 │
-├── scripts/                       # Python data extraction
+├── scripts/                       # Python data extraction (invoked by the backend)
 │   ├── extract_github_data.py     # Main extraction script
 │   ├── config.yaml                # GitHub token + project list
 │   └── requirements.txt           # Python dependencies
@@ -436,7 +339,7 @@ oss-dashboard/
 
 ---
 
-## 13. Tracked Projects
+## 11. Tracked Projects
 
 | Project | Foundation | Issue source |
 |---------|-----------|-------------|
@@ -455,48 +358,20 @@ oss-dashboard/
 
 ---
 
-## 14. Troubleshooting
+## 12. Troubleshooting
 
 ### "brew: command not found"
 Homebrew is not installed or not on your PATH. Follow [step 2a](#2a-homebrew-macos-only) above.
 
 ### "java: command not found" or wrong Java version
-Run `brew install openjdk@17` and follow the `sudo ln` and `export PATH` steps in [step 2d](#2d-java-17-jdk).
+Run `brew install openjdk@17` and follow the `sudo ln` and `export PATH` steps in [step 2c](#2c-java-17-jdk).
 
 ### "mvn: command not found"
 Run `brew install maven`.
 
-### "python3: command not found"
-Run `brew install python3`.
-
-### "pip install" fails with permission errors
-Never use `sudo pip`. Use a virtual environment instead:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-### "Authentication failed: Bad credentials"
-- Check that your token is correct in `config.yaml` (no extra spaces or missing quotes).
-- Make sure the token has not expired — check at https://github.com/settings/tokens.
-- Verify the three required scopes (`public_repo`, `read:org`, `read:user`) are selected.
-
-### "Rate limit exceeded"
-- GitHub allows 5,000 API requests per hour with a token. Large projects can approach this limit.
-- Wait one hour and re-run. The checkpoint state means the script resumes where it left off.
-- Alternatively, create a second GitHub token and swap it into `config.yaml`.
-
-### "Module not found" (Python)
-Your virtual environment is not active. Run:
-```bash
-cd scripts
-source .venv/bin/activate
-python3 extract_github_data.py
-```
-
 ### Backend starts but the dashboard shows no data
-- Make sure the extraction script completed successfully and `data/` contains project folders.
+- Click **"Refresh all"** on the overview page to trigger the first data extraction.
+- If extraction has already run, check that `data/` contains project folders.
 - The backend reads files at startup — if you added data after starting the backend, restart it.
 - Check `http://localhost:8080/api/projects` in your browser to confirm the API is serving data.
 
@@ -512,5 +387,15 @@ kill -9 <PID>
 ```
 Then restart the backend.
 
+### "Authentication failed: Bad credentials" during extraction
+- Make sure the token entered in the dashboard is correct (no extra spaces).
+- Make sure the token has not expired — check at https://github.com/settings/tokens.
+- Verify the three required scopes (`public_repo`, `read:org`, `read:user`) are selected.
+
+### "Rate limit exceeded" during extraction
+- GitHub allows 5,000 API requests per hour with a token. Large projects can approach this limit.
+- Wait one hour and click **"Refresh all"** again. The checkpoint state means extraction resumes where it left off.
+- Alternatively, create a second GitHub token and use it in the refresh modal.
+
 ### First data extraction is very slow
-This is expected. The script clones full git histories for each project as local mirrors in `.cache/repos/`. Apache Camel's history alone is several hundred MB. Subsequent runs reuse these mirrors and complete much faster.
+This is expected. The backend clones full git histories for each project as local mirrors in `.cache/repos/`. Apache Camel's history alone is several hundred MB. Subsequent refreshes reuse these mirrors and complete much faster.
