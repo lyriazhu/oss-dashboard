@@ -97,8 +97,11 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
   const doneRef       = useRef(false);
   const failedRef     = useRef(false);
   // Track consecutive SSE errors to detect a terminated backend (Issue 3)
-  const errorCountRef = useRef(0);
-  const lastMsgRef    = useRef(Date.now());
+  const errorCountRef  = useRef(0);
+  const lastMsgRef     = useRef(Date.now());
+  // Set to true once we've called onDone({aborted:true}) so the 3s auto-dismiss
+  // doesn't fire a second onDone() call after the queue is already wiped.
+  const abortedRef     = useRef(false);
 
   useEffect(() => {
     if (!projectId) return;
@@ -157,14 +160,18 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
         errorCountRef.current += 1;
         const secsSinceMsg = (Date.now() - lastMsgRef.current) / 1000;
         if (errorCountRef.current >= 3 && secsSinceMsg > 5) {
-          // Backend is gone — clear persisted state and dismiss
+          // Backend is gone — clear persisted state and signal abort to parent
           es.close();
           localStorage.removeItem(EXTRACTION_STORAGE_KEY);
           localStorage.removeItem(ADD_QUEUE_STORAGE_KEY);
           localStorage.removeItem(QUEUE_STORAGE_KEY);
           failedRef.current = true;
+          abortedRef.current = true;
           setFailed(true);
           setStep('Extraction stopped');
+          // Immediately notify the parent so it can wipe the queue without waiting
+          // for the 3-second auto-dismiss timeout.
+          onDone?.({ aborted: true });
         }
         // Otherwise do nothing — EventSource reconnects automatically.
       };
@@ -176,10 +183,13 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
     };
   }, [projectId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Auto-dismiss after generic failure (not token expiry)
+  // Auto-dismiss after generic failure (not token expiry).
+  // Skip if we already called onDone({aborted:true}) — the queue is already wiped.
   useEffect(() => {
     if (!(failed && !tokenExpired)) return;
-    const t = setTimeout(() => onDone?.(), 3000);
+    const t = setTimeout(() => {
+      if (!abortedRef.current) onDone?.();
+    }, 3000);
     return () => clearTimeout(t);
   }, [failed, tokenExpired, onDone]);
 

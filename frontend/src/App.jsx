@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, triggerProjectExtraction, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
@@ -534,6 +534,12 @@ export default function App() {
   });
   const [tokenConfigured, setTokenConfigured] = useState(false);
 
+  // True after the first render — used to skip firing the trigger effect on the
+  // initial mount when extracting is restored from localStorage.  We never want
+  // a page reload to re-kick extraction; the backend is authoritative on whether
+  // a process is actually running.
+  const isMountedRef = useRef(false);
+
   // Persist extracting state to localStorage whenever it changes
   useEffect(() => {
     if (extracting) {
@@ -548,6 +554,10 @@ export default function App() {
   // Single-repo refreshes are excluded (isSingleRepo=true) because RefreshProjectModal
   // already called triggerProjectExtraction before setting extracting state.
   useEffect(() => {
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      return; // skip initial mount — do not re-trigger persisted state
+    }
     if (!extracting || extracting.mode !== 'refresh' || extracting.isSingleRepo) return;
     triggerProjectExtraction(extracting.id).catch((err) => {
       console.error('Failed to trigger extraction for', extracting.id, err);
@@ -804,7 +814,18 @@ export default function App() {
   }, [data]);
 
   // Advance to the next item in either queue once a toast reports done.
-  const handleExtractionDone = useCallback(() => {
+  // Pass { aborted: true } when the backend was killed mid-extraction — wipes the
+  // entire queue immediately so no further extraction is attempted.
+  const handleExtractionDone = useCallback(({ aborted = false } = {}) => {
+    if (aborted) {
+      // Backend terminated — clear everything and stop.
+      setExtracting(null);
+      setAddQueue([]);
+      setAddQueueTotal(0);
+      setRefreshQueue([]);
+      setRefreshQueueTotal(0);
+      return;
+    }
     // Drain the add queue first (these were user-initiated adds), then refresh queue
     if (addQueue.length > 0) {
       const [next, ...rest] = addQueue;
