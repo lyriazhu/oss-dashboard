@@ -80,7 +80,8 @@ function parseLine(line) {
   return null;
 }
 
-export default function ExtractionToast({ projectId, projectName, mode, queueIdx, queueTotal, onDone, onTokenExpired }) {
+// isSingleRepoRefresh: true when mode is 'refresh' and queueTotal <= 1 (not a multi-queue run)
+export default function ExtractionToast({ projectId, projectName, mode, queueIdx, queueTotal, isSingleRepo, onDone, onTokenExpired }) {
   const [step, setStep]                   = useState('Starting extraction…');
   const [failed, setFailed]               = useState(false);
   const [done, setDone]                   = useState(false);
@@ -90,11 +91,14 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
   const [orgTotal, setOrgTotal]           = useState(null);   // null = not an org extraction
   const [orgIdx, setOrgIdx]               = useState(0);
   const [orgRepo, setOrgRepo]             = useState(null);   // current repo name within the org
-  const esRef    = useRef(null);
+  const esRef         = useRef(null);
   // Refs that mirror done/failed so the onerror closure always reads the live value,
   // not the stale snapshot captured when the effect ran.
-  const doneRef   = useRef(false);
-  const failedRef = useRef(false);
+  const doneRef       = useRef(false);
+  const failedRef     = useRef(false);
+  // Track consecutive SSE errors to detect a terminated backend (Issue 3)
+  const errorCountRef = useRef(0);
+  const lastMsgRef    = useRef(Date.now());
 
   useEffect(() => {
     if (!projectId) return;
@@ -105,6 +109,8 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
       esRef.current = es;
 
       es.onmessage = (e) => {
+        lastMsgRef.current  = Date.now();
+        errorCountRef.current = 0; // reset on any successful message
         const parsed = parseLine(e.data);
         if (!parsed) return;
 
@@ -144,8 +150,23 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
         // effect first ran.
         if (doneRef.current || failedRef.current) {
           es.close();
+          return;
         }
-        // If still in-progress: do nothing — EventSource reconnects automatically.
+        // Count consecutive errors.  If we accumulate several without receiving
+        // any new message the backend has likely been killed — clear the toast.
+        errorCountRef.current += 1;
+        const secsSinceMsg = (Date.now() - lastMsgRef.current) / 1000;
+        if (errorCountRef.current >= 3 && secsSinceMsg > 5) {
+          // Backend is gone — clear persisted state and dismiss
+          es.close();
+          localStorage.removeItem(EXTRACTION_STORAGE_KEY);
+          localStorage.removeItem(ADD_QUEUE_STORAGE_KEY);
+          localStorage.removeItem(QUEUE_STORAGE_KEY);
+          failedRef.current = true;
+          setFailed(true);
+          setStep('Extraction stopped');
+        }
+        // Otherwise do nothing — EventSource reconnects automatically.
       };
     }, 800);
 
@@ -185,7 +206,10 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
 
   if (dismissed) return null;
 
-  const isOrg        = orgTotal !== null;
+  // For a single-repo refresh, suppress the sub-repo progress bar and the org repo prefix.
+  // The org-level markers still arrive from the Python script but we don't surface them.
+  const suppressOrgUI = isSingleRepo && mode === 'refresh';
+  const isOrg        = orgTotal !== null && !suppressOrgUI;
   const pct          = isOrg && orgTotal > 0 ? Math.round((orgIdx / orgTotal) * 100) : 0;
   const stepColor    = failed ? 'var(--red-40)' : done ? 'var(--green-40)' : 'var(--header-text-dim)';
   const isQueuedRun  = queueTotal > 1;
@@ -214,8 +238,14 @@ export default function ExtractionToast({ projectId, projectName, mode, queueIdx
           </button>
         </div>
 
-        {/* Overall queue position — shown when multiple projects are queued (add or refresh) */}
-        {isQueuedRun && !done && !failed && (
+        {/* Queue position for merged-entry refresh: "X of Y repos" */}
+        {isQueuedRun && !done && !failed && mode === 'refresh' && queueTotal > 1 && (
+          <div className="extraction-toast-queue">
+            {queueIdx} of {queueTotal} repos
+          </div>
+        )}
+        {/* Queue position for add queue */}
+        {isQueuedRun && !done && !failed && mode === 'add' && (
           <div className="extraction-toast-queue">
             Project {queueIdx} of {queueTotal}
           </div>

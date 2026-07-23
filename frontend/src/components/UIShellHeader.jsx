@@ -20,10 +20,11 @@ export default function UIShellHeader({ onToggleNav, navOpen, extracting, onExtr
         <ExtractionToast
           key={extracting.id}
           projectId={extracting.id}
-          projectName={extracting.name}
+          projectName={extracting.mergedName || extracting.name}
           mode={extracting.mode}
           queueIdx={queueIdx}
           queueTotal={queueTotal}
+          isSingleRepo={extracting.isSingleRepo || false}
           onDone={onExtractionDone}
           onTokenExpired={onTokenExpired}
         />

@@ -3,7 +3,7 @@ import { MONTHS } from "../data.js";
 import { Tag, Tile, BarChart, StackedBarChart } from "./ui.jsx";
 import { saveGithubToken, getSavedToken, triggerProjectExtraction } from "../api.js";
 
-function RefreshProjectModal({ open, onClose, onConfirm, projectName, projectId }) {
+function RefreshProjectModal({ open, onClose, onConfirm, projectName, projectId, isMerged }) {
   const [token, setToken]     = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState(null);
@@ -32,8 +32,14 @@ function RefreshProjectModal({ open, onClose, onConfirm, projectName, projectId 
     setError(null);
     setLoading(true);
     try {
-      await saveGithubToken(token.trim());                    // persist to localStorage + backend memory
-      await triggerProjectExtraction(projectId, token.trim()); // also sent in body as safety net
+      await saveGithubToken(token.trim()); // persist to localStorage + backend memory
+      if (!isMerged) {
+        // For plain projects trigger extraction here so the backend starts before the
+        // SSE toast connects.  For merged entries the queue in App.jsx fires each
+        // member's extraction individually, so we skip the trigger here to avoid
+        // extracting the first member twice.
+        await triggerProjectExtraction(projectId, token.trim());
+      }
       onClose();
       onConfirm();
     } catch (err) {
@@ -340,7 +346,7 @@ function ControlRow({ control }) {
   );
 }
 
-export default function Detail({ d, onOverview, onRefreshProject }) {
+export default function Detail({ d, dataKey, onOverview, onRefreshProject }) {
   const [showCommitsQuarterly, setShowCommitsQuarterly] = useState(false);
   const [showPRMonthly, setShowPRMonthly] = useState(true);
   const [showIssueMonthly, setShowIssueMonthly] = useState(true);
@@ -355,9 +361,10 @@ export default function Detail({ d, onOverview, onRefreshProject }) {
       <RefreshProjectModal
         open={refreshModalOpen}
         onClose={() => setRefreshModalOpen(false)}
-        onConfirm={() => onRefreshProject?.(d.id, d.name)}
+        onConfirm={() => onRefreshProject?.(dataKey ?? d.id, d.name)}
         projectName={d.name}
         projectId={d.id}
+        isMerged={Boolean(d._mergedFrom)}
       />
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <button onClick={onOverview}>Overview</button>

@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
+import { fetchProjects, fetchProjectMetrics, transformProjectData, fetchTokenStatus, removeProject, updateProject, fetchMerges, saveMerges, triggerProjectExtraction, EXCLUDED_COMPANY_PATTERNS } from "./api.js";
 import UIShellHeader from "./components/UIShellHeader.jsx";
 import Overview from "./components/Overview.jsx";
 import Detail from "./components/Detail.jsx";
@@ -543,6 +543,17 @@ export default function App() {
     }
   }, [extracting]);
 
+  // For refresh-queue items (merged-entry refresh or refresh-all), trigger the backend
+  // extraction whenever a new item becomes the active extracting entry.
+  // Single-repo refreshes are excluded (isSingleRepo=true) because RefreshProjectModal
+  // already called triggerProjectExtraction before setting extracting state.
+  useEffect(() => {
+    if (!extracting || extracting.mode !== 'refresh' || extracting.isSingleRepo) return;
+    triggerProjectExtraction(extracting.id).catch((err) => {
+      console.error('Failed to trigger extraction for', extracting.id, err);
+    });
+  }, [extracting?.id, extracting?.mode, extracting?.isSingleRepo]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Persist add-queue state to localStorage whenever it changes
   useEffect(() => {
     if (addQueue.length > 0) {
@@ -804,8 +815,8 @@ export default function App() {
     } else if (refreshQueue.length > 0) {
       const [next, ...rest] = refreshQueue;
       setRefreshQueue(rest);
-      // Start the next project immediately — no gap between toasts
-      setExtracting({ id: next.id, name: next.name, mode: 'refresh' });
+      // Preserve mergedName so the toast header stays consistent throughout the queue
+      setExtracting({ id: next.id, name: next.name, mergedName: next.mergedName, mode: 'refresh' });
     } else {
       setExtracting(null);
       setAddQueueTotal(0);
@@ -1090,17 +1101,34 @@ export default function App() {
         ) : (
           <Detail
             d={detailData || data[selectedKey] || null}
+            dataKey={selectedKey}
             onOverview={showOverview}
             onRefreshProject={(id, name) => {
               const entry = data[id];
               if (entry?._mergedFrom) {
-                // Merged entry — queue each member repo individually, same as Refresh All
-                const members = entry._mergedFrom.map((e) => ({ id: e.key, name: e.data.name }));
+                // Merged entry — use atomic backend IDs from _allMemberKeys when available,
+                // otherwise fall back to the peer-level keys stored in _mergedFrom.
+                const atomicIds = entry._allMemberKeys
+                  || entry._mergedFrom.map((e) => e.key);
+                // Build display names: use data[id].name for atomic IDs where possible,
+                // otherwise fall back to the merged-entry display name.
+                const members = atomicIds.map((aid) => ({
+                  id: aid,
+                  name: data[aid]?.name || entry.name,
+                  // Tag each queued item with the parent merged name so the toast
+                  // can show "Refreshing <mergedName>" as the header.
+                  mergedName: entry.name,
+                }));
                 setRefreshQueueTotal(members.length);
                 setRefreshQueue(members.slice(1));
-                setExtracting({ id: members[0].id, name: members[0].name, mode: 'refresh' });
+                setExtracting({
+                  id: members[0].id,
+                  name: members[0].name,
+                  mergedName: entry.name,
+                  mode: 'refresh',
+                });
               } else {
-                setExtracting({ id, name, mode: 'refresh' });
+                setExtracting({ id, name, mode: 'refresh', isSingleRepo: true });
               }
             }}
           />

@@ -290,28 +290,13 @@ public class ProjectController {
                     dataService.getSettingsService().setGithubToken(token.strip());
                 }
             }
+            // Return the ordered list of project IDs so the front-end queue can
+            // drive extraction one project at a time via POST /{id}/extract.
+            // The server-side loop was removed: the front-end useEffect in App.jsx
+            // now calls triggerProjectExtraction for each queued item, which is
+            // consistent with how merged-entry refresh works.
             List<Project> projects = dataService.getAllProjects();
             List<String> ids = projects.stream().map(Project::getId).collect(java.util.stream.Collectors.toList());
-            if (ids.isEmpty()) {
-                return ResponseEntity.ok(java.util.Map.of("started", ids));
-            }
-            // Kick off sequential extraction in a background thread so the request returns immediately
-            new Thread(() -> {
-                for (Project p : projects) {
-                    try {
-                        dataService.triggerDataExtraction(p.getId());
-                        // Wait for this project to finish before starting the next
-                        while (dataService.isExtractionRunning(p.getId())) {
-                            Thread.sleep(500);
-                        }
-                    } catch (IllegalStateException e) {
-                        log.warn("Refresh-all: no token for {}; aborting", p.getId());
-                        break;
-                    } catch (Exception e) {
-                        log.error("Refresh-all: extraction failed for {}", p.getId(), e);
-                    }
-                }
-            }).start();
             return ResponseEntity.ok(java.util.Map.of("started", ids));
         } catch (IOException e) {
             log.error("Error starting refresh-all", e);
