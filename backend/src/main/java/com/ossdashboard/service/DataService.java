@@ -42,6 +42,14 @@ public class DataService {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    // Unique ID generated once per JVM startup.  The frontend stores this alongside
+    // extraction state in localStorage; on page load it compares the stored ID to the
+    // current one — a mismatch means the backend was restarted and extraction state
+    // should be discarded.
+    private final String sessionId = java.util.UUID.randomUUID().toString();
+
+    public String getSessionId() { return sessionId; }
+
     // projectId -> live log lines from the running extraction process
     private final ConcurrentHashMap<String, CopyOnWriteArrayList<String>> extractionLogs =
         new ConcurrentHashMap<>();

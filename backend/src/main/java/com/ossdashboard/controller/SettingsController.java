@@ -1,5 +1,6 @@
 package com.ossdashboard.controller;
 
+import com.ossdashboard.service.DataService;
 import com.ossdashboard.service.SettingsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,23 @@ import java.util.Map;
 public class SettingsController {
 
     private final SettingsService settingsService;
+    private final DataService dataService;
 
-    public SettingsController(SettingsService settingsService) {
+    public SettingsController(SettingsService settingsService, DataService dataService) {
         this.settingsService = settingsService;
+        this.dataService = dataService;
+    }
+
+    /**
+     * GET /api/settings/session-id
+     * Returns a UUID that is stable for the lifetime of this JVM process.
+     * The frontend stores this alongside extraction state; a mismatch on page
+     * load means the backend was restarted and stale extraction state should
+     * be discarded before it can trigger a re-extraction.
+     */
+    @GetMapping("/session-id")
+    public ResponseEntity<Map<String, String>> getSessionId() {
+        return ResponseEntity.ok(Map.of("sessionId", dataService.getSessionId()));
     }
 
     /**
