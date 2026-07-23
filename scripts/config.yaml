@@ -56,7 +56,6 @@ projects:
     repo: "quarkiverse"
     foundation: "Commonhaus Foundation"
 
-
   - name: "Apache Artemis"
     github_url: "https://github.com/apache/artemis"
     owner: "apache"
@@ -66,14 +65,11 @@ projects:
     jira_project_key: ARTEMIS
     jira_base_url: "https://issues.apache.org/jira"
 
-
   - name: "Apache Tomcat"
     github_url: "https://github.com/apache/tomcat"
     owner: "apache"
     repo: "tomcat"
     foundation: "Apache Software Foundation"
-
-
 
   - name: "Apache Camel"
     github_url: "https://github.com/apache/camel"
@@ -83,8 +79,6 @@ projects:
     issue_source: jira
     jira_project_key: CAMEL
     jira_base_url: "https://issues.apache.org/jira"
-
-
 
   - name: "kroxylicious"
     github_url: "https://github.com/kroxylicious"

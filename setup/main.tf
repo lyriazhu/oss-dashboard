@@ -57,16 +57,16 @@ variable "install_dir" {
 ###############################################################################
 
 locals {
-  repo_dir        = var.install_dir
-  scripts_dir     = "${local.repo_dir}/scripts"
-  frontend_dir    = "${local.repo_dir}/frontend"
-  backend_dir     = "${local.repo_dir}/backend"
+  repo_dir     = var.install_dir
+  scripts_dir  = "${local.repo_dir}/scripts"
+  frontend_dir = "${local.repo_dir}/frontend"
+  backend_dir  = "${local.repo_dir}/backend"
 
   # Minimum versions expressed as simple checks in shell
-  node_min_major  = 18
-  java_min_major  = 17
+  node_min_major   = 18
+  java_min_major   = 17
   python_min_minor = "3.8"
-  maven_min_major = 3
+  maven_min_major  = 3
 }
 
 ###############################################################################
