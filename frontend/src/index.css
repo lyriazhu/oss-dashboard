@@ -330,12 +330,12 @@
   table{width:100%; border-collapse:collapse; font-size:.875rem;}
   thead th{
     background:var(--gray-10); color:var(--text-primary); font-weight:600;
-    text-align:left; padding:.875rem 1rem; height:3rem;
+    text-align:left; padding:.875rem 1rem; height:4rem;
     border-bottom:1px solid var(--border-subtle); white-space:nowrap;
   }
   thead th.num{text-align:right;}
   tbody td{
-    padding:.875rem 1rem; height:3rem; border-bottom:1px solid var(--border-subtle);
+    padding:.875rem 1rem; height:4rem; border-bottom:1px solid var(--border-subtle);
     color:var(--text-secondary);
   }
   tbody tr:last-child td{border-bottom:0;}
@@ -373,8 +373,24 @@
   .btn-refresh svg{flex:0 0 auto;}
 
   /* clickable community rows */
-  #commTable tbody tr{cursor:pointer;}
+  #commTable tbody tr{cursor:pointer; height:4rem; max-height:4rem;}
   td.chev-cell{text-align:right; padding-right:1rem;}
+
+  /* All cells: never wrap, never grow the row beyond 4rem */
+  #commTable tbody td{white-space:nowrap; overflow:hidden; max-height:4rem;}
+
+  /* Name column — truncate with ellipsis; inner flex span must also clip */
+  #commTable td.col-name{max-width:13rem; text-overflow:ellipsis;}
+  #commTable td.col-name > span{max-width:100%; overflow:hidden; text-overflow:ellipsis;}
+  #commTable td.col-name .inline-edit-text{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+  /* Foundation column — also uses InlineEdit, can be long */
+  #commTable td[data-field="foundation"]{max-width:10rem; text-overflow:ellipsis;}
+  #commTable td[data-field="foundation"] .inline-edit-text{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+  /* GitHub URL column */
+  #commTable td.col-repo{max-width:11rem; text-overflow:ellipsis;}
+  #commTable td.col-repo a{display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 
   /* Status cell doubles as the unmerge button overlay target */
   td.status-cell{position:relative;}

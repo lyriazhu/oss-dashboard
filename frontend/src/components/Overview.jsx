@@ -282,7 +282,7 @@ function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, 
         onClick={(e) => { e.stopPropagation(); onSelect(repoKey, repo); }}
       >
         {selectMode && <td className="chk-cell" />}
-        <td className="strong" style={{ paddingLeft: '2.5rem' }}>
+        <td className="strong col-name" style={{ paddingLeft: '2.5rem' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.375rem' }}>
             {isMergedMember ? (
               <button
@@ -302,7 +302,7 @@ function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, 
           </span>
         </td>
         <td>{parentFoundation || '—'}</td>
-        <td>
+        <td className="col-repo">
           {repo.repoUrl ? (
             <a href={repo.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
               {repo.repoUrl.replace('https://github.com/', '')}
@@ -337,14 +337,14 @@ function MergedSubRow({ repoKey, repo, parentKey, parentFoundation, selectMode, 
           onClick={(e) => { e.stopPropagation(); onSelect(childKey, child); }}
         >
           {selectMode && <td className="chk-cell" />}
-          <td className="strong" style={{ paddingLeft: '4rem' }}>
+          <td className="strong col-name" style={{ paddingLeft: '4rem' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.375rem' }}>
               <span style={{ color: 'var(--gray-40)', fontSize: '.75rem', flexShrink: 0 }}>↳</span>
               {child.name}
             </span>
           </td>
           <td>{parentFoundation || '—'}</td>
-          <td>
+          <td className="col-repo">
             {child.repoUrl ? (
               <a href={child.repoUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--link)', fontSize: '.8125rem' }} onClick={(e) => e.stopPropagation()}>
                 {child.repoUrl.replace('https://github.com/', '')}
@@ -448,7 +448,7 @@ function CommunityRow({
             />
           </td>
         )}
-        <td className="strong" data-field="name">
+        <td className="strong col-name" data-field="name">
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.375rem' }}>
             {isMerged ? (
               <button
@@ -486,7 +486,7 @@ function CommunityRow({
             onCancelNav={cancelNav}
           />
         </td>
-        <td>
+        <td className="col-repo">
           {isMerged ? (() => {
             // Use the merged repoUrl directly — buildMergedEntry already resolves this
             // to the org URL (e.g. https://github.com/streamshub) when all repos share
