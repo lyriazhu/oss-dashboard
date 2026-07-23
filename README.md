@@ -12,12 +12,11 @@ A scalable, low-maintenance, replicable dashboard to track contributors and othe
 4. [Create a GitHub Token](#4-create-a-github-token)
 5. [Start the Backend API](#5-start-the-backend-api)
 6. [Start the Frontend](#6-start-the-frontend)
-7. [Run Initial Data Extraction](#7-run-initial-data-extraction)
-8. [Adding a New Project](#8-adding-a-new-project)
-9. [Refreshing Data](#9-refreshing-data)
-10. [Project Structure](#10-project-structure)
-11. [Tracked Projects](#11-tracked-projects)
-12. [Troubleshooting](#12-troubleshooting)
+7. [Adding a New Project](#7-adding-a-new-project)
+8. [Refreshing Data](#8-refreshing-data)
+9. [Project Structure](#9-project-structure)
+10. [Tracked Projects](#10-tracked-projects)
+11. [Troubleshooting](#11-troubleshooting)
 
 ---
 
@@ -262,49 +261,46 @@ open **http://localhost:5173** in your browser. The dashboard loads automaticall
 
 ---
 
-## 7. Run Initial Data Extraction *(optional)*
+## 7. Adding a New Project
 
-> **You can skip this step for now.** The dashboard will open and function without any extraction having been run — it will simply show no data, or show previously cached data if any exists. You can trigger an extraction at any time from the UI.
+You can add any public GitHub repository or organisation directly from the dashboard without touching any config files.
 
-> ⚠️ **This step can take a long time.** The first extraction clones full git histories for every tracked project and may take **15–40 minutes**. You do not need to wait for it to finish before using the rest of the dashboard.
+1. On the overview page, click **"Add project"** (top-right of the Communities table).
+2. **GitHub personal access token** — paste the token you created in step 4. It is stored in your browser's local storage and pre-filled automatically on future visits.
+3. **Add type** — choose one:
+   - **Single repository** — tracks one GitHub repo (e.g. `https://github.com/owner/repo`).
+   - **Entire project** — tracks every repository under a GitHub organisation or user (e.g. `https://github.com/owner`).
+4. **GitHub URL** — paste the repository or organisation URL into the field that appears.
+5. **Issue tracker** — select where issues are tracked:
+   - **GitHub Issues** — optionally specify a different repository for issues if they are not in the primary repo. For an entire project you can choose to pull issues from one specific repo or from all repos in the org.
+   - **Jira** — enter the Jira project key (e.g. `CAMEL`) and the Jira base URL (e.g. `https://issues.apache.org/jira`).
+6. Click **Add**. The backend registers the project and begins extracting data automatically.
 
-When you are ready to populate the dashboard with fresh data, use the **"Refresh all"** button:
+A progress toast will appear at the bottom of the screen while extraction runs. Once it completes, the new project row appears in the Communities table.
 
-1. In the top-right area of the overview page, click **"Refresh all"**.
-2. A modal will appear asking for your GitHub personal access token. Paste the token you created in step 4 and click **"Refresh all"**.
-3. The backend will extract data for every project in the background. A progress indicator is shown for each project.
+---
 
-**How long does it take?**
+## 8. Refreshing Data
 
-- **First run**: 15–40 minutes depending on project age and size (git history cloning is the bottleneck).
-- **Subsequent runs**: 2–5 minutes (git mirrors and user profile cache are reused).
+To pull fresh data for all projects, click the **"Refresh all"** button in the top-right area of the overview page.
+
+A modal will appear asking for your GitHub personal access token (pre-filled if already saved). Click **"Refresh all"** to start a background extraction for every project currently on the dashboard.
+
+> ⚠️ **Refreshing all projects takes approximately 45 minutes** every time. With this many repositories, each refresh re-processes a significant amount of data.
+
+**Tip — speed up refresh by removing projects you don't need.** The more projects on the dashboard, the longer a full refresh takes. If some of the pre-loaded projects are not relevant to you, remove them first:
+
+1. Click **"Select"** (top-right of the Communities table).
+2. Tick the checkboxes next to any projects you want to remove.
+3. Click **"Delete X projects"** and confirm.
+
+Once you have trimmed the list to only the projects you care about, refresh times will be proportionally faster.
 
 > Your token is saved in your browser's local storage and restored automatically on future visits — you will not need to re-enter it each time.
 
 ---
 
-## 8. Adding a New Project
-
-You can add any public GitHub repository or organisation directly from the dashboard:
-
-1. On the overview page, click **"Add project"**.
-2. Paste your GitHub token (pre-filled if you have used the dashboard before).
-3. Choose whether to add a **Single repository** or an **Entire project** (org / user).
-4. Paste the GitHub URL (e.g. `https://github.com/owner/repo`).
-5. Select the issue tracker — **GitHub Issues** or **Jira** — and fill in any required fields.
-6. Click **Add**. The backend registers the project and triggers data extraction automatically.
-
-A progress toast will appear while the extraction runs. Once it completes, the project row appears in the Communities table.
-
----
-
-## 9. Refreshing Data
-
-To pull fresh data for all projects, click the **"Refresh all"** button on the overview page. The modal will ask for your GitHub token (pre-filled if already saved). Click **"Refresh all"** to start a background extraction for every project.
-
----
-
-## 10. Project Structure
+## 9. Project Structure
 
 ```
 oss-dashboard/
@@ -339,7 +335,7 @@ oss-dashboard/
 
 ---
 
-## 11. Tracked Projects
+## 10. Tracked Projects
 
 | Project | Foundation | Issue source |
 |---------|-----------|-------------|
@@ -358,7 +354,7 @@ oss-dashboard/
 
 ---
 
-## 12. Troubleshooting
+## 11. Troubleshooting
 
 ### "brew: command not found"
 Homebrew is not installed or not on your PATH. Follow [step 2a](#2a-homebrew-macos-only) above.
@@ -370,7 +366,7 @@ Run `brew install openjdk@17` and follow the `sudo ln` and `export PATH` steps i
 Run `brew install maven`.
 
 ### Backend starts but the dashboard shows no data
-- Click **"Refresh all"** on the overview page to trigger the first data extraction.
+- Click **"Refresh all"** on the overview page to trigger data extraction.
 - If extraction has already run, check that `data/` contains project folders.
 - The backend reads files at startup — if you added data after starting the backend, restart it.
 - Check `http://localhost:8080/api/projects` in your browser to confirm the API is serving data.
